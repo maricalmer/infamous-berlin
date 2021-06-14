@@ -10,6 +10,9 @@ class User < ApplicationRecord
   after_create :update_slug
   before_update :assign_slug
 
+  has_many :projects
+  has_one_attached :photo
+
   def create_slug
     slug = self.username.parameterize
     User.where.not(id: self.id).find_by(slug: slug).nil? ? slug : slug + slug.length.to_s
