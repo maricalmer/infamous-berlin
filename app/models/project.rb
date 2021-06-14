@@ -1,5 +1,6 @@
 class Project < ApplicationRecord
   belongs_to :user
+  has_many :applications
   has_many_attached :photos
 
   after_create :update_slug

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_14_113112) do
+ActiveRecord::Schema.define(version: 2021_06_14_135012) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -37,6 +37,9 @@ ActiveRecord::Schema.define(version: 2021_06_14_113112) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+# Could not dump table "applications" because of following StandardError
+#   Unknown type 'application_status' for column 'status'
+
 # Could not dump table "projects" because of following StandardError
 #   Unknown type 'project_status' for column 'status'
 
@@ -60,5 +63,7 @@ ActiveRecord::Schema.define(version: 2021_06_14_113112) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "applications", "projects"
+  add_foreign_key "applications", "users"
   add_foreign_key "projects", "users"
 end

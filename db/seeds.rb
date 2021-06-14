@@ -5,3 +5,68 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require "open-uri"
+
+puts "cleaning up DB"
+puts "applications..."
+Application.destroy_all if Rails.env.development?
+ActiveRecord::Base.connection.reset_pk_sequence!('application')
+puts "projects..."
+Project.destroy_all if Rails.env.development?
+ActiveRecord::Base.connection.reset_pk_sequence!('projects')
+puts "users..."
+User.destroy_all if Rails.env.development?
+ActiveRecord::Base.connection.reset_pk_sequence!('users')
+puts "DB is empty"
+puts "-----------"
+puts "creating users"
+20.times do
+  user = User.create!(
+    email: Faker::Internet.email,
+    password: "123456",
+    username: Faker::Internet.unique.username,
+    skills: [Faker::Job.key_skill],
+    bio: Faker::GreekPhilosophers.quote,
+  )
+  user.socialmedias = "@" + user.username
+  user.photo.attach(
+    io: URI.open('https://giantbomb1.cbsistatic.com/uploads/original/9/99864/2419866-nes_console_set.png'),
+    filename: 'nes.png',
+    content_type: 'image/png'
+    )
+  puts "user #{user.id} is created"
+end
+puts "20 fresh new users"
+puts "creating projects"
+20.times do
+  project = Project.create!(
+    title: Faker::Book.unique.title,
+    description: Faker::Quote.matz,
+    category: ['painting', 'print', 'photography', 'sculpture', 'furniture', 'fashion', 'other'].sample,
+    date: Faker::Date.in_date_period,
+    location: ["Mitte", "P.Berg", "Wedding", "Kreuzberg", "Neukölln", "Friedrichshain"].sample,
+    user: User.all.sample
+  )
+  project.photos.attach(io: [
+    URI.open('https://res.cloudinary.com/dbpv82leg/image/upload/v1600074118/w54i1yub1kgz5rvd22i0c5wr4pwm.jpg'),
+    URI.open('https://res.cloudinary.com/dbpv82leg/image/upload/v1598882767/wfauj0r0q92zxqxs6lpp.jpg'),
+    URI.open('https://res.cloudinary.com/dbpv82leg/image/upload/v1598882740/rbhbfgjs12fnd3krfy0i.jpg')
+  ].sample,
+  filename: Faker::File.file_name(ext: 'jpg') ,content_type: 'image/jpg')
+  project.save
+  puts "project #{project.id} is created"
+end
+puts "20 fresh new projects"
+puts "creating applications"
+projects = Project.first(10)
+10.times do
+  application = Application.create!(
+    user: User.all.sample,
+    project: projects.first.user != :user ? projects.first : projects.last
+  )
+  projects.first.user != :user ? projects.delete(projects.first) : projects.delete(projects.last)
+  puts "application #{application.id} is created"
+end
+puts "10 fresh new applications"
+puts "-----------"
+puts "SEEDING IS DONE!!!"

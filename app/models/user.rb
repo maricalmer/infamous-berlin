@@ -11,6 +11,7 @@ class User < ApplicationRecord
   before_update :assign_slug
 
   has_many :projects
+  has_many :applications
   has_one_attached :photo
 
   def create_slug
