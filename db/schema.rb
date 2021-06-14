@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_14_105441) do
+ActiveRecord::Schema.define(version: 2021_06_14_113112) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -37,17 +37,8 @@ ActiveRecord::Schema.define(version: 2021_06_14_105441) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "projects", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
-    t.string "location"
-    t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "category", default: [], array: true
-    t.datetime "date"
-    t.index ["user_id"], name: "index_projects_on_user_id"
-  end
+# Could not dump table "projects" because of following StandardError
+#   Unknown type 'project_status' for column 'status'
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
