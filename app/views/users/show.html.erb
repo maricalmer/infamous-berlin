@@ -1,0 +1,26 @@
+<h1>User show page</h1>
+<div class="d-flex align-items-center">
+  <div>
+    <%= cl_image_tag @user.photo.key, height: 75, width: 75, radius: "max", crop: :fill %>
+  </div>
+  <div>
+    <h2 class="ml-3"><%= @user.username %></h2>
+  </div>
+</div>
+<br>
+<p><strong>Email:</strong> <%= @user.email %></p>
+<p><strong>Bio:</strong> <%= @user.bio %></p>
+<p><strong>Skills:</strong> <%= @user.skills[0] %></p>
+<p><strong>Social Media:</strong> <%= @user.socialmedias[0] %></p>
+<br>
+<br>
+<br>
+<h2><%= @user.username %>'s portfolio</h2>
+<br>
+<% if @portfolio.empty? %>
+  <p>Portfolio is empty... 😥</p>
+<% else %>
+  <% @portfolio.each do |project| %>
+    <%= link_to project.title, project_path(project.slug) %><br>
+  <% end %>
+<% end %>

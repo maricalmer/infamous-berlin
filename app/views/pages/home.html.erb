@@ -1,2 +1,15 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>Homepage</h1>
+<div class="d-flex justify-content-around">
+  <div>
+    <h2>Users list</h2>
+    <% @users.each do |user| %>
+      <%= user.id %> <%= link_to user.username, user_path(user.slug) %><br>
+    <% end %>
+  </div>
+  <div>
+    <h2>Projects list</h2>
+    <% @projects.each do |project| %>
+      <%= project.id %> <%= link_to project.title, project_path(project.slug) %><br>
+    <% end %>
+  </div>
+<div>

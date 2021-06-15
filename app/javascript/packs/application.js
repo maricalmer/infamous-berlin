@@ -23,6 +23,8 @@ require("channels")
 // ----------------------------------------------------
 
 // External imports
+// import JQuery from 'jquery';
+// window.$ = window.JQuery = JQuery;
 import "bootstrap";
 
 // Internal imports, e.g:

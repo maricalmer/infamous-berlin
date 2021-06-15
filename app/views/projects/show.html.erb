@@ -1,0 +1,31 @@
+<% content_for :head do %>
+  <meta name="turbolinks-cache-control" content="no-cache">
+<% end %>
+<h1>Project show page</h1>
+<% @project.photos.each do |photo| %>
+  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+<% end %>
+<h2><%= @project.title %></h2>
+<% if @project.upcoming? %>
+  <div class="d-flex align-items-center">
+    <div>
+      <h3>We need a <%= @project.need.first %>!</h3>
+    </div>
+    <div>
+      <%= render @project %>
+    </div>
+  </div>
+<% end %>
+<p><strong>Desctiption:</strong> <%= @project.description %></p>
+<p><strong>Location:</strong> <%= @project.location %></p>
+<p><strong>Category:</strong> <%= @project.category.first %></p>
+<% if @project.portfolio? %>
+  <p><strong>Date: </strong><%= @project.date.strftime("%d/%m/%Y") %></p>
+<% else %>
+  <p><strong>Deadline: </strong><%= @project.date.strftime("on %d/%m/%Y") %></p>
+<% end %>
+<% if @member %>
+  <p><strong>Member: </strong>
+    <%= link_to @member.username, user_path(member.slug) %>
+  </p>
+<% end %>

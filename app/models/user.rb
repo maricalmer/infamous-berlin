@@ -27,6 +27,11 @@ class User < ApplicationRecord
     slug
   end
 
+  def applied?(project_id)
+    application = Application.find_by(user_id: id, project_id: project_id)
+    return true if application
+  end
+
   private
 
   def assign_slug

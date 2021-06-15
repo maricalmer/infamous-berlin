@@ -1,0 +1,12 @@
+const ready = (callback) => {
+  if (document.readyState != "loading") callback();
+  else document.addEventListener("DOMContentLoaded", callback);
+}
+
+const callback = () => {
+  const modal = document.getElementById('modalLogin');
+  modal.classList.add('hide');
+  location.reload();
+}
+
+ready(callback);

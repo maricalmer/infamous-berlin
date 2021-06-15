@@ -1,0 +1,38 @@
+<div data-project=<%= @project.id %>>
+  <% if !user_signed_in? %>
+    <%= link_to new_user_session_path, data: {toggle: "modal", target: "#modalLogin"} do %>
+      <button type="button" class="ml-5 btn btn-success" >
+        Apply now!
+      </button>
+    <% end %>
+  <% elsif !current_user.applied?(@project.id) %>
+    <button type="button" class="ml-5 btn btn-success" data-toggle="modal" data-target="#confirmApplicationModal" >
+      Apply now!
+    </button>
+  <% else %>
+    <button type="button" class="ml-5 btn btn-secondary" >
+      Application send
+    </button>
+  <% end %>
+</div>
+
+<div class="modal fade" id="confirmApplicationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Your application to <%= @project.user.username %>'s project</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Please confirm that you would like to apply to:<br><br>
+        <ul><%= @project.title %></ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <%= link_to "Apply", apply_project_path(@project.slug), class: "btn btn-success", method: :post, remote: true %>
+      </div>
+    </div>
+  </div>
+</div>
