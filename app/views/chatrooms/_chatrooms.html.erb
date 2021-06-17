@@ -1,0 +1,32 @@
+<% if @chatroom.nil? %>
+  <div class="mw-100" style="width: 100vh">
+    <p>You have no messages yet 😭</p>
+  </div>
+<% else %>
+  <div class="d-flex">
+    <div class="list-group w-200px bg-white br-light">
+      <% @chatrooms.each do |chatroom| %>
+        <%= link_to "#{chatroom.project.title}", chatroom_path(chatroom), class: "list-group-item #{'active' if chatroom == @chatroom}" %>
+        <small>Chatting with <%= chatroom.with(current_user).username %></small>
+      <% end %>
+    </div>
+
+
+    <div class="chatroom">
+      <h1><%= @chatroom.project.title %></h1>
+      <div>
+        <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
+          <% @messages.each do |message| %>
+            <%= render "messages/message", message: message %>
+          <% end %>
+        </div>
+        <%= simple_form_for [ @message ], html: { autocomplete: 'off' }, remote: true do |f| %>
+          <%= hidden_field_tag 'chatroom_id', @chatroom.id %>
+          <%= f.input :content, label: false, placeholder: "Type your message..." %>
+          <div class="error-new-message text-danger"></div>
+          <%= f.submit %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

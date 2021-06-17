@@ -17,10 +17,29 @@
 <br>
 <h2><%= @user.username %>'s portfolio</h2>
 <br>
-<% if @portfolio.empty? %>
+<% if @portfolio_projects.empty? %>
   <p>Portfolio is empty... 😥</p>
 <% else %>
-  <% @portfolio.each do |project| %>
+  <% @portfolio_projects.each do |project| %>
     <%= link_to project.title, project_path(project.slug) %><br>
   <% end %>
+<% end %>
+<h2><%= @user.username %>'s upcoming projects</h2>
+<br>
+<% if @upcoming_projects.empty? %>
+  <p>No upcoming project... 😥</p>
+<% else %>
+  <% @upcoming_projects.each do |project| %>
+    <%= link_to project.title, project_path(project.slug) %><br>
+  <% end %>
+<% end %>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalMessageNew">
+  Message <%= @user.username %>
+</button>
+
+
+<% if user_signed_in? %>
+  <div id="modalMessage">
+    <%= render "messages/new", chatroom: @chatroom, message: @message %>
+  </div>
 <% end %>

@@ -10,5 +10,13 @@ Rails.application.routes.draw do
       post :unapply
     end
   end
-  get '/messages', to: 'pages#messages'
+  resources :chatrooms, only: [:show, :create, :index]
+  resources :messages, only: [:create]
+  resources :applies do
+    member do
+      patch :change_status
+    end
+  end
+  get '/dashboard', to: 'pages#dashboard'
+  get '/collaboration', to: 'pages#collaboration'
 end

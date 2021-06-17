@@ -1,0 +1,26 @@
+<h1>Collaboration page</h1>
+<div class="d-flex justify-content-around">
+  <% if @sent_application.empty? && @received_application.empty? %>
+    <p>No application yet... 😢</p>
+  <% else %>
+    <div>
+      <h2>My sent applications</h2>
+      <% @sent_application.each do |application| %>
+        <%= application.find_project.title %><br>
+        <%= application.created_at.strftime("applied on %d/%m/%Y") %><br>
+        <%= application.status %><br>
+        <%= link_to "Delete", unapply_project_path(application.applying_id), method: :post, data: { confirm: "Are you sure?" } %><br><br>
+      <% end %>
+    </div>
+    <div>
+      <h2>My received applications</h2>
+      <% @received_application.each do |application| %>
+        <%= application.find_project.title %><br>
+        <%= application.created_at.strftime("applied on %d/%m/%Y") %><br>
+        <%= application.status %><br>
+        <%= link_to "Accept", change_status_apply_path(application, status: "accepted"), method: :patch, data: { confirm: "Are you sure?" } %><br>
+        <%= link_to "Reject", change_status_apply_path(application, status: "rejected"), method: :patch, data: { confirm: "Are you sure?" } %><br>
+      <% end %>
+    </div>
+  <% end %>
+<div>

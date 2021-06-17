@@ -6,6 +6,14 @@ class PagesController < ApplicationController
     @projects = Project.all.sort_by { |project| project.id }
   end
 
-  def messages
+  def dashboard
+    @portfolio_projects = Project.portfolio.where(user: current_user).order(created_at: :desc)
+    @upcoming_projects = Project.upcoming.where(user: current_user).order(created_at: :desc)
+  end
+
+  def collaboration
+    @received_application = Apply.where(applicant_id: current_user.id).order(created_at: :desc)
+    projects_ids = Project.where(user: current_user).map(&:id)
+    @sent_application = Apply.where(applying_id: projects_ids).order(created_at: :desc)
   end
 end
