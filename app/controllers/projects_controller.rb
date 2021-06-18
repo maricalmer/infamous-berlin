@@ -78,3 +78,6 @@ class ProjectsController < ApplicationController
     params.require(:project).permit(:title, :description, :category, :date, :location, :member, photos: [])
   end
 end
+
+
+# modal stays on the page for 1s hitting the apply button and coming back to the show page after chatroom

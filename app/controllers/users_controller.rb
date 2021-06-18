@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   def show
     @portfolio_projects = Project.portfolio.where(user: current_user).order(created_at: :desc)
     @upcoming_projects = Project.upcoming.where(user: current_user).order(created_at: :desc)
+    @message = Message.new
   end
 
   def edit
@@ -28,3 +29,6 @@ class UsersController < ApplicationController
     params.require(:user).permit(:username, :bio, :skills, :socialmedias)
   end
 end
+
+
+# cant send message from show page because no project attribute for message instance

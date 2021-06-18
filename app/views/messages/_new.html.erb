@@ -2,20 +2,14 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Message
-          <% if params[:controller] == "projects" %>
-            <%= @project.user.username %>
-          <% else %>
-            <%= @user.username %>
-          <% end %>
-        </h5>
+        <h5 class="modal-title" id="exampleModalLabel">Message <%= @user.username %></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <%= simple_form_for [ @message ], remote: true do |f| %>
-          <%= hidden_field_tag 'project_id', @project.id %>
+          <%= hidden_field_tag 'user_id', @user.id %>
           <%= f.input :content, as: :text, error: 'Please type a message' %>
           <div class="error-new-message text-danger"></div>
           <%= f.button :submit, "Send message", class: 'btn btn-primary' %>
