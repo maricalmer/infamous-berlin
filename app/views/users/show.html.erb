@@ -1,38 +1,38 @@
-<h1>User show page</h1>
-<div class="d-flex align-items-center">
-  <div>
-    <%= cl_image_tag @user.photo.key, height: 75, width: 75, radius: "max", crop: :fill %>
+<div class="d-flex">
+  <div class="flex-shrink-0">
+    <%= cl_image_tag(@user.photo.key, transformation: [{height: 475, width: 475, radius: 60, crop: :fill, background: "#ffffff"}], class: "rotated")%>
+    <h1 class="avatar-username"><%= @user.username %></h1>
   </div>
-  <div>
-    <h2 class="ml-3"><%= @user.username %></h2>
+  <div class="flex-grow-1 bio-position">
+    <h2><strong>Bio:</strong></h2>
+    <p><%= @user.bio %></p>
+  </div>
+</div>
+<div class="d-flex mt-5">
+  <div class="flex-fill">
+    <h2><strong>Skills:</strong></h2>
+    <p><%= @user.skills[0] %></p>
+  </div>
+  <div class="flex-fill">
+    <button class="btn btn-dark btn-lg btn-pill">Send a message</button><br>
+    <button class="btn btn-dark btn-lg btn-pill">Portfolio</button><br>
+    <button class="btn btn-dark btn-lg btn-pill">Upcoming projects</button><br>
+  </div>
+  <div class="flex-fill">
+    <p><strong>Personal Page:</strong> <%= @user.socialmedias[0] %></p>
+    <p><strong>Email:</strong> <%= @user.email %></p>
+    <p><strong>Facebook:</strong> <%= @user.socialmedias[0] %></p>
+    <p><strong>Instagram:</strong> <%= @user.socialmedias[0] %></p>
+    <p><strong>Soundcloud:</strong> <%= @user.socialmedias[0] %></p>
+    <p><strong>YouTube:</strong> <%= @user.socialmedias[0] %></p>
+    <p><strong>Mixcloud:</strong> <%= @user.socialmedias[0] %></p>
+    <p><strong>Linkedin:</strong> <%= @user.socialmedias[0] %></p>
+    <p><strong>Twitter:</strong> <%= @user.socialmedias[0] %></p>
   </div>
 </div>
 <br>
-<p><strong>Email:</strong> <%= @user.email %></p>
-<p><strong>Bio:</strong> <%= @user.bio %></p>
-<p><strong>Skills:</strong> <%= @user.skills[0] %></p>
-<p><strong>Social Media:</strong> <%= @user.socialmedias[0] %></p>
 <br>
 <br>
-<br>
-<h2><%= @user.username %>'s portfolio</h2>
-<br>
-<% if @portfolio_projects.empty? %>
-  <p>Portfolio is empty... 😥</p>
-<% else %>
-  <% @portfolio_projects.each do |project| %>
-    <%= link_to project.title, project_path(project.slug) %><br>
-  <% end %>
-<% end %>
-<h2><%= @user.username %>'s upcoming projects</h2>
-<br>
-<% if @upcoming_projects.empty? %>
-  <p>No upcoming project... 😥</p>
-<% else %>
-  <% @upcoming_projects.each do |project| %>
-    <%= link_to project.title, project_path(project.slug) %><br>
-  <% end %>
-<% end %>
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalMessageNew">
   Message <%= @user.username %>
 </button>

@@ -8,8 +8,12 @@
 require "open-uri"
 
 puts "cleaning up DB"
+puts "messages..."
+Message.destroy_all if Rails.env.development?
+puts "chatrooms..."
+Chatroom.destroy_all if Rails.env.development?
 puts "applications..."
-Application.destroy_all if Rails.env.development?
+Apply.destroy_all if Rails.env.development?
 ActiveRecord::Base.connection.reset_pk_sequence!('application')
 puts "projects..."
 Project.destroy_all if Rails.env.development?
@@ -30,9 +34,9 @@ puts "creating users"
   )
   user.update(socialmedias: [ "@" + user.username ])
   user.photo.attach(
-    io: URI.open('https://giantbomb1.cbsistatic.com/uploads/original/9/99864/2419866-nes_console_set.png'),
-    filename: 'nes.png',
-    content_type: 'image/png'
+    io: URI.open('https://res.cloudinary.com/dbpv82leg/image/upload/v1624021222/photo-1522075469751-3a6694fb2f61.jpg'),
+    filename: Faker::File.file_name(ext: 'jpg'),
+    content_type: 'image/jpg'
     )
   puts "user #{user.id} is created"
 end
@@ -77,11 +81,11 @@ puts "10 upcoming projects updated"
 puts "creating applications"
 projects = Project.first(10)
 10.times do
-  application = Application.create!(
-    user: User.all.sample,
-    project: projects.first.user != :user ? projects.first : projects.last
+  application = Apply.create!(
+    applicant_id: User.all.sample.id,
+    applying_id: projects.first.user.id != :applicant_id ? projects.first.id : projects.last.id
   )
-  projects.first.user != :user ? projects.delete(projects.first) : projects.delete(projects.last)
+  projects.first.user.id != :applicant_id ? projects.delete(projects.first) : projects.delete(projects.last)
   puts "application #{application.id} is created"
 end
 puts "10 fresh new applications"
