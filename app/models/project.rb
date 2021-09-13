@@ -9,8 +9,7 @@ class Project < ApplicationRecord
   validates :title, presence: true, uniqueness: true, case_sensitive: false
   validates :slug, :title, uniqueness: true, case_sensitive: false
 
-  enum status: { portfolio: "portfolio", upcoming: "upcoming", deleted: "deleted" }
-  # ^^ rename portfolio status as past
+  enum status: { past: "past", upcoming: "upcoming", deleted: "deleted" }
 
   def create_slug
     slug = self.title.parameterize
