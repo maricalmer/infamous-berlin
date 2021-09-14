@@ -15,5 +15,6 @@ class CreateMessages < ActiveRecord::Migration[6.0]
     add_index :messages, :anchor_id
     add_index :messages, :chatroom_id, name: 'messages_chatroom_id_idx'
     add_index :messages, :user_id, name: 'messages_user_id_idx'
+    add_index :messages, [:user_id, :receiver_id], unique: true
   end
 end

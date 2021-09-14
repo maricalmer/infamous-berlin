@@ -7,7 +7,7 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    @portfolio_projects = Project.portfolio.where(user: current_user).order(created_at: :desc)
+    @portfolio_projects = Project.past.where(user: current_user).order(created_at: :desc)
     @upcoming_projects = Project.upcoming.where(user: current_user).order(created_at: :desc)
   end
 

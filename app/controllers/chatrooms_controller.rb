@@ -6,14 +6,14 @@ class ChatroomsController < ApplicationController
 
   def create
     @chatroom = Chatroom.new
-    @project = Project.find(params[:project_id])
-    @chatroom.project = @project
+    # @project = Project.find(params[:project_id])
+    # @chatroom.project = @project
     @chatroom.user = current_user
     @message = Message.new
     if @chatroom.save!
-      redirect_to project_path(@project)
+      redirect_to user_path(@user)
     else
-      render "projects/show"
+      render "user/show"
     end
   end
 

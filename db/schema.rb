@@ -41,16 +41,9 @@ ActiveRecord::Schema.define(version: 2021_09_10_150740) do
 #   Unknown type 'apply_status' for column 'status'
 
   create_table "chatrooms", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "project_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["project_id"], name: "chatrooms_project_id_idx"
-    t.index ["project_id"], name: "index_chatrooms_on_project_id"
     t.index ["updated_at"], name: "index_chatrooms_on_updated_at"
-    t.index ["user_id", "project_id"], name: "index_chatrooms_on_user_id_and_project_id", unique: true
-    t.index ["user_id"], name: "chatrooms_user_id_idx"
-    t.index ["user_id"], name: "index_chatrooms_on_user_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -66,6 +59,7 @@ ActiveRecord::Schema.define(version: 2021_09_10_150740) do
     t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
     t.index ["chatroom_id"], name: "messages_chatroom_id_idx"
     t.index ["receiver_id"], name: "index_messages_on_receiver_id"
+    t.index ["user_id", "receiver_id"], name: "index_messages_on_user_id_and_receiver_id", unique: true
     t.index ["user_id"], name: "index_messages_on_user_id"
     t.index ["user_id"], name: "messages_user_id_idx"
   end
@@ -93,8 +87,6 @@ ActiveRecord::Schema.define(version: 2021_09_10_150740) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "chatrooms", "projects"
-  add_foreign_key "chatrooms", "users"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
   add_foreign_key "projects", "users"

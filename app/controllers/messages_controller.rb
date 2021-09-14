@@ -41,3 +41,5 @@ class MessagesController < ApplicationController
     params.require(:message).permit(:content)
   end
 end
+
+# ^^ find new solution without project_id

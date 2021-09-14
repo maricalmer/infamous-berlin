@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
 
   def show
-    @portfolio_projects = Project.portfolio.where(user: current_user).order(created_at: :desc)
+    @portfolio_projects = Project.past.where(user: current_user).order(created_at: :desc)
     @upcoming_projects = Project.upcoming.where(user: current_user).order(created_at: :desc)
     @message = Message.new
   end

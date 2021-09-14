@@ -11,8 +11,10 @@ class User < ApplicationRecord
   before_update :assign_slug
 
   has_many :projects
-  has_many :applications
+  has_many :messages
+  has_many :chatrooms, through: :messages
   has_one_attached :photo
+  has_many :applications
 
   # APPLY
   has_many :applying_relationships, foreign_key: :applicant_id, class_name: 'Apply'
