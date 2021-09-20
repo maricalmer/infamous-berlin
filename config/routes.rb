@@ -9,8 +9,11 @@ Rails.application.routes.draw do
       post :apply
       post :unapply
     end
+    resources :jobs, only: [:new, :create]
   end
-  resources :chatrooms, only: [:show, :create, :index]
+  resources :jobs, only: [:destroy]
+  resources :chatrooms, only: [:show, :index]
+  # resources :chatrooms, only: [:show, :create, :index]
   resources :messages, only: [:create]
   resources :applies do
     member do
