@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2021_09_20_114449) do
     t.index ["updated_at"], name: "index_chatrooms_on_updated_at"
   end
 
-  create_table "jobs", force: :cascade do |t|
+  create_table "jobs", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.datetime "deadline"
     t.datetime "start_date"
     t.datetime "end_date"
