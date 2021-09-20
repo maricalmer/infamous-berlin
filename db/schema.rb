@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_10_150740) do
+ActiveRecord::Schema.define(version: 2021_09_20_114449) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -41,14 +41,32 @@ ActiveRecord::Schema.define(version: 2021_09_10_150740) do
 #   Unknown type 'apply_status' for column 'status'
 
   create_table "chatrooms", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "author_id", null: false
+    t.integer "receiver_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["author_id", "receiver_id"], name: "index_chatrooms_on_author_id_and_receiver_id", unique: true
+    t.index ["author_id"], name: "index_chatrooms_on_author_id"
+    t.index ["receiver_id"], name: "index_chatrooms_on_receiver_id"
     t.index ["updated_at"], name: "index_chatrooms_on_updated_at"
+  end
+
+  create_table "jobs", force: :cascade do |t|
+    t.datetime "deadline"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.string "title"
+    t.string "skills_needed", array: true
+    t.text "description"
+    t.bigint "project_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_jobs_on_project_id"
+    t.index ["skills_needed"], name: "index_jobs_on_skills_needed", using: :gin
   end
 
   create_table "messages", force: :cascade do |t|
     t.string "content", null: false
-    t.integer "receiver_id", null: false
     t.integer "anchor_id", null: false
     t.boolean "read_by_receiver", default: false
     t.uuid "chatroom_id", null: false
@@ -58,8 +76,6 @@ ActiveRecord::Schema.define(version: 2021_09_10_150740) do
     t.index ["anchor_id"], name: "index_messages_on_anchor_id"
     t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
     t.index ["chatroom_id"], name: "messages_chatroom_id_idx"
-    t.index ["receiver_id"], name: "index_messages_on_receiver_id"
-    t.index ["user_id", "receiver_id"], name: "index_messages_on_user_id_and_receiver_id", unique: true
     t.index ["user_id"], name: "index_messages_on_user_id"
     t.index ["user_id"], name: "messages_user_id_idx"
   end
@@ -87,6 +103,7 @@ ActiveRecord::Schema.define(version: 2021_09_10_150740) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "jobs", "projects"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
   add_foreign_key "projects", "users"

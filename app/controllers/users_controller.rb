@@ -29,6 +29,3 @@ class UsersController < ApplicationController
     params.require(:user).permit(:username, :bio, :skills, :socialmedias)
   end
 end
-
-
-# cant send message from show page because no project attribute for message instance

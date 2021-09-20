@@ -6,9 +6,6 @@ class ChatroomsController < ApplicationController
 
   def create
     @chatroom = Chatroom.new
-    # @project = Project.find(params[:project_id])
-    # @chatroom.project = @project
-    @chatroom.user = current_user
     @message = Message.new
     if @chatroom.save!
       redirect_to user_path(@user)
@@ -19,19 +16,12 @@ class ChatroomsController < ApplicationController
 
   def show
     @message = Message.new
-    @chatrooms = Chatroom.includes({ project: [:user] }, :user)
-                         .where("chatrooms.user_id = ? OR projects.user_id = ?", current_user.id, current_user.id)
-                         .order('chatrooms.updated_at DESC')
-                         .references(:project)
+    @chatrooms = Chatroom.participating(current_user).order('updated_at DESC')
   end
 
   def index
+    @chatrooms = Chatroom.participating(current_user).order('updated_at DESC')
     @message = Message.new
-    @chatrooms = Chatroom.includes({ project: [:user] }, :user)
-                         .where("chatrooms.user_id = ? OR projects.user_id = ?", current_user.id, current_user.id)
-                         .order('chatrooms.updated_at DESC')
-                         .references(:project)
-
     unless @chatrooms.empty?
       @chatroom = @chatrooms.first
       set_messages
@@ -49,7 +39,7 @@ class ChatroomsController < ApplicationController
   end
 
   def mark_messages_as_read
-    @messages.where(receiver_id: current_user.id).each do |message|
+    @messages.where.not(user_id: current_user).where(read_by_receiver: false).each do |message|
       message.read_by_receiver = true
       message.save
     end

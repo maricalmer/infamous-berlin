@@ -1,16 +1,19 @@
 class MessagesController < ApplicationController
   before_action :find_chatroom, only: [:create]
-  before_action :find_project, only: [:create]
+  before_action :find_user, only: [:create]
 
   def create
     @message = Message.new(message_params)
     @message.chatroom = @chatroom
     @message.user = current_user
-    @message.receiver_id = @project.user == current_user ? @chatroom.user.id : @project.user.id
     @message.anchor_id = @chatroom.messages.count + 1
     if @message.save
       ChatroomChannel.broadcast_to(@chatroom, render_to_string(partial: "message", locals: { message: @message }))
-      redirect_to chatroom_path(@chatroom, anchor: "message-#{@message.anchor_id}")
+      if @chatroom.messages.size < 2
+        redirect_to user_path(@user)
+      else
+        redirect_to chatroom_path(@chatroom, anchor: "message-#{@message.anchor_id}")
+      end
     else
       @chatroom.destroy
       respond_to do |format|
@@ -22,18 +25,18 @@ class MessagesController < ApplicationController
   private
 
   def find_chatroom
-    if params[:project_id]
-      @chatroom = Chatroom.find_or_create_by(user: current_user, project: Project.find(params[:project_id]))
+    if params[:receiver_id]
+      @chatroom = Chatroom.find_or_create_by(author: current_user, receiver: User.find(params[:receiver_id]))
     else
       @chatroom = Chatroom.find(params[:chatroom_id])
     end
   end
 
-  def find_project
-    if params[:chatroom_id]
-      @project = @chatroom.project
+  def find_user
+    if params[:receiver_id]
+      @user = User.find(params[:receiver_id])
     else
-      @project = Project.find(params[:project_id])
+      @user = User.find(@chatroom.receiver_id)
     end
   end
 
@@ -41,5 +44,3 @@ class MessagesController < ApplicationController
     params.require(:message).permit(:content)
   end
 end
-
-# ^^ find new solution without project_id

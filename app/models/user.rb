@@ -11,8 +11,9 @@ class User < ApplicationRecord
   before_update :assign_slug
 
   has_many :projects
-  has_many :messages
-  has_many :chatrooms, through: :messages
+  has_many :messages, dependent: :destroy
+  has_many :authored_chatrooms, class_name: 'Chatroom', foreign_key: 'author_id'
+  has_many :received_chatrooms, class_name: 'Chatroom', foreign_key: 'received_id'
   has_one_attached :photo
   has_many :applications
 

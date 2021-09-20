@@ -9,7 +9,7 @@
       </div>
       <div class="modal-body">
         <%= simple_form_for [ @message ], remote: true do |f| %>
-          <%= hidden_field_tag 'user_id', @user.id %>
+          <%= hidden_field_tag 'receiver_id', @user.id %>
           <%= f.input :content, as: :text, error: 'Please type a message' %>
           <div class="error-new-message text-danger"></div>
           <%= f.button :submit, "Send message", class: 'btn btn-primary' %>
