@@ -5,21 +5,21 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :users, param: :slug
   resources :projects, param: :slug do
-    member do
-      post :apply
-      post :unapply
-    end
-    resources :jobs, only: [:new, :create]
+    # member do
+    #   post :apply
+    #   post :unapply
+    # end
   end
-  resources :jobs, only: [:destroy]
+  resources :jobs
+  resources :inquiries, only: [:create, :update, :destroy]
   resources :chatrooms, only: [:show, :index]
   # resources :chatrooms, only: [:show, :create, :index]
   resources :messages, only: [:create]
-  resources :applies do
-    member do
-      patch :change_status
-    end
-  end
+  # resources :applies do
+  #   member do
+  #     patch :change_status
+  #   end
+  # end
   get '/dashboard', to: 'pages#dashboard'
   get '/collaboration', to: 'pages#collaboration'
 end

@@ -5,7 +5,7 @@ class CreateJobs < ActiveRecord::Migration[6.0]
       t.datetime :start_date
       t.datetime :end_date
       t.string :title
-      t.string :skills_needed, array: true
+      t.string :skills_needed, array: true, default: []
       t.text :description
       t.references :project, null: false, foreign_key: true
 

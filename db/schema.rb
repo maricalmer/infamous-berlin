@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_20_114449) do
+ActiveRecord::Schema.define(version: 2021_09_21_095837) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -37,9 +37,6 @@ ActiveRecord::Schema.define(version: 2021_09_20_114449) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-# Could not dump table "applies" because of following StandardError
-#   Unknown type 'apply_status' for column 'status'
-
   create_table "chatrooms", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.integer "author_id", null: false
     t.integer "receiver_id", null: false
@@ -51,12 +48,15 @@ ActiveRecord::Schema.define(version: 2021_09_20_114449) do
     t.index ["updated_at"], name: "index_chatrooms_on_updated_at"
   end
 
+# Could not dump table "inquiries" because of following StandardError
+#   Unknown type 'inquiry_status' for column 'status'
+
   create_table "jobs", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.datetime "deadline"
     t.datetime "start_date"
     t.datetime "end_date"
     t.string "title"
-    t.string "skills_needed", array: true
+    t.string "skills_needed", default: [], array: true
     t.text "description"
     t.bigint "project_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -103,6 +103,8 @@ ActiveRecord::Schema.define(version: 2021_09_20_114449) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "inquiries", "jobs"
+  add_foreign_key "inquiries", "users"
   add_foreign_key "jobs", "projects"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"

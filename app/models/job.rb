@@ -2,6 +2,7 @@ class Job < ApplicationRecord
   SKILLS_NEEDED = ["acting", "dancing", "photoshop"].freeze
 
   belongs_to :project
+  has_many :inquiries
 
   validates :title, presence: true
   validates :deadline, presence: true
@@ -11,6 +12,11 @@ class Job < ApplicationRecord
   validates :description, presence: true
   validate :right_skills, unless: :no_skills_needed?
 
+  def applied?(current_user)
+    applicants = inquiries.map(&:user)
+    applicants.include? current_user
+  end
+
   private
 
   def right_skills
@@ -18,7 +24,7 @@ class Job < ApplicationRecord
   end
 
   def no_skills_needed?
-    skills_needed.nil? || skills_needed.empty?
+    skills_needed.empty?
   end
 
   def not_before_start

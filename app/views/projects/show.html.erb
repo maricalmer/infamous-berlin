@@ -1,18 +1,21 @@
 <% content_for :head do %>
   <meta name="turbolinks-cache-control" content="no-cache">
 <% end %>
+<!-- is the head turbolinks needed? -->
+
+
 <h1>Project show page</h1>
 <% @project.photos.each do |photo| %>
   <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
 <% end %>
-<h2><%= @project.title %></h2>
-<% if @project.upcoming? %>
+<h2>(<%= @project.id %>) <%= @project.title %></h2>
+<% if @jobs.any? %>
   <div class="d-flex align-items-center">
+    <% @jobs.each do |job| %>
+      <h3>We need a <%= job.title %>!</h3>
+    <% end %>
     <div>
-      <h3>We need a <%= @project.need.first %>!</h3>
-    </div>
-    <div>
-      <%= render @project %>
+      <%= render "inquiry", jobs: @jobs %>
     </div>
   </div>
 <% end %>

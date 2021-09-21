@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
 
   def show
     @member = User.find_by(slug: @project.member.first)
-    @application = Apply.new
+    @jobs = @project.jobs
   end
 
   def new

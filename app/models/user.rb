@@ -11,28 +11,29 @@ class User < ApplicationRecord
   before_update :assign_slug
 
   has_many :projects
+  has_many :inquiries
   has_many :messages, dependent: :destroy
   has_many :authored_chatrooms, class_name: 'Chatroom', foreign_key: 'author_id'
   has_many :received_chatrooms, class_name: 'Chatroom', foreign_key: 'received_id'
   has_one_attached :photo
-  has_many :applications
+  # has_many :applications
 
   # APPLY
-  has_many :applying_relationships, foreign_key: :applicant_id, class_name: 'Apply'
-  has_many :applying, through: :applying_relationships, source: :applying
+  # has_many :applying_relationships, foreign_key: :applicant_id, class_name: 'Apply'
+  # has_many :applying, through: :applying_relationships, source: :applying
 
-  def apply(project_id)
-    applying_relationships.create(applying_id: project_id)
-  end
+  # def apply(project_id)
+  #   applying_relationships.create(applying_id: project_id)
+  # end
 
-  def unapply(project_id)
-    applying_relationships.find_by(applying_id: project_id).destroy
-  end
+  # def unapply(project_id)
+  #   applying_relationships.find_by(applying_id: project_id).destroy
+  # end
 
-  def applied?(project_id)
-    application = Apply.find_by(applicant_id: id, applying_id: project_id)
-    return true if application
-  end
+  # def applied?(project_id)
+  #   application = Apply.find_by(applicant_id: id, applying_id: project_id)
+  #   return true if application
+  # end
 
   def create_slug
     slug = self.username.parameterize
