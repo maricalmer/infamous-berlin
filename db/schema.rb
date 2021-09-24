@@ -80,6 +80,15 @@ ActiveRecord::Schema.define(version: 2021_09_21_095837) do
     t.index ["user_id"], name: "messages_user_id_idx"
   end
 
+  create_table "pg_search_documents", force: :cascade do |t|
+    t.text "content"
+    t.string "searchable_type"
+    t.bigint "searchable_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id"
+  end
+
 # Could not dump table "projects" because of following StandardError
 #   Unknown type 'project_status' for column 'status'
 
@@ -96,8 +105,10 @@ ActiveRecord::Schema.define(version: 2021_09_21_095837) do
     t.string "socialmedias", default: [], array: true
     t.string "slug"
     t.citext "username"
+    t.index ["bio"], name: "index_users_on_bio"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["skills"], name: "index_users_on_skills"
     t.index ["slug"], name: "index_users_on_slug", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end

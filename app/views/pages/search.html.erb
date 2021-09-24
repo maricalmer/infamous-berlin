@@ -1,0 +1,25 @@
+<h1>Search results</h1>
+
+<ul class="list-inline tabs-underlined mb-5">
+  <li>
+    <a href="#" class="tab-underlined active">Users</a>
+  </li>
+  <li>
+    <a href="#" class="tab-underlined">Projects</a>
+  </li>
+</ul>
+
+<% if @users.empty? %>
+  <h4 class="my-5">No result... 🤦🏻‍♂️</h4>
+<% else %>
+  <ul>
+  <% @users.each do |user| %>
+    <div class="card m-3">
+      <div class="card-body">
+        <div class="card-title"><%= link_to user.username, user_path(user.slug) %></div>
+        <div class="card-text"><%= user.bio %></div>
+      </div>
+    </div>
+  <% end %>
+  </ul>
+<% end %>

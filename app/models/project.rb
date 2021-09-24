@@ -12,6 +12,15 @@ class Project < ApplicationRecord
 
   enum status: { past: "past", upcoming: "upcoming", deleted: "deleted" }
 
+  include PgSearch::Model
+  pg_search_scope :search_by_title_and_description_and_location, against: {
+    title: "A",
+    description: "B",
+    location: "B"
+  }, using: {
+    tsearch: { prefix: true, any_word: true }
+  }
+
   def create_slug
     slug = self.title.parameterize
     Project.where.not(id: self.id).find_by(slug: slug).nil? ? slug : slug + slug.length.to_s

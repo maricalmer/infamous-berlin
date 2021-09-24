@@ -16,6 +16,14 @@ class User < ApplicationRecord
   has_many :authored_chatrooms, class_name: 'Chatroom', foreign_key: 'author_id'
   has_many :received_chatrooms, class_name: 'Chatroom', foreign_key: 'received_id'
   has_one_attached :photo
+
+  include PgSearch::Model
+  pg_search_scope :search_by_username_and_bio, against: {
+    username: "A",
+    bio: "B"
+  }, using: {
+    tsearch: { prefix: true, any_word: true }
+  }
   # has_many :applications
 
   # APPLY

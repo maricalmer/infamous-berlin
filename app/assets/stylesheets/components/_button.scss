@@ -2,3 +2,16 @@
   border-radius: 24px;
   margin: 4px 0px 4px 0px;
 }
+
+.btn-flat {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 0px;
+  background: #4600DA;
+  transition: background 0.3s ease;
+}
+
+.btn-flat:hover {
+  background: #3D00BE;
+  color: white;
+}
