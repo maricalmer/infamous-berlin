@@ -12,8 +12,8 @@ puts "messages..."
 Message.destroy_all if Rails.env.development?
 puts "chatrooms..."
 Chatroom.destroy_all if Rails.env.development?
-puts "applications..."
-Apply.destroy_all if Rails.env.development?
+puts "inquiries..."
+Inquiry.destroy_all if Rails.env.development?
 ActiveRecord::Base.connection.reset_pk_sequence!('application')
 puts "projects..."
 Project.destroy_all if Rails.env.development?
@@ -71,23 +71,41 @@ puts "creating projects"
   puts "project #{project.id} is created"
 end
 puts "20 fresh new projects"
-puts "updating upcominng projects"
+puts "updating upcoming projects"
 upcoming_projects = Project.find([10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20])
 upcoming_projects.each do |project|
   project.update(status: "upcoming")
-  project.update(need: [["video editor", "photographer", "model", "stylist", "designer", "dancer", "musician"].sample])
 end
 puts "10 upcoming projects updated"
-puts "creating applications"
+puts "creating jobs"
 projects = Project.first(10)
 10.times do
-  application = Apply.create!(
-    applicant_id: User.all.sample.id,
-    applying_id: projects.first.user.id != :applicant_id ? projects.first.id : projects.last.id
+  job = Job.create!(
+    deadline: rand(2..4).weeks.from_now,
+    start_date: rand(4..6).days.from_now,
+    end_date: rand(7..9).days.from_now,
+    title: "Open position as #{["video editor", "photographer", "model", "stylist", "designer", "dancer", "musician"].sample}",
+    skills_needed: ["acting", "dancing", "photoshop"].sample,
+    description: Faker::Lorem.sentence(word_count: 5, random_words_to_add: 10),
+    project_id: projects.first.id
   )
-  projects.first.user.id != :applicant_id ? projects.delete(projects.first) : projects.delete(projects.last)
-  puts "application #{application.id} is created"
+  projects.delete(projects.first)
+  puts "job #{job.id} is created"
 end
-puts "10 fresh new applications"
+puts "10 fresh new jobs"
+puts "creating inquiries"
+jobs = Job.first(10)
+users = User.first(10)
+10.times do
+  inquiry = Inquiry.create!(
+    text: Faker::Lorem.sentence(word_count: 10, random_words_to_add: 10),
+    job_id: jobs.first.id,
+    user_id: users.first.id == jobs.first.project.user.id ? users.last.id : users.first.id
+  )
+  jobs.delete(inquiry.job)
+  users.delete(inquiry.user)
+  puts "inquiry #{inquiry.id} is created"
+end
+puts "10 fresh new inquiries"
 puts "-----------"
 puts "SEEDING IS DONE!!!"
