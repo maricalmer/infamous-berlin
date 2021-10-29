@@ -2,24 +2,30 @@
 
 <ul class="list-inline tabs-underlined mb-5">
   <li>
-    <a href="#" class="tab-underlined active">Users</a>
+    <%= link_to "Users", "#", class: "tab-underlined active", remote: true %>
   </li>
   <li>
-    <a href="#" class="tab-underlined">Projects</a>
+    <%= link_to "Projects", "#", class: "tab-underlined", remote: true %>
   </li>
 </ul>
 
-<% if @users.empty? %>
-  <h4 class="my-5">No result... 🤦🏻‍♂️</h4>
-<% else %>
-  <ul>
-  <% @users.each do |user| %>
-    <div class="card m-3">
-      <div class="card-body">
-        <div class="card-title"><%= link_to user.username, user_path(user.slug) %></div>
-        <div class="card-text"><%= user.bio %></div>
-      </div>
-    </div>
-  <% end %>
-  </ul>
-<% end %>
+<div id="search-results">
+  <%= render "user-results" %>
+</div>
+
+<script>
+  var tabs = document.querySelectorAll(".tab-underlined")
+  var results = document.getElementById("search-results");
+
+  function fetchResults(event) {
+    if (event.target.innerText == "Users") {
+      results.innerHTML = "<%= j (render 'user-results') %>";
+    } else {
+      results.innerHTML = "<%= j (render 'project-results') %>";
+    };
+  };
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", fetchResults);
+  })
+</script>

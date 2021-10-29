@@ -1,0 +1,14 @@
+<% if @users.empty? %>
+  <h4 class="my-5">No result for user... 🤦🏻‍♂️</h4>
+<% else %>
+  <ul>
+  <% @users.each do |user| %>
+    <div class="card m-3">
+      <div class="card-body">
+        <div class="card-title"><%= link_to user.username, user_path(user.slug) %></div>
+        <div class="card-text"><%= user.bio %></div>
+      </div>
+    </div>
+  <% end %>
+  </ul>
+<% end %>

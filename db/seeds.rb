@@ -14,7 +14,10 @@ puts "chatrooms..."
 Chatroom.destroy_all if Rails.env.development?
 puts "inquiries..."
 Inquiry.destroy_all if Rails.env.development?
-ActiveRecord::Base.connection.reset_pk_sequence!('application')
+ActiveRecord::Base.connection.reset_pk_sequence!('inquiries')
+puts "jobs..."
+Job.destroy_all if Rails.env.development?
+ActiveRecord::Base.connection.reset_pk_sequence!('jobs')
 puts "projects..."
 Project.destroy_all if Rails.env.development?
 ActiveRecord::Base.connection.reset_pk_sequence!('projects')
@@ -84,7 +87,7 @@ projects = Project.first(10)
     deadline: rand(2..4).weeks.from_now,
     start_date: rand(4..6).days.from_now,
     end_date: rand(7..9).days.from_now,
-    title: "Open position as #{["video editor", "photographer", "model", "stylist", "designer", "dancer", "musician"].sample}",
+    title: ["video editor", "photographer", "model", "stylist", "designer", "dancer", "musician"].sample,
     skills_needed: ["acting", "dancing", "photoshop"].sample,
     description: Faker::Lorem.sentence(word_count: 5, random_words_to_add: 10),
     project_id: projects.first.id

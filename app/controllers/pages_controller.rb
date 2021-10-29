@@ -21,4 +21,5 @@ class PagesController < ApplicationController
     @users = User.search_by_username_and_bio(params[:query])
     @projects = Project.search_by_title_and_description_and_location(params[:query])
   end
+
 end
