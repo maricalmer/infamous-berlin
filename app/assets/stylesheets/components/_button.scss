@@ -5,7 +5,6 @@
 
 .btn-flat {
   color: white;
-  padding: 8px 24px;
   border-radius: 0px;
   background: #4600DA;
   transition: background 0.3s ease;
@@ -13,5 +12,12 @@
 
 .btn-flat:hover {
   background: #3D00BE;
-  color: white;
+}
+
+@media(min-width: 992px) {
+  .btn-flat {
+    padding: 8px 24px;
+    margin-left: $spacer;
+    margin-right: 0;
+  }
 }

@@ -1,0 +1,168 @@
+body {
+  overflow-x: hidden; /* needed because hiding the menu on the right side is not perfect,  */
+}
+
+#hamburger-flex-space {
+  width: 33px;
+  height: 22px;
+}
+
+#screen-blur {
+  position: fixed;
+  z-index: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+#menu-toggle input:checked ~ #blur_screen {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#menu-toggle {
+  display: block;
+  position: absolute;
+  top: 18px;
+  right: 16px;
+
+  z-index: 1;
+
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#menu-toggle input {
+  display: block;
+  width: 38px;
+  height: 27px;
+  position: absolute;
+  top: -2px;
+  left: -2px;
+
+  cursor: pointer;
+
+  opacity: 0; /* hide this */
+  z-index: 2; /* and place it over the hamburger */
+
+  -webkit-touch-callout: none;
+}
+
+/*
+ * Just a quick hamburger
+ */
+#menu-toggle span {
+  display: block;
+  width: 33px;
+  height: 4px;
+  position: relative;
+
+  background: #cdcdcd;
+
+  z-index: 1;
+
+  transform-origin: 4px 0px;
+
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              opacity 0.55s ease;
+}
+
+#menu-toggle span:nth-child(4) {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#menu-toggle span:first-child {
+  transform-origin: 0% 0%;
+}
+
+#menu-toggle span:nth-last-child(2) {
+  transform-origin: 0% 100%;
+}
+#menu-toggle input:checked {
+  top: -6px;
+  left: -5px;
+  width: 30px;
+  height: 28px;
+}
+/*
+ * Transform all the slices of hamburger
+ * into a crossmark.
+ */
+#menu-toggle input:checked ~ span {
+  opacity: 1;
+  transform: rotate(45deg) translate(-2px, -1px);
+  background: #232323;
+}
+
+/*
+ * But let's hide the middle one.
+ */
+#menu-toggle input:checked ~ span:nth-last-child(3) {
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+/*
+ * Ohyeah and the last one should go the other direction
+ */
+#menu-toggle input:checked ~ span:nth-last-child(2) {
+  opacity: 1;
+  transform: rotate(-45deg) translate(0, -1px);
+}
+
+#menu-toggle input:checked ~ ul {
+  transform: none;
+  opacity: 1;
+}
+
+/*
+ * Make this absolute positioned
+ * at the top left of the screen
+ */
+#menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 350px;
+  margin: -100px 0 0 0;
+  padding: 50px;
+  padding-top: 125px;
+  right: -100px;
+
+  background: #ededed;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  /* to stop flickering of text in safari */
+
+  transform-origin: 0% 0%;
+  transform: translate(100%, 0);
+
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+}
+
+#menu li {
+  padding: 10px 0;
+  font-size: 22px;
+}
+
+/*
+ * And let's fade it in from the left
+ */
+
+@media screen and (max-width: 768px) {
+  #menu {
+    transform-origin: 0% 0%;
+    transform: translate(100%, 0);
+    opacity: 0;
+
+    transition: opacity 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+  }
+}

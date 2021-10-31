@@ -1,0 +1,46 @@
+<nav class="navbar navbar-dark bg-dark">
+  <h5><%= link_to "InfamousBerlin", root_path, class: "navbar-brand" %></h5>
+  <%= form_tag search_path, class: "search-bar-large form-inline w-75", method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control col rounded-0",
+      placeholder: "Search for a movie or a project..."
+    %>
+    <%= submit_tag "Search", class: "btn btn-flat", name: nil %>
+  <% end %>
+  <% if user_signed_in? %>
+    <div id="hamburger-flex-space"></div>
+  <% else %>
+    <ul class="user-register">
+      <li><%= link_to "Login", new_user_session_path, data: {toggle: "modal", target: "#modalLogin"} %></li>
+      <li><%= link_to "Sign Up", new_user_registration_path %></li>
+    </ul>
+  <% end %>
+</nav>
+<% if user_signed_in? %>
+  <nav id="slide" role='navigation'>
+    <div id="menu-toggle">
+      <input type="checkbox" id="checkbox"/>
+      <div id="screen-blur"></div>
+      <span></span>
+      <span></span>
+      <span></span>
+      <ul id="menu">
+        <li><%= link_to "Messages", chatrooms_path %></li>
+        <li><%= link_to "Dashboard", dashboard_path %></li>
+        <li><%= link_to "Collaboration", collaboration_path %></li>
+        <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+      </ul>
+    </div>
+  </nav>
+<% end %>
+<%= form_tag search_path, class: "search-bar-small form-inline", method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control col rounded-0",
+    placeholder: "Search for a movie or a project..."
+  %>
+  <%= submit_tag "Search", class: "btn btn-flat", name: nil %>
+<% end %>
+
+<%= render 'shared/login_form' %>
