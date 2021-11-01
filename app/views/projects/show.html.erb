@@ -3,7 +3,8 @@
 <% end %>
 <!-- is the head turbolinks needed? -->
 
-
+<%= render 'shared/hamburger' %>
+<h5><%= link_to "InfamousBerlin", root_path, class: "logo" %></h5>
 <h1>Project show page</h1>
 <% @project.photos.each do |photo| %>
   <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
@@ -31,4 +32,9 @@
   <p><strong>Member: </strong>
     <%= link_to @member.username, user_path(member.slug) %>
   </p>
+<% end %>
+<%= render 'shared/login_form' %>
+
+<% if !user_signed_in? %>
+  <%= render 'shared/login_form' %>
 <% end %>

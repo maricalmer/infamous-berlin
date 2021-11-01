@@ -1,16 +1,9 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
+.navbar-dark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
 }
-
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
-
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
-}
-
 .form-control:focus {
   border: 1px solid #4600DA;
   outline: none !important;
@@ -29,6 +22,7 @@
 .search-bar-small {
   margin: 4px;
   justify-content: center;
+  margin-top: 64px;
 }
 
 @media(max-width: 992px) {

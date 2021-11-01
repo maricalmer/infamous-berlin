@@ -153,6 +153,17 @@ body {
   font-size: 22px;
 }
 
+.logo {
+  position: absolute;
+  top: 18px;
+  left: 16px;
+  color: black;
+}
+
+.logo:hover {
+  text-decoration: none;
+  color: grey;
+}
 /*
  * And let's fade it in from the left
  */

@@ -1,3 +1,5 @@
+<%= render 'shared/hamburger' %>
+<h5><%= link_to "InfamousBerlin", root_path, class: "logo" %></h5>
 <div class="d-flex">
   <div class="flex-shrink-0">
     <%= cl_image_tag(@user.photo.key, transformation: [{height: 475, width: 475, radius: 60, crop: :fill, background: "#ffffff"}], class: "rotated")%>
@@ -42,4 +44,7 @@
   <div id="modalMessage">
     <%= render "messages/new", chatroom: @chatroom, message: @message %>
   </div>
+<% else %>
+  <%= render 'shared/login_form' %>
 <% end %>
+

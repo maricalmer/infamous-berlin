@@ -1,3 +1,5 @@
+<%= render 'shared/hamburger' %>
+<h5><%= link_to "InfamousBerlin", root_path, class: "logo" %></h5>
 <h1>Collaboration page</h1>
 <div class="d-flex justify-content-around">
   <% if @sent_application.empty? && @received_application.empty? %>

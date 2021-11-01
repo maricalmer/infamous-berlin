@@ -1,41 +1,32 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to root_path, class: "navbar-brand" do %>
-    <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
-    <% end %>
-
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <%= form_tag search_path, class: "form-inline w-75", method: :get do %>
+<nav class="navbar navbar-dark bg-dark">
+  <h5><%= link_to "InfamousBerlin", root_path, class: "navbar-brand" %></h5>
+  <%= form_tag search_path, class: "search-bar-large form-inline w-75", method: :get do %>
     <%= text_field_tag :query,
       params[:query],
       class: "form-control col rounded-0",
       placeholder: "Search for a movie or a project..."
     %>
-    <%= submit_tag "Search", class: "btn btn-flat ml-3", name: nil %>
+    <%= submit_tag "Search", class: "btn btn-flat", name: nil %>
   <% end %>
-
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <% if user_signed_in? %>
-        <li class="nav-item dropdown">
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "Messages", chatrooms_path, class: "dropdown-item" %>
-            <%= link_to "Dashboard", dashboard_path, class: "dropdown-item" %>
-            <%= link_to "Collaboration", collaboration_path, class: "dropdown-item" %>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-          </div>
-        </li>
-      <% else %>
-        <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link", data: {toggle: "modal", target: "#modalLogin"} %>
-        </li>
-      <% end %>
+  <% if user_signed_in? %>
+    <div id="hamburger-flex-space"></div>
+  <% else %>
+    <ul class="user-register">
+      <li><%= link_to "Login", new_user_session_path, data: {toggle: "modal", target: "#modalLogin"} %></li>
+      <li><%= link_to "Sign Up", new_user_registration_path %></li>
     </ul>
-  </div>
-</div>
+  <% end %>
+</nav>
+<% if user_signed_in? %>
+  <%= render 'shared/hamburger' %>
+<% end %>
+<%= form_tag search_path, class: "search-bar-small form-inline", method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control col rounded-0",
+    placeholder: "Search for a movie or a project..."
+  %>
+  <%= submit_tag "Search", class: "btn btn-flat", name: nil %>
+<% end %>
 
 <%= render 'shared/login_form' %>

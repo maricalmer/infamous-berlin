@@ -1,3 +1,5 @@
+<%= render 'shared/hamburger' %>
+<h5><%= link_to "InfamousBerlin", root_path, class: "logo" %></h5>
 <h1>Dashboard</h1>
 <h2>Your account</h2>
 <%= link_to "Edit your profile", edit_user_path(current_user.slug) %>
