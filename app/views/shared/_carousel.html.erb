@@ -1,0 +1,97 @@
+ <!-- Container for the image gallery -->
+<div class="carousel-container d-flex">
+  <!-- Thumbnail images -->
+  <div class="thumbnails">
+    <div class="slide-thumbnail">
+      <img class="demo cursor" src="https://images.unsplash.com/photo-1485550409059-9afb054cada4" style="width:100%" onclick="currentSlide(1)">
+    </div>
+    <div class="slide-thumbnail">
+      <img class="demo cursor" src="https://images.unsplash.com/photo-1521032078283-ca2eb1773c0e" style="width:100%" onclick="currentSlide(2)">
+    </div>
+    <div class="slide-thumbnail">
+      <img class="demo cursor" src="https://images.unsplash.com/photo-1501349800519-48093d60bde0" style="width:100%" onclick="currentSlide(3)">
+    </div>
+    <div class="slide-thumbnail">
+      <img class="demo cursor" src="https://images.unsplash.com/reserve/LJIZlzHgQ7WPSh5KVTCB_Typewriter.jpg" style="width:100%" onclick="currentSlide(4)">
+    </div>
+    <div class="slide-thumbnail">
+      <img class="demo cursor" src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b" style="width:100%" onclick="currentSlide(5)">
+    </div>
+    <div class="slide-thumbnail">
+      <img class="demo cursor" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330" style="width:100%" onclick="currentSlide(6)">
+    </div>
+    <div class="slide-thumbnail">
+      <img class="demo cursor" src="https://images.unsplash.com/photo-1543144288-16737b1c9431" style="width:100%" onclick="currentSlide(7)">
+    </div>
+    <div class="slide-thumbnail">
+      <img class="demo cursor" src="https://images.unsplash.com/photo-1635865653470-8976db975eaf" style="width:100%" onclick="currentSlide(8)">
+    </div>
+  </div>
+
+  <!-- The one big slide -->
+  <div class="slide">
+    <div class="mySlides">
+      <img src="https://images.unsplash.com/photo-1485550409059-9afb054cada4">
+    </div>
+
+    <div class="mySlides">
+      <img src="https://images.unsplash.com/photo-1521032078283-ca2eb1773c0e">
+    </div>
+
+    <div class="mySlides">
+      <img src="https://images.unsplash.com/photo-1501349800519-48093d60bde0">
+    </div>
+
+    <div class="mySlides">
+      <img src="https://images.unsplash.com/reserve/LJIZlzHgQ7WPSh5KVTCB_Typewriter.jpg">
+    </div>
+
+    <div class="mySlides">
+      <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b">
+    </div>
+
+    <div class="mySlides">
+      <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330">
+    </div>
+
+    <div class="mySlides">
+      <img src="https://images.unsplash.com/photo-1543144288-16737b1c9431">
+    </div>
+
+    <div class="mySlides">
+      <img src="https://images.unsplash.com/photo-1635865653470-8976db975eaf">
+    </div>
+  </div>
+</div>
+
+
+<!-- JS -->
+<script>
+  var slideIndex = 1;
+  showSlides(slideIndex);
+
+  // Next/previous controls
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  // Thumbnail image controls
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+
+  function showSlides(n) {
+    var i;
+    var slides = document.querySelectorAll(".mySlides");
+    var thumbnails = document.querySelectorAll(".slide-thumbnail");
+    if (n > slides.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+      thumbnails[i].style.display = "block";
+    }
+    slides[slideIndex-1].style.display = "block";
+    thumbnails[slideIndex-1].style.display = "none";
+
+  }
+</script>

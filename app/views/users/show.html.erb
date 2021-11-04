@@ -35,16 +35,18 @@
 <br>
 <br>
 <br>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalMessageNew">
-  Message <%= @user.username %>
-</button>
-
 
 <% if user_signed_in? %>
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalMessageNew">
+    Message <%= @user.username %>
+  </button>
   <div id="modalMessage">
     <%= render "messages/new", chatroom: @chatroom, message: @message %>
   </div>
 <% else %>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalLogin">
+  Message <%= @user.username %>
+</button>
   <%= render 'shared/login_form' %>
 <% end %>
 

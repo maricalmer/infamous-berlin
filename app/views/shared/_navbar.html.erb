@@ -1,18 +1,18 @@
 <nav class="navbar navbar-dark bg-dark">
-  <h5><%= link_to "InfamousBerlin", root_path, class: "navbar-brand" %></h5>
-  <%= form_tag search_path, class: "search-bar-large form-inline w-75", method: :get do %>
+  <h5 class="mb-0"><%= link_to "InfamousBerlin", root_path, class: "navbar-brand" %></h5>
+  <%= form_tag search_path, class: "search-bar-large input-group w-75", method: :get do %>
     <%= text_field_tag :query,
       params[:query],
-      class: "form-control col rounded-0",
+      class: "form-control rounded-0",
       placeholder: "Search for a movie or a project..."
     %>
-    <%= submit_tag "Search", class: "btn btn-flat", name: nil %>
+    <%= submit_tag "Search", class: "btn btn-flat ms-2", name: nil %>
   <% end %>
   <% if user_signed_in? %>
     <div id="hamburger-flex-space"></div>
   <% else %>
     <ul class="user-register">
-      <li><%= link_to "Login", new_user_session_path, data: {toggle: "modal", target: "#modalLogin"} %></li>
+      <li><%= link_to "Login", new_user_session_path, data: {'bs-toggle': "modal", 'bs-target': "#modalLogin"} %></li>
       <li><%= link_to "Sign Up", new_user_registration_path %></li>
     </ul>
   <% end %>
@@ -20,10 +20,10 @@
 <% if user_signed_in? %>
   <%= render 'shared/hamburger' %>
 <% end %>
-<%= form_tag search_path, class: "search-bar-small form-inline", method: :get do %>
+<%= form_tag search_path, class: "search-bar-small input-group", method: :get do %>
   <%= text_field_tag :query,
     params[:query],
-    class: "form-control col rounded-0",
+    class: "form-control rounded-0",
     placeholder: "Search for a movie or a project..."
   %>
   <%= submit_tag "Search", class: "btn btn-flat", name: nil %>

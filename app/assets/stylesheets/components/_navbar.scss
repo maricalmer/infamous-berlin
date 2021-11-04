@@ -3,7 +3,12 @@
   top: 0;
   left: 0;
   right: 0;
+  height: 58px;
 }
+.navbar-brand {
+  margin: 0 1rem;
+}
+
 .form-control:focus {
   border: 1px solid #4600DA;
   outline: none !important;
@@ -11,18 +16,33 @@
 }
 .user-register {
   padding: 0;
-  margin: 0;
+  margin: 0 1rem;
 }
 
 .user-register li {
   display: inline;
-  margin: 0 4px;
 }
 
+.user-register li:first-child {
+  margin-right: 0.5rem;
+}
+
+.user-register li a {
+  text-decoration: none;
+  color: white;
+}
+.search-bar-large {
+  border: none;
+  z-index: 0;
+
+}
+.search-bar-large .form-control {
+  border: none;
+}
 .search-bar-small {
-  margin: 4px;
   justify-content: center;
-  margin-top: 64px;
+  margin-top: 76px;
+  z-index: 0;
 }
 
 @media(max-width: 992px) {

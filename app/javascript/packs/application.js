@@ -25,7 +25,7 @@ require("channels")
 // External imports
 // import JQuery from 'jquery';
 // window.$ = window.JQuery = JQuery;
-import "bootstrap";
+import '../libraries/bootstrap_js_files.js';
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
