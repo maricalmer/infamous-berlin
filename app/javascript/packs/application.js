@@ -31,12 +31,27 @@ import '../libraries/bootstrap_js_files.js';
 // import { initSelect2 } from '../components/init_select2';
 import { initChatroomCable } from '../channels/chatroom_channel';
 import { switchTabs } from '../components/tabs';
+import { scrollOnArrows, hideArrowsOnScroll, changeImgDesktop, checkOnImgsState, switchImgWithDots, switchImgWithSwipe } from '../components/carousel';
 
 document.addEventListener('turbolinks:load', () => {
-  initChatroomCable();
-  switchTabs();
+  if (document.querySelectorAll(".messages").length) {
+    initChatroomCable();
+  };
+  if (document.querySelectorAll(".tab-underlined").length) {
+    switchTabs();
+  };
+  if (document.querySelectorAll(".arrow-up").length || document.querySelectorAll(".arrow-down").length) {
+    scrollOnArrows();
+  };
+  if (document.querySelectorAll(".thumbnails").length) {
+    switchImgWithDots();
+    switchImgWithSwipe();
+    hideArrowsOnScroll();
+    checkOnImgsState();
+  };
+  if (document.querySelectorAll(".slide-thumbnail").length) {
+    changeImgDesktop();
+  };
   // Call your functions here, e.g:
   // initSelect2();
 });
-
-

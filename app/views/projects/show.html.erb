@@ -4,44 +4,54 @@
 <!-- is the head turbolinks needed? -->
 
 <%= render 'shared/hamburger' %>
-<h5><%= link_to "InfamousBerlin", root_path, class: "logo" %></h5>
-<h1>Project show page</h1>
-<%= render 'shared/carousel' %>
-<% @project.photos.each do |photo| %>
-  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-<% end %>
-<h2>(<%= @project.id %>) <%= @project.title %></h2>
-<% if @jobs.any? %>
-  <div class="d-flex align-items-center">
-    <% @jobs.each do |job| %>
-      <h3>We need a <%= job.title %>!</h3>
-    <% end %>
-    <div>
-      <%= render "inquiry", jobs: @jobs %>
+<h5 class="m-0"><%= link_to "InfamousBerlin", root_path, class: "logo" %></h5>
+<div class="top-block">
+  <%= render 'shared/carousel' %>
+  <!-- <div class="vertical-dashed-line"></div> -->
+  <div class="side-text">
+    <h1><%= @project.title %></h1>
+    <div class="categories d-flex ms-2">
+      <% @project.category.each do |cat| %>
+        <h4 class="category my-3"><%= cat %></h4>
+      <% end %>
     </div>
+    <h4><%= @project.date.strftime("%d/%m/%Y") %> - <%= @project.location %></h4>
+    <div class="members d-flex">
+      <% @project.member.each do |memb| %>
+        <h4 class="member"><%= memb %></h4>
+      <% end %>
+    </div>
+    <button class="btn-apply">Looking for talents!</button>
   </div>
-<% end %>
-<p><strong>Desctiption:</strong> <%= @project.description %></p>
-<p><strong>Location:</strong> <%= @project.location %></p>
-<p><strong>Category:</strong> <%= @project.category.first %></p>
-<% if @project.past? %>
-  <p><strong>Date: </strong><%= @project.date.strftime("%d/%m/%Y") %></p>
-<% else %>
-  <p><strong>Deadline: </strong><%= @project.date.strftime("on %d/%m/%Y") %></p>
-<% end %>
-<% if @member %>
-  <p><strong>Member: </strong>
-    <%= link_to @member.username, user_path(member.slug) %>
-  </p>
-<% end %>
-<%= render 'shared/login_form' %>
+</div>
+<div class="description-bottom">
+  <h1>Description</h1>
+  <h4><%= @project.description %></h4>
 
+
+  <% if @jobs.any? %>
+    <div class="d-flex align-items-center">
+      <% @jobs.each do |job| %>
+        <h3>We need a <%= job.title %>!</h3>
+      <% end %>
+      <div>
+        <%= render "inquiry", jobs: @jobs %>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @project.past? %>
+    <p><strong>Date: </strong><%= @project.date.strftime("%d/%m/%Y") %></p>
+  <% else %>
+    <p><strong>Deadline: </strong><%= @project.date.strftime("on %d/%m/%Y") %></p>
+  <% end %>
+
+  <% if @member %>
+    <p><strong>Member: </strong>
+      <%= link_to @member.username, user_path(member.slug) %>
+    </p>
+  <% end %>
+</div>
 <% if !user_signed_in? %>
   <%= render 'shared/login_form' %>
 <% end %>
-
-
-
-<button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
-  Tooltip on top
-</button>

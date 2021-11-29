@@ -66,6 +66,9 @@ GEM
     bootsnap (1.9.1)
       msgpack (~> 1.0)
     builder (3.2.4)
+    bullet (6.1.5)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.11)
     byebug (11.1.3)
     capybara (3.35.3)
       addressable
@@ -152,6 +155,8 @@ GEM
       nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
+    rack-mini-profiler (2.3.3)
+      rack (>= 1.2.0)
     rack-proxy (0.7.0)
       rack
     rack-test (1.1.0)
@@ -240,6 +245,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.7)
+    uniform_notifier (1.14.2)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.1.0)
@@ -269,6 +275,7 @@ PLATFORMS
 DEPENDENCIES
   autoprefixer-rails (= 10.2.5)
   bootsnap (>= 1.4.2)
+  bullet
   byebug
   capybara (>= 2.15)
   cloudinary (~> 1.20)
@@ -283,6 +290,7 @@ DEPENDENCIES
   pry-byebug
   pry-rails
   puma (~> 4.1)
+  rack-mini-profiler
   rails (~> 6.0.3, >= 6.0.3.4)
   redis (~> 4.0)
   sass-rails (>= 6)

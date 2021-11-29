@@ -62,7 +62,7 @@ body {
   height: 4px;
   position: relative;
 
-  background: #cdcdcd;
+  background: black;
 
   z-index: 1;
 
@@ -131,13 +131,12 @@ body {
   top: 0;
   right: 0;
   bottom: 0;
-  width: 350px;
+  width: 100%;
   margin: -100px 0 0 0;
   padding: 50px;
-  padding-top: 125px;
-  right: -100px;
+  padding-top: 13em;
 
-  background: #ededed;
+  background: #d6d6d6;
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
   /* to stop flickering of text in safari */
@@ -149,8 +148,16 @@ body {
 }
 
 #menu li {
-  padding: 10px 0;
+  padding: 30px 0;
   font-size: 22px;
+  text-align: center;
+  a {
+    text-decoration: none;
+    color: black;
+  }
+  a:hover {
+    color: gray;
+  }
 }
 
 .logo {
@@ -164,16 +171,30 @@ body {
 .logo:hover {
   color: grey;
 }
+
+@media(min-width: 992px) {
+  #menu {
+    width: 350px;
+    right: -100px;
+    padding-top: 125px;
+    border-left: solid 2px black;
+  }
+  #menu li {
+    padding: 10px 0;
+    text-align: left;
+  }
+}
+
 /*
  * And let's fade it in from the left
  */
 
-@media screen and (max-width: 768px) {
-  #menu {
-    transform-origin: 0% 0%;
-    transform: translate(100%, 0);
-    opacity: 0;
+// @media screen and (max-width: 768px) {
+//   #menu {
+//     // transform-origin: 0% 0%;
+//     // transform: translate(100%, 0);
+//     // opacity: 0;
 
-    transition: opacity 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
-  }
-}
+//     // transition: opacity 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+//   }
+// }

@@ -10,6 +10,16 @@
   transition: background 0.3s ease;
 }
 
+.btn-apply {
+  font-size: 2rem;
+  margin: 3rem 0 32px 0.5rem;
+  display: block;
+  border: solid;
+  box-shadow: -6px -6px black;
+  background: #7ECA93;
+  width: 100%;
+}
+
 .btn-flat:hover {
   background: #3D00BE;
 }
@@ -19,5 +29,8 @@
     padding: 8px 24px;
     margin-left: $spacer;
     margin-right: 0;
+  }
+  .btn-apply {
+    width: auto;
   }
 }

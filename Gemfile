@@ -40,6 +40,8 @@ group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
   gem 'dotenv-rails'
   gem 'faker', '~> 2.18'
+  gem 'bullet'
+  gem 'rack-mini-profiler'
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
