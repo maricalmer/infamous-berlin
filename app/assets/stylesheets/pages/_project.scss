@@ -1,4 +1,4 @@
-.top-block {
+.top-block-project {
   height: auto;
   overflow: hidden;
 }
@@ -24,7 +24,7 @@
   flex-grow: 1;
 }
 @media(min-width: 992px) {
-  .top-block {
+  .top-block-project {
     display: flex;
     height: 75vh;
     background: linear-gradient(to right, #858585 0%, #858585 70%, #D1BFF6 70%, #D1BFF6 100%);

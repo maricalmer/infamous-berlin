@@ -1,52 +1,59 @@
 <%= render 'shared/hamburger' %>
-<h5><%= link_to "InfamousBerlin", root_path, class: "logo" %></h5>
-<div class="d-flex">
-  <div class="flex-shrink-0">
-    <%= cl_image_tag(@user.photo.key, transformation: [{height: 475, width: 475, radius: 60, crop: :fill, background: "#ffffff"}], class: "rotated")%>
-    <h1 class="avatar-username"><%= @user.username %></h1>
+<h5 class="m-0"><%= link_to "InfamousBerlin", root_path, class: "logo" %></h5>
+<div class="profile-grid">
+  <div class="img-name-profile">
+    <div class="diamond-frame">
+      <%= cl_image_tag @user.photo.key %>
+    </div>
+    <h1 class="name-profile"><%= @user.username %></h1>
   </div>
-  <div class="flex-grow-1 bio-position">
-    <h2><strong>Bio:</strong></h2>
-    <p><%= @user.bio %></p>
+  <!-- </div> -->
+  <div class="skills-bio">
+    <div class="bio">
+      <h1>Biography</h1>
+      <p><%= @user.bio * 100 %></p>
+    </div>
+    <div class="skills">
+      <h1>Skills</h1>
+      <ul class="skills-list">
+        <% @user.skills.each do |skill| %>
+          <li><%= skill %></li>
+          <li><%= skill %></li>
+          <li><%= skill %></li>
+          <li><%= skill %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <div class="profile-buttons">
+    <div class="buttons">
+      <% if user_signed_in? %>
+        <button type="button" class="btn btn-message" data-bs-toggle="modal" data-bs-target="#modalMessageNew">
+          Message <%= @user.username %>
+        </button>
+        <div id="modalMessage">
+          <%= render "messages/new", chatroom: @chatroom, message: @message %>
+        </div>
+        <% else %>
+          <button type="button" class="btn btn-message" data-bs-toggle="modal" data-bs-target="#modalLogin">
+            Message <%= @user.username %>
+          </button>
+          <%= render 'shared/login_form' %>
+        <% end %>
+        <button class="btn btn-projects">Portfolio</button>
+        <button class="btn btn-projects">Upcoming projects</button>
+      </div>
   </div>
 </div>
-<div class="d-flex mt-5">
-  <div class="flex-fill">
-    <h2><strong>Skills:</strong></h2>
-    <p><%= @user.skills[0] %></p>
-  </div>
-  <div class="flex-fill">
-    <button class="btn btn-dark btn-lg btn-pill">Send a message</button><br>
-    <button class="btn btn-dark btn-lg btn-pill">Portfolio</button><br>
-    <button class="btn btn-dark btn-lg btn-pill">Upcoming projects</button><br>
-  </div>
-  <div class="flex-fill">
-    <p><strong>Personal Page:</strong> <%= @user.socialmedias[0] %></p>
-    <p><strong>Email:</strong> <%= @user.email %></p>
-    <p><strong>Facebook:</strong> <%= @user.socialmedias[0] %></p>
-    <p><strong>Instagram:</strong> <%= @user.socialmedias[0] %></p>
-    <p><strong>Soundcloud:</strong> <%= @user.socialmedias[0] %></p>
-    <p><strong>YouTube:</strong> <%= @user.socialmedias[0] %></p>
-    <p><strong>Mixcloud:</strong> <%= @user.socialmedias[0] %></p>
-    <p><strong>Linkedin:</strong> <%= @user.socialmedias[0] %></p>
-    <p><strong>Twitter:</strong> <%= @user.socialmedias[0] %></p>
-  </div>
+<div class="links-socialmedia">
+  <div class="d-flex align-items-center me-3"><h2 class="me-1">Website</h2></div>
+  <div class="d-flex align-items-center me-3"><h2 class="me-1">Email</h2></div>
+  <div class="d-flex align-items-center me-3"><h2 class="me-1">Facebook</h2></div>
+  <div class="d-flex align-items-center me-3"><h2 class="me-1">Instagram</h2></div>
+  <div class="d-flex align-items-center me-3"><h2 class="me-1">Soundcloud</h2></div>
+  <div class="d-flex align-items-center me-3"><h2 class="me-1">YouTube</h2></div>
+  <div class="d-flex align-items-center me-3"><h2 class="me-1">Mixcloud</h2></div>
+  <div class="d-flex align-items-center me-3"><h2 class="me-1">Linkedin</h2></div>
+  <div class="d-flex align-items-center me-3"><h2 class="me-1">Twitter</h2></div>
 </div>
-<br>
-<br>
-<br>
-
-<% if user_signed_in? %>
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalMessageNew">
-    Message <%= @user.username %>
-  </button>
-  <div id="modalMessage">
-    <%= render "messages/new", chatroom: @chatroom, message: @message %>
-  </div>
-<% else %>
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalLogin">
-  Message <%= @user.username %>
-</button>
-  <%= render 'shared/login_form' %>
-<% end %>
 

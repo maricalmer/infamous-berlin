@@ -1,5 +1,118 @@
-.bio-position {
+.img-name-profile {
   width: 100%;
-  margin-left: 500px;
-  margin-top: 75px;
+  height: auto;
+  padding: 125px 32px 16px 32px;
+  background: #858585;
+  border-bottom: dashed 4px black;
+}
+.name-profile {
+  margin-top: 22px;
+}
+.bio {
+  padding: 32px;
+  background: #D1BFF6;
+  border-top: dashed 4px black;
+  border-bottom: dashed 4px black;
+}
+.skills {
+  padding: 32px;
+  background: #858585;
+  border-top: dashed 4px black;
+  border-bottom: dashed 4px black;
+}
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.skills-list li {
+  list-style-type: none;
+  width: auto;
+  border: solid;
+  box-shadow: -6px -6px black;
+  margin: 8px;
+}
+.profile-buttons {
+  border-top: dashed 4px black;
+  border-bottom: dashed 4px black;
+  background: #D1BFF6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.profile-buttons button {
+  display: block;
+  width: auto;
+  margin: 16px auto;
+}
+.links-socialmedia {
+  padding: 32px;
+  border-top: dashed 4px black;
+  background: #333;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  color: white;
+}
+.links-socialmedia div {
+  color: #858585;
+  cursor: pointer;
+}
+.links-socialmedia div:hover {
+  color: #7ECA93;
+}
+
+@media(min-width: 992px) {
+  .profile-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(7, auto);
+  }
+  .img-name-profile {
+    grid-column-start: 1;
+    grid-column-end: 8;
+    grid-row-start: 1;
+    grid-row-end: 6;
+    border-right: dashed 4px black;
+    padding-bottom: 40px;
+  }
+  .profile-buttons {
+    grid-column-start: 8;
+    grid-column-end: 11;
+    grid-row-start: 1;
+    grid-row-end: 6;
+    border-top: none;
+    border-left: dashed 4px black;
+  }
+  .skills-bio {
+    grid-column-start: 1;
+    grid-column-end: 11;
+    grid-row-start: 6;
+    grid-row-end: 8;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    border-bottom: dashed 4px black;
+    background: linear-gradient(to right, #D1BFF6 0%, #D1BFF6 70%, #858585 70%, #858585 100%);
+  }
+  .bio {
+    grid-column-start: 1;
+    grid-column-end: 8;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    border-right: dashed 4px black;
+    border-bottom: none;
+  }
+  .skills {
+    grid-column-start: 8;
+    grid-column-end: 11;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    border-left: dashed 4px black;
+    border-bottom: none;
+  }
+  .links-socialmedia {
+    width: 100%;
+  }
 }

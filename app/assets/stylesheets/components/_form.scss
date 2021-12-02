@@ -1,0 +1,146 @@
+.form-login {
+  background-color: #858585;
+  border: 2px solid black;
+  border-radius: 0px;
+}
+.header-form-login {
+  border-bottom: 2px solid black;
+}
+.header-form-login button {
+  color: black;
+}
+.footer-form-login {
+  margin-top: 1rem;
+  border-top: 2px solid black;
+}
+.input-form-login {
+  border: 2px solid black;
+  border-radius: 0px;
+  background-color: #d6d6d6;
+}
+.input-form-login:focus {
+  border: 2px solid #3D00BE !important;
+  border-color: #3D00BE;
+}
+.text-muted {
+  color: #333 !important;
+}
+.check-form-login[type="checkbox"] {
+  border: 2px solid black;
+  border-radius: 0px;
+}
+.link-form-login {
+  color: black;
+}
+.link-form-login:hover {
+  color: #333;
+}
+.devise-form-container {
+  height: 100vh;
+  padding: 15% 25%;
+  background: #858585;
+}
+
+.brand-devise-form {
+  width: 230px;
+  height: 80px;
+  border: 3px dashed black;
+  margin: 32px auto;
+  -webkit-tap-highlight-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 0;
+  transition: 1s;
+  box-sizing: border-box;
+}
+
+.brand-devise-form::before, .brand-devise-form::after {
+  position: absolute;
+  background: #858585;
+  z-index: -1;
+  transition: 1s;
+  content: '';
+}
+
+.brand-devise-form::before {
+  height: 80px;
+  width: 210px;
+}
+
+.brand-devise-form::after {
+  width: 230px;
+  height: 60px;
+}
+
+.noselect {
+  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+}
+
+.brand-devise-form:hover::before {
+  width: 0px;
+  background: #858585;
+}
+
+.brand-devise-form:hover::after {
+  height: 0px;
+  background: #858585;
+}
+
+.brand-devise-form:hover {
+  border: 3px dashed #333;
+  background: #858585;
+  color: #333;
+}
+.devise-form-img-text {
+  display: none;
+}
+
+@media(min-width: 992px) {
+  .devise-form-container {
+    display: flex;
+    padding: 0;
+    background: radial-gradient(farthest-side at 26% 17%, #858585 40%,#333);
+  }
+  .devise-form {
+    padding: 64px 15%;
+    width: 60%;
+  }
+  .devise-form-img {
+    width: 40%;
+    height: 100vh;
+    border-left: 2px solid black;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1),#333), url("https://images.unsplash.com/photo-1611329857530-61d261e393e0");
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: grayscale(100%);
+  }
+  .devise-form-img-text {
+    max-width: 40%;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: #d6d6d6;
+    z-index: 10;
+    font-size: 2em;
+    padding: 48px;
+    span {
+      border-bottom: 4px dashed white;
+      transition: box-shadow .3s, color .3s;
+    }
+    span:hover,
+    span:focus {
+      color: black;
+      box-shadow: inset 0 -30px 0 #7ECA93, 0 2px 0 #7ECA93;
+      border-bottom: none;
+    }
+  }
+}

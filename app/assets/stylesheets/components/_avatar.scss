@@ -18,13 +18,26 @@
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   border: white 1px solid;
 }
-.rotated {
-  transform: rotate(20deg);
-  margin-top: 75px;
-  // margin-left: 100px;
+
+
+.diamond-frame {
+  display: block;
+  margin: 0 auto;
+  margin-top: 25px;
+  width: 75%;
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  overflow: hidden;
+  border: 4px solid black;
+  box-shadow: -8px 8px 0 0 black;
 }
-.avatar-username {
-  text-align: right;
-  margin-right: 200px;
-  margin-top: 75px;
+.diamond-frame img {
+  max-width: 100%;
+  transform: rotate(-45deg) scale(1.42);
+}
+@media(min-width: 576px) {
+  .diamond-frame {
+    width: 350px;
+  }
 }
