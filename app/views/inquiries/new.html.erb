@@ -1,0 +1,39 @@
+<div class="background-search">
+  <div class="container">
+    <h1 class="mt-5 mb-4 d-inline-block">
+      Apply to this offer
+      <div class="underlined-title"></div>
+    </h1>
+    <div class="job-details-card">
+      <div class="mt-5 mb-4 d-flex align-items-center">
+        <h2 class="d-inline-block">Job details</h2>
+        <div class="bottom-dashed-line"></div>
+      </div>
+      <div class="d-flex justify-content-center align-items-center my-3">
+        <h3 class="me-5 align-self-center">&#8902;</h3>
+        <h3 class="text-break text-center"><%= @job.title.upcase %></h3>
+        <h3 class="ms-5 align-self-center">&#8902;</h3>
+      </div>
+      <h4><%= @job.description * 5 %></h4>
+      <ul class="my-4 skills-list ps-0 align-items-center">
+        <h4 class="me-5"><%= "Skill".pluralize(@job.skills_needed.count) %> needed:</h4>
+        <% @job.skills_needed.each do |skill| %>
+          <li><h5 class="skill-box"><%= skill.downcase %></h5></li>
+        <% end %>
+      </ul>
+      <h4 class="mb-4 manicule-link"><span>---</span> <%= link_to "check out the job offer", job_path(@job)%></h4>
+    </div>
+    <div>
+      <div class="mt-5 mb-4 d-flex align-items-center">
+        <h2 class="d-inline-block">Your application</h2>
+        <div class="bottom-dashed-line"></div>
+      </div>
+        <%= simple_form_for [ @job, @inquiry ], remote: true, html: { multipart: true } do |f| %>
+          <%= f.input :motivation, label: 'What motivates you to apply?', error: 'Mandatory field' %>
+          <%= f.input :experience, label: 'Please detail your experience', error: 'Mandatory field' %>
+          <%= f.input :attached_file, as: :file %>
+          <%= f.submit "Submit application!", class: "more-btn jobs-more-btn" %>
+        <% end %>
+    </div>
+  </div>
+</div>

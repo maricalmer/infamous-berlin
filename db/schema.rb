@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_21_095837) do
+ActiveRecord::Schema.define(version: 2022_02_12_110751) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -48,22 +48,20 @@ ActiveRecord::Schema.define(version: 2021_09_21_095837) do
     t.index ["updated_at"], name: "index_chatrooms_on_updated_at"
   end
 
+  create_table "collabs", force: :cascade do |t|
+    t.bigint "project_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_collabs_on_project_id"
+    t.index ["user_id"], name: "index_collabs_on_user_id"
+  end
+
 # Could not dump table "inquiries" because of following StandardError
 #   Unknown type 'inquiry_status' for column 'status'
 
-  create_table "jobs", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.datetime "deadline"
-    t.datetime "start_date"
-    t.datetime "end_date"
-    t.string "title"
-    t.string "skills_needed", default: [], array: true
-    t.text "description"
-    t.bigint "project_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["project_id"], name: "index_jobs_on_project_id"
-    t.index ["skills_needed"], name: "index_jobs_on_skills_needed", using: :gin
-  end
+# Could not dump table "jobs" because of following StandardError
+#   Unknown type 'job_payment' for column 'payment'
 
   create_table "messages", force: :cascade do |t|
     t.string "content", null: false
@@ -102,18 +100,36 @@ ActiveRecord::Schema.define(version: 2021_09_21_095837) do
     t.datetime "updated_at", precision: 6, null: false
     t.text "bio"
     t.string "skills", default: [], array: true
-    t.string "socialmedias", default: [], array: true
     t.string "slug"
     t.citext "username"
+    t.text "title"
+    t.string "website"
+    t.string "facebook"
+    t.string "instagram"
+    t.string "soundcloud"
+    t.string "youtube"
+    t.string "mixcloud"
+    t.string "linkedin"
+    t.string "twitter"
     t.index ["bio"], name: "index_users_on_bio"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["facebook"], name: "index_users_on_facebook"
+    t.index ["instagram"], name: "index_users_on_instagram"
+    t.index ["linkedin"], name: "index_users_on_linkedin"
+    t.index ["mixcloud"], name: "index_users_on_mixcloud"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["skills"], name: "index_users_on_skills"
     t.index ["slug"], name: "index_users_on_slug", unique: true
+    t.index ["soundcloud"], name: "index_users_on_soundcloud"
+    t.index ["title"], name: "index_users_on_title"
+    t.index ["twitter"], name: "index_users_on_twitter"
     t.index ["username"], name: "index_users_on_username", unique: true
+    t.index ["website"], name: "index_users_on_website"
+    t.index ["youtube"], name: "index_users_on_youtube"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "collabs", "projects"
   add_foreign_key "inquiries", "jobs"
   add_foreign_key "inquiries", "users"
   add_foreign_key "jobs", "projects"

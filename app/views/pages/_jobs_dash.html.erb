@@ -1,0 +1,41 @@
+<div class="dash-cards-slider js-slider js-jobs-results">
+  <% @jobs.each do |job| %>
+    <div class="g-col-4 job-card-dash">
+      <%= link_to job_path(job) do  %>
+        <div class="job-card-title-dash">
+          <h4><%= job.title.upcase%></h4>
+        </div>
+        <div class="job-card-body-dash">
+        <div>
+          <% if job.payment == "hourly_rate" %>
+            <h5 class="job-card-details-dash"><%= job.money %>€/hour</h5>
+          <% else %>
+            <h5 class="job-card-details-dash"><%= job.money %>€</h5>
+          <% end %>
+        </div>
+        <div>
+          <p class="job-card-details-dash"><%= job.created_at.strftime("posted on %d/%m/%Y") %></p>
+        </div>
+        <p class="job-card-description"><%= job.description * 3 %></p>
+        <ul class="skills-list-dash">
+          <% job.skills_needed.each do |skill| %>
+            <li class="skill-box-dash"><p><%= skill.downcase %></p></li>
+          <% end %>
+        </ul>
+        </div>
+      <% end %>
+      <div class="dash-card-btns">
+        <div class="dash-card-edit-btn">
+          <%= link_to edit_job_path(job) do %>
+            <h5>Edit</h5>
+          <% end %>
+        </div>
+        <div class="dash-card-delete-btn">
+          <%= link_to job_path(job), method: :delete, data: { confirm: "Are you sure?" } do %>
+            <h5>Delete</h5>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

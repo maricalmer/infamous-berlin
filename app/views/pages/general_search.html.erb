@@ -1,0 +1,24 @@
+<div class="background-search">
+  <%= render 'shared/navbar' %>
+  <div class="mt-5">
+    <%= simple_form_for :search, url: search_path, method: :get do |f| %>
+      <div class="search-bar-search-page">
+        <input type="text" name="query" placeholder="<%= params[:query] %>" class="search-input-search-page" autocomplete="off">
+        <button name="button" type="submit">
+          <i class="fas fa-search search-btn-search-page"></i>
+        </button>
+      </div>
+    <% end %>
+  </div>
+  <ul class="list-inline search-tabs-underlined mb-5 search-tabs">
+    <li>
+      <%= link_to "Users", user_search_path(query: @query), class: "search-tab-underlined js-tab tab-active", remote: true %>
+    </li>
+    <li>
+      <%= link_to "Projects", project_search_path(query: @query), class: "search-tab-underlined js-tab", id: "projectTab", remote: true %>
+    </li>
+  </ul>
+  <div class="search-results js-results">
+    <%= render "user_search" %>
+  </div>
+</div>

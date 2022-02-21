@@ -90,7 +90,6 @@ const changeImgDesktop = () => {
 }
 
 var i = 0;
-var dots = document.querySelectorAll(".dot");
 function changeImgMobile(event) {
   var imgs = document.querySelectorAll(".slide-mobile");
   var placeholderImg = document.querySelector(".placeholder-mobile").firstElementChild;
@@ -98,12 +97,14 @@ function changeImgMobile(event) {
   placeholderImg.src = imgs[event.currentTarget.dataset.dotId].nextElementSibling.src;
   imgModal.src = imgs[event.currentTarget.dataset.dotId].nextElementSibling.src;
   i = parseInt(event.currentTarget.dataset.dotId);
+  var dots = document.querySelectorAll(".dot");
   dots.forEach((dot) => {
     dot.classList.remove("dot-active");
   });
   event.currentTarget.classList.add("dot-active");
 };
 const switchImgWithDots = () => {
+  var dots = document.querySelectorAll(".dot");
   dots.forEach((dot) => {
     dot.addEventListener("click", changeImgMobile);
   });
@@ -124,6 +125,7 @@ function move(e) {
     if((i > 0 || s < 0) && (i < imgs.length - 1 || s > 0)) {
       imgPlaceholder.src = imgs[i-s].nextElementSibling.src || src1;
       imgModal.src = imgs[i-s].nextElementSibling.src || src1;
+      var dots = document.querySelectorAll(".dot");
       dots.forEach((dot) => {
         dot.classList.remove("dot-active");
       });

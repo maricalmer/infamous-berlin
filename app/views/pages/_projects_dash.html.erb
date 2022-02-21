@@ -1,0 +1,30 @@
+<div class="dash-cards-slider js-slider js-projects-results">
+  <% @projects.each do |project| %>
+    <div class="dash-card-project">
+      <%= link_to project_path(project.slug) do  %>
+        <h4 class="title-card-project-search"><%= project.title %></h4>
+        <div class="test-card">
+          <%= cl_image_tag project.photos.first.key, class: "dash-card-img" %>
+        </div>
+        <div class="dash-card-text"><%= project.description %></div>
+        <% if project.upcoming? %>
+          <div class="ribbon-wrapper">
+            <div class="ribbon">UPCOMING</div>
+          </div>
+        <% end %>
+      <% end %>
+      <div class="dash-card-btns">
+        <div class="dash-card-edit-btn">
+          <%= link_to edit_project_path(project.slug) do %>
+            <h5>Edit</h5>
+          <% end %>
+        </div>
+        <div class="dash-card-delete-btn">
+          <%= link_to project_path(project), method: :delete, data: { confirm: "Are you sure?" } do %>
+            <h5>Delete</h5>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

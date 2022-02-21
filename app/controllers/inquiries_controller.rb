@@ -1,12 +1,13 @@
 class InquiriesController < ApplicationController
-  before_action :set_inquiry, only: [:show, :edit, :update, :destroy]
-  before_action :set_job, only: [:show, :new, :create]
+  before_action :set_inquiry, only: [:show, :edit, :update, :destroy, :change_status]
+  before_action :set_job, only: [:new, :create]
 
   def index
     @inquiries = Inquiry.all
   end
 
   def show
+    @statuses = Inquiry.statuses.keys
   end
 
   def new
@@ -33,8 +34,15 @@ class InquiriesController < ApplicationController
   end
 
   def destroy
-    @inquiry.deleted!
+    @inquiry.destroy
     redirect_to dashboard_path, notice: 'Application was successfully deleted.'
+  end
+
+  def change_status
+    if params[:status].present? && Inquiry.statuses.include?(params[:status])
+      @inquiry.update(status: params[:status])
+    end
+    redirect_to @inquiry, notice: "Status updated to #{@inquiry.status}"
   end
 
   private
@@ -48,14 +56,6 @@ class InquiriesController < ApplicationController
   end
 
   def inquiry_params
-    params.require(:inquiry).permit(:text)
-  end
-
-  def change_status
-    @inquiry = Inquiry.find(params[:id])
-    if params[:status].present? && Inquiry.statuses.include?(params[:status])
-      @inquiry.update(status: params[:status])
-    end
-    redirect_to jobs_path, notice: "Status updated to #{@inquiry.status}"
+    params.require(:inquiry).permit(:motivation, :experience, :attached_file)
   end
 end

@@ -1,0 +1,54 @@
+<div class="background-search">
+  <%= render 'shared/navbar' %>
+  <div class="mt-5 users-index-js">
+    <%= simple_form_for :search, url: users_path, method: :get do |f| %>
+      <div class="search-bar-search-page search-data" data-set="<%= @autocomplete_set.to_json %>">
+        <label></label>
+        <!-- ^^^ autocomplete dependency -->
+        <input type="text" name="query" placeholder="Enter a skill you need for your project" class="search-input-search-page" autocomplete="off">
+        <button name="button" type="submit">
+          <i class="fas fa-search search-btn-search-page"></i>
+        </button>
+      </div>
+    <% end %>
+  </div>
+  <div id="search-results">
+    <% if params[:query].nil? %>
+    <% elsif @users.empty? %>
+      <h4 class="numbers-results">No user matched your search for "<%= params[:query] %>"</h4>
+    <% else %>
+      <h4 class="numbers-results"><%= @users.count %> <%= "user".pluralize(@users.count) %> matched your search for "<%= params[:query] %>"</h4>
+      <ul class="user-results-list">
+        <% @users.each do |user| %>
+          <div class="mt-4 card-user-search">
+            <div class="card-user-search-diamond-username">
+              <div class="diamond-wrapper">
+                <h3 class="card-user-search-username"><%= user.username %></h3>
+                <div class="diamond-frame-small">
+                  <%= link_to user_path(user.slug) do %>
+                    <% if user.render_search_skill(params[:query]).any? %>
+                      <div class="card-user-search-body-skills">
+                        <h5>Relevant skills:</h5>
+                        <div class="skill-tags">
+                          <% user.render_search_skill(params[:query]).each do |skill| %>
+                            <p class="skill-tag">Clean</p>
+                            <p class="skill-tag">Smart</p>
+                            <p class="skill-tag">Beau gosse</p>
+                          <% end %>
+                        </div>
+                        <div class="background-user-skills"></div>
+                      </div>
+                    <% else %>
+                    <% end %>
+                    <%= cl_image_tag user.photo.key %>
+                  <% end %>
+                </div>
+                <h5 class="card-user-search-body-title"><%= user.title %></h5>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+</div>

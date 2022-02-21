@@ -1,0 +1,52 @@
+.link-general-brand {
+  color: black;
+  text-decoration: none;
+}
+.link-general-brand:hover {
+  color: black;
+}
+.general-brand {
+  --b:2px;
+  --s:8px;
+  position: fixed;
+  top: 18px;
+  left: 16px;
+  padding: 10px;
+  margin: 0;
+  background:
+    linear-gradient(currentColor 0 0) var(--x,calc(var(--s)/2)) var(--x,calc(var(--s)/2)) /var(--d,0) var(--b),
+    linear-gradient(currentColor 0 0) var(--x,calc(var(--s)/2)) var(--x,calc(var(--s)/2)) /var(--b) var(--d,0),
+    linear-gradient(currentColor 0 0) bottom var(--x,calc(var(--s)/2)) right var(--x,calc(var(--s)/2))/var(--d,0) var(--b),
+    linear-gradient(currentColor 0 0) bottom var(--x,calc(var(--s)/2)) right var(--x,calc(var(--s)/2))/var(--b) var(--d,0),
+
+
+    linear-gradient(currentColor 0 0) var(--y,calc(var(--s)/2)) var(--y,calc(var(--s)/2))/var(--d,0) var(--b),
+    linear-gradient(currentColor 0 0) var(--y,calc(var(--s)/2)) var(--y,calc(var(--s)/2))/var(--b) var(--d,0),
+    linear-gradient(currentColor 0 0) bottom var(--y,calc(var(--s)/2)) right var(--y,calc(var(--s)/2))/var(--d,0) var(--b),
+    linear-gradient(currentColor 0 0) bottom var(--y,calc(var(--s)/2)) right var(--y,calc(var(--s)/2))/var(--b) var(--d,0);
+  ;
+  background-repeat: no-repeat;
+  transition: 0.3s,background-size 0.5s 0.3s;
+  display: inline-block;
+  cursor: pointer;
+}
+.general-brand:hover {
+  --d:calc(100% - var(--s));
+  --x:0;
+  --y:var(--s);
+  transition: 0.5s,background-position 0.3s 0.5s;
+}
+.brand-wrapper-hidden {
+  position: fixed;
+  top: 10px;
+  left: -145px;
+  height: 60px;
+  width: 145px;
+  background-color: #d6d6d6;
+  border: 3px solid black;
+  z-index: 1;
+  transition: all 0.3s ease-out;
+}
+.brand-wrapper-visible {
+  left: -4px;
+}

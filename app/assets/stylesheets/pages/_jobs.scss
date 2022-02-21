@@ -1,0 +1,129 @@
+.jobs {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.job-card {
+  width: 300px;
+  background-color: #d6d6d6;
+  padding: 1rem;
+  border: solid 4px black;
+  box-shadow: -8px -8px 0 0 black;
+}
+.job-card-dash {
+  width: 200px;
+  background-color: #868686;
+  border: solid 4px black;
+  margin: 1rem;
+}
+.skills-list-dash {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-bottom: 0;
+}
+.skill-box-dash {
+  list-style-type: none;
+  margin-right: 4px;
+  p {
+    color: black;
+    border: solid black;
+    width: auto;
+    padding: 2px;
+    background-color: #d6d6d6;
+    margin: 0;
+  }
+}
+.job-card-title {
+  border-bottom: solid 4px black;
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  h2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+.job-card-title-dash {
+  border-bottom: solid 4px black;
+  width: 100%;
+  text-align: center;
+  background-color: #858585;
+  color: black;
+  padding: 0 4px;
+  h4 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: 0;
+  }
+}
+.job-card-description {
+  margin: 16px 0;
+  height: 50px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.job-card-details-dash {
+  margin: 0;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.job-card-body-dash {
+  background-color: #333;
+  color: #d6d6d6;
+  padding: 1rem 0;
+}
+.more-btn, #btn-form-submit {
+  width: 230px;
+  font-size: 2rem;
+  margin: 8rem auto 32px auto;
+  display: block;
+  border: solid;
+  box-shadow: -6px -6px black;
+  background: #7ECA93;
+}
+.more-btn:hover, #btn-form-submit:hover {
+  background-color: #8EC7A6;
+}
+.jobs-more-btn, #btn-form-submit {
+  text-decoration: none;
+  color: black !important;
+  text-align: center;
+}
+.jobs-more-btn-dash {
+  text-decoration: none;
+  color: black !important;
+  text-align: center;
+  font-size: 1.2rem;
+  width: 130px;
+  margin: 0 auto;
+  box-shadow: none;
+}
+@media(min-width: 768px) {
+  .jobs {
+    column-gap: 40px;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media(min-width: 1050px) {
+  .jobs {
+    column-gap: 40px;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+@media(min-width: 1400px) {
+  .jobs {
+    column-gap: 40px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}

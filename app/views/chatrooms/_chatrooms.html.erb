@@ -3,29 +3,42 @@
     <p>You have no messages yet 😭</p>
   </div>
 <% else %>
-  <div class="d-flex">
-    <div class="list-group w-200px bg-white br-light">
+  <div class="chat-page">
+    <div class="list-group chatrooms-index">
       <% @chatrooms.each do |chatroom| %>
         <%= link_to "#{chatroom.with(current_user).username}", chatroom_path(chatroom), class: "list-group-item #{'active' if chatroom == @chatroom}" %>
       <% end %>
     </div>
-
-
     <div class="chatroom ml-5 w-100">
-      <h1><%= @chatroom.with(current_user).username %></h1>
+      <div class="chat-header">
+        <%= link_to user_path(@chatroom.with(current_user)) do %>
+          <div class="diamond-frame-member m-0">
+            <%= cl_image_tag @chatroom.with(current_user).photo.key %>
+          </div>
+        <% end %>
+        <h1 class="chat-header-username">
+          <%= link_to user_path(@chatroom.with(current_user)) do %>
+            <%= @chatroom.with(current_user).username %>
+          <% end %>
+        </h1>
+      </div>
       <div>
         <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
           <% @messages.each do |message| %>
             <%= render "messages/message", message: message %>
           <% end %>
         </div>
-        <%= simple_form_for [ @message ], html: { autocomplete: 'off' }, remote: true do |f| %>
+
+        <%= simple_form_for [ @message ], html: { autocomplete: 'off', class: "new-message-chat-body" }, remote: true do |f| %>
           <%= hidden_field_tag 'chatroom_id', @chatroom.id %>
-          <%= f.input :content, label: false, placeholder: "Type your message..." %>
+          <div class="d-flex align-items-center">
+            <%= f.input :content, label: false, input_html: { class: "new-message-chat-input" }, placeholder: "Type your message..." %>
+            <%= f.submit "Send", class: "submit-msg-chat-btn" %>
+          </div>
           <div class="error-new-message text-danger"></div>
-          <%= f.submit %>
         <% end %>
       </div>
     </div>
   </div>
 <% end %>
+

@@ -29,7 +29,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <%= link_to "Apply", inquiries_path, class: "btn btn-success", method: :post, remote: true %>
+        <%= link_to "Apply", new_job_inquiry_path(@jobs.first), class: "btn btn-success", method: :post, remote: true %>
       </div>
     </div>
   </div>

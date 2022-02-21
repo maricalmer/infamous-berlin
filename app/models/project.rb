@@ -2,24 +2,36 @@ class Project < ApplicationRecord
   belongs_to :user
   has_many :applications
   has_many :jobs
+  has_many :collabs
+  has_many :members, class_name: 'User', through: :collabs
   has_many_attached :photos
 
   after_create :update_slug
   before_update :assign_slug
 
   validates :title, presence: true, uniqueness: true, case_sensitive: false
+  validates :description, presence: true
   validates :slug, :title, uniqueness: true, case_sensitive: false
 
   enum status: { past: "past", upcoming: "upcoming", deleted: "deleted" }
 
   include PgSearch::Model
-  pg_search_scope :search_by_title_and_description_and_location, against: {
+  pg_search_scope :search_by_title_description_location_category, against: {
     title: "A",
+    category: "A",
     description: "B",
     location: "B"
   }, using: {
     tsearch: { prefix: true, any_word: true }
   }
+
+  def project_locations
+    ["Kreuzberg", "Mitte", "Wedding", "P.Berg", "Neukölln", "Friedrichshain"]
+  end
+
+  def project_categories
+    ['painting', 'print', 'photography', 'sculpture', 'furniture', 'fashion', 'other']
+  end
 
   def create_slug
     slug = self.title.parameterize

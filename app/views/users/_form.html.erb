@@ -1,0 +1,45 @@
+<%= simple_form_for @user, remote: true, html: { class: "new-project-form-js", autocomplete: "off"} do |f| %>
+  <div class="update-profile-form-top">
+    <%= f.input :username, label: 'Username:', error: 'Mandatory field' %>
+    <%= f.input :email, label: 'Email address:', error: 'Mandatory field' %>
+  </div>
+  <%= f.input :bio, label: 'Bio:' %>
+  <%= f.input :skills, wrapper_html: { class: "skills-hidden-field" } %>
+  <div class="new-skill-custom">
+    <div class="new-skill-input-block">
+      <label for="fname" class="new-skill-label">New skill:</label>
+      <div class="d-flex">
+        <input type="text" id="fname" class="skill-value-js input-add-skill"></input>
+        <div class="btn-add-skill-js btn-add-skill">Add</div>
+      </div>
+    </div>
+    <div>
+      <!-- <h5>Skills list</h5> -->
+      <label>Skills list:</label>
+      <ol class="skills-list-js list-skills">
+      </ol>
+    </div>
+  </div>
+  <div class="update-profile-form-social-media">
+    <%= f.input :website, label: 'Website link:' %>
+    <%= f.input :instagram, label: 'Instagram:' %>
+    <%= f.input :soundcloud, label: 'Soundcloud:' %>
+    <%= f.input :youtube, label: 'YouTube:' %>
+    <%= f.input :mixcloud, label: 'Mixcloud:' %>
+    <%= f.input :linkedin, label: 'Linkedin:' %>
+    <%= f.input :twitter, label: 'Twitter:' %>
+  </div>
+  <div class="upload-picture-form">
+    <div class="upload-picture-left">
+      <%= f.input :photo, label: 'Profile picture:', as: :file %>
+    </div>
+    <div class="upload-picture-right">
+      <div class="diamond-wrapper-js diamond-wrapper-form diamond-wrapper-form-hidden">
+        <div class="diamond-frame-form">
+          <img class="placeholder-preview-js">
+        </div>
+      </div>
+    </div>
+  </div>
+  <%= f.submit "Update!", id: "btn-form-submit" %>
+<% end %>

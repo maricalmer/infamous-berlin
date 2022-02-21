@@ -4,7 +4,9 @@
 <!-- is the head turbolinks needed? -->
 
 <%= render 'shared/hamburger' %>
-<h5 class="m-0"><%= link_to "InfamousBerlin", root_path, class: "logo" %></h5>
+<%= render 'shared/brand' %>
+
+
 <div class="top-block-project">
   <%= render 'shared/carousel' %>
   <!-- <div class="vertical-dashed-line"></div> -->
@@ -12,13 +14,36 @@
     <h1><%= @project.title %></h1>
     <div class="categories d-flex ms-2">
       <% @project.category.each do |cat| %>
-        <h4 class="category my-3"><%= cat %></h4>
+        <h5 class="skill-box my-3"><%= cat %></h5>
       <% end %>
     </div>
     <h4><%= @project.date.strftime("%d/%m/%Y") %> - <%= @project.location %></h4>
+    <% if @project.user == current_user %>
+    <div class="new-member-buttton-form">
+      <button class="btn-covering btn-covering-js">Add member</button>
+      <%= simple_form_for [ @project, @collab ] do |f| %>
+        <div class="project-show-js search-data new-member-form new-member-form-js" data-set="<%= @autocomplete_set.to_json %>">
+          <div class="d-flex">
+            <div class="new-member-field">
+              <label class="string optional" for="project_member">Add member's username</label>
+              <input type="text" name="project[member]" id="project_member" class="input-member-project-new form-control string optional" autocomplete="off">
+            </div>
+            <%= f.submit "+", class: "btn btn-primary btn-add-member" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <% end %>
     <div class="members d-flex">
-      <% @project.member.each do |memb| %>
-        <h4 class="member"><%= memb %></h4>
+      <% @members.first(5).each do |memb| %>
+        <div class="diamond-frame-member" data-bs-toggle="modal" data-bs-target="#membersList">
+          <%= cl_image_tag memb.photo.key %>
+        </div>
+      <% end %>
+      <% if @members.size > 5 %>
+        <div class="diamond-frame-member" data-bs-toggle="modal" data-bs-target="#membersList">
+          <p class="">...</p>
+        </div>
       <% end %>
     </div>
     <button class="btn-apply">Looking for talents!</button>
@@ -26,7 +51,7 @@
 </div>
 <div class="description-bottom">
   <h1>Description</h1>
-  <h4><%= @project.description %></h4>
+  <h4><%= simple_format @project.description %></h4>
 
 
   <% if @jobs.any? %>
@@ -55,3 +80,28 @@
 <% if !user_signed_in? %>
   <%= render 'shared/login_form' %>
 <% end %>
+
+<div class="modal fade" id="membersList" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content members-modal">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Project members</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body pt-0">
+        <% @members.each do |memb| %>
+          <div class="modal-member-line">
+            <div class="diamond-frame-member-modal">
+              <%= cl_image_tag memb.photo.key %>
+            </div>
+            <%= link_to memb.username, user_path(memb.slug), class:"member-modal-username" %>
+            <% collab = memb.collabs.find_by(project_id: @project.id) %>
+            <%= link_to collab_path(collab), class:"member-modal-delete-symbol", method: :delete do %>
+              <i class="far fa-trash-alt"></i>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

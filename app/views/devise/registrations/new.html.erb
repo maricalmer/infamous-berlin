@@ -1,14 +1,20 @@
 <div class="devise-form-container">
   <div class="devise-form">
-    <h1 class="brand-devise-form">InfamousBerlin</h1>
+    <h1 class="mb-5 brand-devise-form">
+      <%= link_to "InfamousBerlin", root_path %>
+    </h1>
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= f.error_notification %>
 
       <div class="form-inputs">
+        <%= f.input :username,
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "off", class: "input-form-login" }%>
         <%= f.input :email,
                     required: true,
                     autofocus: true,
-                    input_html: { autocomplete: "email", class: "input-form-login" }%>
+                    input_html: { autocomplete: "off", class: "input-form-login" }%>
         <%= f.input :password,
                     required: true,
                     hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
@@ -24,6 +30,9 @@
     <% end %>
     <%= render "devise/shared/links" %>
   </div>
-  <div class="devise-form-img"></div>
-  <div class="devise-form-img-text">Find the missing piece for your <span>art project</span>.</div>
+  <div class="right-side-signup">
+    <div class="devise-form-video-text">Find the right people for your <span>art project</span>.</div>
+    <div class="video-gradient singer-gradient"></div>
+    <%= video_tag "singer", autoplay: :autoplay, loop: :loop, muted: :muted, class: "video-singer" %>
+  </div>
 </div>

@@ -109,7 +109,7 @@ picture {
 // }
 @media(min-width: 992px) {
   .carousel-container {
-    padding-top: 64px;
+    padding-top: 80px;
     padding-left: 3em;
     display: flex;
     width: 70%;
@@ -133,6 +133,9 @@ picture {
     width: 70%;
     max-width: 100%;
     max-height: 100%;
+    min-width: 50px;
+    min-height: 50px;
+    background-color: #333;
   }
   .thumbnails img:hover {
     opacity: 1;

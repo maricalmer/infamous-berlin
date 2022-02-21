@@ -11,15 +11,19 @@ class User < ApplicationRecord
   before_update :assign_slug
 
   has_many :projects
-  has_many :inquiries
+  has_many :collabs
+  has_many :member_projects, class_name: 'Project', through: :collabs, source: :project
+  has_many :inquiries, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :authored_chatrooms, class_name: 'Chatroom', foreign_key: 'author_id'
   has_many :received_chatrooms, class_name: 'Chatroom', foreign_key: 'received_id'
   has_one_attached :photo
 
   include PgSearch::Model
-  pg_search_scope :search_by_username_and_bio, against: {
+  pg_search_scope :search_by_username_bio_skills_title, against: {
     username: "A",
+    skills: "A",
+    title: "A",
     bio: "B"
   }, using: {
     tsearch: { prefix: true, any_word: true }
@@ -43,6 +47,14 @@ class User < ApplicationRecord
   #   return true if application
   # end
 
+  def overall_skill_set
+    ["acting", "voice acting", "singing", "oil painting", "acrylic painting", "digital painting", "3d drawing", "music producing", "dancing", "film editing", "film production", "video animation", "video design", "photography", "model"]
+  end
+
+  def render_search_skill(query)
+    skills.select { |skill| skill.downcase.include?(query.downcase) }.first(5)
+  end
+
   def create_slug
     slug = self.username.parameterize
     User.where.not(id: self.id).find_by(slug: slug).nil? ? slug : slug + slug.length.to_s
@@ -54,6 +66,16 @@ class User < ApplicationRecord
 
   def to_param
     slug
+  end
+
+  def self.usernames
+    usernames = User.pluck(:username).sort
+  end
+
+  def display_skills
+    skills.map do |skill|
+      skill.include?("_") ? skill.gsub("_", " ") : skill
+    end
   end
 
   private

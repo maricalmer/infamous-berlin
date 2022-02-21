@@ -1,0 +1,155 @@
+.inquiry-show {
+  margin: 0 auto;
+  margin-top: 5rem;
+}
+.back-dash-link {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+  color: #333;
+  transition: box-shadow .3s, color .3s;
+  .back-dash-link-arrow {
+    transform: rotate(180deg);
+    margin-right: 4px;
+    padding-top: 4px;
+  }
+}
+.back-dash-link:hover {
+  color: black;
+}
+.pic-inquiry {
+  padding: 3vh 0;
+}
+.diamond-wrapper-inquiry {
+  transform: rotate(45deg);
+  position: relative;
+  width: 162px;
+  height: 162px;
+  margin: 0 auto;
+}
+.diamond-frame-small-inquiry {
+  filter: grayscale(1);
+  position: relative;
+  display: block;
+  margin: 0 auto;
+    margin-bottom: 0px;
+  width: 150px;
+  height: 150px;
+  margin-bottom: 32px;
+  overflow: hidden;
+  border: 3px solid black;
+  box-shadow: -6px 6px 0 0 black;
+  background-color: #333;
+  img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    transform: rotate(-45deg) scale(1.42);
+  }
+}
+.inquiry-show-title {
+  text-align: center;
+}
+.inquiry-show-title-link {
+  text-decoration: none;
+  color: black;
+  display: inline-block;
+  font-size: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  transition: box-shadow .5s, color .5s;
+}
+.inquiry-show-title-link:hover {
+  color: #D1BFF6;
+  box-shadow: inset 0 -36px 0 #333, 0 2px 0 #333;
+}
+.inquiry-details-body {
+  border-top: 8px dashed black;
+  border-bottom: 8px dashed black;
+  margin-bottom: 4rem;
+}
+.inquiry-show-motivation {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  margin-bottom: 0;
+}
+.inquiry-show-experience {
+  padding-bottom: 2rem;
+  margin-bottom: 0;
+}
+.inquiry-skills-label {
+  margin-bottom: 0;
+  margin-right: 3rem;
+}
+.inquiry-show-bio {
+  padding-top: 3rem;
+}
+.inquiry-show-details {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+.inquiry-skills-list {
+  margin-bottom: 0;
+  li {
+    margin-bottom: 0;
+    .skill-box {
+      margin-bottom: 0;
+    }
+  }
+}
+.change-status-inquiry {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+.inquiry-show-footer {
+  margin-top: 4rem;
+  color: #333
+}
+.inquiry-show-footer span {
+  border-bottom: 4px dashed black;
+  transition: box-shadow .5s, color .5s;
+  a {
+    text-decoration: none;
+    color: #333;
+  }
+}
+.inquiry-show-footer span:hover {
+  box-shadow: inset 0 -30px 0 #333, 0 2px 0 #333;
+  border-bottom: none;
+  a {
+    color: #D1BFF6;
+  }
+}
+.btns-inquiry {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 4rem;
+  margin-top: 4rem;
+}
+.inquiry-hold-pill {
+  background-color: #333;
+  padding: 2px;
+  color: #d6d6d6;
+}
+.inquiry-accepted-pill {
+  background-color: #7ECA93;
+  padding: 2px;
+}
+.inquiry-rejected-pill {
+  background-color: #a34646;
+  padding: 2px;
+}
+.inquiry-skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding-bottom: 2rem;
+  padding-left: 0;
+  li {
+    list-style-type: none;
+    margin: 8px;
+  }
+}

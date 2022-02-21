@@ -1,15 +1,27 @@
-<nav class="navbar navbar-dark bg-dark">
-  <h5 class="mb-0"><%= link_to "InfamousBerlin", root_path, class: "navbar-brand" %></h5>
-  <%= form_tag search_path, class: "search-bar-large input-group w-75", method: :get do %>
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control rounded-0",
-      placeholder: "Search for a movie or a project..."
-    %>
-    <%= submit_tag "Search", class: "btn btn-flat ms-2", name: nil %>
-  <% end %>
+<nav class="navbar navbar-dark">
+  <%= render 'shared/brand' %>
   <% if user_signed_in? %>
-    <div id="hamburger-flex-space"></div>
+    <ul class="navbar-right">
+      <div class="navbar-right-menu dropdown show">
+        <a href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Find talent
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <%= link_to "List a new project", new_project_path, class: "dropdown-item" %>
+          <%= link_to "Browse through artists", users_path, class: "dropdown-item" %>
+        </div>
+      </div>
+      <div class="navbar-right-menu dropdown show">
+        <a href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Find work
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <%= link_to "Open jobs", jobs_path, class: "dropdown-item" %>
+          <%= link_to "Upcoming projects", upcoming_projects_path, class: "dropdown-item" %>
+        </div>
+      </div>
+      <!-- <li id="hamburger-flex-space"></li> -->
+    </ul>
   <% else %>
     <ul class="user-register">
       <li><%= link_to "Login", new_user_session_path, data: {'bs-toggle': "modal", 'bs-target': "#modalLogin"} %></li>
@@ -20,13 +32,6 @@
 <% if user_signed_in? %>
   <%= render 'shared/hamburger' %>
 <% end %>
-<%= form_tag search_path, class: "search-bar-small input-group", method: :get do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control rounded-0",
-    placeholder: "Search for a movie or a project..."
-  %>
-  <%= submit_tag "Search", class: "btn btn-flat", name: nil %>
-<% end %>
-
 <%= render 'shared/login_form' %>
+
+

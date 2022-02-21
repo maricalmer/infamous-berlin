@@ -18,6 +18,9 @@ ActiveRecord::Base.connection.reset_pk_sequence!('inquiries')
 puts "jobs..."
 Job.destroy_all if Rails.env.development?
 ActiveRecord::Base.connection.reset_pk_sequence!('jobs')
+puts "collabs..."
+Collab.destroy_all if Rails.env.development?
+ActiveRecord::Base.connection.reset_pk_sequence!('collabs')
 puts "projects..."
 Project.destroy_all if Rails.env.development?
 ActiveRecord::Base.connection.reset_pk_sequence!('projects')
@@ -33,9 +36,17 @@ puts "creating users"
     password: "123456",
     username: Faker::Internet.unique.username,
     skills: [Faker::Job.key_skill],
-    bio: Faker::GreekPhilosophers.quote,
+    bio: Faker::Lorem.sentence(word_count: rand(5..50)),
+    title: Faker::Lorem.sentence(word_count: rand(1..6))
   )
-  user.update(socialmedias: [ "@" + user.username ])
+  user.update(website: "thewebsite.com") if rand(1..2) == 1
+  user.update(facebook: "facebook-account-url.com") if rand(1..2) == 1
+  user.update(instagram: "instagram-account-url.com") if rand(1..2) == 1
+  user.update(soundcloud: "soundcloud-account-url.com") if rand(1..2) == 1
+  user.update(youtube: "youtube-account-url.com") if rand(1..2) == 1
+  user.update(mixcloud: "mixcloud-account-url.com") if rand(1..2) == 1
+  user.update(linkedin: "linkedin-account-url.com") if rand(1..2) == 1
+  user.update(twitter: "twitter-account-url.com") if rand(1..2) == 1
   user.photo.attach(
     io: URI.open('https://res.cloudinary.com/dbpv82leg/image/upload/v1624021222/photo-1522075469751-3a6694fb2f61.jpg'),
     filename: Faker::File.file_name(ext: 'jpg'),
@@ -52,10 +63,8 @@ puts "creating projects"
     category: [['painting', 'print', 'photography', 'sculpture', 'furniture', 'fashion', 'other'].sample],
     date: Faker::Date.in_date_period,
     location: ["Mitte", "P.Berg", "Wedding", "Kreuzberg", "Neukölln", "Friedrichshain"].sample,
-    user: User.all.sample,
+    user: User.all.sample
   )
-  other_users = User.all.where.not(id: project.user_id)
-  project.update(member: [ "@" + other_users.sample.username ])
   project.photos.attach(
     io: URI.open('https://res.cloudinary.com/dbpv82leg/image/upload/v1600074118/w54i1yub1kgz5rvd22i0c5wr4pwm.jpg'),
     filename: Faker::File.file_name(ext: 'jpg'),
@@ -80,16 +89,29 @@ upcoming_projects.each do |project|
   project.update(status: "upcoming")
 end
 puts "10 upcoming projects updated"
+puts "creating collabs"
+projects = Project.first(15)
+users = User.first(15)
+10.times do
+  members = users - [projects.first.user]
+  collab = Collab.create!(
+    project: projects.first,
+    member: members.sample
+  )
+  projects.delete(projects.first)
+  puts "collab #{collab.id} is created"
+end
+puts "10 fresh new collabs"
 puts "creating jobs"
 projects = Project.first(10)
 10.times do
   job = Job.create!(
-    deadline: rand(2..4).weeks.from_now,
-    start_date: rand(4..6).days.from_now,
-    end_date: rand(7..9).days.from_now,
     title: ["video editor", "photographer", "model", "stylist", "designer", "dancer", "musician"].sample,
     skills_needed: ["acting", "dancing", "photoshop"].sample,
     description: Faker::Lorem.sentence(word_count: 5, random_words_to_add: 10),
+    location: ["Mitte", "P.Berg", "Wedding", "Kreuzberg", "Neukölln", "Friedrichshain", "remote"].sample,
+    payment: ["fixed_rate", "hourly_rate"].sample,
+    status: ["open", "close"].sample,
     project_id: projects.first.id
   )
   projects.delete(projects.first)
@@ -101,7 +123,8 @@ jobs = Job.first(10)
 users = User.first(10)
 10.times do
   inquiry = Inquiry.create!(
-    text: Faker::Lorem.sentence(word_count: 10, random_words_to_add: 10),
+    experience: Faker::Lorem.sentence(word_count: 10, random_words_to_add: 10),
+    motivation: Faker::Lorem.sentence(word_count: 10, random_words_to_add: 10),
     job_id: jobs.first.id,
     user_id: users.first.id == jobs.first.project.user.id ? users.last.id : users.first.id
   )

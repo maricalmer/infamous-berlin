@@ -1,0 +1,19 @@
+<% if @past_projects.empty? %>
+  <h4>no past project</h4>
+<% else %>
+  <% @past_projects.each do |project| %>
+    <div class="card-project-user-profile">
+      <%= link_to project_path(project.slug) do  %>
+        <div class="d-flex">
+          <div class="card-img-wrapper-user-profile">
+            <%= cl_image_tag project.photos.first.key, class: "card-img" %>
+          </div>
+          <div class="w-100">
+            <h4 class="title-card-project-user-profile"><%= project.title %></h4>
+            <div class="text-card-project-user-profile"><%= project.description %></div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

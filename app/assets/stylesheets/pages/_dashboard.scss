@@ -1,0 +1,428 @@
+.link {
+  text-decoration: none;
+  color: black;
+}
+.bottom-spacing-dash {
+  margin-bottom: 4rem;
+}
+.profile-links-dash a {
+  text-decoration: none;
+  color: black;
+  display: block;
+  font-size: 2rem;
+  margin-left: 7vw;
+  margin-bottom: 1rem;
+  h3 {
+    margin-bottom: 0;
+  }
+}
+.underlined-link-dash {
+  height: 8px;
+  position: relative;
+  top: -8px;
+  right: -10px;
+  z-index: -1;
+}
+.underlined-red {
+  background-color: #a34646;
+  width: 30%;
+  transition: width 0.3s ease-in-out;
+}
+.underlined-green {
+  background-color: #7ECA93;
+  width: 22%;
+  transition: width 0.3s ease-in-out;
+}
+.underlined-gray {
+  background-color: #858585;
+  width: 19%;
+  transition: width 0.3s ease-in-out;
+}
+.profile-links-dash a:hover {
+  .underlined-gray, .underlined-green, .underlined-red {
+    width: 100%;
+  }
+}
+.profile-links-dash {
+  width: 50%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.pic-dash {
+  padding-top: 3vh;
+  padding-bottom: 7vh;
+  width: 50%;
+  border-right: dashed 4px black;
+}
+.username-dash {
+  text-align: left;
+  margin-left: auto;
+  margin-right: 1vw;
+  width: 35%;
+  overflow-wrap: break-word;
+}
+.projects-part, .jobs-part, .collabs-part {
+  position: relative;
+  a {
+    text-decoration: none;
+  }
+}
+.line-separator {
+  height: 1px;
+  border-bottom: 4px dashed black;
+  margin-top: 1.5vh;
+}
+.portfolio-title {
+  border-top: 4px dashed black;
+  border-bottom: 4px dashed black;
+  text-align: center;
+  padding-top: 8px;
+  padding-bottom: 8px;
+
+}
+.portfolio-cards {
+  display: flex;
+  margin-bottom: 80px;
+}
+.dash-cards-slider {
+  width: 80%;
+  overflow-x: scroll;
+  display: flex;
+  align-items: center;
+}
+.dash-projects-checkbox, .dash-jobs-checkbox, .dash-collabs-checkbox {
+  position: absolute;
+  top: 6px;
+  left: 0;
+  width: 100%;
+  height: 27px;
+  cursor: pointer;
+  opacity: 0;
+  z-index: 1;
+}
+// .expandable-project-dash, .expandable-job-dash, .expandable-collab-dash {
+//   opacity: 0;
+//   visibility: hidden;
+//   height: 0;
+//   transform: translateY(0);
+//   overflow: hidden;
+//   transition: all .5s ease-in-out;
+// }
+
+// [value="Projects"]:checked ~ .expandable-project-dash,
+// [value="Jobs"]:checked ~ .expandable-job-dash,
+// [value="Collabs"]:checked ~ .expandable-collab-dash
+//  {
+//   height: 410px;
+//   opacity: 1;
+//   visibility: visible;
+//   transform: translateY(1em);
+// }
+.dash-chevron {
+  margin: 0;
+  width: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  h5 {
+    margin: 0;
+    font-size: 4rem;
+    text-align: center;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+  }
+}
+.past-chevron-left, .past-chevron-right, .upcoming-chevron-left, .upcoming-chevron-right {
+  cursor: pointer;
+}
+.chevron-hidden {
+  visibility: hidden;
+}
+.dash-card-project {
+  position: relative;
+  width: 200px;
+  background-color: #333;
+  word-wrap: break-word;
+  background-clip: border-box;
+  border: solid 4px black;
+  margin: 1rem;
+}
+.dash-card-img {
+  border-bottom-right-radius: 1px;
+  border-bottom-left-radius: 1px;
+  height: 20vh;
+  object-fit: cover;
+  width: 100%;
+}
+.dash-card-text {
+  border-top: solid 4px black;
+  color: #d6d6d6;
+  padding: 0.5rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: 65px;
+}
+.dash-card-btns {
+  display: flex;
+  border-top: solid 4px black;
+  width: 192px;
+  h5 {
+    margin: 0;
+    padding: 1vh 0;
+    color: white;
+  }
+}
+.dash-card-edit-btn {
+  width: 50%;
+  border-right: solid 4px black;
+  text-align: center;
+  background-color: #858585;
+}
+.dash-card-edit-btn:hover {
+  background-color: #7C7C7C;
+}
+.dash-card-delete-btn {
+  width: 50%;
+  text-align: center;
+  background-color: #a34646;
+}
+.dash-card-delete-btn:hover {
+  background-color: #A75454;
+}
+.dash-new-btn {
+  width: 208px;
+  margin: 0 auto;
+}
+.dash-plus-text {
+  color: black;
+  margin: 0;
+  background-color: #7ECA93;
+  padding: 8px;
+  border: 4px black solid;
+  box-shadow: -6px -6px black;
+  h3 {
+    display: inline-block;
+    margin: 0;
+  }
+}
+.dash-plus-text:hover {
+  background-color: #8EC7A6;
+}
+.dash-plus-symbol {
+  font-size: 5rem;
+  color: black;
+  vertical-align: middle;
+  display: inline-block;
+  padding-bottom: 20px;
+  margin-right: 8px;
+  line-height: 0;
+}
+.dash-search-symbol {
+  font-size: 2rem;
+  margin-right: 8px;
+}
+.dash-top-menu {
+  position: relative;
+}
+.dash-dropdowns {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 2vh 0 1vh 0;
+  height: 110px;
+}
+.dash-dropdown {
+  position: relative;
+  display: inline-block;
+  height: fit-content;
+}
+.dash-dropdown-menu {
+  color: black;
+  opacity: .4;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 2rem;
+  line-height: 40px;
+  width: fit-content;
+  li {
+    font-size: 1rem;
+  }
+}
+.dash-dropdown-menu:hover {
+  opacity: 1;
+  height: 90px;
+}
+.dash-dropdown-jobs {
+  width: 40px;
+}
+.dash-dropdown-links {
+  position: absolute;
+  top: 38px;
+  padding-left: 2px;
+  border-left: 2px solid transparent;
+  font-size: 20px;
+  transition: top .2s ease-in-out;
+  a {
+    display: none;
+    margin: 0;
+    cursor: pointer;
+    width: fit-content;
+    color: black;
+    opacity: 0.5;
+    line-height: 1.2;
+  }
+  a:hover {
+    opacity: 1;
+  }
+}
+.dash-dropdown:hover .dash-dropdown-links {
+  border-color: black;
+  top: 43px;
+  a {
+    display: block;
+  }
+}
+.dash-received-list {
+  margin-top: 1rem;
+}
+.dash-received-record {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4px;
+  border: 2px solid black;
+  height: 45px;
+  span a {
+    color: #d6d6d6;
+  }
+  span a:hover {
+    color: #D1BFF6;
+    box-shadow: inset 0 -30px 0 #333, 0 2px 0 #333;
+    transition: box-shadow .3s, color .3s;
+  }
+}
+.record-date {
+  margin: 0;
+  height: 100%;
+  background-color: #333;
+  color: #d6d6d6;
+  display: flex;
+  align-items: center;
+  padding: 0 4px;
+}
+.dash-received-record:hover {
+  box-shadow: black -1px -1px, black -2px -2px, black -3px -3px;
+  transform: translate3d(3px, 3px, 0);
+
+  transition-delay: 0s;
+    transition-duration: 0.4s;
+    transition-property: all;
+  transition-timing-function: line;
+}
+.dash-received-record:nth-child(odd) {
+  background-color: #a5a5a5;
+  .record-date, .dash-manicule-link {
+    background-color: #545454;
+  }
+}
+.dash-received-record:nth-child(even) {
+  background-color: #858585;
+  .record-date, .dash-manicule-link {
+    background-color: #333;
+  }
+}
+.dash-received-record:nth-child(1) {
+  margin-top: 0;
+}
+.dash-manicule-link {
+  height: 100%;
+  background-color: #545454;
+  width: 50px;
+  transition: all 0.4s;
+}
+.dash-manicule-link:hover {
+  background-color: #D1BFF6 !important;
+  .dash-manicule {
+    color: black;
+  }
+}
+.dash-manicule {
+  font-size: 3rem;
+  line-height: 0;
+  margin: 0;
+  padding-top: 12px;
+  color: #d6d6d6;
+  padding-left: 4px;
+}
+.dash-bottom-btns {
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+.dash-sent-icons {
+  height: 100%;
+  display: flex;
+}
+.dash-destroy-link {
+  height: 100%;
+  background-color: #545454;
+  width: 32px;
+  transition: all 0.4s;
+}
+.dash-destroy-link:hover {
+  background-color: #a34646 !important;
+  .dash-destroy {
+    color: black;
+  }
+}
+.dash-destroy {
+  font-size: 2rem;
+  line-height: 0;
+  margin: 0;
+  padding-top: 18px;
+  color: #d6d6d6;
+  padding-left: 4px;
+}
+.dash-edit-link {
+  height: 100%;
+  background-color: #767676;
+  width: 32px;
+  transition: all 0.4s;
+}
+.dash-edit-link:hover {
+  background-color: #D1BFF6 !important;
+  .dash-edit {
+    color: black;
+  }
+}
+.dash-edit {
+  font-size: 2rem;
+  line-height: 0;
+  margin: 0;
+  padding-top: 18px;
+  color: #d6d6d6;
+  padding-left: 4px;
+}
+.dash-show-link {
+  height: 100%;
+  background-color: #545454;
+  width: 32px;
+  transition: all 0.4s;
+}
+.dash-show-link:hover {
+  background-color: #D1BFF6 !important;
+  .dash-show-manicule {
+    color: black;
+  }
+}
+.dash-show-manicule {
+  font-size: 2rem;
+  line-height: 0;
+  margin: 0;
+  padding-top: 14px;
+  color: #d6d6d6;
+  padding-left: 1px;
+}

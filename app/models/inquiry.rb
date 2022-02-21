@@ -4,10 +4,12 @@ class Inquiry < ApplicationRecord
   belongs_to :user
   belongs_to :job
 
-  validates :text, presence: true, length: { minimum: 10, too_short: "%{count} characters minimum" }
-  # validates :user, uniqueness: { scope: :job, message: "you have already applied to this offer" }
+  validates :motivation, presence: true, length: { minimum: 10, too_short: "%{count} characters minimum" }
+  validates :experience, presence: true, length: { minimum: 10, too_short: "%{count} characters minimum" }
+  validates :user, uniqueness: { scope: :job, message: "you have already applied to this offer" }
 
   enum status: { on_hold: "on_hold", accepted: "accepted", rejected: "rejected" }
+  has_one_attached :attached_file
 
   # def find_project
   #   Project.find(applying_id)

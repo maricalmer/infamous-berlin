@@ -1,33 +1,41 @@
 class Job < ApplicationRecord
-  SKILLS_NEEDED = ["acting", "dancing", "photoshop"].freeze
+  PAYMENT = ["hourly_rate", "fixed_rate"].freeze
 
   belongs_to :project
-  has_many :inquiries
+  has_many :inquiries, dependent: :destroy
 
   validates :title, presence: true
-  validates :deadline, presence: true
-  validates :start_date, presence: true
-  validates :end_date, presence: true
-  validate :not_before_start
   validates :description, presence: true
-  validate :right_skills, unless: :no_skills_needed?
+  validate :right_payment, unless: :no_payment_type?
+
+  enum payment: { fixed_rate: "fixed_rate", hourly_rate: "hourly_rate" }
+  enum status: { open: "open", close: "close" }
+
+  include PgSearch::Model
+  pg_search_scope :search_by_title_description_skills, against: {
+    title: "A",
+    skills_needed: "A",
+    description: "B"
+  }, using: {
+    tsearch: { prefix: true, any_word: true }
+  }
 
   def applied?(current_user)
     applicants = inquiries.map(&:user)
     applicants.include? current_user
   end
 
+  def overall_skill_set
+    ["acting", "voice acting", "singing", "oil painting", "acrylic painting", "digital painting", "3d drawing", "music producing", "dancing", "film editing", "film production", "video animation", "video design", "photography", "model"]
+  end
+
   private
 
-  def right_skills
-    errors.add(:skills_needed, "invalid skills") if (skills_needed - SKILLS_NEEDED).present?
+  def right_payment
+    errors.add(:payment, "invalid payment type") if ([payment] - PAYMENT).present?
   end
 
-  def no_skills_needed?
-    skills_needed.empty?
-  end
-
-  def not_before_start
-    errors.add(:end_date, "end date cannot be before start date") if end_date.before?(start_date)
+  def no_payment_type?
+    payment.empty?
   end
 end

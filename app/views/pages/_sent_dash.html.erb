@@ -1,0 +1,29 @@
+<div class="js-slider inquiry-dash-js w-100 dash-received-list">
+  <% @inquiries.each do |inquiry| %>
+    <div class="dash-received-record">
+      <h4 class="record-date"><%= inquiry.created_at.strftime("%d/%m") %></h4>
+      <h4 class="m-0">
+        Application to project
+        <span><%= link_to inquiry.job.project.title, project_path(inquiry.job.project.slug) %></span>
+        owned by user <span><%= link_to inquiry.job.project.user.username, user_path(inquiry.user.slug) %></span>
+      </h4>
+      <div class="dash-sent-icons">
+        <% if inquiry.on_hold? %>
+          <%= link_to inquiry_path(inquiry), class:"dash-show-link" do %>
+            <div class="dash-show-manicule">&#x261E;</div>
+          <% end %>
+          <%= link_to edit_inquiry_path(inquiry), class:"dash-edit-link" do %>
+            <div class="dash-edit">&#x270E;</div>
+          <% end %>
+          <%= link_to inquiry_path(inquiry), class:"dash-destroy-link", method: :delete, data: { confirm: "Are you sure?" } do %>
+            <div class="dash-destroy">&#x2716;</div>
+          <% end %>
+        <% else %>
+          <%= link_to inquiry_path(inquiry), class:"dash-manicule-link" do %>
+            <div class="dash-manicule">&#x261E;</div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

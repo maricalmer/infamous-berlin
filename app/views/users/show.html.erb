@@ -1,26 +1,33 @@
 <%= render 'shared/hamburger' %>
-<h5 class="m-0"><%= link_to "InfamousBerlin", root_path, class: "logo" %></h5>
+<%= render 'shared/brand' %>
 <div class="profile-grid">
   <div class="img-name-profile">
-    <div class="diamond-frame">
-      <%= cl_image_tag @user.photo.key %>
+    <div class="card-user-profile">
+      <div class="card-user-profile-diamond-username">
+        <div class="diamond-wrapper-profile">
+          <h3 class="card-user-profile-username"><%= @user.username %></h3>
+          <div class="diamond-frame-big">
+            <% if @user.photo.attached? %>
+              <%= cl_image_tag @user.photo.key %>
+            <% else %>
+              <%= image_tag "logo" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
-    <h1 class="name-profile"><%= @user.username %></h1>
+    <h3 class="card-user-profile-title"><%= @user.title %></h3>
   </div>
-  <!-- </div> -->
   <div class="skills-bio">
     <div class="bio">
-      <h1>Biography</h1>
-      <p><%= @user.bio * 100 %></p>
+      <h1>Bio</h1>
+      <h4><%= simple_format @user.bio %></h4>
     </div>
     <div class="skills">
       <h1>Skills</h1>
-      <ul class="skills-list">
-        <% @user.skills.each do |skill| %>
-          <li><%= skill %></li>
-          <li><%= skill %></li>
-          <li><%= skill %></li>
-          <li><%= skill %></li>
+      <ul class="skills-list ps-0">
+        <% @user.display_skills.each do |skill| %>
+          <li><h5 class="skill-box"><%= skill.downcase %></h5></li>
         <% end %>
       </ul>
     </div>
@@ -28,32 +35,92 @@
   <div class="profile-buttons">
     <div class="buttons">
       <% if user_signed_in? %>
-        <button type="button" class="btn btn-message" data-bs-toggle="modal" data-bs-target="#modalMessageNew">
-          Message <%= @user.username %>
-        </button>
-        <div id="modalMessage">
-          <%= render "messages/new", chatroom: @chatroom, message: @message %>
-        </div>
+        <% if current_user == @user %>
+          <%= link_to "Edit your profile", edit_user_path, class: "btn btn-message" %>
         <% else %>
-          <button type="button" class="btn btn-message" data-bs-toggle="modal" data-bs-target="#modalLogin">
+          <button type="button" class="btn btn-message" data-bs-toggle="modal" data-bs-target="#modalMessageNew">
             Message <%= @user.username %>
           </button>
-          <%= render 'shared/login_form' %>
+          <div id="modalMessage">
+            <%= render "messages/new", chatroom: @chatroom, message: @message %>
+          </div>
         <% end %>
-        <button class="btn btn-projects">Portfolio</button>
-        <button class="btn btn-projects">Upcoming projects</button>
-      </div>
+      <% else %>
+        <button type="button" class="btn btn-message" data-bs-toggle="modal" data-bs-target="#modalLogin">
+          Message <%= @user.username %>
+        </button>
+        <%= render 'shared/login_form' %>
+      <% end %>
+      <% if @user.projects.any? %>
+        <button class="btn btn-projects" data-bs-toggle="modal" data-bs-target="#modalProjects">Projects</button>
+      <% end %>
+      <% if @user.collabs.any? %>
+        <button class="btn btn-projects" data-bs-toggle="modal" data-bs-target="#modalCollabs">Collabs</button>
+      <% end %>
+    </div>
   </div>
 </div>
 <div class="links-socialmedia">
-  <div class="d-flex align-items-center me-3"><h2 class="me-1">Website</h2></div>
-  <div class="d-flex align-items-center me-3"><h2 class="me-1">Email</h2></div>
-  <div class="d-flex align-items-center me-3"><h2 class="me-1">Facebook</h2></div>
-  <div class="d-flex align-items-center me-3"><h2 class="me-1">Instagram</h2></div>
-  <div class="d-flex align-items-center me-3"><h2 class="me-1">Soundcloud</h2></div>
-  <div class="d-flex align-items-center me-3"><h2 class="me-1">YouTube</h2></div>
-  <div class="d-flex align-items-center me-3"><h2 class="me-1">Mixcloud</h2></div>
-  <div class="d-flex align-items-center me-3"><h2 class="me-1">Linkedin</h2></div>
-  <div class="d-flex align-items-center me-3"><h2 class="me-1">Twitter</h2></div>
+  <% if @user.website %>
+    <div><a class="footer-socialmedia-link" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.website %>>Website</a></div>
+  <% end %>
+  <% if @user.facebook %>
+    <div><a class="footer-socialmedia-link" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.facebook %>>Facebook</a></div>
+  <% end %>
+  <% if @user.instagram %>
+    <div><a class="footer-socialmedia-link" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.instagram %>>Instagram</a></div>
+  <% end %>
+  <% if @user.soundcloud %>
+    <div><a class="footer-socialmedia-link" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.soundcloud %>>Soundcloud</a></div>
+  <% end %>
+  <% if @user.youtube %>
+    <div><a class="footer-socialmedia-link" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.youtube %>>YouTube</a></div>
+  <% end %>
+  <% if @user.mixcloud %>
+    <div><a class="footer-socialmedia-link" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.mixcloud %>>Mixcloud</a></div>
+  <% end %>
+  <% if @user.linkedin %>
+    <div><a class="footer-socialmedia-link" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.linkedin %>>Linkedin</a></div>
+  <% end %>
+  <% if @user.twitter %>
+    <div><a class="footer-socialmedia-link" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.twitter %>>Twitter</a></div>
+  <% end %>
 </div>
-
+<div class="modal fade" id="modalProjects" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content new-message-modal">
+      <div class="modal-header new-message-modal-header">
+        <h1 class="modal-title" id="exampleModalLabel"><%= @user.username %> projects</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body modal-project-user-profile">
+        <ul class="list-inline search-tabs-underlined">
+          <li><%= link_to "Upcoming", user_upcoming_projects_path(user: @user), class: "js-modal-tab search-tab-underlined tab-active", remote: true %></li>
+          <li><%= link_to "Past", user_past_projects_path(user: @user), class: "ms-3 js-modal-tab search-tab-underlined", remote: true %></li>
+        </ul>
+        <div class="js-results mt-5">
+          <%= render "user_upcoming_projects" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="modalCollabs" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content new-message-modal">
+      <div class="modal-header new-message-modal-header">
+        <h1 class="modal-title" id="exampleModalLabel"><%= @user.username %> collabs</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body modal-project-user-profile">
+        <ul class="list-inline search-tabs-underlined">
+          <li><%= link_to "Upcoming", user_upcoming_collabs_path(user: @user), class: "js-modal-tab search-tab-underlined tab-active", remote: true %></li>
+          <li><%= link_to "Past", user_past_collabs_path(user: @user), class: "ms-3 js-modal-tab search-tab-underlined", remote: true %></li>
+        </ul>
+        <div class="js-results mt-5">
+          <%= render "user_upcoming_collabs" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

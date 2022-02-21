@@ -1,16 +1,16 @@
 <div class="modal fade" id="modalMessageNew" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
+    <div class="modal-content new-message-modal">
+      <div class="modal-header new-message-modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Message <%= @user.username %></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <%= simple_form_for [ @message ], remote: true do |f| %>
+        <%= simple_form_for [ @message ], html: { class: "new-message-modal-body"}, remote: true do |f| %>
           <%= hidden_field_tag 'receiver_id', @user.id %>
           <%= f.input :content, as: :text, error: 'Please type a message' %>
           <div class="error-new-message text-danger"></div>
-          <%= f.button :submit, "Send message", class: 'btn btn-primary' %>
+          <%= f.button :submit, "Send", class: 'btn submit-msg-modal-btn' %>
         <% end %>
       </div>
     </div>

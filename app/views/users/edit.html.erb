@@ -1,9 +1,22 @@
-<%= simple_form_for(@user) do |f| %>
-  <%= f.input :email %>
-  <%= f.input :password %>
-  <%= f.input :username %>
-  <%= f.input :bio %>
-  <%= f.input :skills %>
-  <%= f.input :socialmedias %>
-  <%= f.submit %>
-<% end %>
+<%= render 'shared/hamburger' %>
+<%= render 'shared/brand' %>
+<div class="background-search">
+  <div class="new-project-page new-project-js">
+    <div class="wrapper-title-form">
+      <h1 class="edit-profile-form-title">
+        Edit your profile
+        <div class="underlined-title"></div>
+      </h1>
+      <div class="big-card-form">
+        <div class="new-project-form">
+          <%= render "form" , locals: { user: @user } %>
+        </div>
+      </div>
+    </div>
+    <div class="img-divider-wrapper">
+      <div class="diagonal-separator1"></div>
+      <div class="diagonal-separator2"></div>
+      <div class="side-img-update-profile"></div>
+    </div>
+  </div>
+</div>
