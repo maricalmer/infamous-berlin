@@ -12,19 +12,15 @@
   display: flex;
   width: fit-content;
   margin-right: 1vw;
-}
-.list-skills {
-  display: flex;
-  flex-wrap: wrap;
+  margin-bottom: 2vh;
 }
 .new-skill-custom {
-  display: flex;
-  justify-content: start;
   border-bottom: 4px dashed black;
   padding-bottom: 8vh;
   margin-bottom: 8vh;
   ol {
     padding: 0;
+    margin-bottom:0;
     ul {
       padding: 0;
     }
@@ -32,6 +28,7 @@
 }
 .new-skill-input-block {
   margin-right: 5vw;
+  margin-bottom: 5vh;
 }
 .skills-hidden-field {
   display: none;
@@ -189,7 +186,7 @@ abbr {
   font-size: calc(1.275rem + 0.3vw);
   margin-bottom: 0.5rem;
 }
-.project_location, .project_category, .update-profile-form-top {
+.project_location, .project_category, .project_date, .update-profile-form-top {
   margin-bottom: 2vh;
 }
 .project_description, .user_bio, .user_skills, .update-profile-form-social-media {
@@ -267,7 +264,8 @@ abbr {
 }
 .new-project-form {
   width: 100%;
-  padding: 3rem;
+  padding: 1rem;
+  padding-top: 3rem;
 }
 .big-card-form {
   background-color: #d6d6d6;
@@ -300,7 +298,7 @@ abbr {
   font-size: calc(1.275rem + 0.3vw);
   margin-bottom: 0.5rem;
   text-overflow: ellipsis;
-  width: 255px;
+  max-width: 220px;
 }
 // .diagonal-separator {
 //   background-color: blue;
@@ -314,20 +312,20 @@ abbr {
   border-bottom: 4px dashed black;
 }
 .new-project-form-title {
-  font-size: 4rem;
+  font-size: 3rem;
   position: absolute;
   top: 100px;
-  right: 9vw;
-  width: 382px;
+  right: 0;
+  width: 288px;
   overflow-x: visible;
   z-index: 4;
 }
 .edit-profile-form-title {
-  font-size: 4rem;
+  font-size: 3rem;
   position: absolute;
   top: 100px;
-  right: 9vw;
-  width: 290px;
+  right: 0;
+  width: 220px;
   overflow-x: visible;
   z-index: 4;
 }
@@ -374,7 +372,40 @@ abbr {
   position: sticky;
   top: 0px;
 }
+@media(min-width: 450px) {
+  .new-project-form-title {
+    font-size: 4rem;
+    right: 9vw;
+    width: 382px;
+  }
+  .edit-profile-form-title {
+    font-size: 4rem;
+    right: 9vw;
+    width: 290px;
+  }
+  .new-project-form {
+    padding: 3rem;
+  }
+  .new-skill-custom {
+    display: flex;
+    justify-content: start;
+  }
+  .list-skills {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 0;
+  }
+  .new-skill-input-block {
+    margin-bottom: 0;
+  }
+  #project_photos, #user_photo {
+    max-width: 255px;
+  }
+}
 @media(min-width: 992px) {
+  .project_date  {
+    margin-bottom: 0;
+  }
   .upload-picture-form {
     display: flex;
     justify-content: space-between;

@@ -25,7 +25,25 @@
       </div>
     </div>
   </div>
-  <%= f.input :photos, label: 'Add 1 or more photos:', as: :file, input_html: { multiple: true } %>
+
+
+
+
+  <div class="upload-picture-form">
+    <div class="upload-picture-left">
+      <%= f.input :photos, label: 'Add 1 or more photos:', as: :file, input_html: { multiple: true } %>
+    </div>
+    <div class="upload-picture-right">
+      <div class="diamond-wrapper-js diamond-wrapper-form diamond-wrapper-form-hidden">
+        <div class="diamond-frame-form">
+          <img class="placeholder-preview-js">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
   <%= f.submit "Create!", id: "btn-form-submit", class: "form-btn-js" %>
   <button class="more-btn jobs-more-btn btn-hidden form-btn-js" type="button" disabled>
     <span class="spinner-border spinner-border" role="status" aria-hidden="true"></span>

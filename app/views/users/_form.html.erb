@@ -31,7 +31,7 @@
   </div>
   <div class="upload-picture-form">
     <div class="upload-picture-left">
-      <%= f.input :photo, label: 'Profile picture:', as: :file %>
+      <%= f.input :photo, label: 'Update your profile picture:', as: :file %>
     </div>
     <div class="upload-picture-right">
       <div class="diamond-wrapper-js diamond-wrapper-form diamond-wrapper-form-hidden">
@@ -41,5 +41,9 @@
       </div>
     </div>
   </div>
-  <%= f.submit "Update!", id: "btn-form-submit" %>
+  <%= f.submit "Update!", id: "btn-form-submit", class: "form-btn-js" %>
+  <button class="more-btn jobs-more-btn btn-hidden form-btn-js" type="button" disabled>
+    <span class="spinner-border spinner-border" role="status" aria-hidden="true"></span>
+    Loading...
+  </button>
 <% end %>
