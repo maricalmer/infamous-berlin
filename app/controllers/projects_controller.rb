@@ -29,6 +29,11 @@ class ProjectsController < ApplicationController
   end
 
   def update
+    # if params[:project][:photos].any?
+    #   params[:project][:photos].each do |photo|
+    #     @project.photos.attach(photo)
+    #   end
+    # end
     if @project.update(project_params)
       redirect_to dashboard_path, notice: 'Project was successfully updated.'
     else

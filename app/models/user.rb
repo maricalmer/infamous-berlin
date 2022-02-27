@@ -19,6 +19,8 @@ class User < ApplicationRecord
   has_many :received_chatrooms, class_name: 'Chatroom', foreign_key: 'received_id'
   has_one_attached :photo
 
+  validates :photo, size: { less_than: 10.megabytes , message: '10MB max' }
+
   include PgSearch::Model
   pg_search_scope :search_by_username_bio_skills_title, against: {
     username: "A",

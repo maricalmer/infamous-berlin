@@ -1,3 +1,76 @@
+.project-new-photo-btn {
+  color: black;
+  margin: 0;
+  padding: 8px;
+  cursor: pointer;
+  display: flex;
+  width: fit-content;
+}
+.form-plus-symbol {
+  font-size: 5rem;
+  color: black;
+  padding-top: 14px;
+  margin-right: 8px;
+  line-height: 0;
+}
+.project-photo-preview-card {
+  position: relative;
+  margin-right: 5vw;
+}
+.project-photo-preview {
+  filter: drop-shadow(-6px -6px black);
+  border: solid;
+  height: 15vh;
+  max-width: 100%;
+  max-height: 100%;
+  // min-width: 50px;
+  min-height: 50px;
+  background-color: #333;
+}
+.wrapper-preview-delete {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  cursor: pointer;
+  background-color: black;
+  width: 30px;
+  height: 34px;
+}
+.project-photo-preview-delete {
+  color: #a34646;
+  font-size: 2rem;
+  position: absolute;
+  top: -10px;
+  left: 4px;
+}
+.upload-picture-preview-photos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  align-content: space-between;
+  margin-top: 5vh;
+  margin-bottom: 3vh;
+  gap: 3vh 0;
+}
+.loaded-picture-preview-photos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  align-content: space-between;
+  margin-top: 2vh;
+  margin-bottom: 3vh;
+  gap: 3vh 0;
+  align-items: center;
+}
+.form-project-upload-photos-hidden {
+  display: none;
+}
+.upload-picture-preview-photos img:last-child {
+  margin-right: 0;
+}
+.loaded-picture-preview-photos img:last-child {
+
+}
 .new-skill-label {
   display: block;
 }
@@ -320,6 +393,15 @@ abbr {
   overflow-x: visible;
   z-index: 4;
 }
+.update-project-form-title {
+  font-size: 3rem;
+  position: absolute;
+  top: 100px;
+  right: 0;
+  width: 229px;
+  overflow-x: visible;
+  z-index: 4;
+}
 .edit-profile-form-title {
   font-size: 3rem;
   position: absolute;
@@ -377,6 +459,11 @@ abbr {
     font-size: 4rem;
     right: 9vw;
     width: 382px;
+  }
+  .update-project-form-title {
+    font-size: 4rem;
+    right: 9vw;
+    width: 301px;
   }
   .edit-profile-form-title {
     font-size: 4rem;
@@ -505,6 +592,21 @@ abbr {
     top: 0px;
     // width: 40%;
   }
+  .side-img-edit-project {
+    display: block;
+    height: 100vh;
+    border-left: 2px solid black;
+    //
+    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), url("https://images.unsplash.com/photo-1635951232611-8d476320b172");
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: grayscale(100%);
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0px;
+    // width: 40%;
+  }
   .side-img-update-profile {
     // display: block;
     height: 100vh;
@@ -526,6 +628,12 @@ abbr {
     font-size: 6rem;
     right: 22vw;
     width: 572px;
+    top: 60px;
+  }
+  .update-project-form-title {
+    font-size: 6rem;
+    right: 22vw;
+    width: 451px;
     top: 60px;
   }
   .edit-profile-form-title {

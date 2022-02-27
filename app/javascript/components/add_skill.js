@@ -1,7 +1,7 @@
 const removeSkill = () => {
-  event.target.parentElement.remove()
+  event.currentTarget.parentElement.remove()
   const skills_input_field = document.getElementById("user_skills")
-  const skill = event.target.previousElementSibling.textContent
+  const skill = event.currentTarget.previousElementSibling.textContent
   if (skill.includes(" ")) {
     skill = skill.replace(" ", "_")
   }

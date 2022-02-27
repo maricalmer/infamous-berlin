@@ -21,30 +21,30 @@
         <input type="text" name="project[category]" id="project_category" class="input-category-project-new form-control string optional" >
       </div>
       <div>
-        <%= f.input :status, label: 'Project status:', as: :select, collection: @project.class.statuses.keys, selected: "past", include_blank: false %>
+        <%= f.input :status, label: 'Project status:', as: :select, collection: @project.class.statuses.keys, include_blank: false %>
       </div>
     </div>
   </div>
-
-
-
-
-  <div class="upload-picture-form">
-    <div class="upload-picture-left">
-      <%= f.input :photos, label: 'Add 1 or more photos:', as: :file, input_html: { multiple: true } %>
-    </div>
-    <div class="upload-picture-right">
-      <div class="diamond-wrapper-js diamond-wrapper-form diamond-wrapper-form-hidden">
-        <div class="diamond-frame-form">
-          <img class="placeholder-preview-js">
-        </div>
-      </div>
-    </div>
+  <div class="loaded-picture-preview-photos placeholder-preview-js">
+    <% if @project.photos.attached? %>
+        <% @project.photos.each do |photo| %>
+          <div class="project-photo-preview-card">
+            <%= cl_image_tag photo.key, class: "project-photo-preview" %>
+            <div class="wrapper-preview-delete delete-signed-id-js">
+              <div class="project-photo-preview-delete">&#x2716;</div>
+            </div>
+            <%= f.hidden_field :photos, multiple: true, value: photo.signed_id, id: "project-photo-signed-id" %>
+          </div>
+        <% end %>
+    <% end %>
   </div>
+  <label for="project_photos" class="project-new-photo-btn">
+    <div class="form-plus-symbol">+</div>
+    <h3>add picture(s)</h3>
+  </label>
+  <%= f.input :photos, as: :file, label: false, :input_html => { :multiple => true, class: "form-project-upload-photos-hidden" } %>
 
-
-
-  <%= f.submit "Create!", id: "btn-form-submit", class: "form-btn-js" %>
+  <%= f.submit "Save!", id: "btn-form-submit", class: "form-btn-js" %>
   <button class="more-btn jobs-more-btn btn-hidden form-btn-js" type="button" disabled>
     <span class="spinner-border spinner-border" role="status" aria-hidden="true"></span>
     Loading...

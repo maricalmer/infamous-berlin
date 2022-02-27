@@ -12,7 +12,7 @@ class Project < ApplicationRecord
   validates :title, presence: true, uniqueness: true, case_sensitive: false
   validates :description, presence: true
   validates :slug, :title, uniqueness: true, case_sensitive: false
-
+  validates :photos, content_type: { in: ['image/png', 'image/jpg', 'image/jpeg', 'image/gif', 'application/pdf', 'video/mp4'], message: ' - wrong format (PNG, JPG, JPEG, GIF, PDF or MP4 only)' }, size: { less_than: 10.megabytes , message: '10MB max' }
   enum status: { past: "past", upcoming: "upcoming", deleted: "deleted" }
 
   include PgSearch::Model

@@ -1,3 +1,22 @@
-<h1>Project edit</h1>
-<%= render "form", locals: { project: @project } %>
-<!-- <%= render "form", project: @project %> -->
+<%= render 'shared/hamburger' %>
+<%= render 'shared/brand' %>
+<div class="background-search">
+  <div class="new-project-page new-project-js">
+    <div class="wrapper-title-form">
+      <h1 class="update-project-form-title">
+        Edit your project
+        <div class="underlined-title"></div>
+      </h1>
+      <div class="big-card-form">
+        <div class="new-project-form">
+          <%= render "form" , locals: { project: @project } %>
+        </div>
+      </div>
+    </div>
+    <div class="img-divider-wrapper">
+      <div class="diagonal-separator1"></div>
+      <div class="diagonal-separator2"></div>
+      <div class="side-img-edit-project"></div>
+    </div>
+  </div>
+</div>

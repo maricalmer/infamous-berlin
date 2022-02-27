@@ -4,7 +4,11 @@
       <%= link_to project_path(collab.slug) do  %>
         <h4 class="title-card-project-search"><%= collab.title %></h4>
         <div class="test-card">
-          <%= cl_image_tag collab.photos.first.key, class: "dash-card-img" %>
+          <% if collab.photos.attached? %>
+            <%= cl_image_tag collab.photos.first.key, class: "dash-card-img" %>
+          <% else %>
+            <img src="logo" alt="" class="dash-card-img">
+          <% end %>
         </div>
         <div class="dash-card-text"><%= collab.description %></div>
         <% if collab.upcoming? %>
