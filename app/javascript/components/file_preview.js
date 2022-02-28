@@ -62,12 +62,22 @@ const catchFilePathProjectForm = (uploadBtnProject) => {
   const previewPhotos = document.querySelectorAll(".preview-img-js");
   previewPhotos.forEach( (photo) => { photo.outerHTML = "" });
   for (let i = 0; i < uploadBtnProject.files.length; i++) {
-    const imgUri = uploadBtnProject.files[i];
-    const img = document.createElement("img");
-    img.classList.add("project-photo-preview");
-    img.src = URL.createObjectURL(imgUri);
-    img.setAttribute("index", i);
-    displayDeleteBtn(img, placeholder);
+    if (uploadBtnProject.files[i].type === "video/mp4") {
+      const file = document.createElement("video");
+      const imgUri = uploadBtnProject.files[i];
+      file.classList.add("project-photo-preview");
+      file.src = URL.createObjectURL(imgUri);
+      file.setAttribute("index", i);
+      displayDeleteBtn(file, placeholder);
+    } else {
+      const file = document.createElement("img");
+      const imgUri = uploadBtnProject.files[i];
+      file.classList.add("project-photo-preview");
+      file.src = URL.createObjectURL(imgUri);
+      file.setAttribute("index", i);
+      displayDeleteBtn(file, placeholder);
+    }
+
   }
   setupDeleteBtn()
 }

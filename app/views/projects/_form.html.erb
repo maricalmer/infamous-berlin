@@ -29,7 +29,11 @@
     <% if @project.photos.attached? %>
         <% @project.photos.each do |photo| %>
           <div class="project-photo-preview-card">
-            <%= cl_image_tag photo.key, class: "project-photo-preview" %>
+            <% if photo.blob.content_type == "video/mp4" %>
+              <%= cl_video_tag photo.key, controls: true, muted: true, class: "project-photo-preview" %>
+            <% else %>
+              <%= cl_image_tag photo.key, class: "project-photo-preview" %>
+            <% end %>
             <div class="wrapper-preview-delete delete-signed-id-js">
               <div class="project-photo-preview-delete">&#x2716;</div>
             </div>
@@ -42,7 +46,7 @@
     <div class="form-plus-symbol">+</div>
     <h3>add picture(s)</h3>
   </label>
-  <%= f.input :photos, as: :file, label: false, :input_html => { :multiple => true, class: "form-project-upload-photos-hidden" } %>
+  <%= f.input :photos, as: :file, label: false, :input_html => { :multiple => true, accept: ".png, .jpg, .jpeg, .gif, .mp4", class: "form-project-upload-photos-hidden" } %>
 
   <%= f.submit "Save!", id: "btn-form-submit", class: "form-btn-js" %>
   <button class="more-btn jobs-more-btn btn-hidden form-btn-js" type="button" disabled>
