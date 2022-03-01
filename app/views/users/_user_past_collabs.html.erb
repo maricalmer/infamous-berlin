@@ -6,7 +6,7 @@
       <%= link_to project_path(collab.project.slug) do  %>
         <div class="d-flex">
           <div class="card-img-wrapper-user-profile">
-            <%= cl_image_tag collab.project.photos.first.key, class: "card-img" %>
+            <%= cl_image_tag collab.project.attachments.first.key, class: "card-img" %>
           </div>
           <div class="w-100">
             <h4 class="title-card-project-user-profile"><%= collab.project.title %></h4>

@@ -12,7 +12,7 @@
           <h4 class="title-card-project-search"><%= project.title %></h4>
           <div class="img-avatar-wrapper">
             <div class="search-card-img-wrapper">
-              <%= cl_image_tag project.photos.first.key, class: "card-img" %>
+              <%= cl_image_tag project.attachments.first.key, class: "card-img" %>
             </div>
             <div class="avatar-card">
               <%= cl_image_tag project.user.photo.key %>

@@ -4,7 +4,7 @@ class Project < ApplicationRecord
   has_many :jobs
   has_many :collabs
   has_many :members, class_name: 'User', through: :collabs
-  has_many_attached :photos
+  has_many_attached :attachments
 
   after_create :update_slug
   before_update :assign_slug
@@ -12,7 +12,7 @@ class Project < ApplicationRecord
   validates :title, presence: true, uniqueness: true, case_sensitive: false
   validates :description, presence: true
   validates :slug, :title, uniqueness: true, case_sensitive: false
-  validates :photos, content_type: { in: ['image/png', 'image/jpg', 'image/jpeg', 'image/gif', 'video/mp4'], message: ' - wrong format (PNG, JPG, JPEG, GIF or MP4 only)' }, size: { less_than: 10.megabytes , message: '10MB max' }
+  validates :attachments, content_type: { in: ['image/png', 'image/jpg', 'image/jpeg', 'video/mp4'], message: ' - wrong format (PNG, JPG, JPEG or MP4 only)' }, size: { less_than: 10.megabytes , message: '10MB max' }
   enum status: { past: "past", upcoming: "upcoming", deleted: "deleted" }
 
   include PgSearch::Model

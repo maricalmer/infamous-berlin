@@ -4,7 +4,7 @@ const resetFilePath = () => {
   frame.classList.add("diamond-wrapper-form-hidden");
 }
 const updateFilesList = (index) => {
-  let initialFiles = document.getElementById("project_photos")
+  let initialFiles = document.getElementById("project_attachments")
   const initialArray = Array.from(initialFiles.files)
   initialArray.splice(index, 1)
   console.log(initialArray)
@@ -46,7 +46,6 @@ const displayDeleteBtn = (img, placeholder) => {
   previewCard.appendChild(deleteWrapper)
   placeholder.append(previewCard)
 }
-
 const catchFilePathUserForm = (uploadBtnUser) => {
   if (uploadBtnUser.files.length > 0) {
     const imgUri = uploadBtnUser.files[0]
@@ -56,7 +55,6 @@ const catchFilePathUserForm = (uploadBtnUser) => {
     frame.classList.remove("diamond-wrapper-form-hidden")
   }
 }
-
 const catchFilePathProjectForm = (uploadBtnProject) => {
   const placeholder = document.querySelector(".placeholder-preview-js");
   const previewPhotos = document.querySelectorAll(".preview-img-js");
@@ -77,14 +75,12 @@ const catchFilePathProjectForm = (uploadBtnProject) => {
       file.setAttribute("index", i);
       displayDeleteBtn(file, placeholder);
     }
-
   }
   setupDeleteBtn()
 }
-
 const renderPreview = () => {
   const uploadBtnUser = document.getElementById("user_photo")
-  const uploadBtnProject = document.getElementById("project_photos")
+  const uploadBtnProject = document.getElementById("project_attachments")
   // uploadBtn.addEventListener("click", resetFilePath)
   // uploadBtn.addEventListener("touchstart", resetFilePath)
   if (uploadBtnUser) {

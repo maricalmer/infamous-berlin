@@ -4,8 +4,8 @@
       <%= link_to project_path(project.slug) do  %>
         <h4 class="title-card-project-search"><%= project.title %></h4>
         <div class="test-card">
-          <% if project.photos.attached? %>
-            <%= cl_image_tag project.photos.first.key, class: "dash-card-img" %>
+          <% if project.attachments.attached? %>
+            <%= cl_image_tag project.attachments.first.key, class: "dash-card-img" %>
           <% else %>
             <img src="logo" alt="" class="dash-card-img">
           <% end %>

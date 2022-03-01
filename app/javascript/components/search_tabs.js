@@ -33,11 +33,6 @@ const renderPartial = (tab) => {
       if (grid) {
         loadGallery();
       };
-      // const arrowsLeft = document.querySelectorAll(".past-chevron-left");
-      // if (arrowsLeft) {
-      //   checkOnDashImgsState();
-      //   hideArrowsOnXScroll();
-      // };
     })
 }
 

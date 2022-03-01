@@ -6,7 +6,7 @@
       <%= link_to project_path(project.slug) do  %>
         <div class="d-flex">
           <div class="card-img-wrapper-user-profile">
-            <%= cl_image_tag project.photos.first.key, class: "card-img" %>
+            <%= cl_image_tag project.attachments.first.key, class: "card-img" %>
           </div>
           <div class="ribbon-wrapper-user-profile">
             <div class="ribbon-user-profile">UPCOMING</div>

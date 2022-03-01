@@ -3,26 +3,34 @@
   <!-- Thumbnail images -->
   <div class="thumbnails carousel-mobile">
     <div class="cursor placeholder-mobile" data-bs-toggle="modal" data-bs-target="#modalSmallScreen">
-      <%= cl_image_tag @project.photos.first.key %>
+      <%= cl_image_tag @project.attachments.first.key %>
     </div>
-    <% @project.photos.each do |photo| %>
-      <% if photo == @project.photos.first %>
+    <% @project.attachments.each do |attachment| %>
+      <% if attachment == @project.attachments.first %>
         <picture class="thumbnail-bigger thumbnail-align-top">
           <source srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 992px)" class="cursor slide-thumbnail slide-mobile">
-          <%= cl_image_tag photo.key, class: "cursor" %>
+          <% if attachment.blob.content_type == "video/mp4" %>
+            <%= cl_video_tag attachment.key, class: "cursor thumbnail-js" %>
+          <% else %>
+            <%= cl_image_tag attachment.key, class: "cursor thumbnail-js" %>
+          <% end %>
         </picture>
       <% else %>
         <picture>
           <source srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 992px)" class="slide-thumbnail slide-mobile">
-          <%= cl_image_tag photo.key, class: "cursor" %>
+          <% if attachment.blob.content_type == "video/mp4" %>
+            <%= cl_video_tag attachment.key, class: "cursor thumbnail-js" %>
+          <% else %>
+            <%= cl_image_tag attachment.key, class: "cursor thumbnail-js" %>
+          <% end %>
         </picture>
       <% end %>
     <% end %>
   </div>
   <div class="carousel-dots">
     <% i = 1 %>
-    <% @project.photos.each do |photo| %>
-      <% if photo == @project.photos.first %>
+    <% @project.attachments.each do |attachment| %>
+      <% if attachment == @project.attachments.first %>
         <div class="dot cursor dot-active" data-dot-id="0"></div>
       <% else %>
         <div class="dot cursor" data-dot-id="<%= i %>"></div>
@@ -37,10 +45,17 @@
   <!-- The one big slide -->
   <div class="slides">
     <div class="slide-big">
-      <picture class="img-slide-big cursor" data-bs-toggle="modal" data-bs-target="#modalBigScreen">
-        <source srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 992px)">
-        <%= cl_image_tag @project.photos.first.key %>
-      </picture>
+      <% if @project.attachments.first.blob.content_type == "video/mp4" %>
+        <picture class="img-slide-big cursor">
+          <source srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 992px)">
+          <%= cl_video_tag @project.attachments.first.key, controls: true, muted: true %>
+        </picture>
+      <% else %>
+        <picture class="img-slide-big cursor" data-bs-toggle="modal" data-bs-target="#modalBigScreen">
+          <source srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 992px)">
+          <%= cl_image_tag @project.attachments.first.key %>
+        </picture>
+      <% end %>
     </div>
   </div>
 </div>
@@ -51,7 +66,11 @@
   <div class="modal-dialog modal-fullscreen">
     <div class="modal-content overlay-small">
       <div class="modal-body overlay-small-body d-flex">
-        <%= cl_image_tag @project.photos.first.key %>
+        <% if @project.attachments.first.blob.content_type == "video/mp4" %>
+          <%= cl_video_tag @project.attachments.first.key %>
+        <% else %>
+          <%= cl_image_tag @project.attachments.first.key %>
+        <% end %>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
     </div>
@@ -65,7 +84,7 @@
   <div class="modal-dialog modal-fullscreen ">
     <div class="modal-content overlay">
       <div class="modal-body overlay-body d-flex">
-        <%= cl_image_tag @project.photos.first.key %>
+        <%= cl_image_tag @project.attachments.first.key %>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
     </div>

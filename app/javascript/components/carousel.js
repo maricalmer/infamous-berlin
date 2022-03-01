@@ -1,10 +1,10 @@
 function scrollUp() {
-  const thumbnailsImg = document.querySelectorAll(".thumbnails img");
+  const thumbnailsImg = document.querySelectorAll(".thumbnail-js");
   thumbnailsImg[1].scrollIntoView({behavior: "smooth", block: "end"});
 };
 
 function scrollDown() {
-  const thumbnailsImg = document.querySelectorAll(".thumbnails img");
+  const thumbnailsImg = document.querySelectorAll(".thumbnail-js");
   thumbnailsImg[thumbnailsImg.length - 1].scrollIntoView({behavior: "smooth", block: "end"});
 };
 
@@ -36,7 +36,7 @@ function markLoadedImgs(event) {
 }
 
 function checkOnImgsState() {
-  const imgs = document.querySelectorAll(".thumbnails img");
+  const imgs = document.querySelectorAll(".thumbnail-js");
   imgs.forEach((img) => {
     if (img.complete) {
       img.myParam = 1;
@@ -74,16 +74,29 @@ const hideArrowsOnScroll = () => {
 
 function grabImg(event) {
   const imgSlide = document.querySelector(".img-slide-big");
-  const thumbnailsImg = document.querySelectorAll(".thumbnails img");
+  const thumbnailsImg = document.querySelectorAll(".thumbnail-js");
   const overlay = document.querySelector(".overlay-body");
-  imgSlide.lastElementChild.src = event.target.src;
-  overlay.firstChild.nextElementSibling.src = event.target.src;
+  if (event.target.nodeName === "IMG") {
+    const newHTML = `<img src=${event.target.src}>`
+    imgSlide.lastElementChild.outerHTML = newHTML
+    overlay.firstChild.nextElementSibling.outerHTML = newHTML
+    imgSlide.setAttribute('data-bs-toggle', 'modal');
+    imgSlide.setAttribute('data-bs-target', '#modalBigScreen');
+  } else if (event.target.nodeName === "VIDEO") {
+    const link = event.target.poster.replace(".jpg", "")
+    const newHTML = `<video controls="controls" poster=${link.concat('.jpg')}><source src=${link.concat('.webm')} type=\"video/webm\"><source src=${link.concat('.mp4')} type=\"video/mp4\"><source src=${link.concat('.ogv')} type=\"video/ogg\"></video>`
+    imgSlide.lastElementChild.outerHTML = newHTML
+    overlay.firstChild.nextElementSibling.outerHTML = newHTML
+    imgSlide.removeAttribute('data-bs-toggle');
+    imgSlide.removeAttribute('data-bs-target');
+  }
+  // overlay.firstChild.nextElementSibling.src = event.target.src;
   thumbnailsImg.forEach((thumbnail) => { thumbnail.parentElement.classList.remove("thumbnail-bigger") });
   event.target.parentElement.classList.add("thumbnail-bigger");
 };
 
 const changeImgDesktop = () => {
-  const thumbnailsImg = document.querySelectorAll(".thumbnails img");
+  const thumbnailsImg = document.querySelectorAll(".thumbnail-js");
   thumbnailsImg.forEach((thumbnail) => {
     thumbnail.addEventListener("click", grabImg);
   });

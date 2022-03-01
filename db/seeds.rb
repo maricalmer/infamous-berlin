@@ -65,17 +65,17 @@ puts "creating projects"
     location: ["Mitte", "P.Berg", "Wedding", "Kreuzberg", "Neukölln", "Friedrichshain"].sample,
     user: User.all.sample
   )
-  project.photos.attach(
+  project.attachments.attach(
     io: URI.open('https://res.cloudinary.com/dbpv82leg/image/upload/v1600074118/w54i1yub1kgz5rvd22i0c5wr4pwm.jpg'),
     filename: Faker::File.file_name(ext: 'jpg'),
     content_type: 'image/jpg'
   )
-  project.photos.attach(
+  project.attachments.attach(
     io: URI.open('https://res.cloudinary.com/dbpv82leg/image/upload/v1598882767/wfauj0r0q92zxqxs6lpp.jpg'),
     filename: Faker::File.file_name(ext: 'jpg'),
     content_type: 'image/jpg'
   )
-  project.photos.attach(
+  project.attachments.attach(
     io: URI.open('https://res.cloudinary.com/dbpv82leg/image/upload/v1598882740/rbhbfgjs12fnd3krfy0i.jpg'),
     filename: Faker::File.file_name(ext: 'jpg'),
     content_type: 'image/jpg'
