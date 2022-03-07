@@ -32,7 +32,7 @@ import '../libraries/bootstrap_js_files.js';
 import { initChatroomCable } from '../channels/chatroom_channel';
 import { switchSearchTabs } from '../components/search_tabs';
 import { switchModalTabs } from '../components/modal_tabs';
-import { scrollOnArrows, hideArrowsOnScroll, changeImgDesktop, checkOnImgsState, switchImgWithDots, switchImgWithSwipe } from '../components/carousel';
+import { scrollOnArrows, hideArrowsOnScroll, changeImgDesktop, checkOnFilesState, switchImgWithDots, switchImgWithSwipe } from '../components/carousel';
 import { loadGalleryOnTabClick, loadGallery } from '../components/gallery';
 import { expandSearchBar } from '../components/search';
 import { autocompleteSearch } from '../components/autocomplete';
@@ -68,7 +68,7 @@ document.addEventListener('turbolinks:load', () => {
     switchImgWithDots();
     switchImgWithSwipe();
     hideArrowsOnScroll();
-    checkOnImgsState();
+    checkOnFilesState();
   };
   if (document.querySelectorAll(".dash-cards-slider").length) {
     hideArrowsOnXScroll();

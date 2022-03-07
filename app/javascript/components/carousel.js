@@ -32,30 +32,41 @@ function hideArrowsDependingOnScrollType(event) {
 
 function markLoadedImgs(event) {
   event.currentTarget.myParam = 1;
-  checkOnImgsState();
+  checkOnFilesState();
 }
 
-function checkOnImgsState() {
-  const imgs = document.querySelectorAll(".thumbnail-js");
-  imgs.forEach((img) => {
-    if (img.complete) {
-      img.myParam = 1;
-    } else {
-      img.addEventListener("load", checkOnImgsState);
-      img.addEventListener("error", markLoadedImgs);
-      // ^^ rspec
-    };
+function checkOnFilesState() {
+  const files = document.querySelectorAll(".thumbnail-js");
+  files.forEach((file) => {
+    if (file.nodeName === "IMG") {
+      if (file.complete) {
+        file.myParam = 1;
+      } else {
+        file.addEventListener("load", checkOnFilesState);
+        file.addEventListener("error", markLoadedImgs);
+        // ^^ rspec
+      };
+    }
+    else if (file.nodeName === "VIDEO") {
+      if (file.readyState > 1) {
+        file.myParam = 1;
+      } else {
+        file.addEventListener("loadeddata", checkOnFilesState);
+        file.addEventListener("error", markLoadedImgs);
+        // ^^ rspec
+      };
+    }
   });
   let counter = 0;
-  imgs.forEach((img) => {
-    counter = counter + img.myParam
+  files.forEach((file) => {
+    counter = counter + file.myParam
   });
-  if (counter == imgs.length) {
-    hideDownArrowOnLoad();
+  if (counter == files.length) {
+    downArrowOnLoad();
   };
 };
 
-const hideDownArrowOnLoad = () => {
+const downArrowOnLoad = () => {
   const thumbnails = document.querySelector(".thumbnails");
   if (thumbnails.scrollHeight > thumbnails.clientHeight) {
     const arrowDown = document.querySelector(".arrow-down");
@@ -74,16 +85,15 @@ const hideArrowsOnScroll = () => {
 
 function grabImg(event) {
   const imgSlide = document.querySelector(".img-slide-big");
-  const thumbnailsImg = document.querySelectorAll(".thumbnail-js");
   const overlay = document.querySelector(".overlay-body");
-  if (event.target.nodeName === "IMG") {
-    const newHTML = `<img src=${event.target.src}>`
+  if (event.currentTarget.nodeName === "IMG") {
+    const newHTML = `<img src=${event.currentTarget.src}>`
     imgSlide.lastElementChild.outerHTML = newHTML
     overlay.firstChild.nextElementSibling.outerHTML = newHTML
     imgSlide.setAttribute('data-bs-toggle', 'modal');
     imgSlide.setAttribute('data-bs-target', '#modalBigScreen');
-  } else if (event.target.nodeName === "VIDEO") {
-    const link = event.target.poster.replace(".jpg", "")
+  } else if (event.currentTarget.nodeName === "VIDEO") {
+    const link = event.currentTarget.poster.replace(".jpg", "")
     const newHTML = `<video controls="controls" poster=${link.concat('.jpg')}><source src=${link.concat('.webm')} type=\"video/webm\"><source src=${link.concat('.mp4')} type=\"video/mp4\"><source src=${link.concat('.ogv')} type=\"video/ogg\"></video>`
     imgSlide.lastElementChild.outerHTML = newHTML
     overlay.firstChild.nextElementSibling.outerHTML = newHTML
@@ -91,8 +101,9 @@ function grabImg(event) {
     imgSlide.removeAttribute('data-bs-target');
   }
   // overlay.firstChild.nextElementSibling.src = event.target.src;
+  const thumbnailsImg = document.querySelectorAll(".thumbnail-js");
   thumbnailsImg.forEach((thumbnail) => { thumbnail.parentElement.classList.remove("thumbnail-bigger") });
-  event.target.parentElement.classList.add("thumbnail-bigger");
+  event.currentTarget.parentElement.classList.add("thumbnail-bigger");
 };
 
 const changeImgDesktop = () => {
@@ -102,43 +113,59 @@ const changeImgDesktop = () => {
   });
 }
 
-var i = 0;
+let i = 0;
 function changeImgMobile(event) {
-  var imgs = document.querySelectorAll(".slide-mobile");
-  var placeholderImg = document.querySelector(".placeholder-mobile").firstElementChild;
-  var imgModal = document.querySelector(".overlay-small-body").firstElementChild;
-  placeholderImg.src = imgs[event.currentTarget.dataset.dotId].nextElementSibling.src;
-  imgModal.src = imgs[event.currentTarget.dataset.dotId].nextElementSibling.src;
+  const imgs = document.querySelectorAll(".thumbnail-js");
+  const placeholderImg = document.querySelector(".placeholder-mobile");
+  const correspondingFile = imgs[event.currentTarget.dataset.dotId]
+  if (correspondingFile.nodeName === "IMG") {
+    const imgModal = document.querySelector(".overlay-small-body").firstElementChild;
+    imgModal.src = correspondingFile.src;
+    placeholderImg.firstElementChild.outerHTML = `<img src=${correspondingFile.src}>`
+    placeholderImg.setAttribute('data-bs-toggle', 'modal');
+    placeholderImg.setAttribute('data-bs-target', '#modalSmallScreen');
+  } else if (correspondingFile.nodeName === "VIDEO") {
+    const link = correspondingFile.poster.replace(".jpg", "")
+    placeholderImg.firstElementChild.outerHTML = `<video controls="controls" poster=${link.concat('.jpg')}><source src=${link.concat('.webm')} type=\"video/webm\"><source src=${link.concat('.mp4')} type=\"video/mp4\"><source src=${link.concat('.ogv')} type=\"video/ogg\"></video>`
+    placeholderImg.removeAttribute('data-bs-toggle');
+    placeholderImg.removeAttribute('data-bs-target');
+  }
   i = parseInt(event.currentTarget.dataset.dotId);
-  var dots = document.querySelectorAll(".dot");
+  const dots = document.querySelectorAll(".dot");
   dots.forEach((dot) => {
     dot.classList.remove("dot-active");
   });
   event.currentTarget.classList.add("dot-active");
 };
 const switchImgWithDots = () => {
-  var dots = document.querySelectorAll(".dot");
+  const dots = document.querySelectorAll(".dot");
   dots.forEach((dot) => {
     dot.addEventListener("click", changeImgMobile);
   });
 }
 
-var x0 = null;
+let x0 = null;
 function unify(event) {return event.changedTouches ? event.changedTouches[0] : event};
-function lock(e) {
-  x0 = unify(e).clientX;
-};
+function lock(e) { x0 = unify(e).clientX };
 function move(e) {
-  var imgPlaceholder = document.querySelector(".placeholder-mobile").firstElementChild;
-  var imgModal = document.querySelector(".overlay-small-body").firstElementChild;
-  var imgs = document.querySelectorAll(".slide-mobile");
+  const placeholderImg = document.querySelector(".placeholder-mobile");
+  const imgs = document.querySelectorAll(".thumbnail-js");
+  const imgModal = document.querySelector(".overlay-small-body").firstElementChild;
   if(x0 || x0 === 0) {
-    let dx = unify(e).clientX - x0, s = Math.sign(dx);
-
+    const dx = unify(e).clientX - x0, s = Math.sign(dx);
     if((i > 0 || s < 0) && (i < imgs.length - 1 || s > 0)) {
-      imgPlaceholder.src = imgs[i-s].nextElementSibling.src || src1;
-      imgModal.src = imgs[i-s].nextElementSibling.src || src1;
-      var dots = document.querySelectorAll(".dot");
+      if (imgs[i-s].nodeName === "IMG") {
+        imgModal.src = imgs[i-s].src ;
+        placeholderImg.firstElementChild.outerHTML = `<img src=${imgs[i-s].src}>`
+        placeholderImg.setAttribute('data-bs-toggle', 'modal');
+        placeholderImg.setAttribute('data-bs-target', '#modalSmallScreen');
+      } else if (imgs[i-s].nodeName === "VIDEO") {
+        const link = imgs[i-s].poster.replace(".jpg", "")
+        placeholderImg.firstElementChild.outerHTML = `<video controls="controls" poster=${link.concat('.jpg')}><source src=${link.concat('.webm')} type=\"video/webm\"><source src=${link.concat('.mp4')} type=\"video/mp4\"><source src=${link.concat('.ogv')} type=\"video/ogg\"></video>`
+        placeholderImg.removeAttribute('data-bs-toggle');
+        placeholderImg.removeAttribute('data-bs-target');
+      }
+      const dots = document.querySelectorAll(".dot");
       dots.forEach((dot) => {
         dot.classList.remove("dot-active");
       });
@@ -150,10 +177,10 @@ function move(e) {
 };
 const switchImgWithSwipe = () => {
   var carousel = document.querySelector(".carousel-container");
-  carousel.addEventListener("mousedown", lock);
+  // carousel.addEventListener("mousedown", lock);
   carousel.addEventListener("touchstart", lock);
-  carousel.addEventListener("mouseup", move);
+  // carousel.addEventListener("mouseup", move);
   carousel.addEventListener("touchend", move);
 }
 
-export { scrollOnArrows, hideArrowsOnScroll, changeImgDesktop, checkOnImgsState, switchImgWithDots, switchImgWithSwipe };
+export { scrollOnArrows, hideArrowsOnScroll, changeImgDesktop, checkOnFilesState, switchImgWithDots, switchImgWithSwipe };

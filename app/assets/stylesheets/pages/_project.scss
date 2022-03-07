@@ -22,24 +22,27 @@
   position: relative;
 }
 .new-member-form {
+  margin-top: 2.5rem;
   position: absolute;
   top: -11px;
   left: 0;
   display: none;
   width: 100%;
-  background-color: #7ECA93;
+  background-color: #3D00BE;
   box-shadow: -6px -6px black;
   border: solid 3px black;
   height: 56px;
+  color: white;
   .btn-add-member {
     font-size: 2rem;
     color: black;
-    border-color: #7ECA93;
-    background-color: #7ECA93;
+    border-color: #3D00BE;
+    background-color: #3D00BE;
     border-radius: 0px;
     outline: 2px solid black;
     height: 50px;
     line-height: 0px;
+    color: white;
   }
   .btn-add-member:hover {
     color: white;
@@ -60,23 +63,10 @@
   }
   .input-member-project-new {
     border: 0px !important;
-    border-bottom: 2px solid #d6d6d6 !important;
+    border-bottom: 2px solid white !important;
     border-radius: 0px;
     height: 26px;
   }
-}
-.btn-covering {
-  font-size: 2rem;
-  width: auto;
-  border: 3px solid black;
-  box-shadow: -6px -6px black;
-  background-color: #7ECA93;
-  display: inline-block;
-  width: 100%;
-}
-.btn-covering-hide {
-  display: none;
-
 }
 .modal-member-line {
   display: flex;
@@ -114,25 +104,48 @@
 .member-modal-username {
   margin-left: 0;
   margin-right: auto;
+  text-decoration: none;
+  color: black;
+}
+.member-modal-username:hover {
+  color: #333;
 }
 .members-modal {
+  border: 4px solid black;
+  border-radius: 0px;
   background-color: #d6d6d6;
+}
+.members-modal-header {
+  border-bottom: 2px solid black;
+  background-color: #858585;
 }
 @media(min-width: 992px) {
   .top-block-project {
     display: flex;
     height: 75vh;
+    min-height: 550px;
     background: linear-gradient(to right, #858585 0%, #858585 70%, #D1BFF6 70%, #D1BFF6 100%);
     border-bottom: dashed 4px black;
   }
   .side-text {
     width: 30%;
-    height: 100%;
     border-left: dashed 4px black;
     border-top: none;
     border-bottom: none;
     padding-top: 64px;
     padding-right: 3em;
+    padding-left: 3em;
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+  }
+  .wrapper-btn-talents {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
   }
   .description-bottom {
     padding: 2em 3em;

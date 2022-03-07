@@ -26,6 +26,18 @@
 .btn-apply:hover {
   background-color: #8EC7A6;
 }
+.btn-talents {
+  font-size: 2rem;
+  margin: 3rem auto;
+  display: block;
+  border: solid;
+  box-shadow: -6px -6px black;
+  background: #7ECA93;
+  width: 200px;
+}
+.btn-talents:hover {
+  background-color: #8EC7A6;
+}
 .btn-message, .btn-message:focus {
   font-size: 2rem;
   display: block;
@@ -59,6 +71,23 @@
   color: white;
   border-radius: 0px;
   margin: 3vh auto 2vh auto;
+}
+.btn-covering {
+  margin-top: 2.5rem;
+  font-size: 2rem;
+  width: auto;
+  border: 3px solid black;
+  box-shadow: -6px -6px black;
+  background-color: #3D00BE;
+  display: inline-block;
+  width: 100%;
+  color: white;
+}
+.btn-covering:hover {
+  background-color: #5A26C9;
+}
+.btn-covering-hide {
+  display: none;
 }
 .btn-projects:hover {
   background: #524E59 radial-gradient(circle, transparent 1%, #524E59 1%) center/15000%;

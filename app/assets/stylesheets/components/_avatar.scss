@@ -69,6 +69,10 @@
   box-shadow: -4px 4px 0 0 black;
   background-color: #333;
   cursor: pointer;
+  margin-left: 2rem;
+}
+.diamond-frame-member ~ .diamond-frame-member {
+  margin-left: 0;
 }
 .diamond-frame-medium {
   width: 150px !important;

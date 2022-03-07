@@ -2,9 +2,16 @@
 <div class="carousel-container">
   <!-- Thumbnail images -->
   <div class="thumbnails carousel-mobile">
-    <div class="cursor placeholder-mobile" data-bs-toggle="modal" data-bs-target="#modalSmallScreen">
-      <%= cl_image_tag @project.attachments.first.key %>
-    </div>
+    <% if @project.attachments[0].blob.content_type == "video/mp4" %>
+    <!-- ^^long term solution instaed of @project.attachments.first?? -->
+      <div class="cursor placeholder-mobile">
+        <%= cl_video_tag @project.attachments.first.key, controls: true %>
+      </div>
+    <% else %>
+      <div class="cursor placeholder-mobile" data-bs-toggle="modal" data-bs-target="#modalSmallScreen">
+        <%= cl_image_tag @project.attachments.first.key %>
+      </div>
+    <% end %>
     <% @project.attachments.each do |attachment| %>
       <% if attachment == @project.attachments.first %>
         <picture class="thumbnail-bigger thumbnail-align-top">
@@ -42,6 +49,10 @@
     <div class="cursor arrow-up arrow-hidden"></div>
     <div class="cursor arrow-down arrow-hidden"></div>
   </div>
+
+
+
+
   <!-- The one big slide -->
   <div class="slides">
     <div class="slide-big">
@@ -58,16 +69,17 @@
       <% end %>
     </div>
   </div>
+
+
+
 </div>
-
 <!-- The overlay small screen-->
-
 <div class="modal fade" id="modalSmallScreen" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-fullscreen">
     <div class="modal-content overlay-small">
       <div class="modal-body overlay-small-body d-flex">
         <% if @project.attachments.first.blob.content_type == "video/mp4" %>
-          <%= cl_video_tag @project.attachments.first.key %>
+          <img src="">
         <% else %>
           <%= cl_image_tag @project.attachments.first.key %>
         <% end %>
@@ -76,15 +88,16 @@
     </div>
   </div>
 </div>
-
-
 <!-- The overlay big screen-->
-
 <div class="modal fade" id="modalBigScreen" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-fullscreen ">
     <div class="modal-content overlay">
       <div class="modal-body overlay-body d-flex">
-        <%= cl_image_tag @project.attachments.first.key %>
+        <% if @project.attachments.first.blob.content_type == "video/mp4" %>
+          <img src="">
+        <% else %>
+          <%= cl_image_tag @project.attachments.first.key %>
+        <% end %>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
     </div>
