@@ -11,15 +11,27 @@
   background: #D1BFF6;
 }
 .description-bottom {
+  color: #d6d6d6;
   padding: 32px;
   background-color: #333;
-  color: white;
   border-top: dashed 4px black;
   height: 100%;
   flex-grow: 1;
 }
-.new-member-buttton-form {
+.members-block {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.members-block-avatars {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  flex-wrap: wrap;
+  padding-left: 1rem;
+}
+.new-member-button-form {
   position: relative;
+  margin-top: 2.5rem;
 }
 .new-member-form {
   margin-top: 2.5rem;
@@ -81,7 +93,60 @@
 .modal-member-line:first-child {
   border-top: 0px;
 }
-.diamond-frame-member-modal{
+.modal-job-link {
+  text-decoration: none;
+  color: black;
+}
+.modal-job-link:hover {
+  color: black;
+}
+.modal-job-record {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4px;
+  border: 2px solid black;
+  height: 45px;
+}
+.modal-job-record:hover {
+  box-shadow: black -1px -1px, black -2px -2px, black -3px -3px;
+  transform: translate3d(3px, 3px, 0);
+  transition-delay: 0s;
+    transition-duration: 0.4s;
+    transition-property: all;
+  transition-timing-function: line;
+}
+.modal-job-records a:nth-child(odd) .modal-job-record {
+  background-color: #a5a5a5;
+}
+.modal-job-records a:nth-child(even) .modal-job-record {
+  background-color: #858585;
+}
+.modal-job-manicule-wrapper {
+  height: 100%;
+  width: 50px;
+  background-color: #7ECA93;
+  padding-top: 10px;
+  padding-left: 3px;
+  margin-left: 1rem;
+}
+.modal-job-manicule {
+  font-size: 3rem;
+  line-height: 0;
+  margin: 0;
+  padding-bottom: 22px;
+  color: black;
+}
+.modal-job-right-wrapper {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+.modal-job-title {
+  margin-left: 1rem;
+  margin-bottom: 5px;
+}
+.diamond-frame-member-modal {
   display: block;
   margin: 0 20px;
   width: 35px;
@@ -135,8 +200,6 @@
     padding-top: 64px;
     padding-right: 3em;
     padding-left: 3em;
-    display: flex;
-    flex-flow: column;
     height: 100%;
   }
   .wrapper-btn-talents {

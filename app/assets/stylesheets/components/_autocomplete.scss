@@ -26,7 +26,7 @@
   font-size: 1rem !important;
   letter-spacing: 1px !important;
   background-color: #D1BFF6 !important;
-  top: 253px !important;
+  top: 952px !important;
   .autocomplete-suggestion {
     margin-left: 5px;
     direction:ltr;
@@ -55,4 +55,8 @@
   color: #D1BFF6 !important;
   background-color: #858585 !important;
 }
-
+@media(min-width: 992px) {
+  .autocomplete-suggestions-project {
+    top: 380px !important;
+  }
+}

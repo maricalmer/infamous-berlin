@@ -59,8 +59,8 @@
 }
 .diamond-frame-member {
   display: block;
-  margin: 0 auto;
   width: 50px;
+  height: 50px;
   -ms-transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
@@ -69,7 +69,6 @@
   box-shadow: -4px 4px 0 0 black;
   background-color: #333;
   cursor: pointer;
-  margin-left: 2rem;
 }
 .diamond-frame-member ~ .diamond-frame-member {
   margin-left: 0;
@@ -127,8 +126,8 @@
   text-align: center;
   color: #d6d6d6;
   line-height: 0px;
-  margin-right: 14px;
-  margin-top: 9px;
+  margin-right: 12px;
+  margin-top: 18px;
 }
 .diamond-frame-small img {
   width: 100%;
