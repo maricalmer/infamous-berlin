@@ -179,6 +179,7 @@
 .btn-hidden {
   display: none !important;
 }
+
 @media(min-width: 992px) {
   .btn-apply {
     width: auto;
@@ -192,7 +193,7 @@
   width: 60px;
   border-radius: 0;
   padding: 6px 0.2rem;
-  margin: 0 0 0 2rem;
+  margin: 0 0 0 0.5rem;
   color: black;
 }
 .submit-msg-btn:hover {
@@ -212,4 +213,9 @@
 }
 .submit-msg-modal-btn:hover {
   background-color: #8EC7A6;
+}
+@media(min-width: 470px) {
+  .submit-msg-chat-btn {
+    margin: 0 0 0 1rem;
+  }
 }

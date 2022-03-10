@@ -89,6 +89,18 @@ upcoming_projects.each do |project|
   project.update(status: "upcoming")
 end
 puts "10 upcoming projects updated"
+puts "creating 1 message"
+chatroom = Chatroom.create!(
+  author: User.first,
+  receiver: Project.first.user
+)
+message = Message.create!(
+  content: "Test message from #{Time.now}",
+  anchor_id: 1,
+  read_by_receiver: false,
+  chatroom: chatroom,
+  user: User.first
+)
 puts "creating collabs"
 projects = Project.first(15)
 users = User.first(15)
