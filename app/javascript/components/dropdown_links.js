@@ -28,10 +28,14 @@ const renderPartial = (link) => {
 }
 
 const renderDashboardDropdown = (tab) => {
-  const links = document.querySelectorAll('.dropdown-links-js');
+  const links = document.querySelectorAll(".dropdown-links-js");
   links.forEach((link) => {
     link.addEventListener('click', (event) => {
       renderPartial(link);
+      const arrow = document.querySelector(".mobile-dropdown-arrow-js");
+      if (window.getComputedStyle(arrow).display === "block") {
+        document.getElementById("checkbox_toggle").checked = false;
+      }
     });
   })
 }
