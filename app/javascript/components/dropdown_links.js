@@ -12,8 +12,9 @@ const renderPartial = (link) => {
   fetch(url, { headers: { 'Accept': 'text/plain' } })
     .then(response => response.text())
     .then((data) => {
-      console.log(link)
-      const results = link.parentElement.parentElement.parentElement.parentElement.nextElementSibling
+      // const results = link.parentElement.parentElement.parentElement.parentElement.nextElementSibling
+      const results = document.querySelector(".js-slider")
+      console.log(results)
       results.outerHTML = data;
       const arrowsLeft = document.querySelector(".past-chevron-left");
       if (arrowsLeft) {

@@ -129,7 +129,9 @@
 .dash-slider-title-mobile {
   position: absolute;
   width: 100%;
-  top: -10px;
+  top: -57px;
+  left: 0px;
+  font-size: 2rem;
 }
 
 .dash-menu-dropdown-mobile-arrow {
@@ -166,14 +168,14 @@
   content: "Less";
 }
 .dash-top-menu input[type="checkbox"]:checked ~ .dash-dropdowns {
-  max-height: 500px;
+  max-height: 650px;
   // ^^ find out max height
   transition: all 1s cubic-bezier(.2, 1, .22, 1);
   overflow: scroll;
 }
 .dash-card-project {
   position: relative;
-  width: 200px;
+  width: 175px;
   background-color: #333;
   word-wrap: break-word;
   background-clip: border-box;
@@ -200,7 +202,7 @@
 .dash-card-btns {
   display: flex;
   border-top: solid 4px black;
-  width: 192px;
+  width: 167px;
   h5 {
     margin: 0;
     padding: 1vh 0;
@@ -225,7 +227,7 @@
   background-color: #A75454;
 }
 .dash-new-btn {
-  width: 208px;
+  width: fit-content;
   margin: 0 auto;
 }
 .dash-plus-text {
@@ -235,6 +237,10 @@
   padding: 8px;
   border: 4px black solid;
   box-shadow: -6px -6px black;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   h3 {
     display: inline-block;
     margin: 0;
@@ -248,7 +254,7 @@
   color: black;
   vertical-align: middle;
   display: inline-block;
-  padding-bottom: 20px;
+  padding-bottom: 11px;
   margin-right: 8px;
   line-height: 0;
 }
@@ -298,7 +304,8 @@
   margin-left: 15px;
   padding-top: 10px;
   a {
-    margin: 0;
+    display: block;
+    margin: 0 0 1rem;
     cursor: pointer;
     width: fit-content;
     color: black;
@@ -313,12 +320,9 @@
   margin-top: 1rem;
 }
 .dash-received-record {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: block;
   margin-top: 4px;
   border: 2px solid black;
-  height: 45px;
   span a {
     color: #d6d6d6;
   }
@@ -328,6 +332,15 @@
     transition: box-shadow .3s, color .3s;
   }
 }
+.dash-received-record-title {
+  margin: 0;
+  font-size: 1rem;
+  background-color: #858585;
+  padding: 1vh;
+  line-height: 1rem;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+}
 .record-date {
   margin: 0;
   height: 100%;
@@ -335,7 +348,9 @@
   color: #d6d6d6;
   display: flex;
   align-items: center;
-  padding: 0 4px;
+  padding: 0 8px;
+  justify-content: center;
+  line-height: 2rem;
 }
 .dash-received-record:hover {
   box-shadow: black -1px -1px, black -2px -2px, black -3px -3px;
@@ -346,25 +361,17 @@
     transition-property: all;
   transition-timing-function: line;
 }
-.dash-received-record:nth-child(odd) {
-  background-color: #a5a5a5;
-  .record-date, .dash-manicule-link {
-    background-color: #545454;
-  }
-}
-.dash-received-record:nth-child(even) {
-  background-color: #858585;
-  .record-date, .dash-manicule-link {
-    background-color: #333;
-  }
-}
+
 .dash-received-record:nth-child(1) {
   margin-top: 0;
 }
 .dash-manicule-link {
-  height: 100%;
-  background-color: #545454;
-  width: 50px;
+  height: 42px;
+  display: block;
+  width: 100%;
+  text-align: center;
+  background-color: #D1BFF6;
+  color: black;
   transition: all 0.4s;
 }
 .dash-manicule-link:hover {
@@ -378,7 +385,7 @@
   line-height: 0;
   margin: 0;
   padding-top: 12px;
-  color: #d6d6d6;
+  color: black;
   padding-left: 4px;
 }
 .dash-bottom-btns {
@@ -392,8 +399,8 @@
 }
 .dash-destroy-link {
   height: 100%;
-  background-color: #545454;
-  width: 32px;
+  background-color: #a34646;
+  width: 34%;
   transition: all 0.4s;
 }
 .dash-destroy-link:hover {
@@ -406,14 +413,15 @@
   font-size: 2rem;
   line-height: 0;
   margin: 0;
-  padding-top: 18px;
-  color: #d6d6d6;
-  padding-left: 4px;
+  padding-top: 19px;
+  color: black;
+  text-align: center;
+  height: 37px;
 }
 .dash-edit-link {
   height: 100%;
   background-color: #767676;
-  width: 32px;
+  width: 33%;
   transition: all 0.4s;
 }
 .dash-edit-link:hover {
@@ -428,12 +436,13 @@
   margin: 0;
   padding-top: 18px;
   color: #d6d6d6;
-  padding-left: 4px;
+  text-align: center;
+  height: 37px;
 }
 .dash-show-link {
   height: 100%;
-  background-color: #545454;
-  width: 32px;
+  background-color: #D1BFF6;
+  width: 33%;
   transition: all 0.4s;
 }
 .dash-show-link:hover {
@@ -447,10 +456,11 @@
   line-height: 0;
   margin: 0;
   padding-top: 14px;
-  color: #d6d6d6;
-  padding-left: 1px;
+  color: black;
+  text-align: center;
+  height: 37px;
 }
-@media(min-width: 576px) {
+@media(min-width: 850px) {
   .dash-menu-dropdown-mobile-more, .dash-menu-dropdown-mobile-arrow {
     display: none;
   }
@@ -461,6 +471,7 @@
     display: none;
   }
   .dash-dropdowns {
+    max-height: 650px;
     display: flex;
     justify-content: space-evenly;
     top: 0px;
@@ -493,6 +504,7 @@
     font-size: 20px;
     padding-top: 0;
     a {
+      margin: 0;
       display: none;
       opacity: 0.5;
     }
@@ -514,5 +526,76 @@
   }
   .profile-links-dash a {
     margin-left: 7vw;
+  }
+  .dash-received-record {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 45px;
+  }
+  .record-date {
+    justify-content: start;
+    line-height: 1rem;
+  }
+  .dash-received-record-title {
+    font-size: 1.3rem;
+    border-top: none;
+    border-bottom: none;
+    background-color: transparent;
+  }
+  .dash-received-record:nth-child(odd) {
+    background-color: #a5a5a5;
+    .record-date, .dash-manicule-link {
+      background-color: #545454;
+    }
+  }
+  .dash-received-record:nth-child(even) {
+    background-color: #858585;
+    .record-date, .dash-manicule-link {
+      background-color: #333;
+    }
+  }
+  .dash-show-link {
+    width: 32px;
+    background-color: #545454;
+  }
+  .dash-edit-link {
+    width: 32px;
+  }
+  .dash-edit {
+    padding-left: 4px;
+    padding-right: 4px;
+    height: 100%;
+  }
+  .dash-show-manicule {
+    color: #d6d6d6;
+    padding-left: 1px;
+    padding-right: 1px;
+    height: 100%;
+  }
+  .dash-destroy-link {
+    background-color: #545454;
+    width: 32px;
+  }
+  .dash-destroy {
+    color: #d6d6d6;
+    padding-top: 18px;
+    padding-left: 4px;
+    padding-right: 4px;
+    height: 100%;
+  }
+  .dash-manicule-link {
+    height: 100%;
+    background-color: #545454;
+    width: 50px;
+  }
+  .dash-manicule {
+    color: #d6d6d6;
+  }
+  .dash-card-project {
+    width: 200px;
+  }
+  .dash-card-btns {
+    width: 192px;
   }
 }

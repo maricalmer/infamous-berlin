@@ -12,7 +12,7 @@
   box-shadow: -8px -8px 0 0 black;
 }
 .job-card-dash {
-  width: 200px;
+  width: 175px;
   background-color: #868686;
   border: solid 4px black;
   margin: 1rem;
@@ -115,6 +115,11 @@
   .jobs {
     column-gap: 40px;
     grid-template-columns: 1fr 1fr;
+  }
+}
+@media(min-width: 850px) {
+  .job-card-dash {
+    width: 200px;
   }
 }
 @media(min-width: 1050px) {

@@ -1,9 +1,9 @@
-<h4 class="dash-slider-title-mobile">Applications</h4>
 <div class="js-slider inquiry-dash-js w-100 dash-received-list">
+  <h4 class="dash-slider-title-mobile">Applications</h4>
   <% @inquiries.each do |inquiry| %>
     <div class="dash-received-record">
       <h4 class="record-date"><%= inquiry.created_at.strftime("%d/%m") %></h4>
-      <h4 class="m-0">
+      <h4 class="dash-received-record-title">
         Application to project
         <span><%= link_to inquiry.job.project.title, project_path(inquiry.job.project.slug) %></span>
         owned by user <span><%= link_to inquiry.job.project.user.username, user_path(inquiry.user.slug) %></span>

@@ -71,7 +71,6 @@ const hideLeftArrowOnLoad = () => {
       const arrowRight = projectCards.nextElementSibling.firstElementChild;
       arrowRight.classList.remove("chevron-hidden");
     } else if (projectCards.scrollLeft > 0) {
-      console.log(projectCards.scrollLeft)
       const arrowLeft = projectCards.previousElementSibling.firstElementChild;
       arrowLeft.classList.remove("chevron-hidden");
     } else {
