@@ -14,7 +14,11 @@
         <h3 class="card-user-search-username"><%= user.username %></h3>
         <div class="diamond-frame-small">
           <%= link_to user_path(user.slug) do  %>
-            <%= cl_image_tag user.photo.key %>
+            <% if user.photo.attached? %>
+              <%= cl_image_tag user.photo.key%>
+            <% else %>
+              <%= image_tag "logo.png"%>
+            <% end %>
           <% end %>
         </div>
         <h5 class="card-user-search-body-title"><%= user.title %></h5>

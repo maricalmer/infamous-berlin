@@ -2,35 +2,38 @@
 <div class="carousel-container">
   <!-- Thumbnail images -->
   <div class="thumbnails carousel-mobile">
-    <% if @project.attachments[0].blob.content_type == "video/mp4" %>
-    <!-- ^^long term solution instaed of @project.attachments.first?? -->
-      <div class="cursor placeholder-mobile">
-        <%= cl_video_tag @project.attachments.first.key, controls: true %>
-      </div>
-    <% else %>
-      <div class="cursor placeholder-mobile" data-bs-toggle="modal" data-bs-target="#modalSmallScreen">
-        <%= cl_image_tag @project.attachments.first.key %>
-      </div>
-    <% end %>
-    <% @project.attachments.each do |attachment| %>
-      <% if attachment == @project.attachments.first %>
-        <picture class="thumbnail-bigger thumbnail-align-top">
-          <source srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 992px)" class="cursor slide-thumbnail slide-mobile">
-          <% if attachment.blob.content_type == "video/mp4" %>
-            <%= cl_video_tag attachment.key, class: "cursor thumbnail-js" %>
-          <% else %>
-            <%= cl_image_tag attachment.key, class: "cursor thumbnail-js" %>
-          <% end %>
-        </picture>
+    <% if @project.attachments.attached? %>
+      <% if @project.attachments.first.video? %>
+      <!-- if @project.attachments[0].blob.content_type == "video/mp4" -->
+      <!-- ^^long term solution instaed of @project.attachments.first?? -->
+        <div class="cursor placeholder-mobile">
+          <%= cl_video_tag @project.attachments.first.key, controls: true %>
+        </div>
       <% else %>
-        <picture>
-          <source srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 992px)" class="slide-thumbnail slide-mobile">
-          <% if attachment.blob.content_type == "video/mp4" %>
-            <%= cl_video_tag attachment.key, class: "cursor thumbnail-js" %>
-          <% else %>
-            <%= cl_image_tag attachment.key, class: "cursor thumbnail-js" %>
-          <% end %>
-        </picture>
+        <div class="cursor placeholder-mobile" data-bs-toggle="modal" data-bs-target="#modalSmallScreen">
+          <%= cl_image_tag @project.attachments.first.key %>
+        </div>
+      <% end %>
+      <% @project.attachments.each do |attachment| %>
+        <% if attachment == @project.attachments.first %>
+          <picture class="thumbnail-bigger thumbnail-align-top">
+            <source srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 992px)" class="cursor slide-thumbnail slide-mobile">
+            <% if attachment.video? %>
+              <%= cl_video_tag attachment.key, class: "cursor thumbnail-js" %>
+            <% else %>
+              <%= cl_image_tag attachment.key, class: "cursor thumbnail-js" %>
+            <% end %>
+          </picture>
+        <% else %>
+          <picture>
+            <source srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 992px)" class="slide-thumbnail slide-mobile">
+            <% if attachment.video? %>
+              <%= cl_video_tag attachment.key, class: "cursor thumbnail-js" %>
+            <% else %>
+              <%= cl_image_tag attachment.key, class: "cursor thumbnail-js" %>
+            <% end %>
+          </picture>
+        <% end %>
       <% end %>
     <% end %>
   </div>
@@ -49,39 +52,36 @@
     <div class="cursor arrow-up arrow-hidden"></div>
     <div class="cursor arrow-down arrow-hidden"></div>
   </div>
-
-
-
-
   <!-- The one big slide -->
   <div class="slides">
     <div class="slide-big">
-      <% if @project.attachments.first.blob.content_type == "video/mp4" %>
-        <picture class="img-slide-big cursor">
-          <source srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 992px)">
-          <%= cl_video_tag @project.attachments.first.key, controls: true, muted: true %>
-        </picture>
-      <% else %>
-        <picture class="img-slide-big cursor" data-bs-toggle="modal" data-bs-target="#modalBigScreen">
-          <source srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 992px)">
-          <%= cl_image_tag @project.attachments.first.key %>
-        </picture>
+      <% if @project.attachments.attached? %>
+        <% if @project.attachments.first.video? %>
+          <picture class="img-slide-big cursor">
+            <source srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 992px)">
+            <%= cl_video_tag @project.attachments.first.key, controls: true, muted: true %>
+          </picture>
+        <% else %>
+          <picture class="img-slide-big cursor" data-bs-toggle="modal" data-bs-target="#modalBigScreen">
+            <source srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 992px)">
+            <%= cl_image_tag @project.attachments.first.key %>
+          </picture>
+        <% end %>
       <% end %>
     </div>
   </div>
-
-
-
 </div>
 <!-- The overlay small screen-->
 <div class="modal fade" id="modalSmallScreen" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-fullscreen">
     <div class="modal-content overlay-small">
       <div class="modal-body overlay-small-body d-flex">
-        <% if @project.attachments.first.blob.content_type == "video/mp4" %>
-          <img src="">
-        <% else %>
-          <%= cl_image_tag @project.attachments.first.key %>
+        <% if @project.attachments.attached? %>
+          <% if @project.attachments.first.video? %>
+            <img src="">
+          <% else %>
+            <%= cl_image_tag @project.attachments.first.key %>
+          <% end %>
         <% end %>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
@@ -93,10 +93,12 @@
   <div class="modal-dialog modal-fullscreen ">
     <div class="modal-content overlay">
       <div class="modal-body overlay-body d-flex">
-        <% if @project.attachments.first.blob.content_type == "video/mp4" %>
-          <img src="">
-        <% else %>
-          <%= cl_image_tag @project.attachments.first.key %>
+        <% if @project.attachments.attached? %>
+          <% if @project.attachments.first.video? %>
+            <img src="">
+          <% else %>
+            <%= cl_image_tag @project.attachments.first.key %>
+          <% end %>
         <% end %>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>

@@ -46,6 +46,10 @@ class Project < ApplicationRecord
     slug
   end
 
+  def video_attachments?
+    attachments.each { |attachment| attachment.video? }.any?(true)
+  end
+
   private
 
   def assign_slug

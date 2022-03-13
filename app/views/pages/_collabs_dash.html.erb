@@ -6,9 +6,13 @@
         <h4 class="title-card-project-search"><%= collab.title %></h4>
         <div class="test-card">
           <% if collab.attachments.attached? %>
-            <%= cl_image_tag collab.attachments.first.key, class: "dash-card-img" %>
+            <% if collab.attachments.first.image? %>
+              <%= cl_image_tag collab.attachments.first.key, class: "dash-card-img" %>
+            <% else %>
+              <%= cl_video_tag collab.attachments.first.key, class: "dash-card-img" %>
+            <% end %>
           <% else %>
-            <img src="logo" alt="" class="dash-card-img">
+            <%= image_tag "logo.png", class: "dash-card-img" %>
           <% end %>
         </div>
         <div class="dash-card-text"><%= collab.description %></div>

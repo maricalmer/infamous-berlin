@@ -18,10 +18,10 @@
         <%= f.input :password,
                     required: true,
                     hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                    input_html: { autocomplete: "new-password", class: "input-form-login" } %>
+                    input_html: { autocomplete: "off", class: "input-form-login" } %>
         <%= f.input :password_confirmation,
                     required: true,
-                    input_html: { autocomplete: "new-password", class: "input-form-login" } %>
+                    input_html: { autocomplete: "off", class: "input-form-login" } %>
       </div>
 
       <div class="form-actions">

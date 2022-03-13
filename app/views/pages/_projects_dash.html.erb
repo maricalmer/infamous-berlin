@@ -6,9 +6,13 @@
         <h4 class="title-card-project-search"><%= project.title %></h4>
         <div class="test-card">
           <% if project.attachments.attached? %>
-            <%= cl_image_tag project.attachments.first.key, class: "dash-card-img" %>
+            <% if project.attachments.first.image? %>
+              <%= cl_image_tag project.attachments.first.key, class: "dash-card-img" %>
+            <% else %>
+              <%= cl_video_tag project.attachments.first.key, class: "dash-card-img" %>
+            <% end %>
           <% else %>
-            <img src="logo" alt="" class="dash-card-img">
+            <%= image_tag "logo.png", class: "dash-card-img" %>
           <% end %>
         </div>
         <div class="dash-card-text"><%= project.description %></div>
