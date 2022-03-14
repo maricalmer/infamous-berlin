@@ -1,6 +1,7 @@
 class Project < ApplicationRecord
   belongs_to :user
   has_many :applications
+  # ^^ old inquiry??
   has_many :jobs
   has_many :collabs
   has_many :members, class_name: 'User', through: :collabs

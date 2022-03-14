@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :users, param: :slug
   resources :projects, param: :slug do
     resources :collabs, only: [:new, :create]
+    resources :jobs, only: [:new, :create]
     # member do
     #   post :apply
     #   post :unapply
@@ -13,7 +14,7 @@ Rails.application.routes.draw do
   end
   resources :collabs, only: [:destroy]
 
-  resources :jobs do
+  resources :jobs, only: [:show, :destroy, :edit, :update, :index] do
     resources :inquiries, only: [:new, :create]
   end
   resources :inquiries, only: [:show, :destroy, :edit, :update] do

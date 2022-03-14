@@ -8,7 +8,7 @@ class Job < ApplicationRecord
   validates :description, presence: true
   validate :right_payment, unless: :no_payment_type?
 
-  enum payment: { fixed_rate: "fixed_rate", hourly_rate: "hourly_rate" }
+  enum payment: { fixed_rate: "fixed rate", hourly_rate: "hourly rate" }
   enum status: { open: "open", close: "close" }
 
   include PgSearch::Model

@@ -259,16 +259,16 @@ abbr {
   font-size: calc(1.275rem + 0.3vw);
   margin-bottom: 0.5rem;
 }
-.project_location, .project_category, .project_date, .update-profile-form-top {
+.project_location, .project_category, .project_date, .update-profile-form-top, .user_website, .user_soundcloud, .user_instagram, .user_youtube, .user_mixcloud, .user_linkedin, .new-job-form-description-field {
   margin-bottom: 2vh;
 }
-.project_description, .user_bio, .user_skills, .update-profile-form-social-media {
+.project_description, .user_bio, .user_skills, .update-profile-form-social-media, .job_location {
   border-bottom: 4px dashed black;
   padding-bottom: 8vh;
   margin-bottom: 8vh;
 }
-.new-project-form-title-field {
-  margin-bottom: 5vh;
+.new-project-form-title-field, .new-job-form-title-field {
+  margin-bottom: 2vh;
   input {
     line-height: 3rem;
     text-align: center;
@@ -296,7 +296,7 @@ abbr {
   font-size: 2rem;
   text-align: center;
 }
-#project_description, #user_bio {
+#project_description, #user_bio, #job_description {
   height: 35vh;
 }
 // #inquiry_motivation, #inquiry_experience, #project_title, #project_description, #project_location, #project_date_1i, #project_date_2i, #project_date_3i, #project_date_4i, #project_date_5i, #project_category, #project_member, #project_status, #user_username, #user_email, #user_bio, #user_skills, #user_website, #user_instagram, #user_soundcloud, #user_youtube, #user_mixcloud, #user_linkedin, #user_twitter {
@@ -373,14 +373,6 @@ abbr {
   text-overflow: ellipsis;
   max-width: 220px;
 }
-// .diagonal-separator {
-//   background-color: blue;
-//   width: 500px;
-//   height: 500px;
-//   padding: 70px;
-//   position: relative;
-// }
-
 .new-project-title {
   border-bottom: 4px dashed black;
 }
@@ -390,6 +382,15 @@ abbr {
   top: 100px;
   right: 0;
   width: 288px;
+  overflow-x: visible;
+  z-index: 4;
+}
+.new-job-form-title {
+  font-size: 3rem;
+  position: absolute;
+  top: 100px;
+  right: 0;
+  width: 230px;
   overflow-x: visible;
   z-index: 4;
 }
@@ -440,7 +441,7 @@ abbr {
     display: block;
   }
 }
-.side-img-new-project {
+.side-img-new-project, .side-img-new-job {
   display: none;
 }
 .video-girls, .video-singer {
@@ -469,6 +470,11 @@ abbr {
     font-size: 4rem;
     right: 9vw;
     width: 290px;
+  }
+  .new-job-form-title {
+    font-size: 4rem;
+    right: 9vw;
+    width: 307px;
   }
   .new-project-form {
     padding: 3rem;
@@ -581,7 +587,6 @@ abbr {
     display: block;
     height: 100vh;
     border-left: 2px solid black;
-    //
     background: linear-gradient(to top, rgba(0,0,0,0.1),#333), url("https://images.unsplash.com/photo-1598620616337-cb8f766489bd");
     background-position: 0% 100%;
     background-repeat: no-repeat;
@@ -590,7 +595,20 @@ abbr {
     position: -webkit-sticky;
     position: sticky;
     top: 0px;
-    // width: 40%;
+  }
+  .side-img-new-job {
+    display: block;
+    height: 100vh;
+    border-left: 2px solid black;
+    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), url("https://images.unsplash.com/photo-1509453721491-c3af5961df76");
+    // background: linear-gradient(to top, rgba(0,0,0,0.1),#333), url("https://images.unsplash.com/photo-1564483335100-3413b45dbd37");
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: grayscale(100%);
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0px;
   }
   .side-img-edit-project {
     display: block;
@@ -628,6 +646,12 @@ abbr {
     font-size: 6rem;
     right: 22vw;
     width: 572px;
+    top: 60px;
+  }
+  .new-job-form-title {
+    font-size: 6rem;
+    right: 22vw;
+    width: 460px;
     top: 60px;
   }
   .update-project-form-title {

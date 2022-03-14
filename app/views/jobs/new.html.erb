@@ -1,0 +1,22 @@
+<%= render 'shared/hamburger' %>
+<%= render 'shared/brand' %>
+<div class="background-search">
+  <div class="new-project-page new-project-js">
+    <div class="wrapper-title-form">
+      <h1 class="new-job-form-title">
+        Create a new job
+        <div class="underlined-title"></div>
+      </h1>
+      <div class="big-card-form">
+        <div class="new-project-form">
+          <%= render "form" , locals: { job: @job } %>
+        </div>
+      </div>
+    </div>
+    <div class="img-divider-wrapper">
+      <div class="diagonal-separator1"></div>
+      <div class="diagonal-separator2"></div>
+      <div class="side-img-new-job"></div>
+    </div>
+  </div>
+</div>

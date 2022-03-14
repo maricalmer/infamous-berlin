@@ -1,0 +1,41 @@
+<%= simple_form_for [ @project, @job ], remote: true, html: { class: "new-project-form-js"} do |f| %>
+  <div class="new-job-form-title-field">
+    <%= f.input :title, label: 'Job title:', error: 'Mandatory field', input_html: { autocomplete: "off" } %>
+  </div>
+  <div class="new-job-form-description-field">
+    <%= f.input :description, label: 'Describe the job:', error: 'Mandatory field' %>
+  </div>
+  <div class="search-data form-group string optional job_location" data-set="<%= @location_autocomplete_set.to_json %>">
+    <label class="string optional" for="job_location">Where is the job location?</label>
+    <input type="text" name="job[location]" id="job_location" class="input-location-project-new form-control string optional" >
+  </div>
+
+
+  <%= f.input :skills_needed, wrapper_html: { class: "skills-hidden-field" } %>
+  <div class="new-skill-custom">
+    <div class="new-skill-input-block">
+      <label for="fname" class="new-skill-label">Skills needed:</label>
+      <div class="d-flex">
+        <input type="text" id="fname" class="skill-value-js input-add-skill"></input>
+        <div class="btn-add-skill-js btn-add-skill">Add</div>
+      </div>
+    </div>
+    <div>
+      <label>Skills list:</label>
+      <ol class="skills-list-js list-skills">
+      </ol>
+    </div>
+  </div>
+  <div class="d-flex ">
+    <%= f.input :payment, label: 'Payment type:', as: :select, collection: @job.class.payments.values, include_blank: false, wrapper_html: { class: "me-5" } %>
+    <%= f.input :money, label: 'Money:', error: 'Mandatory field' %>
+  </div>
+
+
+
+  <%= f.submit "Save!", id: "btn-form-submit", class: "form-btn-js" %>
+  <button class="more-btn jobs-more-btn btn-hidden form-btn-js" type="button" disabled>
+    <span class="spinner-border spinner-border" role="status" aria-hidden="true"></span>
+    Loading...
+  </button>
+<% end %>
