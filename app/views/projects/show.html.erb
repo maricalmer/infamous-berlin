@@ -48,19 +48,20 @@
     <% end %>
     <% if @project.user == current_user %>
       <div class="new-member-button-form">
-        <button class="btn-covering btn-covering-js">Add member</button>
+        <button class="btn btn-covering btn-covering-js">Add member</button>
         <%= simple_form_for [ @project, @collab ] do |f| %>
           <div class="project-show-js search-data new-member-form new-member-form-js" data-set="<%= @autocomplete_set.to_json %>">
-            <div class="d-flex">
+            <div class="new-member-form-btn">
               <div class="new-member-field">
                 <label class="string optional" for="project_member">Add member's username</label>
                 <input type="text" name="project[member]" id="project_member" class="input-member-project-new form-control string optional" autocomplete="off">
               </div>
-              <%= f.submit "+", class: "btn btn-primary btn-add-member" %>
+              <%= f.submit "+", class: "new-member-field-plus" %>
             </div>
           </div>
         <% end %>
       </div>
+      <%= link_to "Add job", new_job_path, class:"btn btn-projects" %>
     <% end %>
     <% if @jobs.any? %>
       <button class="btn-talents w-100" data-bs-toggle="modal" data-bs-target="#jobsList">Looking for talents!</button>

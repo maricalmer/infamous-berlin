@@ -42,8 +42,8 @@
   width: 100%;
   background-color: #3D00BE;
   box-shadow: -6px -6px black;
-  border: solid 3px black;
-  height: 56px;
+  border: solid 4px black;
+  // height: 56px;
   color: white;
   .btn-add-member {
     font-size: 2rem;
@@ -66,19 +66,37 @@
   display: block;
   position: static;
 }
+.new-member-form-btn {
+  display: flex;
+  height: 60px;
+}
 .new-member-field {
+  border-right: 3px solid black;
   width: 100%;
   label {
-      padding-left: 4px;
+      padding: 4px;
       outline: 2px solid black;
       width: 100%;
+      height: 50%;
   }
   .input-member-project-new {
     border: 0px !important;
     border-bottom: 2px solid white !important;
     border-radius: 0px;
-    height: 26px;
+    height: 50%;
   }
+}
+.new-member-field-plus {
+  font-size: 2rem;
+  cursor: pointer;
+  border: none;
+  background-color: #3D00BE;
+  display: inline-block;
+  width: 33%;
+  color: white;
+}
+.new-member-field-plus:hover {
+  background-color: #5A26C9;
 }
 .modal-member-line {
   display: flex;
