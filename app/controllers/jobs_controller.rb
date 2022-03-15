@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
-  # before_action :set_project, only: [:show, :new, :create]
+  before_action :set_project, only: [:new, :create]
 
   def index
     @jobs = Job.all
@@ -16,13 +16,13 @@ class JobsController < ApplicationController
 
   def new
     @job = Job.new
+    @location_autocomplete_set = Job.first.job_locations
   end
 
   def create
     @job = Job.new(job_params)
-    @job.project = @project
     if @job.save
-      redirect_to job_path(@job), notice: 'Job was successfully created.'
+      redirect_to dashboard_path, notice: 'Job was successfully created.'
     else
       render :new
     end
@@ -47,11 +47,11 @@ class JobsController < ApplicationController
     @job = Job.find(params[:id])
   end
 
-  # def set_project
-  #   @project = Project.find(params[:project_id])
-  # end
+  def set_project
+    @project = Project.find_by(slug: params[:project_slug])
+  end
 
   def job_params
-    params.require(:job).permit(:title, :description, :deadline, :start_date, :end_date, :skills_needed)
+    params.require(:job).permit(:title, :description, :location, :money, :payment, :status, skills_needed: [])
   end
 end

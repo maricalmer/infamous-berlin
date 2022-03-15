@@ -1,7 +1,7 @@
 const removeSkill = () => {
   event.currentTarget.parentElement.remove()
-  const skills_input_field = document.getElementById("user_skills")
-  const skill = event.currentTarget.previousElementSibling.textContent
+  const skills_input_field = document.querySelector(".skills_hidden_field_js")
+  let skill = event.currentTarget.previousElementSibling.textContent
   if (skill.includes(" ")) {
     skill = skill.replace(" ", "_")
   }
@@ -19,11 +19,12 @@ const pushToList = () => {
   let skill = document.querySelector(".skill-value-js").value
   if (skill != "") {
     const list = document.querySelector(".skills-list-js")
-    list.innerHTML += `<ul class="list-skill"><span>${skill.toLowerCase()}</span><div class='btn-delete-skill-js btn-delete-skill'>&#x2716;</div></ul>`
+    list.innerHTML += `<ul class="list-skill"><span>${skill}</span><div class='btn-delete-skill-js btn-delete-skill'>&#x2716;</div></ul>`
+    // list.innerHTML += `<ul class="list-skill"><span>${skill.toLowerCase()}</span><div class='btn-delete-skill-js btn-delete-skill'>&#x2716;</div></ul>`
     if (skill.includes(" ")) {
       skill = skill.trim().replace(" ", "_")
     }
-    const skills_input_field = document.getElementById("user_skills")
+    const skills_input_field = document.querySelector(".skills_hidden_field_js")
     skills_input_field.value = skills_input_field.value.concat(' ', skill)
   }
   triggerDeleteBtns();
@@ -33,13 +34,14 @@ const pushToList = () => {
 const populateList = () => {
   const list = document.querySelector(".skills-list-js")
   list.innerHTML = "";
-  const skills_input_field = document.getElementById("user_skills")
+  const skills_input_field = document.querySelector(".skills_hidden_field_js")
   skills_input_field.value.split(" ").forEach((skill) => {
     if (skill != "") {
       if (skill.includes("_")) {
         skill = skill.replace("_", " ")
       }
-      list.innerHTML += `<ul class="list-skill"><span>${skill.toLowerCase()}</span><div class='btn-delete-skill-js btn-delete-skill'>&#x2716;</div></ul>`
+      list.innerHTML += `<ul class="list-skill"><span>${skill}</span><div class='btn-delete-skill-js btn-delete-skill'>&#x2716;</div></ul>`
+      // list.innerHTML += `<ul class="list-skill"><span>${skill.toLowerCase()}</span><div class='btn-delete-skill-js btn-delete-skill'>&#x2716;</div></ul>`
     }
   })
   triggerDeleteBtns();

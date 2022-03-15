@@ -272,6 +272,7 @@ abbr {
   input {
     line-height: 3rem;
     text-align: center;
+    font-size: 2rem;
   }
 }
 // .new-project-form-description-field {
@@ -393,6 +394,30 @@ abbr {
   width: 230px;
   overflow-x: visible;
   z-index: 4;
+}
+.new-job-form-money-field {
+  display: flex;
+  align-items: center;
+}
+.new-job-form-money-label-input {
+  display: flex;
+  align-items: center;
+}
+.job-payment-dropdown {
+  display: flex;
+  margin-bottom: 2vh;
+}
+.job-payment-text {
+  margin-left: 1rem;
+}
+.job-dropdown-label, .job-money-label {
+  width: 100px;
+}
+.job-dropdown-input {
+  width: fit-content;
+}
+.job-money-input {
+  width: 70px;
 }
 .update-project-form-title {
   font-size: 3rem;
@@ -600,7 +625,9 @@ abbr {
     display: block;
     height: 100vh;
     border-left: 2px solid black;
-    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), url("https://images.unsplash.com/photo-1509453721491-c3af5961df76");
+    // https://images.unsplash.com/photo-1582091652153-eb8f55ff7cd9
+    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), url("https://images.unsplash.com/photo-1598414160330-a9da11bcb52d");
+    // background: linear-gradient(to top, rgba(0,0,0,0.1),#333), url("https://images.unsplash.com/photo-1509453721491-c3af5961df76");
     // background: linear-gradient(to top, rgba(0,0,0,0.1),#333), url("https://images.unsplash.com/photo-1564483335100-3413b45dbd37");
     background-position: 0% 100%;
     background-repeat: no-repeat;

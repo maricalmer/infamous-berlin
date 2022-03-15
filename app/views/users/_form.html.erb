@@ -4,7 +4,7 @@
     <%= f.input :email, label: 'Email address:', error: 'Mandatory field' %>
   </div>
   <%= f.input :bio, label: 'Bio:' %>
-  <%= f.input :skills, wrapper_html: { class: "skills-hidden-field" } %>
+  <%= f.input :skills, wrapper_html: { class: "skills-hidden-field" }, input_html: { class: "skills_hidden_field_js", multiple: true } %>
   <div class="new-skill-custom">
     <div class="new-skill-input-block">
       <label for="fname" class="new-skill-label">New skill:</label>

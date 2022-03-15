@@ -46,6 +46,7 @@ import { openBar } from '../components/search_navbar';
 import { showSpinnerBtn } from '../components/spinner_btn';
 import { renderPreview } from '../components/file_preview';
 import { addSkill, populateList, disableEnterSubmit } from '../components/add_skill';
+import { setDropdown } from '../components/switch_payment_rate';
 
 
 document.addEventListener('turbolinks:load', () => {
@@ -118,6 +119,9 @@ document.addEventListener('turbolinks:load', () => {
     addSkill();
     populateList();
     disableEnterSubmit();
+  }
+  if (document.querySelectorAll(".dropdown-payment-js").length) {
+    setDropdown();
   }
     // expandSearchBar();
 
