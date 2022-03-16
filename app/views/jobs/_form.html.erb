@@ -24,8 +24,8 @@
       </ol>
     </div>
   </div>
-  <div class="">
-    <%= f.input :payment, label: 'Payment type:', as: :select, collection: @job.class.payments.values, include_blank: false, wrapper_html: { class: "job-payment-dropdown" }, input_html: { class: "dropdown-payment-js job-dropdown-input" }, label_html: { class: "job-dropdown-label" } %>
+  <div class="new-job-form-payment-block">
+    <%= f.input :payment, label: 'Payment type:', as: :select, collection: [["fixed rate", "fixed_rate"], ["hourly rate", "hourly_rate"]], include_blank: false, wrapper_html: { class: "job-payment-dropdown" }, input_html: { class: "dropdown-payment-js job-dropdown-input" }, label_html: { class: "job-dropdown-label" } %>
     <div class="new-job-form-money-field">
       <%= f.input :money, label: 'Money:', error: 'Mandatory field', wrapper_html: { class: "new-job-form-money-label-input" }, label_html: { class: "job-money-label" }, input_html: { class: "job-money-input", value: "100", step: "10" } %>
       <div class="job-payment-js job-payment-text">€ total</div>

@@ -395,6 +395,15 @@ abbr {
   overflow-x: visible;
   z-index: 4;
 }
+.edit-job-form-title {
+  font-size: 3rem;
+  position: absolute;
+  top: 100px;
+  right: 0;
+  width: 170px;
+  overflow-x: visible;
+  z-index: 4;
+}
 .new-job-form-money-field {
   display: flex;
   align-items: center;
@@ -405,6 +414,7 @@ abbr {
 }
 .job-payment-dropdown {
   display: flex;
+  margin-right: 2rem;
   margin-bottom: 2vh;
 }
 .job-payment-text {
@@ -412,6 +422,7 @@ abbr {
 }
 .job-dropdown-label, .job-money-label {
   width: 100px;
+  margin-right: 1rem;
 }
 .job-dropdown-input {
   width: fit-content;
@@ -419,6 +430,7 @@ abbr {
 .job-money-input {
   width: 70px;
 }
+
 .update-project-form-title {
   font-size: 3rem;
   position: absolute;
@@ -481,6 +493,19 @@ abbr {
   top: 0px;
 }
 @media(min-width: 450px) {
+  .new-job-form-payment-block {
+    display: flex;
+    align-items: center;
+    label {
+      margin-bottom: 0;
+    }
+  }
+  .job-dropdown-label, .job-money-label {
+    width: fit-content;
+  }
+  .job-payment-dropdown {
+    margin-bottom: 0;
+  }
   .new-project-form-title {
     font-size: 4rem;
     right: 9vw;
@@ -500,6 +525,11 @@ abbr {
     font-size: 4rem;
     right: 9vw;
     width: 307px;
+  }
+  .edit-job-form-title {
+    font-size: 4rem;
+    right: 2vw;
+    width: 226px;
   }
   .new-project-form {
     padding: 3rem;
@@ -621,27 +651,10 @@ abbr {
     position: sticky;
     top: 0px;
   }
-  .side-img-new-job {
-    display: block;
-    height: 100vh;
-    border-left: 2px solid black;
-    // https://images.unsplash.com/photo-1582091652153-eb8f55ff7cd9
-    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), url("https://images.unsplash.com/photo-1598414160330-a9da11bcb52d");
-    // background: linear-gradient(to top, rgba(0,0,0,0.1),#333), url("https://images.unsplash.com/photo-1509453721491-c3af5961df76");
-    // background: linear-gradient(to top, rgba(0,0,0,0.1),#333), url("https://images.unsplash.com/photo-1564483335100-3413b45dbd37");
-    background-position: 0% 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    filter: grayscale(100%);
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0px;
-  }
   .side-img-edit-project {
     display: block;
     height: 100vh;
     border-left: 2px solid black;
-    //
     background: linear-gradient(to top, rgba(0,0,0,0.1),#333), url("https://images.unsplash.com/photo-1635951232611-8d476320b172");
     background-position: 0% 100%;
     background-repeat: no-repeat;
@@ -650,10 +663,34 @@ abbr {
     position: -webkit-sticky;
     position: sticky;
     top: 0px;
-    // width: 40%;
+  }
+  .side-img-new-job {
+    display: block;
+    height: 100vh;
+    border-left: 2px solid black;
+    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), url("https://images.unsplash.com/photo-1598414160330-a9da11bcb52d");
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: grayscale(100%);
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0px;
+  }
+  .side-img-edit-job {
+    display: block;
+    height: 100vh;
+    border-left: 2px solid black;
+    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), url("https://images.unsplash.com/photo-1582091652153-eb8f55ff7cd9");
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: grayscale(100%);
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0px;
   }
   .side-img-update-profile {
-    // display: block;
     height: 100vh;
     border-left: 2px solid black;
     background: linear-gradient(to top, rgba(0,0,0,0.1),#333), url("https://images.unsplash.com/photo-1639048221673-6432e8d1f67f");
@@ -664,7 +701,6 @@ abbr {
     position: -webkit-sticky;
     position: sticky;
     top: 0px;
-    // width: 40%;
   }
   .wrapper-title-form {
     width: 65%;
@@ -679,6 +715,12 @@ abbr {
     font-size: 6rem;
     right: 22vw;
     width: 460px;
+    top: 60px;
+  }
+  .edit-job-form-title {
+    font-size: 6rem;
+    right: 22vw;
+    width: 339px;
     top: 60px;
   }
   .update-project-form-title {
