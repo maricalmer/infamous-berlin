@@ -229,6 +229,7 @@
 .dash-new-btn {
   width: fit-content;
   margin: 0 auto;
+  margin-bottom: 8vh;
 }
 .dash-plus-text {
   color: black;
@@ -459,6 +460,17 @@
   color: black;
   text-align: center;
   height: 37px;
+}
+
+@media(min-width: 450px) {
+  .dash-new-btn {
+    width: 175px;
+  }
+}
+@media(min-width: 650px) {
+  .dash-new-btn {
+    width: 250px;
+  }
 }
 @media(min-width: 850px) {
   .dash-menu-dropdown-mobile-more, .dash-menu-dropdown-mobile-arrow {

@@ -1,21 +1,21 @@
 <div class="background-search">
   <%= render 'shared/navbar' %>
-  <div class="container">
+  <div class="inquiry-big-card">
     <div class="job-show">
       <h1 class="job-show-title"><%= @job.title.upcase %></h1>
       <h4 class="job-show-description"><%= @job.description %></h4>
-      <div class="d-flex justify-content-around job-show-details">
-        <div class="d-flex justify-content-start align-items-center">
+      <div class="job-show-details">
+        <div class="job-show-details-payment">
           <% if @job.payment == "fixed_rate" %>
             <i class="fas fa-money-bill-wave-alt me-1"></i><h5><%= @job.money %>€</h5>
           <% else %>
             <i class="fas fa-money-bill-wave-alt me-1"></i><h5><%= @job.money %>€/hour</h5>
           <% end %>
         </div>
-        <div class="d-flex justify-content-start align-items-center">
+        <div class="job-show-details-location">
           <i class="fas fa-map-marker-alt me-1"></i> <h5><%= @job.location %></h5>
         </div>
-        <div class="d-flex justify-content-start align-items-center">
+        <div class="job-show-details-date">
           <i class="fas fa-clock me-1"></i><h5><%= @job.created_at.strftime("uploaded on %d/%m/%Y") %></h5>
         </div>
       </div>
@@ -25,7 +25,7 @@
           <li><h4 class="skill-box"><%= skill.downcase %></h4></li>
         <% end %>
       </ul>
-      <%= link_to "Apply!", new_job_inquiry_path(@job), class: "btn btn-apply w-100 m-0" %>
+      <%= link_to "Apply!", new_job_inquiry_path(@job), class: "btn btn-apply" %>
       <div class="job-show-footer mt-5">
         <h5 class="text-center mb-5">
           part of the project <span><%= link_to @job.project.title, project_path(@job.project) %></span>

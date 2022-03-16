@@ -34,11 +34,11 @@ class JobsController < ApplicationController
 
   def update
     @job.update(job_params)
-    redirect_to job_path(@job)
+    redirect_to dashboard_path, notice: 'Job was successfully updated.'
   end
 
   def destroy
-    @job.deleted!
+    @job.destroy
     redirect_to dashboard_path, notice: 'Job was successfully deleted.'
   end
 

@@ -16,12 +16,12 @@
 }
 .btn-apply {
   font-size: 2rem;
-  margin: 3rem 0 32px 0.5rem;
+  margin: 3rem auto 32px auto;
   display: block;
   border: solid;
   box-shadow: -6px -6px black;
   background: #7ECA93;
-  width: 100%;
+  width: 150px;
 }
 .btn-apply:hover {
   background-color: #8EC7A6;
@@ -180,12 +180,6 @@
 .btn-hidden {
   display: none !important;
 }
-
-@media(min-width: 992px) {
-  .btn-apply {
-    width: auto;
-  }
-}
 .submit-msg-chat-btn {
   font-size: 1.5rem;
   line-height: 1;
@@ -214,6 +208,11 @@
 }
 .submit-msg-modal-btn:hover {
   background-color: #8EC7A6;
+}
+@media(min-width: 450px) {
+  .btn-apply {
+    width: 250px;
+  }
 }
 @media(min-width: 470px) {
   .submit-msg-chat-btn {

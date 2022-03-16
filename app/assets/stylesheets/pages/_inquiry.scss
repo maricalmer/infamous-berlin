@@ -69,6 +69,9 @@
   border-top: 8px dashed black;
   border-bottom: 8px dashed black;
   margin-bottom: 4rem;
+  .underlined-gray {
+    width: 100%;
+  }
 }
 .inquiry-show-motivation {
   padding-top: 2rem;
@@ -109,11 +112,13 @@
   color: #333
 }
 .inquiry-show-footer span {
-  border-bottom: 4px dashed black;
+  border-bottom: none;
+  box-shadow: inset 0 -30px 0 #D1BFF6, 0 2px 0 #D1BFF6;
   transition: box-shadow .5s, color .5s;
   a {
     text-decoration: none;
     color: #333;
+    line-height: 2.5rem;
   }
 }
 .inquiry-show-footer span:hover {
@@ -151,5 +156,23 @@
   li {
     list-style-type: none;
     margin: 8px;
+  }
+}
+@media(min-width: 450px) {
+  .inquiry-show-footer span {
+    border-bottom: 4px dashed black;
+    transition: box-shadow .5s, color .5s;
+    box-shadow: none;
+    a {
+      line-height: 1rem;
+      color: #333;
+    }
+  }
+  .inquiry-show-footer span:hover {
+    box-shadow: inset 0 -30px 0 #333, 0 2px 0 #333;
+    border-bottom: none;
+    a {
+      color: #D1BFF6;
+    }
   }
 }
