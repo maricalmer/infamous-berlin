@@ -14,7 +14,7 @@ class Project < ApplicationRecord
   validates :description, presence: true
   validates :slug, :title, uniqueness: true, case_sensitive: false
   validates :attachments, content_type: { in: ['image/png', 'image/jpg', 'image/jpeg', 'video/mp4'], message: ' - wrong format (PNG, JPG, JPEG or MP4 only)' }, size: { less_than: 10.megabytes , message: '10MB max' }
-  enum status: { past: "past", upcoming: "upcoming", deleted: "deleted" }
+  enum status: { past: "past", upcoming: "upcoming" }
 
   include PgSearch::Model
   pg_search_scope :search_by_title_description_location_category, against: {

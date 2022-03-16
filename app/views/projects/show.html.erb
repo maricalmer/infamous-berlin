@@ -61,7 +61,9 @@
           </div>
         <% end %>
       </div>
-      <%= link_to "Add job", new_project_job_path(@project), class:"btn btn-projects" %>
+      <% if @project.upcoming? %>
+        <%= link_to "Add job", new_project_job_path(@project), class:"btn btn-projects" %>
+      <% end %>
     <% end %>
     <% if @jobs.any? %>
       <button class="btn-talents w-100" data-bs-toggle="modal" data-bs-target="#jobsList">Looking for talents!</button>

@@ -1,8 +1,5 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home, :search]
-
-  before_action :set_upcoming_projects, only: [:dashboard, :upcoming_projects_dash]
-  before_action :set_past_projects, only: [:past_projects_dash, :open_jobs_dash]
   before_action :set_project_ids, only: [:open_jobs_dash, :close_jobs_dash, :hold_received_dash, :accepted_received_dash, :rejected_received_dash]
   before_action :set_job_ids, only: [:hold_received_dash, :accepted_received_dash, :rejected_received_dash]
   before_action :set_collab_project_ids, only: [:upcoming_collabs_dash, :past_collabs_dash]
@@ -14,27 +11,58 @@ class PagesController < ApplicationController
   end
 
   def dashboard
+    @upcoming_projects = Project.upcoming.where(user: current_user).order(created_at: :desc)
     @past_projects = Project.past.where(user: current_user).order(created_at: :desc)
-    project_ids = (@projects.ids << @past_projects.ids).flatten
-    # ^^ test with no id in one side or the other
-    @past_jobs = Job.close.where(project_id: project_ids).order(created_at: :desc)
-    @jobs = Job.open.where(project_id: project_ids).order(created_at: :desc)
-    job_ids = (@jobs.ids << @past_jobs.ids).flatten
+    if @upcoming_projects.any?
+      @projects = @upcoming_projects
+    elsif @past_projects.any?
+      @projects = @past_projects
+    end
+    project_ids = (@upcoming_projects.ids << @past_projects.ids).flatten
+
+    @open_jobs = Job.open.where(project_id: project_ids).order(created_at: :desc)
+    @close_jobs = Job.close.where(project_id: project_ids).order(created_at: :desc)
+    if @open_jobs.any?
+      @jobs = @open_jobs
+    elsif @close_jobs.any?
+      @jobs = @close_jobs
+    end
+    job_ids = (@open_jobs.ids << @close_jobs.ids).flatten
 
     @collab_project_ids = Collab.where(member: current_user).map { |collab| collab.project.id }
-    @collabs = Project.upcoming.where(id: @collab_project_ids).order(created_at: :desc)
+    @upcoming_collabs = Project.upcoming.where(id: @collab_project_ids).order(created_at: :desc)
     @past_collabs = Project.past.where(id: @collab_project_ids).order(created_at: :desc)
+    if @upcoming_collabs.any?
+      @collabs = @upcoming_collabs
+    elsif @past_collabs.any?
+      @collabs = @past_collabs
+    end
 
     @hold_received_applications = Inquiry.on_hold.where(job_id: job_ids)
     @accepted_received_applications = Inquiry.accepted.where(job_id: job_ids)
     @rejected_received_applications = Inquiry.rejected.where(job_id: job_ids)
+    if @hold_received_applications.any?
+      @inquiries = @hold_received_applications
+    elsif @accepted_received_applications.any?
+      @inquiries = @accepted_received_applications
+    elsif @rejected_received_applications.any?
+      @inquiries = @rejected_received_applications
+    end
 
     @hold_sent_applications = Inquiry.on_hold.where(user: current_user)
     @accepted_sent_applications = Inquiry.accepted.where(user: current_user)
     @rejected_sent_applications = Inquiry.rejected.where(user: current_user)
+    if @hold_sent_applications.any?
+      @inquiries = @hold_sent_applications
+    elsif @accepted_sent_applications.any?
+      @inquiries = @accepted_sent_applications
+    elsif @rejected_sent_applications.any?
+      @inquiries = @rejected_sent_applications
+    end
   end
 
   def upcoming_projects_dash
+    @projects = Project.upcoming.where(user: current_user).order(created_at: :desc)
     respond_to do |format|
       format.text { render partial: 'projects_dash.html' }
       # format.text { render partial: 'projects_dash.html', locals: { projects: @projects } }
@@ -42,6 +70,7 @@ class PagesController < ApplicationController
   end
 
   def past_projects_dash
+    @projects = Project.past.where(user: current_user).order(created_at: :desc)
     respond_to do |format|
       format.text { render partial: 'projects_dash.html' }
       # format.text { render partial: 'projects_dash.html', locals: { projects: @projects } }
@@ -144,14 +173,6 @@ class PagesController < ApplicationController
   end
 
   private
-
-  def set_upcoming_projects
-    @projects = Project.upcoming.where(user: current_user).order(created_at: :desc)
-  end
-
-  def set_past_projects
-    @projects = Project.past.where(user: current_user).order(created_at: :desc)
-  end
 
   def set_project_ids
     projects = Project.past.where(user: current_user)

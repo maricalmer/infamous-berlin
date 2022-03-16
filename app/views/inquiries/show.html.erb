@@ -36,7 +36,7 @@
           <%= @inquiry.experience %>
         </h4>
         <ul class="inquiry-skills-list align-items-center">
-          <h4 class="inquiry-skills-label">User <%= "skill".pluralize(@inquiry.user.skills.count) %>:</h4>
+          <h4 class="inquiry-skills-label">User <%= "skills".pluralize(@inquiry.user.display_skills.count) %>:</h4>
           <% @inquiry.user.display_skills.each do |skill| %>
             <li><h4 class="skill-box"><%= skill.downcase %></h4></li>
           <% end %>

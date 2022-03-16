@@ -54,72 +54,72 @@
   <label class="dash-menu-dropdown-mobile-arrow" for="checkbox_toggle"></label>
   <div class="dash-menu-dropdown-mobile-more mobile-dropdown-arrow-js"></div>
   <ul class="dash-dropdowns">
-    <% if @projects.any? || @past_projects.any? %>
+    <% if @upcoming_projects.present? || @past_projects.present? %>
       <li class="dash-dropdown">
         <div class="dash-dropdown-menu" >Projects</div>
         <div class="dash-dropdown-links">
-          <% if @projects.any? %>
+          <% if @upcoming_projects.present? %>
             <%= link_to "Upcoming", upcoming_projects_dash_path, class: "dropdown-links-js", remote: true %>
           <% end %>
-          <% if @past_projects.any? %>
+          <% if @past_projects.present? %>
             <%= link_to "Past", past_projects_dash_path, class: "dropdown-links-js", remote: true %>
           <% end %>
         </div>
       </li>
     <% end %>
-    <% if @jobs.any? || @past_jobs.any? %>
+    <% if @open_jobs.present? || @close_jobs.present? %>
       <li class="dash-dropdown dash-dropdown-jobs">
         <div class="dash-dropdown-menu" >Jobs</div>
         <div class="dash-dropdown-links">
-          <% if @jobs.any? %>
+          <% if @open_jobs.present? %>
             <%= link_to "Open", open_jobs_dash_path, class: "dropdown-links-js", remote: true %>
           <% end %>
-          <% if @past_jobs.any? %>
+          <% if @close_jobs.present? %>
             <%= link_to "Close", close_jobs_dash_path, class: "dropdown-links-js", remote: true %>
           <% end %>
         </div>
       </li>
     <% end %>
-    <% if @hold_received_applications.any? || @accepted_received_applications.any? || @rejected_received_applications.any? %>
+    <% if @hold_received_applications.present? || @accepted_received_applications.present? || @rejected_received_applications.present? %>
       <li class="dash-dropdown">
         <div class="dash-dropdown-menu" >Applications received</div>
         <div class="dash-dropdown-links">
-          <% if @hold_received_applications.any? %>
+          <% if @hold_received_applications.present? %>
             <%= link_to "On hold", hold_received_dash_path, class: "dropdown-links-js", remote: true %>
           <% end %>
-          <% if @accepted_received_applications.any? %>
+          <% if @accepted_received_applications.present? %>
             <%= link_to "Accepted", accepted_received_dash_path, class: "dropdown-links-js", remote: true %>
           <% end %>
-          <% if @rejected_received_applications.any? %>
+          <% if @rejected_received_applications.present? %>
             <%= link_to "Rejected", rejected_received_dash_path, class: "dropdown-links-js", remote: true %>
           <% end %>
         </div>
       </li>
     <% end %>
-    <% if @collab_project_ids.any? %>
+    <% if @upcoming_collabs.present? || @past_collabs.present? %>
       <li class="dash-dropdown">
         <div class="dash-dropdown-menu" >Collabs</div>
         <div class="dash-dropdown-links">
-          <% if @collabs.any? %>
+          <% if @upcoming_collabs.present? %>
             <%= link_to "Upcoming", upcoming_collabs_dash_path, class: "dropdown-links-js", remote: true %>
           <% end %>
-          <% if @past_collabs.any? %>
+          <% if @past_collabs.present? %>
             <%= link_to "Past", past_collabs_dash_path, class: "dropdown-links-js", remote: true %>
           <% end %>
         </div>
       </li>
     <% end %>
-    <% if @hold_sent_applications.any? || @accepted_sent_applications.any? || @rejected_sent_applications.any? %>
+    <% if @hold_sent_applications.present? || @accepted_sent_applications.present? || @rejected_sent_applications.present? %>
       <li class="dash-dropdown">
         <div class="dash-dropdown-menu" >Applications sent</div>
         <div class="dash-dropdown-links">
-          <% if @hold_sent_applications.any? %>
+          <% if @hold_sent_applications.present? %>
             <%= link_to "On hold", hold_sent_dash_path, class: "dropdown-links-js", remote: true %>
           <% end %>
-          <% if @accepted_sent_applications.any? %>
+          <% if @accepted_sent_applications.present? %>
             <%= link_to "Accepted", accepted_sent_dash_path, class: "dropdown-links-js", remote: true %>
           <% end %>
-          <% if @rejected_sent_applications.any? %>
+          <% if @rejected_sent_applications.present? %>
             <%= link_to "Rejected", rejected_sent_dash_path, class: "dropdown-links-js", remote: true %>
           <% end %>
         </div>
@@ -132,27 +132,32 @@
 
 
 
-<% if @projects.any? %>
+<% if @projects.present? %>
   <div class="portfolio-cards">
     <div class="dash-chevron"><h5 class="past-chevron-left chevron-hidden">&#x3c;</h5></div>
     <%= render "projects_dash" %>
     <div class="dash-chevron"><h5 class="past-chevron-right chevron-hidden">&#x3e;</h5></div>
   </div>
-<% elsif @collabs.any? %>
+<% elsif @collabs.present? %>
   <div class="portfolio-cards">
     <div class="dash-chevron"><h5 class="past-chevron-left chevron-hidden">&#x3c;</h5></div>
     <%= render "collabs_dash" %>
     <div class="dash-chevron"><h5 class="past-chevron-right chevron-hidden">&#x3e;</h5></div>
   </div>
-<% elsif @hold_sent_applications.any? || @accepted_sent_applications.any? || @rejected_sent_applications.any? %>
+
+
+<% elsif @hold_sent_applications.present? || @accepted_sent_applications.present? || @rejected_sent_applications.present? %>
   <div class="portfolio-cards">
     <div class="dash-chevron"><h5 class="past-chevron-left chevron-hidden">&#x3c;</h5></div>
     <%= render "sent_dash" %>
     <div class="dash-chevron"><h5 class="past-chevron-right chevron-hidden">&#x3e;</h5></div>
   </div>
+
+
+
 <% else %>
   <div class="d-flex align-items-baseline ms-5">
-    <h5 class="text-center">No upcoming project in your portfolio yet...</h5><i class="far fa-sad-cry ms-1"></i>
+    <h5 class="text-center">No project nor collab in your portfolio yet...</h5><i class="far fa-sad-cry ms-1"></i>
   </div>
   <!-- ^^ moyen de virer la derniere option? -->
 <% end %>
