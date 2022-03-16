@@ -4,13 +4,13 @@ class CreateJobs < ActiveRecord::Migration[6.0]
       t.string :title
       t.string :location
       t.integer :money
-      t.string :skills_needed, array: true, default: []
+      t.string :skills_needed
       t.text :description
       t.references :project, null: false, foreign_key: true
 
       t.timestamps
     end
 
-    add_index :jobs, :skills_needed, using: 'gin'
+    add_index :jobs, :skills_needed
   end
 end

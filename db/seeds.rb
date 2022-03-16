@@ -35,7 +35,7 @@ puts "creating users"
     email: Faker::Internet.email,
     password: "123456",
     username: Faker::Internet.unique.username,
-    skills: [Faker::Job.key_skill.downcase],
+    skills: Faker::Job.key_skill.downcase,
     bio: Faker::Lorem.sentence(word_count: rand(5..50)),
     title: Faker::Lorem.sentence(word_count: rand(1..6))
   )

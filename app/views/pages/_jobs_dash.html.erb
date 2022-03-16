@@ -19,7 +19,7 @@
         </div>
         <p class="job-card-description"><%= job.description * 3 %></p>
         <ul class="skills-list-dash">
-          <% job.skills_needed.each do |skill| %>
+          <% job.display_skills_needed.each do |skill| %>
             <li class="skill-box-dash"><p><%= skill.downcase %></p></li>
           <% end %>
         </ul>

@@ -99,7 +99,7 @@ ActiveRecord::Schema.define(version: 2022_02_12_110751) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.text "bio"
-    t.string "skills", default: [], array: true
+    t.string "skills"
     t.string "slug"
     t.citext "username"
     t.text "title"

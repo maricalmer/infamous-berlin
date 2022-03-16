@@ -21,7 +21,8 @@ class JobsController < ApplicationController
 
   def create
     @job = Job.new(job_params)
-    if @job.save
+    @job.project = @project
+    if @job.save!
       redirect_to dashboard_path, notice: 'Job was successfully created.'
     else
       render :new
@@ -52,6 +53,6 @@ class JobsController < ApplicationController
   end
 
   def job_params
-    params.require(:job).permit(:title, :description, :location, :money, :payment, :status, skills_needed: [])
+    params.require(:job).permit(:title, :description, :location, :money, :payment, :status, :skills_needed)
   end
 end

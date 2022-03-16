@@ -33,7 +33,13 @@ class Job < ApplicationRecord
     ["Kreuzberg", "Mitte", "Wedding", "P.Berg", "Neukölln", "Friedrichshain", "Remote"]
   end
 
-  private
+  def display_skills_needed
+    return [] if skills_needed.nil?
+
+    skills_needed.split.map do |skill|
+      skill.include?("_") ? skill.gsub("_", " ") : skill
+    end
+  end
 
   # def right_payment
   #   errors.add(:payment, "invalid payment type") if ([payment] - PAYMENT).present?

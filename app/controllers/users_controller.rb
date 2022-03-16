@@ -15,8 +15,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.skills = params[:user][:skills].split
-    if @user.update(user_params)
+    if @user.update!(user_params)
       redirect_to dashboard_path, notice: 'Your account was successfully updated.'
     else
       render :edit
@@ -67,6 +66,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :username, :bio, :photo, :website, :instagram, :soundcloud, :youtube, :mixcloud, :linkedin, :twitter, skills: [])
+    params.require(:user).permit(:email, :username, :bio, :photo, :website, :instagram, :soundcloud, :youtube, :mixcloud, :linkedin, :twitter, :skills)
   end
 end

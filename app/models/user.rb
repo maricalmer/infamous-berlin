@@ -75,7 +75,9 @@ class User < ApplicationRecord
   end
 
   def display_skills
-    skills.map do |skill|
+    return [] if skills.nil?
+
+    skills.split.map do |skill|
       skill.include?("_") ? skill.gsub("_", " ") : skill
     end
   end

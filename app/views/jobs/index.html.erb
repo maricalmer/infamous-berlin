@@ -38,8 +38,9 @@
             </div>
             <p class="job-card-description"><%= job.description * 3 %></p>
             <ul class="skills-list ps-0">
-              <li><h5 class="skill-box"><%= job.skills_needed.first.downcase %></h5></li>
-              <li><h5 class="skill-box"><%= job.skills_needed.first.downcase %></h5></li>
+              <% job.display_skills_needed.each do |skill| %>
+                <li><h5 class="skill-box"><%= skill.downcase %></h5></li>
+              <% end %>
             </ul>
             <%= link_to "See more", job_path(job), class: "more-btn jobs-more-btn" %>
           </div>
