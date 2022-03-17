@@ -1,3 +1,5 @@
+<%= render 'shared/hamburger' %>
+<%= render 'shared/brand' %>
 <div class="background-search">
   <div class="container">
     <h1 class="mt-5 mb-4 d-inline-block">
@@ -17,7 +19,7 @@
       <h4><%= @job.description * 5 %></h4>
       <ul class="my-4 skills-list ps-0 align-items-center">
         <h4 class="me-5"><%= "Skill".pluralize(@job.display_skills_needed.count) %> needed:</h4>
-        <% @job.skills_needed.each do |skill| %>
+        <% @job.display_skills_needed.each do |skill| %>
           <li><h5 class="skill-box"><%= skill.downcase %></h5></li>
         <% end %>
       </ul>

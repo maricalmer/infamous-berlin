@@ -8,28 +8,28 @@
   <%= render 'shared/carousel' %>
   <!-- <div class="vertical-dashed-line"></div> -->
   <div class="side-text">
-    <h1><%= @project.title %></h1>
-    <div class="categories d-flex ms-2">
-      <% @project.category.each do |cat| %>
-        <h5 class="skill-box my-3"><%= cat %></h5>
-      <% end %>
-    </div>
-    <div class="d-flex">
-      <% if @project.date? %>
-        <h4><%= @project.date.strftime("%d/%m/%Y") %></h4>
-      <% end %>
-      <% if @project.location? %>
-        <h4 class="ms-3">-</h4>
-        <h4 class="ms-3"><%= @project.location %></h4>
-      <% end %>
+    <div>
+      <h1 class="project-title"><%= @project.title %></h1>
+      <div class="categories d-flex ms-2">
+        <% @project.category.each do |cat| %>
+          <div class="skill-box-project"><%= cat %></div>
+        <% end %>
+      </div>
+      <div class="project-date-location">
+        <% if @project.date? %>
+          <div class="project-side-details"><%= @project.date.strftime("%d/%m/%Y") %></div>
+        <% end %>
+        <% if @project.location? %>
+          <div class="project-side-details ms-3">-</div>
+          <div class="project-side-details ms-3"><%= @project.location %></div>
+        <% end %>
+      </div>
     </div>
     <% if @members.any? %>
       <div class="members-block">
-        <div>
-          <h4 class="mb-4">Project <%= 'member'.pluralize(@members.count) %>:</h4>
-        </div>
+        <div class="project-side-details mb-4">Project <%= 'member'.pluralize(@members.count) %>:</div>
         <div class="members-block-avatars">
-          <% @members.first(5).each do |member| %>
+          <% @members.first(4).each do |member| %>
             <div class="diamond-frame-member" data-bs-toggle="modal" data-bs-target="#membersList">
               <% if member.photo.attached? %>
                 <%= cl_image_tag member.photo.key %>
@@ -46,28 +46,32 @@
         </div>
       </div>
     <% end %>
-    <% if @project.user == current_user %>
-      <div class="new-member-button-form">
-        <button class="btn btn-covering btn-covering-js">Add member</button>
-        <%= simple_form_for [ @project, @collab ] do |f| %>
-          <div class="project-show-js search-data new-member-form new-member-form-js" data-set="<%= @autocomplete_set.to_json %>">
-            <div class="new-member-form-btn">
-              <div class="new-member-field">
-                <label class="string optional" for="project_member">Add member's username</label>
-                <input type="text" name="project[member]" id="project_member" class="input-member-project-new form-control string optional" autocomplete="off">
+    <div>
+      <% if @project.user == current_user %>
+
+          <div class="new-member-button-form">
+            <button class="btn btn-covering btn-covering-js">Add member</button>
+            <%= simple_form_for [ @project, @collab ] do |f| %>
+              <div class="project-show-js search-data new-member-form new-member-form-js" data-set="<%= @autocomplete_set.to_json %>">
+                <div class="new-member-form-btn">
+                  <div class="new-member-field">
+                    <label class="string optional" for="project_member">Add member's username</label>
+                    <input type="text" name="project[member]" id="project_member" class="input-member-project-new form-control string optional" autocomplete="off">
+                  </div>
+                  <%= f.submit "+", class: "new-member-field-plus" %>
+                </div>
               </div>
-              <%= f.submit "+", class: "new-member-field-plus" %>
-            </div>
+            <% end %>
           </div>
-        <% end %>
-      </div>
-      <% if @project.upcoming? %>
-        <%= link_to "Add job", new_project_job_path(@project), class:"btn btn-projects" %>
+          <% if @project.upcoming? %>
+            <%= link_to "Add job", new_project_job_path(@project), class:"btn btn-projects" %>
+          <% end %>
+
       <% end %>
-    <% end %>
-    <% if @jobs.any? %>
-      <button class="btn-talents w-100" data-bs-toggle="modal" data-bs-target="#jobsList">Looking for talents!</button>
-    <% end %>
+      <% if @jobs.any? %>
+        <button class="btn-talents" data-bs-toggle="modal" data-bs-target="#jobsList">Looking for talents!</button>
+      <% end %>
+    </div>
   </div>
 </div>
 <div class="description-bottom">
@@ -81,7 +85,7 @@
         <h5 class="modal-title" id="exampleModalLabel">Project members</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body pt-0">
+      <div class="modal-body">
         <% @members.each do |member| %>
           <div class="modal-member-line">
             <%= link_to user_path(member.slug) do %>
@@ -107,7 +111,7 @@
   </div>
 </div>
 <div class="modal fade" id="jobsList" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content members-modal">
       <div class="modal-header members-modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Open jobs</h5>
@@ -119,7 +123,7 @@
             <div class="modal-job-record">
               <h4 class="modal-job-title"><%= job.title.downcase %> job in <%= job.location %></h4>
               <div class="modal-job-right-wrapper">
-                <p class="m-0">(published <%= time_ago_in_words(job.created_at) %> ago)</p>
+                <p class="modal-job-days">(published <%= time_ago_in_words(job.created_at) %> ago)</p>
                 <div class="modal-job-manicule-wrapper">
                   <div class="modal-job-manicule">&#x261E;</div>
                 </div>
@@ -131,18 +135,6 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
 <% if !user_signed_in? %>
   <%= render 'shared/login_form' %>
 <% end %>

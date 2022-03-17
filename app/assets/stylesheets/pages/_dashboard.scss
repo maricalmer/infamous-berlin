@@ -227,7 +227,7 @@
   background-color: #A75454;
 }
 .dash-new-btn {
-  width: fit-content;
+  width: 130px;
   margin: 0 auto;
   margin-bottom: 8vh;
 }
@@ -243,6 +243,7 @@
   justify-content: center;
   align-items: center;
   h3 {
+    font-size: calc(1.275rem + 0.3vw);
     display: inline-block;
     margin: 0;
   }
@@ -250,8 +251,13 @@
 .dash-plus-text:hover {
   background-color: #8EC7A6;
 }
+.dash-plus-text:active {
+  background-color: #8EC7A6;
+  background-size: 100%;
+  transition: background 0s;
+}
 .dash-plus-symbol {
-  font-size: 5rem;
+  font-size: 4rem;
   color: black;
   vertical-align: middle;
   display: inline-block;
@@ -260,7 +266,7 @@
   line-height: 0;
 }
 .dash-search-symbol {
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin-right: 8px;
 }
 .dash-top-menu {
@@ -391,8 +397,6 @@
 }
 .dash-bottom-btns {
   margin-bottom: 1.5rem;
-  display: flex;
-  align-items: center;
 }
 .dash-sent-icons {
   height: 100%;
@@ -465,6 +469,21 @@
 @media(min-width: 450px) {
   .dash-new-btn {
     width: 175px;
+  }
+  .dash-bottom-btns {
+    display: flex;
+    align-items: center;
+  }
+  .dash-plus-symbol {
+    font-size: 5rem;
+  }
+  .dash-search-symbol {
+    font-size: 2rem;
+  }
+  .dash-plus-text {
+    h3 {
+      font-size: calc(1.3rem + 0.6vw);
+    }
   }
 }
 @media(min-width: 650px) {

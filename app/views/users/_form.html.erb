@@ -1,7 +1,7 @@
 <%= simple_form_for @user, remote: true, html: { class: "new-project-form-js", autocomplete: "off"} do |f| %>
   <div class="update-profile-form-top">
     <%= f.input :username, label: 'Username:', error: 'Mandatory field' %>
-    <%= f.input :email, label: 'Email address:', error: 'Mandatory field' %>
+    <%= f.input :email, label: 'Email address:', error: 'Invalid format' %>
   </div>
   <%= f.input :bio, label: 'Bio:' %>
   <%= f.input :skills, wrapper_html: { class: "skills-hidden-field" }, input_html: { class: "skills_hidden_field_js" } %>
@@ -30,7 +30,7 @@
   </div>
   <div class="upload-picture-form">
     <div class="upload-picture-left">
-      <%= f.input :photo, label: 'Update your profile picture:', as: :file %>
+      <%= f.input :photo, label: 'Update your profile picture:', as: :file, :input_html => { accept: ".png, .jpg, .jpeg" } %>
     </div>
     <div class="upload-picture-right">
       <div class="diamond-wrapper-js diamond-wrapper-form diamond-wrapper-form-hidden">

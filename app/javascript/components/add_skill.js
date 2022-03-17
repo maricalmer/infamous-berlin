@@ -3,7 +3,7 @@ const removeSkill = () => {
   const skills_input_field = document.querySelector(".skills_hidden_field_js")
   let skill = event.currentTarget.previousElementSibling.textContent
   if (skill.includes(" ")) {
-    skill = skill.replace(" ", "_")
+    skill = skill.replaceAll(" ", "_")
   }
   skills_input_field.value = skills_input_field.value.replace(skill, "")
 }
@@ -22,7 +22,7 @@ const pushToList = () => {
     list.innerHTML += `<ul class="list-skill"><span>${skill}</span><div class='btn-delete-skill-js btn-delete-skill'>&#x2716;</div></ul>`
     // list.innerHTML += `<ul class="list-skill"><span>${skill.toLowerCase()}</span><div class='btn-delete-skill-js btn-delete-skill'>&#x2716;</div></ul>`
     if (skill.includes(" ")) {
-      skill = skill.trim().replace(" ", "_")
+      skill = skill.trim().replaceAll(" ", "_")
     }
     const skills_input_field = document.querySelector(".skills_hidden_field_js")
     skills_input_field.value = skills_input_field.value.concat(' ', skill)
@@ -38,7 +38,7 @@ const populateList = () => {
   skills_input_field.value.split(" ").forEach((skill) => {
     if (skill != "") {
       if (skill.includes("_")) {
-        skill = skill.replace("_", " ")
+        skill = skill.replaceAll("_", " ")
       }
       list.innerHTML += `<ul class="list-skill"><span>${skill}</span><div class='btn-delete-skill-js btn-delete-skill'>&#x2716;</div></ul>`
       // list.innerHTML += `<ul class="list-skill"><span>${skill.toLowerCase()}</span><div class='btn-delete-skill-js btn-delete-skill'>&#x2716;</div></ul>`

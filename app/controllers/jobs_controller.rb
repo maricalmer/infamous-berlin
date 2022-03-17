@@ -22,7 +22,7 @@ class JobsController < ApplicationController
   def create
     @job = Job.new(job_params)
     @job.project = @project
-    if @job.save!
+    if @job.save
       redirect_to dashboard_path, notice: 'Job was successfully created.'
     else
       render :new
@@ -34,7 +34,11 @@ class JobsController < ApplicationController
 
   def update
     @job.update(job_params)
-    redirect_to dashboard_path, notice: 'Job was successfully updated.'
+    if @job.save
+      redirect_to dashboard_path, notice: 'Job was successfully updated.'
+    else
+      render :new
+    end
   end
 
   def destroy

@@ -21,7 +21,7 @@
   width: 150px;
   text-align: center;
   word-break: break-all;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 .diamond-frame-big {
   position: relative;
@@ -102,6 +102,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  padding: 2rem 0;
 }
 .profile-buttons button {
   display: block;
@@ -146,9 +147,13 @@
   color: #858585;
   cursor: pointer;
   display: inline-block;
+  padding: 0.5rem 0;
 }
 .footer-socialmedia-link:hover {
   color: #7ECA93;
+}
+.profile-modal-no-result {
+  margin-left: 2rem;
 }
 @media(min-width: 992px) {
   .diamond-frame-big {
@@ -156,7 +161,8 @@
     height: 300px;
   }
   .card-user-profile-username {
-    width: 150px;
+    font-size: 2rem;
+    width: 300px;
   }
   .links-socialmedia {
     display: flex;
@@ -165,14 +171,13 @@
   }
   .footer-socialmedia-link {
     margin-right: 1rem;
+    padding: 0;
   }
   .links-socialmedia div:last-child {
     a {
       margin-right: 0;
     }
   }
-}
-@media(min-width: 992px) {
   .profile-grid {
     display: grid;
     grid-template-columns: repeat(10, 1fr);
@@ -193,6 +198,7 @@
     grid-row-end: 6;
     border-top: none;
     border-left: dashed 4px black;
+    padding: 0;
   }
   .skills-bio {
     grid-column-start: 1;

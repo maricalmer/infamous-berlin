@@ -10,6 +10,10 @@
   border-bottom: dashed 4px black;
   background: #D1BFF6;
 }
+.project-date-location {
+  display: flex;
+  margin-bottom: 1rem;
+}
 .description-bottom {
   color: #d6d6d6;
   padding: 32px;
@@ -18,9 +22,22 @@
   height: 100%;
   flex-grow: 1;
 }
+.skill-box-project {
+  box-shadow: -6px -6px black;
+  border: solid;
+  width: auto;
+  padding: 2px;
+  background-color: #d6d6d6;
+  font-size: 1.1rem;
+  margin: 1rem 0;
+}
+.project-side-details {
+  font-size: 1.2rem;
+  margin-bottom: 0;
+}
 .members-block {
   margin-top: 2rem;
-  margin-bottom: 2rem;
+  // margin-bottom: 2rem;
 }
 .members-block-avatars {
   display: flex;
@@ -68,6 +85,7 @@
 }
 .new-member-form-btn {
   display: flex;
+  align-items: center;
   height: 60px;
 }
 .new-member-field {
@@ -80,10 +98,12 @@
       height: 50%;
   }
   .input-member-project-new {
+    padding: 0;
     border: 0px !important;
     border-bottom: 2px solid white !important;
     border-radius: 0px;
     height: 50%;
+    padding-left: 4px;
   }
 }
 .new-member-field-plus {
@@ -102,11 +122,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 70px;
+  height: 100px;
   margin-bottom: 5px;
   border-top: 3px dashed black;
-  padding-top: 5px;
-  padding-bottom: 5px;
 }
 .modal-member-line:first-child {
   border-top: 0px;
@@ -119,12 +137,9 @@
   color: black;
 }
 .modal-job-record {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   margin-top: 4px;
   border: 2px solid black;
-  height: 45px;
+  height: fit-content;
 }
 .modal-job-record:hover {
   box-shadow: black -1px -1px, black -2px -2px, black -3px -3px;
@@ -142,32 +157,33 @@
 }
 .modal-job-manicule-wrapper {
   height: 100%;
-  width: 50px;
   background-color: #7ECA93;
   padding-top: 10px;
   padding-left: 3px;
-  margin-left: 1rem;
 }
 .modal-job-manicule {
   font-size: 3rem;
   line-height: 0;
-  margin: 0;
-  padding-bottom: 22px;
+  margin: 0 auto;
+  width: fit-content;
+  padding-bottom: 28px;
   color: black;
 }
 .modal-job-right-wrapper {
-  display: flex;
   height: 100%;
-  align-items: center;
 }
 .modal-job-title {
-  margin-left: 1rem;
+  margin-left: 4px;
   margin-bottom: 5px;
+}
+.modal-job-days {
+  margin-left: 8px;
+  margin-bottom: 4px;
 }
 .diamond-frame-member-modal {
   display: block;
   margin: 0 20px;
-  width: 35px;
+  width: 50px;
   transform: rotate(45deg);
   overflow: hidden;
   border: 2px solid black;
@@ -185,7 +201,7 @@
   color: #a34646;
 }
 .member-modal-username {
-  margin-left: 0;
+  font-size: 1.5rem;
   margin-right: auto;
   text-decoration: none;
   color: black;
@@ -202,6 +218,68 @@
   border-bottom: 2px solid black;
   background-color: #858585;
 }
+@media(min-width: 450px) {
+  .members-block-avatars {
+    position: absolute;
+  }
+  .new-member-form {
+    margin-top: 2rem;
+  }
+  .new-member-form-btn {
+    height: 42px;
+    label {
+      padding: 0;
+      padding-left: 4px;
+    }
+  }
+  .new-member-field {
+    height: 42px;
+    label {
+      height: 22px;
+    }
+    .input-member-project-new {
+      height: 20px;
+      border-bottom: 2px solid black !important;
+    }
+  }
+  .new-member-field-plus {
+    height: 42px;
+    padding: 0;
+  }
+  .new-member-button-form {
+    margin-top: 2rem;
+  }
+  .modal-job-record {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 45px;
+  }
+  .modal-job-manicule {
+    width: fit-content;
+    margin: 0;
+    padding-bottom: 22px;
+  }
+  .modal-job-right-wrapper {
+    display: flex;
+    align-items: center;
+  }
+  .modal-job-manicule-wrapper {
+    width: 50px;
+    margin-left: 1rem;
+  }
+  .modal-job-title {
+    margin-left: 1rem;
+  }
+  .modal-job-days {
+    margin-left: 4px;
+  }
+  .members-block {
+    display: flex;
+    position: relative;
+    margin-top: 0;
+  }
+}
 @media(min-width: 992px) {
   .top-block-project {
     display: flex;
@@ -211,6 +289,9 @@
     border-bottom: dashed 4px black;
   }
   .side-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     width: 30%;
     border-left: dashed 4px black;
     border-top: none;

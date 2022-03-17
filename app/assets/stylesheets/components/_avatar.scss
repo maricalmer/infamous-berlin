@@ -72,8 +72,8 @@
 }
 .diamond-frame-member {
   display: block;
-  width: 50px;
-  height: 50px;
+  width: 35px;
+  height: 35px;
   -ms-transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
@@ -132,7 +132,7 @@
   color: #d6d6d6;
   line-height: 0px;
   margin-right: 12px;
-  margin-top: 18px;
+  margin-top: 10px;
 }
 .diamond-frame-small img {
   width: 100%;
@@ -175,6 +175,11 @@
     max-height: 100%;
     transform: rotate(-45deg) scale(1.4);
     transition: transform 1.2s;
+  }
+}
+@media(min-width: 470px) {
+  .diamond-frame-member {
+    margin-left: 7rem;
   }
 }
 @media(min-width: 470px) {

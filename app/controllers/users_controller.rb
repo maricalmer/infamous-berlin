@@ -15,7 +15,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update!(user_params)
+    @user.update(user_params)
+    if @user.save
       redirect_to dashboard_path, notice: 'Your account was successfully updated.'
     else
       render :edit

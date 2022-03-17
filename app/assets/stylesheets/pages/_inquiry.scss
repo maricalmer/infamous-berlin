@@ -104,13 +104,7 @@
   }
 }
 .change-status-inquiry {
-  display: flex;
-  align-items: baseline;
-  justify-content: start;
-  margin-top: 6vh;
-  .change-status-inquiry-label, .btn {
-    font-size: 2rem;
-  }
+  margin-top: 12vh;
 }
 .inquiry-show-footer {
   margin-top: 4rem;
@@ -164,6 +158,15 @@
   }
 }
 @media(min-width: 450px) {
+  .change-status-inquiry {
+    display: flex;
+    align-items: baseline;
+    justify-content: start;
+    margin-top: 6vh;
+    .change-status-inquiry-label, .btn {
+      font-size: 2rem;
+    }
+  }
   .inquiry-show-footer span {
     border-bottom: 4px dashed black;
     transition: box-shadow .5s, color .5s;
