@@ -1,10 +1,10 @@
 <%= render 'shared/navbar' %>
 <div class="background-search">
   <div class="inquiry-big-card">
-    <%= link_to dashboard_path, class: "back-dash-link" do %>
+    <div class="back-dash-link back-dash-link-js">
       <div class="back-dash-link-arrow">&#10132;</div>
       <h5>Back to dashboard</h5>
-    <% end %>
+    </div>
     <div class="inquiry-show">
       <div class="pic-inquiry">
         <div class="diamond-wrapper-inquiry">
@@ -67,7 +67,7 @@
         </div>
       <% elsif current_user == @inquiry.job.project.user %>
         <div class="change-status-inquiry">
-          <h4>Change status:</h4>
+          <h4 class="change-status-inquiry-label">Change status:</h4>
           <%= link_to change_status_inquiry_path(@inquiry, status: "accepted"), class: "btn btn-update-accept", remote: true, method: :patch do %>
             Accept
           <% end %>

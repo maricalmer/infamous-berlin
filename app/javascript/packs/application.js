@@ -47,6 +47,7 @@ import { showSpinnerBtn } from '../components/spinner_btn';
 import { renderPreview } from '../components/file_preview';
 import { addSkill, populateList, disableEnterSubmit } from '../components/add_skill';
 import { setDropdown } from '../components/switch_payment_rate';
+import { setBackBtn } from '../components/back_dash_btn';
 
 
 document.addEventListener('turbolinks:load', () => {
@@ -122,6 +123,9 @@ document.addEventListener('turbolinks:load', () => {
   }
   if (document.querySelectorAll(".dropdown-payment-js").length) {
     setDropdown();
+  }
+  if (document.querySelectorAll(".back-dash-link-js").length) {
+    setBackBtn();
   }
     // expandSearchBar();
 

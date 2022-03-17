@@ -3,6 +3,7 @@
   margin-top: 5rem;
 }
 .back-dash-link {
+  cursor: pointer;
   position: absolute;
   display: flex;
   align-items: center;
@@ -104,8 +105,12 @@
 }
 .change-status-inquiry {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: start;
+  margin-top: 6vh;
+  .change-status-inquiry-label, .btn {
+    font-size: 2rem;
+  }
 }
 .inquiry-show-footer {
   margin-top: 4rem;
