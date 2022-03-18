@@ -10,6 +10,18 @@
   border-bottom: dashed 4px black;
   background: #D1BFF6;
 }
+.project-user {
+  color: #D1BFF6;
+  text-decoration: none;
+  box-shadow: inset 0 -30px 0 #333, 0 2px 0 #333;
+  transition: box-shadow .5s, color .5s;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+.project-user:hover {
+  color: #D1BFF6;
+  box-shadow: inset 0 -30px 0 black, 0 2px 0 black;
+}
 .project-date-location {
   display: flex;
   margin-bottom: 1rem;
@@ -118,16 +130,64 @@
 .new-member-field-plus:hover {
   background-color: #5A26C9;
 }
+.modal-owner-project-owner {
+  margin-left: 1rem;
+  font-size: 2rem;
+  z-index: 1;
+  position: relative;
+}
+.modal-members {
+  font-size: 2rem;
+  z-index: 1;
+  position: relative;
+}
+.modal-members-title {
+  .underlined-title {
+    height: 18px;
+    top: -19px;
+    right: 9px;
+    background-color: #a3a3a3;
+    position: relative;
+    z-index: 0;
+    width: 180px;
+  }
+}
+.modal-owner-subdetails {
+  display: flex;
+  align-items: center;
+  margin-right: 3rem;
+  .member-modal-username {
+    margin-left: 1rem;
+  }
+}
+.modal-owner-line {
+  display: flex;
+  justify-content: space-between;
+  height: 100px;
+  background-color: #a3a3a3;
+  padding: 0.5rem 0;
+  // background-color: #858585;
+  // border-bottom: 2px solid black;
+  .underlined-title {
+    height: 18px;
+    top: -19px;
+    right: -7px;
+    background-color: #d6d6d6;
+    position: relative;
+    z-index: 0;
+    width: 127px;
+  }
+}
 .modal-member-line {
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 100px;
-  margin-bottom: 5px;
-  border-top: 3px dashed black;
+  padding: 1rem 2rem;
 }
-.modal-member-line:first-child {
-  border-top: 0px;
+
+.modal-member-line ~ .modal-member-line {
+  border-top: 3px dashed black;
 }
 .modal-job-link {
   text-decoration: none;
@@ -203,6 +263,7 @@
 .member-modal-username {
   font-size: 1.5rem;
   margin-right: auto;
+  margin-left: 2rem;
   text-decoration: none;
   color: black;
 }
@@ -213,10 +274,14 @@
   border: 4px solid black;
   border-radius: 0px;
   background-color: #d6d6d6;
+  .modal-body {
+    padding-top: 0.5rem;
+  }
 }
-.members-modal-header, .members-modal-header {
+.members-modal-header {
   border-bottom: 2px solid black;
   background-color: #858585;
+
 }
 @media(min-width: 450px) {
   .members-block-avatars {

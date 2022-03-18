@@ -9,7 +9,9 @@
   <!-- <div class="vertical-dashed-line"></div> -->
   <div class="side-text">
     <div>
-      <h1 class="project-title"><%= @project.title %></h1>
+      <h1 class="project-title d-inline"><%= @project.title %></h1>
+      <h3 class="d-inline ms-1">by <%= link_to @project.user.username, user_path(@project.user), class:"project-user" %></h3>
+
       <div class="categories d-flex ms-2">
         <% @project.category.each do |cat| %>
           <div class="skill-box-project"><%= cat %></div>
@@ -27,7 +29,7 @@
     </div>
     <% if @members.any? %>
       <div class="members-block">
-        <div class="project-side-details mb-4">Project <%= 'member'.pluralize(@members.count) %>:</div>
+        <div class="project-side-details mb-4">Additional <%= 'member'.pluralize(@members.count) %>:</div>
         <div class="members-block-avatars">
           <% @members.first(4).each do |member| %>
             <div class="diamond-frame-member" data-bs-toggle="modal" data-bs-target="#membersList">
@@ -79,13 +81,35 @@
   <h4><%= simple_format @project.description %></h4>
 </div>
 <div class="modal fade" id="membersList" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
+  <div class="modal-dialog">
     <div class="modal-content members-modal">
       <div class="modal-header members-modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Project members</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Group members</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      <div class="modal-owner-line">
+        <div>
+          <div class="modal-owner-project-owner">Project owner:</div>
+          <div class="underlined-title"></div>
+        </div>
+        <div class="modal-owner-subdetails">
+          <%= link_to user_path(@project.user) do %>
+            <div class="diamond-frame-member-modal">
+              <% if @project.user.photo.attached? %>
+                <%= cl_image_tag @project.user.photo.key %>
+              <% else %>
+                <%= image_tag "logo.png" %>
+              <% end %>
+            </div>
+          <% end %>
+          <%= link_to @project.user.username, user_path(@project.user), class:"member-modal-username" %>
+        </div>
+      </div>
       <div class="modal-body">
+        <div class="modal-members-title">
+          <div class="modal-members">Additional members:</div>
+          <div class="underlined-title"></div>
+        </div>
         <% @members.each do |member| %>
           <div class="modal-member-line">
             <%= link_to user_path(member.slug) do %>
