@@ -11,7 +11,7 @@
   background: #D1BFF6;
 }
 .project-user {
-  color: #D1BFF6;
+  color: #d6d6d6;
   text-decoration: none;
   box-shadow: inset 0 -30px 0 #333, 0 2px 0 #333;
   transition: box-shadow .5s, color .5s;
@@ -22,17 +22,25 @@
   color: #D1BFF6;
   box-shadow: inset 0 -30px 0 black, 0 2px 0 black;
 }
-.project-date-location {
+.project-date, .project-location {
   display: flex;
-  margin-bottom: 1rem;
+  // margin-bottom: 1rem;
 }
 .description-bottom {
-  color: #d6d6d6;
-  padding: 32px;
   background-color: #333;
   border-top: dashed 4px black;
   height: 100%;
   flex-grow: 1;
+  display: flex;
+}
+.description-left-side {
+  color: #d6d6d6;
+  padding: 32px;
+  width: 70%;
+}
+.description-right-side {
+  width: 30%;
+  padding: 32px;
 }
 .skill-box-project {
   box-shadow: -6px -6px black;
@@ -40,12 +48,17 @@
   width: auto;
   padding: 2px;
   background-color: #d6d6d6;
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   margin: 1rem 0;
 }
 .project-side-details {
-  font-size: 1.2rem;
+  font-size: 2rem;
   margin-bottom: 0;
+}
+.description-right-details {
+  font-size: 1.5rem;
+  margin-bottom: 0;
+  color: #d6d6d6;
 }
 .members-block {
   margin-top: 2rem;
@@ -104,10 +117,10 @@
   border-right: 3px solid black;
   width: 100%;
   label {
-      padding: 4px;
-      outline: 2px solid black;
-      width: 100%;
-      height: 50%;
+    padding: 4px;
+    outline: 2px solid black;
+    width: 100%;
+    height: 50%;
   }
   .input-member-project-new {
     padding: 0;
@@ -135,6 +148,7 @@
   font-size: 2rem;
   z-index: 1;
   position: relative;
+  color: black;
 }
 .modal-members {
   font-size: 2rem;
@@ -145,8 +159,8 @@
   .underlined-title {
     height: 18px;
     top: -19px;
-    right: 9px;
-    background-color: #a3a3a3;
+    right: -11px;
+    background-color: #afafaf;
     position: relative;
     z-index: 0;
     width: 180px;
@@ -164,15 +178,15 @@
   display: flex;
   justify-content: space-between;
   height: 100px;
-  background-color: #a3a3a3;
+  background-color: #D1BFF6;
   padding: 0.5rem 0;
   // background-color: #858585;
   // border-bottom: 2px solid black;
   .underlined-title {
     height: 18px;
     top: -19px;
-    right: -7px;
-    background-color: #d6d6d6;
+    right: -27px;
+    background-color: #afafaf;
     position: relative;
     z-index: 0;
     width: 127px;
@@ -288,31 +302,31 @@
     position: absolute;
   }
   .new-member-form {
-    margin-top: 2rem;
+    margin-top: 1rem;
   }
   .new-member-form-btn {
-    height: 42px;
+    height: 60px;
     label {
       padding: 0;
       padding-left: 4px;
     }
   }
   .new-member-field {
-    height: 42px;
+    height: 60px;
     label {
-      height: 22px;
+      height: 30px;
     }
     .input-member-project-new {
-      height: 20px;
-      border-bottom: 2px solid black !important;
+      height: 30px;
+      border-bottom: 2px solid white !important;
     }
   }
   .new-member-field-plus {
-    height: 42px;
+    height: 60px;
     padding: 0;
   }
   .new-member-button-form {
-    margin-top: 2rem;
+    margin-top: 0;
   }
   .modal-job-record {
     display: flex;
@@ -374,7 +388,7 @@
     align-items: center;
     flex-grow: 1;
   }
-  .description-bottom {
+  .description-left-side, .description-right-side {
     padding: 2em 3em;
   }
 }

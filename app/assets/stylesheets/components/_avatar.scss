@@ -82,6 +82,7 @@
   box-shadow: -4px 4px 0 0 black;
   background-color: #333;
   cursor: pointer;
+  margin-top: 11px;
 }
 .diamond-frame-member ~ .diamond-frame-member {
   margin-left: 0;
@@ -179,7 +180,7 @@
 }
 @media(min-width: 470px) {
   .diamond-frame-member {
-    margin-left: 7rem;
+    margin-left: 6rem;
   }
 }
 @media(min-width: 470px) {

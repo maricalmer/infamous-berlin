@@ -28,7 +28,7 @@
 }
 .btn-talents {
   font-size: 2rem;
-  margin: 3rem auto;
+  margin: 0 auto;
   // margin-top: 5rem;
   display: block;
   border: 4px solid black;
@@ -36,6 +36,13 @@
   background: #7ECA93;
   width: 100%;
   height: 68px;
+}
+.description-btns-project {
+  text-decoration: none;
+  color: white;
+}
+.description-btns-project:hover {
+  color: white;
 }
 .btn-talents:hover {
   background-color: #8EC7A6;
@@ -89,6 +96,7 @@
   width: 100%;
   color: white;
   height: 68px;
+  border-radius: 0;
 }
 .btn-covering:hover {
   background-color: #5A26C9;
@@ -244,23 +252,22 @@
     width: 100px;
   }
   .btn-covering {
-    font-size: 1.5rem;
-    height: 50px;
     padding: 0;
   }
   .btn-talents {
-    font-size: 1.5rem;
-    margin: 1rem auto;
-    height: 50px;
+    font-size: 2rem;
+    margin: 0 auto;
+    height: 68px;
     padding: 0;
+    margin-left: 2rem;
   }
   .btn-projects {
-    font-size: 1.5rem;
-    height: 50px;
+    font-size: 2rem;
+    height: 68px;
     padding: 0;
   }
   .btn-projects:focus {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 }
 @media(min-width: 470px) {
