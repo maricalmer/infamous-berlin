@@ -10,6 +10,10 @@
   border-bottom: dashed 4px black;
   background: #D1BFF6;
 }
+.project-title {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
 .project-user {
   color: #d6d6d6;
   text-decoration: none;
@@ -39,17 +43,20 @@
   background-color: #333;
   border-top: dashed 4px black;
   height: 100%;
-  flex-grow: 1;
-  display: flex;
 }
 .description-left-side {
   color: #d6d6d6;
   padding: 32px;
-  width: 70%;
+  p {
+    margin-top: 1rem;
+  }
+}
+.description-left-side-title {
+  font-size: 2.25rem;
 }
 .description-right-side {
-  width: 30%;
   padding: 32px;
+  padding-top: 64px;
 }
 .skill-box-project {
   // box-shadow: -6px -6px black;
@@ -78,7 +85,7 @@
   background-color: black;
 }
 .project-side-details {
-  font-size: 2rem;
+  font-size: 1.2rem;
   margin-bottom: 0;
 }
 .description-right-details {
@@ -87,8 +94,12 @@
   color: #d6d6d6;
 }
 .members-block {
-  margin-top: 2rem;
+  // margin-top: 2rem;
   // margin-bottom: 2rem;
+
+  display: flex;
+  position: relative;
+  margin-top: 3rem;
 }
 .members-block-avatars {
   display: flex;
@@ -96,10 +107,11 @@
   justify-content: start;
   flex-wrap: wrap;
   padding-left: 1rem;
+  position: absolute;
 }
 .new-member-button-form {
   position: relative;
-  margin-top: 2.5rem;
+  margin: 2.5rem 0;
 }
 .new-member-form {
   margin-top: 2.5rem;
@@ -171,31 +183,34 @@
 }
 .modal-owner-project-owner {
   margin-left: 1rem;
-  font-size: 2rem;
+  font-size: 1.5rem;
   z-index: 1;
   position: relative;
   color: black;
+  width: 120px;
 }
 .modal-members {
-  font-size: 2rem;
+  font-size: 1.5rem;
   z-index: 1;
   position: relative;
 }
 .modal-members-title {
   .underlined-title {
-    height: 18px;
-    top: -19px;
+    height: 10px;
+    top: -12px;
     right: -11px;
     background-color: #afafaf;
     position: relative;
     z-index: 0;
-    width: 180px;
+    width: 135px;
   }
 }
 .modal-owner-subdetails {
   display: flex;
   align-items: center;
-  margin-right: 3rem;
+  margin-right: 0.5rem;
+  flex-grow: 1;
+  margin-left: 2rem;
   .member-modal-username {
     margin-left: 1rem;
   }
@@ -209,13 +224,13 @@
   // background-color: #858585;
   // border-bottom: 2px solid black;
   .underlined-title {
-    height: 18px;
-    top: -19px;
+    height: 10px;
+    top: -12px;
     right: -27px;
     background-color: #afafaf;
     position: relative;
     z-index: 0;
-    width: 127px;
+    width: 96px;
   }
 }
 .modal-member-line {
@@ -223,7 +238,7 @@
   justify-content: space-between;
   align-items: center;
   height: 100px;
-  padding: 1rem 2rem;
+  padding: 1rem;
 }
 
 .modal-member-line ~ .modal-member-line {
@@ -282,8 +297,8 @@
 }
 .diamond-frame-member-modal {
   display: block;
-  margin: 0 20px;
   width: 50px;
+  height: 50px;
   transform: rotate(45deg);
   overflow: hidden;
   border: 2px solid black;
@@ -301,11 +316,12 @@
   color: #a34646;
 }
 .member-modal-username {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   margin-right: auto;
   margin-left: 2rem;
   text-decoration: none;
   color: black;
+  word-break: break-word;
 }
 .member-modal-username:hover {
   color: #333;
@@ -324,6 +340,41 @@
 
 }
 @media(min-width: 450px) {
+  .modal-members {
+    font-size: 2rem;
+  }
+  .modal-owner-line {
+    .underlined-title {
+      height: 18px;
+      top: -19px;
+      right: -27px;
+      width: 127px;
+    }
+  }
+  .madal-member-line {
+    padding: 1rem 2rem;
+  }
+  .modal-owner-title {
+    width: 150px;
+  }
+  .modal-members-title {
+    .underlined-title {
+      height: 18px;
+      top: -19px;
+      right: -11px;
+      width: 180px;
+    }
+  }
+  .modal-owner-project-owner {
+    font-size: 2rem;
+    width: 150px;
+  }
+  .member-modal-username {
+    font-size: 1.5rem;
+  }
+  .diamond-frame-member-modal {
+    margin: 0 20px;
+  }
   .members-block-avatars {
     position: absolute;
   }
@@ -351,9 +402,6 @@
     height: 60px;
     padding: 0;
   }
-  .new-member-button-form {
-    margin-top: 0;
-  }
   .modal-job-record {
     display: flex;
     justify-content: space-between;
@@ -379,19 +427,34 @@
   .modal-job-days {
     margin-left: 4px;
   }
-  .members-block {
-    display: flex;
-    position: relative;
-    margin-top: 0;
-  }
 }
 @media(min-width: 992px) {
+  .members-block {
+    // display: flex;
+    // position: relative;
+    margin: 0;
+  }
+  .members-block-avatars {
+    gap: 10px 0;
+  }
+  .new-member-button-form {
+    margin: 0;
+    margin-top: 2rem;
+  }
+  .modal-owner-subdetails {
+    margin-right: 3rem;
+    flex-grow: 1;
+    margin-left: 2rem;
+  }
   .top-block-project {
     display: flex;
     height: 75vh;
     min-height: 550px;
     background: linear-gradient(to right, #858585 0%, #858585 70%, #D1BFF6 70%, #D1BFF6 100%);
     border-bottom: dashed 4px black;
+  }
+  .project-title {
+    line-height: none;
   }
   .side-text {
     display: flex;
@@ -416,6 +479,24 @@
   }
   .description-left-side, .description-right-side {
     padding: 2em 3em;
+  }
+  .description-bottom {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row-reverse;
+  }
+  .description-left-side {
+    width: 70%;
+    p {
+      margin-top: 0rem;
+    }
+  }
+  .description-right-side {
+    width: 30%;
+    padding-top: 32px;
+  }
+  .project-side-details {
+    font-size: 1.5rem;
   }
 }
 

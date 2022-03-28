@@ -10,10 +10,11 @@
 }
 .carousel-container {
   width: 100%;
-  height: 80vh;
+  height: 85vh;
   border-bottom: dashed 4px black;
   background: #858585;
-  padding-top: 50px;
+  padding-top: 100px;
+  padding-bottom: 25px;
 }
 .carousel-mobile {
   display: flex;
@@ -37,7 +38,7 @@
   transition:all 0.3s ease;
 }
 .placeholder-mobile img, .placeholder-mobile video {
-  max-height: 50vh;
+  max-height: 45vh;
   max-width: 100%;
   filter:
     drop-shadow(0 -4px 0 black)
@@ -112,6 +113,7 @@ picture {
   .carousel-container {
     padding-top: 80px;
     padding-left: 3em;
+    padding-bottom: 0;
     display: flex;
     width: 70%;
     height: 100%;

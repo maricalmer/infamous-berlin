@@ -82,10 +82,10 @@
   box-shadow: -4px 4px 0 0 black;
   background-color: #333;
   cursor: pointer;
-  margin-top: 11px;
+  margin-left: 4rem;
 }
 .diamond-frame-member ~ .diamond-frame-member {
-  margin-left: 0;
+  margin-left: -10px;
 }
 .diamond-frame-medium {
   width: 150px !important;
@@ -180,12 +180,16 @@
 }
 @media(min-width: 470px) {
   .diamond-frame-member {
-    margin-left: 6rem;
+    margin-left: 5rem;
   }
-}
-@media(min-width: 470px) {
+  .diamond-frame-member {
+    margin-top: 11px;
+  }
   .diamond-frame-chat {
     display: block;
+  }
+  .diamond-frame-member ~ .diamond-frame-member {
+    margin-left: 0px;
   }
 }
 @media(min-width: 576px) {
@@ -214,5 +218,11 @@
     position: absolute;
     right: -62px;
     top: -20px;
+  }
+  .diamond-frame-member {
+    margin-top: 0px;
+  }
+  .members-block-avatars {
+    gap: 10px 0;
   }
 }

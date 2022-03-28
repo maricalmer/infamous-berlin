@@ -9,7 +9,7 @@
   <!-- <div class="vertical-dashed-line"></div> -->
   <div class="side-text">
     <div>
-      <h1 class="project-title d-inline"><%= @project.title %></h1>
+      <div class="project-title d-inline"><%= @project.title %></div>
       <h3 class="d-inline ms-1">by <%= link_to @project.user.username, user_path(@project.user), class:"project-user" %></h3>
 
 
@@ -59,12 +59,15 @@
       <div class="d-flex">
         <% if @project.user == current_user %>
           <% if  @project.upcoming? %>
-            <button class="btn-projects m-0">
-              <%= link_to "Add job", new_project_job_path(@project), class:"description-btns-project" %>
-            </button>
+            <%= link_to new_project_job_path(@project), class:"link-btn-job m-0" do %>
+              <button class="btn-job" data-bs-toggle="modal" data-bs-target="#jobsList">Add job</button>
+            <% end %>
+
           <% end %>
           <% if @jobs.any? %>
-            <button class="btn-talents" data-bs-toggle="modal" data-bs-target="#jobsList">Need talents!</button>
+            <button class="btn-talents-eye" data-bs-toggle="modal" data-bs-target="#jobsList">
+              <i class="fas fa-eye"></i>
+            </button>
           <% end %>
         <% elsif @jobs.any? %>
             <button class="btn-talents" data-bs-toggle="modal" data-bs-target="#jobsList">Looking for talents!</button>
@@ -74,10 +77,6 @@
   </div>
 </div>
 <div class="description-bottom">
-  <div class="description-left-side">
-    <h1>Description</h1>
-    <h4><%= simple_format @project.description %></h4>
-  </div>
   <div class="description-right-side">
     <!-- <div class="d-flex"> -->
       <div class="project-location">
@@ -102,6 +101,10 @@
       <% end %>
     </div>
   </div>
+  <div class="description-left-side">
+    <div class="description-left-side-title">Description</div>
+    <h4><%= simple_format @project.description %></h4>
+  </div>
 </div>
 <div class="modal fade" id="membersList" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -111,7 +114,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-owner-line">
-        <div>
+        <div class="modal-owner-title">
           <div class="modal-owner-project-owner">Project owner:</div>
           <div class="underlined-title"></div>
         </div>

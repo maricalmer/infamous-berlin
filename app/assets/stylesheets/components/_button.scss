@@ -29,13 +29,24 @@
 .btn-talents {
   font-size: 2rem;
   margin: 0 auto;
-  // margin-top: 5rem;
+  margin-top: 2rem;
   display: block;
   border: 4px solid black;
   box-shadow: -6px -6px black;
   background: #7ECA93;
   width: 100%;
   height: 68px;
+}
+.btn-talents-eye {
+ font-size: 2rem;
+ margin: 0 auto 0 1rem;
+ // margin-top: 5rem;
+ display: block;
+ border: 4px solid black;
+ box-shadow: -6px -6px black;
+ background: #7ECA93;
+ width: 30%;
+ height: 68px;
 }
 .description-btns-project {
   text-decoration: none;
@@ -85,6 +96,24 @@
   color: white;
   border-radius: 0px;
   margin: 3vh auto 2vh auto;
+}
+.btn-job, .btn-job:focus {
+  font-size: 2rem;
+  display: block;
+  border: 4px solid black;
+  box-shadow: -6px -6px black;
+  background: #333;
+  background-position: center;
+  transition: background 0.8s;
+  width: 100%;
+  color: white;
+  border-radius: 0px;
+  height: 68px;
+}
+.link-btn-job {
+  text-decoration: none;
+  color: white;
+  width: 70%;
 }
 .btn-covering {
   font-size: 2rem;
@@ -256,10 +285,9 @@
   }
   .btn-talents {
     font-size: 2rem;
-    margin: 0 auto;
+    margin: 2rem auto 0 2rem;
     height: 68px;
     padding: 0;
-    margin-left: 2rem;
   }
   .btn-projects {
     font-size: 2rem;
