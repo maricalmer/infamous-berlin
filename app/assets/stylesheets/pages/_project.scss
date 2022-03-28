@@ -56,10 +56,26 @@
   // border: solid;
   width: auto;
   padding: 2px;
-  background-color: #d6d6d6;
   font-size: 1rem;
   color: #333;
-  // margin: 1rem 0;
+  margin-right: 0.5rem;
+  transition: all .5s;
+  cursor: pointer;
+}
+.skill-box-project:nth-child(odd) {
+  background-color: #D1BFF6;
+}
+.skill-box-project:nth-child(odd):hover {
+  color: #D1BFF6;
+}
+.skill-box-project:nth-child(even) {
+  background-color: #7ECA93;
+}
+.skill-box-project:nth-child(even):hover {
+  color: #7ECA93;
+}
+.skill-box-project:hover {
+  background-color: black;
 }
 .project-side-details {
   font-size: 2rem;
