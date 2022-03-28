@@ -82,21 +82,23 @@
     <!-- <div class="d-flex"> -->
       <div class="project-location">
         <% if @project.location? %>
-          <i class="fa-solid fa-location-dot"></i>
-          <div class="description-right-details me-3"><%= @project.location %></div>
+          <i class="fas fa-map-marker-alt"></i>
+          <div class="description-right-details"><%= @project.location %></div>
         <% end %>
       </div>
       <div class="project-date">
         <% if @project.date? %>
-          <i class="fa-solid fa-calendar-days"></i>
+          <i class="fas fa-calendar-day"></i>
           <div class="description-right-details"><%= @project.date.strftime("%d/%m/%Y") %></div>
         <% end %>
       </div>
     <!-- </div> -->
-    <div class="categories d-flex ms-2">
-      <i class="fa-solid fa-folder"></i>
-      <% @project.category.each do |cat| %>
-        <div class="skill-box-project"><%= cat %></div>
+    <div class="project-category">
+      <% if @project.category? %>
+      <i class="fas fa-folder-open"></i>
+        <% @project.category.each do |cat| %>
+          <div class="skill-box-project"><%= cat %></div>
+        <% end %>
       <% end %>
     </div>
   </div>
@@ -183,3 +185,4 @@
 <% if !user_signed_in? %>
   <%= render 'shared/login_form' %>
 <% end %>
+

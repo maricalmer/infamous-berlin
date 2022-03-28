@@ -22,9 +22,18 @@
   color: #D1BFF6;
   box-shadow: inset 0 -30px 0 black, 0 2px 0 black;
 }
-.project-date, .project-location {
+.project-date, .project-location, .project-category {
   display: flex;
-  // margin-bottom: 1rem;
+  align-items: center;
+  i {
+    font-size: 1.5rem;
+    color: #d6d6d6;
+    margin-right: 1rem;
+    width: 25px;
+  }
+}
+.project-date, .project-location {
+  margin-bottom: 1rem;
 }
 .description-bottom {
   background-color: #333;
@@ -43,13 +52,14 @@
   padding: 32px;
 }
 .skill-box-project {
-  box-shadow: -6px -6px black;
-  border: solid;
+  // box-shadow: -6px -6px black;
+  // border: solid;
   width: auto;
   padding: 2px;
   background-color: #d6d6d6;
-  font-size: 1.5rem;
-  margin: 1rem 0;
+  font-size: 1rem;
+  color: #333;
+  // margin: 1rem 0;
 }
 .project-side-details {
   font-size: 2rem;
