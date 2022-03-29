@@ -60,7 +60,7 @@
         <% if @project.user == current_user %>
           <% if  @project.upcoming? %>
             <%= link_to new_project_job_path(@project), class:"link-btn-job m-0" do %>
-              <button class="btn-job" data-bs-toggle="modal" data-bs-target="#jobsList">Add job</button>
+              <button class="btn-job">Add job</button>
             <% end %>
 
           <% end %>
