@@ -34,7 +34,8 @@ class ProjectsController < ApplicationController
     #     @project.photos.attach(photo)
     #   end
     # end
-    if @project.update(project_params)
+    @project.update(project_params)
+    if @project.save
       redirect_to dashboard_path, notice: 'Project was successfully updated.'
     else
       render :edit

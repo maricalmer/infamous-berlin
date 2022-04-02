@@ -80,7 +80,7 @@ document.addEventListener('turbolinks:load', () => {
     changeImgDesktop();
   };
   if (document.querySelectorAll(".tab-underlined").length) {
-    loadGalleryOnTabClick();
+    // loadGalleryOnTabClick();
   };
   if (document.querySelectorAll(".grid-search").length) {
     // loadGallery();
@@ -96,6 +96,9 @@ document.addEventListener('turbolinks:load', () => {
   if (document.querySelectorAll(".search-refresh-input").length) {
     loadGallery();
     listenInput();
+  };
+  if (document.querySelectorAll(".masonry-js").length) {
+    loadGallery();
   };
   if (document.querySelectorAll(".btn-covering-js").length) {
     addNewMember();

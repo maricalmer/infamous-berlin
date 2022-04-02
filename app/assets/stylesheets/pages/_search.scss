@@ -60,12 +60,14 @@
   background-color: #858585;
 }
 .grid-search {
+  max-width: 200px;
   margin: 0 auto;
   margin-top: 1.5rem;
   display: grid;
   grid-template-columns: 1fr;
 }
 .grid-search-item {
+  float: left;
   margin: 1rem auto;
   width: 200px;
   .card-img {
@@ -86,9 +88,8 @@
 }
 @media(min-width: 470px) {
   .grid-search {
-    width: 450px;
+    max-width: 450px;
     column-gap: 50px;
-    grid-template-columns: 1fr 1fr;
   }
 }
 @media(min-width: 576px) {
@@ -107,15 +108,13 @@
     grid-template-columns: 1fr 1fr 1fr;
   }
   .grid-search {
-    width: 700px;
-    column-gap: 50px;
+    max-width: 700px;
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
 @media(min-width: 950px) {
   .grid-search {
-    width: 950px;
-    column-gap: 50px;
+    max-width: 950px;
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
@@ -126,8 +125,7 @@
 }
 @media(min-width: 1200px) {
   .grid-search {
-    width: 1200px;
-    column-gap: 50px;
+    max-width: 1200px;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
 }

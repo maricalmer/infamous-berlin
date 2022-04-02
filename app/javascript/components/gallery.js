@@ -1,6 +1,17 @@
 import Masonry from 'masonry-layout';
 
-
+function setSize() {
+  const upcomingProject = document.querySelector(".upcoming-projects-style-js")
+  if (upcomingProject) {
+    const elem = document.querySelector('.grid-search');
+    organiseResults(elem, 50);
+  }
+  const portfolio = document.querySelector(".portfolio-style-js")
+  if (portfolio) {
+    const elem = document.querySelector('.big-grid-search');
+    organiseResults(elem, 20);
+  }
+}
 
 function markLoadedImgs(event) {
   event.currentTarget.myParam = 1;
@@ -24,20 +35,19 @@ function checkOnImgsState() {
       counter = counter + img.myParam
     });
     if (counter == imgs.length) {
-      organiseResults();
+      setSize()
     };
   }
 };
 
-function organiseResults() {
-  var elem = document.querySelector('.grid-search');
-  var msnry = new Masonry( elem, {
+function organiseResults(elem, gutter) {
+  let msnry = new Masonry( elem, {
     itemSelector: '.grid-search-item',
-    columnWidth: 200,
-    gutter: 50,
+    gutter: gutter,
     horizontalOrder: true,
-    fitWidth: true,
-    transitionDuration: 0
+    transitionDuration: 0,
+    // fitWidth: true,
+    percentPosition: true
   });
 }
 

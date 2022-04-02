@@ -100,8 +100,9 @@
   }
 }
 .title-card-project-search {
+  padding: 0.5rem;
   text-align: center;
-  background-color: #D1BFF6;
+  background-color: #d6d6d6;
   color: black;
   margin: 0;
   border-bottom: solid 4px black;
@@ -113,7 +114,7 @@
   padding: 0.5rem;
   border-top: solid 4px black;
   padding-top: 35px;
-  height: 117px;
+  max-height: 117px;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;

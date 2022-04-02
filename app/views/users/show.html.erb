@@ -52,10 +52,16 @@
         <%= render 'shared/login_form' %>
       <% end %>
       <% if @user.projects.any? %>
-        <button class="btn btn-projects" data-bs-toggle="modal" data-bs-target="#modalProjects">Projects</button>
+        <!-- <button class="btn btn-projects" data-bs-toggle="modal" data-bs-target="#modalProjects">Portfolio</button> -->
+        <%= link_to portfolio_path(user: @user) do %>
+          <button class="btn btn-projects">Portfolio</button>
+        <% end %>
       <% end %>
       <% if @user.collabs.any? %>
-        <button class="btn btn-projects" data-bs-toggle="modal" data-bs-target="#modalCollabs">Collabs</button>
+        <!-- <button class="btn btn-projects" data-bs-toggle="modal" data-bs-target="#modalCollabs">Collabs</button> -->
+        <%= link_to ongoing_projects_path(user: @user) do %>
+          <button class="btn btn-projects">Ongoing projects</button>
+        <% end %>
       <% end %>
     </div>
   </div>
@@ -86,7 +92,7 @@
     <div><a class="footer-socialmedia-link" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.twitter %>>Twitter</a></div>
   <% end %>
 </div>
-<div class="modal fade" id="modalProjects" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="modalProjects" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content new-message-modal">
       <div class="modal-header new-message-modal-header">
@@ -123,4 +129,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->

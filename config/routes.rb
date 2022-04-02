@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   # end
   get '/dashboard', to: 'pages#dashboard'
   get '/collaboration', to: 'pages#collaboration'
+  # ^^ still in use?
 
   get '/search', to: 'pages#general_search'
   get '/user_search', to: 'pages#user_search'
@@ -60,4 +61,13 @@ Rails.application.routes.draw do
   get '/user_past_projects', to: 'users#past_projects'
   get '/user_upcoming_collabs', to: 'users#upcoming_collabs'
   get '/user_past_collabs', to: 'users#past_collabs'
+
+  get '/portfolio', to: 'users#portfolio'
+  get '/portfolio_own_projects', to: 'users#portfolio_own_projects'
+  get '/portfolio_collabs', to: 'users#portfolio_collabs'
+
+  get '/ongoing_projects', to: 'users#ongoing_projects'
+  get '/ongoing_own_projects', to: 'users#ongoing_own_projects'
+  get '/ongoing_collabs', to: 'users#ongoing_collabs'
+
 end
