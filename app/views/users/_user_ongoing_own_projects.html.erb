@@ -5,22 +5,124 @@
 <% end %>
 
 
-<div class="big-grid-search search-refresh-results">
+<div class="grid-stack gridstack-js big-grid-search search-refresh-results">
   <% @own_projects.each do |project| %>
-    <div class="grid-search-item card-project-search grid-search-big-item">
-      <%= link_to project_path(project.slug) do  %>
-        <h4 class="title-card-project-search"><%= project.title %></h4>
-        <div class="img-avatar-wrapper">
-          <div class="search-card-img-wrapper">
-            <%= cl_image_tag project.attachments.first.key, class: "card-img" %>
+
+    <div class="grid-stack-item grid-search-big-item" gs-w="2" gs-h="2">
+
+      <div class="grid-search-big-item-shadow">
+        <div class="grid-search-big-item-wrapper">
+          <h4 class="grid-search-big-item-title"><%= project.title %></h4>
+          <!-- <div class="img-avatar-wrapper"> -->
+            <!-- <div class="search-card-img-wrapper"> -->
+          <div class="grid-search-big-item-img-wrapper">
+            <% if project.attachments.attached? %>
+              <% if project.attachments.first.image? %>
+                <%= cl_image_tag project.attachments.first.key, class: "grid-search-big-item-img" %>
+              <% else %>
+                <%= cl_video_tag project.attachments.first.key, class: "grid-search-big-item-img" %>
+              <% end %>
+            <% else %>
+              <%= image_tag "logo.png", class: "grid-search-big-item-img" %>
+            <% end %>
           </div>
+          <div class="text-card-project-search"><%= project.description %></div>
+          <div class="grid-search-big-item-img-panel"></div>
         </div>
-        <div class="text-card-project-search"><%= project.description %></div>
-      <% end %>
-      <div class="ribbon-wrapper">
-        <div class="ribbon">UPCOMING</div>
       </div>
+          <!-- </div> -->
+        <!-- </div> -->
+        <!-- <div class="text-card-project-search"><%= project.description %></div> -->
     </div>
+
+
+
+
+    <div class="grid-stack-item grid-search-big-item" gs-w="3" gs-h="3">
+
+      <div class="grid-search-big-item-shadow">
+        <div class="grid-search-big-item-wrapper">
+          <h4 class="grid-search-big-item-title"><%= project.title %></h4>
+          <!-- <div class="img-avatar-wrapper"> -->
+            <!-- <div class="search-card-img-wrapper"> -->
+
+          <div class="grid-search-big-item-img-wrapper">
+            <% if project.attachments.attached? %>
+              <% if project.attachments.first.image? %>
+                <%= cl_image_tag project.attachments.first.key, class: "grid-search-big-item-img" %>
+              <% else %>
+                <%= cl_video_tag project.attachments.first.key, class: "grid-search-big-item-img" %>
+              <% end %>
+            <% else %>
+              <%= image_tag "logo.png", class: "grid-search-big-item-img" %>
+            <% end %>
+          </div>
+          <div class="text-card-project-search"><%= project.description %></div>
+          <div class="grid-search-big-item-img-panel"></div>
+        </div>
+      </div>
+          <!-- </div> -->
+        <!-- </div> -->
+        <!-- <div class="text-card-project-search"><%= project.description %></div> -->
+    </div>
+
+
+
+    <div class="grid-stack-item grid-search-big-item" gs-w="1" gs-h="4">
+      <div class="grid-search-big-item-shadow">
+        <div class="grid-search-big-item-wrapper">
+          <h4 class="grid-search-big-item-title"><%= project.title %></h4>
+          <!-- <div class="img-avatar-wrapper"> -->
+            <!-- <div class="search-card-img-wrapper"> -->
+          <div class="grid-search-big-item-img-wrapper">
+            <% if project.attachments.attached? %>
+              <% if project.attachments.first.image? %>
+                <%= cl_image_tag project.attachments.first.key, class: "grid-search-big-item-img" %>
+              <% else %>
+                <%= cl_video_tag project.attachments.first.key, class: "grid-search-big-item-img" %>
+              <% end %>
+            <% else %>
+              <%= image_tag "logo.png", class: "grid-search-big-item-img" %>
+            <% end %>
+          </div>
+          <div class="text-card-project-search"><%= project.description %></div>
+          <div class="grid-search-big-item-img-panel"></div>
+        </div>
+      </div>
+          <!-- </div> -->
+        <!-- </div> -->
+        <!-- <div class="text-card-project-search"><%= project.description %></div> -->
+    </div>
+
+
+
+
+    <div class="grid-stack-item grid-search-big-item" gs-w="3" gs-h="2">
+
+      <div class="grid-search-big-item-shadow">
+        <div class="grid-search-big-item-wrapper">
+          <h4 class="grid-search-big-item-title"><%= project.title %></h4>
+          <!-- <div class="img-avatar-wrapper"> -->
+            <!-- <div class="search-card-img-wrapper"> -->
+
+          <div class="grid-search-big-item-img-wrapper">
+            <% if project.attachments.attached? %>
+              <% if project.attachments.first.image? %>
+                <%= cl_image_tag project.attachments.first.key, class: "grid-search-big-item-img" %>
+              <% else %>
+                <%= cl_video_tag project.attachments.first.key, class: "grid-search-big-item-img" %>
+              <% end %>
+            <% else %>
+              <%= image_tag "logo.png" %>
+            <% end %>
+          </div>
+          <div class="text-card-project-search"><%= project.description %></div>
+          <div class="grid-search-big-item-img-panel"></div>
+        </div>
+      </div>
+          <!-- </div> -->
+        <!-- </div> -->
+    </div>
+
   <% end %>
 </div>
-

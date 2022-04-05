@@ -48,6 +48,7 @@ import { renderPreview } from '../components/file_preview';
 import { addSkill, populateList, disableEnterSubmit } from '../components/add_skill';
 import { setDropdown } from '../components/switch_payment_rate';
 import { setBackBtn } from '../components/back_dash_btn';
+import { initGristack } from '../components/gridstack';
 
 
 document.addEventListener('turbolinks:load', () => {
@@ -129,6 +130,9 @@ document.addEventListener('turbolinks:load', () => {
   }
   if (document.querySelectorAll(".back-dash-link-js").length) {
     setBackBtn();
+  }
+  if (document.querySelectorAll(".gridstack-js").length) {
+    initGristack();
   }
     // expandSearchBar();
 
