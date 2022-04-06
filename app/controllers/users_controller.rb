@@ -55,9 +55,14 @@ class UsersController < ApplicationController
 
 
   def ongoing_projects
-    @own_projects = Project.upcoming.where(user: @user)
+    # @own_projects = Project.upcoming.where(user: @user)
+    # collab_ids = Collab.where(user_id: @user.id).pluck(:project_id)
+    # @member_projects = Project.upcoming.where(id: collab_ids)
+
     collab_ids = Collab.where(user_id: @user.id).pluck(:project_id)
-    @member_projects = Project.upcoming.where(id: collab_ids)
+    member_projects = Project.upcoming.where(id: collab_ids)
+    @own_projects = Project.upcoming.where(user: @user).or(member_projects)
+
   end
 
   def ongoing_own_projects

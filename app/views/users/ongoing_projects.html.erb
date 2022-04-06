@@ -7,10 +7,10 @@
       <div class="underlined-title"></div>
     </h1>
   </div>
-  <ul class="list-inline search-tabs-underlined">
+<!--   <ul class="list-inline search-tabs-underlined">
     <li><%= link_to "Owner", ongoing_own_projects_path(user: @user), class: "js-modal-tab search-tab-underlined tab-active", remote: true %></li>
     <li><%= link_to "Member", ongoing_collabs_path(user: @user), class: "ms-3 js-modal-tab search-tab-underlined", remote: true %></li>
-  </ul>
+  </ul> -->
   <div class="js-results mt-5 masonry-js portfolio-style-js">
     <%= render "user_ongoing_own_projects" %>
   </div>

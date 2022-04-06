@@ -48,6 +48,11 @@
   overflow: hidden;
   position: relative;
 }
+.grid-search-big-item-link {
+  position: relative;
+  z-index: 1;
+  text-decoration: none;
+}
 .grid-search-big-item-title {
   padding: 0.5rem;
   text-align: center;
