@@ -10,29 +10,27 @@
   <% @own_projects.each do |project| %>
 
     <div class="grid-stack-item grid-search-big-item" gs-w="2" gs-h="2">
-
-      <div class="grid-search-big-item-shadow">
-        <div class="grid-stack-item-content d-none"><%= project.id %></div>
-        <div class="grid-search-big-item-wrapper">
-          <%= link_to project_path(project), class: "grid-search-big-item-link" do %>
+      <div class="grid-stack-item-content">
+        <!-- <div class="grid-search-big-item-shadow"> -->
+          <div class="grid-search-big-item-wrapper">
             <h4 class="grid-search-big-item-title"><%= project.title %></h4>
-          <% end %>
-          <!-- <div class="img-avatar-wrapper"> -->
-            <!-- <div class="search-card-img-wrapper"> -->
-          <div class="grid-search-big-item-img-wrapper">
-            <% if project.attachments.attached? %>
-              <% if project.attachments.first.image? %>
-                <%= cl_image_tag project.attachments.first.key, class: "grid-search-big-item-img" %>
+            <!-- <div class="img-avatar-wrapper"> -->
+              <!-- <div class="search-card-img-wrapper"> -->
+            <div class="grid-search-big-item-img-wrapper">
+              <% if project.attachments.attached? %>
+                <% if project.attachments.first.image? %>
+                  <%= cl_image_tag project.attachments.first.key, class: "grid-search-big-item-img" %>
+                <% else %>
+                  <%= cl_video_tag project.attachments.first.key, class: "grid-search-big-item-img" %>
+                <% end %>
               <% else %>
-                <%= cl_video_tag project.attachments.first.key, class: "grid-search-big-item-img" %>
+                <%= image_tag "logo.png", class: "grid-search-big-item-img" %>
               <% end %>
-            <% else %>
-              <%= image_tag "logo.png", class: "grid-search-big-item-img" %>
-            <% end %>
+            </div>
+            <div class="text-card-project-search"><%= project.description %></div>
+            <div class="grid-search-big-item-img-panel"></div>
           </div>
-          <div class="text-card-project-search"><%= project.description %></div>
-          <div class="grid-search-big-item-img-panel"></div>
-        </div>
+        <!-- </div> -->
       </div>
           <!-- </div> -->
         <!-- </div> -->
