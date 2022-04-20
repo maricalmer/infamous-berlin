@@ -2,7 +2,6 @@ class ProjectsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
   before_action :set_project, only: [:show, :edit, :update, :apply, :unapply]
   after_action :create_mirror, only: [:create]
-  after_action :find_or_create_portfolio, only: [:create]
 
   def show
     @members = @project.members
@@ -84,18 +83,8 @@ class ProjectsController < ApplicationController
     end
   end
 
-  private
-
-  def find_or_create_portfolio
-    @portfolio = Portfolio.find_or_create_by(user: current_user, status: @project.status)
-    # @portfolio = Portfolio.where(user: current_user).where(status: @project.status).first
-    # return unless @portfolio.nil?
-
-    # @portfolio = Portfolio.create(user: current_user, status: @project.status)
-  end
-
   def create_mirror
-    mirror = Mirror.create(portfolio: @portfolio, project: @project)
+    mirror = Mirror.create(user: @project.user, project: @project)
     mirror.set_img
   end
 

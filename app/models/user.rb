@@ -10,8 +10,8 @@ class User < ApplicationRecord
   after_create :update_slug
   before_update :assign_slug
 
-  has_many :portfolios
   has_many :projects
+  has_many :mirrors, dependent: :destroy
   has_many :collabs
   has_many :member_projects, class_name: 'Project', through: :collabs, source: :project
   has_many :inquiries, dependent: :destroy

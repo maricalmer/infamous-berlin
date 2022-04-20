@@ -2,53 +2,52 @@ import 'gridstack/dist/gridstack.min.css';
 import { GridStack } from 'gridstack';
 import 'gridstack/dist/h5/gridstack-dd-native';
 
-const saveGrid = () => {
-  const grid = document.querySelector(".grid-stack");
-  const serializedData = grid.gridstack.save(true, true);
-  console.log(serializedData);
-  localStorage.setItem("savedGrid", JSON.stringify(serializedData, null, '  '));
+const initGristack = () => {
+  let grid = GridStack.init({
+    minRow: 1
+  });
 }
 
-const initGristack = () => {
-  const savedVersion = localStorage.getItem('savedGrid');
-  console.log("savedVersion:")
-  if (savedVersion == null) {
-    console.log("no saved version")
-    let grid = GridStack.init({
-      minRow: 1
-    });
-  } else {
-    let grid = GridStack.init({
-      minRow: 1
-    });
-    const parsed_json = JSON.parse(savedVersion).children
-    const nodes = document.querySelectorAll(".grid-stack-item")
-    console.log("nodes:")
-    console.log(nodes)
-    console.log("JSON:")
-    console.log(parsed_json)
-    for (let i = 0; i < nodes.length; i++) {
-      nodes[i].attributes["gs-x"].value = parsed_json[i].x
-      nodes[i].attributes["gs-y"].value = parsed_json[i].y
-      nodes[i].attributes["gs-w"].value = parsed_json[i].w
-      nodes[i].attributes["gs-h"].value = parsed_json[i].h
-    }
-  }
+const updateMirrorForm = () => {
+  const mirrors = document.querySelectorAll(".mirror-js");
+  mirrors.forEach((mirror) => {
+    mirror.firstElementChild.firstElementChild.lastElementChild.previousElementSibling.previousElementSibling[2].value = mirror.attributes["gs-x"].nodeValue
+    mirror.firstElementChild.firstElementChild.lastElementChild.previousElementSibling.previousElementSibling[3].value = mirror.attributes["gs-y"].nodeValue
+    mirror.firstElementChild.firstElementChild.lastElementChild.previousElementSibling.previousElementSibling[4].value = mirror.attributes["gs-h"].nodeValue
+    mirror.firstElementChild.firstElementChild.lastElementChild.previousElementSibling.previousElementSibling[5].value = mirror.attributes["gs-w"].nodeValue
+  })
+  triggerForms();
 }
 
 const setSaveBtn = () => {
   const btn = document.querySelector(".gridstack-save-btn-js");
-  btn.addEventListener("click", saveGrid);
+  btn.addEventListener("click", updateMirrorForm);
 }
 
-// const saveTestGrid = () => {
-//   const grid = document.querySelector(".grid-stack");
-//   grid.addEventListener("change", function (event, el) {
-//     var serializedFull = grid.gridstack.save(true, true);
-//     var serializedData = serializedFull.children;
-//     console.log(serializedFull);
-//     console.log(serializedData);
-//   });
-// }
+const pushUpdate = (event) => {
+  event.preventDefault()
+  const url = event.target.action
+  let mirror_form = event.target
+  fetch(url, {
+    method: "PATCH",
+    headers: { "Accept": "text/plain" },
+    body: new FormData(event.target)
+  })
+    .then(response => response.text())
+    .then((data) => {
+      mirror_form.outerHTML = data;
+      mirror_form = document.getElementById(mirror_form.id);
+      mirror_form.addEventListener("submit", pushUpdate);
+    })
+}
+
+const triggerForms = () => {
+  const forms = document.querySelectorAll(".mirror-form-js")
+  forms.forEach((form) => {
+    form.addEventListener("submit", pushUpdate)
+    form.elements[7].click()
+    // ^^ submit btn
+  })
+}
 
 export { initGristack, setSaveBtn }

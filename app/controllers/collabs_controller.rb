@@ -2,6 +2,7 @@ class CollabsController < ApplicationController
 #   skip_before_action :authenticate_user!, only: [:create, :destroy]
   before_action :set_collab, only: [:destroy]
   before_action :find_project, only: [:new, :create]
+  after_action :create_mirror, only: [:create]
 
   # before_action :set_user, only: [:show, :edit, :update]
 
@@ -34,6 +35,11 @@ class CollabsController < ApplicationController
   end
 
   private
+
+  def create_mirror
+    mirror = Mirror.create(user: @collab.member, project: @collab.project)
+    mirror.set_img
+  end
 
   def find_project
     @project = Project.find_by(slug: params[:project_slug])

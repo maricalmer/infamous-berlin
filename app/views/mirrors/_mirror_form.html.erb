@@ -1,0 +1,12 @@
+<%= simple_form_for [user, mirror], html: { class: "mirror-form-js d-none"} do |f| %>
+  <%= f.input :grid_x %>
+  <%= f.input :grid_y %>
+  <%= f.input :grid_h %>
+  <%= f.input :grid_w %>
+  <%= f.input :crop_x %>
+  <%= f.input :crop_y %>
+  <%= f.input :crop_h %>
+  <%= f.input :crop_w %>
+  <%= f.input :img_key %>
+  <%= f.submit "Update mirror", id: 'submit-button' %>
+<% end %>

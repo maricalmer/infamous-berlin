@@ -3,7 +3,11 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
   root to: 'pages#home'
-  resources :users, param: :slug
+  resources :users, param: :slug do
+    resources :mirrors, only: [:update]
+    get '/ongoing_collabs', to: 'mirrors#ongoing_projects'
+    get '/portfolio', to: 'mirrors#past_projects'
+  end
   resources :projects, param: :slug do
     resources :collabs, only: [:new, :create]
     resources :jobs, only: [:new, :create]
@@ -66,8 +70,10 @@ Rails.application.routes.draw do
   get '/portfolio_own_projects', to: 'users#portfolio_own_projects'
   get '/portfolio_collabs', to: 'users#portfolio_collabs'
 
-  get '/ongoing_projects', to: 'users#ongoing_projects'
-  get '/ongoing_own_projects', to: 'users#ongoing_own_projects'
-  get '/ongoing_collabs', to: 'users#ongoing_collabs'
+  # get '/ongoing_projects', to: 'users#ongoing_projects'
+  # get '/ongoing_own_projects', to: 'users#ongoing_own_projects'
+  # get '/ongoing_collabs', to: 'users#ongoing_collabs'
+
+  # get '/update_mirrors', to: 'users#update_mirrors'
 
 end

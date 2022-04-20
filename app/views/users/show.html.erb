@@ -53,13 +53,13 @@
       <% end %>
       <% if @user.projects.any? %>
         <!-- <button class="btn btn-projects" data-bs-toggle="modal" data-bs-target="#modalProjects">Portfolio</button> -->
-        <%= link_to portfolio_path(user: @user) do %>
+        <%= link_to user_portfolio_path(@user) do %>
           <button class="btn btn-projects">Portfolio</button>
         <% end %>
       <% end %>
       <% if @user.collabs.any? %>
         <!-- <button class="btn btn-projects" data-bs-toggle="modal" data-bs-target="#modalCollabs">Collabs</button> -->
-        <%= link_to ongoing_projects_path(user: @user) do %>
+        <%= link_to user_ongoing_collabs_path(@user) do %>
           <button class="btn btn-projects">Ongoing projects</button>
         <% end %>
       <% end %>

@@ -49,15 +49,19 @@ class UsersController < ApplicationController
     end
   end
 
-  def ongoing_projects
-    # @own_projects = Project.upcoming.where(user: @user)
-    # collab_ids = Collab.where(user_id: @user.id).pluck(:project_id)
-    # @member_projects = Project.upcoming.where(id: collab_ids)
+  # def ongoing_projects
+  #   # @own_projects = Project.upcoming.where(user: @user)
+  #   # collab_ids = Collab.where(user_id: @user.id).pluck(:project_id)
+  #   # @member_projects = Project.upcoming.where(id: collab_ids)
 
-    collab_ids = Collab.where(user_id: @user.id).pluck(:project_id)
-    member_projects = Project.upcoming.where(id: collab_ids)
-    @own_projects = Project.upcoming.where(user: @user).or(member_projects)
-  end
+  #   @collab_ids = Collab.where(user_id: @user.id).pluck(:project_id)
+  #   @all_projects_ids = Project.upcoming.where(user: @user).or(Project.upcoming.where(id: @collab_ids))
+
+  #   @mirrors = Mirror.where(project_id: @all_projects_ids)
+  #   @mirrors.each_with_index do |mirror, index|
+  #     mirror.default_position(index) if mirror.coordinate_x.nil?
+  #   end
+  # end
 
   def ongoing_own_projects
     @own_projects = Project.upcoming.where(user: @user)
@@ -101,6 +105,16 @@ class UsersController < ApplicationController
       format.text { render partial: 'user_past_collabs.html' }
     end
   end
+
+  # def update_mirrors
+  #   @collab_ids = Collab.where(user_id: @user.id).pluck(:project_id)
+  #   @all_projects_ids = Project.upcoming.where(user: @user).or(Project.upcoming.where(id: @collab_ids))
+  #   @mirrors = Mirror.where(project_id: @all_projects_ids)
+  #   respond_to do |format|
+  #     format.json { render json: success_data }
+  #   end
+  # end
+  # ^^ remove??
 
   private
 

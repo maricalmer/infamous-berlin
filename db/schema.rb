@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_09_114018) do
+ActiveRecord::Schema.define(version: 2022_04_12_221901) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -79,17 +79,21 @@ ActiveRecord::Schema.define(version: 2022_04_09_114018) do
   end
 
   create_table "mirrors", force: :cascade do |t|
-    t.string "img_url"
-    t.string "coordinate_x"
-    t.string "coordinate_y"
-    t.string "coordinate_h"
-    t.string "coordinate_w"
-    t.bigint "portfolio_id", null: false
+    t.string "img_key"
+    t.string "grid_x"
+    t.string "grid_y"
+    t.string "grid_h"
+    t.string "grid_w"
+    t.string "crop_x"
+    t.string "crop_y"
+    t.string "crop_h"
+    t.string "crop_w"
+    t.bigint "user_id", null: false
     t.bigint "project_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["portfolio_id"], name: "index_mirrors_on_portfolio_id"
     t.index ["project_id"], name: "index_mirrors_on_project_id"
+    t.index ["user_id"], name: "index_mirrors_on_user_id"
   end
 
   create_table "pg_search_documents", force: :cascade do |t|
@@ -100,9 +104,6 @@ ActiveRecord::Schema.define(version: 2022_04_09_114018) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id"
   end
-
-# Could not dump table "portfolios" because of following StandardError
-#   Unknown type 'portfolio_status' for column 'status'
 
 # Could not dump table "projects" because of following StandardError
 #   Unknown type 'project_status' for column 'status'
@@ -147,13 +148,13 @@ ActiveRecord::Schema.define(version: 2022_04_09_114018) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "collabs", "projects"
+  add_foreign_key "collabs", "users"
   add_foreign_key "inquiries", "jobs"
   add_foreign_key "inquiries", "users"
   add_foreign_key "jobs", "projects"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
-  add_foreign_key "mirrors", "portfolios"
   add_foreign_key "mirrors", "projects"
-  add_foreign_key "portfolios", "users"
+  add_foreign_key "mirrors", "users"
   add_foreign_key "projects", "users"
 end

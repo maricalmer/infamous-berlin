@@ -1,0 +1,42 @@
+<%= render 'shared/hamburger' %>
+<%= render 'shared/brand' %>
+
+<button class="btn btn-primary gridstack-save-btn-js w-75 m-5">Save</button>
+
+<div class="grid-stack gridstack-js big-grid-search search-refresh-results">
+  <% @mirrors.each do |mirror| %>
+    <div class="grid-stack-item grid-search-big-item mirror-js" gs-x="<%= mirror.grid_x %>" gs-y="<%= mirror.grid_y %>" gs-w="<%= mirror.grid_w %>" gs-h="<%= mirror.grid_h %>">
+      <div class="grid-stack-item-content">
+        <div class="grid-search-big-item-wrapper">
+          <p class="d-none mirror-id-js"><%= mirror.id %></p>
+          <div class="d-flex">
+            <h4 class="grid-search-big-item-title"><%= mirror.project.title %></h4>
+            <%= link_to project_path(mirror.project), class:"link-btn-resize-portfolio m-0" do %>
+              <button class="btn-resize-portfolio">
+                <i class="fas fa-eye"></i>
+              </button>
+            <% end %>
+          </div>
+          <div class="grid-search-big-item-img-wrapper">
+            <% if mirror.project.attachments.attached? %>
+              <% if mirror.project.attachments.first.image? %>
+                <%= cl_image_tag mirror.project.attachments.first.key, class: "grid-search-big-item-img" %>
+              <% else %>
+                <%= cl_video_tag mirror.project.attachments.first.key, class: "grid-search-big-item-img" %>
+              <% end %>
+            <% else %>
+              <%= image_tag "logo.png", class: "grid-search-big-item-img tag-cropper-js" %>
+            <% end %>
+            <!-- ^^ needs to synchronize with a method -->
+          </div>
+          <%= render partial: "mirror_form", locals: { mirror: mirror, user: @user } %>
+          <div class="text-card-project-search"><%= mirror.project.description %></div>
+          <div class="grid-search-big-item-img-panel"></div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div class="w-25">
+  <%= cl_image_tag "7c7s0dr3mk9tvggnfd3pml25q62h", class: "grid-search-big-item-img tag-cropper-js d-block mw-100" %>
+</div>
