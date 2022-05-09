@@ -11,10 +11,10 @@ const initGristack = () => {
 const updateMirrorForm = () => {
   const mirrors = document.querySelectorAll(".mirror-js");
   mirrors.forEach((mirror) => {
-    mirror.firstElementChild.firstElementChild.lastElementChild.previousElementSibling.previousElementSibling[2].value = mirror.attributes["gs-x"].nodeValue
-    mirror.firstElementChild.firstElementChild.lastElementChild.previousElementSibling.previousElementSibling[3].value = mirror.attributes["gs-y"].nodeValue
-    mirror.firstElementChild.firstElementChild.lastElementChild.previousElementSibling.previousElementSibling[4].value = mirror.attributes["gs-h"].nodeValue
-    mirror.firstElementChild.firstElementChild.lastElementChild.previousElementSibling.previousElementSibling[5].value = mirror.attributes["gs-w"].nodeValue
+    mirror.firstElementChild.firstElementChild.children[3].children[2].children["mirror_grid_x"].value = mirror.attributes["gs-x"].nodeValue
+    mirror.firstElementChild.firstElementChild.children[3].children[3].children["mirror_grid_y"].value = mirror.attributes["gs-y"].nodeValue
+    mirror.firstElementChild.firstElementChild.children[3].children[4].children["mirror_grid_h"].value = mirror.attributes["gs-h"].nodeValue
+    mirror.firstElementChild.firstElementChild.children[3].children[5].children["mirror_grid_w"].value = mirror.attributes["gs-w"].nodeValue
   })
   triggerForms();
 }
@@ -45,8 +45,7 @@ const triggerForms = () => {
   const forms = document.querySelectorAll(".mirror-form-js")
   forms.forEach((form) => {
     form.addEventListener("submit", pushUpdate)
-    form.elements[7].click()
-    // ^^ submit btn
+    form.elements["submit-button"].click()
   })
 }
 

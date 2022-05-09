@@ -8,6 +8,8 @@ class User < ApplicationRecord
   validates :username, uniqueness: true, case_sensitive: false, presence: true
 
   after_create :update_slug
+  after_commit :add_default_img, on: [:create]
+
   before_update :assign_slug
 
   has_many :projects
@@ -87,5 +89,15 @@ class User < ApplicationRecord
 
   def assign_slug
     self.slug = create_slug
+  end
+
+  def add_default_img
+    return if photo.attached?
+
+    photo.attach(
+      io: File.open(Rails.root.join("app", "assets", "images", "logo.png")),
+      filename: 'logo.jpg',
+      content_type: "image/jpg"
+    )
   end
 end

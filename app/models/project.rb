@@ -9,6 +9,8 @@ class Project < ApplicationRecord
   has_many_attached :attachments
 
   after_create :update_slug
+  after_commit :add_default_img, on: [:create]
+
   before_update :assign_slug
 
   validates :title, presence: true, uniqueness: true, case_sensitive: false
@@ -53,6 +55,16 @@ class Project < ApplicationRecord
   end
 
   private
+
+  def add_default_img
+    return if attachments.attached?
+
+    attachments.attach(
+      io: File.open(Rails.root.join("app", "assets", "images", "logo.png")),
+      filename: 'logo.jpg',
+      content_type: "image/jpg"
+    )
+  end
 
   def assign_slug
     self.slug = create_slug

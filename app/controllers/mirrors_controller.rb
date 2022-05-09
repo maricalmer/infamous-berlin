@@ -1,5 +1,6 @@
 class MirrorsController < ApplicationController
   before_action :set_user, only: [:update, :ongoing_projects, :past_projects]
+  before_action :set_variant, only: [:ongoing_projects]
 
   def update
     @mirror = Mirror.find(params[:id])
@@ -14,9 +15,17 @@ class MirrorsController < ApplicationController
   def ongoing_projects
     @collab_ids = Collab.where(user_id: @user.id).pluck(:project_id)
     @all_projects_ids = Project.upcoming.where(user: @user).or(Project.upcoming.where(id: @collab_ids))
-    @mirrors = Mirror.where(project_id: @all_projects_ids)
-    @mirrors.each_with_index do |mirror, index|
-      mirror.default_grid_position(index) if mirror.grid_x.nil?
+    @mirrors = Mirror.where(project_id: @all_projects_ids).order(:created_at)
+    i = 1
+    @mirrors.each do |mirror|
+      mirror.update(default_position: i)
+      mirror.default_grid_position(i) if mirror.grid_x.nil?
+      i += 1
+    end
+    if request.variant == [:mobile]
+      render variants: :mobile
+    else
+      render variants: :desktop
     end
   end
 
@@ -25,11 +34,16 @@ class MirrorsController < ApplicationController
 
   private
 
+  def set_variant
+    agent = request.user_agent
+    agent =~ /Mobile/ ? request.variant = :mobile : request.variant = :desktop
+  end
+
   def set_user
     @user = User.find_by(slug: params[:user_slug])
   end
 
   def mirror_params
-    params.require(:mirror).permit(:img_key, :grid_x, :grid_y, :grid_h, :grid_w, :crop_x, :crop_y, :crop_h, :crop_w)
+    params.require(:mirror).permit(:grid_x, :grid_y, :grid_h, :grid_w, :crop_x, :crop_y, :crop_h, :crop_w)
   end
 end

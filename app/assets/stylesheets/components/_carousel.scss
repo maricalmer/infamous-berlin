@@ -68,7 +68,7 @@
   width: 20px;
   height: 20px;
 }
-picture {
+.thumbnails picture {
   display: none;
 }
 .overlay-small {
@@ -152,7 +152,7 @@ picture {
   // .slide-thumbnail + img {
   //   cursor: pointer;
   // }
-  picture {
+  .thumbnails picture {
     display: block;
   }
   .placeholder-mobile {

@@ -1,0 +1,28 @@
+<%= render 'shared/hamburger' %>
+<%= render 'shared/brand' %>
+
+
+<h1 class="mt-5">mobile</h1>
+
+
+
+<div class="portfolio-mobile-grid">
+  <% @mirrors.each do |mirror|  %>
+    <div class="portfolio-mobile-mirror-card">
+      <%= link_to project_path(mirror.project), class: "link" do %>
+        <h4 class="portfolio-mobile-mirror-card-title"><%= mirror.project.title %></h4>
+        <div class="portfolio-mobile-img-wrapper">
+          <picture class="">
+            <source srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(min-width: 1200px)" class="">
+            <% if mirror.project.attachments.first.video? %>
+              <%= cl_video_tag mirror.project.attachments.first.key, class: "portfolio-video-source" %>
+            <% else %>
+              <%= cl_image_tag mirror.project.attachments.first.key, class: "" %>
+            <% end %>
+          </picture>
+        </div>
+        <div class="portfolio-mobile-mirror-card-description"><%= mirror.project.description %></div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

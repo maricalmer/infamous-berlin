@@ -83,9 +83,10 @@ class ProjectsController < ApplicationController
     end
   end
 
+  private
+
   def create_mirror
-    mirror = Mirror.create(user: @project.user, project: @project)
-    mirror.set_img
+    Mirror.create(user: @project.user, project: @project)
   end
 
   def create_chatroom

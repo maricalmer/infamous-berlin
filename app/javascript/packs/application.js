@@ -49,7 +49,7 @@ import { addSkill, populateList, disableEnterSubmit } from '../components/add_sk
 import { setDropdown } from '../components/switch_payment_rate';
 import { setBackBtn } from '../components/back_dash_btn';
 import { initGristack, setSaveBtn } from '../components/gridstack';
-import { initCropper } from '../components/cropper';
+import { attachCropperEvents } from '../components/cropper';
 
 
 document.addEventListener('turbolinks:load', () => {
@@ -133,11 +133,11 @@ document.addEventListener('turbolinks:load', () => {
     setBackBtn();
   }
   if (document.querySelectorAll(".gridstack-js").length) {
-    initGristack();
+    initGristack()
     setSaveBtn();
   }
   if (document.querySelectorAll(".tag-cropper-js").length) {
-    initCropper();
+    attachCropperEvents();
   }
     // expandSearchBar();
 

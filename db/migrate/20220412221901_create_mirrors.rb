@@ -10,6 +10,7 @@ class CreateMirrors < ActiveRecord::Migration[6.0]
       t.string :crop_y
       t.string :crop_h
       t.string :crop_w
+      t.integer :default_position
       t.references :user, null: false, foreign_key: true
       t.references :project, null: false, foreign_key: true
 

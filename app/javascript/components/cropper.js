@@ -1,21 +1,68 @@
 import Cropper from 'cropperjs';
 
-const initCropper = () => {
-  const images = document.querySelectorAll('.tag-cropper-js');
-  images.forEach((img) => {
-    const cropper = new Cropper(img, {
-      aspectRatio: 16 / 9,
-      crop(event) {
-        console.log(event.detail.x);
-        console.log(event.detail.y);
-        console.log(event.detail.width);
-        console.log(event.detail.height);
-        console.log(event.detail.rotate);
-        console.log(event.detail.scaleX);
-        console.log(event.detail.scaleY);
-      },
-    });
+const attachCropperEvents = () => {
+  const modals = document.querySelectorAll(".modal-crop-portfolio-js")
+  let cropper;
+  let cropX;
+  let cropY;
+  let cropWidth;
+  let cropHeight;
+  modals.forEach((modal) => {
+    modal.addEventListener("shown.bs.modal", function(event) {
+      const img = event.currentTarget.firstElementChild.firstElementChild.children[1].firstElementChild.firstElementChild
+      const imgAndTitle = event.currentTarget.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling
+      const ratio = imgAndTitle.offsetWidth / (imgAndTitle.offsetHeight - 28)
+      cropper = new Cropper(img, {
+        dragMode: 'move',
+        aspectRatio: ratio,
+        autoCropArea: 0.95,
+        restore: false,
+        guides: false,
+        center: false,
+        highlight: false,
+        cropBoxResizable: false,
+        toggleDragModeOnDblclick: false,
+        minContainerWidth: 465,
+        minContainerHeight: 500,
+        crop(event) {
+          cropX = Math.round(event.detail.x)
+          cropY = Math.round(event.detail.y)
+          cropWidth = Math.round(event.detail.width)
+          cropHeight = Math.round(event.detail.height)
+          console.log(`x: ${cropX}`)
+          console.log(`y: ${cropY}`)
+          console.log(`width: ${cropWidth}`)
+          console.log(`height: ${cropHeight}`)
+        },
+      });
+      const cropBtn = event.currentTarget.firstElementChild.firstElementChild.lastElementChild.firstElementChild
+      cropBtn.addEventListener("click", function(e) {
+        const formCropX = e.currentTarget.offsetParent.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling[6]
+        const formCropY = e.currentTarget.offsetParent.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling[7]
+        const formCropHeight = e.currentTarget.offsetParent.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling[8]
+        const formCropWidth = e.currentTarget.offsetParent.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling[9]
+        formCropX.value = cropX
+        formCropY.value = cropY
+        formCropHeight.value = cropHeight
+        formCropWidth.value = cropWidth
+        const imgModel = e.currentTarget.parentElement.previousElementSibling.firstElementChild.firstElementChild
+        const imgPlaceholder = e.currentTarget.parentElement.parentElement.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.firstElementChild
+        const url_extra_crop = `upload/c_crop,h_${cropHeight},w_${cropWidth},x_${cropX},y_${cropY}`
+        const url_parts = imgModel.src.split("upload")
+        const url_crop = `${url_parts[0]}${url_extra_crop}${url_parts[1]}`
+        if (imgModel.src.includes("/image/")) {
+          imgPlaceholder.src = url_crop
+        } else {
+          imgPlaceholder.poster = url_crop
+        }
+        const formImgString = e.currentTarget.offsetParent.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling[10]
+        formImgString.value = url_crop
+      })
+    })
+    modal.addEventListener("hidden.bs.modal", function() {
+      cropper.destroy();
+    })
   })
 }
 
-export { initCropper };
+export { attachCropperEvents };

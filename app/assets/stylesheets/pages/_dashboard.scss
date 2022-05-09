@@ -177,9 +177,13 @@
 .dash-card-img {
   border-bottom-right-radius: 1px;
   border-bottom-left-radius: 1px;
-  height: 20vh;
+  // ^^ why??
+  height: 100%;
   object-fit: cover;
   width: 100%;
+}
+.dash-card-img-wrapper {
+  height: 155px;
 }
 .dash-card-text {
   border-top: solid 4px black;

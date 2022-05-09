@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(version: 2022_04_12_221901) do
     t.string "crop_y"
     t.string "crop_h"
     t.string "crop_w"
+    t.integer "default_position"
     t.bigint "user_id", null: false
     t.bigint "project_id", null: false
     t.datetime "created_at", precision: 6, null: false

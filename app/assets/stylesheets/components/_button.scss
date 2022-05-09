@@ -50,7 +50,16 @@
   background: #7ECA93;
   border-left: 4px solid black;
   border-bottom: 4px solid black;
-
+}
+.btn-crop-portfolio, .btn-crop-portfolio:focus {
+  font-size: 2rem;
+  display: block;
+  border: none;
+  background: #D1BFF6;
+  border-left: 4px solid black;
+  border-bottom: 4px solid black;
+  position: relative;
+  z-index: 1;
 }
 .btn-talents-eye, .btn-talents-eye:focus {
  font-size: 2rem;
@@ -73,8 +82,16 @@
 .btn-talents:hover, .btn-talents-eye:hover, .btn-resize-portfolio:hover {
   background-color: #8EC7A6;
 }
+.btn-crop-portfolio:hover {
+  background-color: #d7cbf2;
+}
 .btn-talents:active, .btn-talents-eye:active, .btn-resize-portfolio:active {
   background-color: #8EC7A6;
+  background-size: 100%;
+  transition: all 0s;
+}
+.btn-crop-portfolio:active {
+  background-color: #d7cbf2;
   background-size: 100%;
   transition: all 0s;
 }
