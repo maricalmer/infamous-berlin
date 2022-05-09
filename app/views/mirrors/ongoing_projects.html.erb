@@ -21,19 +21,22 @@
             <% end %>
           </div>
           <div class="grid-search-big-item-img-wrapper">
-            <% if mirror.project.attachments.first.image? %>
-              <% if mirror.crop_x.present? %>
-                <%= cl_image_tag mirror.project.attachments.first.key, class: "grid-search-big-item-img grid-search-big-item-img-no-sizing", height: mirror.crop_h, width: mirror.crop_w, x: mirror.crop_x, y: mirror.crop_y, crop: "crop" %>
+            <picture>
+              <source srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 1200px)">
+              <% if mirror.project.attachments.first.image? %>
+                <% if mirror.crop_x.present? %>
+                  <%= cl_image_tag mirror.project.attachments.first.key, class: "grid-search-big-item-img grid-search-big-item-img-no-sizing", height: mirror.crop_h, width: mirror.crop_w, x: mirror.crop_x, y: mirror.crop_y, crop: "crop" %>
+                <% else %>
+                  <%= cl_image_tag mirror.project.attachments.first.key, class: "grid-search-big-item-img" %>
+                <% end %>
               <% else %>
-                <%= cl_image_tag mirror.project.attachments.first.key, class: "grid-search-big-item-img" %>
+                <% if mirror.crop_x.present? %>
+                  <%= cl_video_tag mirror.project.attachments.first.key, class: "grid-search-big-item-img grid-search-big-item-img-no-sizing", poster: { transformation: [ { height: mirror.crop_h.to_i, width: mirror.crop_w.to_i, x: mirror.crop_x.to_i, y: mirror.crop_y.to_i, crop: "crop" } ] } %>
+                <% else %>
+                  <%= cl_video_tag mirror.project.attachments.first.key, class: "grid-search-big-item-img" %>
+                <% end %>
               <% end %>
-            <% else %>
-              <% if mirror.crop_x.present? %>
-                <%= cl_video_tag mirror.project.attachments.first.key, class: "grid-search-big-item-img grid-search-big-item-img-no-sizing", poster: { transformation: [ { height: mirror.crop_h.to_i, width: mirror.crop_w.to_i, x: mirror.crop_x.to_i, y: mirror.crop_y.to_i, crop: "crop" } ] } %>
-              <% else %>
-                <%= cl_video_tag mirror.project.attachments.first.key, class: "grid-search-big-item-img" %>
-              <% end %>
-            <% end %>
+            </picture>
             <!-- ^^ needs to synchronize with a method -->
           </div>
           <%= render partial: "mirror_form", locals: { mirror: mirror, user: @user } %>
@@ -54,10 +57,18 @@
         <div class="portfolio-mobile-img-wrapper">
           <picture>
             <source srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(min-width: 1200px)">
-            <% if mirror.project.attachments.first.video? %>
-              <%= cl_video_tag mirror.project.attachments.first.key, class: "portfolio-video-source" %>
+            <% if mirror.project.attachments.first.image? %>
+              <% if mirror.crop_x.present? %>
+                <%= cl_image_tag mirror.project.attachments.first.key, class: "grid-search-big-item-img-no-sizing", height: mirror.crop_h, width: mirror.crop_w, x: mirror.crop_x, y: mirror.crop_y, crop: "crop" %>
+              <% else %>
+                <%= cl_image_tag mirror.project.attachments.first.key %>
+              <% end %>
             <% else %>
-              <%= cl_image_tag mirror.project.attachments.first.key, class: "" %>
+              <% if mirror.crop_x.present? %>
+                <%= cl_video_tag mirror.project.attachments.first.key, class: "portfolio-video-source grid-search-big-item-img-no-sizing", poster: { transformation: [ { height: mirror.crop_h.to_i, width: mirror.crop_w.to_i, x: mirror.crop_x.to_i, y: mirror.crop_y.to_i, crop: "crop" } ] } %>
+              <% else %>
+                <%= cl_video_tag mirror.project.attachments.first.key, class: "portfolio-video-source" %>
+              <% end %>
             <% end %>
           </picture>
         </div>

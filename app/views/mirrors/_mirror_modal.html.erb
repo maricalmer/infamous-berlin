@@ -7,11 +7,14 @@
       </div>
       <div class="modal-body w-100">
         <div>
-          <% if mirror.project.attachments.first.image? %>
-            <%= cl_image_tag mirror.project.attachments.first.key, class: "grid-search-big-item-img placeholder-img-gridstack tag-cropper-js mw-100" %>
-          <% else %>
-            <%= image_tag("http://res.cloudinary.com/dbpv82leg/video/upload/#{mirror.project.attachments.first.key}.jpg", class: "grid-search-big-item-img placeholder-img-gridstack tag-cropper-js mw-100") %>
-          <% end %>
+          <picture>
+            <source srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 1200px)">
+            <% if mirror.project.attachments.first.image? %>
+              <%= cl_image_tag mirror.project.attachments.first.key, class: "grid-search-big-item-img placeholder-img-gridstack tag-cropper-js mw-100" %>
+            <% else %>
+              <%= image_tag("http://res.cloudinary.com/dbpv82leg/video/upload/#{mirror.project.attachments.first.key}.jpg", class: "grid-search-big-item-img placeholder-img-gridstack tag-cropper-js mw-100") %>
+            <% end %>
+          </picture>
         </div>
       </div>
       <div class="modal-footer">

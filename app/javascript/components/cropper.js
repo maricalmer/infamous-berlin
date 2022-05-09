@@ -9,7 +9,7 @@ const attachCropperEvents = () => {
   let cropHeight;
   modals.forEach((modal) => {
     modal.addEventListener("shown.bs.modal", function(event) {
-      const img = event.currentTarget.firstElementChild.firstElementChild.children[1].firstElementChild.firstElementChild
+      const img = event.currentTarget.firstElementChild.firstElementChild.children[1].firstElementChild.firstElementChild.children[1]
       const imgAndTitle = event.currentTarget.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling
       const ratio = imgAndTitle.offsetWidth / (imgAndTitle.offsetHeight - 28)
       cropper = new Cropper(img, {
@@ -45,8 +45,9 @@ const attachCropperEvents = () => {
         formCropY.value = cropY
         formCropHeight.value = cropHeight
         formCropWidth.value = cropWidth
-        const imgModel = e.currentTarget.parentElement.previousElementSibling.firstElementChild.firstElementChild
-        const imgPlaceholder = e.currentTarget.parentElement.parentElement.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.firstElementChild
+        const imgModel = e.currentTarget.parentElement.previousElementSibling.firstElementChild.firstElementChild.children[1]
+        const imgPlaceholder = e.currentTarget.parentElement.parentElement.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.firstElementChild.children[1]
+        console.log(imgPlaceholder)
         const url_extra_crop = `upload/c_crop,h_${cropHeight},w_${cropWidth},x_${cropX},y_${cropY}`
         const url_parts = imgModel.src.split("upload")
         const url_crop = `${url_parts[0]}${url_extra_crop}${url_parts[1]}`
