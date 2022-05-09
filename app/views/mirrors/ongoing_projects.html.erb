@@ -1,79 +1,25 @@
 <%= render 'shared/hamburger' %>
 <%= render 'shared/brand' %>
 
-<button class="btn btn-primary gridstack-save-btn-js w-75 m-5">Save</button>
 
-<div class="grid-stack gridstack-js big-grid-search search-refresh-results">
-  <% @mirrors.each do |mirror| %>
-    <div class="grid-stack-item grid-search-big-item mirror-js" gs-x="<%= mirror.grid_x %>" gs-y="<%= mirror.grid_y %>" gs-w="<%= mirror.grid_w %>" gs-h="<%= mirror.grid_h %>">
-      <div class="grid-stack-item-content">
-        <div class="grid-search-big-item-wrapper">
-          <p class="d-none mirror-id-js"><%= mirror.default_position %></p>
-          <div class="d-flex">
-            <h4 class="grid-search-big-item-title"><%= mirror.project.title %></h4>
-            <button class="btn-crop-portfolio btn-crop-portfolio-js" type="button" data-bs-toggle="modal" data-bs-target="#cropModal<%= mirror.id %>">
-              <i class="fas fa-crop-alt"></i>
-            </button>
-            <%= link_to project_path(mirror.project), class:"link-btn-resize-portfolio m-0" do %>
-              <button class="btn-resize-portfolio">
-                <i class="fas fa-eye"></i>
-              </button>
-            <% end %>
-          </div>
-          <div class="grid-search-big-item-img-wrapper">
-            <picture>
-              <source srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 1200px)">
-              <% if mirror.project.attachments.first.image? %>
-                <% if mirror.crop_x.present? %>
-                  <%= cl_image_tag mirror.project.attachments.first.key, class: "grid-search-big-item-img grid-search-big-item-img-no-sizing", height: mirror.crop_h, width: mirror.crop_w, x: mirror.crop_x, y: mirror.crop_y, crop: "crop" %>
-                <% else %>
-                  <%= cl_image_tag mirror.project.attachments.first.key, class: "grid-search-big-item-img" %>
-                <% end %>
-              <% else %>
-                <% if mirror.crop_x.present? %>
-                  <%= cl_video_tag mirror.project.attachments.first.key, class: "grid-search-big-item-img grid-search-big-item-img-no-sizing", poster: { transformation: [ { height: mirror.crop_h.to_i, width: mirror.crop_w.to_i, x: mirror.crop_x.to_i, y: mirror.crop_y.to_i, crop: "crop" } ] } %>
-                <% else %>
-                  <%= cl_video_tag mirror.project.attachments.first.key, class: "grid-search-big-item-img" %>
-                <% end %>
-              <% end %>
-            </picture>
-            <!-- ^^ needs to synchronize with a method -->
-          </div>
-          <%= render partial: "mirror_form", locals: { mirror: mirror, user: @user } %>
-          <div class="text-card-project-search"><%= mirror.project.description %></div>
-          <div class="grid-search-big-item-img-panel"></div>
-          <%= render partial: "mirror_modal", locals: { mirror: mirror } %>
-        </div>
-      </div>
-    </div>
-  <% end %>
-</div>
-
+<% if current_user == @user %>
+  <button class="btn btn-primary gridstack-save-btn-js w-75 m-5">Save</button>
+  <div class="grid-stack gridstack-edit-js big-grid-search search-refresh-results">
+    <!-- ^^ all those classes needed?? -->
+    <% @mirrors.each do |mirror| %>
+      <%= render partial: "mirrors_gridstack_edit_grid", locals: { mirror: mirror } %>
+    <% end %>
+  </div>
+<% else %>
+  <div class="grid-stack gridstack-static-js big-grid-search search-refresh-results">
+    <!-- ^^ all those classes needed?? -->
+    <% @mirrors.each do |mirror| %>
+      <%= render partial: "mirrors_gridstack_static_grid", locals: { mirror: mirror } %>
+    <% end %>
+  </div>
+<% end %>
 <div class="portfolio-mobile-grid">
   <% @mirrors.each do |mirror|  %>
-    <div class="portfolio-mobile-mirror-card">
-      <%= link_to project_path(mirror.project), class: "link" do %>
-        <h4 class="portfolio-mobile-mirror-card-title"><%= mirror.project.title %></h4>
-        <div class="portfolio-mobile-img-wrapper">
-          <picture>
-            <source srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(min-width: 1200px)">
-            <% if mirror.project.attachments.first.image? %>
-              <% if mirror.crop_x.present? %>
-                <%= cl_image_tag mirror.project.attachments.first.key, class: "grid-search-big-item-img-no-sizing", height: mirror.crop_h, width: mirror.crop_w, x: mirror.crop_x, y: mirror.crop_y, crop: "crop" %>
-              <% else %>
-                <%= cl_image_tag mirror.project.attachments.first.key %>
-              <% end %>
-            <% else %>
-              <% if mirror.crop_x.present? %>
-                <%= cl_video_tag mirror.project.attachments.first.key, class: "portfolio-video-source grid-search-big-item-img-no-sizing", poster: { transformation: [ { height: mirror.crop_h.to_i, width: mirror.crop_w.to_i, x: mirror.crop_x.to_i, y: mirror.crop_y.to_i, crop: "crop" } ] } %>
-              <% else %>
-                <%= cl_video_tag mirror.project.attachments.first.key, class: "portfolio-video-source" %>
-              <% end %>
-            <% end %>
-          </picture>
-        </div>
-        <div class="portfolio-mobile-mirror-card-description"><%= mirror.project.description %></div>
-      <% end %>
-    </div>
+    <%= render partial: "mirrors_mobile_grid", locals: { mirror: mirror } %>
   <% end %>
 </div>
