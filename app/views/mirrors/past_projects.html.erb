@@ -3,9 +3,9 @@
 
 <h1 class="upcoming-project-title">
   <% if current_user == @user %>
-    Ongoing projects
+    Portfolio
   <% else %>
-    <%= @user.username %> upcoming projects
+    <%= @user.username %> portfolio
   <% end %>
   <div class="underlined-title"></div>
 </h1>

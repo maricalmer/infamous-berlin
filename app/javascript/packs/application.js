@@ -51,6 +51,7 @@ import { setBackBtn } from '../components/back_dash_btn';
 import { initGristackEdit, setSaveBtn } from '../components/gridstack_edit';
 import { initGristackStatic } from '../components/gridstack_static';
 import { attachCropperEvents } from '../components/cropper';
+import { fixBtnOnScroll } from '../components/save_display_btn';
 
 
 document.addEventListener('turbolinks:load', () => {
@@ -142,6 +143,9 @@ document.addEventListener('turbolinks:load', () => {
   }
   if (document.querySelectorAll(".tag-cropper-js").length) {
     attachCropperEvents();
+  }
+  if (document.querySelectorAll(".save-display-btn-js").length) {
+    fixBtnOnScroll();
   }
     // expandSearchBar();
 

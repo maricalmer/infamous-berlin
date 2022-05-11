@@ -6,7 +6,7 @@
       <h4 class="dash-received-record-title">
         Application to project
         <span><%= link_to inquiry.job.project.title, project_path(inquiry.job.project.slug) %></span>
-        owned by user <span><%= link_to inquiry.job.project.user.username, user_path(inquiry.user.slug) %></span>
+        owned by user <span><%= link_to inquiry.job.project.user.username, user_path(inquiry.job.project.user.slug) %></span>
       </h4>
       <div class="dash-sent-icons">
         <% if inquiry.on_hold? %>

@@ -12,7 +12,7 @@ function updateNavbar() {
 }
 
 const hideNavbarOnScroll = () => {
-  window.addEventListener("scroll", updateNavbar);
+  document.addEventListener("scroll", updateNavbar);
 }
 
 export { hideNavbarOnScroll }

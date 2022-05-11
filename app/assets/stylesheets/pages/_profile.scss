@@ -127,7 +127,11 @@
   border-radius: 0px;
   background-color: #d6d6d6;
 }
-.new-message-modal-header {
+.cropper-modal-popup {
+  border: 4px solid black;
+  border-radius: 0px;
+}
+.new-message-modal-header, .cropper-modal-header {
   border-bottom: 2px solid black;
   background-color: #858585;
 }
@@ -138,6 +142,13 @@
     border: 2px solid black;
     background-color: #d6d6d6;
   }
+}
+.cropper-modal-body {
+  background-color: #d6d6d6;
+}
+.cropper-modal-footer {
+  border-top: 2px solid black;
+  background-color: #d6d6d6;
 }
 .footer-socialmedia-link {
   font-size: calc(1.325rem + 0.9vw);

@@ -1,11 +1,11 @@
 <div class="modal fade modal-crop-portfolio-js" id="cropModal<%= mirror.id %>" tabindex="-1" data-bs-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
+    <div class="modal-content cropper-modal-popup">
+      <div class="modal-header cropper-modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Resize the image</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body w-100">
+      <div class="modal-body cropper-modal-body w-100">
         <div>
           <picture>
             <source srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 1200px)">
@@ -17,8 +17,8 @@
           </picture>
         </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Crop image</button>
+      <div class="modal-footer cropper-modal-footer">
+        <button type="button" class="btn crop-cropper-btn" data-bs-dismiss="modal">Crop image</button>
       </div>
     </div>
   </div>

@@ -176,6 +176,7 @@
   background-clip: border-box;
   border: solid 4px black;
   margin: 1rem;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 .dash-card-img {
   border-bottom-right-radius: 1px;
@@ -190,7 +191,8 @@
 }
 .dash-card-text {
   border-top: solid 4px black;
-  color: #d6d6d6;
+  color: black;
+  background-color: #b5b5b5;
   padding: 0.5rem;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -212,10 +214,10 @@
   width: 50%;
   border-right: solid 4px black;
   text-align: center;
-  background-color: #858585;
+  background-color: #333;
 }
 .dash-card-edit-btn:hover {
-  background-color: #7C7C7C;
+  background-color: #3d3d3d;
 }
 .dash-card-delete-btn {
   width: 50%;

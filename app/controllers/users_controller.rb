@@ -4,10 +4,12 @@ class UsersController < ApplicationController
   before_action :set_user_for_projects, only: [:upcoming_projects, :past_projects, :upcoming_collabs, :past_collabs, :portfolio, :portfolio_own_projects, :portfolio_collabs, :ongoing_projects, :ongoing_own_projects, :ongoing_collabs]
 
   def show
-    @past_projects = Project.past.where(user: @user)
-    @upcoming_projects = Project.upcoming.where(user: @user)
-    @past_collabs = Collab.where(user_id: @user.id).select { |collab| collab.project.past? }
-    @upcoming_collabs = Collab.where(user_id: @user.id).select { |collab| collab.project.upcoming? }
+    past_projects_ids = Project.past.where(user: @user).pluck(:id)
+    past_collabs_ids = Collab.where(user_id: @user.id).select { |collab| collab.project.past? }.map { |c| c.project_id }
+    @portfolio = Project.where(id: past_projects_ids).or(Project.where(id: past_collabs_ids))
+    upcoming_projects_ids = Project.upcoming.where(user: @user).pluck(:id)
+    upcoming_collabs_ids = Collab.where(user_id: @user.id).select { |collab| collab.project.upcoming? }.map { |c| c.project_id }
+    @ongoing_projects = Project.where(id: upcoming_projects_ids).or(Project.where(id: upcoming_collabs_ids))
     @message = Message.new
   end
 

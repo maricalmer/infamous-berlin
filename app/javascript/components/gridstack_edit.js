@@ -20,7 +20,7 @@ const updateMirrorForm = () => {
 }
 
 const setSaveBtn = () => {
-  const btn = document.querySelector(".gridstack-save-btn-js");
+  const btn = document.querySelector(".save-display-btn-js");
   btn.addEventListener("click", updateMirrorForm);
 }
 

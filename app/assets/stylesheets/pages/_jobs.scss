@@ -16,6 +16,7 @@
   background-color: #868686;
   border: solid 4px black;
   margin: 1rem;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 .skills-list-dash {
   display: flex;
@@ -53,7 +54,7 @@
   border-bottom: solid 4px black;
   width: 100%;
   text-align: center;
-  background-color: #858585;
+  background-color: #606060;
   color: black;
   padding: 0 4px;
   h4 {
@@ -80,8 +81,8 @@
   padding-right: 1rem;
 }
 .job-card-body-dash {
-  background-color: #333;
-  color: #d6d6d6;
+  background-color: #b5b5b5;
+  color: black;
   padding: 1rem 0;
   height: 196px;
   overflow: hidden;
