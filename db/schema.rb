@@ -121,7 +121,7 @@ ActiveRecord::Schema.define(version: 2022_04_12_221901) do
     t.string "skills"
     t.string "slug"
     t.citext "username"
-    t.text "title"
+    t.string "title"
     t.string "website"
     t.string "facebook"
     t.string "instagram"

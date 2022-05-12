@@ -248,10 +248,10 @@ abbr {
   display: none;
 }
 .underlined-title {
-  height: 22px;
+  height: 25px;
   background-color: #D1BFF6;
   position: relative;
-  top: -24px;
+  top: -20px;
   right: 14px;
   z-index: -1;
 }
@@ -492,6 +492,20 @@ abbr {
   position: sticky;
   top: 0px;
 }
+
+.update-profile-form-social-media input[type="text"]::-moz-placeholder {
+  font-size: 14px;
+}
+.update-profile-form-social-media input[type="text"]::-webkit-input-placeholder {
+  font-size: 14px;
+}
+.update-profile-form-social-media input[type="text"]:-ms-input-placeholder {
+  font-size: 14px;
+}
+.update-profile-form-social-media input[type="text"]:-moz-placeholder {
+  font-size: 14px;
+}
+
 @media(min-width: 450px) {
   .new-job-form-payment-block {
     display: flex;
@@ -508,17 +522,17 @@ abbr {
   }
   .new-project-form-title {
     font-size: 4rem;
-    right: 9vw;
+    right: 2vw;
     width: 382px;
   }
   .update-project-form-title {
     font-size: 4rem;
-    right: 9vw;
+    right: 2vw;
     width: 301px;
   }
   .edit-profile-form-title {
     font-size: 4rem;
-    right: 9vw;
+    right: 2vw;
     width: 290px;
   }
   .new-job-form-title {
@@ -530,6 +544,10 @@ abbr {
     font-size: 4rem;
     right: 2vw;
     width: 226px;
+  }
+  .underlined-title {
+    height: 33px;
+    top: -27px;
   }
   .new-project-form {
     padding: 3rem;
@@ -736,8 +754,8 @@ abbr {
     top: 60px;
   }
   .underlined-title {
-    height: 26px;
-    top: -22px;
+    height: 49px;
+    top: -39px;
     right: 20px;
   }
   .diagonal-separator1 {

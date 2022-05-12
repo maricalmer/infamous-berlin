@@ -6,13 +6,10 @@
 <%= render 'shared/brand' %>
 <div class="top-block-project">
   <%= render 'shared/carousel' %>
-  <!-- <div class="vertical-dashed-line"></div> -->
   <div class="side-text">
     <div>
       <div class="project-title d-inline"><%= @project.title %></div>
       <h3 class="d-inline ms-1">by <%= link_to @project.user.username, user_path(@project.user), class:"project-user" %></h3>
-
-
     </div>
     <div>
       <% if @members.any? %>
@@ -58,11 +55,10 @@
     <div>
       <div class="d-flex">
         <% if @project.user == current_user %>
-          <% if  @project.upcoming? %>
+          <% if @project.upcoming? %>
             <%= link_to new_project_job_path(@project), class:"link-btn-job m-0" do %>
               <button class="btn-job">Add job</button>
             <% end %>
-
           <% end %>
           <% if @jobs.any? %>
             <button class="btn-talents-eye" data-bs-toggle="modal" data-bs-target="#jobsList">
@@ -133,8 +129,10 @@
       </div>
       <div class="modal-body">
         <div class="modal-members-title">
-          <div class="modal-members">Additional <%= 'member'.pluralize(@members.count) %>:</div>
-          <div class="underlined-title"></div>
+          <div class="modal-members-title-wrapper">
+            <div class="modal-members">Additional <%= 'member'.pluralize(@members.count) %>:</div>
+            <div class="underlined-title"></div>
+          </div>
         </div>
         <% @members.each do |member| %>
           <div class="modal-member-line">

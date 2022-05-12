@@ -3,7 +3,8 @@
     <%= f.input :username, label: 'Username:', error: 'Mandatory field' %>
     <%= f.input :email, label: 'Email address:', error: 'Invalid format' %>
   </div>
-  <%= f.input :bio, label: 'Bio:' %>
+  <%= f.input :title, label: 'Title:', placeholder: "tell the world what you do..." %>
+  <%= f.input :bio, label: 'Bio:', placeholder: "tell the world about yourself..." %>
   <%= f.input :skills, wrapper_html: { class: "skills-hidden-field" }, input_html: { class: "skills_hidden_field_js" } %>
   <div class="new-skill-custom">
     <div class="new-skill-input-block">
@@ -20,14 +21,14 @@
     </div>
   </div>
   <div class="update-profile-form-social-media">
-    <%= f.input :website, label: 'Website link:' %>
-    <%= f.input :instagram, label: 'Instagram:' %>
-    <%= f.input :facebook, label: 'Instagram:' %>
-    <%= f.input :soundcloud, label: 'Soundcloud:' %>
-    <%= f.input :youtube, label: 'YouTube:' %>
-    <%= f.input :mixcloud, label: 'Mixcloud:' %>
-    <%= f.input :linkedin, label: 'Linkedin:' %>
-    <%= f.input :twitter, label: 'Twitter:' %>
+    <%= f.input :website, label: 'Website:', placeholder: "your-website.com" %>
+    <%= f.input :instagram, label: 'Instagram:', placeholder: "instagram.com/your-instagram-account" %>
+    <%= f.input :twitter, label: 'Twitter:', placeholder: "twitter.com/your-twitter-account" %>
+    <%= f.input :soundcloud, label: 'Soundcloud:', placeholder: "soundcloud.com/your-soundcloud-account" %>
+    <%= f.input :youtube, label: 'YouTube:', placeholder: "soundcloud.com/your-soundcloud-account" %>
+    <%= f.input :mixcloud, label: 'Mixcloud:', placeholder: "youtube.com/your-youtube-account" %>
+    <%= f.input :facebook, label: 'Facebook:', placeholder: "facebook.com/your-facebook-account" %>
+    <%= f.input :linkedin, label: 'Linkedin:', placeholder: "linkedin.com/in/your-linkedin-account" %>
   </div>
   <div class="upload-picture-form">
     <div class="upload-picture-left">

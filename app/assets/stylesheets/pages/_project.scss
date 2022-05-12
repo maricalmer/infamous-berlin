@@ -182,12 +182,11 @@
   background-color: #5A26C9;
 }
 .modal-owner-project-owner {
-  margin-left: 1rem;
   font-size: 1.5rem;
   z-index: 1;
   position: relative;
   color: black;
-  width: 120px;
+  width: fit-content;
 }
 .modal-members {
   font-size: 1.5rem;
@@ -220,7 +219,8 @@
   justify-content: space-between;
   height: 100px;
   background-color: #D1BFF6;
-  padding: 0.5rem 0;
+  padding: 1rem;
+  padding-top: 0.5rem;
   // background-color: #858585;
   // border-bottom: 2px solid black;
   .underlined-title {
@@ -346,28 +346,31 @@
   .modal-owner-line {
     .underlined-title {
       height: 18px;
-      top: -19px;
-      right: -27px;
-      width: 127px;
+      top: -18px;
+      right: 10px;
+      width: 100%;
     }
   }
   .madal-member-line {
     padding: 1rem 2rem;
   }
   .modal-owner-title {
-    width: 150px;
+    width: fit-content;
   }
   .modal-members-title {
     .underlined-title {
       height: 18px;
-      top: -19px;
-      right: -11px;
-      width: 180px;
+      top: -18px;
+      right: 10px;
+      width: 100%;
     }
+  }
+  .modal-members-title-wrapper {
+    width: fit-content;
   }
   .modal-owner-project-owner {
     font-size: 2rem;
-    width: 150px;
+    width: fit-content;
   }
   .member-modal-username {
     font-size: 1.5rem;

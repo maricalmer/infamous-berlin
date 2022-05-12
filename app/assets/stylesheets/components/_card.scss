@@ -163,12 +163,13 @@
 }
 .big-card {
   background-color: #d6d6d6;
-  margin: 1vh 5vw;
-  margin-top: 12vh;
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 230px;
+  margin-bottom: 100px;
   border: solid 4px black;
   box-shadow: -8px -8px 0 0 black;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding: 2rem;
   position: relative;
   z-index: -3;
   a {

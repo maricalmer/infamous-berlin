@@ -1,3 +1,17 @@
+.dashboard-title {
+  position: absolute;
+  font-size: 3rem;
+  right: 2vw;
+  width: fit-content;
+  top: 130px;
+  .underlined-title {
+    height: 24px;
+    top: -21px;
+    right: 8px;
+    position: relative;
+    background-color: #D1BFF6;
+  }
+}
 .pic-links-dash {
   display: block;
   margin-top: 1rem;
@@ -56,8 +70,8 @@
   margin: 0 auto;
 }
 .pic-dash {
-  padding-top: 3vh;
-  padding-bottom: 7vh;
+  padding-top: 1rem;
+  padding-bottom: 4rem;
   margin: 0 auto;
 }
 .username-dash {
@@ -80,7 +94,7 @@
 }
 .portfolio-cards {
   display: flex;
-  margin-bottom: 80px;
+  margin-bottom: 10rem;
   position: relative;
 }
 .dash-cards-slider {
@@ -279,6 +293,7 @@
   max-height: 0px;
   padding-left: 0px;
   width: 100%;
+  margin-bottom: 2rem;
   position: relative;
   right: 0px;
   top: -50px;
@@ -397,7 +412,7 @@
   padding-left: 4px;
 }
 .dash-bottom-btns {
-  margin-bottom: 1.5rem;
+  margin-bottom: 5rem;
 }
 .dash-sent-icons {
   height: 100%;
@@ -468,6 +483,16 @@
 }
 
 @media(min-width: 450px) {
+  .dashboard-title {
+    font-size: 5rem;
+    right: 2vw;
+    top: 90px;
+    .underlined-title {
+      height: 40px;
+      top: -35px;
+      right: 8px;
+    }
+  }
   .dash-new-btn {
     width: 175px;
   }
@@ -493,11 +518,21 @@
   }
 }
 @media(min-width: 850px) {
+  .dashboard-title {
+    font-size: 6rem;
+    right: 2vw;
+    top: 70px;
+    .underlined-title {
+      height: 49px;
+      top: -43px;
+      right: 14px;
+    }
+  }
   .dash-menu-dropdown-mobile-more, .dash-menu-dropdown-mobile-arrow {
     display: none;
   }
   .dash-top-menu {
-    margin-top: 0;
+    margin-top: 7vh;
   }
   .dash-slider-title-mobile {
     display: none;

@@ -1,13 +1,13 @@
 .upcoming-project-title {
   position: absolute;
-  font-size: 3rem;
-  right: 0;
+  font-size: 1.5rem;
+  right: 2vw;
   width: fit-content;
-  top: 100px;
+  top: 160px;
   .underlined-title {
-    height: 22px;
-    top: -22px;
-    right: 20px;
+    height: 14px;
+    top: -11px;
+    right: 8px;
     position: relative;
     background-color: #D1BFF6;
   }
@@ -67,9 +67,6 @@
   width: fit-content;
   overflow-x: visible;
   z-index: 4;
-  .underlined-title {
-
-  }
 }
 .big-grid-search {
   max-width: 200px;
@@ -223,18 +220,18 @@
   overflow: hidden;
   height: 65px;
 }
-@media(min-width: 450px) {
+
+@media(min-width: 470px) {
   .upcoming-project-title {
-    font-size: 4rem;
-    right: 9vw;
+    font-size: 3rem;
+    right: 2vw;
+    top: 115px;
     .underlined-title {
-      height: 22px;
-      top: -24px;
+      height: 25px;
+      top: -19px;
       right: 20px;
     }
   }
-}
-@media(min-width: 470px) {
   .big-grid-search {
     max-width: 450px;
     column-gap: 50px;
@@ -266,12 +263,12 @@
 }
 @media(min-width: 992px) {
   .upcoming-project-title {
-    font-size: 6rem;
+    font-size: 5rem;
     right: 4vw;
-    top: 60px;
+    top: 75px;
     .underlined-title {
-      height: 26px;
-      top: -22px;
+      height: 40px;
+      top: -32px;
       right: 14px;
     }
   }
@@ -292,10 +289,10 @@
   .upcoming-project-title {
     font-size: 6rem;
     right: 7vw;
-    top: 60px;
+    top: 55px;
     .underlined-title {
-      height: 26px;
-      top: -22px;
+      height: 49px;
+      top: -39px;
       right: 20px;
     }
   }
