@@ -47,11 +47,11 @@ import { showSpinnerBtn } from '../components/spinner_btn';
 import { renderPreview } from '../components/file_preview';
 import { addSkill, populateList, disableEnterSubmit } from '../components/add_skill';
 import { setDropdown } from '../components/switch_payment_rate';
-import { setBackBtn } from '../components/back_dash_btn';
 import { initGristackEdit, setSaveBtn } from '../components/gridstack_edit';
 import { initGristackStatic } from '../components/gridstack_static';
 import { attachCropperEvents } from '../components/cropper';
 import { fixBtnOnScroll } from '../components/save_display_btn';
+import { clearCachesOnBckBtn } from '../components/back_btn_reload';
 
 
 document.addEventListener('turbolinks:load', () => {
@@ -131,9 +131,6 @@ document.addEventListener('turbolinks:load', () => {
   if (document.querySelectorAll(".dropdown-payment-js").length) {
     setDropdown();
   }
-  if (document.querySelectorAll(".back-dash-link-js").length) {
-    setBackBtn();
-  }
   if (document.querySelectorAll(".gridstack-edit-js").length) {
     initGristackEdit()
     setSaveBtn();
@@ -146,6 +143,9 @@ document.addEventListener('turbolinks:load', () => {
   }
   if (document.querySelectorAll(".save-display-btn-js").length) {
     fixBtnOnScroll();
+  }
+  if (document.querySelectorAll(".job-show-js").length) {
+    clearCachesOnBckBtn();
   }
     // expandSearchBar();
 

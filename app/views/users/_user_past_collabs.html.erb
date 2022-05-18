@@ -1,10 +1,11 @@
+<h1>DESTROY THIS PAGE??</h1>
 <% if @past_collabs.empty? %>
-  <h4 class="profile-modal-no-result">no past project</h4>
+  <!-- <h4 class="profile-modal-no-result">no past project</h4> -->
 <% else %>
   <% @past_collabs.each do |collab| %>
     <div class="card-project-user-profile">
       <%= link_to project_path(collab.project.slug) do  %>
-        <div class="d-flex">
+<!--         <div class="d-flex">
           <div class="card-img-wrapper-user-profile">
             <%= cl_image_tag collab.project.attachments.first.key, class: "card-img" %>
           </div>
@@ -13,7 +14,7 @@
             <div class="subtitle-card-collab-user-profile">by <%= collab.project.user.username %></div>
             <div class="text-card-collab-user-profile"><%= collab.project.description %></div>
           </div>
-        </div>
+        </div> -->
       <% end %>
     </div>
   <% end %>

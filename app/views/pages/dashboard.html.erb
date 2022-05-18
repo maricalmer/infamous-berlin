@@ -145,17 +145,12 @@
     <%= render "collabs_dash" %>
     <div class="dash-chevron"><h5 class="past-chevron-right chevron-hidden">&#x3e;</h5></div>
   </div>
-
-
 <% elsif @hold_sent_applications.present? || @accepted_sent_applications.present? || @rejected_sent_applications.present? %>
   <div class="portfolio-cards">
     <div class="dash-chevron"><h5 class="past-chevron-left chevron-hidden">&#x3c;</h5></div>
     <%= render "sent_dash" %>
     <div class="dash-chevron"><h5 class="past-chevron-right chevron-hidden">&#x3e;</h5></div>
   </div>
-
-
-
 <% else %>
   <div class="d-flex align-items-baseline ms-5">
     <h5 class="text-center">No project nor collab in your portfolio yet...</h5><i class="far fa-sad-cry ms-1"></i>

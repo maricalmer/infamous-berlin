@@ -3,7 +3,12 @@
   <% @projects.each do |project| %>
     <div class="dash-card-project">
       <%= link_to project_path(project.slug) do  %>
-        <h4 class="title-card-project-search"><%= project.title %></h4>
+        <h4 class="title-card-project-search">
+          <%= project.title %>
+          <% if project.upcoming? %>
+            <div class="ribbon">UPCOMING</div>
+          <% end %>
+        </h4>
         <div class="dash-card-img-wrapper">
           <% if project.attachments.attached? %>
             <% if project.attachments.first.image? %>
@@ -16,11 +21,6 @@
           <% end %>
         </div>
         <div class="dash-card-text"><%= project.description %></div>
-        <% if project.upcoming? %>
-          <div class="ribbon-wrapper">
-            <div class="ribbon">UPCOMING</div>
-          </div>
-        <% end %>
       <% end %>
       <div class="dash-card-btns">
         <div class="dash-card-edit-btn">

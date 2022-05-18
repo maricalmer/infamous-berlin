@@ -1,6 +1,6 @@
 class MirrorsController < ApplicationController
   before_action :set_user, only: [:update, :ongoing_projects, :past_projects]
-  before_action :set_variant, only: [:ongoing_projects]
+  before_action :set_variant, only: [:ongoing_projects, :past_projects]
 
   def update
     @mirror = Mirror.find(params[:id])

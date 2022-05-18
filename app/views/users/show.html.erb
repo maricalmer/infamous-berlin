@@ -52,14 +52,12 @@
         <%= render 'shared/login_form' %>
       <% end %>
       <% if @portfolio.any? %>
-        <!-- <button class="btn btn-projects" data-bs-toggle="modal" data-bs-target="#modalProjects">Portfolio</button> -->
-        <%= link_to user_portfolio_path(@user) do %>
+        <%= link_to user_portfolio_path(@user), class: "link" do %>
           <button class="btn btn-projects">Portfolio</button>
         <% end %>
       <% end %>
       <% if @ongoing_projects.any? %>
-        <!-- <button class="btn btn-projects" data-bs-toggle="modal" data-bs-target="#modalCollabs">Collabs</button> -->
-        <%= link_to user_ongoing_collabs_path(@user) do %>
+        <%= link_to user_ongoing_collabs_path(@user), class: "link" do %>
           <button class="btn btn-projects">Ongoing projects</button>
         <% end %>
       <% end %>

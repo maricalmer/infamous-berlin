@@ -16,15 +16,31 @@
 }
 .btn-apply {
   font-size: 2rem;
+  border-radius: 0px;
   margin: 3rem auto 32px auto;
   display: block;
   border: solid;
   box-shadow: -6px -6px black;
-  background: #7ECA93;
+  background-color: #7ECA93;
   width: 150px;
 }
 .btn-apply:hover {
   background-color: #8EC7A6;
+}
+.btn-edit {
+  color: white;
+  border-radius: 0px;
+  font-size: 2rem;
+  margin: 3rem auto 32px auto;
+  display: block;
+  border: solid black;
+  box-shadow: -6px -6px black;
+  background: #333;
+  width: 150px;
+}
+.btn-edit:hover {
+  color: black;
+  background: #524E59 radial-gradient(circle, transparent 1%, #524E59 1%) center/15000%
 }
 .btn-talents, .btn-talents:focus {
   font-size: 2rem;
@@ -285,7 +301,7 @@
 .submit-msg-modal-btn, .crop-cropper-btn {
   font-size: 1.5rem;
   line-height: 1;
-  border: solid;
+  border: 3px solid black;
   background: #7ECA93;
   width: 60px;
   border-radius: 0;
@@ -298,7 +314,7 @@
   background-color: #8EC7A6;
 }
 @media(min-width: 450px) {
-  .btn-apply {
+  .btn-apply, .btn-edit {
     width: 250px;
   }
   .btn-update-accept {

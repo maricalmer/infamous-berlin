@@ -1,6 +1,6 @@
 <%= render 'shared/hamburger' %>
 <%= render 'shared/brand' %>
-<h1>Ongoing-Projects-Mobile</h1>
+
 <div class="portfolio-mobile-grid">
   <% @mirrors.each do |mirror|  %>
     <%= render partial: "mirrors_mobile_grid", locals: { mirror: mirror } %>

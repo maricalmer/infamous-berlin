@@ -61,19 +61,13 @@ Rails.application.routes.draw do
 
   get '/upcoming_projects', to: 'projects#upcoming_projects'
 
-  get '/user_upcoming_projects', to: 'users#upcoming_projects'
-  get '/user_past_projects', to: 'users#past_projects'
-  get '/user_upcoming_collabs', to: 'users#upcoming_collabs'
-  get '/user_past_collabs', to: 'users#past_collabs'
+  # get '/user_upcoming_projects', to: 'users#upcoming_projects'
+  # get '/user_past_projects', to: 'users#past_projects'
+  # get '/user_upcoming_collabs', to: 'users#upcoming_collabs'
+  # get '/user_past_collabs', to: 'users#past_collabs'
 
-  get '/portfolio', to: 'users#portfolio'
-  get '/portfolio_own_projects', to: 'users#portfolio_own_projects'
-  get '/portfolio_collabs', to: 'users#portfolio_collabs'
 
-  # get '/ongoing_projects', to: 'users#ongoing_projects'
-  # get '/ongoing_own_projects', to: 'users#ongoing_own_projects'
-  # get '/ongoing_collabs', to: 'users#ongoing_collabs'
-
-  # get '/update_mirrors', to: 'users#update_mirrors'
+  # get '/portfolio_own_projects', to: 'users#portfolio_own_projects'
+  # get '/portfolio_collabs', to: 'users#portfolio_collabs'
 
 end

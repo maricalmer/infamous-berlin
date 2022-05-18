@@ -3,7 +3,7 @@
   <div class="mt-5">
     <%= simple_form_for :search, url: search_path, method: :get do |f| %>
       <div class="search-bar-search-page">
-        <input type="text" name="query" placeholder="<%= params[:query] %>" class="search-input-search-page" autocomplete="off">
+        <input type="text" name="query" placeholder="<%= params[:query] %>" class="search-input-search-page search-refresh-input" autocomplete="off">
         <button name="button" type="submit">
           <i class="fas fa-search search-btn-search-page"></i>
         </button>

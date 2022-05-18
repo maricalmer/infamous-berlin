@@ -5,6 +5,8 @@
 }
 
 .job-card {
+  display: flex;
+  flex-direction: column;
   width: 300px;
   background-color: #d6d6d6;
   padding: 1rem;
@@ -56,7 +58,7 @@
   text-align: center;
   background-color: #606060;
   color: black;
-  padding: 0 4px;
+  padding: 0.5rem;
   h4 {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -66,14 +68,12 @@
 }
 .job-card-description {
   margin: 16px 0;
-  height: 50px;
+  height: 100px;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
   overflow-wrap: break-word;
-  padding-left: 1rem;
-  padding-right: 1rem;
 }
 .job-card-details-dash {
   margin: 0;
@@ -90,11 +90,16 @@
 .more-btn, #btn-form-submit {
   width: 230px;
   font-size: 2rem;
-  margin: 8rem auto 32px auto;
   display: block;
   border: solid;
   box-shadow: -6px -6px black;
   background: #7ECA93;
+}
+#btn-form-submit {
+  margin: 8rem auto 32px auto;
+}
+.more-btn {
+  margin: 6rem auto 32px auto;
 }
 .more-btn:hover, #btn-form-submit:hover {
   background-color: #8EC7A6;
@@ -105,6 +110,7 @@
   text-align: center;
   z-index: 1;
   position: relative;
+  border: 3px solid black;
 }
 .jobs-more-btn-dash {
   text-decoration: none;

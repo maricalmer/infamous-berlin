@@ -219,9 +219,15 @@ body {
   -webkit-transition-delay: 0.4s;
   transition-delay: 0.4s;
 }
-.placeholder-transparent {
-  color: transparent;
+// .placeholder-transparent {
+//   color: transparent;
+
+// }
+.placeholder-transparent::placeholder {
+  opacity: 0;
   font-size: 1rem;
+  -webkit-transition: 1s ease-in-out;
+  transition: 1s ease-in-out;;
 }
 .search-hamburger-btn {
   margin-left: -50px;
@@ -298,14 +304,17 @@ body {
   border: 3px solid black;
   border-radius: 0;
   background: none;
-  color: black;
+  color: #333;
   outline: 0;
   -webkit-transition: width 0.4s ease-in-out, border-radius 0.4s ease-in-out,
-    padding 0.2s, color 1s;
+    padding 0.2s, opacity 1s;
   transition: width 0.4s ease-in-out, border-radius 0.4s ease-in-out,
-    padding 0.2s, color 1s;
+    padding 0.2s, opacity 1s;
   -webkit-transition-delay: 0.4s, 0s, 0.4s;
   transition-delay: 0.4s, 0s, 0.4s;
+}
+.search-hamburger-square::placeholder {
+  opacity: 1;
 }
 
 @media(min-width: 992px) {

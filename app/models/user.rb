@@ -85,7 +85,7 @@ class User < ApplicationRecord
     end
   end
 
-  private
+  # private
 
   def assign_slug
     self.slug = create_slug

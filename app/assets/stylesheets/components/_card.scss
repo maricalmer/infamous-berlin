@@ -53,7 +53,7 @@
 
 .skill-box {
   box-shadow: -6px -6px black;
-  border: solid;
+  border: 3px solid black;
   width: auto;
   padding: 2px;
   background-color: #d6d6d6;
@@ -81,8 +81,10 @@
   white-space:nowrap
 }
 .card-project-search {
+  overflow: hidden;
   position: relative;
   width: 200px;
+  height: fit-content;
   background-color: #333;
   word-wrap: break-word;
   background-clip: border-box;
@@ -109,6 +111,10 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  position: relative;
+}
+.title-card-project-search:hover {
+  background-color: #707070;
 }
 .text-card-project-search {
   padding: 0.5rem;
@@ -119,6 +125,7 @@
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  background-color: #b5b5b5;
 }
 .status-card-project-search {
   position: absolute;
@@ -127,15 +134,15 @@
   z-index: 1;
   color: black;
 }
-.ribbon-wrapper {
-  width: 100px;
-  height: 100px;
-  overflow: hidden;
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  cursor: pointer;
-}
+// .ribbon-wrapper {
+//   width: 100px;
+//   height: 100px;
+//   overflow: hidden;
+//   position: absolute;
+//   top: 0px;
+//   right: 0px;
+//   // cursor: pointer;
+// }
 .ribbon {
   color: black;
   text-align: center;
@@ -143,14 +150,16 @@
   -moz-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   -o-transform: rotate(45deg);
-  position: relative;
+  position: absolute;
   padding: 2px 0;
-  left: 5px;
-  top: 4px;
   width: 150px;
   background-color: #7ECA93;
   border-bottom: 3px solid black;
   border-top: 3px solid black;
+  cursor: pointer;
+  left: 95px;
+  top: 6px;
+  font-size: 1rem;
 }
 .job-details-card {
   max-width: 100%;

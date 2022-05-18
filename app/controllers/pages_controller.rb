@@ -190,7 +190,7 @@ class PagesController < ApplicationController
 
   def set_search
     @query = params[:query]
-    @users = User.search_by_username_bio_skills_title(@query)
-    @projects = Project.search_by_title_description_location_category(@query)
+    @users = User.search_by_username_bio_skills_title(@query).includes([:photo_attachment])
+    @projects = Project.search_by_title_description_location_category(@query).includes([:user])
   end
 end

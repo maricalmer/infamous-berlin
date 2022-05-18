@@ -1,8 +1,0 @@
-<h1>Portfolio from <%= @user.username %></h1>
-<ul class="list-inline search-tabs-underlined">
-  <li><%= link_to "My projects", portfolio_own_projects_path(user: @user), class: "js-modal-tab search-tab-underlined tab-active", remote: true %></li>
-  <li><%= link_to "Projects from others", portfolio_collabs_path(user: @user), class: "ms-3 js-modal-tab search-tab-underlined", remote: true %></li>
-</ul>
-<div class="js-results mt-5 portfolio-style-js">
-  <%= render "user_portfolio_own_projects" %>
-</div>

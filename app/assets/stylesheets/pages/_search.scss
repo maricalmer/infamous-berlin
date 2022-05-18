@@ -28,6 +28,7 @@
 }
 .search-input-search-page:focus {
   outline-width: 0;
+  outline: none;
 }
 .search-refresh-input:focus {
   outline: none !important;
@@ -80,6 +81,7 @@
 }
 .search-card-img-wrapper {
   overflow: hidden;
+  display: flex;
 }
 .manicule {
   font-size: 55px;

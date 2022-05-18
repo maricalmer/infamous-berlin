@@ -19,7 +19,7 @@ function markLoadedImgs(event) {
 }
 
 function checkOnImgsState() {
-  const imgs = document.querySelectorAll(".card-img");
+  const imgs = document.querySelectorAll(".card-img-js");
   if (imgs.length > 0) {
     imgs.forEach((img) => {
       if (img.complete) {
@@ -35,7 +35,9 @@ function checkOnImgsState() {
       counter = counter + img.myParam
     });
     if (counter == imgs.length) {
-      setSize()
+      setTimeout(function(){
+        setSize();
+      }, 50);
     };
   }
 };
@@ -45,9 +47,7 @@ function organiseResults(elem, gutter) {
     itemSelector: '.grid-search-item',
     gutter: gutter,
     horizontalOrder: true,
-    transitionDuration: 0,
-    // fitWidth: true,
-    percentPosition: true
+    transitionDuration: 0
   });
 }
 
