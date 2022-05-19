@@ -8,11 +8,11 @@
 <div class="top-block-project">
   <%= render 'shared/carousel' %>
   <div class="side-text">
-    <div>
-      <div class="project-title d-inline"><%= @project.title %></div>
-      <h3 class="d-inline ms-1">by <%= link_to @project.user.username, user_path(@project.user), class:"project-user" %></h3>
+    <div class="side-text-title">
+      <div class="project-title"><%= @project.title %></div>
+      <h3 class="project-title-owner">by <%= link_to @project.user.username, user_path(@project.user), class:"project-user" %></h3>
     </div>
-    <div>
+    <div class="side-text-members">
       <% if @members.any? %>
         <div class="members-block">
           <div class="project-side-details mb-4"><%= 'Member'.pluralize(@members.count) %>:</div>
@@ -173,8 +173,8 @@
               <h4 class="modal-job-title"><%= job.title.downcase %> job in <%= job.location %></h4>
               <div class="modal-job-right-wrapper">
                 <p class="modal-job-days">(published <%= time_ago_in_words(job.created_at) %> ago)</p>
-                <div class="modal-job-manicule-wrapper">
-                  <div class="modal-job-manicule">&#x261E;</div>
+                <div class="modal-job-arrow-wrapper">
+                  <i class="fas fa-arrow-right"></i>
                 </div>
               </div>
             </div>

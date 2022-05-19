@@ -30,7 +30,6 @@ const autocompleteSearch = function() {
   const projectPage = document.querySelector('.project-show-js');
   skill_sets.forEach((set) => {
     const specificSet = JSON.parse(set.dataset.set);
-    console.log(set.firstElementChild)
     if (specificSet && formPage) {
       const searchInput = set.firstElementChild.nextElementSibling;
       createAutocomplete(specificSet, searchInput);

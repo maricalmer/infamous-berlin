@@ -4,15 +4,23 @@
 }
 .side-text {
   width: 100%;
-  height: auto;
   padding: 32px;
   border-top: dashed 4px black;
   border-bottom: dashed 4px black;
   background: #D1BFF6;
 }
+.side-text-title {
+  min-height: 80px;
+}
 .project-title {
-  font-size: 2.25rem;
+  display: inline;
+  font-size: 1.75rem;
   line-height: 2.5rem;
+}
+.project-title-owner {
+  font-size: 1rem;
+  display: inline;
+  margin-left: 0.25rem;
 }
 .project-user {
   color: #d6d6d6;
@@ -270,11 +278,15 @@
 .modal-job-records a:nth-child(even) .modal-job-record {
   background-color: #858585;
 }
-.modal-job-manicule-wrapper {
+.modal-job-arrow-wrapper {
   height: 100%;
   background-color: #7ECA93;
-  padding-top: 10px;
-  padding-left: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  i {
+    font-size: 1.5rem;
+  }
 }
 .modal-job-manicule {
   font-size: 3rem;
@@ -340,6 +352,12 @@
 
 }
 @media(min-width: 450px) {
+  .project-title {
+    font-size: 2.25rem;
+  }
+  .project-title-owner {
+    font-size: 1.5rem;
+  }
   .modal-members {
     font-size: 2rem;
   }
@@ -420,7 +438,7 @@
     display: flex;
     align-items: center;
   }
-  .modal-job-manicule-wrapper {
+  .modal-job-arrow-wrapper {
     width: 50px;
     margin-left: 1rem;
   }
@@ -452,7 +470,7 @@
   .top-block-project {
     display: flex;
     height: 75vh;
-    min-height: 550px;
+    min-height: 574px;
     background: linear-gradient(to right, #858585 0%, #858585 70%, #D1BFF6 70%, #D1BFF6 100%);
     border-bottom: dashed 4px black;
   }
@@ -471,6 +489,12 @@
     padding-right: 3em;
     padding-left: 3em;
     height: 100%;
+  }
+  .side-text-title {
+    flex-grow: 1;
+  }
+  .side-text-members {
+    margin-bottom: 3rem;
   }
   .wrapper-btn-talents {
     width: 100%;
