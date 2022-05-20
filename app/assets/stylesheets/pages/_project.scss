@@ -109,6 +109,10 @@
   position: relative;
   margin-top: 3rem;
 }
+.members-block-placeholder {
+  height: 53px;
+  margin-top: 3rem;
+}
 .members-block-avatars {
   display: flex;
   align-items: center;
@@ -205,11 +209,11 @@
   .underlined-title {
     height: 10px;
     top: -12px;
-    right: -11px;
+    right: -7px;
     background-color: #afafaf;
     position: relative;
     z-index: 0;
-    width: 135px;
+    width: 125px;
   }
 }
 .modal-owner-subdetails {
@@ -234,7 +238,7 @@
   .underlined-title {
     height: 10px;
     top: -12px;
-    right: -27px;
+    right: -7px;
     background-color: #afafaf;
     position: relative;
     z-index: 0;
@@ -284,6 +288,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  border-top: 2px solid black;
   i {
     font-size: 1.5rem;
   }
@@ -365,7 +370,7 @@
     .underlined-title {
       height: 18px;
       top: -18px;
-      right: 10px;
+      right: -7px;
       width: 100%;
     }
   }
@@ -379,7 +384,7 @@
     .underlined-title {
       height: 18px;
       top: -18px;
-      right: 10px;
+      right: -7px;
       width: 100%;
     }
   }
@@ -441,6 +446,7 @@
   .modal-job-arrow-wrapper {
     width: 50px;
     margin-left: 1rem;
+    border-top: none;
   }
   .modal-job-title {
     margin-left: 1rem;
@@ -454,6 +460,9 @@
     // display: flex;
     // position: relative;
     margin: 0;
+  }
+  .members-block-placeholder {
+    height: 80px;
   }
   .members-block-avatars {
     gap: 10px 0;

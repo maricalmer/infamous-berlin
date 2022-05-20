@@ -8,8 +8,8 @@
         <span><%= link_to inquiry.user.username, user_path(inquiry.user.slug) %></span> to project
         <span><%= link_to inquiry.job.project.title, project_path(inquiry.job.project.slug) %></span>
       </h4>
-      <%= link_to inquiry_path(inquiry), class:"dash-manicule-link" do %>
-        <div class="dash-manicule">&#x261E;</div>
+      <%= link_to inquiry_path(inquiry), class:"dash-inquiries-links dash-arrow-link" do %>
+        <i class="fas fa-arrow-right"></i>
       <% end %>
     </div>
   <% end %>

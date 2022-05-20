@@ -74,7 +74,7 @@ class User < ApplicationRecord
   end
 
   def self.usernames
-    usernames = User.pluck(:username).sort
+    User.all.pluck(:username).sort
   end
 
   def display_skills
@@ -83,6 +83,17 @@ class User < ApplicationRecord
     skills.split.map do |skill|
       skill.include?("_") ? skill.gsub("_", " ") : skill
     end
+  end
+
+  def contact_info?
+    website.present? ||
+      facebook.present? ||
+      instagram.present? ||
+      soundcloud.present? ||
+      youtube.present? ||
+      mixcloud.present? ||
+      linkedin.present? ||
+      twitter.present?
   end
 
   # private

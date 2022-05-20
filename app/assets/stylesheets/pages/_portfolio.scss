@@ -1,12 +1,12 @@
 .upcoming-project-title {
   position: absolute;
-  font-size: 1.5rem;
+  font-size: 2rem;
   right: 2vw;
   width: fit-content;
-  top: 160px;
+  top: 140px;
   .underlined-title {
-    height: 14px;
-    top: -11px;
+    height: 16px;
+    top: -13px;
     right: 8px;
     position: relative;
     background-color: #D1BFF6;
@@ -158,12 +158,13 @@
   max-width: 465px;
 }
 .portfolio-card-description {
-  max-height: 90px;
-  padding: 0 0.5rem;
+  max-height: 85px;
+  padding: 0.5rem;
   position: absolute;
   bottom: 0;
   width: 100%;
   background-color: #b5b5b5;
+  border-top: 2px solid black;
 }
 .ui-resizable-se {
   right: 17px !important;

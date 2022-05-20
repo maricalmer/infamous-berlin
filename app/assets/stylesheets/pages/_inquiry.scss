@@ -79,6 +79,18 @@
   padding-bottom: 2rem;
   margin-bottom: 0;
 }
+.inquiry-show-motivation-title, .inquiry-show-motivation-experience {
+  display: inline-block;
+  .underlined-title {
+    width: 100%;
+    background-color: #858585;
+    height: 12px;
+    position: relative;
+    top: -9px;
+    right: -8px;
+    z-index: -1;
+  }
+}
 .inquiry-show-experience {
   padding-bottom: 2rem;
   margin-bottom: 0;

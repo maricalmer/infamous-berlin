@@ -10,18 +10,18 @@
       </h4>
       <div class="dash-sent-icons">
         <% if inquiry.on_hold? %>
-          <%= link_to inquiry_path(inquiry), class:"dash-show-link" do %>
-            <div class="dash-show-manicule">&#x261E;</div>
+          <%= link_to inquiry_path(inquiry), class:"dash-inquiries-links dash-arrow-link" do %>
+            <i class="fas fa-arrow-right"></i>
           <% end %>
-          <%= link_to edit_inquiry_path(inquiry), class:"dash-edit-link" do %>
-            <div class="dash-edit">&#x270E;</div>
+          <%= link_to edit_inquiry_path(inquiry), class:"dash-inquiries-links dash-edit-link" do %>
+            <i class="fas fa-pencil-alt"></i>
           <% end %>
-          <%= link_to inquiry_path(inquiry), class:"dash-destroy-link", method: :delete, data: { confirm: "Are you sure?" } do %>
-            <div class="dash-destroy">&#x2716;</div>
+          <%= link_to inquiry_path(inquiry), class:"dash-inquiries-links dash-destroy-link", method: :delete, data: { confirm: "Are you sure?" } do %>
+            <i class="fas fa-trash"></i>
           <% end %>
         <% else %>
-          <%= link_to inquiry_path(inquiry), class:"dash-manicule-link" do %>
-            <div class="dash-manicule">&#x261E;</div>
+          <%= link_to inquiry_path(inquiry), class:"dash-arrow-link" do %>
+            <i class="fas fa-arrow-right"></i>
           <% end %>
         <% end %>
       </div>

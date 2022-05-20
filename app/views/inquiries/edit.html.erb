@@ -30,12 +30,12 @@
         <h2 class="d-inline-block">Your application</h2>
         <div class="bottom-dashed-line"></div>
       </div>
-        <%= simple_form_for [ @inquiry ], remote: true, html: { multipart: true } do |f| %>
-          <%= f.input :motivation, label: 'What motivates you to apply?', error: 'Mandatory field' %>
-          <%= f.input :experience, label: 'Please detail your experience', error: 'Mandatory field' %>
-          <%= f.input :attached_file, as: :file %>
-          <%= f.submit "Submit application!", class: "more-btn jobs-more-btn" %>
-        <% end %>
+      <%= simple_form_for [ @inquiry ], remote: true, html: { multipart: true } do |f| %>
+        <%= f.input :motivation, label: 'What motivates you to apply?', error: 'Mandatory field' %>
+        <%= f.input :experience, label: 'Please detail your experience', error: 'Mandatory field' %>
+        <%= f.input :attached_file, as: :file %>
+        <%= f.submit "Submit application!", class: "more-btn jobs-more-btn" %>
+      <% end %>
     </div>
   </div>
 </div>

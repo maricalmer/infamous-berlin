@@ -1,6 +1,15 @@
 <%= render 'shared/hamburger' %>
 <%= render 'shared/brand' %>
 
+<h1 class="upcoming-project-title">
+  <% if current_user == @user %>
+    Portfolio
+  <% else %>
+    <%= @user.username %> portfolio
+  <% end %>
+  <div class="underlined-title"></div>
+</h1>
+
 <div class="portfolio-mobile-grid">
   <% @mirrors.each do |mirror|  %>
     <%= render partial: "mirrors_mobile_grid", locals: { mirror: mirror } %>

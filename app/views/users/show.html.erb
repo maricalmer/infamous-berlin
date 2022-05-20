@@ -57,36 +57,38 @@
         <% end %>
       <% end %>
       <% if @ongoing_projects.any? %>
-        <%= link_to user_ongoing_collabs_path(@user), class: "link" do %>
+        <%= link_to user_ongoing_projects_path(@user), class: "link" do %>
           <button class="btn btn-projects">Ongoing projects</button>
         <% end %>
       <% end %>
     </div>
   </div>
 </div>
-<div class="links-socialmedia">
-  <% if @user.website %>
-    <div><a class="footer-socialmedia-link" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.website %>>Website</a></div>
-  <% end %>
-  <% if @user.facebook %>
-    <div><a class="footer-socialmedia-link" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.facebook %>>Facebook</a></div>
-  <% end %>
-  <% if @user.instagram %>
-    <div><a class="footer-socialmedia-link" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.instagram %>>Instagram</a></div>
-  <% end %>
-  <% if @user.soundcloud %>
-    <div><a class="footer-socialmedia-link" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.soundcloud %>>Soundcloud</a></div>
-  <% end %>
-  <% if @user.youtube %>
-    <div><a class="footer-socialmedia-link" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.youtube %>>YouTube</a></div>
-  <% end %>
-  <% if @user.mixcloud %>
-    <div><a class="footer-socialmedia-link" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.mixcloud %>>Mixcloud</a></div>
-  <% end %>
-  <% if @user.linkedin %>
-    <div><a class="footer-socialmedia-link" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.linkedin %>>Linkedin</a></div>
-  <% end %>
-  <% if @user.twitter %>
-    <div><a class="footer-socialmedia-link" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.twitter %>>Twitter</a></div>
-  <% end %>
-</div>
+<% if @user.contact_info? %>
+  <div class="links-socialmedia">
+    <% if @user.website %>
+      <div><a class="footer-socialmedia-link" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.website %>>Website</a></div>
+    <% end %>
+    <% if @user.facebook %>
+      <div><a class="footer-socialmedia-link" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.facebook %>>Facebook</a></div>
+    <% end %>
+    <% if @user.instagram %>
+      <div><a class="footer-socialmedia-link" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.instagram %>>Instagram</a></div>
+    <% end %>
+    <% if @user.soundcloud %>
+      <div><a class="footer-socialmedia-link" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.soundcloud %>>Soundcloud</a></div>
+    <% end %>
+    <% if @user.youtube %>
+      <div><a class="footer-socialmedia-link" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.youtube %>>YouTube</a></div>
+    <% end %>
+    <% if @user.mixcloud %>
+      <div><a class="footer-socialmedia-link" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.mixcloud %>>Mixcloud</a></div>
+    <% end %>
+    <% if @user.linkedin %>
+      <div><a class="footer-socialmedia-link" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.linkedin %>>Linkedin</a></div>
+    <% end %>
+    <% if @user.twitter %>
+      <div><a class="footer-socialmedia-link" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.twitter %>>Twitter</a></div>
+    <% end %>
+  </div>
+<% end %>

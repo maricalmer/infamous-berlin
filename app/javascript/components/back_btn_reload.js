@@ -1,7 +1,7 @@
-const clearCachesOnBckBtn = () => {
+const reloadWindowonBackBtn = () => {
   window.addEventListener("popstate", function() {
     window.location.reload();
   })
 }
 
-export { clearCachesOnBckBtn }
+export { reloadWindowonBackBtn }

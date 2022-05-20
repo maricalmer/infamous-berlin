@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :users, param: :slug do
     resources :mirrors, only: [:update]
-    get '/ongoing_collabs', to: 'mirrors#ongoing_projects'
+    get '/ongoing_projects', to: 'mirrors#ongoing_projects'
     get '/portfolio', to: 'mirrors#past_projects'
   end
   resources :projects, param: :slug do
