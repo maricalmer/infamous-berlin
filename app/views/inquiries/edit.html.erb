@@ -1,41 +1,52 @@
 <%= render 'shared/hamburger' %>
 <%= render 'shared/brand' %>
 <div class="background-search">
-  <div class="container">
-    <h1 class="mt-5 mb-4 d-inline-block">
-      Apply to this offer
-      <div class="underlined-title"></div>
-    </h1>
-    <div class="job-details-card">
-      <div class="mt-5 mb-4 d-flex align-items-center">
-        <h2 class="d-inline-block">Job details</h2>
-        <div class="bottom-dashed-line"></div>
+  <div class="new-project-page new-project-js">
+    <div class="wrapper-title-form">
+      <h1 class="new-project-form-title">
+        Edit your application
+        <div class="underlined-title"></div>
+      </h1>
+      <div class="big-card-form">
+        <div class="new-inquiry-big-card">
+          <div class="job-details-card">
+            <div class="inquiry-new-job-title">
+              Job details:
+              <div class="underlined-title"></div>
+            </div>
+            <div class="d-flex justify-content-center align-items-center my-3">
+              <i class="fas fa-quote-left me-4"></i>
+              <h3 class="text-break text-center"><%= @job.title.upcase %></h3>
+              <i class="fas fa-quote-right ms-4"></i>
+            </div>
+            <h4><%= @job.description * 5 %></h4>
+            <ul class="my-4 skills-list ps-0 align-items-center">
+              <h4 class="me-5"><%= "Skill".pluralize(@job.display_skills_needed.count) %> needed:</h4>
+              <% @job.display_skills_needed.each do |skill| %>
+                <li><h5 class="skill-box"><%= skill.downcase %></h5></li>
+              <% end %>
+            </ul>
+            <h4 class="job-show-link"><span>----</span> <%= link_to "check out the job offer", job_path(@job), class:"link" %></h4>
+          </div>
+          <div class="new-application-block">
+            <div class="inquiry-new-application-title">
+              Your application:
+              <div class="underlined-title"></div>
+            </div>
+            <%= simple_form_for [ @inquiry ], remote: true, html: { multipart: true } do |f| %>
+              <%= f.input :motivation, label: 'What motivates you to apply?', error: 'Mandatory field' %>
+              <%= f.input :experience, label: 'Please detail your experience', error: 'Mandatory field' %>
+              <%= f.input :attached_file, label: 'Attachments:', as: :file %>
+              <%= f.submit "Edit application!", id: "btn-apply" %>
+            <% end %>
+          </div>
+        </div>
       </div>
-      <div class="d-flex justify-content-center align-items-center my-3">
-        <h3 class="me-5 align-self-center">&#8902;</h3>
-        <h3 class="text-break text-center"><%= @inquiry.job.title.upcase %></h3>
-        <h3 class="ms-5 align-self-center">&#8902;</h3>
-      </div>
-      <h4><%= @inquiry.job.description * 5 %></h4>
-      <ul class="my-4 skills-list ps-0 align-items-center">
-        <h4 class="me-5"><%= "Skill".pluralize(@inquiry.job.display_skills_needed.count) %> needed:</h4>
-        <% @inquiry.job.skills_needed.each do |skill| %>
-          <li><h5 class="skill-box"><%= skill.downcase %></h5></li>
-        <% end %>
-      </ul>
-      <h4 class="mb-4 manicule-link"><span>---</span> <%= link_to "check out the job offer", job_path(@inquiry.job)%></h4>
     </div>
-    <div>
-      <div class="mt-5 mb-4 d-flex align-items-center">
-        <h2 class="d-inline-block">Your application</h2>
-        <div class="bottom-dashed-line"></div>
-      </div>
-      <%= simple_form_for [ @inquiry ], remote: true, html: { multipart: true } do |f| %>
-        <%= f.input :motivation, label: 'What motivates you to apply?', error: 'Mandatory field' %>
-        <%= f.input :experience, label: 'Please detail your experience', error: 'Mandatory field' %>
-        <%= f.input :attached_file, as: :file %>
-        <%= f.submit "Submit application!", class: "more-btn jobs-more-btn" %>
-      <% end %>
+    <div class="img-divider-wrapper">
+      <div class="diagonal-separator1"></div>
+      <div class="diagonal-separator2"></div>
+      <div class="side-img-edit-inquiry"></div>
     </div>
   </div>
 </div>

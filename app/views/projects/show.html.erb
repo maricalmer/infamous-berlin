@@ -120,15 +120,15 @@
           <div class="underlined-title"></div>
         </div>
         <div class="modal-owner-subdetails">
-          <%= link_to user_path(@project.user) do %>
-            <div class="diamond-frame-member-modal">
+          <div class="diamond-frame-member-modal">
+            <%= link_to user_path(@project.user) do %>
               <% if @project.user.photo.attached? %>
                 <%= cl_image_tag @project.user.photo.key %>
               <% else %>
                 <%= image_tag "logo.png" %>
               <% end %>
-            </div>
-          <% end %>
+            <% end %>
+          </div>
           <%= link_to @project.user.username, user_path(@project.user), class:"member-modal-username" %>
         </div>
       </div>
@@ -141,15 +141,15 @@
         </div>
         <% @members.each do |member| %>
           <div class="modal-member-line">
-            <%= link_to user_path(member.slug) do %>
-              <div class="diamond-frame-member-modal">
+            <div class="diamond-frame-member-modal">
+              <%= link_to user_path(member.slug) do %>
                 <% if member.photo.attached? %>
                   <%= cl_image_tag member.photo.key %>
                 <% else %>
                   <%= image_tag "logo.png" %>
                 <% end %>
-              </div>
-            <% end %>
+              <% end %>
+            </div>
             <%= link_to member.username, user_path(member.slug), class:"member-modal-username" %>
             <% collab = member.collabs.find_by(project_id: @project.id) %>
             <% if @project.user == current_user %>

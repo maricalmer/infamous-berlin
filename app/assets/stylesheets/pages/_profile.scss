@@ -1,3 +1,7 @@
+.profile-show {
+  min-height: 100vh;
+  height: fit-content;
+}
 .card-user-profile {
   width: fit-content;
   text-align: center;
@@ -181,6 +185,9 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    grid-column-start: 1;
+    grid-column-end: 11;
+    width: 100%;
   }
   .footer-socialmedia-link {
     margin-right: 1rem;
@@ -195,6 +202,7 @@
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: repeat(7, auto);
+    min-height: 100vh;
   }
   .img-name-profile {
     grid-column-start: 1;
@@ -239,8 +247,5 @@
     grid-row-end: 3;
     border-left: dashed 4px black;
     border-bottom: none;
-  }
-  .links-socialmedia {
-    width: 100%;
   }
 }

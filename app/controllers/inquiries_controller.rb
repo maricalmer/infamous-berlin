@@ -26,6 +26,7 @@ class InquiriesController < ApplicationController
   end
 
   def edit
+    @job = @inquiry.job
   end
 
   def update

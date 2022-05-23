@@ -91,6 +91,26 @@
     z-index: -1;
   }
 }
+.new-application-block {
+  border-top: 8px dashed black;
+}
+.inquiry-new-job-title, .inquiry-new-application-title {
+  margin-top: 3rem;
+  font-size: 2rem;
+  display: inline-block;
+  .underlined-title {
+    width: 100%;
+    background-color: #858585;
+    position: relative;
+    height: 18px;
+    top: -19px;
+    right: -6px;
+    z-index: -1;
+  }
+}
+.job-show-link {
+  margin-bottom: 3rem;
+}
 .inquiry-show-experience {
   padding-bottom: 2rem;
   margin-bottom: 0;

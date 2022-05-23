@@ -164,12 +164,6 @@
 .job-details-card {
   max-width: 100%;
 }
-.manicule-link {
-  a {
-    text-decoration: none;
-    color: black;
-  }
-}
 .big-card {
   background-color: #d6d6d6;
   width: 90%;
@@ -184,6 +178,9 @@
   a {
     text-decoration: none;
   }
+}
+.new-inquiry-big-card {
+  padding: 3rem;
 }
 .inquiry-big-card {
   background-color: #d6d6d6;

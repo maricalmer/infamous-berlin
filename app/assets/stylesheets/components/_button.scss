@@ -14,7 +14,7 @@
 .btn-delete-skill:hover {
   color: #a34646;
 }
-.btn-apply {
+.btn-apply, #btn-apply {
   font-size: 2rem;
   border-radius: 0px;
   margin: 3rem auto 32px auto;
@@ -22,9 +22,8 @@
   border: 3px solid black;
   box-shadow: -6px -6px black;
   background-color: #7ECA93;
-  width: 150px;
 }
-.btn-apply:hover {
+.btn-apply:hover, #btn-apply:hover {
   background-color: #8EC7A6;
 }
 .btn-edit {
@@ -314,7 +313,7 @@
   background-color: #8EC7A6;
 }
 @media(min-width: 450px) {
-  .btn-apply, .btn-edit {
+  .btn-apply, .btn-edit, #btn-apply {
     width: 250px;
   }
   .btn-update-accept {

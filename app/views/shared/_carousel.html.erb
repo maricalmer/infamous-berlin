@@ -16,7 +16,7 @@
       <% end %>
       <% @project.attachments.each do |attachment| %>
         <% if attachment == @project.attachments.first %>
-          <picture class="thumbnail-bigger thumbnail-align-top">
+          <picture class="thumbnail-wrapper thumbnail-align-top thumbnail-bigger">
             <source srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 992px)" class="cursor slide-thumbnail slide-mobile">
             <% if attachment.video? %>
               <%= cl_video_tag attachment.key, class: "cursor thumbnail-js" %>
@@ -25,7 +25,7 @@
             <% end %>
           </picture>
         <% else %>
-          <picture>
+          <picture class="thumbnail-wrapper">
             <source srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 992px)" class="slide-thumbnail slide-mobile">
             <% if attachment.video? %>
               <%= cl_video_tag attachment.key, class: "cursor thumbnail-js" %>
