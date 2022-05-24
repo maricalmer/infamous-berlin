@@ -18,6 +18,7 @@
   width: fit-content;
   height: fit-content;
   margin: 0 auto;
+  left: 14px;
 }
 .card-user-profile-username {
   margin: 0 auto;
@@ -70,7 +71,7 @@
 .img-name-profile {
   width: 100%;
   height: auto;
-  padding-top: 6rem;
+  padding-top: 8rem;
   background: #858585;
   border-bottom: dashed 4px black;
 }
@@ -205,12 +206,12 @@
     min-height: 100vh;
   }
   .img-name-profile {
+    padding-top: 6rem;
     grid-column-start: 1;
     grid-column-end: 8;
     grid-row-start: 1;
     grid-row-end: 6;
     border-right: dashed 4px black;
-    // padding-bottom: 40px;
   }
   .profile-buttons {
     grid-column-start: 8;

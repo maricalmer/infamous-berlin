@@ -192,10 +192,11 @@
 .btn-accept {
   font-size: 2rem;
   margin: 3rem 0 32px 0.5rem;
-  border: solid;
+  border: 3px solid black;
   box-shadow: -6px -6px black;
   background: #7ECA93;
   width: 150px;
+  border-radius: 0px;
 }
 .btn-accept:hover {
   background-color: #8EC7A6;
@@ -203,10 +204,11 @@
 .btn-reject {
   font-size: 2rem;
   margin: 3rem 0 32px 0.5rem;
-  border: solid;
+  border: 3px solid black;
   box-shadow: -6px -6px black;
   background: #a34646;
   width: 150px;
+  border-radius: 0px;
 }
 .btn-reject:hover {
   background-color: #A75454;

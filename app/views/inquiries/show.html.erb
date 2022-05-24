@@ -61,10 +61,10 @@
       </h4>
       <% if current_user == @inquiry.job.project.user && @inquiry.status == "on_hold" %>
         <div class="btns-inquiry">
-          <%= link_to change_status_inquiry_path(@inquiry, status: "accepted"), class: "btn btn-accept m-0", remote: true, method: :patch do %>
+          <%= link_to change_status_inquiry_path(@inquiry, status: "accepted"), class: "btn btn-accept", remote: true, method: :patch do %>
             Accept
           <% end %>
-          <%= link_to change_status_inquiry_path(@inquiry, status: "rejected"), class: "btn btn-reject m-0", remote: true, method: :patch do %>
+          <%= link_to change_status_inquiry_path(@inquiry, status: "rejected"), class: "btn btn-reject", remote: true, method: :patch do %>
             Reject
           <% end %>
         </div>

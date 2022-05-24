@@ -75,7 +75,7 @@
 <div class="modal fade" id="modalSmallScreen" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-fullscreen">
     <div class="modal-content overlay-small">
-      <div class="modal-body overlay-small-body d-flex">
+      <div class="modal-body overlay-small-body">
         <% if @project.attachments.attached? %>
           <% if @project.attachments.first.video? %>
             <img src="">
@@ -83,7 +83,7 @@
             <%= cl_image_tag @project.attachments.first.key %>
           <% end %>
         <% end %>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close modal-fullscreen-close-btn" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
     </div>
   </div>

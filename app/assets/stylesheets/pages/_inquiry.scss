@@ -160,10 +160,8 @@
   }
 }
 .btns-inquiry {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 4rem;
-  margin-top: 4rem;
+  margin: 4rem auto;
+  width: 160px;
 }
 .inquiry-hold-pill {
   background-color: #333;
@@ -190,6 +188,10 @@
   }
 }
 @media(min-width: 450px) {
+  .btns-inquiry {
+    display: flex;
+    justify-content: space-around;
+  }
   .change-status-inquiry {
     display: flex;
     align-items: baseline;

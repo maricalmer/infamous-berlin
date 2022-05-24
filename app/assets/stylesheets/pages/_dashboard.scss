@@ -64,7 +64,7 @@
   }
 }
 .profile-links-dash {
-  width: 50%;
+  width: 100%;
   padding-top: 1rem;
   padding-bottom: 1rem;
   margin: 0 auto;
@@ -132,6 +132,14 @@
 }
 .past-chevron-left, .past-chevron-right, .upcoming-chevron-left, .upcoming-chevron-right {
   cursor: pointer;
+}
+.past-chevron-left {
+  position: relative;
+  left: -25px;
+}
+.past-chevron-right {
+  position: relative;
+  right: -15px;
 }
 .chevron-hidden {
   visibility: hidden;
@@ -457,6 +465,9 @@
   }
 }
 @media(min-width: 450px) {
+  .profile-links-dash {
+    width: 50%;
+  }
   .dashboard-title {
     font-size: 5rem;
     right: 2vw;

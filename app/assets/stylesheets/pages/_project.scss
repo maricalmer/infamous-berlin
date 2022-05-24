@@ -355,7 +355,9 @@
 .members-modal-header {
   border-bottom: 2px solid black;
   background-color: #858585;
-
+}
+.modal-owner-title {
+  width: 102px;
 }
 @media(min-width: 450px) {
   .project-title {
@@ -480,7 +482,7 @@
   .top-block-project {
     display: flex;
     height: 75vh;
-    min-height: 574px;
+    min-height: 617px;
     background: linear-gradient(to right, #858585 0%, #858585 70%, #D1BFF6 70%, #D1BFF6 100%);
     border-bottom: dashed 4px black;
   }
