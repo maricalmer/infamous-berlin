@@ -96,7 +96,7 @@ class User < ApplicationRecord
       twitter.present?
   end
 
-  # private
+  private
 
   def assign_slug
     self.slug = create_slug

@@ -54,7 +54,7 @@ class Project < ApplicationRecord
     attachments.each { |attachment| attachment.video? }.any?(true)
   end
 
-  # private
+  private
 
   def add_default_img
     return if attachments.attached?
