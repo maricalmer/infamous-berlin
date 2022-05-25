@@ -1,17 +1,19 @@
 <%= render 'shared/hamburger' %>
 <%= render 'shared/brand' %>
-<h1 class="upcoming-project-title">
-  <% if current_user == @user %>
-    Ongoing projects
-  <% else %>
-    <%= @user.username %> upcoming projects
-  <% end %>
-  <div class="underlined-title"></div>
-</h1>
-<div class="big-card-portfolio">
-  <div class="portfolio-mobile-grid">
-    <% @mirrors.each do |mirror|  %>
-      <%= render partial: "mirrors_mobile_grid", locals: { mirror: mirror } %>
+<div class="background-search">
+  <h1 class="upcoming-project-title">
+    <% if current_user == @user %>
+      Ongoing projects
+    <% else %>
+      <%= @user.username %> upcoming projects
     <% end %>
+    <div class="underlined-title"></div>
+  </h1>
+  <div class="big-card-portfolio">
+    <div class="portfolio-mobile-grid">
+      <% @mirrors.each do |mirror|  %>
+        <%= render partial: "mirrors_mobile_grid", locals: { mirror: mirror } %>
+      <% end %>
+    </div>
   </div>
 </div>

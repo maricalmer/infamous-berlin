@@ -95,7 +95,7 @@ chatroom = Chatroom.create!(
   receiver: Project.first.user
 )
 message = Message.create!(
-  content: "Test message from #{Time.now}",
+  content: "Test message from #{Time.now} - [seeds]",
   anchor_id: 1,
   read_by_receiver: false,
   chatroom: chatroom,

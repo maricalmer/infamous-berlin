@@ -161,7 +161,7 @@
 }
 .btns-inquiry {
   margin: 4rem auto;
-  width: 160px;
+  width: 100px;
 }
 .inquiry-hold-pill {
   background-color: #333;
@@ -189,6 +189,7 @@
 }
 @media(min-width: 450px) {
   .btns-inquiry {
+    width: fit-content;
     display: flex;
     justify-content: space-around;
   }

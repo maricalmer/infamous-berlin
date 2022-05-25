@@ -186,7 +186,7 @@
 }
 .portfolio-mobile-mirror-card {
   border: 4px solid black;
-  box-shadow: -6px -6px black;
+  // box-shadow: -6px -6px black;
   overflow: hidden;
   width: 300px;
   img, video {
@@ -201,7 +201,7 @@
 .portfolio-mobile-mirror-card-title {
   padding: 0.5rem;
   text-align: center;
-  background-color: #d6d6d6;
+  background-color: #858585;
   color: black;
   margin: 0;
   border-bottom: solid 4px black;
@@ -212,7 +212,7 @@
 }
 .portfolio-mobile-mirror-card-description {
   border-top: solid 4px black;
-  background-color: #d6d6d6;
+  background-color: #b5b5b5;
   color: black;
   padding: 0.5rem;
   display: -webkit-box;

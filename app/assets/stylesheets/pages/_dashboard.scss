@@ -373,7 +373,7 @@
   font-size: 1rem;
   background-color: #858585;
   padding: 1vh;
-  line-height: 1rem;
+  line-height: 2rem;
   border-top: 2px solid black;
   border-bottom: 2px solid black;
 }
@@ -402,7 +402,7 @@
   margin-top: 0;
 }
 .dash-inquiries-links {
-  height: 32px;
+  height: 50px;
   width: 100%;
   display: block;
   text-align: center;
@@ -427,10 +427,7 @@
   }
 }
 .dash-sent-icons {
-  height: 32px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 150px;
 }
 .dash-destroy-link {
   background-color: #a34646;
@@ -447,7 +444,6 @@
   transition: all 0.4s;
 }
 .dash-edit-link:hover {
-  background-color: #D1BFF6 !important;
   i {
     color: black;
   }
@@ -594,6 +590,7 @@
     line-height: 1rem;
   }
   .dash-received-record-title {
+    line-height: 1rem;
     font-size: 1.3rem;
     border-top: none;
     border-bottom: none;
@@ -616,6 +613,9 @@
   }
   .dash-sent-icons {
     height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .dash-edit-link {
     i {

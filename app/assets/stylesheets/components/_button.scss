@@ -109,7 +109,7 @@
   transition: all 0s;
 }
 .btn-message, .btn-message:focus {
-  font-size: 2rem;
+  font-size: 1.5rem;
   display: block;
   border: 4px solid black;
   box-shadow: -6px -6px black;
@@ -130,7 +130,7 @@
   transition: background 0s;
 }
 .btn-projects, .btn-projects:focus {
-  font-size: 2rem;
+  font-size: 1.5rem;
   display: block;
   border: 4px solid black;
   box-shadow: -6px -6px black;
@@ -191,11 +191,11 @@
 }
 .btn-accept {
   font-size: 2rem;
-  margin: 3rem 0 32px 0.5rem;
+  margin: 3rem 0 32px 0rem;
   border: 3px solid black;
   box-shadow: -6px -6px black;
   background: #7ECA93;
-  width: 150px;
+  width: 100px;
   border-radius: 0px;
 }
 .btn-accept:hover {
@@ -203,11 +203,11 @@
 }
 .btn-reject {
   font-size: 2rem;
-  margin: 3rem 0 32px 0.5rem;
+  margin: 3rem 0 32px 0rem;
   border: 3px solid black;
   box-shadow: -6px -6px black;
   background: #a34646;
-  width: 150px;
+  width: 100px;
   border-radius: 0px;
 }
 .btn-reject:hover {
@@ -324,6 +324,9 @@
     background: #333;
     width: 100px;
   }
+  .btn-reject {
+    margin-left: 2rem;
+  }
   .btn-update-reject {
     margin: 0 0 0 1rem;
     color: #d6d6d6;
@@ -340,10 +343,10 @@
     height: 68px;
     padding: 0;
   }
-  .btn-projects {
+  .btn-projects, .btn-message {
     font-size: 2rem;
     height: 68px;
-    padding: 0;
+    padding: 0.5rem;
   }
   .btn-projects:focus {
     font-size: 2rem;

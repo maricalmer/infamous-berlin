@@ -1,36 +1,37 @@
 <%= render 'shared/hamburger' %>
 <%= render 'shared/brand' %>
 
-<h1 class="upcoming-project-title">
-  <% if current_user == @user %>
-    Ongoing projects
-  <% else %>
-    <%= @user.username %> upcoming projects
-  <% end %>
-  <div class="underlined-title"></div>
-</h1>
-
-<div class="big-card-portfolio">
-  <% if current_user == @user %>
-    <button class="save-display-btn save-display-btn-js">Save your changes</button>
-    <div class="grid-stack gridstack-edit-js big-grid-search search-refresh-results">
-      <!-- ^^ all those classes needed?? -->
-      <% @mirrors.each do |mirror| %>
-        <%= render partial: "mirrors_gridstack_edit_grid", locals: { mirror: mirror } %>
-      <% end %>
-    </div>
-  <% else %>
-    <div class="grid-stack gridstack-static-js big-grid-search search-refresh-results">
-      <!-- ^^ all those classes needed?? -->
-      <% @mirrors.each do |mirror| %>
-        <%= render partial: "mirrors_gridstack_static_grid", locals: { mirror: mirror } %>
-      <% end %>
-    </div>
-  <% end %>
-  <div class="portfolio-mobile-grid">
-    <% @mirrors.each do |mirror|  %>
-      <%= render partial: "mirrors_mobile_grid", locals: { mirror: mirror } %>
+<div class="background-search">
+  <h1 class="upcoming-project-title">
+    <% if current_user == @user %>
+      Ongoing projects
+    <% else %>
+      <%= @user.username %> upcoming projects
     <% end %>
+    <div class="underlined-title"></div>
+  </h1>
+
+  <div class="big-card-portfolio">
+    <% if current_user == @user %>
+      <button class="save-display-btn save-display-btn-js">Save your changes</button>
+      <div class="grid-stack gridstack-edit-js big-grid-search search-refresh-results">
+        <!-- ^^ all those classes needed?? -->
+        <% @mirrors.each do |mirror| %>
+          <%= render partial: "mirrors_gridstack_edit_grid", locals: { mirror: mirror } %>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="grid-stack gridstack-static-js big-grid-search search-refresh-results">
+        <!-- ^^ all those classes needed?? -->
+        <% @mirrors.each do |mirror| %>
+          <%= render partial: "mirrors_gridstack_static_grid", locals: { mirror: mirror } %>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="portfolio-mobile-grid">
+      <% @mirrors.each do |mirror|  %>
+        <%= render partial: "mirrors_mobile_grid", locals: { mirror: mirror } %>
+      <% end %>
+    </div>
   </div>
 </div>
-
