@@ -1,3 +1,11 @@
+.background-dash {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  min-height: 100%;
+  background-color: #858585;
+  z-index: -2;
+}
 .dashboard-title {
   position: absolute;
   font-size: 3rem;
@@ -456,9 +464,6 @@
 }
 .dash-show-link:hover {
   background-color: #D1BFF6 !important;
-  .dash-show-manicule {
-    color: black;
-  }
 }
 @media(min-width: 450px) {
   .profile-links-dash {
@@ -629,12 +634,6 @@
   .dash-edit {
     padding-left: 4px;
     padding-right: 4px;
-    height: 100%;
-  }
-  .dash-show-manicule {
-    color: #d6d6d6;
-    padding-left: 1px;
-    padding-right: 1px;
     height: 100%;
   }
   .dash-destroy-link {

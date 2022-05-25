@@ -37,7 +37,7 @@ class CollabsController < ApplicationController
   private
 
   def create_mirror
-    mirror = Mirror.create(user: @collab.member, project: @collab.project)
+    Mirror.create(user: @collab.member, project: @collab.project)
   end
 
   def find_project

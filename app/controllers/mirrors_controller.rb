@@ -15,7 +15,7 @@ class MirrorsController < ApplicationController
   def ongoing_projects
     @collab_ids = Collab.where(user_id: @user.id).pluck(:project_id)
     @all_projects_ids = Project.upcoming.where(user: @user).or(Project.upcoming.where(id: @collab_ids))
-    @mirrors = Mirror.where(project_id: @all_projects_ids).order(:created_at).includes([:user, :project])
+    @mirrors = Mirror.where(project_id: @all_projects_ids).where(user: @user).order(:created_at).includes([:user, :project])
     i = 1
     @mirrors.each do |mirror|
       mirror.update(default_position: i)
@@ -32,7 +32,7 @@ class MirrorsController < ApplicationController
   def past_projects
     @collab_ids = Collab.where(user_id: @user.id).pluck(:project_id)
     @all_projects_ids = Project.past.where(user: @user).or(Project.past.where(id: @collab_ids))
-    @mirrors = Mirror.where(project_id: @all_projects_ids).order(:created_at)
+    @mirrors = Mirror.where(project_id: @all_projects_ids).where(user: @user).order(:created_at).includes([:user, :project])
     i = 1
     @mirrors.each do |mirror|
       mirror.update(default_position: i)

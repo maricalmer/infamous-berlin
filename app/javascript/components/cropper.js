@@ -9,8 +9,11 @@ const attachCropperEvents = () => {
   let cropHeight;
   modals.forEach((modal) => {
     modal.addEventListener("shown.bs.modal", function(event) {
-      const img = event.currentTarget.firstElementChild.firstElementChild.children[1].firstElementChild.firstElementChild.children[1]
+      console.log("event")
       console.log(event.currentTarget)
+      const img = event.currentTarget.firstElementChild.firstElementChild.children[1].firstElementChild.firstElementChild.children[1]
+      console.log("img")
+      console.log(img)
       const imgAndTitle = event.currentTarget.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling
       const ratio = imgAndTitle.offsetWidth / (imgAndTitle.offsetHeight - 28)
       cropper = new Cropper(img, {

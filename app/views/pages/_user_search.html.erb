@@ -4,7 +4,7 @@
     <i class="far fa-sad-cry"></i>
   </h4>
 <% elsif @users.empty? %>
-  <h4 class="numbers-results">No user matched your search for "<%= params[:query] %>" but <%= @projects.count %> <%= "project".pluralize(@projects.count) %> did <span class="manicule">&#9758</span></h4>
+  <h4 class="numbers-results">No user matched your search for "<%= params[:query] %>" but <%= @projects.count %> <%= "project".pluralize(@projects.count) %> did</h4>
 <% else %>
   <h4 class="numbers-results"><%= @users.count %> <%= "user".pluralize(@users.count) %> matched your search for "<%= params[:query] %>"</h4>
   <ul class="user-results-list">
