@@ -61,6 +61,17 @@
             <source srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 992px)">
             <%= cl_video_tag @project.attachments.first.key, controls: true, muted: true %>
           </picture>
+        <% elsif @project.attachments.first.audio? %>
+
+
+
+
+          <video controls="controls" poster="/images/logo.png" src="http://res.cloudinary.com/dbpv82leg/video/upload/<%= @project.attachments.first.key %>.mp3"></video>
+
+
+          <!-- find a way to put logo.png as poster -->
+
+
         <% else %>
           <picture class="img-slide-big cursor" data-bs-toggle="modal" data-bs-target="#modalBigScreen">
             <source srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 992px)">

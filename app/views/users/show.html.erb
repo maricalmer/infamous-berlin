@@ -65,7 +65,7 @@
     </div>
   </div>
   <% if @user.contact_info? %>
-    <div class="links-socialmedia">
+    <div class="links-socialmedia" id="bottom-page">
       <% if @user.website %>
         <div><a class="footer-socialmedia-link" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.website %>>Website</a></div>
       <% end %>
@@ -92,6 +92,16 @@
       <% end %>
     </div>
   <% end %>
+  <div class="arrow-bottom-page-wrapper">
+    <a href="#bottom-page">
+      <div class="arrow-bottom-page">
+        <ul>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
+    </a>
+  </div>
 </div>
 
 

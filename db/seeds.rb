@@ -5,6 +5,30 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# SPLASH
+# >>> sculpture
+# https://unsplash.com/@lauraadaiphoto
+# https://unsplash.com/photos/PcjuUQN1mFc
+# https://unsplash.com/photos/oSVJYgL0qUs
+# https://unsplash.com/photos/4QTRb16OOts
+# >>> modern art
+# https://unsplash.com/photos/_8zO0LaCxRQ
+# https://unsplash.com/photos/h2uCymK1oYc
+# https://unsplash.com/photos/ZZTbCMOWAGk
+# >>> profile pic
+# https://unsplash.com/photos/3TLl_97HNJo
+
+# PEXELS
+# >>> login (P.Berg)
+# https://www.pexels.com/video/a-man-lovingly-touching-the-face-of-a-head-bust-sculpture-3712948/
+# https://www.pexels.com/video/painting-one-s-face-with-black-4788417/
+# https://www.pexels.com/video/fashion-woman-art-model-4962903/
+# https://www.pexels.com/video/a-man-playing-the-piano-while-a-woman-playing-the-guitar-while-singing-8039634/
+# https://www.pexels.com/video/a-rapper-recording-in-a-studio-8132052/
+# https://www.pexels.com/video/painting-one-s-face-with-black-4788417/
+
+
 require "open-uri"
 
 puts "cleaning up DB"

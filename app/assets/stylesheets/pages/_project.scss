@@ -7,7 +7,7 @@
   padding: 32px;
   border-top: dashed 4px black;
   border-bottom: dashed 4px black;
-  background: #D1BFF6;
+  background: #CDD1f4;
 }
 .side-text-title {
   min-height: 80px;
@@ -480,9 +480,9 @@
   }
   .top-block-project {
     display: flex;
-    height: 75vh;
+    height: 92vh;
     min-height: 617px;
-    background: linear-gradient(to right, #858585 0%, #858585 70%, #D1BFF6 70%, #D1BFF6 100%);
+    background: linear-gradient(to right, #646668 0%, #646668 70%, #cdd1f4 70%, #cdd1f4 100%);
     border-bottom: dashed 4px black;
   }
   .project-title {
@@ -516,7 +516,7 @@
     flex-grow: 1;
   }
   .description-left-side, .description-right-side {
-    padding: 2em 3em;
+    padding: 1em 3em;
   }
   .description-bottom {
     flex-grow: 1;
@@ -531,7 +531,6 @@
   }
   .description-right-side {
     width: 30%;
-    padding-top: 32px;
   }
   .project-side-details {
     font-size: 1.5rem;

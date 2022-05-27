@@ -16,7 +16,7 @@ class Project < ApplicationRecord
   validates :title, presence: true, uniqueness: true, case_sensitive: false
   validates :description, presence: true
   validates :slug, :title, uniqueness: true, case_sensitive: false
-  validates :attachments, content_type: { in: ['image/png', 'image/jpg', 'image/jpeg', 'video/mp4'], message: ' - wrong format (PNG, JPG, JPEG or MP4 only)' }, size: { less_than: 10.megabytes , message: '10MB max' }
+  validates :attachments, content_type: { in: ['image/png', 'image/jpg', 'image/jpeg', 'video/mp4', 'audio/mpeg'], message: ' - wrong format (PNG, JPG, JPEG, MP3 or MP4 only)' }, size: { less_than: 10.megabytes , message: '10MB max' }
   enum status: { past: "past", upcoming: "upcoming" }
 
   include PgSearch::Model
@@ -50,9 +50,9 @@ class Project < ApplicationRecord
     slug
   end
 
-  def video_attachments?
-    attachments.each { |attachment| attachment.video? }.any?(true)
-  end
+  # def video_attachments?
+  #   attachments.each { |attachment| attachment.video? }.any?(true)
+  # end
 
   private
 

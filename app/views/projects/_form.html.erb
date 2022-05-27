@@ -46,7 +46,7 @@
     <div class="form-plus-symbol">+</div>
     <h3>add attachment(s)</h3>
   </label>
-  <%= f.input :attachments, as: :file, label: false, :input_html => { :multiple => true, accept: ".png, .jpg, .jpeg, .mp4", class: "form-project-upload-photos-hidden" } %>
+  <%= f.input :attachments, as: :file, label: false, :input_html => { :multiple => true, accept: ".png, .jpg, .jpeg, .mp4, .mp3", class: "form-project-upload-photos-hidden" } %>
 
   <%= f.submit "Save!", id: "btn-form-submit", class: "form-btn-js" %>
   <button class="more-btn jobs-more-btn btn-hidden form-btn-js" type="button" disabled>
