@@ -116,6 +116,19 @@
 .cursor {
   cursor: pointer;
 }
+.slide-big-audio-player {
+  display: block;
+  position: relative;
+  cursor: pointer;
+}
+.slide-big-audio-poster, .slide-big-audio-control {
+  width: 100%;
+}
+.slide-big-audio-control {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
 // /* Hide scrollbar for Chrome, Safari and Opera */
 // body::-webkit-scrollbar {
 //   display: none;
@@ -241,6 +254,9 @@
     box-shadow: -8px -8px 0 0 black;
     max-height: 610px;
     max-width: 555px;
+  }
+  .slide-big-audio-poster, .slide-big-audio-control {
+    width: 450px;
   }
   .overlay {
     background-color: #999999;

@@ -1,3 +1,5 @@
+import { playFileOnClick } from '../components/play_audio_file';
+
 function scrollUp() {
   const thumbnailsImg = document.querySelectorAll(".thumbnail-js");
   thumbnailsImg[1].scrollIntoView({behavior: "smooth", block: "end"});
@@ -83,24 +85,26 @@ const hideArrowsOnScroll = () => {
   thumbnails.addEventListener("scroll", hideArrowsDependingOnScrollType);
 };
 
-function grabImg(event) {
-  const imgSlide = document.querySelector(".img-slide-big");
+function buildElement(event) {
+  const imgSlide = document.querySelector(".img-slide-js");
   const overlay = document.querySelector(".overlay-body");
   if (event.currentTarget.nodeName === "IMG") {
-    const newHTML = `<img src=${event.currentTarget.src}>`
-    imgSlide.lastElementChild.outerHTML = newHTML
-    overlay.firstChild.nextElementSibling.outerHTML = newHTML
+    const newElement = `<picture class="img-slide-big img-slide-js cursor" data-bs-toggle="modal" data-bs-target="#modalBigScreen"><source srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 992px)"><img src=${event.currentTarget.src}></picture>`
+    const img = `<img src=${event.currentTarget.src}></picture>`
+    imgSlide.outerHTML = newElement
+    overlay.firstChild.nextElementSibling.outerHTML = img
     imgSlide.setAttribute('data-bs-toggle', 'modal');
     imgSlide.setAttribute('data-bs-target', '#modalBigScreen');
+  } else if (event.currentTarget.poster.includes("logo-audio")) {
+    const link = event.currentTarget.firstElementChild.src.replace(".webm", "")
+    const newElement = `<div class="slide-big-audio-player play-audio-js img-slide-js"><img class="slide-big-audio-poster" src="/assets/logo-audio.png"><audio controls="" class="slide-big-audio-control"><source src="${link}.mp3"></audio></div>`
+    imgSlide.outerHTML = newElement
+    playFileOnClick()
   } else if (event.currentTarget.nodeName === "VIDEO") {
     const link = event.currentTarget.poster.replace(".jpg", "")
-    const newHTML = `<video controls="controls" poster=${link.concat('.jpg')}><source src=${link.concat('.webm')} type=\"video/webm\"><source src=${link.concat('.mp4')} type=\"video/mp4\"><source src=${link.concat('.ogv')} type=\"video/ogg\"></video>`
-    imgSlide.lastElementChild.outerHTML = newHTML
-    overlay.firstChild.nextElementSibling.outerHTML = newHTML
-    imgSlide.removeAttribute('data-bs-toggle');
-    imgSlide.removeAttribute('data-bs-target');
+    const newElement = `<picture class="img-slide-big img-slide-js cursor"><source srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 992px)"><video controls="controls" muted="muted" poster=${link.concat('.jpg')}><source src=${link.concat('.webm')} type="video/webm"><source src=${link.concat('.mp4')} type="video/mp4"><source src=${link.concat('.ogv')} type="video/ogg"></video></picture>`
+    imgSlide.outerHTML = newElement
   }
-  // overlay.firstChild.nextElementSibling.src = event.target.src;
   const thumbnailsImg = document.querySelectorAll(".thumbnail-js");
   thumbnailsImg.forEach((thumbnail) => { thumbnail.parentElement.classList.remove("thumbnail-bigger") });
   event.currentTarget.parentElement.classList.add("thumbnail-bigger");
@@ -109,7 +113,7 @@ function grabImg(event) {
 const changeImgDesktop = () => {
   const thumbnailsImg = document.querySelectorAll(".thumbnail-js");
   thumbnailsImg.forEach((thumbnail) => {
-    thumbnail.addEventListener("click", grabImg);
+    thumbnail.addEventListener("click", buildElement);
   });
 }
 

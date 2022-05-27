@@ -52,6 +52,7 @@ import { initGristackStatic } from '../components/gridstack_static';
 import { attachCropperEvents } from '../components/cropper';
 import { fixBtnOnScroll } from '../components/save_display_btn';
 import { reloadWindowonBackBtn } from '../components/back_btn_reload';
+import { playFileOnClick } from '../components/play_audio_file';
 
 
 document.addEventListener('turbolinks:load', () => {
@@ -146,6 +147,9 @@ document.addEventListener('turbolinks:load', () => {
   }
   if (document.querySelectorAll(".job-show-js").length) {
     reloadWindowonBackBtn();
+  }
+  if (document.querySelectorAll(".play-audio-js").length) {
+    playFileOnClick();
   }
     // expandSearchBar();
 
