@@ -58,6 +58,7 @@ const catchFilePathUserForm = (uploadBtnUser) => {
 const catchFilePathProjectForm = (uploadBtnProject) => {
   const placeholder = document.querySelector(".placeholder-preview-js");
   const previewPhotos = document.querySelectorAll(".preview-img-js");
+  console.log(previewPhotos)
   previewPhotos.forEach( (photo) => { photo.outerHTML = "" });
   for (let i = 0; i < uploadBtnProject.files.length; i++) {
     if (uploadBtnProject.files[i].type === "video/mp4") {
@@ -65,6 +66,13 @@ const catchFilePathProjectForm = (uploadBtnProject) => {
       const imgUri = uploadBtnProject.files[i];
       file.classList.add("project-photo-preview");
       file.src = URL.createObjectURL(imgUri);
+      file.setAttribute("index", i);
+      displayDeleteBtn(file, placeholder);
+    } else if (uploadBtnProject.files[i].type === "audio/mpeg") {
+      const file = document.createElement("img");
+      const imgUri = uploadBtnProject.files[i];
+      file.classList.add("project-photo-preview");
+      file.src = "/assets/logo-audio.png";
       file.setAttribute("index", i);
       displayDeleteBtn(file, placeholder);
     } else {

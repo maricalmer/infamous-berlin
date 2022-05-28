@@ -13,6 +13,8 @@
           <% if project.attachments.attached? %>
             <% if project.attachments.first.image? %>
               <%= cl_image_tag project.attachments.first.key, class: "dash-card-img" %>
+            <% elsif project.attachments.first.audio? %>
+              <%= cl_image_tag "/assets/logo-audio.png", class: "dash-card-img" %>
             <% else %>
               <%= cl_video_tag project.attachments.first.key, class: "dash-card-img" %>
             <% end %>

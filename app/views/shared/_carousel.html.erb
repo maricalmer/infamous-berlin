@@ -11,8 +11,8 @@
         </div>
       <% elsif @project.attachments.first.audio? %>
         <div class="cursor placeholder-mobile">
-          <div class="slide-big-audio-player play-audio-js">
-            <%= image_tag "logo-audio", class: "slide-big-audio-poster" %>
+          <div class="slide-big-audio-player">
+            <%= image_tag "logo-audio", class: "slide-big-audio-poster play-audio-js" %>
             <audio controls class="slide-big-audio-control">
               <source src="http://res.cloudinary.com/dbpv82leg/video/upload/<%= @project.attachments.first.key %>.mp3">
             </audio>
@@ -75,8 +75,8 @@
             <%= cl_video_tag @project.attachments.first.key, controls: true, muted: true %>
           </picture>
         <% elsif @project.attachments.first.audio? %>
-          <div class="slide-big-audio-player play-audio-js img-slide-js">
-            <%= image_tag "logo-audio", class: "slide-big-audio-poster" %>
+          <div class="slide-big-audio-player img-slide-js">
+            <%= image_tag "logo-audio", class: "slide-big-audio-poster play-audio-js" %>
             <audio controls class="slide-big-audio-control">
               <source src="http://res.cloudinary.com/dbpv82leg/video/upload/<%= @project.attachments.first.key %>.mp3">
             </audio>

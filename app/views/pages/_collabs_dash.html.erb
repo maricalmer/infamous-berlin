@@ -13,6 +13,8 @@
           <% if collab.attachments.attached? %>
             <% if collab.attachments.first.image? %>
               <%= cl_image_tag collab.attachments.first.key, class: "dash-card-img" %>
+            <% elsif collab.attachments.first.audio? %>
+              <%= cl_image_tag "/assets/logo-audio.png", class: "dash-card-img" %>
             <% else %>
               <%= cl_video_tag collab.attachments.first.key, class: "dash-card-img" %>
             <% end %>

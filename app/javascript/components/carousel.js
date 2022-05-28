@@ -97,7 +97,7 @@ function buildElement(event) {
     imgSlide.setAttribute('data-bs-target', '#modalBigScreen');
   } else if (event.currentTarget.poster.includes("logo-audio")) {
     const link = event.currentTarget.firstElementChild.src.replace(".webm", "")
-    const newElement = `<div class="slide-big-audio-player play-audio-js img-slide-js"><img class="slide-big-audio-poster" src="/assets/logo-audio.png"><audio controls="" class="slide-big-audio-control"><source src="${link}.mp3"></audio></div>`
+    const newElement = `<div class="slide-big-audio-player img-slide-js"><img class="slide-big-audio-poster play-audio-js" src="/assets/logo-audio.png"><audio controls="" class="slide-big-audio-control"><source src="${link}.mp3"></audio></div>`
     imgSlide.outerHTML = newElement
     playFileOnClick()
   } else if (event.currentTarget.nodeName === "VIDEO") {

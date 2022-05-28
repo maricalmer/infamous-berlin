@@ -12,11 +12,17 @@
               <% else %>
                 <%= cl_image_tag mirror.project.attachments.first.key, class: "grid-search-big-item-img" %>
               <% end %>
-            <% else %>
+            <% elsif mirror.project.attachments.first.video? %>
               <% if mirror.crop_x.present? %>
                 <%= cl_video_tag mirror.project.attachments.first.key, class: "grid-search-big-item-img grid-search-big-item-img-no-sizing", poster: { transformation: [ { height: mirror.crop_h.to_i, width: mirror.crop_w.to_i, x: mirror.crop_x.to_i, y: mirror.crop_y.to_i, crop: "crop" } ] } %>
               <% else %>
                 <%= cl_video_tag mirror.project.attachments.first.key, class: "grid-search-big-item-img" %>
+              <% end %>
+            <% else %>
+              <% if mirror.crop_x.present? %>
+                <%= cl_image_tag "logo-audio", class: "grid-search-big-item-img grid-search-big-item-img-no-sizing", height: mirror.crop_h, width: mirror.crop_w, x: mirror.crop_x, y: mirror.crop_y, crop: "crop" %>
+              <% else %>
+                <%= image_tag "/assets/logo-audio", class: "grid-search-big-item-img" %>
               <% end %>
             <% end %>
           </picture>
