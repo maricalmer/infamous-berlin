@@ -22,7 +22,7 @@ class User < ApplicationRecord
   has_many :received_chatrooms, class_name: 'Chatroom', foreign_key: 'received_id'
   has_one_attached :photo
 
-  validates :photo, size: { less_than: 10.megabytes, message: '10MB max' }
+  validates :photo, size: { less_than: 5.megabytes, message: '5MB max' }
 
   include PgSearch::Model
   pg_search_scope :search_by_username_bio_skills_title, against: {
@@ -31,7 +31,10 @@ class User < ApplicationRecord
     title: "A",
     bio: "B"
   }, using: {
-    tsearch: { prefix: true, any_word: true }
+    tsearch: {
+      prefix: true,
+      any_word: true,
+    }
   }
   # has_many :applications
 
@@ -57,7 +60,7 @@ class User < ApplicationRecord
   end
 
   def render_search_skill(query)
-    skills.select { |skill| skill.downcase.include?(query.downcase) }.first(5)
+    skills.split.select { |skill| skill.downcase.include?(query.downcase) }.first(5)
   end
 
   def create_slug

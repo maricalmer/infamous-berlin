@@ -40,7 +40,7 @@
           <%= link_to "Edit your profile", edit_user_path, class: "btn btn-message" %>
         <% else %>
           <button type="button" class="btn btn-message" data-bs-toggle="modal" data-bs-target="#modalMessageNew">
-            Message <%= @user.username %>
+            Message
           </button>
           <div id="modalMessage">
             <%= render "messages/new", chatroom: @chatroom, message: @message %>

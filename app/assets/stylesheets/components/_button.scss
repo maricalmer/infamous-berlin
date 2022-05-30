@@ -110,7 +110,6 @@
 }
 .btn-message, .btn-message:focus {
   font-size: 1.5rem;
-  display: block;
   border: 4px solid black;
   box-shadow: -6px -6px black;
   background: #7343db;
@@ -120,6 +119,9 @@
   border-radius: 0px;
   width: 100%;
   margin: 3vh auto 2vh auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .btn-message:hover {
   background: #8d37d3 radial-gradient(circle, transparent 1%, #5A26C9 1%) center/15000%;
@@ -395,7 +397,7 @@
     height: 68px;
     padding: 0;
   }
-  .btn-projects, .btn-message {
+  .btn-projects, .btn-projects:focus, .btn-message, .btn-message:focus {
     font-size: 2rem;
     height: 68px;
     padding: 0.5rem;

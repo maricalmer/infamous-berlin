@@ -1,52 +1,58 @@
 <div class="background-search">
   <%= render 'shared/navbar' %>
-  <div class="mt-5 users-index-js">
-    <%= simple_form_for :search, url: users_path, method: :get do |f| %>
+  <div class="mt-5 users-index-js user-index">
+    <%= simple_form_for :search, url: users_path, method: :get, remote: true do |f| %>
       <div class="search-bar-search-page search-data" data-set="<%= @autocomplete_set.to_json %>">
         <label></label>
         <!-- ^^^ autocomplete dependency -->
-        <input type="text" name="query" placeholder="Enter a skill you need for your project" class="search-input-search-page" autocomplete="off">
-        <button name="button" type="submit">
+        <input type="text" name="query" placeholder="Search through users..." class="search-input-search-page" autocomplete="off">
+        <button type="submit">
           <i class="fas fa-search search-btn-search-page"></i>
         </button>
       </div>
     <% end %>
   </div>
+
+
+  <!-- add ajax to search -->
   <div id="search-results">
     <% if params[:query].nil? %>
     <% elsif @users.empty? %>
       <h4 class="numbers-results">No user matched your search for "<%= params[:query] %>"</h4>
     <% else %>
-      <h4 class="numbers-results"><%= @users.count %> <%= "user".pluralize(@users.count) %> matched your search for "<%= params[:query] %>"</h4>
+      <h4 class="numbers-results"><%= @users.size %> <%= "user".pluralize(@users.size) %> matched your search for "<%= params[:query] %>"</h4>
       <ul class="user-results-list">
         <% @users.each do |user| %>
-          <div class="mt-4 card-user-search">
-            <div class="card-user-search-diamond-username">
-              <div class="diamond-wrapper">
-                <h3 class="card-user-search-username"><%= user.username %></h3>
-                <div class="diamond-frame-small">
-                  <%= link_to user_path(user.slug) do %>
-                    <% if user.render_search_skill(params[:query]).any? %>
-                      <div class="card-user-search-body-skills">
-                        <h5>Relevant skills:</h5>
-                        <div class="skill-tags">
-                          <% user.render_search_skill(params[:query]).each do |skill| %>
-                            <p class="skill-tag">Clean</p>
-                            <p class="skill-tag">Smart</p>
-                            <p class="skill-tag">Beau gosse</p>
-                          <% end %>
-                        </div>
-                        <div class="background-user-skills"></div>
-                      </div>
-                    <% else %>
-                    <% end %>
+          <%= link_to user_path(user), class: "link" do %>
+            <div class="card-user-search highlight-js">
+              <div class="card-user-search-top">
+                <div class="index-diamond-wrapper">
+                  <div class="index-diamond-frame-small">
                     <%= cl_image_tag user.photo.key %>
-                  <% end %>
+                  </div>
                 </div>
-                <h5 class="card-user-search-body-title"><%= user.title %></h5>
+                <div class="card-user-search-top-details">
+                  <div class="card-user-search-top-username-underlined">
+                    <div class="card-user-search-top-username highlight-query-js"><%= user.username %></div>
+                    <div class="underlined-title"></div>
+                  </div>
+                  <% if user.title.present? %>
+                    <div class="card-user-search-top-title highlight-query-js">__ <%= user.title %></div>
+                  <% end %>
+                  <div class="card-user-search-top-skills">
+                    <% if user.skills.present? %>
+                      <% user.skills.split.map do |skill| %>
+                        <div class="card-user-search-top-skill highlight-query-js"><%= skill %></div>
+                      <% end %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+              <div class="card-user-search-bottom">
+                <div class="card-user-search-bottom-description highlight-query-js"><span class="card-user-search-bottom-description-title">Bio: </span><%= user.bio %></div>
               </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
       </ul>
     <% end %>
