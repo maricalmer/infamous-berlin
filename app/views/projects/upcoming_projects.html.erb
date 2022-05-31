@@ -1,17 +1,14 @@
 <div class="background-search">
   <%= render 'shared/navbar' %>
-  <%= simple_form_for :search, url: upcoming_projects_path, html: { class: "search-refresh-form"}, method: :get do |f| %>
-    <div class="search-bar-search-page">
-      <input type="text" name="query" placeholder="Search through upcoming projects..." class="masonry-js search-refresh-input" autocomplete="off">
-      <button name="button" type="submit">
-        <i class="fas fa-search search-btn-search-page"></i>
-      </button>
-    </div>
-  <% end %>
-  <% if @projects.empty? %>
-    <h4 class="numbers-results">No result for your search... 🥺</h4>
-  <% else %>
-    <h4 class="numbers-results"><%= @projects.count %> current upcoming <%= "project".pluralize(@projects.count)%> matching your search</h4>
-  <% end %>
-  <%= render "search-results", project: @projects %>
+  <div class="mt-5 user-index">
+    <%= simple_form_for :search, url: upcoming_projects_path, html: { class: "search-refresh-form search-form-js"}, remote: true, method: :get do |f| %>
+      <div class="search-bar-search-page">
+        <input type="text" name="query" placeholder="Search through upcoming projects..." class="masonry-js search-input-search-page refresh-input-js user-input-highlight-js" autocomplete="off">
+        <button type="submit">
+          <i class="fas fa-search search-btn-search-page"></i>
+        </button>
+      </div>
+    <% end %>
+  </div>
+  <%= render "search-results", projects: @projects, query: params[:query] %>
 </div>

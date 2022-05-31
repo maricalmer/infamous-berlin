@@ -1,11 +1,11 @@
 <div class="background-search">
   <%= render 'shared/navbar' %>
   <div class="mt-5 users-index-js user-index">
-    <%= simple_form_for :search, url: users_path, html: { class: "user-index-search-form-js" }, method: :get  do |f| %>
+    <%= simple_form_for :search, url: users_path, html: { class: "search-form-js" }, remote: true, method: :get do |f| %>
       <div class="search-bar-search-page search-data" data-set="<%= @autocomplete_set.to_json %>">
         <label></label>
-        <!-- ^^^ autocomplete dependency -->
-        <input type="text" name="query" placeholder="Search through users..." class="search-input-search-page user-index-refresh-input-js user-input-highlight-js" autocomplete="off">
+        <!-- ^^^ autocomplete dependency (change autocomplete.js??) -->
+        <input type="text" name="query" placeholder="Search through users..." class="search-input-search-page refresh-input-js user-input-highlight-js" autocomplete="off">
         <button type="submit">
           <i class="fas fa-search search-btn-search-page"></i>
         </button>

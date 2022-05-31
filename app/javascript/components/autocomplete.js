@@ -26,15 +26,16 @@ function addSpecificClass(cssClass) {
 const autocompleteSearch = function() {
   const skill_sets = document.querySelectorAll('.search-data');
   const formPage = document.querySelector('.new-project-js');
-  const searchPage = document.querySelector('.users-index-js');
+  const searchUserPage = document.querySelector('.users-index-js');
   const projectPage = document.querySelector('.project-show-js');
   skill_sets.forEach((set) => {
+    console.log(set.dataset)
     const specificSet = JSON.parse(set.dataset.set);
     if (specificSet && formPage) {
       const searchInput = set.firstElementChild.nextElementSibling;
       createAutocomplete(specificSet, searchInput);
       addSpecificClass("autocomplete-suggestions-form");
-    } else if (specificSet && searchPage) {
+    } else if (specificSet && searchUserPage) {
       const searchInput = set.firstElementChild.nextElementSibling;
       createAutocomplete(specificSet, searchInput);
       addSpecificClass("autocomplete-suggestions-search");

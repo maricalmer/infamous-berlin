@@ -1,42 +1,42 @@
-<div id="search-results" class="user-index-search-results-js">
-  <% if users.empty? %>
-    <h4 class="numbers-results">No user matched your search for "<%= query %>"</h4>
+<div id="search-results" class="search-results-js">
+  <% if query.blank? %>
+    <!-- <h4 class="numbers-results">No user matched your search for "<%= query %>"</h4> -->
+    <h4 class="placeholder-numbers-results"></h4>
   <% else %>
     <h4 class="numbers-results"><%= users.size %> <%= "user".pluralize(users.size) %> matched your search for "<%= query %>"</h4>
-    <ul class="user-results-list ">
-      <% users.each do |user| %>
-        <%= link_to user_path(user), class: "link" do %>
-          <div class="card-user-search highlight-js">
-            <div class="card-user-search-top">
-              <div class="index-diamond-wrapper">
-                <div class="index-diamond-frame-small">
-                  <%= cl_image_tag user.photo.key %>
-                </div>
-              </div>
-              <div class="card-user-search-top-details">
-                <div class="card-user-search-top-username-underlined">
-                  <div class="card-user-search-top-username highlight-query-js"><%= user.username %></div>
-                  <div class="underlined-title"></div>
-                </div>
-                <% if user.title.present? %>
-                  <div class="card-user-search-top-title highlight-query-js">__ <%= user.title %></div>
-                <% end %>
-                <div class="card-user-search-top-skills">
-                  <% if user.skills.present? %>
-                    <% user.skills.split.map do |skill| %>
-                      <div class="card-user-search-top-skill highlight-query-js"><%= skill %></div>
-                    <% end %>
-                  <% end %>
-                </div>
+  <% end %>
+  <ul class="user-results-list ">
+    <% users.each do |user| %>
+      <%= link_to user_path(user), class: "link" do %>
+        <div class="card-user-search highlight-js">
+          <div class="card-user-search-top">
+            <div class="index-diamond-wrapper">
+              <div class="index-diamond-frame-small">
+                <%= cl_image_tag user.photo.key %>
               </div>
             </div>
-            <div class="card-user-search-bottom">
-              <div class="card-user-search-bottom-description"><span class="card-user-search-bottom-description-title">Bio: </span><span class="highlight-query-js"><%= user.bio %></span></div>
+            <div class="card-user-search-top-details">
+              <div class="card-user-search-top-username-underlined">
+                <div class="card-user-search-top-username highlight-query-js"><%= user.username %></div>
+                <div class="underlined-title"></div>
+              </div>
+              <% if user.title.present? %>
+                <div class="card-user-search-top-title highlight-query-js">__ <%= user.title %></div>
+              <% end %>
+              <div class="card-user-search-top-skills">
+                <% if user.skills.present? %>
+                  <% user.skills.split.map do |skill| %>
+                    <div class="card-user-search-top-skill highlight-query-js"><%= skill %></div>
+                  <% end %>
+                <% end %>
+              </div>
             </div>
           </div>
-        <% end %>
+          <div class="card-user-search-bottom">
+            <div class="card-user-search-bottom-description"><span class="card-user-search-bottom-description-title">Bio: </span><span class="highlight-query-js"><%= user.bio %></span></div>
+          </div>
+        </div>
       <% end %>
-    </ul>
-  <% end %>
+    <% end %>
+  </ul>
 </div>
-

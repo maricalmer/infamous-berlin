@@ -1,51 +1,19 @@
 <div class="background-search">
   <%= render 'shared/navbar' %>
   <div class="container">
-    <div class="mt-5">
-      <%= simple_form_for :search, url: jobs_path, method: :get do |f| %>
-        <div class="search-bar-search-page" id= "search-data" data-skills="<%= @autocomplete_set.to_json %>">
-          <input type="text" name="query" placeholder="Enter a skill you need for your project" class="search-input-search-page", id="q", autocomplete: :off>
-          <button name="button" type="submit">
+    <div class="mt-5 users-index-js">
+      <!-- ^^^ wrong JS tag naming -->
+      <%= simple_form_for :search, url: jobs_path, html: { class: "search-form-js" }, remote: true,  method: :get do |f| %>
+        <div class="search-bar-search-page search-data" data-set="<%= @autocomplete_set.to_json %>">
+          <label></label>
+          <!-- ^^^ autocomplete dependency (change autocomplete.js??) -->
+          <input type="text" name="query" placeholder="Enter a skill you need for your project" class="search-input-search-page refresh-input-js user-input-highlight-js", autocomplete="off">
+          <button type="submit">
             <i class="fas fa-search search-btn-search-page"></i>
           </button>
         </div>
       <% end %>
     </div>
-    <div id="search-results">
-      <% if params[:query].nil? %>
-      <% elsif @jobs.empty? %>
-        <h4 class="numbers-results">No job matched your search for "<%= params[:query] %>"</h4>
-      <% else %>
-        <h4 class="numbers-results"><%= @jobs.count %> <%= "jobs".pluralize(@jobs.count) %> matched your search for "<%= params[:query] %>"</h4>
-      <% end %>
-      <div class="jobs mt-5">
-        <% @jobs.each do |job| %>
-          <div class="mt-5 mb-2 mx-auto g-col-4 job-card">
-            <div class="job-card-title">
-              <h2><%= job.title.upcase%></h2><br>
-            </div>
-            <div class="d-flex justify-content-between">
-              <div>
-              <% if job.payment == "hourly_rate" %>
-                <h5><%= job.money %>€/hour</h5>
-              <% else %>
-                <h5><%= job.money %>€</h5>
-              <% end %>
-              </div>
-              <div>
-              <h5><%= job.created_at.strftime("posted on %d/%m/%Y") %></h5>
-              </div>
-            </div>
-            <p class="job-card-description"><%= job.description * 3 %></p>
-            <ul class="skills-list ps-0">
-              <% job.display_skills_needed.each do |skill| %>
-                <li><h5 class="skill-box"><%= skill.downcase %></h5></li>
-              <% end %>
-            </ul>
-            <%= link_to "See more", job_path(job), class: "more-btn jobs-more-btn" %>
-          </div>
-        <% end %>
-      </div>
-    </div>
+    <%= render "index_job", jobs: @jobs, query: params[:query] %>
   </div>
 </div>

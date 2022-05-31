@@ -36,8 +36,8 @@ import { scrollOnArrows, hideArrowsOnScroll, changeImgDesktop, checkOnFilesState
 import { loadGalleryOnTabClick, loadGallery } from '../components/gallery';
 import { expandSearchBar } from '../components/search';
 import { autocompleteSearch } from '../components/autocomplete';
-import { listenInput } from '../components/results_update';
-import { listenInputUserIndex } from '../components/refresh_user_index';
+// import { listenInput } from '../components/results_update';
+import { listenSearchInput } from '../components/refresh_search';
 import { initFlatpickr } from '../components/datepicker';
 import { xScrollOnArrows, hideArrowsOnXScroll, checkOnDashImgsState } from '../components/slider';
 import { addNewMember } from '../components/new_member_form';
@@ -100,12 +100,12 @@ document.addEventListener('turbolinks:load', () => {
   if (document.querySelectorAll(".datepicker").length) {
     initFlatpickr();
   };
-  if (document.querySelectorAll(".search-refresh-input").length) {
-    loadGallery();
-    listenInput();
-  };
-  if (document.querySelectorAll(".user-index-search-form-js").length) {
-    listenInputUserIndex();
+  // if (document.querySelectorAll(".search-refresh-input").length) {
+  //   loadGallery();
+  //   listenInput();
+  // };
+  if (document.querySelectorAll(".search-form-js").length) {
+    listenSearchInput();
   };
   if (document.querySelectorAll(".masonry-js").length) {
     loadGallery();

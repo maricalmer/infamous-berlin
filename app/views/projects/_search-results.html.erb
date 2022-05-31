@@ -1,25 +1,36 @@
-<div class="grid-search search-refresh-results upcoming-projects-style-js">
-  <% @projects.each do |project| %>
-    <div class="grid-search-item card-project-search">
-      <%= link_to project_path(project.slug) do  %>
-        <h4 class="title-card-project-search"><%= project.title %></h4>
-      <% end %>
-      <div class="img-avatar-wrapper">
-        <div class="search-card-img-wrapper">
-          <% if project.attachments.first.image? %>
-            <%= cl_image_tag project.attachments.first.key, class: "card-img card-img-js" %>
-          <% else %>
-            <%= cl_video_tag project.attachments.first.key, class: "card-img" %>
-          <% end %>
-        </div>
-        <div class="avatar-card">
-          <%= cl_image_tag project.user.photo.key %>
-        </div>
-      </div>
-      <div class="text-card-project-search"><%= project.description %></div>
-        <%= link_to project_path(project.slug) do  %>
-          <div class="ribbon">UPCOMING</div>
-        <% end %>
-    </div>
+<div id="search-results" class="search-results-js">
+  <% if query.blank? %>
+    <h4 class="placeholder-numbers-results"></h4>
+  <% else %>
+    <h4 class="numbers-results"><%= projects.count %> current upcoming <%= "project".pluralize(projects.count)%> matching your search for "<%= query %>"</h4>
   <% end %>
+  <div class="grid-search search-refresh-results upcoming-projects-style-js">
+    <% projects.each do |project| %>
+      <div class="grid-search-item card-project-search highlight-js">
+        <%= link_to project_path(project.slug) do  %>
+          <h4 class="title-card-project-search highlight-query-js"><%= project.title %></h4>
+        <% end %>
+        <div class="img-avatar-wrapper">
+          <div class="search-card-img-wrapper">
+            <% if project.attachments.first.image? %>
+              <%= cl_image_tag project.attachments.first.key, class: "card-img card-img-js" %>
+            <% elsif project.attachments.first.audio? %>
+              <%= cl_image_tag "logo-audio", class: "card-img" %>
+            <% else %>
+              <%= cl_video_tag project.attachments.first.key, class: "card-img" %>
+            <% end %>
+          </div>
+          <div class="avatar-card">
+            <%= cl_image_tag project.user.photo.key %>
+          </div>
+        </div>
+        <div class="text-card-project-search highlight-query-js"><%= project.description %></div>
+        <% if project.upcoming? %>
+          <%= link_to project_path(project.slug) do  %>
+            <div class="ribbon">UPCOMING</div>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>

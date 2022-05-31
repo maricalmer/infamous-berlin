@@ -4,10 +4,14 @@ class JobsController < ApplicationController
 
   def index
     @jobs = Job.all
+    @autocomplete_set = Job.first.overall_skill_set
     if params[:query].present?
       @jobs = Job.search_by_title_description_skills(params[:query])
     end
-    @autocomplete_set = Job.first.overall_skill_set
+    respond_to do |format|
+      format.html
+      format.text { render partial: 'index_job.html.erb', locals: { jobs: @jobs, query: params[:query] } }
+    end
   end
 
   def show

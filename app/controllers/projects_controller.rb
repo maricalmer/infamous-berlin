@@ -77,9 +77,8 @@ class ProjectsController < ApplicationController
       @projects = Project.where(status: "upcoming").search_by_title_description_location_category(params[:query])
     end
     respond_to do |format|
-      format.html # Follow regular flow of Rails
-      format.text { render partial: 'search-results.html' }
-      # format.text { render partial: 'search-results.html', locals: { projects: @projects }, formats: [:html] }
+      format.html
+      format.text { render partial: 'search-results.html', locals: { projects: @projects, query: params[:query] } }
     end
   end
 
