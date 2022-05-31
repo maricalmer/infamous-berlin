@@ -26,8 +26,15 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.search_by_username_bio_skills_title(params[:query])
+    @users = User.all
     @autocomplete_set = User.first.overall_skill_set
+    if params[:query].present?
+      @users = User.search_by_username_bio_skills_title(params[:query])
+    end
+    respond_to do |format|
+      format.html
+      format.text { render partial: 'index_user.html.erb', locals: { users: @users, query: params[:query] } }
+    end
   end
 
   # def portfolio

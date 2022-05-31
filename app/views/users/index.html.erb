@@ -1,60 +1,16 @@
 <div class="background-search">
   <%= render 'shared/navbar' %>
   <div class="mt-5 users-index-js user-index">
-    <%= simple_form_for :search, url: users_path, method: :get, remote: true do |f| %>
+    <%= simple_form_for :search, url: users_path, html: { class: "user-index-search-form-js" }, method: :get  do |f| %>
       <div class="search-bar-search-page search-data" data-set="<%= @autocomplete_set.to_json %>">
         <label></label>
         <!-- ^^^ autocomplete dependency -->
-        <input type="text" name="query" placeholder="Search through users..." class="search-input-search-page" autocomplete="off">
+        <input type="text" name="query" placeholder="Search through users..." class="search-input-search-page user-index-refresh-input-js user-input-highlight-js" autocomplete="off">
         <button type="submit">
           <i class="fas fa-search search-btn-search-page"></i>
         </button>
       </div>
     <% end %>
   </div>
-
-
-  <!-- add ajax to search -->
-  <div id="search-results">
-    <% if params[:query].nil? %>
-    <% elsif @users.empty? %>
-      <h4 class="numbers-results">No user matched your search for "<%= params[:query] %>"</h4>
-    <% else %>
-      <h4 class="numbers-results"><%= @users.size %> <%= "user".pluralize(@users.size) %> matched your search for "<%= params[:query] %>"</h4>
-      <ul class="user-results-list">
-        <% @users.each do |user| %>
-          <%= link_to user_path(user), class: "link" do %>
-            <div class="card-user-search highlight-js">
-              <div class="card-user-search-top">
-                <div class="index-diamond-wrapper">
-                  <div class="index-diamond-frame-small">
-                    <%= cl_image_tag user.photo.key %>
-                  </div>
-                </div>
-                <div class="card-user-search-top-details">
-                  <div class="card-user-search-top-username-underlined">
-                    <div class="card-user-search-top-username highlight-query-js"><%= user.username %></div>
-                    <div class="underlined-title"></div>
-                  </div>
-                  <% if user.title.present? %>
-                    <div class="card-user-search-top-title highlight-query-js">__ <%= user.title %></div>
-                  <% end %>
-                  <div class="card-user-search-top-skills">
-                    <% if user.skills.present? %>
-                      <% user.skills.split.map do |skill| %>
-                        <div class="card-user-search-top-skill highlight-query-js"><%= skill %></div>
-                      <% end %>
-                    <% end %>
-                  </div>
-                </div>
-              </div>
-              <div class="card-user-search-bottom">
-                <div class="card-user-search-bottom-description highlight-query-js"><span class="card-user-search-bottom-description-title">Bio: </span><%= user.bio %></div>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
-      </ul>
-    <% end %>
-  </div>
+  <%= render "index_user", users: @users, query: params[:query] %>
 </div>

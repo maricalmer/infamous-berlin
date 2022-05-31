@@ -37,6 +37,7 @@ import { loadGalleryOnTabClick, loadGallery } from '../components/gallery';
 import { expandSearchBar } from '../components/search';
 import { autocompleteSearch } from '../components/autocomplete';
 import { listenInput } from '../components/results_update';
+import { listenInputUserIndex } from '../components/refresh_user_index';
 import { initFlatpickr } from '../components/datepicker';
 import { xScrollOnArrows, hideArrowsOnXScroll, checkOnDashImgsState } from '../components/slider';
 import { addNewMember } from '../components/new_member_form';
@@ -102,6 +103,9 @@ document.addEventListener('turbolinks:load', () => {
   if (document.querySelectorAll(".search-refresh-input").length) {
     loadGallery();
     listenInput();
+  };
+  if (document.querySelectorAll(".user-index-search-form-js").length) {
+    listenInputUserIndex();
   };
   if (document.querySelectorAll(".masonry-js").length) {
     loadGallery();
