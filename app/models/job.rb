@@ -11,6 +11,9 @@ class Job < ApplicationRecord
   enum payment: { fixed_rate: "fixed_rate", hourly_rate: "hourly_rate" }
   enum status: { open: "open", close: "close" }
 
+  scope :fixed_rate, -> { where(payment: "fixed_rate") }
+  scope :hourly_rate, -> { where(payment: "hourly_rate") }
+
   include PgSearch::Model
   pg_search_scope :search_by_title_description_skills, against: {
     title: "A",

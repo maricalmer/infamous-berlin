@@ -3,17 +3,22 @@
   <div class="container">
     <div class="mt-5 users-index-js">
       <!-- ^^^ wrong JS tag naming -->
-      <%= simple_form_for :search, url: jobs_path, html: { class: "search-form-js" }, remote: true,  method: :get do |f| %>
+      <%= simple_form_for :search, url: jobs_path, html: { class: "search-form-js search-form-job-index" }, remote: true,  method: :get do |f| %>
         <div class="search-bar-search-page search-data" data-set="<%= @autocomplete_set.to_json %>">
           <label></label>
           <!-- ^^^ autocomplete dependency (change autocomplete.js??) -->
-          <input type="text" name="query" placeholder="Enter a skill you need for your project" class="search-input-search-page refresh-input-js user-input-highlight-js", autocomplete="off">
+          <input type="text" name="query" placeholder="Enter a skill you need for your project" class="search-input-search-page refresh-input-js user-input-highlight-js", autocomplete="off", value=<%= params[:query] %>>
           <button type="submit">
             <i class="fas fa-search search-btn-search-page"></i>
           </button>
         </div>
+        <div class="jobs-index-checkboxes">
+          <%= f.collection_radio_buttons :payment, [["fixed_rate", "Fixed payment"], ["hourly_rate", "Hourly payment"], ["all", "All"]], :first, :last, item_label_class: 'checkbox-label-js', checked: "all" %>
+        </div>
       <% end %>
     </div>
-    <%= render "index_job", jobs: @jobs, query: params[:query] %>
+    <div class="render-results-js">
+      <%= render "index_job", jobs: @jobs, query: params[:query] %>
+    </div>
   </div>
 </div>

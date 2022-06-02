@@ -8,7 +8,12 @@
           <i class="fas fa-search search-btn-search-page"></i>
         </button>
       </div>
+      <div class="jobs-index-checkboxes">
+        <%= f.collection_radio_buttons :status, [["upcoming", "Upcoming projects"], ["past", "Past projects"], ["all", "All"]], :first, :last, item_label_class: 'checkbox-label-js', checked: "upcoming" %>
+      </div>
     <% end %>
   </div>
-  <%= render "search-results", projects: @projects, query: params[:query] %>
+  <div class="render-results-js">
+    <%= render "search-results", projects: @projects, query: params[:query] %>
+  </div>
 </div>

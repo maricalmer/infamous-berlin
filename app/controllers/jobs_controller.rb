@@ -3,10 +3,20 @@ class JobsController < ApplicationController
   before_action :set_project, only: [:new, :create]
 
   def index
-    @jobs = Job.all
+    # https://gist.github.com/MyklClason/107f277a8da841db39cd566d218c91a5
+    # add checkboxes in form and display them on the left side of the page
+    # find a way to filter @jobs based on checkbox state
+    # add an event on form so that when checkboxes state changes the form is submited via ajax
+    if params[:search].present? && params[:search][:payment] == "fixed_rate"
+      @jobs = Job.where(payment: "fixed_rate")
+    elsif params[:search].present? && params[:search][:payment] == "hourly_rate"
+      @jobs = Job.where(payment: "hourly_rate")
+    else
+      @jobs = Job.all
+    end
     @autocomplete_set = Job.first.overall_skill_set
     if params[:query].present?
-      @jobs = Job.search_by_title_description_skills(params[:query])
+      @jobs = @jobs.search_by_title_description_skills(params[:query])
     end
     respond_to do |format|
       format.html

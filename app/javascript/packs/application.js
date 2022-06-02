@@ -55,6 +55,7 @@ import { fixBtnOnScroll } from '../components/save_display_btn';
 import { reloadWindowonBackBtn } from '../components/back_btn_reload';
 import { playFileOnClick } from '../components/play_audio_file';
 import { highlight } from '../components/highlight_search_query';
+import { listenCheckboxes } from '../components/checkbox_filter';
 
 
 document.addEventListener('turbolinks:load', () => {
@@ -158,6 +159,9 @@ document.addEventListener('turbolinks:load', () => {
   }
   if (document.querySelectorAll(".highlight-js").length) {
     highlight();
+  }
+  if (document.querySelectorAll(".checkbox-label-js").length) {
+    listenCheckboxes();
   }
     // expandSearchBar();
 

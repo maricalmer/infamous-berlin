@@ -29,7 +29,6 @@ const autocompleteSearch = function() {
   const searchUserPage = document.querySelector('.users-index-js');
   const projectPage = document.querySelector('.project-show-js');
   skill_sets.forEach((set) => {
-    console.log(set.dataset)
     const specificSet = JSON.parse(set.dataset.set);
     if (specificSet && formPage) {
       const searchInput = set.firstElementChild.nextElementSibling;

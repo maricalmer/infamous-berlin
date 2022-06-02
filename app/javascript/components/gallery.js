@@ -37,7 +37,7 @@ function checkOnImgsState() {
     if (counter == imgs.length) {
       setTimeout(function(){
         setSize();
-      }, 100);
+      }, 150);
     };
   }
 };

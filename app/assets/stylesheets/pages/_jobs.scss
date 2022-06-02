@@ -121,6 +121,28 @@
   margin: 0 auto;
   box-shadow: none;
 }
+.jobs-index-checkboxes {
+  margin: 1rem auto;
+  margin-top: 2rem;
+  width: fit-content;
+  span {
+    margin: 0 1rem;
+    font-size: 2rem;
+  }
+  input[type="radio"] {
+    display: none;
+  }
+  label {
+    color: #555;
+    padding: 0.5rem;
+  }
+}
+.jobs-index-checkboxes input[type="radio"]:checked + label {
+  border-bottom: 3px solid #555;
+  color: black;
+  transition-delay: 150ms;
+  transition-property: border-bottom;
+}
 @media(min-width: 768px) {
   .jobs {
     column-gap: 40px;

@@ -72,9 +72,16 @@ class ProjectsController < ApplicationController
   end
 
   def upcoming_projects
-    @projects = Project.where(status: "upcoming")
+    if params[:search].present? && params[:search][:status] == "upcoming"
+      @projects = Project.where(status: "upcoming")
+    elsif params[:search].present? && params[:search][:status] == "past"
+      @projects = Project.where(status: "past")
+    else
+      @projects = Project.all
+    end
+    # @projects = Project.where(status: "upcoming")
     if params[:query].present?
-      @projects = Project.where(status: "upcoming").search_by_title_description_location_category(params[:query])
+      @projects = @projects.search_by_title_description_location_category(params[:query])
     end
     respond_to do |format|
       format.html

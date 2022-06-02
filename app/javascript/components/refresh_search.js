@@ -6,7 +6,14 @@ const refreshIndex = () => {
   const searchForm = document.querySelector(".search-form-js")
   const searchResults = document.querySelector(".search-results-js")
   const masonry = document.querySelector(".masonry-js")
-  const url = `${searchForm.action}?query=${inputTarget.value}`
+  const checkboxLabels = document.querySelectorAll(".checkbox-label-js")
+  let params = ""
+  checkboxLabels.forEach((checkboxLabel) => {
+    if (checkboxLabel.previousElementSibling.checked && checkboxLabel.previousElementSibling.value != "all" ) {
+      params = `&${checkboxLabel.previousElementSibling.name}=${checkboxLabel.previousElementSibling.value}`
+    }
+  })
+  const url = `${searchForm.action}?query=${inputTarget.value}${params}`
   fetch(url, { headers: { 'Accept': 'text/plain' } })
     .then(response => response.text())
     .then((data) => {
