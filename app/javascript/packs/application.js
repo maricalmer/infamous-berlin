@@ -56,6 +56,7 @@ import { reloadWindowonBackBtn } from '../components/back_btn_reload';
 import { playFileOnClick } from '../components/play_audio_file';
 import { highlight } from '../components/highlight_search_query';
 import { listenCheckboxes } from '../components/checkbox_filter';
+import { clickOnFilter } from '../components/filter_radio_btn_effect';
 
 
 document.addEventListener('turbolinks:load', () => {
@@ -162,6 +163,9 @@ document.addEventListener('turbolinks:load', () => {
   }
   if (document.querySelectorAll(".checkbox-label-js").length) {
     listenCheckboxes();
+  }
+  if (document.querySelectorAll(".filter-effect-js").length) {
+    clickOnFilter();
   }
     // expandSearchBar();
 

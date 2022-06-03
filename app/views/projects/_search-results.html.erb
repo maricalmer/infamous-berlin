@@ -6,10 +6,9 @@
   <% end %>
   <div class="grid-search search-refresh-results upcoming-projects-style-js">
     <% projects.each do |project| %>
+      <%= link_to project_path(project.slug), class: "link" do  %>
       <div class="grid-search-item card-project-search highlight-js">
-        <%= link_to project_path(project.slug) do  %>
-          <h4 class="title-card-project-search highlight-query-js"><%= project.title %></h4>
-        <% end %>
+        <h4 class="title-card-project-search highlight-query-js"><%= project.title %></h4>
         <div class="img-avatar-wrapper">
           <div class="search-card-img-wrapper">
             <% if project.attachments.first.image? %>
@@ -31,6 +30,7 @@
           <% end %>
         <% end %>
       </div>
+      <% end %>
     <% end %>
   </div>
 </div>

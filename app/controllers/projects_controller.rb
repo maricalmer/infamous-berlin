@@ -72,12 +72,12 @@ class ProjectsController < ApplicationController
   end
 
   def upcoming_projects
-    if params[:search].present? && params[:search][:status] == "upcoming"
-      @projects = Project.where(status: "upcoming")
-    elsif params[:search].present? && params[:search][:status] == "past"
+    if params[:search].present? && params[:search][:status] == "past"
       @projects = Project.where(status: "past")
-    else
+    elsif params[:search].present? && params[:search][:status] == "all"
       @projects = Project.all
+    else
+      @projects = Project.where(status: "upcoming")
     end
     # @projects = Project.where(status: "upcoming")
     if params[:query].present?
