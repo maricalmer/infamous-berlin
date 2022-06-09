@@ -42,6 +42,11 @@ class InquiriesController < ApplicationController
   def change_status
     if params[:status].present? && Inquiry.statuses.include?(params[:status])
       @inquiry.update(status: params[:status])
+      if params[:status] == "accepted"
+        Collab.create(project_id: @inquiry.job.project.id, user_id: @inquiry.user.id)
+      elsif params[:status] == "rejected"
+        Collab.where(project_id: @inquiry.job.project.id).where(user_id: @inquiry.user.id).first.destroy
+      end
     end
     redirect_to @inquiry, notice: "Status updated to #{@inquiry.status}"
   end
