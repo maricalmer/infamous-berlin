@@ -1,4 +1,4 @@
-import { loadGallery } from '../components/gallery';
+import { loadGallery } from '../components/masonry';
 import { hideArrowsOnXScroll, checkOnDashImgsState } from '../components/slider';
 
 const switchSearchTabs = () => {

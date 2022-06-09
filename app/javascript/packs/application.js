@@ -33,7 +33,7 @@ import { initChatroomCable } from '../channels/chatroom_channel';
 import { switchSearchTabs } from '../components/search_tabs';
 import { switchModalTabs } from '../components/modal_tabs';
 import { scrollOnArrows, hideArrowsOnScroll, changeImgDesktop, checkOnFilesState, switchImgWithDots, switchImgWithSwipe } from '../components/carousel';
-import { loadGalleryOnTabClick, loadGallery } from '../components/gallery';
+import { loadGalleryOnTabClick, loadGallery } from '../components/masonry';
 import { expandSearchBar } from '../components/search';
 import { autocompleteSearch } from '../components/autocomplete';
 // import { listenInput } from '../components/results_update';
@@ -46,7 +46,7 @@ import { hideNavbarOnScroll } from '../components/navbar';
 import { openBar } from '../components/search_navbar';
 import { showSpinnerBtn } from '../components/spinner_btn';
 import { renderPreview } from '../components/file_preview';
-import { addSkill, populateList, disableEnterSubmit } from '../components/add_skill';
+import { addAttribute, populateList, disableEnterSubmit } from '../components/add_array_attributes';
 import { setDropdown } from '../components/switch_payment_rate';
 import { initGristackEdit, setSaveBtn } from '../components/gridstack_edit';
 import { initGristackStatic } from '../components/gridstack_static';
@@ -57,6 +57,9 @@ import { playFileOnClick } from '../components/play_audio_file';
 import { highlight } from '../components/highlight_search_query';
 import { listenCheckboxes } from '../components/checkbox_filter';
 import { clickOnFilter } from '../components/filter_radio_btn_effect';
+
+
+import { setGallery } from '../components/alternative_masonry';
 
 
 document.addEventListener('turbolinks:load', () => {
@@ -131,8 +134,8 @@ document.addEventListener('turbolinks:load', () => {
   if (document.querySelectorAll(".placeholder-preview-js").length) {
     renderPreview();
   }
-  if (document.querySelectorAll(".btn-add-skill-js").length) {
-    addSkill();
+  if (document.querySelectorAll(".btn-add-attribute-js").length) {
+    addAttribute();
     populateList();
     disableEnterSubmit();
   }
@@ -167,8 +170,16 @@ document.addEventListener('turbolinks:load', () => {
   if (document.querySelectorAll(".filter-effect-js").length) {
     clickOnFilter();
   }
-    // expandSearchBar();
+  // if (document.querySelectorAll(".masonry-grid-js").length) {
+  //   setGallery();
+  // }
 
   // Call your functions here, e.g:
   // initSelect2();
 });
+
+// document.addEventListener('DOMContentLoaded', () => {
+//   if (document.querySelectorAll(".masonry-grid-js").length) {
+//     setGallery();
+//   }
+// })

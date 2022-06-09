@@ -24,14 +24,14 @@ function addSpecificClass(cssClass) {
   });
 }
 const autocompleteSearch = function() {
-  const skill_sets = document.querySelectorAll('.search-data');
+  const skill_sets = document.querySelectorAll('.search-data-js');
   const formPage = document.querySelector('.new-project-js');
   const searchUserPage = document.querySelector('.users-index-js');
   const projectPage = document.querySelector('.project-show-js');
   skill_sets.forEach((set) => {
     const specificSet = JSON.parse(set.dataset.set);
     if (specificSet && formPage) {
-      const searchInput = set.firstElementChild.nextElementSibling;
+      const searchInput = set.firstElementChild.nextElementSibling.firstElementChild;
       createAutocomplete(specificSet, searchInput);
       addSpecificClass("autocomplete-suggestions-form");
     } else if (specificSet && searchUserPage) {

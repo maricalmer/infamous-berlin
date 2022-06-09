@@ -7,21 +7,29 @@
   </div>
   <div class="form-project-details">
     <div class="form-project-subdetails">
-      <div class="search-data form-group string optional project_location" data-set="<%= @location_autocomplete_set.to_json %>">
+      <div class="search-data-js form-group string optional project_location" data-set="<%= @location_autocomplete_set.to_json %>">
         <label class="string optional" for="project_location">Where is your project taking place?</label>
-        <input type="text" name="project[location]" id="project_location" class="input-location-project-new form-control string optional" >
+        <div>
+          <!-- ^^ dependency on autocomplete.js -->
+          <input type="text" name="project[location]" id="project_location" class="input-location-project-new form-control string optional" >
+        </div>
       </div>
-      <div>
-        <%= f.input :date, as: :string, label: 'When?', input_html: { class: "datepicker" }, error: 'Mandatory field' %>
-      </div>
+      <%= f.input :date, as: :string, label: 'When?', input_html: { class: "datepicker" }, error: 'Mandatory field' %>
+      <%= f.input :status, label: 'Project status:', as: :select, collection: @project.class.statuses.keys, include_blank: false %>
     </div>
-    <div class="form-project-subdetails">
-      <div class="search-data form-group string optional project_category" data-set="<%= @category_autocomplete_set.to_json %>">
-        <label class="string optional" for="project_category">Project category:</label>
-        <input type="text" name="project[category]" id="project_category" class="input-category-project-new form-control string optional" >
+    <%= f.input :category, wrapper_html: { class: "category-hidden-field" }, input_html: { class: "attributes_hidden_field_js" } %>
+    <div class="new-category-custom">
+      <div class="new-category-input-block search-data-js" data-set="<%= @category_autocomplete_set.to_json %>">
+        <label for="fname" class="new-category-label">Add a project category:</label>
+        <div class="d-flex">
+          <input type="text" id="fname" class="attribute-value-js input-add-category input-category-project-new"></input>
+          <div class="btn-add-attribute-js btn-add-category">Add</div>
+        </div>
       </div>
       <div>
-        <%= f.input :status, label: 'Project status:', as: :select, collection: @project.class.statuses.keys, include_blank: false %>
+        <label>Category list:</label>
+        <ol class="attributes-list-js list-categories">
+        </ol>
       </div>
     </div>
   </div>

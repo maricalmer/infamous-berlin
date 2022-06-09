@@ -9,7 +9,7 @@ class Project < ApplicationRecord
   has_many_attached :attachments
 
   after_create :update_slug
-  after_commit :add_default_img, on: [:create]
+  # after_commit :add_default_img, on: [:create]
 
   before_update :assign_slug
 
@@ -48,6 +48,10 @@ class Project < ApplicationRecord
 
   def to_param
     slug
+  end
+
+  def render_categories
+    category.split.map { |cat| cat.gsub("_", " ") }
   end
 
   # def video_attachments?

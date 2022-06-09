@@ -1,5 +1,5 @@
 import { highlight } from '../components/highlight_search_query';
-import { loadGallery } from '../components/gallery';
+import { loadGallery } from '../components/masonry';
 
 const refreshIndex = () => {
   const inputTarget = document.querySelector(".refresh-input-js")

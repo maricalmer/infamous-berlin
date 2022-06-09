@@ -8,7 +8,7 @@ class User < ApplicationRecord
   validates :username, uniqueness: true, case_sensitive: false, presence: true
 
   after_create :update_slug
-  after_commit :add_default_img, on: [:create]
+  # after_commit :add_default_img, on: [:create]
 
   before_update :assign_slug
 

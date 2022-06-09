@@ -60,6 +60,7 @@ Rails.application.routes.draw do
   get '/rejected_sent_dash', to: 'pages#rejected_sent_dash'
 
   get '/upcoming_projects', to: 'projects#upcoming_projects'
+  get '/alternative_masonry', to: 'projects#alternative_masonry'
 
   # get '/user_upcoming_projects', to: 'users#upcoming_projects'
   # get '/user_past_projects', to: 'users#past_projects'

@@ -93,7 +93,7 @@
     <div class="project-category">
       <% if @project.category? %>
       <i class="fas fa-folder-open"></i>
-        <% @project.category.each do |cat| %>
+        <% @project.render_categories.each do |cat| %>
           <div class="skill-box-project"><%= cat %></div>
         <% end %>
       <% end %>

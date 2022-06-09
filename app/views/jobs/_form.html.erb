@@ -5,22 +5,25 @@
   <div class="new-job-form-description-field">
     <%= f.input :description, label: 'Describe the job:', error: 'Mandatory field', required: true %>
   </div>
-  <div class="search-data form-group string optional job_location" data-set="<%= @location_autocomplete_set.to_json %>">
+  <div class="search-data-js form-group string optional job_location" data-set="<%= @location_autocomplete_set.to_json %>">
     <label class="string optional" for="job_location">Where is the job location?</label>
-    <input type="text" name="job[location]" id="job_location" class="input-location-project-new form-control string optional" >
+    <div>
+      <!-- ^^ autocomplete.js dependency -->
+      <input type="text" name="job[location]" id="job_location" class="input-location-project-new form-control string optional" >
+    </div>
   </div>
-  <%= f.input :skills_needed, wrapper_html: { class: "skills-hidden-field" }, input_html: { class: "skills_hidden_field_js" } %>
+  <%= f.input :skills_needed, wrapper_html: { class: "skills-hidden-field" }, input_html: { class: "attributes_hidden_field_js" } %>
   <div class="new-skill-custom">
     <div class="new-skill-input-block">
       <label for="fname" class="new-skill-label">Skills needed:</label>
       <div class="d-flex">
-        <input type="text" id="fname" class="skill-value-js input-add-skill"></input>
-        <div class="btn-add-skill-js btn-add-skill">Add</div>
+        <input type="text" id="fname" class="attribute-value-js input-add-skill"></input>
+        <div class="btn-add-attribute-js btn-add-skill">Add</div>
       </div>
     </div>
     <div>
       <label>Skills list:</label>
-      <ol class="skills-list-js list-skills">
+      <ol class="attributes-list-js list-skills">
       </ol>
     </div>
   </div>

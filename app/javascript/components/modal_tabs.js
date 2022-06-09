@@ -1,4 +1,4 @@
-import { loadGallery } from '../components/gallery';
+import { loadGallery } from '../components/masonry';
 
 const switchModalTabs = () => {
   const tabs = document.querySelectorAll('.js-modal-tab');

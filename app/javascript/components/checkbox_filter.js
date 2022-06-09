@@ -1,5 +1,5 @@
 import { highlight } from '../components/highlight_search_query';
-import { loadGallery } from '../components/gallery';
+import { loadGallery } from '../components/masonry';
 
 const listenCheckboxes = () => {
   const checkboxeLabels = document.querySelectorAll(".checkbox-label-js")
@@ -13,7 +13,7 @@ const listenCheckboxes = () => {
           const results = document.querySelector(".render-results-js");
           results.innerHTML = data;
           highlight()
-          const masonry = document.querySelector(".grid-search")
+          const masonry = document.querySelector(".masonry-js")
           if (masonry) {
             loadGallery()
           }
