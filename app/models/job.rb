@@ -6,7 +6,7 @@ class Job < ApplicationRecord
 
   validates :title, presence: true
   validates :description, presence: true
-  # validate :right_payment, unless: :no_payment_type?
+  validates :money, presence: true
 
   enum payment: { fixed_rate: "fixed_rate", hourly_rate: "hourly_rate" }
   enum status: { open: "open", close: "close" }

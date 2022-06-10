@@ -161,9 +161,9 @@ document.addEventListener('turbolinks:load', () => {
   if (document.querySelectorAll(".play-audio-js").length) {
     playFileOnClick();
   }
-  if (document.querySelectorAll(".highlight-js").length) {
-    highlight();
-  }
+  // if (document.querySelectorAll(".highlight-js").length) {
+  //   highlight();
+  // }
   if (document.querySelectorAll(".checkbox-label-js").length) {
     listenCheckboxes();
   }

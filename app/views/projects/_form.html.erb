@@ -1,9 +1,9 @@
 <%= simple_form_for @project, remote: true, html: { class: "new-project-form-js"} do |f| %>
   <div class="new-project-form-title-field">
-    <%= f.input :title, label: 'Project title:', error: 'Mandatory field', input_html: { autocomplete: "off" } %>
+    <%= f.input :title, label: 'Project title:', input_html: { autocomplete: "off" } %>
   </div>
   <div class="new-project-form-description-field">
-    <%= f.input :description, label: 'Describe your project:', error: 'Mandatory field' %>
+    <%= f.input :description, label: 'Describe your project:' %>
   </div>
   <div class="form-project-details">
     <div class="form-project-subdetails">
@@ -14,7 +14,7 @@
           <input type="text" name="project[location]" id="project_location" class="input-location-project-new form-control string optional" >
         </div>
       </div>
-      <%= f.input :date, as: :string, label: 'When?', input_html: { class: "datepicker" }, error: 'Mandatory field' %>
+      <%= f.input :date, as: :string, label: 'When?', input_html: { class: "datepicker" } %>
       <%= f.input :status, label: 'Project status:', as: :select, collection: @project.class.statuses.keys, include_blank: false %>
     </div>
     <%= f.input :category, wrapper_html: { class: "category-hidden-field" }, input_html: { class: "attributes_hidden_field_js" } %>
@@ -51,8 +51,8 @@
     <% end %>
   </div>
   <label for="project_attachments" class="project-new-photo-btn">
-    <div class="form-plus-symbol">+</div>
-    <h3>add attachment(s)</h3>
+    <i class="fas fa-paperclip me-2 pt-1"></i>
+    <h3>select attachment(s)</h3>
   </label>
   <%= f.input :attachments, as: :file, label: false, :input_html => { :multiple => true, accept: ".png, .jpg, .jpeg, .mp4, .mp3", class: "form-project-upload-photos-hidden" } %>
 

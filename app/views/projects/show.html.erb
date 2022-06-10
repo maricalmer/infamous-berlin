@@ -52,7 +52,7 @@
             </div>
             <% if @collab.errors.any? %>
               <% @collab.errors.full_messages.each do |message| %>
-                <p><%= message %></p>
+                <p class="error-red"><%= message %></p>
               <% end %>
             <% end %>
           <% end %>

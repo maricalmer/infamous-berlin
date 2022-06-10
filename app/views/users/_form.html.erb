@@ -1,7 +1,7 @@
 <%= simple_form_for @user, remote: true, html: { class: "new-project-form-js", autocomplete: "off"} do |f| %>
   <div class="update-profile-form-top">
-    <%= f.input :username, label: 'Username:', error: 'Mandatory field' %>
-    <%= f.input :email, label: 'Email address:', error: 'Invalid format' %>
+    <%= f.input :username, label: 'Username:' %>
+    <%= f.input :email, label: 'Email address:' %>
   </div>
   <%= f.input :title, label: 'Title:', placeholder: "tell the world what you do..." %>
   <%= f.input :bio, label: 'Bio:', placeholder: "tell the world about yourself..." %>

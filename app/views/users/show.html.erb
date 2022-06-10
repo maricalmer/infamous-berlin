@@ -66,28 +66,28 @@
   </div>
   <% if @user.contact_info? %>
     <div class="links-socialmedia" id="bottom-page">
-      <% if @user.website %>
+      <% if @user.website.present? %>
         <div><a class="footer-socialmedia-link" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.website %>>Website</a></div>
       <% end %>
-      <% if @user.facebook %>
+      <% if @user.facebook.present? %>
         <div><a class="footer-socialmedia-link" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.facebook %>>Facebook</a></div>
       <% end %>
-      <% if @user.instagram %>
+      <% if @user.instagram.present? %>
         <div><a class="footer-socialmedia-link" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.instagram %>>Instagram</a></div>
       <% end %>
-      <% if @user.soundcloud %>
+      <% if @user.soundcloud.present? %>
         <div><a class="footer-socialmedia-link" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.soundcloud %>>Soundcloud</a></div>
       <% end %>
-      <% if @user.youtube %>
+      <% if @user.youtube.present? %>
         <div><a class="footer-socialmedia-link" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.youtube %>>YouTube</a></div>
       <% end %>
-      <% if @user.mixcloud %>
+      <% if @user.mixcloud.present? %>
         <div><a class="footer-socialmedia-link" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.mixcloud %>>Mixcloud</a></div>
       <% end %>
-      <% if @user.linkedin %>
+      <% if @user.linkedin.present? %>
         <div><a class="footer-socialmedia-link" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.linkedin %>>Linkedin</a></div>
       <% end %>
-      <% if @user.twitter %>
+      <% if @user.twitter.present? %>
         <div><a class="footer-socialmedia-link" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.twitter %>>Twitter</a></div>
       <% end %>
     </div>

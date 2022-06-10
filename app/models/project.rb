@@ -9,12 +9,15 @@ class Project < ApplicationRecord
   has_many_attached :attachments
   enum status: { past: "past", upcoming: "upcoming" }
 
-  validates :title, presence: true, uniqueness: true, case_sensitive: false
+  validates :title, uniqueness: true
+  validates :title, presence: true, case_sensitive: false
   validates :description, presence: true
   validates :slug, :title, uniqueness: true, case_sensitive: false
   validates :attachments, content_type: { in: ['image/png', 'image/jpg', 'image/jpeg', 'video/mp4', 'audio/mpeg'], message: ' - wrong format (PNG, JPG, JPEG, MP3 or MP4 only)' }, size: { less_than: 5.megabytes , message: '5MB max' }
+  validates_length_of :attachments, maximum: 5, :message => "5 files max"
 
   after_create :update_slug
+  after_create_commit :add_default_img
   after_create_commit :create_mirror
   before_update :assign_slug
 

@@ -7,14 +7,11 @@ const updateFilesList = (index) => {
   let initialFiles = document.getElementById("project_attachments")
   const initialArray = Array.from(initialFiles.files)
   initialArray.splice(index, 1)
-  console.log(initialArray)
   let newlist = new DataTransfer();
   initialArray.forEach((file)=>{
     newlist.items.add(file);
   })
   initialFiles.files = newlist.files;
-  console.log(initialFiles.files)
-  console.log(newlist.files)
 }
 const setupDeleteBtn = () => {
   const btnsUploadedImg = document.querySelectorAll(".delete-signed-id-js")
@@ -58,7 +55,6 @@ const catchFilePathUserForm = (uploadBtnUser) => {
 const catchFilePathProjectForm = (uploadBtnProject) => {
   const placeholder = document.querySelector(".placeholder-preview-js");
   const previewPhotos = document.querySelectorAll(".preview-img-js");
-  console.log(previewPhotos)
   previewPhotos.forEach( (photo) => { photo.outerHTML = "" });
   for (let i = 0; i < uploadBtnProject.files.length; i++) {
     if (uploadBtnProject.files[i].type === "video/mp4") {
@@ -87,10 +83,13 @@ const catchFilePathProjectForm = (uploadBtnProject) => {
   setupDeleteBtn()
 }
 const renderPreview = () => {
+  const error = document.querySelector(".invalid-feedback")
+  if (error) {
+    const preview = document.querySelector(".placeholder-preview-js")
+    preview.innerHTML = ""
+  }
   const uploadBtnUser = document.getElementById("user_photo")
   const uploadBtnProject = document.getElementById("project_attachments")
-  // uploadBtn.addEventListener("click", resetFilePath)
-  // uploadBtn.addEventListener("touchstart", resetFilePath)
   if (uploadBtnUser) {
     uploadBtnUser.addEventListener("change", function(){
       catchFilePathUserForm(uploadBtnUser);
@@ -104,7 +103,6 @@ const renderPreview = () => {
     if (uploadBtnProject.files) {
       catchFilePathProjectForm(uploadBtnProject);
     }
-    // setupDeleteBtn();
   }
 }
 
