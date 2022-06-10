@@ -7,17 +7,16 @@ class Project < ApplicationRecord
   has_many :collabs
   has_many :members, class_name: 'User', through: :collabs
   has_many_attached :attachments
-
-  after_create :update_slug
-  # after_commit :add_default_img, on: [:create]
-
-  before_update :assign_slug
+  enum status: { past: "past", upcoming: "upcoming" }
 
   validates :title, presence: true, uniqueness: true, case_sensitive: false
   validates :description, presence: true
   validates :slug, :title, uniqueness: true, case_sensitive: false
   validates :attachments, content_type: { in: ['image/png', 'image/jpg', 'image/jpeg', 'video/mp4', 'audio/mpeg'], message: ' - wrong format (PNG, JPG, JPEG, MP3 or MP4 only)' }, size: { less_than: 5.megabytes , message: '5MB max' }
-  enum status: { past: "past", upcoming: "upcoming" }
+
+  after_create :update_slug
+  after_create_commit :create_mirror
+  before_update :assign_slug
 
   include PgSearch::Model
   pg_search_scope :search_by_title_description_location_category, against: {
@@ -59,6 +58,10 @@ class Project < ApplicationRecord
   # end
 
   private
+
+  def create_mirror
+    Mirror.create(user: user, project: self)
+  end
 
   def add_default_img
     return if attachments.attached?

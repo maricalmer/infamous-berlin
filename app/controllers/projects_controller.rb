@@ -1,7 +1,6 @@
 class ProjectsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
-  before_action :set_project, only: [:show, :edit, :update, :apply, :unapply]
-  after_action :create_mirror, only: [:create]
+  before_action :set_project, only: [:show, :edit, :update, :apply, :unapply, :destroy]
 
   def show
     @members = @project.members
@@ -41,6 +40,11 @@ class ProjectsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @project.destroy
+    redirect_to dashboard_path, notice: 'Project deleted'
   end
 
   # def apply
@@ -106,10 +110,6 @@ class ProjectsController < ApplicationController
   # end
 
   private
-
-  def create_mirror
-    Mirror.create(user: @project.user, project: @project)
-  end
 
   def create_chatroom
     @chatroom = Chatroom.new
