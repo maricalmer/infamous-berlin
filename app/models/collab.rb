@@ -3,6 +3,7 @@ class Collab < ApplicationRecord
   belongs_to :member, class_name: 'User', foreign_key: :user_id
 
   validate :project_member_not_project_owner
+  validates :member, uniqueness: { scope: :project, message: "member is already part of the project" }
 
   after_create_commit :create_mirror
   after_destroy_commit :destroy_mirror
