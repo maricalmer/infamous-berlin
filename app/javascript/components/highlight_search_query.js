@@ -12,12 +12,17 @@ const query = () => {
 const highlight = () => {
   let term = query()
   let text_fields = document.querySelectorAll(".highlight-query-js")
+  // console.log(text_fields)
+  // text_fields.forEach((field)=>{
+  //   field.innerHTML = field.innerHTML.replace(new RegExp(term, "gi"), (term) => `<span>alamierda</span>`);
+  // })
   text_fields.forEach((field)=>{
-    field.innerHTML = field.innerHTML.replace(new RegExp(term, "gi"), (term) => `<span class="search-keyword-highlighted">${term}</span>`);
+    let regex = new RegExp(term, 'gi')
+    let response = field.innerText.replace(regex, function(str) {
+      return "<span style='background-color: yellow;'>" + str + "</span>"
+    })
+    field.innerHTML = response
   })
 }
 
 export { highlight }
-
-
-
