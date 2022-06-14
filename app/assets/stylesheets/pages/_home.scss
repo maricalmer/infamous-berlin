@@ -1,1 +1,48 @@
-// Specific CSS for your home-page
+.preloader.is-visible {
+  width: 100%;
+  height: 100vh;
+  background-color: #212121;
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 11;
+  overflow: hidden;
+  transition: height 1s cubic-bezier(.44,.45,.18,1) 4s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.preloader.is-not-visible {
+  height: 0;
+}
+.preloader-hide.is-hidding {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #212121;
+  transition: width 3s cubic-bezier(.44,.45,.18,1) 1s;
+}
+.preloader-hide.is-not-hidding {
+  width: 0%;
+}
+.preloader-text {
+  position: relative;
+  color: #d6d6d6;
+  font-size: 2rem;
+  letter-spacing: 0.1rem;
+}
+@media(min-width: 450px) {
+  .preloader-text {
+    font-size: 5rem;
+    letter-spacing: 0.1rem;
+  }
+}
+@media(min-width: 992px) {
+  .preloader-text {
+    font-size: 11rem;
+    letter-spacing: 0.3rem;
+  }
+}

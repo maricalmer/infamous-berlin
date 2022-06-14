@@ -57,6 +57,7 @@ import { playFileOnClick } from '../components/play_audio_file';
 import { highlight } from '../components/highlight_search_query';
 import { listenCheckboxes } from '../components/checkbox_filter';
 import { clickOnFilter } from '../components/filter_radio_btn_effect';
+import { scrollTop } from '../components/homepage_preloader';
 
 
 import { setGallery } from '../components/alternative_masonry';
@@ -170,9 +171,9 @@ document.addEventListener('turbolinks:load', () => {
   if (document.querySelectorAll(".filter-effect-js").length) {
     clickOnFilter();
   }
-  // if (document.querySelectorAll(".masonry-grid-js").length) {
-  //   setGallery();
-  // }
+  if (document.querySelectorAll(".preloader").length) {
+    scrollTop();
+  }
 
   // Call your functions here, e.g:
   // initSelect2();
