@@ -4,10 +4,10 @@ function updateNavbar() {
 
   if (window.scrollY >= 40) {
     logo.classList.add("brand-wrapper-visible");
-    burger.classList.add("hamburger-wrapper-visible");
+    if (burger) burger.classList.add("hamburger-wrapper-visible");
   } else {
     logo.classList.remove("brand-wrapper-visible");
-    burger.classList.remove("hamburger-wrapper-visible");
+    if (burger) burger.classList.remove("hamburger-wrapper-visible");
   }
 }
 

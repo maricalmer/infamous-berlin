@@ -16,7 +16,8 @@
     "js-autocomplete": "^1.0.4",
     "masonry-layout": "^4.2.2",
     "popper.js": "^1.16.1",
-    "turbolinks": "^5.2.0"
+    "turbolinks": "^5.2.0",
+    "typed.js": "^2.0.12"
   },
   "version": "0.1.0",
   "devDependencies": {

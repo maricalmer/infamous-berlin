@@ -26,7 +26,6 @@
 # https://www.pexels.com/video/fashion-woman-art-model-4962903/
 # https://www.pexels.com/video/a-man-playing-the-piano-while-a-woman-playing-the-guitar-while-singing-8039634/
 # https://www.pexels.com/video/a-rapper-recording-in-a-studio-8132052/
-# https://www.pexels.com/video/painting-one-s-face-with-black-4788417/
 
 
 require "open-uri"
@@ -84,7 +83,7 @@ puts "creating projects"
   project = Project.create!(
     title: Faker::Book.unique.title,
     description: Faker::Quote.matz,
-    category: [['painting', 'print', 'photography', 'sculpture', 'furniture', 'fashion', 'other'].sample],
+    category: ['painting', 'print', 'photography', 'sculpture', 'furniture', 'fashion', 'other'].sample,
     date: Faker::Date.in_date_period,
     location: ["Mitte", "P.Berg", "Wedding", "Kreuzberg", "Neukölln", "Friedrichshain"].sample,
     user: User.all.sample

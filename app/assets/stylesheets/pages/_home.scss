@@ -16,6 +16,9 @@
 .preloader.is-not-visible {
   height: 0;
 }
+.preloader.dont-display {
+  display: none;
+}
 .preloader-hide.is-hidding {
   position: absolute;
   top: 0;
@@ -34,6 +37,14 @@
   font-size: 2rem;
   letter-spacing: 0.1rem;
 }
+.footer {
+  display: none;
+}
+ul.no-bullets {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
 @media(min-width: 450px) {
   .preloader-text {
     font-size: 5rem;
@@ -41,6 +52,56 @@
   }
 }
 @media(min-width: 992px) {
+  .footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    flex-direction: column;
+  }
+  .footer-menus {
+    display: flex;
+    width: 75%;
+    justify-content: space-evenly;
+    font-size: 1.5rem;
+    margin: 5rem 0;
+    position: relative;
+    z-index: 1;
+  }
+  .footer-menu {
+    cursor: pointer;
+    .underlined-title {
+      width: 100%;
+      background-color: #858585;
+      position: relative;
+      height: 12px;
+      top: -14px;
+      right: -6px;
+      z-index: -1;
+    }
+  }
+  .footer-message {
+    font-style: italic;
+    display: flex;
+    .footer-motion-items {
+      min-width: 100px;
+      margin-left: 0.5rem;
+    }
+  }
+  .footer-brand {
+    font-size: 20rem;
+    // color: #515151;
+    color: #858585;
+    position: relative;
+    bottom: -1rem;
+    transition: all 1s;
+    line-height: 0.5;
+    cursor: default;
+  }
+  .footer-brand:hover {
+    letter-spacing: 5px;
+  }
   .preloader-text {
     font-size: 11rem;
     letter-spacing: 0.3rem;

@@ -45,7 +45,7 @@ const setWrapperMinHeight = (img, pic, amountPics) => {
   if (counter == amountPics) {
     setTimeout(function(){
       setSize();
-    }, 100);
+    }, 150);
   }
 }
 

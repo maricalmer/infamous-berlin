@@ -2,7 +2,6 @@
 <%= render 'shared/hamburger' %>
 <%= render 'shared/brand' %>
 <%= render 'shared/navbar' %>
-<h1 class="mt-5">Homepage</h1>
 <div class="d-flex justify-content-around mt-5">
   <div>
     <h2>Users list</h2>
@@ -16,4 +15,5 @@
       <%= project.id %> <%= link_to project.title, project_path(project.slug) %><br>
     <% end %>
   </div>
-<div>
+</div>
+<%= render 'shared/footer' %>

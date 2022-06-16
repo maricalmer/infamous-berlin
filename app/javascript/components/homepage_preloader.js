@@ -1,7 +1,7 @@
 const hideLoader = () => {
   document.body.style.overflow = "hidden"
-  const loader = document.querySelector(".preloader")
   const hide = document.querySelector(".preloader-hide")
+  const loader = document.querySelector(".preloader")
   hide.classList.add("is-not-hidding")
   loader.classList.add("is-not-visible")
   setTimeout(function(){ document.body.style.overflow = "" }, 5000);
@@ -12,4 +12,14 @@ const scrollTop = () => {
   setTimeout(function(){ hideLoader() }, 300);
 }
 
-export { scrollTop }
+const firstVisitCheck = () => {
+  if ( sessionStorage.getItem("doNotShow") == "true" ) {
+    const loader = document.querySelector(".preloader")
+    loader.classList.add("dont-display")
+  } else {
+    scrollTop();
+    sessionStorage.setItem("doNotShow", "true");
+  };
+}
+
+export { firstVisitCheck }

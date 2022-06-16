@@ -57,7 +57,8 @@ import { playFileOnClick } from '../components/play_audio_file';
 import { highlight } from '../components/highlight_search_query';
 import { listenCheckboxes } from '../components/checkbox_filter';
 import { clickOnFilter } from '../components/filter_radio_btn_effect';
-import { scrollTop } from '../components/homepage_preloader';
+import { firstVisitCheck } from '../components/homepage_preloader';
+import { triggerTyped } from '../components/typed';
 
 
 import { setGallery } from '../components/alternative_masonry';
@@ -172,7 +173,10 @@ document.addEventListener('turbolinks:load', () => {
     clickOnFilter();
   }
   if (document.querySelectorAll(".preloader").length) {
-    scrollTop();
+    firstVisitCheck();
+  }
+  if (document.querySelectorAll(".typed-js").length) {
+    triggerTyped();
   }
 
   // Call your functions here, e.g:

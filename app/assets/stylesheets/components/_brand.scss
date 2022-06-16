@@ -10,8 +10,9 @@
   --s:8px;
   position: fixed;
   top: 18px;
-  left: 16px;
+  left: 30px;
   padding: 10px;
+  letter-spacing: 1px;
   margin: 0;
   background:
     linear-gradient(currentColor 0 0) var(--x,calc(var(--s)/2)) var(--x,calc(var(--s)/2)) /var(--d,0) var(--b),
@@ -39,9 +40,9 @@
 .brand-wrapper-hidden {
   position: fixed;
   top: 10px;
-  left: -145px;
+  left: -220px;
   height: 60px;
-  width: 145px;
+  width: 198px;
   background-color: #d6d6d6;
   border: 3px solid black;
   z-index: 1;
