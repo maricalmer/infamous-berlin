@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:show, :upcoming_projects, :past_projects, :upcoming_collabs, :past_collabs]
+  skip_before_action :authenticate_user!, only: [:show, :index, :upcoming_projects, :past_projects, :upcoming_collabs, :past_collabs]
   before_action :set_user, only: [:show, :edit, :update]
   before_action :set_user_for_projects, only: [:upcoming_projects, :past_projects, :upcoming_collabs, :past_collabs, :portfolio, :portfolio_own_projects, :portfolio_collabs, :ongoing_projects, :ongoing_own_projects, :ongoing_collabs]
 

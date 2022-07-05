@@ -1,5 +1,4 @@
 <%= render 'shared/hamburger' %>
-<%= render 'shared/brand' %>
 <div class="background-search">
   <div class="inquiry-big-card">
     <% if @job.project.user == current_user %>
@@ -35,7 +34,7 @@
         <% end %>
       </ul>
       <% if @job.project.user != current_user %>
-        <%= link_to "Apply!", new_job_inquiry_path(@job), class: "btn btn-apply job-show-js" %>
+        <%= link_to "Apply!", new_job_inquiry_path(@job), class: "btn btn-apply bck-btn-reload-js" %>
       <% else %>
         <%= link_to "Edit your job", edit_job_path(@job), class: "btn btn-edit" %>
       <% end %>

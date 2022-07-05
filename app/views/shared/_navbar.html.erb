@@ -1,36 +1,22 @@
 <nav class="navbar navbar-dark">
-  <%= render 'shared/brand' %>
   <% if user_signed_in? %>
-    <ul class="navbar-right">
-      <div class="navbar-right-menu dropdown show">
-        <a href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Find talent
-        </a>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-          <%= link_to "List a new project", new_project_path, class: "dropdown-item" %>
-          <%= link_to "Browse through artists", users_path, class: "dropdown-item" %>
-        </div>
-      </div>
-      <div class="navbar-right-menu dropdown show">
-        <a href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Find work
-        </a>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-          <%= link_to "Open jobs", jobs_path, class: "dropdown-item" %>
-          <%= link_to "Upcoming projects", upcoming_projects_path, class: "dropdown-item" %>
-        </div>
-      </div>
-    </ul>
+    <%= render 'shared/hamburger' %>
   <% else %>
-    <ul class="user-register">
-      <li><%= link_to "Login", new_user_session_path, data: {'bs-toggle': "modal", 'bs-target': "#modalLogin"} %></li>
-      <li><%= link_to "Sign Up", new_user_registration_path %></li>
+    <ul class="user-gate">
+      <li><%= link_to "Sign Up", new_user_registration_path, class:"nav-homepage-js scroll-event-exit-js" %></li>
+      <li class="nav-homepage-js">/</li>
+      <li><%= link_to "Login", new_user_session_path, data: {'bs-toggle': "modal", 'bs-target': "#modalLogin"}, class: "nav-homepage-js" %></li>
+      <li class="nav-homepage-js">/</li>
+      <li><%= link_to "Find talent", users_path, class: "nav-homepage-js scroll-event-exit-js" %></li>
+      <li class="nav-homepage-js">/</li>
+      <li><%= link_to "Find project", upcoming_projects_path, class: "nav-homepage-js scroll-event-exit-js" %></li>
+      <li class="nav-homepage-js">/</li>
+      <li>
+        <%= link_to root_path, class: "nav-homepage-js scroll-event-exit-js nav-brand-container" do %>
+          <div class="nav-brand-text">InfamousBerlin</div>
+        <% end %>
+      </li>
     </ul>
   <% end %>
 </nav>
-<% if user_signed_in? %>
-  <%= render 'shared/hamburger' %>
-<% end %>
 <%= render 'shared/login_form' %>
-
-

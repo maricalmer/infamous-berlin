@@ -51,3 +51,66 @@
 .brand-wrapper-visible {
   left: -4px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.nav-brand-container {
+  overflow: hidden;
+  height: 1em;
+  display: inline-block;
+  height: 29px;
+}
+.nav-brand-container:hover .nav-brand-text {
+  transform: translateY(-100%);
+}
+.nav-brand-text {
+  position: relative;
+  display: inline-block;
+  transition: transform 0.3s, color 0.6s ease-in-out;
+  font-size: 1.5rem;
+}
+.nav-brand-text::before {
+  position: absolute;
+  top: 100%;
+  content: "InfamousBerlin";
+  transform: translate3d(0,0,0);
+  color: #d6d6d6;
+}
+.nav-brand-solo-text {
+  color: black;
+}
+.nav-brand-solo-container {
+  position: fixed;
+  top: -37px;
+  right: 5px;
+  transform: translateY(81px) translateX(-39px) rotate(-90deg);
+  transform-origin: top right;
+}
+
+@media(min-width: 992px) {
+  .nav-brand-solo-container {
+    position: fixed;
+    top: -37px;
+    right: 5px;
+    transform: translateY(81px) translateX(-39px) rotate(-90deg);
+    transform-origin: top right;
+  }
+}

@@ -59,9 +59,8 @@ import { listenCheckboxes } from '../components/checkbox_filter';
 import { clickOnFilter } from '../components/filter_radio_btn_effect';
 import { firstVisitCheck } from '../components/homepage_preloader';
 import { triggerTyped } from '../components/typed';
-
-
 import { setGallery } from '../components/alternative_masonry';
+import { delayHomepageSlides } from '../components/homepage_slides';
 
 
 document.addEventListener('turbolinks:load', () => {
@@ -157,7 +156,7 @@ document.addEventListener('turbolinks:load', () => {
   if (document.querySelectorAll(".save-display-btn-js").length) {
     fixBtnOnScroll();
   }
-  if (document.querySelectorAll(".job-show-js").length) {
+  if (document.querySelectorAll(".bck-btn-reload-js").length) {
     reloadWindowonBackBtn();
   }
   if (document.querySelectorAll(".play-audio-js").length) {
@@ -178,7 +177,9 @@ document.addEventListener('turbolinks:load', () => {
   if (document.querySelectorAll(".typed-js").length) {
     triggerTyped();
   }
-
+  if (document.querySelectorAll(".homepage-slides-js").length) {
+    delayHomepageSlides();
+  }
   // Call your functions here, e.g:
   // initSelect2();
 });

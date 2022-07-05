@@ -1,26 +1,31 @@
 <% if user_signed_in? %>
   <nav id="slide" role='navigation'>
-    <div class="hamburger-wrapper-hidden burger-js">
-      <div id="menu-toggle">
-        <input type="checkbox" id="checkbox"/>
-        <div id="screen-blur"></div>
-        <span></span>
-        <span class="hamburger-middle-span"></span>
-        <span></span>
-        <ul id="menu">
-          <li><%= link_to "Messages", chatrooms_path %></li>
-          <li><%= link_to "Dashboard", dashboard_path %></li>
-          <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
-          <li>
-            <%= simple_form_for :search, url: search_path, method: :get do |f| %>
-              <div class="search-hamburger">
-                <input type="text" name="query" class="search-hamburger-input placeholder-transparent burger-search-input-js" placeholder="Search user or project...">
-                <button name="button" type="reset" class="search-hamburger-btn burger-search-btn-js"></button>
-              </div>
-            <% end %>
-          </li>
-        </ul>
-      </div>
+    <div id="menu-toggle">
+      <input type="checkbox" id="checkbox"/>
+      <div id="screen-blur"></div>
+      <span class="nav-homepage-js"></span>
+      <span class="hamburger-middle-span nav-homepage-js"></span>
+      <span class="nav-homepage-js"></span>
+      <ul id="menu">
+        <li><%= link_to "Messages", chatrooms_path, class: "scroll-event-exit-js" %></li>
+        <li><%= link_to "Dashboard", dashboard_path, class: "scroll-event-exit-js" %></li>
+        <li><%= link_to "Find talent", users_path, class: "scroll-event-exit-js" %></li>
+        <li><%= link_to "Find project", upcoming_projects_path, class: "scroll-event-exit-js" %></li>
+        <li><%= link_to "Log out", destroy_user_session_path, method: :delete, class: "scroll-event-exit-js" %></li>
+        <!-- <li>
+          <%= simple_form_for :search, url: search_path, method: :get do |f| %>
+            <div class="search-hamburger">
+              <input type="text" name="query" class="search-hamburger-input placeholder-transparent burger-search-input-js" placeholder="Search user or project...">
+              <button name="button" type="reset" class="search-hamburger-btn burger-search-btn-js"></button>
+            </div>
+          <% end %>
+        </li> -->
+      </ul>
     </div>
   </nav>
+  <div class="nav-brand-solo-container">
+    <%= link_to root_path, class: "scroll-event-exit-js nav-brand-container" do %>
+      <div class="nav-brand-text nav-brand-solo-text nav-homepage-js">InfamousBerlin</div>
+    <% end %>
+  </div>
 <% end %>

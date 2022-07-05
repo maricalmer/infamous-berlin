@@ -1,10 +1,19 @@
+html::-webkit-scrollbar {
+  display: none;
+}
+html {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
 .navbar-dark {
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   right: 0;
-  height: 77px;
+  height: 0;
+  width: 100%;
   justify-content: end;
+  z-index: 5;
 }
 .navbar-brand {
   margin: 0 1rem;
@@ -15,24 +24,32 @@
   outline: none !important;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
-.user-register {
+.user-menus, .user-gate {
   padding: 0;
   margin: 0 2.5rem;
   font-size: 1.5rem;
   position: fixed;
 }
 
-.user-register li {
+.user-menus li, .user-gate li {
   display: inline;
-}
-
-.user-register li:first-child {
   margin-right: 1rem;
 }
-
-.user-register li a {
+.user-menus li:last-child, .user-gate li:last-child {
+  margin-right: 1rem;
+}
+.user-menus li a, .user-gate li a {
   text-decoration: none;
   color: black;
+  transition: color 0.6s ease-in-out;
+}
+.user-gate li {
+  color: black;
+  transition: color 0.6s ease-in-out;
+}
+.user-gate {
+  transform: translateY(10px) translateX(-10px) rotate(-90deg);
+  transform-origin: top right;
 }
 .search-bar-large {
   border: none;

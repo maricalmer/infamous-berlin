@@ -55,7 +55,7 @@
   width: 100%;
   min-height: 100%;
   background-color: #646668;
-  z-index: -3;
+  // z-index: -3; <-- bug on login modal in user and project indexes
 }
 .user-results-list {
   margin: 5rem auto;
@@ -63,6 +63,11 @@
   grid-template-columns: 1fr;
   gap: 2rem;
   padding: 0px;
+  a {
+    width: fit-content;
+    height: fit-content;
+    margin: 0 auto;
+  }
 }
 .search-keyword-highlighted {
   background-color: #cff170;
