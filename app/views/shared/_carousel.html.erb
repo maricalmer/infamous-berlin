@@ -20,7 +20,7 @@
         </div>
       <% else %>
         <div class="cursor placeholder-mobile" data-bs-toggle="modal" data-bs-target="#modalSmallScreen">
-          <%= cl_image_tag @project.attachments.first.key %>
+          <%= cl_image_tag @project.attachments.first.key, quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 170, crop: "fill"}] %>
         </div>
       <% end %>
       <% @project.attachments.each do |attachment| %>
@@ -32,7 +32,7 @@
             <% elsif @project.attachments.first.audio? %>
               <%= cl_video_tag attachment.key, class: "cursor thumbnail-js", poster: "/assets/logo-audio.png" %>
             <% else %>
-              <%= cl_image_tag attachment.key, class: "cursor thumbnail-js" %>
+              <%= cl_image_tag attachment.key, class: "cursor thumbnail-js", quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 240, crop: "fill"}] %>
             <% end %>
           </picture>
         <% else %>
@@ -43,7 +43,7 @@
             <% elsif attachment.audio? %>
               <%= cl_video_tag attachment.key, poster:"/assets/logo-audio.png", class: "cursor thumbnail-js" %>
             <% else %>
-              <%= cl_image_tag attachment.key, class: "cursor thumbnail-js" %>
+              <%= cl_image_tag attachment.key, class: "cursor thumbnail-js", quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 170, crop: "fill"}] %>
             <% end %>
           </picture>
         <% end %>
@@ -84,7 +84,7 @@
         <% else %>
           <picture class="img-slide-big img-slide-js cursor" data-bs-toggle="modal" data-bs-target="#modalBigScreen">
             <source srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 992px)">
-            <%= cl_image_tag @project.attachments.first.key %>
+            <%= cl_image_tag @project.attachments.first.key, quality: "auto", transformation: [{fetch_format: "auto"}] %>
           </picture>
         <% end %>
       <% else %>
@@ -105,7 +105,7 @@
           <% if @project.attachments.first.video? %>
             <img src="">
           <% else %>
-            <%= cl_image_tag @project.attachments.first.key %>
+            <%= cl_image_tag @project.attachments.first.key, quality: "auto", transformation: [{fetch_format: "auto"}] %>
           <% end %>
         <% end %>
         <button type="button" class="btn-close modal-fullscreen-close-btn" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -114,6 +114,7 @@
   </div>
 </div>
 <!-- The overlay big screen-->
+
 <div class="modal fade" id="modalBigScreen" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-fullscreen ">
     <div class="modal-content overlay">
@@ -122,7 +123,7 @@
           <% if @project.attachments.first.video? %>
             <img src="">
           <% else %>
-            <%= cl_image_tag @project.attachments.first.key %>
+            <%= cl_image_tag @project.attachments.first.key, quality: "auto", transformation: [{fetch_format: "auto"}] %>
           <% end %>
         <% end %>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

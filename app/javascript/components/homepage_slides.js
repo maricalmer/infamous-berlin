@@ -11,20 +11,20 @@ const changeNavColor = () => {
   console.log(navElements)
   navElements.forEach((element)=>{
     if (qty === 2 && element.localName === "span") {
-      element.style.background = "#d6d6d6"
+      element.style.background = "#858585"
     } else if ((qty === 2 && element.localName === "a") || (qty === 2 && element.localName === "li") || (qty === 2 && element.localName === "div")) {
-      element.style.color = "#d6d6d6"
+      element.style.color = "#858585"
     } else if (element.localName === "span") {
-      element.style.background = "black"
+      element.style.background = "#858585"
     } else if ((element.localName === "a") || (element.localName === "li") || (element.localName === "div")) {
-      element.style.color = "black"
+      element.style.color = "#858585"
     }
   })
 }
 
 const moveSections = () => {
   if (startFlag) {
-    const scrollDown = window.scrollY >= initialScroll
+    const scrollDown = window.scrollY >= initialScroll + 0.5
     const scrollLimit = qty >= 1 && qty <= sectionsQty
     if (scrollLimit) {
       body.style.overflowY = 'hidden' // Lock el scroll
@@ -33,30 +33,30 @@ const moveSections = () => {
         section = document.querySelector(`.s${qty + 1}`)
 
         if (qty === 1) {
-          section.style.transform = 'translateX(-100vw)'
-        } else if (qty === 2) {
           section.style.transform = 'translateY(-100vh)'
+        } else if (qty === 2) {
+          section.style.transform = 'translateY(-200vh)'
         }
 
         qty++
 
-        changeNavColor()
+        // changeNavColor()
 
       } else if (!scrollDown && qty > 1) {
         section = document.querySelector(`.s${qty}`)
 
         if (qty === 3) {
-          section.style.transform = 'translateY(-0vh)'
+          section.style.transform = 'translateY(100vh)'
         } else if (qty === 2) {
-          section.style.transform = 'translateX(100vw)'
+          section.style.transform = 'translateY(100vh)'
         }
 
         qty--
 
-        changeNavColor()
+        // changeNavColor()
       }
     }
-
+    console.log(startFlag)
     console.log('SLIDE', qty)
 
     setTimeout(() => {

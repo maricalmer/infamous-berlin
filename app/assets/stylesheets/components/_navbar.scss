@@ -40,14 +40,17 @@ html {
 }
 .user-menus li a, .user-gate li a {
   text-decoration: none;
-  color: black;
-  transition: color 0.6s ease-in-out;
+  color: #858585;
 }
 .user-gate li {
-  color: black;
+  color: #858585;
   transition: color 0.6s ease-in-out;
 }
+.user-gate li a:hover {
+  color: #333 !important;
+}
 .user-gate {
+  white-space: nowrap;
   transform: translateY(10px) translateX(-10px) rotate(-90deg);
   transform-origin: top right;
 }

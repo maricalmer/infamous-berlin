@@ -125,11 +125,9 @@
   margin: 0 auto;
   margin-top: 4rem;
   width: fit-content;
-  display: flex;
-  align-items: baseline;
   span {
-    margin: 0 1rem;
-    font-size: 2rem;
+    margin: 0 auto;
+    font-size: 1rem;
   }
   input[type="radio"] {
     display: none;
@@ -143,7 +141,8 @@
 }
 .jobs-index-filter {
   display: flex;
-  font-size: 2rem;
+  font-size: 1.5rem;
+  margin-bottom: 3rem;
   align-items: baseline;
   position: relative;
   i {
@@ -159,11 +158,8 @@
   transition: transform 0.2s ease-out;
   position: relative;
   background-color: #646668;
-  padding-left: 2rem;
 }
-.job-index-radio-buttons-shown {
-  transform: translateX(-75px);
-}
+
 .jobs-index-hidding-span-desactivated {
   width: 100%;
   height: 70px;
@@ -186,6 +182,26 @@
 @media(min-width: 850px) {
   .job-card-dash {
     width: 200px;
+  }
+}
+@media(min-width: 950px) {
+  .job-index-radio-buttons-shown {
+    width: 100%;
+    transform: translateX(-75px);
+  }
+  .job-index-radio-buttons-hidden {
+    padding-left: 2rem;
+  }
+  .jobs-index-filter-options {
+    display: flex;
+    align-items: baseline;
+    span {
+      margin: 0 1rem;
+      font-size: 2rem;
+    }
+  }
+  .jobs-index-filter {
+    font-size: 2rem;
   }
 }
 @media(min-width: 1050px) {

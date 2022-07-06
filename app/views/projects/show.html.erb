@@ -4,7 +4,6 @@
 <!-- is the head turbolinks needed? -->
 <!-- https://github.com/turbolinks/turbolinks/issues/418#issuecomment-424995556 -->
 <%= render 'shared/hamburger' %>
-<%= render 'shared/brand' %>
 <div class="top-block-project">
   <%= render 'shared/carousel' %>
   <div class="side-text">
@@ -20,7 +19,7 @@
             <% @members.first(5).each do |member| %>
               <div class="diamond-frame-member" data-bs-toggle="modal" data-bs-target="#membersList">
                 <% if member.photo.attached? %>
-                  <%= cl_image_tag member.photo.key %>
+                  <%= cl_image_tag member.photo.key, quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 70, crop: "fill"}] %>
                 <% else %>
                   <%= image_tag "logo.png" %>
                 <% end %>
@@ -135,7 +134,7 @@
           <div class="diamond-frame-member-modal">
             <%= link_to user_path(@project.user) do %>
               <% if @project.user.photo.attached? %>
-                <%= cl_image_tag @project.user.photo.key %>
+                <%= cl_image_tag @project.user.photo.key, quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 100, crop: "fill"}] %>
               <% else %>
                 <%= image_tag "logo.png" %>
               <% end %>
@@ -156,7 +155,7 @@
             <div class="diamond-frame-member-modal">
               <%= link_to user_path(member.slug) do %>
                 <% if member.photo.attached? %>
-                  <%= cl_image_tag member.photo.key %>
+                  <%= cl_image_tag member.photo.key, quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 100, crop: "fill"}] %>
                 <% else %>
                   <%= image_tag "logo.png" %>
                 <% end %>

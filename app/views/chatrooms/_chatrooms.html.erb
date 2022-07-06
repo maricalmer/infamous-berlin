@@ -13,7 +13,7 @@
       <div class="chat-header">
         <%= link_to user_path(@chatroom.with(current_user)) do %>
           <div class="diamond-frame-chat m-0">
-            <%= cl_image_tag @chatroom.with(current_user).photo.key %>
+            <%= cl_image_tag @chatroom.with(current_user).photo.key, quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 100, crop: "fill"}] %>
           </div>
         <% end %>
         <h1 class="chat-header-username">

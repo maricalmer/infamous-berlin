@@ -19,7 +19,7 @@ const highlight = () => {
   text_fields.forEach((field)=>{
     let regex = new RegExp(term, 'gi')
     let response = field.innerText.replace(regex, function(str) {
-      return "<span style='background-color: yellow;'>" + str + "</span>"
+      return "<span style='background-color: #cff170;'>" + str + "</span>"
     })
     field.innerHTML = response
   })

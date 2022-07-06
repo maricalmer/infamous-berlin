@@ -12,7 +12,7 @@
           <div class="card-user-search-top">
             <div class="index-diamond-wrapper">
               <div class="index-diamond-frame-small">
-                <%= cl_image_tag user.photo.key %>
+                <%= cl_image_tag user.photo.key, quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 200, crop: "fill"}] %>
               </div>
             </div>
             <div class="card-user-search-top-details">

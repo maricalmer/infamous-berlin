@@ -84,7 +84,6 @@
 .nav-brand-text {
   position: relative;
   display: inline-block;
-  transition: transform 0.3s, color 0.6s ease-in-out;
   font-size: 1.5rem;
 }
 .nav-brand-text::before {
@@ -92,7 +91,7 @@
   top: 100%;
   content: "InfamousBerlin";
   transform: translate3d(0,0,0);
-  color: #d6d6d6;
+  color: #333;
 }
 .nav-brand-solo-text {
   color: black;
@@ -103,6 +102,7 @@
   right: 5px;
   transform: translateY(81px) translateX(-39px) rotate(-90deg);
   transform-origin: top right;
+  z-index: 1;
 }
 
 @media(min-width: 992px) {

@@ -12,7 +12,7 @@
         <div class="dash-card-img-wrapper">
           <% if collab.attachments.attached? %>
             <% if collab.attachments.first.image? %>
-              <%= cl_image_tag collab.attachments.first.key, class: "dash-card-img" %>
+              <%= cl_image_tag collab.attachments.first.key, class: "dash-card-img", quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 400, crop: "fill"}] %>
             <% elsif collab.attachments.first.audio? %>
               <%= cl_image_tag "/assets/logo-audio.png", class: "dash-card-img" %>
             <% else %>

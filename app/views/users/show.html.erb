@@ -7,7 +7,7 @@
           <h3 class="card-user-profile-username"><%= @user.username %></h3>
           <div class="diamond-frame-big">
             <% if @user.photo.attached? %>
-              <%= cl_image_tag @user.photo.key %>
+              <%= cl_image_tag @user.photo.key, quality: "auto", transformation: [{fetch_format: "auto"}, {width: 700, crop: "fill"}] %>
             <% else %>
               <%= image_tag "logo" %>
             <% end %>

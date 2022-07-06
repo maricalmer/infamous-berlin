@@ -339,7 +339,8 @@
     li {
       width: 24px;
       height: 4px;
-      background: black;
+      background: #cdd1f4;
+      outline: black 2px solid;
       &:nth-child(1) {
         left: 0;
         top: 0;

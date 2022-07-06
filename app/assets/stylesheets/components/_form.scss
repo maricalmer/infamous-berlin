@@ -181,7 +181,8 @@ abbr {
   padding-top: 3rem;
   padding-left: 15%;
   padding-right: 15%;
-  height: 100vh;
+  height: fit-content;
+  min-height: 100vh;
 }
 .user_username, .user_email, .user_password, .user_password_confirmation {
   label {
@@ -398,7 +399,7 @@ abbr {
   font-size: 3rem;
   position: absolute;
   top: 100px;
-  right: 0;
+  right: 10vw;
   width: fit-content;
   overflow-x: visible;
   z-index: 4;
@@ -407,7 +408,7 @@ abbr {
   font-size: 3rem;
   position: absolute;
   top: 100px;
-  right: 0;
+  right: 10vw;
   width: 230px;
   overflow-x: visible;
   z-index: 4;
@@ -649,7 +650,7 @@ abbr {
   }
   .video-girls, .video-singer {
     display: block;
-    filter: grayscale(80%);
+    filter: grayscale(95%);
     height: 100%;
     width: 100%;
     object-fit: cover;
@@ -688,7 +689,7 @@ abbr {
     display: block;
     height: 100vh;
     border-left: 2px solid black;
-    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), url("https://images.unsplash.com/photo-1598620616337-cb8f766489bd");
+    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), url("white_page");
     background-position: 0% 100%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -701,7 +702,7 @@ abbr {
     display: block;
     height: 100vh;
     border-left: 2px solid black;
-    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), url("https://images.unsplash.com/photo-1635951232611-8d476320b172");
+    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), url("paper_bin");
     background-position: 0% 100%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -714,7 +715,7 @@ abbr {
     display: block;
     height: 100vh;
     border-left: 2px solid black;
-    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), url("https://images.unsplash.com/photo-1598414160330-a9da11bcb52d");
+    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), url("newspapers");
     background-position: 0% 100%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -727,7 +728,7 @@ abbr {
     display: block;
     height: 100vh;
     border-left: 2px solid black;
-    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), url("https://images.unsplash.com/photo-1582091652153-eb8f55ff7cd9");
+    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), url("billboard");
     background-position: 0% 100%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -739,7 +740,7 @@ abbr {
   .side-img-update-profile {
     height: 100vh;
     border-left: 2px solid black;
-    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), url("https://images.unsplash.com/photo-1639048221673-6432e8d1f67f");
+    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), url("clay");
     background-position: 0% 100%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -751,7 +752,7 @@ abbr {
   .side-img-new-inquiry {
     height: 100vh;
     border-left: 2px solid black;
-    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), url("https://images.unsplash.com/photo-1474128670149-7082a8d370ea");
+    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), url("sewing_thread");
     background-position: 0% 100%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -763,7 +764,7 @@ abbr {
   .side-img-edit-inquiry {
     height: 100vh;
     border-left: 2px solid black;
-    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), url("https://images.unsplash.com/photo-1631396327032-6f0c196973d4");
+    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), url("workshop");
     background-position: 0% 100%;
     background-repeat: no-repeat;
     background-size: cover;
