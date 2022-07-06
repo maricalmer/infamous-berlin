@@ -48,7 +48,7 @@
   .text-talents2 {
     width: fit-content;
     position: relative;
-    color: #cff170;
+    color: #CDD1f4;
   }
   .text-underlined {
     width: 100%;
@@ -368,7 +368,7 @@ section {
   .home-signup-btn-text {
     color: black;
     margin: 0;
-    background-color: #7ECA93;
+    background-color: #8DE969;
     padding: 8px;
     border: 4px black solid;
     box-shadow: -6px -6px black;
@@ -382,7 +382,7 @@ section {
   }
 }
 .home-signup-btn-text:hover {
-  background-color: #8EC7A6;
+  background-color: #91DC74;
 }
 .limage1 {
   // position: absolute;
@@ -623,7 +623,7 @@ ul.no-bullets {
 .footer-brand {
   font-size: 24vw;
   // color: #515151;
-  color: #858585;
+  color: #646668;
   position: relative;
   bottom: 0;
   transition: all 1s;
@@ -646,7 +646,7 @@ ul.no-bullets {
   cursor: pointer;
   .underlined-title {
     width: 100%;
-    background-color: #858585;
+    background-color: #646668;
     position: relative;
     height: 21px;
     top: -24px;
@@ -660,6 +660,7 @@ ul.no-bullets {
   display: flex;
   justify-content: flex-end;
   width: 100%;
+  color: #646668;
   .footer-message-container {
     display: flex;
     width: 308px;
@@ -669,6 +670,26 @@ ul.no-bullets {
     margin-left: 0.5rem;
   }
 }
+.footer-background-wrapper {
+  position: relative;
+  height: 200vh;
+  overflow: hidden;
+  top: -200vh;
+  z-index: -1;
+  .footer-background {
+    position: absolute;
+    bottom: -60vh;
+    left: 0;
+    width: 100vw;
+    height: 215vh;
+    background-color: #333;
+    z-index: -1;
+    transform: skewY(-8deg);
+    outline: 6px black dashed;
+    border-top: 6px black dashed;
+  }
+}
+
 @media(min-width: 400px) {
   .footer-message {
     font-size: 2rem;
