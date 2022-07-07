@@ -72,16 +72,20 @@
         <img src="/assets/hijab-background" alt="" class="hijab-background">
       </div>
     </div>
-    <div class="home-signup-btn">
-      <%= link_to new_user_registration_path do %>
-        <div class="home-signup-btn-text scroll-event-exit-js">
-          <h3>Sign up now!</h3>
-        </div>
-      <% end %>
+    <div class="footer-gray-container">
+      <div class="footer-top-diagonal-outside"></div>
+      <div class="footer-top-diagonal-inside"></div>
+      <div class="home-signup-btn">
+        <%= link_to new_user_registration_path do %>
+          <div class="home-signup-btn-text scroll-event-exit-js">
+            <h3>Sign up now!</h3>
+          </div>
+        <% end %>
+      </div>
+      <%= render 'shared/footer' %>
     </div>
-    <%= render 'shared/footer' %>
-    <div class="footer-background-wrapper">
+    <!-- <div class="footer-background-wrapper">
       <div class="footer-background"></div>
-    </div>
+    </div> -->
   </section>
 </div>

@@ -360,7 +360,7 @@ section {
 }
 .home-signup-btn {
   width: 200px;
-  margin: 37vh auto 20vh auto;
+  margin: 0 auto 20vh auto;
   a {
     text-decoration: none;
     color: black;
@@ -612,6 +612,27 @@ ul.no-bullets {
   padding: 0;
   margin: 0;
 }
+.footer-gray-container {
+  background-color: #333;
+  padding-top: 1vh;
+}
+.footer-top-diagonal-outside {
+  height: 2vh;
+  position: relative;
+  transform: skewY(-8deg);
+  top: -18.9vh;
+  border-bottom: 6px dashed black;
+  z-index: -3;
+}
+.footer-top-diagonal-inside {
+  height: 30vh;
+  transform: skewY(-8deg);
+  position: relative;
+  top: -19vh;
+  z-index: -3;
+  background-color: #333;
+  border-top: 6px dashed black;
+}
 .footer {
   width: 100%;
   display: flex;
@@ -641,6 +662,7 @@ ul.no-bullets {
   z-index: 1;
 }
 .footer-menu {
+  color: #d6d6d6;
   margin: 1rem auto;
   width: fit-content;
   cursor: pointer;
@@ -655,7 +677,7 @@ ul.no-bullets {
   }
 }
 .footer-message {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-style: italic;
   display: flex;
   justify-content: flex-end;
@@ -666,7 +688,7 @@ ul.no-bullets {
     width: 308px;
   }
   .footer-motion-items {
-    min-width: 100px;
+    min-width: 130px;
     margin-left: 0.5rem;
   }
 }
@@ -690,19 +712,16 @@ ul.no-bullets {
   }
 }
 
-@media(min-width: 400px) {
+@media(min-width: 450px) {
   .footer-message {
     font-size: 2rem;
     .footer-message-container {
-      width: 405px;
+      width: 430px;
       margin-right: 4vw;
     }
   }
-}
-@media(min-width: 450px) {
   .home-signup-btn {
     width: 400px;
-    margin: 50vh auto 20vh auto;
   }
   .home-signup-btn-text {
     height: 100px;

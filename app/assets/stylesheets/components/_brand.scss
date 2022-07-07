@@ -74,12 +74,13 @@
 
 .nav-brand-container {
   overflow: hidden;
-  height: 1em;
   display: inline-block;
   height: 29px;
 }
 .nav-brand-container:hover .nav-brand-text {
+  color: #858585;
   transform: translateY(-100%);
+  transition: transform 0.6s;
 }
 .nav-brand-text {
   position: relative;
@@ -94,7 +95,7 @@
   color: #333;
 }
 .nav-brand-solo-text {
-  color: black;
+  color: #858585;
 }
 .nav-brand-solo-container {
   position: fixed;
@@ -102,6 +103,7 @@
   right: 5px;
   transform: translateY(81px) translateX(-39px) rotate(-90deg);
   transform-origin: top right;
+
   z-index: 1;
 }
 
