@@ -40,7 +40,7 @@
         <div class="new-member-button-form">
           <button class="btn btn-covering btn-covering-js">Add member</button>
           <%= simple_form_for [ @project, @collab ] do |f| %>
-            <div class="project-show-js search-data new-member-form new-member-form-js" data-set="<%= @autocomplete_set.to_json %>">
+            <div class="project-show-js search-data-js new-member-form new-member-form-js" data-set="<%= @autocomplete_set.to_json %>">
               <div class="new-member-form-btn">
                 <div class="new-member-field">
                   <label class="string optional" for="project_member">Add member's username</label>

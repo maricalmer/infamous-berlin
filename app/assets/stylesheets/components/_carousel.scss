@@ -139,6 +139,9 @@
 //   scrollbar-width: none;  /* Firefox */
 // }
 @media(min-width: 992px) {
+  .img-slide-big img, .img-slide-big video {
+    max-width: 555px;
+  }
   .carousel-container {
     padding-top: 4rem;
     padding-left: 3em;
@@ -146,6 +149,7 @@
     display: flex;
     width: 70%;
     height: 100%;
+    height: 699px;
     border-right: dashed 4px black;
     border-bottom: none;
   }
@@ -253,7 +257,7 @@
     border: 4px solid black;
     box-shadow: -8px -8px 0 0 black;
     max-height: 610px;
-    max-width: 555px;
+    max-width: 400px;
   }
   .slide-big-audio-poster, .slide-big-audio-control {
     width: 450px;
