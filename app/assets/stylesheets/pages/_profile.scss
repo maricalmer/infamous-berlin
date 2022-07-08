@@ -128,7 +128,7 @@
 .links-socialmedia div:hover {
   color: #7ECA93;
 }
-.new-message-modal {
+.new-message-modal, .support-modal {
   border: 4px solid black;
   border-radius: 0px;
   background-color: #d6d6d6;
@@ -137,7 +137,7 @@
   border: 4px solid black;
   border-radius: 0px;
 }
-.new-message-modal-header, .cropper-modal-header {
+.new-message-modal-header, .cropper-modal-header, .support-modal-header {
   border-bottom: 2px solid black;
   background-color: #858585;
 }
