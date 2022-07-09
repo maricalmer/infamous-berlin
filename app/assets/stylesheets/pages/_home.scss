@@ -740,6 +740,7 @@ ul.no-bullets {
   left: 0;
   width: 100%;
   height: 100%;
+  z-index: 0;
 }
 .support-details {
   display: flex;
@@ -748,6 +749,8 @@ ul.no-bullets {
     text-decoration: none;
     color: black;
     cursor: pointer;
+    position: relative;
+    z-index: 1;
   }
   i {
     width: 1rem;
