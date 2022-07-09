@@ -256,7 +256,7 @@
   // background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url("https://images.unsplash.com/photo-1632187989763-c9c620420b4d");
   // background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url("https://images.unsplash.com/photo-1592685530138-6fdfaf4b278a");
   // background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url("https://images.unsplash.com/photo-1608913460157-6d4db97b0a30");
-  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(asset_path("homepage-background.jpg"));
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), asset-url("homepage-background.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
