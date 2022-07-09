@@ -17,6 +17,9 @@
     <% end %>
     <%= render "devise/shared/links" %>
   </div>
-  <div class="devise-form-img"></div>
-  <div class="devise-form-img-text">Find the missing piece for your <span>art project</span>.</div>
+  <div class="right-side-signup">
+    <div class="devise-form-video-text">Find the right people for your <span>art project</span>.</div>
+    <div class="video-gradient singer-gradient"></div>
+    <%= video_tag "singer", autoplay: :autoplay, loop: :loop, muted: :muted, class: "video-singer" %>
+  </div>
 </div>

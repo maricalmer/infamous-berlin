@@ -115,6 +115,9 @@ ActiveRecord::Schema.define(version: 2022_04_12_221901) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.text "bio"
@@ -131,6 +134,7 @@ ActiveRecord::Schema.define(version: 2022_04_12_221901) do
     t.string "linkedin"
     t.string "twitter"
     t.index ["bio"], name: "index_users_on_bio"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["facebook"], name: "index_users_on_facebook"
     t.index ["instagram"], name: "index_users_on_instagram"

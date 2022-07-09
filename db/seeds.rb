@@ -146,6 +146,7 @@ projects = Project.first(10)
     description: Faker::Lorem.sentence(word_count: 5, random_words_to_add: 10),
     location: ["Mitte", "P.Berg", "Wedding", "Kreuzberg", "Neukölln", "Friedrichshain", "remote"].sample,
     payment: ["fixed_rate", "hourly_rate"].sample,
+    money: [100, 150, 200, 250, 300, 350].sample,
     status: ["open", "close"].sample,
     project_id: projects.first.id
   )

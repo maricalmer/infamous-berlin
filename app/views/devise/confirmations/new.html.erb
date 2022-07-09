@@ -1,20 +1,26 @@
-<h2>Resend confirmation instructions</h2>
+<div class="devise-form-container">
+  <div class="devise-form">
+    <h1 class="brand-devise-form">InfamousBerlin</h1>
+    <%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+      <%= f.error_notification %>
+      <%= f.full_error :confirmation_token %>
+      <div class="form-inputs">
+        <%= f.input :email,
+                    required: true,
+                    autofocus: true,
+                    value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email),
+                    input_html: { autocomplete: "email" } %>
+      </div>
 
-<%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= f.error_notification %>
-  <%= f.full_error :confirmation_token %>
-
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email),
-                input_html: { autocomplete: "email" } %>
+      <div class="form-actions">
+        <%= f.button :submit, "Resend confirmation instructions" %>
+      </div>
+    <% end %>
+    <%= render "devise/shared/links" %>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Resend confirmation instructions" %>
+  <div class="right-side-signup">
+    <div class="devise-form-video-text">Find the right people for your <span>art project</span>.</div>
+    <div class="video-gradient girls_smile-gradient"></div>
+    <%= video_tag "rapper", autoplay: :autoplay, loop: :loop, muted: :muted, class: "video-girls" %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
