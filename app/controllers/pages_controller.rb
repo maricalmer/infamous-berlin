@@ -6,8 +6,6 @@ class PagesController < ApplicationController
   before_action :set_search, only: [:general_search, :user_search, :project_search]
 
   def home
-    @users = User.all.sort_by(&:id)
-    @projects = Project.all.sort_by(&:id)
   end
 
   def dashboard
