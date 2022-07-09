@@ -14,7 +14,7 @@ class JobsController < ApplicationController
     else
       @jobs = Job.all
     end
-    @autocomplete_set = Job.first.overall_skill_set
+    @autocomplete_set = Job.overall_skill_set
     if params[:query].present?
       @jobs = @jobs.search_by_title_description_skills(params[:query])
     end
@@ -30,7 +30,7 @@ class JobsController < ApplicationController
 
   def new
     @job = Job.new
-    @location_autocomplete_set = Job.first.job_locations
+    @location_autocomplete_set = Job.job_locations
   end
 
   def create

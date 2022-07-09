@@ -11,8 +11,8 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
-    @location_autocomplete_set = Project.first.project_locations
-    @category_autocomplete_set = Project.first.project_categories
+    @location_autocomplete_set = Project.project_locations
+    @category_autocomplete_set = Project.project_categories
   end
 
   def create

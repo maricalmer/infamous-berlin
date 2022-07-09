@@ -31,11 +31,11 @@ class Project < ApplicationRecord
     tsearch: { prefix: true, any_word: true }
   }
 
-  def project_locations
+  def self.project_locations
     ["Kreuzberg", "Mitte", "Wedding", "P.Berg", "Neukölln", "Friedrichshain"]
   end
 
-  def project_categories
+  def self.project_categories
     ['painting', 'print', 'photography', 'sculpture', 'furniture', 'fashion', 'other']
   end
 

@@ -27,7 +27,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    @autocomplete_set = User.first.overall_skill_set
+    @autocomplete_set = User.overall_skill_set
     if params[:query].present?
       @users = User.search_by_username_bio_skills_title(params[:query])
     end

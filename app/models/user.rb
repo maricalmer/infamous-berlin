@@ -55,7 +55,7 @@ class User < ApplicationRecord
   #   return true if application
   # end
 
-  def overall_skill_set
+  def self.overall_skill_set
     ["acting", "voice acting", "singing", "oil painting", "acrylic painting", "digital painting", "3d drawing", "music producing", "dancing", "film editing", "film production", "video animation", "video design", "photography", "model"]
   end
 
