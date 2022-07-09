@@ -36,7 +36,7 @@ class Project < ApplicationRecord
   end
 
   def self.project_categories
-    ['painting', 'print', 'photography', 'sculpture', 'furniture', 'fashion', 'other']
+    ['painting', 'music production', 'photography', 'DJing', 'sculpture', 'fashion', 'graphic design', 'other']
   end
 
   def create_slug

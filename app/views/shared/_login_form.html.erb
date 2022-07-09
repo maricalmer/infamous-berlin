@@ -18,7 +18,6 @@
             <%= f.input :remember_me, input_html: { class: "check-form-login" }, as: :boolean if devise_mapping.rememberable? %>
           </div>
           <div class="error-new-session text-danger"></div>
-          <%= link_to "Forgot your password?", new_password_path(resource_name), class: "link-form-login" %><br/>
           <%= link_to "Create an account", new_user_registration_path, class: "link-form-login" %>
           <div class="modal-footer footer-form-login">
             <%= f.button :submit, "Log in", class: "btn btn-message" %>
