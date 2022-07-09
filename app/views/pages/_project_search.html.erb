@@ -28,7 +28,7 @@
             <% if project.user.photo.attached? %>
               <%= cl_image_tag project.user.photo.key%>
             <% else %>
-              <%= image_tag "logo.png"%>
+              <%= image_tag asset_path('logo.png') %>
             <% end %>
           </div>
         </div>

@@ -22,7 +22,7 @@
               <% if mirror.crop_x.present? %>
                 <%= cl_image_tag "logo-audio", class: "grid-search-big-item-img grid-search-big-item-img-no-sizing", height: mirror.crop_h, width: mirror.crop_w, x: mirror.crop_x, y: mirror.crop_y, crop: "crop" %>
               <% else %>
-                <%= image_tag "/assets/logo-audio", class: "grid-search-big-item-img" %>
+                <%= image_tag asset_path('logo-audio.png'), class: "grid-search-big-item-img" %>
               <% end %>
             <% end %>
           </picture>

@@ -14,7 +14,7 @@
               <% if current_user.photo.attached? %>
                 <%= cl_image_tag current_user.photo.key, quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 300, crop: "fill"}] %>
               <% else %>
-                <%= image_tag "logo" %>
+                <%= image_tag asset_path('logo.png') %>
               <% end %>
             <% end %>
           </div>

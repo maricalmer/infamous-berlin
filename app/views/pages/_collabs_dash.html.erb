@@ -19,7 +19,7 @@
               <%= cl_video_tag collab.attachments.first.key, class: "dash-card-img" %>
             <% end %>
           <% else %>
-            <%= image_tag "logo.png", class: "dash-card-img" %>
+            <%= image_tag asset_path('logo.png'), class: "dash-card-img" %>
           <% end %>
         </div>
         <div class="dash-card-text"><%= collab.description %></div>

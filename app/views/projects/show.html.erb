@@ -21,7 +21,7 @@
                 <% if member.photo.attached? %>
                   <%= cl_image_tag member.photo.key, quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 70, crop: "fill"}] %>
                 <% else %>
-                  <%= image_tag "logo.png" %>
+                  <%= image_tag asset_path('logo.png') %>
                 <% end %>
               </div>
             <% end %>
@@ -136,7 +136,7 @@
               <% if @project.user.photo.attached? %>
                 <%= cl_image_tag @project.user.photo.key, quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 100, crop: "fill"}] %>
               <% else %>
-                <%= image_tag "logo.png" %>
+                <%= image_tag asset_path('logo.png') %>
               <% end %>
             <% end %>
           </div>
@@ -157,7 +157,7 @@
                 <% if member.photo.attached? %>
                   <%= cl_image_tag member.photo.key, quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 100, crop: "fill"}] %>
                 <% else %>
-                  <%= image_tag "logo.png" %>
+                  <%= image_tag asset_path('logo.png') %>
                 <% end %>
               <% end %>
             </div>
