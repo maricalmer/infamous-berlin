@@ -689,7 +689,7 @@ abbr {
     display: block;
     height: 100vh;
     border-left: 2px solid black;
-    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), url("white_page");
+    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), asset-url("white_page.png");
     background-position: 0% 100%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -702,7 +702,7 @@ abbr {
     display: block;
     height: 100vh;
     border-left: 2px solid black;
-    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), url("paper_bin");
+    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), asset-url("paper_bin.png");
     background-position: 0% 100%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -715,7 +715,7 @@ abbr {
     display: block;
     height: 100vh;
     border-left: 2px solid black;
-    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), url("newspapers");
+    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), asset-url("newspapers.png");
     background-position: 0% 100%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -728,7 +728,7 @@ abbr {
     display: block;
     height: 100vh;
     border-left: 2px solid black;
-    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), url("billboard");
+    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), asset-url("billboard.png");
     background-position: 0% 100%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -740,7 +740,7 @@ abbr {
   .side-img-update-profile {
     height: 100vh;
     border-left: 2px solid black;
-    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), url("clay");
+    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), asset-url("clay.png");
     background-position: 0% 100%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -752,7 +752,7 @@ abbr {
   .side-img-new-inquiry {
     height: 100vh;
     border-left: 2px solid black;
-    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), url("sewing_thread");
+    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), asset-url("sewing_thread.png");
     background-position: 0% 100%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -764,7 +764,7 @@ abbr {
   .side-img-edit-inquiry {
     height: 100vh;
     border-left: 2px solid black;
-    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), url("workshop");
+    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), asset-url("workshop.png");
     background-position: 0% 100%;
     background-repeat: no-repeat;
     background-size: cover;
