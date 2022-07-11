@@ -34,6 +34,8 @@ class ProjectsController < ApplicationController
     #     @project.photos.attach(photo)
     #   end
     # end
+    @location_autocomplete_set = Project.project_locations
+    @category_autocomplete_set = Project.project_categories
     @project.update(project_params)
     if @project.save
       redirect_to dashboard_path, notice: 'Project was successfully updated.'
