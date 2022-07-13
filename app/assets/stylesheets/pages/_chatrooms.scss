@@ -1,3 +1,12 @@
+.empty-chatroom {
+  width: 100%;
+  font-size: 2rem;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .chat-page {
   display: flex;
   background-color: #858585;
