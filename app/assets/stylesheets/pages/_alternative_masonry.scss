@@ -1,0 +1,110 @@
+.no-masonry-grid {
+  column-count: 1 !important;
+  column-gap: 30px !important;
+  width: 80%;
+  margin: 0 auto;
+  padding: 1rem 0 10rem 0;
+}
+.wrapper-no-masonry-item {
+  position: relative;
+  width: 200px;
+  height: fit-content;
+  margin: 0 auto 30px auto;
+  padding-top: 1rem;
+  will-change: transform;
+}
+@supports (-moz-appearance:none) {
+  .wrapper-no-masonry-item { padding-top: 0; }
+}
+
+@media not all and (min-resolution:.001dpcm)
+{ @supports (-webkit-appearance:none) {
+    .safari_only {
+      margin-bottom: 0px;
+    }
+}}
+
+.no-masonry-item {
+  margin: 0 auto !important;
+  width: 200px;
+  height: fit-content;
+  // overflow: hidden;
+  position: relative;
+  // margin-bottom: 30px !important;
+  transition: all .2s ease-in-out;
+  background-color: #333;
+  word-wrap: break-word;
+  background-clip: border-box;
+  border: solid 4px black;
+  // -webkit-appearance: none;
+  // -webkit-box-shadow: -8px -8px 0 0 black;
+  // box-shadow: -8px -8px 0 0 black;
+  break-inside: avoid;
+  // transform: scale(0.95);
+  z-index: 200;
+  will-change: transform;
+  a {
+    text-decoration: none;
+    color: white;
+  }
+  .card-img {
+    transition: transform 1.5s;
+  }
+  .ribbon {
+    left: 96px;
+    top: 6px;
+  }
+  .avatar-card {
+    left: 135px;
+    z-index: 100;
+  }
+}
+.no-masonry-item-box-shadow {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  z-index: -1;
+  // will-change: transform;
+}
+.no-masonry-item:hover {
+  // transform: scale(1);
+  // transition: transform 1.5s;
+  .card-img {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    transition: transform 1.5s;
+  }
+  img {
+    filter: brightness(110%);
+    transition: filter 0.3s ease-in;
+  }
+}
+.wrapper-no-masonry-item:hover {
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
+  transition: transform 1.5s;
+}
+@media(min-width: 515px) {
+  .no-masonry-grid {
+    column-count: 2 !important;
+    width: 80%;
+  }
+}
+@media(min-width: 785px) {
+  .no-masonry-grid {
+    column-count: 3 !important;
+  }
+}
+@media(min-width: 1100px) {
+  .no-masonry-grid {
+    column-count: 4 !important;
+  }
+}
+@media(min-width: 1350px) {
+  .no-masonry-grid {
+    column-count: 5 !important;
+  }
+}

@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:show, :upcoming_projects]
+  skip_before_action :authenticate_user!, only: [:show, :upcoming_projects, :alternative_masonry]
   before_action :set_project, only: [:show, :edit, :update, :apply, :unapply, :destroy]
 
   def show
@@ -94,22 +94,22 @@ class ProjectsController < ApplicationController
     end
   end
 
-  # def alternative_masonry
-  #   if params[:search].present? && params[:search][:status] == "past"
-  #     @projects = Project.where(status: "past")
-  #   elsif params[:search].present? && params[:search][:status] == "all"
-  #     @projects = Project.all
-  #   else
-  #     @projects = Project.where(status: "upcoming")
-  #   end
-  #   if params[:query].present?
-  #     @projects = @projects.search_by_title_description_location_category(params[:query])
-  #   end
-  #   respond_to do |format|
-  #     format.html
-  #     format.text { render partial: 'search-results.html', locals: { projects: @projects, query: params[:query] } }
-  #   end
-  # end
+  def alternative_masonry
+    if params[:search].present? && params[:search][:status] == "past"
+      @projects = Project.where(status: "past")
+    elsif params[:search].present? && params[:search][:status] == "all"
+      @projects = Project.all
+    else
+      @projects = Project.where(status: "upcoming")
+    end
+    if params[:query].present?
+      @projects = @projects.search_by_title_description_location_category(params[:query])
+    end
+    respond_to do |format|
+      format.html
+      format.text { render partial: 'search-results.html', locals: { projects: @projects, query: params[:query] } }
+    end
+  end
 
   private
 
