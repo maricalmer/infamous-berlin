@@ -9,12 +9,14 @@
       <div class="wrapper-no-masonry-item safari_only remove-bottom-margin-js">
         <div class="no-masonry-item">
           <%= link_to project_path(project.slug), class: "link" do  %>
-            <h4 class="title-card-project-search highlight-query-js">
-              <%= project.title %>
+            <div class="wrapper-title-card-project-search">
+              <h4 class="title-card-project-search highlight-query-js">
+                <%= project.title %>
+              </h4>
               <% if project.upcoming? %>
                 <div class="ribbon">UPCOMING</div>
               <% end %>
-            </h4>
+            </div>
             <div class="img-avatar-wrapper">
               <div class="search-card-img-wrapper">
                 <% if project.attachments.first.image? %>
