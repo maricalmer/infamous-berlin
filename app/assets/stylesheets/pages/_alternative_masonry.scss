@@ -52,6 +52,13 @@
   // transform: scale(0.95);
   z-index: 200;
   will-change: transform;
+  -moz-page-break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  break-inside: avoid;
+  -o-column-break-inside: avoid;
+  -ms-column-break-inside: avoid;
+  column-break-inside: avoid;
+  page-break-inside: avoid;
   a {
     text-decoration: none;
     color: white;
