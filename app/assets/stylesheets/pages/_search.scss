@@ -139,7 +139,14 @@
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
-@media(min-width: 950px) {
+@media(min-width: 800px) {
+  .search-bar-search-page {
+    ::placeholder {
+      font-size: 3rem;
+    }
+  }
+}
+@media(min-width: 1250px) {
   .search-bar-search-page {
     margin: 0 auto;
     height: 6rem;
