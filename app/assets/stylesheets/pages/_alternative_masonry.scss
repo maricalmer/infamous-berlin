@@ -1,7 +1,6 @@
 .no-masonry-grid {
-  column-count: 1 !important;
-  column-gap: 30px !important;
-  column-fill: balance-all;
+  column-count: 1 ;
+  column-gap: 30px;
   width: 80%;
   margin: 0 auto;
   padding: 1rem 0 10rem 0;
@@ -90,22 +89,22 @@
 }
 @media(min-width: 515px) {
   .no-masonry-grid {
-    column-count: 2 !important;
+    column-count: 2;
     width: 80%;
   }
 }
 @media(min-width: 785px) {
   .no-masonry-grid {
-    column-count: 3 !important;
+    column-count: 3;
   }
 }
 @media(min-width: 1100px) {
   .no-masonry-grid {
-    column-count: 4 !important;
+    column-count: 4;
   }
 }
 @media(min-width: 1350px) {
   .no-masonry-grid {
-    column-count: 5 !important;
+    column-count: 5;
   }
 }
