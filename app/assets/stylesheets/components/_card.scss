@@ -110,12 +110,14 @@
   display: flex;
   margin-top: 1.5rem;
   justify-content: left;
+  flex-wrap: wrap;
   .card-user-search-top-skill {
     border: 3px solid black;
-    width: fit-content;
+    width: fit-content;`
     padding: 2px;
     background-color: #646668;
     margin-right: 4px;
+    margin-bottom: 4px;
     color: #d6d6d6;
   }
 }
