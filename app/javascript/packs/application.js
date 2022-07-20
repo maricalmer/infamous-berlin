@@ -61,6 +61,7 @@ import { firstVisitCheck } from '../components/homepage_preloader';
 import { triggerTyped } from '../components/typed';
 import { setGallery } from '../components/alternative_masonry';
 import { delayHomepageSlides } from '../components/homepage_slides';
+import { initCursor } from '../components/homepage_cursor';
 
 
 document.addEventListener('turbolinks:load', () => {
@@ -179,6 +180,9 @@ document.addEventListener('turbolinks:load', () => {
   }
   if (document.querySelectorAll(".homepage-slides-js").length) {
     delayHomepageSlides();
+  }
+  if (document.querySelectorAll(".homepage-cursor-js").length) {
+    initCursor();
   }
   // Call your functions here, e.g:
   // initSelect2();

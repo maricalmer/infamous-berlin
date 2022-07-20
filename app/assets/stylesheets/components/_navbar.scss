@@ -29,6 +29,7 @@ html {
   margin: 0 2.5rem;
   font-size: 1.5rem;
   position: fixed;
+  cursor: pointer;
 }
 
 .user-menus li, .user-gate li {
@@ -41,13 +42,14 @@ html {
 .user-menus li a, .user-gate li a {
   text-decoration: none;
   color: #858585;
+  cursor: pointer;
 }
 .user-gate li {
   color: #858585;
   transition: color 0.6s ease-in-out;
 }
 .user-gate li a:hover {
-  color: #333 !important;
+  color: #d6d6d6 !important;
 }
 .user-gate {
   white-space: nowrap;
