@@ -1,6 +1,6 @@
 // const TIME_OUT = 2000 // same transition time of the sections
-const body = document.querySelector('body')
-const sectionsQty = document.querySelectorAll('section').length
+// const body = document.querySelector('body')
+// const sectionsQty = document.querySelectorAll('section').length
 
 // let startFlag = true
 // let initialScroll = window.scrollY
@@ -25,11 +25,13 @@ let qty = 1, section = null, direction = "down"
 const moveSections = () => {
   // if (startFlag) {
     // const scrollDown = window.scrollY >= initialScroll + 0.5
-    const clickLimit = qty >= 1 && qty <= sectionsQty
-    if (clickLimit) {
-      body.style.overflowY = 'hidden' // Lock el scroll
+    // const clickLimit = qty >= 1 && qty <= sectionsQty
+    const openModal = document.querySelectorAll(".modal.show").length > 0
+    // console.log(clickLimit)
+    // if (clickLimit) {
+      // body.style.overflowY = 'hidden' // Lock el scroll
 
-      if (direction == "down") {
+      if (direction == "down" && !openModal) {
 
 
         if (qty === 1) {
@@ -49,7 +51,7 @@ const moveSections = () => {
 
         // changeNavColor()
 
-      } else if (direction == "up") {
+      } else if (direction == "up" && !openModal) {
 
 
         if (qty === 1) {
@@ -65,7 +67,7 @@ const moveSections = () => {
 
         // changeNavColor()
       }
-    }
+    // }
     // console.log(startFlag)
     console.log('SLIDE', qty)
     console.log(direction)
@@ -83,7 +85,8 @@ const moveSections = () => {
 }
 
 const homepageSlides = () => {
-  window.addEventListener("click", moveSections)
+  const homepage = document.querySelector(".homepage");
+  homepage.addEventListener("click", moveSections)
   const exits = document.querySelectorAll(".scroll-event-exit-js")
   exits.forEach((exit) => {
     exit.addEventListener("click", function() {

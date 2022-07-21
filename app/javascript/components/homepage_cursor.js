@@ -1,9 +1,8 @@
-// set the starting position of the cursor outside of the screen
-let clientX = -100;
-let clientY = -100;
-const innerCursor = document.querySelector(".cursor--small");
-
 const initCursor = () => {
+  // set the starting position of the cursor outside of the screen
+  let clientX = -100;
+  let clientY = -100;
+  const innerCursor = document.querySelector(".cursor--small");
   // add listener to track the current mouse position
   document.addEventListener("mousemove", e => {
     clientX = e.clientX;
