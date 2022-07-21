@@ -883,8 +883,36 @@ ul.no-bullets {
     display: block;
   }
 }
-
-
+.cursor--small {
+  display: none;
+}
+.tap-your-screen-btn {
+  cursor: none;
+  position: fixed;
+  top: 30vh;
+  left: 50vw;
+  z-index: 5;
+  height: 400px;
+  // width: 150px;
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+.hide-btn {
+  display: none;
+}
+@media (hover: hover) and (pointer: fine) {
+  .cursor--small {
+    display: block;
+  }
+  .tap-your-screen-btn {
+    display: none;
+  }
+  .tap-your-screen-btn {
+    display: none;
+  }
+}
 .cursor--small {
   pointer-events: none;
   position: fixed;

@@ -1,10 +1,11 @@
 <%= render 'shared/preloader' %>
 <%= render 'shared/hamburger_homepage' %>
+<%= render 'shared/tap_btn' %>
 <%= render 'shared/cursor' %>
 <div class="hamburger-solo-desktop">
   <%= render 'shared/navbar' %>
 </div>
-<div class="homepage homepage-slides-js homepage-cursor-js">
+<div class="homepage homepage-slides-js">
   <section class="first-layer s1">
     <div class="forth-landing-screen-brands">
       <div class="forth-landing-screen-brand">
@@ -82,7 +83,7 @@
         </div>
         <div class="support-details">
           <i class="fab fa-paypal"></i>
-          <%= link_to "PayPal", "https://www.paypal.me/InfamousBerlin" %>
+          <%= link_to "PayPal", "https://www.paypal.me/InfamousBerlin", target: "_blank" %>
         </div>
         <div class="support-details">
           <i class="fab fa-bitcoin"></i>
@@ -110,7 +111,7 @@
         </div>
         <div class="support-details">
           <i class="fab fa-instagram"></i>
-          <%= link_to "Instagram", "https://www.instagram.com/infamousberlin" %>
+          <%= link_to "Instagram", "https://www.instagram.com/infamousberlin", target: "_blank" %>
         </div>
         <br>
         <p class="support-thanks">Thanks a lot for your time!</p>
