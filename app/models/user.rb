@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
   after_create :update_slug
   after_create :send_confirmation_email
-  # after_commit :add_default_img, on: [:create]
+  after_commit :add_default_img, on: [:create]
 
   before_update :assign_slug
 
