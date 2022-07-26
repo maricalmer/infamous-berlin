@@ -112,7 +112,13 @@ ActiveRecord::Schema.define(version: 2022_04_12_221901) do
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.text "bio"
@@ -129,11 +135,13 @@ ActiveRecord::Schema.define(version: 2022_04_12_221901) do
     t.string "linkedin"
     t.string "twitter"
     t.index ["bio"], name: "index_users_on_bio"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["facebook"], name: "index_users_on_facebook"
     t.index ["instagram"], name: "index_users_on_instagram"
     t.index ["linkedin"], name: "index_users_on_linkedin"
     t.index ["mixcloud"], name: "index_users_on_mixcloud"
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["skills"], name: "index_users_on_skills"
     t.index ["slug"], name: "index_users_on_slug", unique: true
     t.index ["soundcloud"], name: "index_users_on_soundcloud"

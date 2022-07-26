@@ -1,14 +1,15 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
-  # :confirmable, :recoverable, :lockable, :timeoutable, :trackable and :omniauthable
+  # :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :rememberable, :validatable
+         :rememberable, :validatable, :confirmable, :recoverable
 
   validates :slug, uniqueness: true, case_sensitive: false
   validates :username, uniqueness: true, case_sensitive: false, presence: true
 
   after_create :update_slug
-  after_commit :add_default_img, on: [:create]
+  after_create :send_confirmation_email
+  # after_commit :add_default_img, on: [:create]
 
   before_update :assign_slug
 
@@ -100,6 +101,10 @@ class User < ApplicationRecord
   end
 
   private
+
+  def send_confirmation_email
+    self.send_confirmation_instructions
+  end
 
   def assign_slug
     self.slug = create_slug
