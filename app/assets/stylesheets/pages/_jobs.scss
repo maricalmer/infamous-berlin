@@ -157,7 +157,7 @@
 .job-index-radio-buttons-hidden {
   transition: transform 0.2s ease-out;
   position: relative;
-  background-color: #646668;
+  background-color: #9B9B9B;
 }
 
 .jobs-index-hidding-span-desactivated {
@@ -166,7 +166,7 @@
   position: absolute;
   top: 0px;
   right: 0px;
-  background-color: #646668;
+  background-color: #9b9b9b;
   transition: width 0.4s ease-in;
   transition-timing-function: steps(3, end);
 }
@@ -174,7 +174,7 @@
   width: 0%;
 }
 .jobs-index-filter-options input[type="radio"]:checked + label {
-  border-bottom: 5px solid #a089dd;
+  border-bottom: 5px solid #6f58c9;
   color: black;
   transition-delay: 150ms;
   transition-property: border-bottom;

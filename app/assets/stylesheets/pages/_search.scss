@@ -16,7 +16,7 @@
     font-size: 20px;
   }
   ::placeholder {
-    color: #b2b2b2;
+    color: #494949;
     opacity: 1;
     font-size: 1.5rem;
   }
@@ -54,7 +54,7 @@
   top: 0;
   width: 100%;
   min-height: 100%;
-  background-color: #646668;
+  background-color: #9b9b9b;
   // z-index: -3; <-- bug on login modal in user and project indexes
 }
 .user-results-list {

@@ -50,7 +50,7 @@
   .text-talents2 {
     width: fit-content;
     position: relative;
-    color: #CDD1f4;
+    color: #6f58c9;
   }
   .text-underlined {
     width: 100%;
@@ -186,7 +186,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: #646668;
+  background-color: #9b9b9b;
   z-index: 1;
   transition: transform 0.6s ease-in-out;
   transition-delay: 600ms;
@@ -217,7 +217,7 @@
       }
     }
     .text-talents {
-      color: #CDD1f4;
+      color: #6f58c9;
       .text-underlined {
         background-color: #333;
       }
@@ -340,7 +340,7 @@ section {
   overflow-x: hidden;
   overflow-y: auto;
   perspective: 5px;
-  background-color: #646668;
+  background-color: #9b9b9b;
   z-index: 3;
   transition: transform 0.6s ease-in-out;
 }
