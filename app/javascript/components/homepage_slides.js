@@ -19,10 +19,6 @@ const moveSections = () => {
   const openModal = document.querySelectorAll(".modal.show").length > 0
   sections = document.querySelectorAll('[class*="layer"]')
   viewportSection = Array.from(sections).filter( section => section.classList.contains("section-in-viewport-js") == true )
-  console.log("sections")
-  console.log(sections)
-  console.log("viewportSection")
-  console.log(viewportSection)
   if (!openModal) {
     if (viewportSection.length === 1) {
       nextSection = document.querySelector(".s2")
@@ -55,7 +51,9 @@ const moveSections = () => {
 }
 const homepageSlides = () => {
   const homepage = document.querySelector(".homepage");
+  const tapBtn = document.querySelector(".tap-your-screen-btn");
   homepage.addEventListener("click", moveSections)
+  tapBtn.addEventListener("click", moveSections)
   const exits = document.querySelectorAll(".scroll-event-exit-js")
   exits.forEach((exit) => {
     exit.addEventListener("click", function() {
