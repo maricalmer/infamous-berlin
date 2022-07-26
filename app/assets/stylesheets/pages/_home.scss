@@ -768,6 +768,9 @@ ul.no-bullets {
   margin-top: 1rem;
   margin-bottom: 0;
 }
+#modalLogin, #modalSupportUs, #modalFeedback {
+  z-index: 11001;
+}
 @media(min-width: 450px) {
   .footer-message {
     font-size: 2rem;
