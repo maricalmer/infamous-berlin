@@ -31,6 +31,7 @@ gem 'active_storage_validations', '~> 0.9.6'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'devise'
+gem 'pundit', '~> 2.2'
 
 gem 'autoprefixer-rails', '10.2.5'
 gem "font-awesome-sass", "~> 5.6.1"

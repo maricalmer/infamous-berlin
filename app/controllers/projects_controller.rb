@@ -11,12 +11,14 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
+    authorize @project
     @location_autocomplete_set = Project.project_locations
     @category_autocomplete_set = Project.project_categories
   end
 
   def create
     @project = Project.new(project_params)
+    authorize @project
     @project.user = current_user
     if @project.save
       redirect_to project_path(@project), notice: 'Project was successfully created.'
@@ -88,6 +90,7 @@ class ProjectsController < ApplicationController
     if params[:query].present?
       @projects = @projects.search_by_title_description_location_category(params[:query])
     end
+    authorize @projects
     respond_to do |format|
       format.html
       format.text { render partial: 'search-results.html', locals: { projects: @projects, query: params[:query] } }
@@ -123,6 +126,7 @@ class ProjectsController < ApplicationController
 
   def set_project
     @project = Project.find_by(slug: params[:slug])
+    authorize @project
   end
 
   def project_params

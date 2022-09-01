@@ -157,14 +157,17 @@
   <!-- ^^ moyen de virer la derniere option? -->
 <% end %>
 <div class="dash-bottom-btns">
-  <div class="dash-new-btn">
-    <%= link_to new_project_path do %>
-      <div class="dash-plus-text">
-        <div class="dash-plus-symbol">+</div>
-        <h3>add project</h3>
-      </div>
-    <% end %>
-  </div>
+  <% if policy(Project).create? %>
+    <div class="dash-new-btn">
+      <%= link_to new_project_path do %>
+        <div class="dash-plus-text">
+          <div class="dash-plus-symbol">+</div>
+          <h3>add project</h3>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
   <div class="dash-new-btn">
     <%= link_to jobs_path do %>
       <div class="dash-plus-text">

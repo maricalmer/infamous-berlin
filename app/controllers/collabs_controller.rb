@@ -7,10 +7,12 @@ class CollabsController < ApplicationController
 
   def new
     @collab = Collab.new
+    authorize @collab
   end
 
   def create
     @collab = Collab.new
+    authorize @collab
     @collab.project = @project
     @user = User.find_by(username: params[:project][:member])
     @collab.member = @user
@@ -41,6 +43,7 @@ class CollabsController < ApplicationController
 
   def set_collab
     @collab = Collab.find(params[:id])
+    authorize @collab
   end
 
 

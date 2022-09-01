@@ -2,9 +2,9 @@ class InquiriesController < ApplicationController
   before_action :set_inquiry, only: [:show, :edit, :update, :destroy, :change_status]
   before_action :set_job, only: [:new, :create]
 
-  def index
-    @inquiries = Inquiry.all
-  end
+  # def index
+  #   @inquiries = policy_scope(Inquiry)
+  # end
 
   def show
     @statuses = Inquiry.statuses.keys
@@ -12,10 +12,12 @@ class InquiriesController < ApplicationController
 
   def new
     @inquiry = @job.inquiries.build
+    authorize @inquiry
   end
 
   def create
     @inquiry = Inquiry.new(inquiry_params)
+    authorize @inquiry
     @inquiry.job = @job
     @inquiry.user = current_user
     if @inquiry.save
@@ -55,6 +57,7 @@ class InquiriesController < ApplicationController
 
   def set_inquiry
     @inquiry = Inquiry.find(params[:id])
+    authorize @inquiry
   end
 
   def set_job

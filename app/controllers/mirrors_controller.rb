@@ -4,6 +4,7 @@ class MirrorsController < ApplicationController
 
   def update
     @mirror = Mirror.find(params[:id])
+    authorize @mirror
     @mirror.update(mirror_params)
 
     respond_to do |format|
@@ -16,6 +17,7 @@ class MirrorsController < ApplicationController
     @collab_ids = Collab.where(user_id: @user.id).pluck(:project_id)
     @all_projects_ids = Project.upcoming.where(user: @user).or(Project.upcoming.where(id: @collab_ids))
     @mirrors = Mirror.where(project_id: @all_projects_ids).where(user: @user).order(:created_at).includes([:user, :project])
+    authorize @mirrors
     i = 1
     @mirrors.each do |mirror|
       mirror.update(default_position: i)
@@ -33,6 +35,7 @@ class MirrorsController < ApplicationController
     @collab_ids = Collab.where(user_id: @user.id).pluck(:project_id)
     @all_projects_ids = Project.past.where(user: @user).or(Project.past.where(id: @collab_ids))
     @mirrors = Mirror.where(project_id: @all_projects_ids).where(user: @user).order(:created_at).includes([:user, :project])
+    authorize @mirrors
     i = 1
     @mirrors.each do |mirror|
       mirror.update(default_position: i)

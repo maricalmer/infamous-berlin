@@ -7,12 +7,11 @@ class JobsController < ApplicationController
     # add checkboxes in form and display them on the left side of the page
     # find a way to filter @jobs based on checkbox state
     # add an event on form so that when checkboxes state changes the form is submited via ajax
+    @jobs = policy_scope(Job)
     if params[:search].present? && params[:search][:payment] == "fixed_rate"
       @jobs = Job.where(payment: "fixed_rate")
     elsif params[:search].present? && params[:search][:payment] == "hourly_rate"
       @jobs = Job.where(payment: "hourly_rate")
-    else
-      @jobs = Job.all
     end
     @autocomplete_set = Job.overall_skill_set
     if params[:query].present?
@@ -30,11 +29,13 @@ class JobsController < ApplicationController
 
   def new
     @job = Job.new
+    authorize @job
     @location_autocomplete_set = Job.job_locations
   end
 
   def create
     @job = Job.new(job_params)
+    authorize @job
     @job.project = @project
     if @job.save
       redirect_to dashboard_path, notice: 'Job was successfully created.'
@@ -64,6 +65,7 @@ class JobsController < ApplicationController
 
   def set_job
     @job = Job.find(params[:id])
+    authorize @job
   end
 
   def set_project

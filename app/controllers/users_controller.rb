@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show, :index, :upcoming_projects, :past_projects, :upcoming_collabs, :past_collabs]
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :set_user_for_projects, only: [:upcoming_projects, :past_projects, :upcoming_collabs, :past_collabs, :portfolio, :portfolio_own_projects, :portfolio_collabs, :ongoing_projects, :ongoing_own_projects, :ongoing_collabs]
 
   def show
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    @users = policy_scope(User)
     @autocomplete_set = User.overall_skill_set
     if params[:query].present?
       @users = User.search_by_username_bio_skills_title(params[:query])
@@ -35,6 +35,11 @@ class UsersController < ApplicationController
       format.html
       format.text { render partial: 'index_user.html.erb', locals: { users: @users, query: params[:query] } }
     end
+  end
+
+  def destroy
+    @user.destroy
+    redirect_to root_path, notice: 'Account deleted'
   end
 
   # def portfolio
@@ -129,6 +134,7 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find_by(slug: params[:slug])
+    authorize @user
   end
 
   def set_user_for_projects

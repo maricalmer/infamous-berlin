@@ -8,8 +8,8 @@
         <span><%= link_to inquiry.job.project.title, project_path(inquiry.job.project.slug) %></span>
         owned by user <span><%= link_to inquiry.job.project.user.username, user_path(inquiry.job.project.user.slug) %></span>
       </h4>
-      <div class="dash-sent-icons">
-        <% if inquiry.on_hold? %>
+      <% if inquiry.on_hold? %>
+        <div class="dash-sent-icons">
           <%= link_to inquiry_path(inquiry), class:"dash-inquiries-links dash-arrow-link" do %>
             <i class="fas fa-arrow-right"></i>
           <% end %>
@@ -19,12 +19,12 @@
           <%= link_to inquiry_path(inquiry), class:"dash-inquiries-links dash-destroy-link", method: :delete, data: { confirm: "Are you sure?" } do %>
             <i class="fas fa-trash"></i>
           <% end %>
-        <% else %>
-          <%= link_to inquiry_path(inquiry), class:"dash-arrow-link" do %>
-            <i class="fas fa-arrow-right"></i>
-          <% end %>
+        </div>
+      <% else %>
+        <%= link_to inquiry_path(inquiry), class:"dash-arrow-link dash-inquiries-links" do %>
+          <i class="fas fa-arrow-right"></i>
         <% end %>
-      </div>
+      <% end %>
     </div>
   <% end %>
 </div>

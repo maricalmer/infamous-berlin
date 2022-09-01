@@ -13,9 +13,9 @@
         <div class="d-flex justify-content-between">
           <div>
           <% if job.payment == "hourly_rate" %>
-            <h5><%= job.payment %><%= job.money %>€/hour</h5>
+            <h5><%= job.money %>€/hour</h5>
           <% else %>
-            <h5><%= job.payment %><%= job.money %>€</h5>
+            <h5><%= job.money %>€ total</h5>
           <% end %>
           </div>
           <div>

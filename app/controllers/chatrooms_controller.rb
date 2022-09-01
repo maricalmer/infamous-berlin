@@ -6,6 +6,7 @@ class ChatroomsController < ApplicationController
 
   def create
     @chatroom = Chatroom.new
+    authorize @chatroom
     @message = Message.new
     if @chatroom.save!
       redirect_to user_path(@user)
@@ -20,7 +21,8 @@ class ChatroomsController < ApplicationController
   end
 
   def index
-    @chatrooms = Chatroom.participating(current_user).order('updated_at DESC')
+    # @chatrooms = Chatroom.participating(current_user).order('updated_at DESC')
+    @chatrooms = policy_scope(Chatroom)
     @message = Message.new
     unless @chatrooms.empty?
       @chatroom = @chatrooms.first
@@ -47,6 +49,7 @@ class ChatroomsController < ApplicationController
 
   def set_chatroom
     @chatroom = Chatroom.find(params[:id])
+    authorize @chatroom
   end
 
   def check_participating!

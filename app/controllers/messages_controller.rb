@@ -4,6 +4,7 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.new(message_params)
+    authorize @message
     @message.chatroom = @chatroom
     @message.user = current_user
     @message.anchor_id = @chatroom.messages.count + 1
