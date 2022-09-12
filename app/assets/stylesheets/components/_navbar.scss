@@ -99,6 +99,17 @@ html {
     color: black;
   }
 }
+.user-gate li .sign-up-btn-navbar {
+  padding: 0 4px;
+  background-color: #cff170;
+  color: #333 !important;
+  transition: all 0.2s ease;
+}
+.user-gate li .sign-up-btn-navbar:hover {
+  filter: brightness(120%);
+  color: #333 !important;
+  letter-spacing: 2px;
+}
 @media(min-width: 992px) {
   .search-bar-large {
     display: flex;
