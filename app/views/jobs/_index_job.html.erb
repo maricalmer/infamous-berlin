@@ -19,7 +19,7 @@
           <% end %>
           </div>
           <div>
-          <h5><%= job.created_at.strftime("posted on %d/%m/%Y") %></h5>
+            <h5>posted <%= time_ago_in_words(job.created_at) %> ago</h5>
           </div>
         </div>
         <p class="job-card-description highlight-query-js"><%= job.description * 3 %></p>
