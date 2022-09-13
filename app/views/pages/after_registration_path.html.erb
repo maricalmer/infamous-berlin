@@ -1,0 +1,16 @@
+<div class="confirmation-page">
+  <div class="confirmation-page-container">
+    <img src='<%= asset_path('confirmation-peep.png') %>' width="100" alt="error-page" class="confirmation-page-peep">
+    <div class="confirmation-page-title">
+      <h1>Confirmation pending</h1>
+      <div class="underlined-title-confirmation-page"></div>
+    </div>
+    <p>You are just one step away! Check your email inbox to confirm your account</p>
+    <div class="back-dash-link">
+      <div class="back-dash-link-arrow">&#10132;</div>
+      <%= link_to root_path, class: "link" do %>
+        <h5>Back to homepage</h5>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home, :search]
+  skip_before_action :authenticate_user!, only: [:home, :search, :after_registration_path]
   before_action :set_project_ids, only: [:open_jobs_dash, :close_jobs_dash, :hold_received_dash, :accepted_received_dash, :rejected_received_dash]
   before_action :set_job_ids, only: [:hold_received_dash, :accepted_received_dash, :rejected_received_dash]
   before_action :set_collab_project_ids, only: [:upcoming_collabs_dash, :past_collabs_dash]
@@ -168,6 +168,9 @@ class PagesController < ApplicationController
     respond_to do |format|
       format.text { render partial: 'project_search.html' }
     end
+  end
+
+  def after_registration_path
   end
 
   private

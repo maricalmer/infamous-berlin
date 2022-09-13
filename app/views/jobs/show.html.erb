@@ -1,14 +1,12 @@
 <%= render 'shared/hamburger' %>
 <div class="background-search">
   <div class="inquiry-big-card">
-    <% if @job.project.user == current_user %>
-      <div class="back-dash-link">
-        <div class="back-dash-link-arrow">&#10132;</div>
-        <%= link_to dashboard_path, class: "link" do %>
-          <h5>Dashboard</h5>
-        <% end %>
-      </div>
-    <% end %>
+    <div class="back-dash-link">
+      <div class="back-dash-link-arrow">&#10132;</div>
+      <%= link_to :back, class: "link" do %>
+        <h5>Return</h5>
+      <% end %>
+    </div>
     <div class="job-show">
       <h1 class="job-show-title"><%= @job.title.upcase %></h1>
       <h4 class="job-show-description"><%= @job.description %></h4>

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     confirmations: 'users/confirmations',
+    registrations: 'users/registrations',
     passwords: 'users/passwords'
   }
   root to: 'pages#home'
@@ -37,6 +38,8 @@ Rails.application.routes.draw do
   #   end
   # end
   get '/dashboard', to: 'pages#dashboard'
+  get '/confirmation_pending', to: 'pages#after_registration_path'
+
   get '/collaboration', to: 'pages#collaboration'
   # ^^ still in use?
 

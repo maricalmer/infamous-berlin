@@ -4,6 +4,7 @@
     Dashboard
     <div class="underlined-title"></div>
   </h1>
+
   <div class="big-card">
     <div class="pic-links-dash">
       <div class="pic-dash">
@@ -23,7 +24,9 @@
       <div>
     </div>
   </div>
+
   <div class="line-separator"></div>
+
   <div class="profile-links-dash">
     <%= link_to user_path(current_user), class: "d-inline-block" do %>
       <h3 class="profile-link-dash">
@@ -39,14 +42,18 @@
       </h3>
     <% end %>
     <br>
-    <%= link_to user_path(current_user), method: :delete, data: { confirm: "Are you sure?" }, class: "d-inline-block" do %>
-      <h3 class="profile-link-dash">
-        Delete your profile
-        <div class="underlined-link-dash underlined-red"></div>
-      </h3>
+    <% if policy(Project).create? %>
+      <%= link_to new_project_path, class: "d-inline-block" do %>
+        <h3 class="profile-link-dash">
+          Add a new project
+          <div class="underlined-link-dash underlined-green"></div>
+        </h3>
+      <% end %>
     <% end %>
   </div>
+
 </div>
+
 <div class="line-separator"></div>
 
 <div class="dash-top-menu">
@@ -156,24 +163,12 @@
   </div>
   <!-- ^^ moyen de virer la derniere option? -->
 <% end %>
-<div class="dash-bottom-btns">
-  <% if policy(Project).create? %>
-    <div class="dash-new-btn">
-      <%= link_to new_project_path do %>
-        <div class="dash-plus-text">
-          <div class="dash-plus-symbol">+</div>
-          <h3>add project</h3>
-        </div>
-      <% end %>
-    </div>
+<div class="profile-links-dash dash-bottom-btns w-auto">
+  <%= link_to user_path(current_user), method: :delete, data: { confirm: "Are you sure?" }, class: "d-inline-block" do %>
+    <h3 class="profile-link-dash link">
+      Delete your profile
+      <div class="underlined-link-dash underlined-red"></div>
+    </h3>
   <% end %>
-
-  <div class="dash-new-btn">
-    <%= link_to jobs_path do %>
-      <div class="dash-plus-text">
-        <i class="fas fa-search dash-search-symbol"></i>
-        <h3>find collab</h3>
-      </div>
-    <% end %>
-  </div>
 </div>
+

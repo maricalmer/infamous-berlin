@@ -151,7 +151,7 @@ body {
   bottom: 0;
   width: 100%;
   margin: -100px 0 0 0;
-  padding: 50px;
+  padding: 0;
   padding-top: 13em;
 
   background: #d6d6d6;
@@ -176,7 +176,36 @@ body {
     color: gray;
   }
 }
-
+.hamburger-menu-brand {
+  margin: 1rem 0;
+  width: fit-content;
+}
+#menu .hamburger-menu-brand {
+  font-size: 2rem;
+  padding: 10px 40px;
+}
+.hamburger-menu-brand .underlined-title {
+  height: 23px;
+  top: -22px;
+  right: 11px;
+  background-color: #9b9b9b;
+  position: relative;
+  z-index: -1;
+}
+.hamburger-menu-lists {
+  display: flex;
+  justify-content: center;
+  padding-left: 0;
+  margin-right: 8rem;
+}
+.hamburger-menu-list {
+  list-style-type: none;
+  margin-left: 7rem;
+  border-left: solid 3px black;
+}
+.hamburger-menu-list-item {
+  padding: 10px 0;
+}
 .logo {
   position: absolute;
   top: 18px;
@@ -323,14 +352,16 @@ body {
 }
 @media(min-width: 992px) {
   #menu {
-    width: 350px;
-    right: -100px;
-    padding-top: 125px;
+    width: 53%;
+    padding-top: 150px;
     border-left: solid 2px black;
   }
   #menu li {
-    padding: 10px 0;
     text-align: left;
+    min-width: 75px;
+  }
+  #menu li div {
+    margin-bottom: 10px;
   }
   .search-hamburger {
     margin: 0;
