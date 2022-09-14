@@ -6,12 +6,22 @@
   <div class="chat-page">
     <div class="list-group chatrooms-index">
       <% @chatrooms.each do |chatroom| %>
-        <%= link_to "#{chatroom.with(current_user).username}", chatroom_path(chatroom), class: "list-group-item #{'active' if chatroom == @chatroom}" %>
+        <% if chatroom.with(current_user).nil? %>
+          <%= link_to "|| deleted user ||", chatroom_path(chatroom), class: "fst-italic list-group-item #{'active' if chatroom == @chatroom}" %>
+        <% else %>
+          <%= link_to "#{chatroom.with(current_user).username}", chatroom_path(chatroom), class: "list-group-item #{'active' if chatroom == @chatroom}" %>
+        <% end %>
       <% end %>
     </div>
     <div class="chatroom ml-5 w-100">
       <div class="chat-header">
-        <%= link_to user_path(@chatroom.with(current_user)) do %>
+        <% if @chatroom.with(current_user).nil? %>
+          <div class="diamond-frame-chat m-0">
+            <img src='<%= asset_path('default-profile-peep.png') %>' alt="profile-picture">
+          </div>
+          <h1 class="chat-header-username fst-italic">|| deleted user ||</h1>
+        <% else %>
+          <%= link_to user_path(@chatroom.with(current_user)) do %>
           <div class="diamond-frame-chat m-0">
             <%= cl_image_tag @chatroom.with(current_user).photo.key, quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 100, crop: "fill"}] %>
           </div>
@@ -21,12 +31,17 @@
             <%= @chatroom.with(current_user).username %>
           <% end %>
         </h1>
+        <% end %>
         <div class="chat-header-dropdown">
           <input type="checkbox" id="checkbox_toggle">
           <label class="chat-header-dropdown-arrow" for="checkbox_toggle"></label>
           <ul class="list-group chatrooms-index-mobile">
             <% @chatrooms.each do |chatroom| %>
-              <li><%= link_to "#{chatroom.with(current_user).username}", chatroom_path(chatroom), class: "list-group-item #{'active' if chatroom == @chatroom}" %></li>
+              <% if chatroom.with(current_user).nil? %>
+                <%= link_to "Deleted user", chatroom_path(chatroom), class: "list-group-item #{'active' if chatroom == @chatroom}" %>
+              <% else %>
+                <%= link_to "#{chatroom.with(current_user).username}", chatroom_path(chatroom), class: "list-group-item #{'active' if chatroom == @chatroom}" %>
+              <% end %>
             <% end %>
           </ul>
         </div>
@@ -37,17 +52,17 @@
             <%= render "messages/message", message: message %>
           <% end %>
         </div>
-
-        <%= simple_form_for [ @message ], html: { autocomplete: 'off', class: "new-message-chat-body" }, remote: true do |f| %>
-          <%= hidden_field_tag 'chatroom_id', @chatroom.id %>
-          <div class="d-flex align-items-center">
-            <%= f.input :content, label: false, input_html: { class: "new-message-chat-input" }, placeholder: "Type your message..." %>
-            <%= f.submit "Send", class: "submit-msg-chat-btn" %>
-          </div>
-          <div class="error-new-message text-danger"></div>
+        <% if !@chatroom.with(current_user).nil? %>
+          <%= simple_form_for [ @message ], html: { autocomplete: 'off', class: "new-message-chat-body" }, remote: true do |f| %>
+            <%= hidden_field_tag 'chatroom_id', @chatroom.id %>
+            <div class="d-flex align-items-center">
+              <%= f.input :content, label: false, input_html: { class: "new-message-chat-input" }, placeholder: "Type your message..." %>
+              <%= f.submit "Send", class: "submit-msg-chat-btn" %>
+            </div>
+            <div class="error-new-message text-danger"></div>
+          <% end %>
         <% end %>
       </div>
     </div>
   </div>
 <% end %>
-
