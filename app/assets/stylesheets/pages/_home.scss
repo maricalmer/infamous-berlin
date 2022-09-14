@@ -919,11 +919,29 @@ ul.no-bullets {
 .cursor--small {
   pointer-events: none;
   position: fixed;
-  left: -100px;
-  top: -100px;
+  left: -1rem;
+  top: -1rem;
   z-index: 11000;
   width: 100%;
   height: 100%;
+}
+@media(min-width: 570px) {
+  .cursor--small {
+    left: -2rem;
+    top: -2rem;
+  }
+}
+@media(min-width: 870px) {
+  .cursor--small {
+    left: -75px;
+    top: -75px;
+  }
+}
+@media(min-width: 1200px) {
+  .cursor--small {
+    left: -100px;
+    top: -100px;
+  }
 }
 .homepage {
   cursor: none;

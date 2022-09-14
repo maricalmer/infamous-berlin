@@ -38,10 +38,6 @@ body {
   user-select: none;
 }
 
-.hamburger-solo-desktop {
-  display: none;
-}
-
 #checkbox {
   display: block;
   width: 38px;
@@ -165,9 +161,7 @@ body {
   transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
 }
 #menu li {
-  padding: 30px 0;
   font-size: 22px;
-  text-align: center;
   a {
     text-decoration: none;
     color: black;
@@ -193,14 +187,14 @@ body {
   z-index: -1;
 }
 .hamburger-menu-lists {
-  display: flex;
-  justify-content: center;
   padding-left: 0;
-  margin-right: 8rem;
+}
+.hamburger-menu-list-first {
+  border-bottom: solid 3px black;
 }
 .hamburger-menu-list {
   list-style-type: none;
-  margin-left: 7rem;
+  margin-left: 4rem;
   border-left: solid 3px black;
 }
 .hamburger-menu-list-item {
@@ -357,8 +351,9 @@ body {
     border-left: solid 2px black;
   }
   #menu li {
-    text-align: left;
+    padding: 30px 0;
     min-width: 75px;
+    text-align: center;
   }
   #menu li div {
     margin-bottom: 10px;
@@ -373,8 +368,17 @@ body {
   .menu-toggle-homepage-mobile {
     display: none;
   }
-  .hamburger-solo-desktop {
-    display: block;
+  .hamburger-menu-lists {
+    display: flex;
+    justify-content: center;
+    padding-left: 0;
+    margin-right: 8rem;
+  }
+  .hamburger-menu-list-first {
+    border-bottom: none;
+  }
+  .hamburger-menu-list {
+    margin-left: 7rem;
   }
 }
 
