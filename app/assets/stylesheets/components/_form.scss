@@ -171,9 +171,12 @@ abbr {
 }
 .link-form-login {
   color: black;
+  transition: box-shadow .3s, color .3s, text-decoration .3s;
 }
-.link-form-login:hover {
+.link-form-login:hover, .link-form-login:focus {
   color: #333;
+  box-shadow: inset 0 -30px 0 #7ECA93, 0 2px 0 #7ECA93;
+  text-decoration: none;
 }
 .devise-form-container {
   // .devise-form
@@ -631,7 +634,6 @@ abbr {
     display: flex;
     padding: 0;
     height: auto;
-    background: radial-gradient(farthest-side at 26% 17%, #858585 40%,#333);
   }
   .devise-form {
     padding-top: 3rem;
@@ -673,14 +675,14 @@ abbr {
     padding: 48px;
     span {
       border-bottom: 4px dashed #d6d6d6;
-      transition: box-shadow .3s, color .3s;
+      // transition: box-shadow .3s, color .3s;
     }
-    span:hover,
-    span:focus {
-      color: black;
-      box-shadow: inset 0 -30px 0 #7ECA93, 0 2px 0 #7ECA93;
-      border-bottom: none;
-    }
+    // span:hover,
+    // span:focus {
+    //   color: black;
+    //   box-shadow: inset 0 -30px 0 #7ECA93, 0 2px 0 #7ECA93;
+    //   border-bottom: none;
+    // }
   }
   .new-project-page, .new-inquiry-page {
     display: flex;

@@ -22,7 +22,7 @@
           <i class="fas fa-map-marker-alt me-1"></i> <h5><%= @job.location %></h5>
         </div>
         <div class="job-show-details-date">
-          <i class="fas fa-clock me-1"></i><h5><%= @job.created_at.strftime("uploaded on %d/%m/%Y") %></h5>
+          <i class="fas fa-clock me-1"></i><h5>posted <%= time_ago_in_words(@job.created_at) %> ago</h5>
         </div>
       </div>
       <ul class="skills-list job-show-skills align-items-center">
