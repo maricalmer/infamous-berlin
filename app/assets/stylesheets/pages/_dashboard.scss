@@ -146,11 +146,11 @@
 }
 .past-chevron-left {
   position: relative;
-  left: -25px;
+  left: -9px;
 }
 .past-chevron-right {
   position: relative;
-  right: -15px;
+  right: -3px;
 }
 .chevron-hidden {
   visibility: hidden;
@@ -207,6 +207,7 @@
   overflow: hidden;
   position: relative;
   width: 175px;
+  min-width: 175px;
   background-color: #333;
   word-wrap: break-word;
   background-clip: border-box;

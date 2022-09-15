@@ -101,10 +101,12 @@
   position: relative;
   font-size: 2rem;
   z-index:1;
+  white-space: normal;
 }
 .card-user-search-top-title {
   font-size: 1.5rem;
   text-align: left;
+  display: inline-block;
 }
 .card-user-search-top-skills {
   display: flex;
@@ -228,7 +230,7 @@
   cursor: pointer;
   left: 95px;
   top: 6px;
-  font-size: 1rem;
+  font-size: 0.95rem;
 }
 .job-details-card {
   max-width: 100%;
@@ -241,7 +243,7 @@
   margin-bottom: 100px;
   border: solid 4px black;
   box-shadow: -8px -8px 0 0 black;
-  padding: 2rem;
+  padding: 0.5rem;
   position: relative;
   z-index: -3;
   a {
@@ -397,5 +399,10 @@
       margin-right: 0px;
       margin-left: 4px;
     }
+  }
+}
+@media(min-width: 850px) {
+  .big-card {
+    padding: 2rem;
   }
 }
