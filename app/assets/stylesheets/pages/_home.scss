@@ -183,6 +183,7 @@
   left: 0;
   right: 0;
   height: 100vh;
+  padding: 0.5rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -190,7 +191,6 @@
   z-index: 1;
   transition: transform 0.6s ease-in-out;
   transition-delay: 600ms;
-  padding: 1rem;
 }
 .text-art, .text-talents {
   transition: color 1s ease-in;
@@ -245,6 +245,7 @@
   line-height: 0.9;
   margin-top: 10px;
   margin-right: 3rem;
+  margin-bottom: 3rem;
   text-align: right;
   display: flex;
   flex-direction: column;
@@ -774,7 +775,7 @@ ul.no-bullets {
   z-index: 11001;
 }
 
-@media(min-width: 330px) {
+@media(min-width: 380px) {
   .forth-landing-screen-text-container {
     margin-right: 0;
   }
@@ -923,6 +924,9 @@ ul.no-bullets {
   }
   .tap-your-screen-btn {
     display: none;
+  }
+  .forth-landing-screen-text-container {
+    margin-bottom: 0;
   }
 }
 .cursor--small {
