@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def show
     past_projects_ids = Project.past.where(user: @user).pluck(:id)
-    past_collabs_ids = Collab.where(user_id: @user.id).select { |collab| collab.project.past? }.map { |c| c.project_id }
+    past_collabs_ids = Collab.where(user_id: @user.id).includes([:project]).select { |collab| collab.project.past? }.map { |c| c.project_id }
     @portfolio = Project.where(id: past_projects_ids).or(Project.where(id: past_collabs_ids))
     upcoming_projects_ids = Project.upcoming.where(user: @user).pluck(:id)
     upcoming_collabs_ids = Collab.where(user_id: @user.id).select do |collab|

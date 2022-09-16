@@ -200,6 +200,21 @@ body {
 .hamburger-menu-list-item {
   padding: 10px 0;
 }
+.hamburger-menu-list-item-messages {
+  position: relative;
+}
+.unread-messages-badge {
+  position: absolute;
+  background-color: white;
+  width: 3px;
+  height: 3px;
+  opacity: 0.3;
+  top: 42px;
+  right: 4px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 7px #E25043;
+}
+
 .logo {
   position: absolute;
   top: 18px;

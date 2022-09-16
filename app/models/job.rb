@@ -13,6 +13,7 @@ class Job < ApplicationRecord
 
   scope :fixed_rate, -> { where(payment: "fixed_rate") }
   scope :hourly_rate, -> { where(payment: "hourly_rate") }
+  # ^^ are the scopes needed??
 
   include PgSearch::Model
   pg_search_scope :search_by_title_description_skills, against: {

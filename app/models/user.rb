@@ -101,6 +101,11 @@ class User < ApplicationRecord
       twitter.present?
   end
 
+  def unread_messages?
+    chatrooms = Chatroom.where(author_id: self).or(Chatroom.where(receiver_id: self))
+    Message.where(read_by_receiver: false).where.not(user: self).where(chatroom: chatrooms).any?
+  end
+
   private
 
   def send_confirmation_email

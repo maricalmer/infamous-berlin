@@ -27,7 +27,10 @@ class MessagesController < ApplicationController
 
   def find_chatroom
     if params[:receiver_id]
-      @chatroom = Chatroom.find_or_create_by(author: current_user, receiver: User.find(params[:receiver_id]))
+      receiver = User.find(params[:receiver_id])
+      @chatroom = Chatroom.find_by(author: current_user, receiver: receiver)
+      @chatroom = Chatroom.find_by(author: receiver, receiver: current_user) if @chatroom.nil?
+      @chatroom = Chatroom.create(author: current_user, receiver: receiver) if @chatroom.nil?
     else
       @chatroom = Chatroom.find(params[:chatroom_id])
     end

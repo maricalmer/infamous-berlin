@@ -5,7 +5,7 @@
 <% else %>
   <div class="chat-page">
     <div class="list-group chatrooms-index">
-      <% @chatrooms.each do |chatroom| %>
+      <% @chatrooms.includes([:receiver, :author]).each do |chatroom| %>
         <% if chatroom.with(current_user).nil? %>
           <%= link_to "|| deleted user ||", chatroom_path(chatroom), class: "fst-italic list-group-item #{'active' if chatroom == @chatroom}" %>
         <% else %>

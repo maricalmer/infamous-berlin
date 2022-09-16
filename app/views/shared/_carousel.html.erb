@@ -23,7 +23,7 @@
           <%= cl_image_tag @project.attachments.first.key, quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 800, crop: "fill"}] %>
         </div>
       <% end %>
-      <% @project.attachments.each do |attachment| %>
+      <% @project_attachments.each do |attachment| %>
         <% if attachment == @project.attachments.first %>
           <picture class="thumbnail-wrapper thumbnail-align-top thumbnail-bigger">
             <source srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 992px)" class="cursor slide-thumbnail slide-mobile">

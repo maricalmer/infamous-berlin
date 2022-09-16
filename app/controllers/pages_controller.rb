@@ -29,7 +29,7 @@ class PagesController < ApplicationController
     end
     job_ids = (@open_jobs.ids << @close_jobs.ids).flatten
 
-    @collab_project_ids = Collab.where(member: current_user).map { |collab| collab.project.id }
+    @collab_project_ids = Collab.where(member: current_user).includes([:project]).map { |collab| collab.project.id }
     @upcoming_collabs = Project.upcoming.where(id: @collab_project_ids).order(created_at: :desc)
     @past_collabs = Project.past.where(id: @collab_project_ids).order(created_at: :desc)
     if @upcoming_collabs.any?
@@ -188,7 +188,7 @@ class PagesController < ApplicationController
   end
 
   def set_collab_project_ids
-    @collab_project_ids = Collab.where(member: current_user).map { |collab| collab.project.id }
+    @collab_project_ids = Collab.where(member: current_user).includes([:project]).map { |collab| collab.project.id }
   end
 
   def set_search

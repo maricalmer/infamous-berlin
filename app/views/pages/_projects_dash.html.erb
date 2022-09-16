@@ -1,6 +1,6 @@
 <div class="dash-cards-slider js-slider js-projects-results">
   <h4 class="dash-slider-title-mobile">Projects</h4>
-  <% @projects.each do |project| %>
+  <% @projects.includes([:attachments_attachments]).each do |project| %>
     <div class="dash-card-project">
       <%= link_to project_path(project.slug) do  %>
         <h4 class="title-card-project-search">
