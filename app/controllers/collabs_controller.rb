@@ -1,7 +1,7 @@
 class CollabsController < ApplicationController
-#   skip_before_action :authenticate_user!, only: [:create, :destroy]
+  #   skip_before_action :authenticate_user!, only: [:create, :destroy]
   before_action :set_collab, only: [:destroy]
-  before_action :find_project, only: [:new, :create]
+  before_action :find_project, only: %i[new create]
 
   # before_action :set_user, only: [:show, :edit, :update]
 
@@ -45,7 +45,6 @@ class CollabsController < ApplicationController
     @collab = Collab.find(params[:id])
     authorize @collab
   end
-
 
   # def collab_params
   #   params.require(:collabs).permit(???)

@@ -1,3 +1,5 @@
+// STILL IN USE??
+
 import { highlight } from '../components/highlight_search_query';
 import { loadGallery } from '../components/masonry';
 

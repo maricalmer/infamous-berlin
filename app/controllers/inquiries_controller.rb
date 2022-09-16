@@ -1,6 +1,6 @@
 class InquiriesController < ApplicationController
-  before_action :set_inquiry, only: [:show, :edit, :update, :destroy, :change_status]
-  before_action :set_job, only: [:new, :create]
+  before_action :set_inquiry, only: %i[show edit update destroy change_status]
+  before_action :set_job, only: %i[new create]
 
   # def index
   #   @inquiries = policy_scope(Inquiry)

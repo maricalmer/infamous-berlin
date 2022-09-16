@@ -29,7 +29,8 @@ class Job < ApplicationRecord
   end
 
   def self.overall_skill_set
-    ["acting", "voice acting", "singing", "oil painting", "acrylic painting", "digital painting", "3d drawing", "music producing", "dancing", "film editing", "film production", "video animation", "video design", "photography", "model"]
+    ["acting", "voice acting", "singing", "oil painting", "acrylic painting", "digital painting", "3d drawing",
+     "music producing", "dancing", "film editing", "film production", "video animation", "video design", "photography", "model"]
   end
 
   def self.job_locations

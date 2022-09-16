@@ -57,7 +57,8 @@ class User < ApplicationRecord
   # end
 
   def self.overall_skill_set
-    ["acting", "voice acting", "singing", "oil painting", "acrylic painting", "digital painting", "3d drawing", "music producing", "dancing", "film editing", "film production", "video animation", "video design", "photography", "model"]
+    ["acting", "voice acting", "singing", "oil painting", "acrylic painting", "digital painting", "3d drawing",
+     "music producing", "dancing", "film editing", "film production", "video animation", "video design", "photography", "model"]
   end
 
   def render_search_skill(query)
@@ -65,8 +66,8 @@ class User < ApplicationRecord
   end
 
   def create_slug
-    slug = self.username.parameterize
-    User.where.not(id: self.id).find_by(slug: slug).nil? ? slug : slug + slug.length.to_s
+    slug = username.parameterize
+    User.where.not(id: id).find_by(slug: slug).nil? ? slug : slug + slug.length.to_s
   end
 
   def update_slug
@@ -103,7 +104,7 @@ class User < ApplicationRecord
   private
 
   def send_confirmation_email
-    self.send_confirmation_instructions
+    send_confirmation_instructions
   end
 
   def assign_slug

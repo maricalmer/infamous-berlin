@@ -1,14 +1,19 @@
 class UsersController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:show, :index, :upcoming_projects, :past_projects, :upcoming_collabs, :past_collabs]
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :set_user_for_projects, only: [:upcoming_projects, :past_projects, :upcoming_collabs, :past_collabs, :portfolio, :portfolio_own_projects, :portfolio_collabs, :ongoing_projects, :ongoing_own_projects, :ongoing_collabs]
+  skip_before_action :authenticate_user!,
+                     only: %i[show index upcoming_projects past_projects upcoming_collabs past_collabs]
+  before_action :set_user, only: %i[show edit update destroy]
+  before_action :set_user_for_projects,
+                only: %i[upcoming_projects past_projects upcoming_collabs past_collabs portfolio portfolio_own_projects
+                         portfolio_collabs ongoing_projects ongoing_own_projects ongoing_collabs]
 
   def show
     past_projects_ids = Project.past.where(user: @user).pluck(:id)
     past_collabs_ids = Collab.where(user_id: @user.id).select { |collab| collab.project.past? }.map { |c| c.project_id }
     @portfolio = Project.where(id: past_projects_ids).or(Project.where(id: past_collabs_ids))
     upcoming_projects_ids = Project.upcoming.where(user: @user).pluck(:id)
-    upcoming_collabs_ids = Collab.where(user_id: @user.id).select { |collab| collab.project.upcoming? }.map { |c| c.project_id }
+    upcoming_collabs_ids = Collab.where(user_id: @user.id).select do |collab|
+                             collab.project.upcoming?
+                           end.map { |c| c.project_id }
     @ongoing_projects = Project.where(id: upcoming_projects_ids).or(Project.where(id: upcoming_collabs_ids))
     @message = Message.new
   end
@@ -28,9 +33,7 @@ class UsersController < ApplicationController
   def index
     @users = policy_scope(User)
     @autocomplete_set = User.overall_skill_set
-    if params[:query].present?
-      @users = User.search_by_username_bio_skills_title(params[:query])
-    end
+    @users = User.search_by_username_bio_skills_title(params[:query]) if params[:query].present?
     respond_to do |format|
       format.html
       format.text { render partial: 'index_user.html.erb', locals: { users: @users, query: params[:query] } }
@@ -142,6 +145,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :username, :title, :bio, :photo, :website, :instagram, :soundcloud, :youtube, :mixcloud, :linkedin, :twitter, :skills)
+    params.require(:user).permit(:email, :username, :title, :bio, :photo, :website, :instagram, :soundcloud, :youtube,
+                                 :mixcloud, :linkedin, :twitter, :skills)
   end
 end

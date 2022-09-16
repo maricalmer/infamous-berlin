@@ -14,5 +14,4 @@ class Inquiry < ApplicationRecord
   # def find_project
   #   Project.find(applying_id)
   # end
-
 end

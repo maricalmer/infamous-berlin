@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:show, :upcoming_projects, :alternative_masonry]
-  before_action :set_project, only: [:show, :edit, :update, :apply, :unapply, :destroy]
+  skip_before_action :authenticate_user!, only: %i[show upcoming_projects alternative_masonry]
+  before_action :set_project, only: %i[show edit update apply unapply destroy]
 
   def show
     @members = @project.members
@@ -87,9 +87,7 @@ class ProjectsController < ApplicationController
     else
       @projects = Project.where(status: "upcoming").includes(user: { photo_attachment: :blob })
     end
-    if params[:query].present?
-      @projects = @projects.search_by_title_description_location_category(params[:query])
-    end
+    @projects = @projects.search_by_title_description_location_category(params[:query]) if params[:query].present?
     authorize @projects
     respond_to do |format|
       format.html
@@ -105,9 +103,7 @@ class ProjectsController < ApplicationController
     else
       @projects = Project.where(status: "upcoming")
     end
-    if params[:query].present?
-      @projects = @projects.search_by_title_description_location_category(params[:query])
-    end
+    @projects = @projects.search_by_title_description_location_category(params[:query]) if params[:query].present?
     respond_to do |format|
       format.html
       format.text { render partial: 'search-results.html', locals: { projects: @projects, query: params[:query] } }

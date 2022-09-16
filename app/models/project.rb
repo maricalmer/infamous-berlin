@@ -13,8 +13,9 @@ class Project < ApplicationRecord
   validates :title, presence: true, case_sensitive: false
   validates :description, presence: true
   validates :slug, :title, uniqueness: true, case_sensitive: false
-  validates :attachments, content_type: { in: ['image/png', 'image/jpg', 'image/jpeg', 'video/mp4', 'audio/mpeg'], message: ' - wrong format (PNG, JPG, JPEG, MP3 or MP4 only)' }, size: { less_than: 5.megabytes , message: '5MB max' }
-  validates_length_of :attachments, maximum: 5, :message => "5 files max"
+  validates :attachments,
+            content_type: { in: ['image/png', 'image/jpg', 'image/jpeg', 'video/mp4', 'audio/mpeg'], message: ' - wrong format (PNG, JPG, JPEG, MP3 or MP4 only)' }, size: { less_than: 5.megabytes, message: '5MB max' }
+  validates_length_of :attachments, maximum: 5, message: "5 files max"
 
   after_create :update_slug
   after_create_commit :add_default_img
@@ -40,8 +41,8 @@ class Project < ApplicationRecord
   end
 
   def create_slug
-    slug = self.title.parameterize
-    Project.where.not(id: self.id).find_by(slug: slug).nil? ? slug : slug + slug.length.to_s
+    slug = title.parameterize
+    Project.where.not(id: id).find_by(slug: slug).nil? ? slug : slug + slug.length.to_s
   end
 
   def update_slug

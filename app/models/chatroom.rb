@@ -9,9 +9,9 @@ class Chatroom < ApplicationRecord
 
   validates :author, uniqueness: { scope: :receiver }
 
-  scope :participating, -> (user) do
+  scope :participating, lambda { |user|
     where("(chatrooms.author_id = ? OR chatrooms.receiver_id = ?)", user.id, user.id)
-  end
+  }
 
   def with(current_user)
     # self.user == current_user ? self.project.user : self.user

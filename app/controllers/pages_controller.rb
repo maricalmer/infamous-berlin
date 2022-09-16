@@ -1,9 +1,11 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home, :search, :after_registration_path]
-  before_action :set_project_ids, only: [:open_jobs_dash, :close_jobs_dash, :hold_received_dash, :accepted_received_dash, :rejected_received_dash]
-  before_action :set_job_ids, only: [:hold_received_dash, :accepted_received_dash, :rejected_received_dash]
-  before_action :set_collab_project_ids, only: [:upcoming_collabs_dash, :past_collabs_dash]
-  before_action :set_search, only: [:general_search, :user_search, :project_search]
+  skip_before_action :authenticate_user!, only: %i[home search after_registration_path]
+  before_action :set_project_ids,
+                only: %i[open_jobs_dash close_jobs_dash hold_received_dash accepted_received_dash
+                         rejected_received_dash]
+  before_action :set_job_ids, only: %i[hold_received_dash accepted_received_dash rejected_received_dash]
+  before_action :set_collab_project_ids, only: %i[upcoming_collabs_dash past_collabs_dash]
+  before_action :set_search, only: %i[general_search user_search project_search]
 
   def home
   end

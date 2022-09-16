@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
-  before_action :set_job, only: [:show, :edit, :update, :destroy]
-  before_action :set_project, only: [:new, :create]
+  before_action :set_job, only: %i[show edit update destroy]
+  before_action :set_project, only: %i[new create]
 
   def index
     # https://gist.github.com/MyklClason/107f277a8da841db39cd566d218c91a5
@@ -14,9 +14,7 @@ class JobsController < ApplicationController
       @jobs = Job.where(payment: "hourly_rate")
     end
     @autocomplete_set = Job.overall_skill_set
-    if params[:query].present?
-      @jobs = @jobs.search_by_title_description_skills(params[:query])
-    end
+    @jobs = @jobs.search_by_title_description_skills(params[:query]) if params[:query].present?
     respond_to do |format|
       format.html
       format.text { render partial: 'index_job.html.erb', locals: { jobs: @jobs, query: params[:query] } }

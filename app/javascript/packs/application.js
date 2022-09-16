@@ -65,7 +65,7 @@ import { initCursor } from '../components/homepage_cursor';
 
 
 document.addEventListener('turbolinks:load', () => {
-  if (document.querySelectorAll(".messages").length) {
+  if (document.querySelectorAll(".messages-js").length) {
     initChatroomCable();
   };
   if (document.querySelectorAll(".js-tab").length) {

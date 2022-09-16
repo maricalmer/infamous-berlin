@@ -1,6 +1,6 @@
 class MirrorsController < ApplicationController
-  before_action :set_user, only: [:update, :ongoing_projects, :past_projects]
-  before_action :set_variant, only: [:ongoing_projects, :past_projects]
+  before_action :set_user, only: %i[update ongoing_projects past_projects]
+  before_action :set_variant, only: %i[ongoing_projects past_projects]
 
   def update
     @mirror = Mirror.find(params[:id])
@@ -16,7 +16,8 @@ class MirrorsController < ApplicationController
   def ongoing_projects
     @collab_ids = Collab.where(user_id: @user.id).pluck(:project_id)
     @all_projects_ids = Project.upcoming.where(user: @user).or(Project.upcoming.where(id: @collab_ids))
-    @mirrors = Mirror.where(project_id: @all_projects_ids).where(user: @user).order(:created_at).includes([:user, :project])
+    @mirrors = Mirror.where(project_id: @all_projects_ids).where(user: @user).order(:created_at).includes(%i[user
+                                                                                                             project])
     authorize @mirrors
     i = 1
     @mirrors.each do |mirror|
@@ -34,7 +35,8 @@ class MirrorsController < ApplicationController
   def past_projects
     @collab_ids = Collab.where(user_id: @user.id).pluck(:project_id)
     @all_projects_ids = Project.past.where(user: @user).or(Project.past.where(id: @collab_ids))
-    @mirrors = Mirror.where(project_id: @all_projects_ids).where(user: @user).order(:created_at).includes([:user, :project])
+    @mirrors = Mirror.where(project_id: @all_projects_ids).where(user: @user).order(:created_at).includes(%i[user
+                                                                                                             project])
     authorize @mirrors
     i = 1
     @mirrors.each do |mirror|
