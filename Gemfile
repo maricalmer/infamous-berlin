@@ -38,6 +38,8 @@ gem "font-awesome-sass", "~> 5.6.1"
 gem 'simple_form'
 gem 'pg_search', '~> 2.3', '>= 2.3.5'
 
+gem "rails_admin"
+
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'

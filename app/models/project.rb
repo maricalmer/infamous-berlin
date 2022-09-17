@@ -1,7 +1,5 @@
 class Project < ApplicationRecord
   belongs_to :user
-  has_many :applications
-  # ^^ old inquiry??
   has_many :mirrors, dependent: :destroy
   has_many :jobs
   has_many :collabs

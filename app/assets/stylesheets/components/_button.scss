@@ -362,6 +362,11 @@
     cursor: pointer;
   }
 }
+.rails_admin {
+  .btn-info {
+    display: none;
+  }
+}
 
 @keyframes bouncey {
   0% { transform: (translateY(0)) }
