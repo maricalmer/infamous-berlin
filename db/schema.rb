@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_12_221901) do
+ActiveRecord::Schema.define(version: 2022_09_17_144447) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -134,6 +134,7 @@ ActiveRecord::Schema.define(version: 2022_04_12_221901) do
     t.string "mixcloud"
     t.string "linkedin"
     t.string "twitter"
+    t.boolean "admin", default: false, null: false
     t.index ["bio"], name: "index_users_on_bio"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
