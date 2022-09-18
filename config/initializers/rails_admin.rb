@@ -20,7 +20,7 @@ RailsAdmin.config do |config|
 
   config.model 'User' do
     edit do
-      include_fields :email, :bio, :skills, :username, :title, :website, :facebook, :instagram, :soundcloud, :youtube, :mixcloud, :linkedin, :twitter
+      include_fields :email, :password, :bio, :skills, :username, :title, :website, :facebook, :instagram, :soundcloud, :youtube, :mixcloud, :linkedin, :twitter
     end
   end
 

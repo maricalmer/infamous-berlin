@@ -20,7 +20,7 @@ class User < ApplicationRecord
   has_many :inquiries, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :authored_chatrooms, class_name: 'Chatroom', foreign_key: 'author_id'
-  has_many :received_chatrooms, class_name: 'Chatroom', foreign_key: 'received_id'
+  has_many :received_chatrooms, class_name: 'Chatroom', foreign_key: 'receiver_id'
   has_one_attached :photo
 
   validates :photo, size: { less_than: 5.megabytes, message: '5MB max' }
