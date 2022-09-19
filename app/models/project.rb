@@ -1,8 +1,8 @@
 class Project < ApplicationRecord
   belongs_to :user
   has_many :mirrors, dependent: :destroy
-  has_many :jobs
-  has_many :collabs
+  has_many :jobs, dependent: :destroy
+  has_many :collabs, dependent: :destroy
   has_many :members, class_name: 'User', through: :collabs
   has_many_attached :attachments
   enum status: { past: "past", upcoming: "upcoming" }
