@@ -11,11 +11,15 @@
         <div class="diamond-wrapper">
           <h3 class="card-user-search-username"><%= current_user.username %></h3>
           <div class="diamond-frame-small">
-            <%= link_to user_path(current_user), class: "link" do %>
-              <% if current_user.photo.attached? %>
+            <% if !current_user.default_profile_pic? %>
+              <%= link_to user_path(current_user), class: "link" do %>
                 <%= cl_image_tag current_user.photo.key, quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 300, crop: "fill"}] %>
-              <% else %>
-                <%= image_tag asset_path('logo.png') %>
+              <% end %>
+            <% else %>
+              <%= link_to edit_user_path(current_user.slug, anchor: "picture-anchor"), class: "link" do %>
+                <div class="diamond-frame-small-img-reminder-text">Update a picture!</div>
+                <div class="diamond-frame-small-img-reminder"></div>
+                <%= cl_image_tag current_user.photo.key, quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 300, crop: "fill"}] %>
               <% end %>
             <% end %>
           </div>

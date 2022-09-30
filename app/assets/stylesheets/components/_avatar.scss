@@ -113,6 +113,26 @@
   box-shadow: -6px 6px 0 0 black;
   background-color: #333;
 }
+.diamond-frame-small-img-reminder-text {
+  color: #d6d6d6;
+  transform: rotate(-45deg);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index:2;
+  font-size: 1.8rem;
+}
+.diamond-frame-small-img-reminder {
+  background-color: black;
+  opacity: 0.8;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 1;
+}
 .index-diamond-frame-small {
   position: relative;
   display: block;
