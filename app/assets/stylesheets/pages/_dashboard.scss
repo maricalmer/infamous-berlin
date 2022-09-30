@@ -80,6 +80,20 @@
   padding-bottom: 1rem;
   margin: 0 auto;
 }
+.edit-link-dash {
+  position: relative;
+}
+.uncomplete-profile-badge {
+  position: absolute;
+  background-color: white;
+  width: 3px;
+  height: 3px;
+  opacity: 0.3;
+  top: 8px;
+  right: -5px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 7px #e25043;
+}
 .pic-dash {
   padding-top: 1rem;
   padding-bottom: 4rem;
@@ -505,6 +519,12 @@
     }
   }
 }
+.uncomplete-profile-note {
+  font-size: 1rem;
+  color: #C1292E;
+  text-align: right;
+  margin-bottom: 1rem;
+}
 @media(min-width: 650px) {
   .dash-new-btn {
     width: 250px;
@@ -669,5 +689,13 @@
   }
   .dash-card-btns {
     width: 192px;
+  }
+  .uncomplete-profile-badge {
+    top: 9px;
+    right: -3px;
+  }
+  .uncomplete-profile-note {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
   }
 }

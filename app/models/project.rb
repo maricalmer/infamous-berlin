@@ -12,11 +12,17 @@ class Project < ApplicationRecord
   validates :description, presence: true
   validates :slug, :title, uniqueness: true, case_sensitive: false
   validates :attachments,
-            content_type: { in: ['image/png', 'image/jpg', 'image/jpeg', 'video/mp4', 'audio/mpeg'], message: ' - wrong format (PNG, JPG, JPEG, MP3 or MP4 only)' }, size: { less_than: 5.megabytes, message: '5MB max' }
+            content_type: {
+              in: ['image/png', 'image/jpg', 'image/jpeg', 'video/mp4', 'audio/mpeg'],
+              message: ' - wrong format (PNG, JPG, JPEG, MP3 or MP4 only)'
+            },
+            size: { less_than: 5.megabytes, message: '5MB max' },
+            presence: true
+
   validates_length_of :attachments, maximum: 5, message: "5 files max"
 
   after_create :update_slug
-  after_create_commit :add_default_img
+  # after_create_commit :add_default_img
   after_create_commit :create_mirror
   before_update :assign_slug
 
@@ -65,15 +71,15 @@ class Project < ApplicationRecord
     Mirror.create(user: user, project: self)
   end
 
-  def add_default_img
-    return if attachments.attached?
+  # def add_default_img
+  #   return if attachments.attached?
 
-    attachments.attach(
-      io: File.open(Rails.root.join("app", "assets", "images", "logo.png")),
-      filename: 'logo.jpg',
-      content_type: "image/jpg"
-    )
-  end
+  #   attachments.attach(
+  #     io: File.open(Rails.root.join("app", "assets", "images", "logo.png")),
+  #     filename: 'logo.jpg',
+  #     content_type: "image/jpg"
+  #   )
+  # end
 
   def assign_slug
     self.slug = create_slug

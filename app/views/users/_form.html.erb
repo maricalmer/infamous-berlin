@@ -4,7 +4,12 @@
     <%= f.input :email, label: 'Email address:' %>
   </div>
   <%= f.input :title, label: 'Title:', placeholder: "tell the world what you do..." %>
-  <%= f.input :bio, label: 'Bio:', placeholder: "tell the world about yourself..." %>
+  <div class="update-profile-form-bio">
+    <%= f.input :bio, label: 'Bio:', placeholder: "tell the world about yourself..." %>
+    <% if current_user.bio.blank? %>
+      <p class="update-profile-form-bio-uncomplete">****</p>
+    <% end %>
+  </div>
   <%= f.input :skills, wrapper_html: { class: "skills-hidden-field" }, input_html: { class: "attributes_hidden_field_js" } %>
   <div class="new-skill-custom">
     <div class="new-skill-input-block">

@@ -40,9 +40,12 @@
     <% end %>
     <br>
     <%= link_to edit_user_path(current_user.slug), class: "d-inline-block" do %>
-      <h3 class="profile-link-dash">
+      <h3 class="profile-link-dash edit-link-dash">
         Edit your profile
         <div class="underlined-link-dash underlined-gray"></div>
+        <% if current_user.bio.blank? %>
+          <div class="uncomplete-profile-badge"></div>
+        <% end %>
       </h3>
     <% end %>
     <br>

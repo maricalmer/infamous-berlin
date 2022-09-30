@@ -110,6 +110,12 @@ class User < ApplicationRecord
     photo.filename.to_s == 'default-profile-peep.png'
   end
 
+  def self.completed_profiles
+    User.joins(:photo_blob)
+        .where.not(active_storage_blobs: { filename: "default-profile-peep.png" })
+        .where.not(bio: ["", nil])
+  end
+
   private
 
   def send_confirmation_email

@@ -8,6 +8,9 @@
       </h1>
       <div class="big-card-form">
         <div class="new-project-form">
+          <% if current_user.bio.blank? %>
+            <div class="uncomplete-profile-note">Fill in your profile so that other users can find you!</div>
+          <% end %>
           <%= render "form" , locals: { user: @user } %>
         </div>
       </div>

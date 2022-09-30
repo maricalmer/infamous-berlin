@@ -129,6 +129,16 @@ abbr {
     width: 45%;
   }
 }
+.update-profile-form-bio {
+  position: relative;
+}
+.update-profile-form-bio-uncomplete {
+  position: absolute;
+  color: #C1292E;
+  font-size: 1.2rem;
+  top: 0;
+  left: 28px;
+}
 .update-profile-form-social-media {
   display: block;
 }
