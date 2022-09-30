@@ -17,7 +17,7 @@
               <% end %>
             <% else %>
               <%= link_to edit_user_path(current_user.slug, anchor: "picture-anchor"), class: "link" do %>
-                <div class="diamond-frame-small-img-reminder-text">Update a picture!</div>
+                <div class="diamond-frame-small-img-reminder-text">Upload a picture!</div>
                 <div class="diamond-frame-small-img-reminder"></div>
                 <%= cl_image_tag current_user.photo.key, quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 300, crop: "fill"}] %>
               <% end %>

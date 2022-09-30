@@ -202,6 +202,7 @@ body {
 }
 .hamburger-menu-list-item-messages {
   position: relative;
+  width: fit-content;
 }
 .unread-messages-badge {
   position: absolute;
@@ -209,8 +210,8 @@ body {
   width: 3px;
   height: 3px;
   opacity: 0.3;
-  top: 42px;
-  right: 4px;
+  top: 21px;
+  right: -2px;
   border-radius: 50%;
   box-shadow: 0 0 0 7px #E25043;
 }
@@ -394,6 +395,10 @@ body {
   }
   .hamburger-menu-list {
     margin-left: 7rem;
+  }
+  .unread-messages-badge {
+    top: 42px;
+    right: 4px;
   }
 }
 
