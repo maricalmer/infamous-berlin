@@ -68,6 +68,10 @@ Rails.application.routes.draw do
   get '/upcoming_projects', to: 'projects#upcoming_projects'
   get '/alternative_masonry', to: 'projects#alternative_masonry'
 
+  get '/404', to: 'errors#not_found'
+  get '/500', to: 'errors#internal_server'
+  get '/422', to: 'errors#unprocessable'
+
   # get '/user_upcoming_projects', to: 'users#upcoming_projects'
   # get '/user_past_projects', to: 'users#past_projects'
   # get '/user_upcoming_collabs', to: 'users#upcoming_collabs'

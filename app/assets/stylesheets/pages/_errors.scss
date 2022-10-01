@@ -1,0 +1,44 @@
+.error-page {
+  background-color: #9b9b9b;
+  color: #333;
+  text-align: center;
+  font-family: AlternateGotNo2D;
+  display: flex;
+  flex-direction: column;
+  justify-content:  center;
+  height: 100vh;
+  margin: 0;
+}
+.error-page .error-page-container {
+  max-width: 500px;
+  margin: 0 auto;
+}
+.error-page .error-page-peep {
+  margin:  0 auto;
+}
+.error-page .error-page-title {
+  text-align: left;
+  margin: 2rem 0 2rem 1rem;
+  position: relative;
+  width: fit-content;
+}
+.error-page h1 {
+  font-size: 5rem;
+  color: black;
+  line-height: 1.5em;
+  margin: 0;
+}
+.error-page .underlined-title-error-page {
+  height: 2.5em;
+  z-index: -1;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  background-color: #cff170;
+  left: -11px;
+}
+.error-page p {
+  font-size: 1.5rem;
+  text-align: left;
+  margin: 0 1rem;
+}
