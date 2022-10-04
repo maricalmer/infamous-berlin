@@ -26,6 +26,8 @@ class Project < ApplicationRecord
   after_create_commit :create_mirror
   before_update :assign_slug
 
+  include Autocomplete
+  include Slug
   include PgSearch::Model
   pg_search_scope :search_by_title_description_location_category, against: {
     title: "A",
@@ -35,27 +37,6 @@ class Project < ApplicationRecord
   }, using: {
     tsearch: { prefix: true, any_word: true }
   }
-
-  def self.project_locations
-    ["Kreuzberg", "Mitte", "Wedding", "P.Berg", "Neukölln", "Friedrichshain"]
-  end
-
-  def self.project_categories
-    ['painting', 'music production', 'photography', 'DJing', 'sculpture', 'fashion', 'graphic design', 'other']
-  end
-
-  def create_slug
-    slug = title.parameterize
-    Project.where.not(id: id).find_by(slug: slug).nil? ? slug : slug + slug.length.to_s
-  end
-
-  def update_slug
-    update slug: assign_slug
-  end
-
-  def to_param
-    slug
-  end
 
   def render_categories
     category.split.map { |cat| cat.gsub("_", " ") }
@@ -80,8 +61,4 @@ class Project < ApplicationRecord
   #     content_type: "image/jpg"
   #   )
   # end
-
-  def assign_slug
-    self.slug = create_slug
-  end
 end

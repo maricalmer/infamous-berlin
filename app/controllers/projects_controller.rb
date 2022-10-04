@@ -13,8 +13,8 @@ class ProjectsController < ApplicationController
   def new
     @project = Project.new
     authorize @project
-    @location_autocomplete_set = Project.project_locations
-    @category_autocomplete_set = Project.project_categories
+    @location_autocomplete_set = Project.location_set
+    @category_autocomplete_set = Project.category_set
   end
 
   def create
@@ -37,8 +37,8 @@ class ProjectsController < ApplicationController
     #     @project.photos.attach(photo)
     #   end
     # end
-    @location_autocomplete_set = Project.project_locations
-    @category_autocomplete_set = Project.project_categories
+    @location_autocomplete_set = Project.location_set
+    @category_autocomplete_set = Project.category_set
     @project.update(project_params)
     if @project.save
       redirect_to dashboard_path, notice: 'Project was successfully updated.'

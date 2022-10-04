@@ -47,7 +47,8 @@ group :development, :test do
   gem 'faker', '~> 2.18'
   gem 'bullet'
   gem 'rack-mini-profiler'
-
+  gem 'rspec-rails', '~> 5.1', '>= 5.1.2'
+  gem 'factory_bot_rails'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
 end
