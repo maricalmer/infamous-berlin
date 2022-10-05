@@ -4,7 +4,7 @@ module Slug
   end
 
   def update_slug
-    update_attributes slug: assign_slug
+    update slug: assign_slug
   end
 
   def determine_class

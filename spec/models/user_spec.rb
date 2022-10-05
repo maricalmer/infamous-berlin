@@ -45,3 +45,37 @@ RSpec.describe User do
     expect(second_user.errors.full_messages_for(:slug)).to include "Slug has already been taken"
   end
 end
+
+RSpec.describe "contact info" do
+  let(:user_no_contact_info) { FactoryBot.build_stubbed(:user) }
+  let(:user_with_website) { FactoryBot.build_stubbed(:user, website: "website.com") }
+  let(:user_with_instagram) { FactoryBot.build_stubbed(:user, instagram: "my_instagram.com") }
+  let(:user_with_twitter) { FactoryBot.build_stubbed(:user, twitter: "my_twitter.com") }
+  it "is falsy when empty" do
+    expect(user_no_contact_info.contact_info?).to be_falsy
+  end
+  it "is truthy when website field is present" do
+    expect(user_with_website.contact_info?).to be_truthy
+  end
+  it "is truthy when instagram field is present" do
+    expect(user_with_instagram.contact_info?).to be_truthy
+  end
+  it "is truthy when twitter field is present" do
+    expect(user_with_twitter.contact_info?).to be_truthy
+  end
+end
+
+RSpec.describe "unread messages" do
+  let(:author) { FactoryBot.create(:user) }
+  let(:receiver) { FactoryBot.create(:user) }
+  let(:chatroom) { FactoryBot.create(:chatroom, author: :author, receiver: :receiver) }
+  let(:message) { FactoryBot.create(:message, content: "message content", read_by_receiver: false, chatroom: :chatroom) }
+  # it "is truthy when message not read by receiver" do
+  #   expect(receiver.unread_messages?).to be_truthy
+  # end
+  it "is falsy when message read by receiver" do
+    message.read_by_receiver = true
+    p message
+    expect(receiver.unread_messages?).to be_falsy
+  end
+end

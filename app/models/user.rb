@@ -27,6 +27,7 @@ class User < ApplicationRecord
   include Slug
   include DisplaySkills
   include PgSearch::Model
+
   pg_search_scope :search_by_username_bio_skills_title, against: {
     username: "A",
     skills: "A",
@@ -41,14 +42,6 @@ class User < ApplicationRecord
 
   # def render_search_skill(query)
   #   skills.split.select { |skill| skill.downcase.include?(query.downcase) }.first(5)
-  # end
-
-  # def display_skills
-  #   return [] if skills.nil?
-
-  #   skills.split.map do |skill|
-  #     skill.include?("_") ? skill.gsub("_", " ") : skill
-  #   end
   # end
 
   def contact_info?
