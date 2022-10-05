@@ -12,7 +12,7 @@
           <h3 class="card-user-search-username"><%= current_user.username %></h3>
           <div class="diamond-frame-small">
             <% if !current_user.default_profile_pic? %>
-              <%= link_to user_path(current_user), class: "link" do %>
+              <%= link_to user_path(current_user.slug), class: "link" do %>
                 <%= cl_image_tag current_user.photo.key, quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 300, crop: "fill"}] %>
               <% end %>
             <% else %>
@@ -32,7 +32,7 @@
   <div class="line-separator"></div>
 
   <div class="profile-links-dash">
-    <%= link_to user_path(current_user), class: "d-inline-block" do %>
+    <%= link_to user_path(current_user.slug), class: "d-inline-block" do %>
       <h3 class="profile-link-dash">
         Visit your profile
         <div class="underlined-link-dash underlined-green"></div>

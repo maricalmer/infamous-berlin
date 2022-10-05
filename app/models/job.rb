@@ -16,6 +16,7 @@ class Job < ApplicationRecord
   # ^^ are the scopes needed??
 
   include Autocomplete
+  include DisplaySkills
   include PgSearch::Model
   pg_search_scope :search_by_title_description_skills, against: {
     title: "A",
@@ -30,21 +31,21 @@ class Job < ApplicationRecord
     applicants.include? current_user
   end
 
-  def self.overall_skill_set
-    skill_set
-  end
+  # def self.overall_skill_set
+  #   skill_set
+  # end
 
-  def self.locations
-    location_set
-  end
+  # def self.locations
+  #   location_set
+  # end
 
-  def display_skills_needed
-    return [] if skills_needed.nil?
+  # def display_skills_needed
+  #   return [] if skills_needed.nil?
 
-    skills_needed.split.map do |skill|
-      skill.include?("_") ? skill.gsub("_", " ") : skill
-    end
-  end
+  #   skills_needed.split.map do |skill|
+  #     skill.include?("_") ? skill.gsub("_", " ") : skill
+  #   end
+  # end
 
   # def right_payment
   #   errors.add(:payment, "invalid payment type") if ([payment] - PAYMENT).present?

@@ -5,7 +5,7 @@ RSpec.describe User do
   let(:user_no_email) { FactoryBot.build_stubbed(:user, email: nil) }
   let(:user_no_email_domain) { FactoryBot.build_stubbed(:user, email: "email@") }
   let(:user_no_email_local) { FactoryBot.build_stubbed(:user, email: "@email.com") }
-  let(:user_no_password) { FactoryBot.build_stubbed(:user, password: nil) }
+  let(:user_no_password) { FactoryBot.build_stubbed(:user, password: "") }
   let(:user_short_password) { FactoryBot.build_stubbed(:user, password: "123") }
   let(:user_no_username) { FactoryBot.build_stubbed(:user, username: nil) }
   it "is valid with valid attributes" do

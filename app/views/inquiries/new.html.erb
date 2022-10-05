@@ -20,8 +20,8 @@
             </div>
             <h4><%= @job.description * 5 %></h4>
             <ul class="my-4 skills-list ps-0 align-items-center">
-              <h4 class="me-5"><%= "Skill".pluralize(@job.display_skills_needed.count) %> needed:</h4>
-              <% @job.display_skills_needed.each do |skill| %>
+              <h4 class="me-5"><%= "Skill".pluralize(@job.display_skills.count) %> needed:</h4>
+              <% @job.display_skills.each do |skill| %>
                 <li><h5 class="skill-box"><%= skill.downcase %></h5></li>
               <% end %>
             </ul>

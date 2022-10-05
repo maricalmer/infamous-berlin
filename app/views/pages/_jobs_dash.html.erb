@@ -17,9 +17,9 @@
         <div>
           <p class="job-card-details-dash"><%= job.created_at.strftime("posted on %d/%m/%Y") %></p>
         </div>
-        <p class="job-card-description"><%= job.description * 3 %></p>
+        <p class="job-card-description"><%= job.description %></p>
         <ul class="skills-list-dash">
-          <% job.display_skills_needed.each do |skill| %>
+          <% job.display_skills.each do |skill| %>
             <li class="skill-box-dash"><p><%= skill.downcase %></p></li>
           <% end %>
         </ul>

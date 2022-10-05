@@ -7,8 +7,7 @@ class Project < ApplicationRecord
   has_many_attached :attachments
   enum status: { past: "past", upcoming: "upcoming" }
 
-  validates :title, uniqueness: true
-  validates :title, presence: true, case_sensitive: false
+  validates :title, uniqueness: true, presence: true, case_sensitive: false
   validates :description, presence: true
   validates :slug, :title, uniqueness: true, case_sensitive: false
   validates :attachments,

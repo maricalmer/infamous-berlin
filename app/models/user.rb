@@ -14,7 +14,7 @@ class User < ApplicationRecord
 
   validates :slug, uniqueness: true, case_sensitive: false
   validates :username, uniqueness: true, case_sensitive: false, presence: true
-  validates :password, presence: true, length: { minimum: 6, maximum: 128 }
+  validates :password, presence: true, length: { minimum: 6, maximum: 128 }, unless: proc { |a| a.password.nil? }
   validates :email, presence: true, format: { with: /\A[^@\s]+@[^@\s]+\z/ }
   validates :photo, size: { less_than: 5.megabytes, message: '5MB max' }
 
@@ -25,6 +25,7 @@ class User < ApplicationRecord
 
   include Autocomplete
   include Slug
+  include DisplaySkills
   include PgSearch::Model
   pg_search_scope :search_by_username_bio_skills_title, against: {
     username: "A",
@@ -42,13 +43,13 @@ class User < ApplicationRecord
   #   skills.split.select { |skill| skill.downcase.include?(query.downcase) }.first(5)
   # end
 
-  def display_skills
-    return [] if skills.nil?
+  # def display_skills
+  #   return [] if skills.nil?
 
-    skills.split.map do |skill|
-      skill.include?("_") ? skill.gsub("_", " ") : skill
-    end
-  end
+  #   skills.split.map do |skill|
+  #     skill.include?("_") ? skill.gsub("_", " ") : skill
+  #   end
+  # end
 
   def contact_info?
     website.present? ||
