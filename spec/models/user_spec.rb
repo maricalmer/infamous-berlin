@@ -46,7 +46,7 @@ RSpec.describe User do
   end
 end
 
-RSpec.describe "contact info" do
+RSpec.describe "contact_info?" do
   let(:user_no_contact_info) { FactoryBot.build_stubbed(:user) }
   let(:user_with_website) { FactoryBot.build_stubbed(:user, website: "website.com") }
   let(:user_with_instagram) { FactoryBot.build_stubbed(:user, instagram: "my_instagram.com") }
@@ -65,17 +65,48 @@ RSpec.describe "contact info" do
   end
 end
 
-RSpec.describe "unread messages" do
+RSpec.describe "unread_messages?" do
   let(:author) { FactoryBot.create(:user) }
   let(:receiver) { FactoryBot.create(:user) }
-  let(:chatroom) { FactoryBot.create(:chatroom, author: :author, receiver: :receiver) }
-  let(:message) { FactoryBot.create(:message, content: "message content", read_by_receiver: false, chatroom: :chatroom) }
-  # it "is truthy when message not read by receiver" do
-  #   expect(receiver.unread_messages?).to be_truthy
-  # end
+  let(:chatroom) { FactoryBot.create(:chatroom, author: author, receiver: receiver) }
+  let(:message) { FactoryBot.create(:message, chatroom: chatroom, user: author) }
+  it "is truthy when message not read by receiver" do
+    message
+    expect(receiver.unread_messages?).to be_truthy
+  end
   it "is falsy when message read by receiver" do
     message.read_by_receiver = true
-    p message
+    message.save
     expect(receiver.unread_messages?).to be_falsy
+  end
+end
+
+RSpec.describe "default_profile_pic?" do
+  let(:user) { FactoryBot.create(:user) }
+  it "is truthy when no profile pic uploaded" do
+    expect(user.default_profile_pic?).to be_truthy
+  end
+  it "is falsy when profile pic uploaded" do
+    user.photo.attach(
+      io: File.open(Rails.root.join("app", "assets", "images", "logo.png")),
+      filename: 'logo.png',
+      content_type: "image/png"
+    )
+    expect(user.default_profile_pic?).to be_falsy
+  end
+end
+
+RSpec.describe "completed_profiles" do
+  let(:user) { FactoryBot.create(:user) }
+  it "is truthy when no profile pic uploaded" do
+    expect(user.default_profile_pic?).to be_truthy
+  end
+  it "is falsy when profile pic uploaded" do
+    user.photo.attach(
+      io: File.open(Rails.root.join("app", "assets", "images", "logo.png")),
+      filename: 'logo.png',
+      content_type: "image/png"
+    )
+    expect(user.default_profile_pic?).to be_falsy
   end
 end
