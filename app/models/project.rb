@@ -25,8 +25,9 @@ class Project < ApplicationRecord
   after_create_commit :create_mirror
   before_update :assign_slug
 
-  include Autocomplete
-  include Slug
+  # include Autocomplete
+  require 'services/autocomplete'
+  # include Slug
   include PgSearch::Model
   pg_search_scope :search_by_title_description_location_category, against: {
     title: "A",
@@ -36,6 +37,14 @@ class Project < ApplicationRecord
   }, using: {
     tsearch: { prefix: true, any_word: true }
   }
+
+  def self.location_set
+    Autocomplete.new.location_set
+  end
+
+  def self.category_set
+    Autocomplete.new.category_set
+  end
 
   def render_categories
     category.split.map { |cat| cat.gsub("_", " ") }

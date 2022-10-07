@@ -23,9 +23,10 @@ class User < ApplicationRecord
   after_create :send_confirmation_email
   after_commit :add_default_img, on: [:create]
 
-  include Autocomplete
-  include Slug
-  include DisplaySkills
+  # include Autocomplete
+  require 'services/autocomplete'
+  # include Slug
+  # include DisplaySkills
   include PgSearch::Model
 
   pg_search_scope :search_by_username_bio_skills_title, against: {
@@ -43,6 +44,14 @@ class User < ApplicationRecord
   # def render_search_skill(query)
   #   skills.split.select { |skill| skill.downcase.include?(query.downcase) }.first(5)
   # end
+
+  def self.skill_set
+    Autocomplete.new.skill_set
+  end
+
+  def self.usernames
+    Autocomplete.new.usernames
+  end
 
   def contact_info?
     website.present? ||

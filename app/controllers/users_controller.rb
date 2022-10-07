@@ -28,7 +28,7 @@ class UsersController < ApplicationController
 
   def index
     @users = policy_scope(User)
-    @autocomplete_set = User.new.skill_set
+    @autocomplete_set = User.skill_set
     @users = User.search_by_username_bio_skills_title(params[:query]) if params[:query].present?
     respond_to do |format|
       format.html
