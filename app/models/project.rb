@@ -20,14 +20,13 @@ class Project < ApplicationRecord
 
   validates_length_of :attachments, maximum: 5, message: "5 files max"
 
-  after_create :update_slug
+  after_create :renew_slug
   # after_create_commit :add_default_img
   after_create_commit :create_mirror
-  before_update :assign_slug
+  before_update :set_slug
 
-  # include Autocomplete
-  require 'services/autocomplete'
-  # include Slug
+  require 'services/autocomplete_generator'
+  require 'services/slug_generator'
   include PgSearch::Model
   pg_search_scope :search_by_title_description_location_category, against: {
     title: "A",
@@ -39,11 +38,19 @@ class Project < ApplicationRecord
   }
 
   def self.location_set
-    Autocomplete.new.location_set
+    AutocompleteGenerator.new.location_set
   end
 
   def self.category_set
-    Autocomplete.new.category_set
+    AutocompleteGenerator.new.category_set
+  end
+
+  def set_slug
+    SlugGenerator.new(text: title, client: self).assign_slug
+  end
+
+  def renew_slug
+    SlugGenerator.new(text: title, client: self).update_slug
   end
 
   def render_categories

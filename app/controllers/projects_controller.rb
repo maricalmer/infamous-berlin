@@ -6,7 +6,7 @@ class ProjectsController < ApplicationController
     @members = @project.members
     @jobs = @project.jobs
     @collab = Collab.new
-    @autocomplete_set = User.usernames
+    @autocomplete_set = User.autocomplete_usernames
     @project_attachments = @project.attachments.includes([:blob])
   end
 

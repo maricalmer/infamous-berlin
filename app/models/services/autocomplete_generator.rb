@@ -1,4 +1,4 @@
-class Autocomplete
+class AutocompleteGenerator
   def skill_set
     ["acting", "voice acting", "singing", "oil painting",
      "acrylic painting", "digital painting", "3d drawing",

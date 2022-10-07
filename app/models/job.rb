@@ -15,9 +15,8 @@ class Job < ApplicationRecord
   scope :hourly_rate, -> { where(payment: "hourly_rate") }
   # ^^ are the scopes needed??
 
-  # include Autocomplete
-  require 'services/autocomplete'
-  # include DisplaySkills
+  require 'services/autocomplete_generator'
+  require 'services/skills_renderer'
   include PgSearch::Model
   pg_search_scope :search_by_title_description_skills, against: {
     title: "A",
@@ -32,12 +31,16 @@ class Job < ApplicationRecord
     applicants.include? current_user
   end
 
-  def self.skill_set
-    Autocomplete.new.skill_set
+  def self.autocomplete_skills
+    AutocompleteGenerator.new.skill_set
   end
 
-  def self.location_set
-    Autocomplete.new.location_set
+  def self.autocomplete_locations
+    AutocompleteGenerator.new.location_set
+  end
+
+  def display_skills
+    SkillsRenderer.new(skills_needed).format_skills
   end
 
   # def self.locations

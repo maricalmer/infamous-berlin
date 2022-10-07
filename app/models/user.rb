@@ -18,15 +18,14 @@ class User < ApplicationRecord
   validates :email, presence: true, format: { with: /\A[^@\s]+@[^@\s]+\z/ }
   validates :photo, size: { less_than: 5.megabytes, message: '5MB max' }
 
-  after_create :update_slug
-  before_update :assign_slug
+  after_create :renew_slug
+  before_update :set_slug
   after_create :send_confirmation_email
   after_commit :add_default_img, on: [:create]
 
-  # include Autocomplete
-  require 'services/autocomplete'
-  # include Slug
-  # include DisplaySkills
+  require 'services/autocomplete_generator'
+  require 'services/slug_generator'
+  require 'services/skills_renderer'
   include PgSearch::Model
 
   pg_search_scope :search_by_username_bio_skills_title, against: {
@@ -45,12 +44,24 @@ class User < ApplicationRecord
   #   skills.split.select { |skill| skill.downcase.include?(query.downcase) }.first(5)
   # end
 
-  def self.skill_set
-    Autocomplete.new.skill_set
+  def self.autocomplete_skills
+    AutocompleteGenerator.new.skill_set
   end
 
-  def self.usernames
-    Autocomplete.new.usernames
+  def self.autocomplete_usernames
+    AutocompleteGenerator.new.usernames
+  end
+
+  def set_slug
+    SlugGenerator.new(text: username, client: self).assign_slug
+  end
+
+  def renew_slug
+    SlugGenerator.new(text: username, client: self).update_slug
+  end
+
+  def display_skills
+    SkillsRenderer.new(skills).format_skills
   end
 
   def contact_info?
