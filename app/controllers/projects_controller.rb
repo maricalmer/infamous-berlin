@@ -6,15 +6,16 @@ class ProjectsController < ApplicationController
     @members = @project.members
     @jobs = @project.jobs
     @collab = Collab.new
-    @autocomplete_set = User.autocomplete_usernames
+
+    @autocomplete_set = AutocompleteGenerator.new.usernames
     @project_attachments = @project.attachments.includes([:blob])
   end
 
   def new
     @project = Project.new
     authorize @project
-    @location_autocomplete_set = Project.location_set
-    @category_autocomplete_set = Project.category_set
+    @location_autocomplete_set = AutocompleteGenerator.new.location_set
+    @category_autocomplete_set = AutocompleteGenerator.new.category_set
   end
 
   def create
@@ -29,6 +30,8 @@ class ProjectsController < ApplicationController
   end
 
   def edit
+    @location_autocomplete_set = AutocompleteGenerator.new.location_set
+    @category_autocomplete_set = AutocompleteGenerator.new.category_set
   end
 
   def update
@@ -37,8 +40,6 @@ class ProjectsController < ApplicationController
     #     @project.photos.attach(photo)
     #   end
     # end
-    @location_autocomplete_set = Project.location_set
-    @category_autocomplete_set = Project.category_set
     @project.update(project_params)
     if @project.save
       redirect_to dashboard_path, notice: 'Project was successfully updated.'

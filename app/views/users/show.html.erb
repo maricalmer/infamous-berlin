@@ -25,7 +25,7 @@
     <div class="skills">
       <h1>Skills</h1>
       <ul class="skills-list ps-0">
-        <% @user.display_skills.each do |skill| %>
+        <% @user_formatted_skills.each do |skill| %>
           <li><h5 class="skill-box"><%= skill.downcase %></h5></li>
         <% end %>
       </ul>

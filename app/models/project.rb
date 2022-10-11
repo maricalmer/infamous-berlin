@@ -25,9 +25,9 @@ class Project < ApplicationRecord
   after_create_commit :create_mirror
   before_update :set_slug
 
-  require 'services/autocomplete_generator'
-  require 'services/slug_generator'
   include PgSearch::Model
+  require "services/slug_generator"
+
   pg_search_scope :search_by_title_description_location_category, against: {
     title: "A",
     category: "A",
@@ -36,14 +36,6 @@ class Project < ApplicationRecord
   }, using: {
     tsearch: { prefix: true, any_word: true }
   }
-
-  def self.location_set
-    AutocompleteGenerator.new.location_set
-  end
-
-  def self.category_set
-    AutocompleteGenerator.new.category_set
-  end
 
   def set_slug
     SlugGenerator.new(text: title, client: self).assign_slug

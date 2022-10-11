@@ -13,7 +13,7 @@ class JobsController < ApplicationController
     elsif params[:search].present? && params[:search][:payment] == "hourly_rate"
       @jobs = Job.where(payment: "hourly_rate")
     end
-    @autocomplete_set = Job.autocomplete_skills
+    @autocomplete_set = AutocompleteGenerator.new.skill_set
     @jobs = @jobs.search_by_title_description_skills(params[:query]) if params[:query].present?
     respond_to do |format|
       format.html
@@ -28,7 +28,7 @@ class JobsController < ApplicationController
   def new
     @job = Job.new
     authorize @job
-    @location_autocomplete_set = Job.autocomplete_locations
+    @location_autocomplete_set = AutocompleteGenerator.new.location_set
   end
 
   def create

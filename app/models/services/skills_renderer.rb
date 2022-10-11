@@ -3,12 +3,6 @@ class SkillsRenderer
     @skills = skills
   end
 
-  # def display_skills
-  #   instance_of?(User) ? format_skills(skills) : format_skills(skills_needed)
-  # end
-
-  # private
-
   def format_skills
     return [] if @skills.nil?
 

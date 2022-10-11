@@ -2,7 +2,7 @@ class UserPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
-      scope.completed_profiles.includes([photo_attachment: :blob])
+      scope.list_completed_profiles_only.includes([photo_attachment: :blob])
     end
   end
 

@@ -23,10 +23,9 @@ class User < ApplicationRecord
   after_create :send_confirmation_email
   after_commit :add_default_img, on: [:create]
 
-  require 'services/autocomplete_generator'
-  require 'services/slug_generator'
-  require 'services/skills_renderer'
   include PgSearch::Model
+  require "workflows/user_context"
+  require "services/slug_generator"
 
   pg_search_scope :search_by_username_bio_skills_title, against: {
     username: "A",
@@ -40,18 +39,6 @@ class User < ApplicationRecord
     }
   }
 
-  # def render_search_skill(query)
-  #   skills.split.select { |skill| skill.downcase.include?(query.downcase) }.first(5)
-  # end
-
-  def self.autocomplete_skills
-    AutocompleteGenerator.new.skill_set
-  end
-
-  def self.autocomplete_usernames
-    AutocompleteGenerator.new.usernames
-  end
-
   def set_slug
     SlugGenerator.new(text: username, client: self).assign_slug
   end
@@ -60,34 +47,24 @@ class User < ApplicationRecord
     SlugGenerator.new(text: username, client: self).update_slug
   end
 
-  def display_skills
-    SkillsRenderer.new(skills).format_skills
+  def to_param
+    slug
   end
 
   def contact_info?
-    website.present? ||
-      facebook.present? ||
-      instagram.present? ||
-      soundcloud.present? ||
-      youtube.present? ||
-      mixcloud.present? ||
-      linkedin.present? ||
-      twitter.present?
+    UserContext.new(self).contact_info?
   end
 
   def unread_messages?
-    chatrooms = Chatroom.where(author_id: self).or(Chatroom.where(receiver_id: self))
-    Message.where(read_by_receiver: false).where.not(user: self).where(chatroom: chatrooms).any?
+    UserContext.new(self).unread_messages?
   end
 
   def default_profile_pic?
-    photo.filename.to_s == 'default-profile-peep.png'
+    UserContext.new(self).default_profile_pic?
   end
 
-  def self.completed_profiles
-    User.joins(:photo_blob)
-        .where.not(active_storage_blobs: { filename: "default-profile-peep.png" })
-        .where.not(bio: ["", nil])
+  def self.list_completed_profiles_only
+    UserContext.new.completed_profiles
   end
 
   private
@@ -97,12 +74,6 @@ class User < ApplicationRecord
   end
 
   def add_default_img
-    return if photo.attached?
-
-    photo.attach(
-      io: File.open(Rails.root.join("app", "assets", "images", "default-profile-peep.png")),
-      filename: 'default-profile-peep.png',
-      content_type: "image/png"
-    )
+    UserContext.new(self).add_default_img
   end
 end
