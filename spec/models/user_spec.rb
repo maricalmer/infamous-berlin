@@ -9,7 +9,7 @@ RSpec.describe User do
     let(:user_no_password) { FactoryBot.build_stubbed(:user, password: "") }
     let(:user_short_password) { FactoryBot.build_stubbed(:user, password: "123") }
     let(:user_no_username) { FactoryBot.build_stubbed(:user, username: nil) }
-    it "is valid with valid attributes" do
+    it "is valid with username, email and password" do
       expect(user).to be_valid
     end
     it "is not valid without an email" do

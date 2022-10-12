@@ -2,14 +2,14 @@ class InquiriesController < ApplicationController
   before_action :set_inquiry, only: %i[show edit update destroy change_status]
   before_action :set_job, only: %i[new create]
 
-  require "services/skills_renderer"
+  require "services/tags_renderer"
 
   # def index
   #   @inquiries = policy_scope(Inquiry)
   # end
 
   def show
-    @user_formatted_skills = SkillsRenderer.new(@inquiry.user.skills).format_skills
+    @user_formatted_skills = TagsRenderer.new(@inquiry.user.skills).format_tags
     @statuses = Inquiry.statuses.keys
   end
 

@@ -15,10 +15,6 @@ Rails.application.routes.draw do
   resources :projects, param: :slug do
     resources :collabs, only: [:new, :create]
     resources :jobs, only: [:new, :create]
-    # member do
-    #   post :apply
-    #   post :unapply
-    # end
   end
   resources :collabs, only: [:destroy]
 

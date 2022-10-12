@@ -16,7 +16,7 @@ class Job < ApplicationRecord
   # ^^ are the scopes needed??
 
   include PgSearch::Model
-  require "services/skills_renderer"
+  require "services/tags_renderer"
   pg_search_scope :search_by_title_description_skills, against: {
     title: "A",
     skills_needed: "A",
@@ -31,7 +31,7 @@ class Job < ApplicationRecord
   end
 
   def display_skills
-    SkillsRenderer.new(skills_needed).format_skills
+    TagsRenderer.new(skills_needed).format_tags
   end
 
   # def self.locations

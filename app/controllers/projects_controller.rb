@@ -2,11 +2,14 @@ class ProjectsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[show upcoming_projects alternative_masonry]
   before_action :set_project, only: %i[show edit update apply unapply destroy]
 
+  require "services/autocomplete_generator"
+  require "services/tags_renderer"
+
   def show
     @members = @project.members
     @jobs = @project.jobs
     @collab = Collab.new
-
+    @project_formatted_categories = TagsRenderer.new(@project.category).format_tags
     @autocomplete_set = AutocompleteGenerator.new.usernames
     @project_attachments = @project.attachments.includes([:blob])
   end
@@ -35,11 +38,6 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    # if params[:project][:photos].any?
-    #   params[:project][:photos].each do |photo|
-    #     @project.photos.attach(photo)
-    #   end
-    # end
     @project.update(project_params)
     if @project.save
       redirect_to dashboard_path, notice: 'Project was successfully updated.'
@@ -54,32 +52,20 @@ class ProjectsController < ApplicationController
   end
 
   # def apply
-  #   @application = Application.new
-  #   @application.user_id = current_user.id
-  #   @application.project_id = @project.id
-  #   @application.save
-  #   @chatroom = Chatroom.new
-  #   @chatroom.user_id = current_user.id
-  #   @chatroom.project_id = @project.id
-  #   @chatroom.save
-  #   redirect_to chatroom_path(@chatroom.id), notice: "Say hi to #{@project.user.username} and introduce yourself!"
+  #   return unless current_user.apply(@project.id)
+  #     @chatroom = create_chatroom
+  #     redirect_to chatroom_path(@chatroom.id), notice: "Say hi to #{@project.user.username} and introduce yourself!"
+  #   end
   # end
 
-  def apply
-    if current_user.apply(@project.id)
-      @chatroom = create_chatroom
-      redirect_to chatroom_path(@chatroom.id), notice: "Say hi to #{@project.user.username} and introduce yourself!"
-    end
-  end
-
-  def unapply
-    if current_user.unapply(@project.id)
-      respond_to do |format|
-        format.html { redirect_to dashboard_path, notice: "Application deleted" }
-        format.js { render action: :apply }
-      end
-    end
-  end
+  # def unapply
+  #   if current_user.unapply(@project.id)
+  #     respond_to do |format|
+  #       format.html { redirect_to dashboard_path, notice: "Application deleted" }
+  #       format.js { render action: :apply }
+  #     end
+  #   end
+  # end
 
   def upcoming_projects
     if params[:search].present? && params[:search][:status] == "past"

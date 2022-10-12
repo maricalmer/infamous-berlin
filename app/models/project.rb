@@ -27,6 +27,7 @@ class Project < ApplicationRecord
 
   include PgSearch::Model
   require "services/slug_generator"
+  require "services/tags_renderer"
 
   pg_search_scope :search_by_title_description_location_category, against: {
     title: "A",
@@ -45,9 +46,10 @@ class Project < ApplicationRecord
     SlugGenerator.new(text: title, client: self).update_slug
   end
 
-  def render_categories
-    category.split.map { |cat| cat.gsub("_", " ") }
-  end
+  # def render_categories
+
+  #   category.split.map { |cat| cat.gsub("_", " ") }
+  # end
 
   # def video_attachments?
   #   attachments.each { |attachment| attachment.video? }.any?(true)

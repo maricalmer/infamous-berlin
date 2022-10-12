@@ -3,12 +3,12 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
 
   require "workflows/user_context"
-  require "services/skills_renderer"
+  require "services/tags_renderer"
   require "services/autocomplete_generator"
 
   def show
     @portfolio = UserContext.new(@user).display_portfolio
-    @user_formatted_skills = SkillsRenderer.new(@user.skills).format_skills
+    @user_formatted_skills = TagsRenderer.new(@user.skills).format_tags
     @ongoing_projects = UserContext.new(@user).display_ongoing_projects
     @message = Message.new
   end
