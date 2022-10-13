@@ -4,6 +4,7 @@ class ProjectsController < ApplicationController
 
   require "services/autocomplete_generator"
   require "services/tags_renderer"
+  require "workflows/project_context"
 
   def show
     @members = @project.members
@@ -68,14 +69,15 @@ class ProjectsController < ApplicationController
   # end
 
   def upcoming_projects
-    if params[:search].present? && params[:search][:status] == "past"
-      @projects = Project.where(status: "past").includes(user: { photo_attachment: :blob })
-    elsif params[:search].present? && params[:search][:status] == "all"
-      @projects = Project.all.includes(user: { photo_attachment: :blob })
-    else
-      @projects = Project.where(status: "upcoming").includes(user: { photo_attachment: :blob })
-    end
-    @projects = @projects.search_by_title_description_location_category(params[:query]) if params[:query].present?
+    # if params[:search].present? && params[:search][:status] == "past"
+    #   @projects = Project.where(status: "past").includes(user: { photo_attachment: :blob })
+    # elsif params[:search].present? && params[:search][:status] == "all"
+    #   @projects = Project.all.includes(user: { photo_attachment: :blob })
+    # else
+    #   @projects = Project.where(status: "upcoming").includes(user: { photo_attachment: :blob })
+    # end
+    # @projects = @projects.search_by_title_description_location_category(params[:query]) if params[:query].present?
+    @projects = ProjectContext.new.upcoming_projects(params[:search])
     authorize @projects
     respond_to do |format|
       format.html

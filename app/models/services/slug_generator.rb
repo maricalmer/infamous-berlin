@@ -1,11 +1,11 @@
 class SlugGenerator
   def initialize(attributes = {})
-    @text = attributes[:text]
+    @string = attributes[:string]
     @client = attributes[:client]
   end
 
   def assign_slug
-    @client.slug = create_slug(@text, @client)
+    @client.slug = create_slug(@string, @client)
   end
 
   def update_slug
@@ -18,8 +18,8 @@ class SlugGenerator
 
   private
 
-  def create_slug(text, client)
-    slug = text.parameterize
+  def create_slug(string, client)
+    slug = string.parameterize
     client.class.where.not(id: client.id).find_by(slug: slug).nil? ? slug : slug + client.id.to_s
   end
 end

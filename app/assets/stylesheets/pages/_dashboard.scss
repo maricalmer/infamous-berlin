@@ -188,7 +188,7 @@
   margin-top: -1px;
   margin-left: 13px;
   position: absolute;
-  right: 0;
+  right: 20px;
   top: 3px;
   z-index: 1;
 }
@@ -198,7 +198,7 @@
 }
 .dash-top-menu input[type="checkbox"] ~ .dash-menu-dropdown-mobile-more::before {
   content: "More";
-  margin-right: 30px;
+  margin-right: 50px;
 }
 .dash-top-menu input[type="checkbox"] {
   display: none;

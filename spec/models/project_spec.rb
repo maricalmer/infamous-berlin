@@ -33,5 +33,13 @@ RSpec.describe Project do
       expect(second_project).to_not be_valid
       expect(second_project.errors.full_messages_for(:slug)).to include "Slug has already been taken"
     end
+    it "updates slug after title update" do
+      project.title = "new_title"
+      project.save
+      expect(project.slug).to match("new_title")
+    end
+    it "creates a project mirror after project creation" do
+      expect(project.mirrors.first.project_id).to eq(project.id)
+    end
   end
 end

@@ -21,7 +21,6 @@ class Project < ApplicationRecord
   validates_length_of :attachments, maximum: 5, message: "5 files max"
 
   after_create :renew_slug
-  # after_create_commit :add_default_img
   after_create_commit :create_mirror
   before_update :set_slug
 
@@ -38,36 +37,27 @@ class Project < ApplicationRecord
     tsearch: { prefix: true, any_word: true }
   }
 
+  def to_param
+    slug
+  end
+
+  # def self.list_upcoming_projects(query)
+  #   ProjectContext.new.upcoming_projects(query)
+  # end
+
+# ^^ how to create index policy (scope) on upcoming_project method
+
+  private
+
   def set_slug
-    SlugGenerator.new(text: title, client: self).assign_slug
+    SlugGenerator.new(string: title, client: self).assign_slug
   end
 
   def renew_slug
-    SlugGenerator.new(text: title, client: self).update_slug
+    SlugGenerator.new(string: title, client: self).update_slug
   end
-
-  # def render_categories
-
-  #   category.split.map { |cat| cat.gsub("_", " ") }
-  # end
-
-  # def video_attachments?
-  #   attachments.each { |attachment| attachment.video? }.any?(true)
-  # end
-
-  private
 
   def create_mirror
     Mirror.create(user: user, project: self)
   end
-
-  # def add_default_img
-  #   return if attachments.attached?
-
-  #   attachments.attach(
-  #     io: File.open(Rails.root.join("app", "assets", "images", "logo.png")),
-  #     filename: 'logo.jpg',
-  #     content_type: "image/jpg"
-  #   )
-  # end
 end

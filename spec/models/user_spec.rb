@@ -45,5 +45,10 @@ RSpec.describe User do
       expect(second_user).to_not be_valid
       expect(second_user.errors.full_messages_for(:slug)).to include "Slug has already been taken"
     end
+    it "updates slug after username update" do
+      user.username = "new_username"
+      user.save
+      expect(user.slug).to match("new_username")
+    end
   end
 end

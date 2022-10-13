@@ -39,18 +39,6 @@ class User < ApplicationRecord
     }
   }
 
-  def set_slug
-    SlugGenerator.new(text: username, client: self).assign_slug
-  end
-
-  def renew_slug
-    SlugGenerator.new(text: username, client: self).update_slug
-  end
-
-  def to_param
-    slug
-  end
-
   def contact_info?
     UserContext.new(self).contact_info?
   end
@@ -64,10 +52,22 @@ class User < ApplicationRecord
   end
 
   def self.list_completed_profiles_only
-    UserContext.new.completed_profiles
+    UserContext.new(nil).completed_profiles
+  end
+
+  def to_param
+    slug
   end
 
   private
+
+  def set_slug
+    SlugGenerator.new(string: username, client: self).assign_slug
+  end
+
+  def renew_slug
+    SlugGenerator.new(string: username, client: self).update_slug
+  end
 
   def send_confirmation_email
     send_confirmation_instructions
