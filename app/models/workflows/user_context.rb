@@ -38,6 +38,7 @@ class UserContext
     User.joins(:photo_blob)
         .where.not(active_storage_blobs: { filename: "default-profile-peep.png" })
         .where.not(bio: ["", nil])
+        .includes([photo_attachment: :blob])
   end
 
   def display_portfolio

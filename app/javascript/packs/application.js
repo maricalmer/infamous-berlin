@@ -33,7 +33,6 @@ import { initChatroomCable } from '../channels/chatroom_channel';
 import { switchSearchTabs } from '../components/search_tabs';
 import { switchModalTabs } from '../components/modal_tabs';
 import { scrollOnArrows, hideArrowsOnScroll, changeImgDesktop, checkOnFilesState, switchImgWithDots, switchImgWithSwipe } from '../components/carousel';
-import { loadGalleryOnTabClick, loadGallery } from '../components/masonry';
 import { expandSearchBar } from '../components/search';
 import { autocompleteSearch } from '../components/autocomplete';
 // import { listenInput } from '../components/results_update';
@@ -59,7 +58,6 @@ import { listenCheckboxes } from '../components/checkbox_filter';
 import { clickOnFilter } from '../components/filter_radio_btn_effect';
 import { firstVisitCheck } from '../components/homepage_preloader';
 import { triggerTyped } from '../components/typed';
-import { setGallery } from '../components/alternative_masonry';
 import { delayHomepageSlides } from '../components/homepage_slides';
 import { initCursor } from '../components/homepage_cursor';
 
@@ -93,12 +91,6 @@ document.addEventListener('turbolinks:load', () => {
   if (document.querySelectorAll(".slide-thumbnail").length) {
     changeImgDesktop();
   };
-  if (document.querySelectorAll(".tab-underlined").length) {
-    // loadGalleryOnTabClick();
-  };
-  if (document.querySelectorAll(".grid-search").length) {
-    // loadGallery();
-  };
   if (document.querySelectorAll(".users-index-js").length ||
     document.querySelectorAll(".new-project-js").length ||
     document.querySelectorAll(".project-show-js").length) {
@@ -107,15 +99,8 @@ document.addEventListener('turbolinks:load', () => {
   if (document.querySelectorAll(".datepicker").length) {
     initFlatpickr();
   };
-  // if (document.querySelectorAll(".search-refresh-input").length) {
-  //   loadGallery();
-  //   listenInput();
-  // };
   if (document.querySelectorAll(".search-form-js").length) {
     listenSearchInput();
-  };
-  if (document.querySelectorAll(".masonry-js").length) {
-    loadGallery();
   };
   if (document.querySelectorAll(".btn-covering-js").length) {
     addNewMember();
@@ -184,12 +169,4 @@ document.addEventListener('turbolinks:load', () => {
   if (document.querySelectorAll(".homepage-cursor-js").length) {
     initCursor();
   }
-  // Call your functions here, e.g:
-  // initSelect2();
 });
-
-// document.addEventListener('DOMContentLoaded', () => {
-//   if (document.querySelectorAll(".masonry-grid-js").length) {
-//     setGallery();
-//   }
-// })

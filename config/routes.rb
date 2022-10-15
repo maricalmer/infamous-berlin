@@ -62,7 +62,6 @@ Rails.application.routes.draw do
   get '/rejected_sent_dash', to: 'pages#rejected_sent_dash'
 
   get '/upcoming_projects', to: 'projects#upcoming_projects'
-  get '/alternative_masonry', to: 'projects#alternative_masonry'
 
   match '/404', to: 'errors#not_found', via: :all
   match '/500', to: 'errors#internal_server', via: :all

@@ -1,4 +1,3 @@
-import { loadGallery } from '../components/masonry';
 import { hideArrowsOnXScroll, checkOnDashImgsState } from '../components/slider';
 
 const switchSearchTabs = () => {
@@ -30,9 +29,6 @@ const renderPartial = (tab) => {
       const results = document.querySelector(".js-results");
       results.innerHTML = data;
       const grid = document.querySelector(".grid-search");
-      if (grid) {
-        loadGallery();
-      };
     })
 }
 

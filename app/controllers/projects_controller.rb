@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[show upcoming_projects alternative_masonry]
+  skip_before_action :authenticate_user!, only: %i[show upcoming_projects]
   before_action :set_project, only: %i[show edit update apply unapply destroy]
 
   require "services/autocomplete_generator"
@@ -52,48 +52,10 @@ class ProjectsController < ApplicationController
     redirect_to dashboard_path, notice: 'Project deleted'
   end
 
-  # def apply
-  #   return unless current_user.apply(@project.id)
-  #     @chatroom = create_chatroom
-  #     redirect_to chatroom_path(@chatroom.id), notice: "Say hi to #{@project.user.username} and introduce yourself!"
-  #   end
-  # end
-
-  # def unapply
-  #   if current_user.unapply(@project.id)
-  #     respond_to do |format|
-  #       format.html { redirect_to dashboard_path, notice: "Application deleted" }
-  #       format.js { render action: :apply }
-  #     end
-  #   end
-  # end
-
   def upcoming_projects
-    # if params[:search].present? && params[:search][:status] == "past"
-    #   @projects = Project.where(status: "past").includes(user: { photo_attachment: :blob })
-    # elsif params[:search].present? && params[:search][:status] == "all"
-    #   @projects = Project.all.includes(user: { photo_attachment: :blob })
-    # else
-    #   @projects = Project.where(status: "upcoming").includes(user: { photo_attachment: :blob })
-    # end
-    # @projects = @projects.search_by_title_description_location_category(params[:query]) if params[:query].present?
-    @projects = ProjectContext.new.upcoming_projects(params[:search])
-    authorize @projects
-    respond_to do |format|
-      format.html
-      format.text { render partial: 'search-results.html', locals: { projects: @projects, query: params[:query] } }
-    end
-  end
-
-  def alternative_masonry
-    if params[:search].present? && params[:search][:status] == "past"
-      @projects = Project.where(status: "past")
-    elsif params[:search].present? && params[:search][:status] == "all"
-      @projects = Project.all
-    else
-      @projects = Project.where(status: "upcoming")
-    end
+    @projects = ProjectContext.new.upcoming_projects(params)
     @projects = @projects.search_by_title_description_location_category(params[:query]) if params[:query].present?
+    authorize @projects
     respond_to do |format|
       format.html
       format.text { render partial: 'search-results.html', locals: { projects: @projects, query: params[:query] } }

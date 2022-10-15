@@ -3,7 +3,7 @@
   <div class="mt-5 user-index bck-btn-reload-js">
     <%= simple_form_for :search, url: upcoming_projects_path, html: { class: "search-refresh-form search-form-js"}, remote: true, method: :get do |f| %>
       <div class="search-bar-search-page">
-        <input type="text" name="query" placeholder="Search through upcoming projects..." class="search-input-search-page refresh-input-js user-input-highlight-js" autocomplete="off">
+        <input type="text" name="query" placeholder="Search through projects..." class="search-input-search-page refresh-input-js user-input-highlight-js" autocomplete="off">
         <button type="submit">
           <i class="fas fa-search search-btn-search-page"></i>
         </button>

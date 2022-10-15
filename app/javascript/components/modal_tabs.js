@@ -1,5 +1,3 @@
-import { loadGallery } from '../components/masonry';
-
 const switchModalTabs = () => {
   const tabs = document.querySelectorAll('.js-modal-tab');
   tabs.forEach((tab) => {
@@ -23,7 +21,6 @@ const renderPartial = (tab) => {
     .then((data) => {
       const results = tab.parentElement.parentElement.nextElementSibling
       results.innerHTML = data;
-      loadGallery();
     })
 }
 

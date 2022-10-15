@@ -41,12 +41,6 @@ class Project < ApplicationRecord
     slug
   end
 
-  # def self.list_upcoming_projects(query)
-  #   ProjectContext.new.upcoming_projects(query)
-  # end
-
-# ^^ how to create index policy (scope) on upcoming_project method
-
   private
 
   def set_slug
