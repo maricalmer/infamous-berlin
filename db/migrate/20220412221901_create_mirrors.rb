@@ -1,7 +1,6 @@
 class CreateMirrors < ActiveRecord::Migration[6.0]
   def change
     create_table :mirrors do |t|
-      t.string :img_key
       t.string :grid_x
       t.string :grid_y
       t.string :grid_h

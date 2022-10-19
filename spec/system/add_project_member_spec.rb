@@ -17,5 +17,7 @@ RSpec.describe "adding a new project member:" do
     fill_in("project_member", with: member.username)
     click_on("+")
     expect(current_path).to eq(project_path(project.slug))
+    page.assert_selector('div', text: 'Member:')
+    expect(project.members.first).to eq(member)
   end
 end

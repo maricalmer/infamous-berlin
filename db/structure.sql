@@ -269,7 +269,6 @@ ALTER SEQUENCE public.messages_id_seq OWNED BY public.messages.id;
 
 CREATE TABLE public.mirrors (
     id bigint NOT NULL,
-    img_key character varying,
     grid_x character varying,
     grid_y character varying,
     grid_h character varying,

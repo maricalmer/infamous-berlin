@@ -33,6 +33,8 @@ RSpec.describe Project do
       expect(second_project).to_not be_valid
       expect(second_project.errors.full_messages_for(:slug)).to include "Slug has already been taken"
     end
+  end
+  describe "callbacks" do
     it "updates slug after title update" do
       project.title = "new_title"
       project.save

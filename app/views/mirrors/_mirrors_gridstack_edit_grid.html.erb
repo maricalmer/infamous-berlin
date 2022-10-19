@@ -15,24 +15,18 @@
       <div class="grid-search-big-item-img-wrapper">
         <picture>
           <source srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 1200px)">
-          <% if mirror.project.attachments.first.image? %>
-            <% if mirror.crop_x.present? %>
-              <%= cl_image_tag mirror.project.attachments.first.key, class: "grid-search-big-item-img grid-search-big-item-img-no-sizing", height: mirror.crop_h, width: mirror.crop_w, x: mirror.crop_x, y: mirror.crop_y, crop: "crop" %>
-            <% else %>
-              <%= cl_image_tag mirror.project.attachments.first.key, class: "grid-search-big-item-img" %>
-            <% end %>
-          <% elsif mirror.project.attachments.first.video? %>
-            <% if mirror.crop_x.present? %>
-              <%= cl_video_tag mirror.project.attachments.first.key, class: "grid-search-big-item-img grid-search-big-item-img-no-sizing", poster: { transformation: [ { height: mirror.crop_h.to_i, width: mirror.crop_w.to_i, x: mirror.crop_x.to_i, y: mirror.crop_y.to_i, crop: "crop" } ] } %>
-            <% else %>
-              <%= cl_video_tag mirror.project.attachments.first.key, class: "grid-search-big-item-img" %>
-            <% end %>
+          <% if mirror.displays_cropped_img? %>
+            <%= cl_image_tag mirror.attachment_key, class: "grid-search-big-item-img grid-search-big-item-img-no-sizing", height: mirror.crop_h, width: mirror.crop_w, x: mirror.crop_x, y: mirror.crop_y, crop: "crop" %>
+          <% elsif mirror.displays_original_img? %>
+            <%= cl_image_tag mirror.attachment_key, class: "grid-search-big-item-img" %>
+          <% elsif mirror.displays_cropped_video_poster? %>
+            <%= cl_video_tag mirror.attachment_key, class: "grid-search-big-item-img grid-search-big-item-img-no-sizing", poster: { transformation: [ { height: mirror.crop_h.to_i, width: mirror.crop_w.to_i, x: mirror.crop_x.to_i, y: mirror.crop_y.to_i, crop: "crop" } ] } %>
+          <% elsif mirror.displays_original_video_poster? %>
+            <%= cl_video_tag mirror.attachment_key, class: "grid-search-big-item-img" %>
+          <% elsif mirror.displays_cropped_audio_poster? %>
+            <%= cl_image_tag "logo-audio", class: "grid-search-big-item-img grid-search-big-item-img-no-sizing", height: mirror.crop_h, width: mirror.crop_w, x: mirror.crop_x, y: mirror.crop_y, crop: "crop" %>
           <% else %>
-            <% if mirror.crop_x.present? %>
-              <%= cl_image_tag "logo-audio", class: "grid-search-big-item-img grid-search-big-item-img-no-sizing", height: mirror.crop_h, width: mirror.crop_w, x: mirror.crop_x, y: mirror.crop_y, crop: "crop" %>
-            <% else %>
-              <%= image_tag asset_path('logo-audio.png'), class: "grid-search-big-item-img" %>
-            <% end %>
+            <%= image_tag asset_path('logo-audio.png'), class: "grid-search-big-item-img" %>
           <% end %>
         </picture>
         <!-- ^^ needs to synchronize with a method -->
