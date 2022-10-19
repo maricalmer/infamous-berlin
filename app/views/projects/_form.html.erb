@@ -52,7 +52,7 @@
   </div>
   <label for="project_attachments" class="project-new-photo-btn">
     <i class="fas fa-paperclip me-2 pt-1"></i>
-    <h3>select attachment(s)</h3>
+    <a class="link">select attachment(s)</a>
   </label>
   <%= f.input :attachments, as: :file, label: false, :input_html => { :multiple => true, accept: ".png, .jpg, .jpeg, .mp4, .mp3", class: "form-project-upload-photos-hidden" } %>
 

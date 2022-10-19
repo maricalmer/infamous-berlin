@@ -4,7 +4,6 @@ class ProjectsController < ApplicationController
 
   require "services/autocomplete_generator"
   require "services/tags_renderer"
-  require "workflows/project_context"
 
   def show
     @members = @project.members
@@ -53,7 +52,7 @@ class ProjectsController < ApplicationController
   end
 
   def upcoming_projects
-    @projects = ProjectContext.new.upcoming_projects(params)
+    @projects = Project.list_projects_based_on(params)
     @projects = @projects.search_by_title_description_location_category(params[:query]) if params[:query].present?
     authorize @projects
     respond_to do |format|

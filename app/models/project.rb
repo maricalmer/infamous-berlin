@@ -27,6 +27,7 @@ class Project < ApplicationRecord
   include PgSearch::Model
   require "services/slug_generator"
   require "services/tags_renderer"
+  require "workflows/project_selector"
 
   pg_search_scope :search_by_title_description_location_category, against: {
     title: "A",
@@ -39,6 +40,10 @@ class Project < ApplicationRecord
 
   def to_param
     slug
+  end
+
+  def self.list_projects_based_on(params)
+    ProjectSelector.new.custom_index(params)
   end
 
   private

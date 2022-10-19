@@ -42,6 +42,13 @@ RSpec.describe UserContext do
     end
   end
 
+  describe "add default img if no img after account creation" do
+    let(:user) { FactoryBot.create(:user) }
+    it "returns default img name file" do
+      expect(user.photo.filename.to_s).to match("default-profile-peep.png")
+    end
+  end
+
   describe "default_profile_pic?" do
     let(:user) { FactoryBot.create(:user) }
     it "is truthy when no profile pic uploaded" do
@@ -147,13 +154,6 @@ RSpec.describe UserContext do
       upcoming_project.save!
       user_context = UserContext.new(user)
       expect(user_context.display_ongoing_projects.size).to eq(1)
-    end
-  end
-
-  describe "add default img if no img after account creation" do
-    let(:user) { FactoryBot.create(:user) }
-    it "returns default img name file" do
-      expect(user.photo.filename.to_s).to match("default-profile-peep.png")
     end
   end
 end

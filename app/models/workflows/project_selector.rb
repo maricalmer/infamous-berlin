@@ -1,5 +1,5 @@
-class ProjectContext
-  def upcoming_projects(params)
+class ProjectSelector
+  def custom_index(params)
     if params[:search].present? && params[:search][:status] == "past"
       @projects = Project.where(status: "past").includes(user: { photo_attachment: :blob })
     elsif params[:search].present? && params[:search][:status] == "all"
