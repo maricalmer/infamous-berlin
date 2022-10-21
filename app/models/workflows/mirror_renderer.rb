@@ -34,8 +34,10 @@ class MirrorRenderer
   private
 
   def select_mirrors(status)
-    all_projects_ids = Project.public_send(status).where(user: @user)
-                              .or(Project.public_send(status).where(id: project_ids_from_collabs))
+    all_projects_ids = Project.public_send(status)
+                              .where(user: @user)
+                              .or(Project.public_send(status)
+                              .where(id: project_ids_from_collabs))
     Mirror.where(project_id: all_projects_ids)
           .where(user: @user)
           .order(:created_at)

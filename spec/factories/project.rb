@@ -11,9 +11,9 @@ FactoryBot.define do
     description
     after :build do |project|
       project.attachments.attach(
-        io: File.open(Rails.root.join("app", "assets", "images", "logo.png")),
-        filename: 'logo.png',
-        content_type: "image/png"
+        io: File.open(Rails.root.join("spec", "fixtures", "files", "img_sample.jpeg")),
+        filename: 'img_sample.jpeg',
+        content_type: "image/jpeg"
       )
     end
   end

@@ -57,9 +57,9 @@ RSpec.describe UserContext do
     end
     it "is falsy when profile pic uploaded" do
       user.photo.attach(
-        io: File.open(Rails.root.join("app", "assets", "images", "logo.png")),
-        filename: 'logo.png',
-        content_type: "image/png"
+        io: File.open(Rails.root.join("spec", "fixtures", "files", "img_sample.jpeg")),
+        filename: 'img_sample.jpeg',
+        content_type: "image/jpeg"
       )
       user_context = UserContext.new(user)
       expect(user_context.default_profile_pic?).to be_falsy
@@ -79,18 +79,18 @@ RSpec.describe UserContext do
     end
     it "returns no result if user has an uploaded profile picture only" do
       user.photo.attach(
-        io: File.open(Rails.root.join("app", "assets", "images", "logo.png")),
-        filename: 'logo.png',
-        content_type: "image/png"
+        io: File.open(Rails.root.join("spec", "fixtures", "files", "img_sample.jpeg")),
+        filename: 'img_sample.jpeg',
+        content_type: "image/jpeg"
       )
       user_context = UserContext.new(user)
       expect(user_context.completed_profiles.size).to eq(0)
     end
     it "returns no result if user has an uploaded profile picture only" do
       user_with_bio.photo.attach(
-        io: File.open(Rails.root.join("app", "assets", "images", "logo.png")),
-        filename: 'logo.png',
-        content_type: "image/png"
+        io: File.open(Rails.root.join("spec", "fixtures", "files", "img_sample.jpeg")),
+        filename: 'img_sample.jpeg',
+        content_type: "image/jpeg"
       )
       user_context = UserContext.new(user_with_bio)
       expect(user_context.completed_profiles.size).to eq(1)
@@ -106,9 +106,9 @@ RSpec.describe UserContext do
     let(:upcoming_project) { FactoryBot.build(:project, status: "upcoming", user: user) }
     it "returns no result if user has 1 upcoming project" do
       upcoming_project.attachments.attach(
-        io: File.open(Rails.root.join("app", "assets", "images", "logo.png")),
-        filename: 'logo.png',
-        content_type: "image/png"
+        io: File.open(Rails.root.join("spec", "fixtures", "files", "img_sample.jpeg")),
+        filename: 'img_sample.jpeg',
+        content_type: "image/jpeg"
       )
       upcoming_project.save!
       user_context = UserContext.new(user)
@@ -117,9 +117,9 @@ RSpec.describe UserContext do
     let(:past_project) { FactoryBot.build(:project, status: "past", user: user) }
     it "returns 1 result if user has 1 past project" do
       past_project.attachments.attach(
-        io: File.open(Rails.root.join("app", "assets", "images", "logo.png")),
-        filename: 'logo.png',
-        content_type: "image/png"
+        io: File.open(Rails.root.join("spec", "fixtures", "files", "img_sample.jpeg")),
+        filename: 'img_sample.jpeg',
+        content_type: "image/jpeg"
       )
       past_project.save!
       user_context = UserContext.new(user)
@@ -136,9 +136,9 @@ RSpec.describe UserContext do
     let(:past_project) { FactoryBot.build(:project, status: "past", user: user) }
     it "returns no result if user has 1 past project" do
       past_project.attachments.attach(
-        io: File.open(Rails.root.join("app", "assets", "images", "logo.png")),
-        filename: 'logo.png',
-        content_type: "image/png"
+        io: File.open(Rails.root.join("spec", "fixtures", "files", "img_sample.jpeg")),
+        filename: 'img_sample.jpeg',
+        content_type: "image/jpeg"
       )
       past_project.save!
       user_context = UserContext.new(user)
@@ -147,9 +147,9 @@ RSpec.describe UserContext do
     let(:upcoming_project) { FactoryBot.build(:project, status: "upcoming", user: user) }
     it "returns 1 result if user has 1 upcoming project" do
       upcoming_project.attachments.attach(
-        io: File.open(Rails.root.join("app", "assets", "images", "logo.png")),
-        filename: 'logo.png',
-        content_type: "image/png"
+        io: File.open(Rails.root.join("spec", "fixtures", "files", "img_sample.jpeg")),
+        filename: 'img_sample.jpeg',
+        content_type: "image/jpeg"
       )
       upcoming_project.save!
       user_context = UserContext.new(user)

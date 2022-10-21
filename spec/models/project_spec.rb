@@ -35,6 +35,7 @@ RSpec.describe Project do
     end
   end
   describe "callbacks" do
+    let(:project) { FactoryBot.create(:project) }
     it "updates slug after title update" do
       project.title = "new_title"
       project.save

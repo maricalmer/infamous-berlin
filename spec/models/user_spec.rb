@@ -47,6 +47,7 @@ RSpec.describe User do
     end
   end
   describe "callbacks" do
+    let(:user) { FactoryBot.create(:user) }
     it "updates slug after username update" do
       user.username = "new_username"
       user.save
