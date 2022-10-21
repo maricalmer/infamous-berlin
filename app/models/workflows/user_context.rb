@@ -49,6 +49,10 @@ class UserContext
     Project.where(id: upcoming_projects_ids).or(Project.where(id: upcoming_collabs_ids))
   end
 
+  def find_collab_within(project_id)
+    @user.collabs.find_by(project_id: project_id)
+  end
+
   private
 
   def user_chatrooms

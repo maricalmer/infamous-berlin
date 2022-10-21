@@ -59,6 +59,10 @@ class User < ApplicationRecord
     slug
   end
 
+  def find_collab_within(project_id)
+    UserContext.new(self).find_collab_within(project_id)
+  end
+
   private
 
   def set_slug

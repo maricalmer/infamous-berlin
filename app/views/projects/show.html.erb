@@ -154,17 +154,16 @@
           <div class="modal-member-line">
             <div class="diamond-frame-member-modal">
               <%= link_to user_path(member.slug) do %>
-                <% if member.photo.attached? %>
+                <!-- if member.photo.attached? -->
                   <%= cl_image_tag member.photo.key, quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 100, crop: "fill"}] %>
-                <% else %>
-                  <%= image_tag asset_path('logo.png') %>
-                <% end %>
+                <!-- else -->
+                  <!-- image_tag asset_path('logo.png') -->
+                <!-- end -->
               <% end %>
             </div>
             <%= link_to member.username, user_path(member.slug), class:"member-modal-username" %>
-            <% collab = member.collabs.find_by(project_id: @project.id) %>
             <% if @project.user == current_user %>
-              <%= link_to collab_path(collab), class:"member-modal-delete-symbol", method: :delete do %>
+              <%= link_to collab_path(member.find_collab_within(@project.id)), class:"member-modal-delete-symbol", method: :delete do %>
                 <i class="far fa-trash-alt"></i>
               <% end %>
             <% end %>

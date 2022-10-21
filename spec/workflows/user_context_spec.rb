@@ -156,4 +156,26 @@ RSpec.describe UserContext do
       expect(user_context.display_ongoing_projects.size).to eq(1)
     end
   end
+  describe "find_collab_within(project_id)" do
+    let(:member) { FactoryBot.create(:user) }
+    let(:first_project_owner) { FactoryBot.create(:user) }
+    let(:second_project_owner) { FactoryBot.create(:user) }
+    let(:first_project) { FactoryBot.create(:project) }
+    let(:second_project) { FactoryBot.create(:project) }
+    let(:first_collab) { FactoryBot.build(:collab) }
+    let(:second_collab) { FactoryBot.build(:collab) }
+    it "returns the right collab among several collabs" do
+      first_collab.project = first_project
+      first_collab.project.user = first_project_owner
+      first_collab.member = member
+      first_collab.save
+      second_collab.project = second_project
+      second_collab.project.user = second_project_owner
+      second_collab.member = member
+      second_collab.save
+      user_context = UserContext.new(member)
+      expect(user_context.find_collab_within(first_project.id)).to eq(first_collab)
+      expect(user_context.find_collab_within(second_project.id)).to eq(second_collab)
+    end
+  end
 end
