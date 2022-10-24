@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_action :find_chatroom, only: [:create]
+  before_action :find_or_create_chatroom, only: [:create]
   before_action :find_user, only: [:create]
 
   def create
@@ -25,7 +25,7 @@ class MessagesController < ApplicationController
 
   private
 
-  def find_chatroom
+  def find_or_create_chatroom
     if params[:receiver_id]
       receiver = User.find(params[:receiver_id])
       @chatroom = Chatroom.find_by(author: current_user, receiver: receiver)

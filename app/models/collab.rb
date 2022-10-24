@@ -13,7 +13,7 @@ class Collab < ApplicationRecord
   def project_member_not_project_owner
     return unless member == project.user
 
-    errors.add(:member, 'You cannot be a member of your own project')
+    errors.add(:member, 'is already collaborating on this project')
   end
 
   def create_mirror

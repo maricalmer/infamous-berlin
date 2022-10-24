@@ -17,6 +17,7 @@ RSpec.describe Collab do
       collab.project.user = user
       collab.member = user
       expect(collab).to_not be_valid
+      expect(collab.errors.full_messages_for(:member)).to include "Member is already collaborating on this project"
     end
     it "is valid with distinct project owner and member" do
       collab.project = project
@@ -56,6 +57,5 @@ RSpec.describe Collab do
       expect(mirrors.last.user).to_not eq(user)
       expect(mirrors.last.user).to eq(project.user)
     end
-
   end
 end

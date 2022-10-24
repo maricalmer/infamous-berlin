@@ -1,27 +1,28 @@
 class Chatroom < ApplicationRecord
-  self.implicit_order_column = "updated_at"
   has_many :messages, -> { order(created_at: :asc) }, dependent: :destroy
   belongs_to :author, class_name: 'User'
   belongs_to :receiver, class_name: 'User'
-  # has_many :users, through: :messages
-  # belongs_to :user
-  # belongs_to :project
 
-  validates :author, uniqueness: { scope: :receiver }
+  self.implicit_order_column = "updated_at"
+  validate :author_receiver_pair_must_be_unique
 
   scope :participating, lambda { |user|
     where("(chatrooms.author_id = ? OR chatrooms.receiver_id = ?)", user.id, user.id)
   }
 
+  require "workflows/chatroom_context"
+
   def with(current_user)
-    # self.user == current_user ? self.project.user : self.user
-    # self.messages.first.user == current_user ? self.messages.first.receiver : self.messages.first.user
-    current_user == author ? receiver : author
+    ChatroomContext.new(self).find_other_participant(current_user)
   end
 
   def participates?(user)
-    # self.user == user || self.project.user == user
-    # self.messages.first.user == user || self.messages.first.receiver == user
-    author == user || receiver == user
+    ChatroomContext.new(self).participates?(user)
+  end
+
+  private
+
+  def author_receiver_pair_must_be_unique
+    ChatroomContext.new(self).author_receiver_pair_must_be_unique
   end
 end
