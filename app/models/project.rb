@@ -24,10 +24,10 @@ class Project < ApplicationRecord
   after_create_commit :create_mirror
   before_update :set_slug
 
-  include PgSearch::Model
   require "services/slug_generator"
   require "services/tags_renderer"
   require "workflows/project_selector"
+  include PgSearch::Model
 
   pg_search_scope :search_by_title_description_location_category, against: {
     title: "A",

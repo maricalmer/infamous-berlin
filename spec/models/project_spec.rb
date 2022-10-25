@@ -7,6 +7,7 @@ RSpec.describe Project do
     let(:project_no_description) { FactoryBot.build_stubbed(:project, description: nil) }
     let(:project_no_attachment) { FactoryBot.build_stubbed(:project, attachments: nil) }
     it "is valid with title and description" do
+      project
       expect(project).to be_valid
     end
     it "is not valid without a title" do

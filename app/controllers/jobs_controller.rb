@@ -3,10 +3,6 @@ class JobsController < ApplicationController
   before_action :set_project, only: %i[new create]
 
   def index
-    # https://gist.github.com/MyklClason/107f277a8da841db39cd566d218c91a5
-    # add checkboxes in form and display them on the left side of the page
-    # find a way to filter @jobs based on checkbox state
-    # add an event on form so that when checkboxes state changes the form is submited via ajax
     @jobs = policy_scope(Job)
     if params[:search].present? && params[:search][:payment] == "fixed_rate"
       @jobs = Job.where(payment: "fixed_rate")

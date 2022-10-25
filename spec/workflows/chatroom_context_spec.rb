@@ -5,11 +5,11 @@ RSpec.describe ChatroomContext do
   let(:chatroom) { FactoryBot.build_stubbed(:chatroom) }
   let(:user) { FactoryBot.build_stubbed(:user) }
   describe "find_other_participant(user)" do
-    it "returns other chat participant if one of the two participants is passed as arg - receiver" do
+    it "returns other chat participant if one of the two participants is passed as arg - author" do
       chatroom_context = ChatroomContext.new(chatroom)
       expect(chatroom_context.find_other_participant(chatroom.author)).to eq(chatroom.receiver)
     end
-    it "returns other chat participant if one of the two participants is passed as arg - author" do
+    it "returns other chat participant if one of the two participants is passed as arg - receiver" do
       chatroom_context = ChatroomContext.new(chatroom)
       expect(chatroom_context.find_other_participant(chatroom.receiver)).to eq(chatroom.author)
     end
@@ -71,7 +71,7 @@ RSpec.describe ChatroomContext do
   describe "mark_messages_as_read(messages, user)" do
     let(:alternative_chatroom) { FactoryBot.build(:chatroom, author: user, receiver: message_receiver) }
     let(:alternative_user) { FactoryBot.build(:user) }
-    it "updates the read_by_receiver attribute to true f" do
+    it "updates the read_by_receiver attribute to true" do
       first_chatroom_message
       second_chatroom_message
       chatroom_context = ChatroomContext.new(main_chatroom)

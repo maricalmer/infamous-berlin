@@ -22,7 +22,7 @@
             <h5>posted <%= time_ago_in_words(job.created_at) %> ago</h5>
           </div>
         </div>
-        <p class="job-card-description highlight-query-js"><%= job.description * 3 %></p>
+        <p class="job-card-description highlight-query-js"><%= job.description %></p>
         <ul class="skills-list ps-0">
           <% job.display_skills.each do |skill| %>
             <li><h5 class="skill-box highlight-query-js"><%= skill.downcase %></h5></li>
