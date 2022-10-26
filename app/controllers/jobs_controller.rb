@@ -2,12 +2,12 @@ class JobsController < ApplicationController
   before_action :set_job, only: %i[show edit update destroy]
   before_action :set_project, only: %i[new create]
 
+  require "services/autocomplete_generator"
+
   def index
     @jobs = policy_scope(Job)
-    if params[:search].present? && params[:search][:payment] == "fixed_rate"
-      @jobs = Job.where(payment: "fixed_rate")
-    elsif params[:search].present? && params[:search][:payment] == "hourly_rate"
-      @jobs = Job.where(payment: "hourly_rate")
+    if params[:search].present? && params[:search][:payment] != "all"
+      @jobs = Job.filter_jobs_on(params[:search][:payment])
     end
     @autocomplete_set = AutocompleteGenerator.new.skill_set
     @jobs = @jobs.search_by_title_description_skills(params[:query]) if params[:query].present?

@@ -4,10 +4,6 @@ class InquiriesController < ApplicationController
 
   require "services/tags_renderer"
 
-  # def index
-  #   @inquiries = policy_scope(Inquiry)
-  # end
-
   def show
     @user_formatted_skills = TagsRenderer.new(@inquiry.user.skills).format_tags
     @statuses = Inquiry.statuses.keys
@@ -45,14 +41,8 @@ class InquiriesController < ApplicationController
   end
 
   def change_status
-    if params[:status].present? && Inquiry.statuses.include?(params[:status])
-      @inquiry.update(status: params[:status])
-      if params[:status] == "accepted"
-        Collab.create(project_id: @inquiry.job.project.id, user_id: @inquiry.user.id)
-      elsif params[:status] == "rejected"
-        Collab.where(project_id: @inquiry.job.project.id).where(user_id: @inquiry.user.id).first.destroy
-      end
-    end
+    @inquiry.update(status: params[:status])
+    @inquiry.update_collabs(params[:status])
     redirect_to @inquiry, notice: "Status updated to #{@inquiry.status}"
   end
 

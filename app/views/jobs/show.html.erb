@@ -12,7 +12,7 @@
       <h4 class="job-show-description"><%= @job.description %></h4>
       <div class="job-show-details">
         <div class="job-show-details-payment">
-          <% if @job.payment == "fixed_rate" %>
+          <% if @job.fixed_rate? %>
             <i class="fas fa-money-bill-wave-alt me-1"></i><h5><%= @job.money %>€</h5>
           <% else %>
             <i class="fas fa-money-bill-wave-alt me-1"></i><h5><%= @job.money %>€/hour</h5>
@@ -31,8 +31,10 @@
           <li><h4 class="skill-box"><%= skill.downcase %></h4></li>
         <% end %>
       </ul>
-      <% if @job.project.user != current_user %>
+      <% if @job.active_offer?(current_user) %>
         <%= link_to "Apply!", new_job_inquiry_path(@job), class: "btn btn-apply bck-btn-reload-js" %>
+      <% elsif !@job.active_offer?(current_user) %>
+        <button disabled class="btn btn-edit">Inactive offer</button>
       <% else %>
         <%= link_to "Edit your job", edit_job_path(@job), class: "btn btn-edit" %>
       <% end %>

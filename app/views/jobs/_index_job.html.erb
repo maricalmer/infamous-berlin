@@ -8,11 +8,11 @@
     <% jobs.each do |job| %>
       <div class="mt-5 mb-2 mx-auto g-col-4 job-card highlight-js">
         <div class="job-card-title">
-          <h2 class="highlight-query-js"><%= job.title.upcase%></h2><br>
+          <h2 class="highlight-query-js"><%= job.title.upcase %></h2><br>
         </div>
         <div class="d-flex justify-content-between">
           <div>
-          <% if job.payment == "hourly_rate" %>
+          <% if job.hourly_rate? %>
             <h5><%= job.money %>€/hour</h5>
           <% else %>
             <h5><%= job.money %>€ total</h5>

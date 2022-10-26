@@ -302,10 +302,13 @@ abbr {
     font-size: 2rem;
   }
 }
-.payment-type-dropdown {
+.payment-type-dropdown, .status-dropdown {
   display: flex;
   align-items: center;
   margin-right: 1rem;
+}
+.status-dropdown {
+  margin-top: 2rem;
 }
 // .new-project-form-description-field {
 //   margin-bottom: 8vh;
@@ -443,7 +446,7 @@ abbr {
   display: flex;
   align-items: center;
 }
-.job-payment-dropdown {
+.job-payment-dropdown, .job-status-dropdown {
   display: flex;
 }
 .job-payment-text {
@@ -453,14 +456,14 @@ abbr {
   width: 100px;
   margin-right: 1rem;
 }
-.job-dropdown-input {
+.job-dropdown-input, .job-status-input {
   width: fit-content;
   margin-right: 0.3rem;
 }
 .job-money-input {
   width: 70px;
 }
-.payment-type-dropdown {
+.payment-type-dropdown, .status-dropdown {
   margin-bottom: 2rem;
 }
 .update-project-form-title {
@@ -543,7 +546,7 @@ abbr {
   .job-dropdown-label, .job-money-label {
     width: fit-content;
   }
-  .job-payment-dropdown {
+  .job-payment-dropdown, .job-status-dropdown {
     margin-bottom: 0;
   }
   .new-project-form-title {
@@ -604,7 +607,7 @@ abbr {
       margin-bottom: 0;
     }
   }
-  .payment-type-dropdown {
+  .payment-type-dropdown, .status-dropdown {
     margin-bottom: 0;
     margin-right: 5rem;
   }

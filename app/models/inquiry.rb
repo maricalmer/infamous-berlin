@@ -1,6 +1,4 @@
 class Inquiry < ApplicationRecord
-  # belongs_to :applicant, foreign_key: 'applicant_id', class_name: 'User'
-  # belongs_to :applying, foreign_key: 'applying_id', class_name: 'Project'
   belongs_to :user
   belongs_to :job
 
@@ -11,7 +9,13 @@ class Inquiry < ApplicationRecord
   enum status: { on_hold: "on_hold", accepted: "accepted", rejected: "rejected" }
   has_one_attached :attached_file
 
-  # def find_project
-  #   Project.find(applying_id)
-  # end
+  def update_collabs(inquiry_status)
+    case inquiry_status
+    when "accepted"
+      Collab.create(project_id: job.project.id, user_id: user.id)
+    when "rejected"
+      collab = Collab.where(project_id: job.project.id).where(user_id: user.id)
+      collab.first.destroy if collab.present?
+    end
+  end
 end

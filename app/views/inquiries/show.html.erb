@@ -43,22 +43,22 @@
             <li><h4 class="skill-box"><%= skill.downcase %></h4></li>
           <% end %>
         </ul>
-        <% if @inquiry.attached_file.attached?%>
+        <% if @inquiry.attached_file.attached? %>
           <%= link_to rails_blob_path(@inquiry.attached_file, disposition: "attachment"), class: "btn btn-download" do %>
             <div class="download-arrow">&#8682;</div><h4> download attachment</h4>
           <% end %>
         <% end %>
       </div>
       <h4>Status:
-        <% if @inquiry.status === "on_hold" %>
+        <% if @inquiry.on_hold? %>
           <span class="inquiry-hold-pill">on hold</span>
-        <% elsif @inquiry.status === "accepted" %>
+        <% elsif @inquiry.accepted? %>
           <span class="inquiry-accepted-pill">accepted</span>
-        <% elsif @inquiry.status === "rejected" %>
+        <% elsif @inquiry.rejected? %>
           <span class="inquiry-rejected-pill">rejected</span>
         <% end  %>
       </h4>
-      <% if current_user == @inquiry.job.project.user && @inquiry.status == "on_hold" %>
+      <% if current_user == @inquiry.job.project.user && @inquiry.on_hold? %>
         <div class="btns-inquiry">
           <%= link_to change_status_inquiry_path(@inquiry, status: "accepted"), class: "btn btn-accept", remote: true, method: :patch do %>
             Accept
@@ -80,8 +80,14 @@
       <% end %>
       <div class="inquiry-show-footer">
         <h5 class="text-center mb-5">
-          application to the job offer <span><%= link_to @inquiry.job.title, job_path(@inquiry.job) %></span>
-          for the project <span><%= link_to @inquiry.job.project.title, project_path(@inquiry.job.project) %></span>
+          <% if @inquiry.job.present? %>
+            <p>application to the job offer <span><%= link_to @inquiry.job.title, job_path(@inquiry.job) %></span>
+            for the project <span><%= link_to @inquiry.job.project.title, project_path(@inquiry.job.project) %></span></p>
+          <% else %>
+            <p class="fst-italic">
+              || job offer has been deleted ||
+            </p>
+          <% end %>
         </h5>
       </div>
     </div>

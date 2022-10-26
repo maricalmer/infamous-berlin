@@ -37,6 +37,10 @@
       <div class="job-payment-js job-payment-text">€ total</div>
     </div>
   </div>
+  <div class="status-dropdown">
+    <%= f.input :status, label: 'Status:', as: :select, collection: ["open", "close"], include_blank: false, wrapper_html: { class: "job-status-dropdown" }, input_html: { class: "job-status-input" }, label_html: { class: "job-dropdown-label" } %>
+    <i class="fas fa-angle-down"></i>
+  </div>
   <%= f.submit "Save!", id: "btn-form-submit", class: "form-btn-js" %>
   <button class="more-btn jobs-more-btn btn-hidden form-btn-js" type="button" disabled>
     <span class="spinner-border spinner-border" role="status" aria-hidden="true"></span>

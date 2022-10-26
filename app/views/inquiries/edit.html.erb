@@ -18,7 +18,7 @@
               <h3 class="text-break text-center"><%= @job.title.upcase %></h3>
               <i class="fas fa-quote-right ms-4"></i>
             </div>
-            <h4><%= @job.description * 5 %></h4>
+            <h4><%= @job.description %></h4>
             <ul class="my-4 skills-list ps-0 align-items-center">
               <h4 class="me-5"><%= "Skill".pluralize(@job.display_skills.count) %> needed:</h4>
               <% @job.display_skills_needed.each do |skill| %>

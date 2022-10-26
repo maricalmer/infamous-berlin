@@ -1,7 +1,6 @@
 class Job < ApplicationRecord
   belongs_to :project
   has_many :inquiries
-  # ^^ no dependent: :destroy (inquiry should be seen even if job gets deleted)
   validates :title, presence: true
   validates :description, presence: true
   validates :money, presence: true
@@ -27,5 +26,13 @@ class Job < ApplicationRecord
 
   def display_skills
     TagsRenderer.new(skills_needed).format_tags
+  end
+
+  def self.filter_jobs_on(payment_type)
+    Job.where(payment: payment_type)
+  end
+
+  def active_offer?(current_user)
+    project.user != current_user && open?
   end
 end
