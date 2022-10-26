@@ -1,6 +1,7 @@
 require 'rails_helper'
 
-Chatroom.new
+require "workflows/chatroom_context"
+
 RSpec.describe ChatroomContext do
   let(:chatroom) { FactoryBot.build_stubbed(:chatroom) }
   let(:user) { FactoryBot.build_stubbed(:user) }

@@ -1,6 +1,7 @@
 require 'rails_helper'
 
-Mirror.new
+require "workflows/mirror_renderer"
+
 RSpec.describe MirrorRenderer do
   describe "load_mirrors_for_projects(status)" do
     let(:user) { FactoryBot.create(:user) }
