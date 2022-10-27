@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[home search after_registration_path]
+  skip_before_action :authenticate_user!, only: %i[home after_registration_path]
   before_action :set_project_ids,
                 only: %i[open_jobs_dash close_jobs_dash hold_received_dash accepted_received_dash
                          rejected_received_dash]
@@ -11,54 +11,65 @@ class PagesController < ApplicationController
   end
 
   def dashboard
+    # PROJECT MODEL
     @upcoming_projects = Project.upcoming.where(user: current_user).order(created_at: :desc)
     @past_projects = Project.past.where(user: current_user).order(created_at: :desc)
-    if @upcoming_projects.any?
-      @projects = @upcoming_projects
-    elsif @past_projects.any?
-      @projects = @past_projects
-    end
+    projects_relevance = { first: @upcoming_projects, second: @past_projects }
+    @projects = display_by_relevance_in_dashboard(projects_relevance)
     project_ids = (@upcoming_projects.ids << @past_projects.ids).flatten
 
+    # JOB MODEL
     @open_jobs = Job.open.where(project_id: project_ids).order(created_at: :desc)
     @close_jobs = Job.close.where(project_id: project_ids).order(created_at: :desc)
-    if @open_jobs.any?
-      @jobs = @open_jobs
-    elsif @close_jobs.any?
-      @jobs = @close_jobs
-    end
+    jobs_relevance = { first: @open_jobs, second: @close_jobs }
+    @jobs = display_by_relevance_in_dashboard(jobs_relevance)
     job_ids = (@open_jobs.ids << @close_jobs.ids).flatten
+    # if @open_jobs.any?
+    #   @jobs = @open_jobs
+    # elsif @close_jobs.any?
+    #   @jobs = @close_jobs
+    # end
 
+
+    # COLLAB MODEL
     @collab_project_ids = Collab.where(member: current_user).includes([:project]).map { |collab| collab.project.id }
     @upcoming_collabs = Project.upcoming.where(id: @collab_project_ids).order(created_at: :desc)
     @past_collabs = Project.past.where(id: @collab_project_ids).order(created_at: :desc)
-    if @upcoming_collabs.any?
-      @collabs = @upcoming_collabs
-    elsif @past_collabs.any?
-      @collabs = @past_collabs
-    end
+    collabs_relevance = { first: @upcoming_collabs, second: @past_collabs }
+    @collabs = display_by_relevance_in_dashboard(collabs_relevance)
+    # if @upcoming_collabs.any?
+    #   @collabs = @upcoming_collabs
+    # elsif @past_collabs.any?
+    #   @collabs = @past_collabs
+    # end
 
+    # INQUIRY MODEL
     @hold_received_applications = Inquiry.on_hold.where(job_id: job_ids)
     @accepted_received_applications = Inquiry.accepted.where(job_id: job_ids)
     @rejected_received_applications = Inquiry.rejected.where(job_id: job_ids)
-    if @hold_received_applications.any?
-      @inquiries = @hold_received_applications
-    elsif @accepted_received_applications.any?
-      @inquiries = @accepted_received_applications
-    elsif @rejected_received_applications.any?
-      @inquiries = @rejected_received_applications
-    end
+    received_inquiries_relevance = { first: @hold_received_applications, second: @accepted_received_applications, third: @rejected_received_applications }
+    @received_inquiries = display_by_relevance_in_dashboard(received_inquiries_relevance)
+    # @inquiries = display_by_relevance_in_dashboard(inquiries_relevance)
+    # if @hold_received_applications.any?
+    #   @inquiries = @hold_received_applications
+    # elsif @accepted_received_applications.any?
+    #   @inquiries = @accepted_received_applications
+    # elsif @rejected_received_applications.any?
+    #   @inquiries = @rejected_received_applications
+    # end
 
     @hold_sent_applications = Inquiry.on_hold.where(user: current_user)
     @accepted_sent_applications = Inquiry.accepted.where(user: current_user)
     @rejected_sent_applications = Inquiry.rejected.where(user: current_user)
-    if @hold_sent_applications.any?
-      @inquiries = @hold_sent_applications
-    elsif @accepted_sent_applications.any?
-      @inquiries = @accepted_sent_applications
-    elsif @rejected_sent_applications.any?
-      @inquiries = @rejected_sent_applications
-    end
+    sent_inquiries_relevance = { first: @hold_sent_applications, second: @accepted_sent_applications, third: @rejected_sent_applications }
+    @sent_inquiries = display_by_relevance_in_dashboard(sent_inquiries_relevance)
+    # if @hold_sent_applications.any?
+    #   @inquiries = @hold_sent_applications
+    # elsif @accepted_sent_applications.any?
+    #   @inquiries = @accepted_sent_applications
+    # elsif @rejected_sent_applications.any?
+    #   @inquiries = @rejected_sent_applications
+    # end
   end
 
   def upcoming_projects_dash
@@ -176,6 +187,13 @@ class PagesController < ApplicationController
   end
 
   private
+
+  def display_by_relevance_in_dashboard(ordered_options)
+    ordered_options.each do |_k, option|
+      return option if option.present?
+    end
+    return nil
+  end
 
   def set_project_ids
     projects = Project.past.where(user: current_user)

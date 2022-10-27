@@ -158,7 +158,7 @@
     <%= render "collabs_dash" %>
     <div class="dash-chevron"><h5 class="past-chevron-right chevron-hidden">&#x3e;</h5></div>
   </div>
-<% elsif @hold_sent_applications.present? || @accepted_sent_applications.present? || @rejected_sent_applications.present? %>
+<% elsif @sent_inquiries.present? %>
   <div class="portfolio-cards">
     <div class="dash-chevron"><h5 class="past-chevron-left chevron-hidden">&#x3c;</h5></div>
     <%= render "sent_dash" %>
