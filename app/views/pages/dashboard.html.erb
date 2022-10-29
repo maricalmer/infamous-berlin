@@ -110,14 +110,14 @@
         </div>
       </li>
     <% end %>
-    <% if @upcoming_collabs.present? || @past_collabs.present? %>
+    <% if @upcoming_project_collabs.present? || @past_project_collabs.present? %>
       <li class="dash-dropdown">
         <div class="dash-dropdown-menu" >Collabs</div>
         <div class="dash-dropdown-links">
-          <% if @upcoming_collabs.present? %>
+          <% if @upcoming_project_collabs.present? %>
             <%= link_to "Upcoming", upcoming_collabs_dash_path, class: "dropdown-links-js", remote: true %>
           <% end %>
-          <% if @past_collabs.present? %>
+          <% if @past_project_collabs.present? %>
             <%= link_to "Past", past_collabs_dash_path, class: "dropdown-links-js", remote: true %>
           <% end %>
         </div>
