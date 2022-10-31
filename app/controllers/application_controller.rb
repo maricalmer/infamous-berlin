@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
   end
 
   def skip_pundit?
-    devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)|(^errors$)/
+    devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)|(^errors$)|(^dashboards$)/
   end
 
   def user_not_authorized

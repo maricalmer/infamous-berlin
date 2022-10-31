@@ -1,0 +1,41 @@
+<div class="dash-cards-slider js-slider js-projects-results">
+  <h4 class="dash-slider-title-mobile">Projects</h4>
+  <% @projects.includes([:attachments_attachments]).each do |project| %>
+    <div class="dash-card-project">
+      <%= link_to project_path(project.slug) do  %>
+        <h4 class="title-card-project-search">
+          <%= project.title %>
+          <% if project.upcoming? %>
+            <div class="ribbon">UPCOMING</div>
+          <% end %>
+        </h4>
+        <div class="dash-card-img-wrapper">
+          <% if project.attachments.attached? %>
+            <% if project.attachments.first.image? %>
+              <%= cl_image_tag project.attachments.first.key, class: "dash-card-img", quality: "auto:low", height: 155, transformation: [{fetch_format: "auto"}, {width: 400, crop: "fill"}] %>
+            <% elsif project.attachments.first.audio? %>
+              <%= cl_image_tag "/assets/logo-audio.png", class: "dash-card-img" %>
+            <% else %>
+              <%= cl_video_tag project.attachments.first.key, class: "dash-card-img" %>
+            <% end %>
+          <% else %>
+            <%= image_tag asset_path('logo.png'), class: "dash-card-img" %>
+          <% end %>
+        </div>
+        <div class="dash-card-text"><%= project.description %></div>
+      <% end %>
+      <div class="dash-card-btns">
+        <div class="dash-card-edit-btn">
+          <%= link_to edit_project_path(project.slug) do %>
+            <h5>Edit</h5>
+          <% end %>
+        </div>
+        <div class="dash-card-delete-btn">
+          <%= link_to project_path(project), method: :delete, data: { confirm: "Are you sure?" } do %>
+            <h5>Delete</h5>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

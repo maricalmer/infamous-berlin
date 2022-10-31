@@ -211,8 +211,7 @@
   content: "Less";
 }
 .dash-top-menu input[type="checkbox"]:checked ~ .dash-dropdowns {
-  max-height: 650px;
-  // ^^ find out max height
+  max-height: 825px;
   transition: all 1s cubic-bezier(.2, 1, .22, 1);
   overflow: scroll;
 }
@@ -554,7 +553,7 @@
     display: none;
   }
   .dash-dropdowns {
-    max-height: 650px;
+    min-height: 125px;
     display: flex;
     justify-content: space-evenly;
     top: 0px;

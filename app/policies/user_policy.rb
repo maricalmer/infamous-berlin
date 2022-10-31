@@ -17,4 +17,8 @@ class UserPolicy < ApplicationPolicy
   def destroy?
     record == user
   end
+
+  def after_registration_path?
+    true
+  end
 end

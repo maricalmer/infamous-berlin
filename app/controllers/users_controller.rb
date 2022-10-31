@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[show index]
+  skip_before_action :authenticate_user!, only: %i[show index after_registration_path]
   before_action :set_user, only: %i[show edit update destroy]
 
   require "workflows/user_context"
@@ -38,6 +38,10 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     redirect_to root_path, notice: 'Account deleted'
+  end
+
+  def after_registration_path
+    authorize User
   end
 
   private
