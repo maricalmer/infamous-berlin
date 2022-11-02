@@ -1,9 +1,6 @@
 class CollabsController < ApplicationController
-  #   skip_before_action :authenticate_user!, only: [:create, :destroy]
   before_action :set_collab, only: [:destroy]
   before_action :find_project, only: %i[new create]
-
-  # before_action :set_user, only: [:show, :edit, :update]
 
   def new
     @collab = Collab.new

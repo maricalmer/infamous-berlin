@@ -8,7 +8,7 @@
         <span><%= link_to inquiry.user.username, user_path(inquiry.user.slug) %></span> to project
         <span><%= link_to inquiry.job.project.title, project_path(inquiry.job.project.slug) %></span>
       </h4>
-      <%= link_to inquiry_path(inquiry), class:"dash-inquiries-links dash-arrow-link" do %>
+      <%= link_to inquiry_path(inquiry), class:"dash-inquiries-links dash-arrow-link", id: "test-id-on-hold-inquiry" do %>
         <i class="fas fa-arrow-right"></i>
       <% end %>
     </div>

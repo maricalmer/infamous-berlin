@@ -1,7 +1,7 @@
 class ChatroomContext
   attr_reader :chatroom
 
-  def initialize(chatroom)
+  def initialize(chatroom = nil)
     @chatroom = chatroom
   end
 

@@ -26,11 +26,4 @@ class DashboardRenderer
     end
     return nil
   end
-
-  private
-
-
-  # def gather_ids_from(first_collection, second_collection)
-  #   (first_collection.ids << second_collection.ids).flatten
-  # end
 end

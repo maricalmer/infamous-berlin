@@ -6,18 +6,6 @@ class ChatroomsController < ApplicationController
 
   require "workflows/chatroom_context"
 
-  # def create
-  #   @chatroom = Chatroom.new
-  #   authorize @chatroom
-  #   @message = Message.new
-  #   raise
-  #   if @chatroom.save!
-  #     redirect_to user_path(@user)
-  #   else
-  #     render "user/show"
-  #   end
-  # end
-
   def show
     @message = Message.new
     @chatrooms = Chatroom.participating(current_user).order('updated_at DESC')
@@ -40,11 +28,12 @@ class ChatroomsController < ApplicationController
   end
 
   def mark_messages_as_read
-    ChatroomContext.new(nil).mark_messages_as_read(@messages, current_user)
+    ChatroomContext.new.mark_messages_as_read(@messages, current_user)
   end
 
   def check_participating!
-    redirect_to root_path unless @chatroom && @chatroom.participates?(current_user)
+    redirect_to root_path unless @chatroom&.participates?(current_user)
+    # redirect_to root_path unless @chatroom && @chatroom.participates?(current_user)
   end
 
   def set_chatroom

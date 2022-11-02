@@ -7,16 +7,16 @@ RSpec.describe MirrorRenderer do
     let(:user) { FactoryBot.create(:user) }
     let(:upcoming_project) { FactoryBot.create(:project, status: "upcoming", user: user) }
     let(:past_project) { FactoryBot.create(:project, status: "past", user: user) }
-    it "loads mirrors for past projects on 'past' status" do
+    before(:example) do
       upcoming_project
       past_project
+    end
+    it "loads mirrors for past projects on 'past' status" do
       mirrors = MirrorRenderer.new(user).load_mirrors_for_projects("past")
       expect(mirrors.count).to eq(1)
       expect(mirrors.first.project).to eq(past_project)
     end
     it "loads mirrors for upcoming projects on 'upcoming' status" do
-      upcoming_project
-      past_project
       mirrors = MirrorRenderer.new(user).load_mirrors_for_projects("upcoming")
       expect(mirrors.count).to eq(1)
       expect(mirrors.first.project).to eq(upcoming_project)
@@ -103,8 +103,10 @@ RSpec.describe MirrorRenderer do
   end
   describe "cropped?(mirror)" do
     let(:img_attachment_project) { FactoryBot.create(:project) }
-    it "it validates that a mirror cover got cropped" do
+    before(:example) do
       img_attachment_project
+    end
+    it "it validates that a mirror cover got cropped" do
       mirrors = Mirror.all
       mirrors.first.update(crop_x: 300, crop_y: 20, crop_h: 1200, crop_w: 650)
       img_crop_check = MirrorRenderer.new.cropped?(mirrors.first)
@@ -112,7 +114,6 @@ RSpec.describe MirrorRenderer do
       expect(img_crop_check).to be_truthy
     end
     it "it validates that a mirror cover did not get cropped" do
-      img_attachment_project
       mirrors = Mirror.all
       img_crop_check = MirrorRenderer.new.cropped?(mirrors.first)
       expect(mirrors.count).to eq(1)

@@ -90,10 +90,10 @@
     <% end %>
     <% if @received_inquiry_ids.any? %>
       <li class="dash-dropdown">
-        <div class="dash-dropdown-menu" >Applications received</div>
+        <div class="dash-dropdown-menu" id="test-id-inquiries-menu" >Applications received</div>
         <div class="dash-dropdown-links">
           <% if @hold_received_applications.present? %>
-            <%= link_to "On hold", hold_received_dash_path, class: "dropdown-links-js", remote: true %>
+            <%= link_to "On hold", hold_received_dash_path, class: "dropdown-links-js", id:"test-id-on-hold-inquiries-menu", remote: true %>
           <% end %>
           <% if @accepted_received_applications.present? %>
             <%= link_to "Accepted", accepted_received_dash_path, class: "dropdown-links-js", remote: true %>
