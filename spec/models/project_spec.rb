@@ -3,18 +3,25 @@ require 'rails_helper'
 RSpec.describe Project do
   describe "validations" do
     let(:project) { FactoryBot.create(:project) }
-    let(:project_no_title) { FactoryBot.build_stubbed(:project, title: nil) }
-    let(:project_no_description) { FactoryBot.build_stubbed(:project, description: nil) }
+    let(:project_nil_title) { FactoryBot.build_stubbed(:project, title: nil) }
+    let(:project_empty_string_title) { FactoryBot.build_stubbed(:project, title: "") }
+    let(:project_nil_description) { FactoryBot.build_stubbed(:project, description: nil) }
+    let(:project_empty_string_description) { FactoryBot.build_stubbed(:project, description: "") }
     let(:project_no_attachment) { FactoryBot.build_stubbed(:project, attachments: nil) }
     it "is valid with title and description" do
-      project
       expect(project).to be_valid
     end
-    it "is not valid without a title" do
-      expect(project_no_title).to_not be_valid
+    it "is not valid with nil title" do
+      expect(project_nil_title).to_not be_valid
     end
-    it "is not valid without a description" do
-      expect(project_no_description).to_not be_valid
+    it "is not valid with an empty string title" do
+      expect(project_empty_string_title).to_not be_valid
+    end
+    it "is not valid with nil description" do
+      expect(project_nil_description).to_not be_valid
+    end
+    it "is not valid with an empty string description" do
+      expect(project_empty_string_description).to_not be_valid
     end
     it "is not valid without attachments" do
       expect(project_no_attachment).to_not be_valid

@@ -4,51 +4,42 @@ RSpec.describe Chatroom do
   let(:chatroom) { FactoryBot.create(:chatroom) }
   let(:user) { FactoryBot.create(:user) }
   describe "validations" do
-    let(:first_message) { FactoryBot.create(:message, chatroom: chatroom, user: user) }
-    let(:second_message) { FactoryBot.create(:message, chatroom: chatroom, user: user) }
-    let(:third_message) { FactoryBot.create(:message, chatroom: chatroom, user: user) }
+    let(:message) { FactoryBot.create(:message, chatroom: chatroom, user: user, content: "message is in chatroom") }
+    before(:example) do
+      message
+    end
     it "contains messages listed in ascending order based on creation date" do
-      first_message.chatroom = chatroom
-      second_message.chatroom = chatroom
-      third_message.chatroom = chatroom
-      messages = chatroom.messages
-      expect(messages.count).to eq(3)
-      expect(messages.first).to eq(first_message)
-      expect(messages[1]).to eq(second_message)
-      expect(messages.last).to eq(third_message)
+      expect(chatroom.messages.map(&:content)).to eq(["message is in chatroom"])
     end
     it "deletes the contained messages if chatroom is destroyed" do
-      first_message.chatroom = chatroom
-      messages = chatroom.messages
       chatroom.destroy
-      expect(messages.count).to eq(0)
+      expect(chatroom.messages.count).to eq(0)
     end
-    let(:alternative_chatroom) { FactoryBot.create(:chatroom) }
+    let(:old_chatroom) { FactoryBot.create(:chatroom, updated_at: 1.hour.ago) }
+    let(:very_old_chatroom) { FactoryBot.create(:chatroom, updated_at: 2.hour.ago) }
+    before(:example) do
+      old_chatroom
+      very_old_chatroom
+    end
     it "lists chatrooms in ascending order based on update date" do
-      chatroom
-      alternative_chatroom
       chatrooms = Chatroom.all
-      expect(chatrooms.count).to eq(2)
-      expect(chatrooms.first).to eq(chatroom)
-      expect(chatrooms.last).to eq(alternative_chatroom)
+      expect(chatrooms.count).to eq(3)
+      expect(chatrooms[0]).to eq(chatroom)
+      expect(chatrooms[1]).to eq(old_chatroom)
+      expect(chatrooms[2]).to eq(very_old_chatroom)
     end
-    it "reorders the chatrooms when the first of the list gets updated" do
-      chatroom
-      alternative_chatroom.update!(updated_at: 1.hour.ago)
+    it "reorders the chatrooms when the last of the list gets updated" do
+      chatroom.update(updated_at: 3.hour.ago)
       chatrooms = Chatroom.all
-      expect(chatrooms.count).to eq(2)
-      expect(chatrooms.first).to eq(alternative_chatroom)
-      expect(chatrooms.last).to eq(chatroom)
+      expect(chatrooms.count).to eq(3)
+      expect(chatrooms[0]).to eq(old_chatroom)
+      expect(chatrooms[1]).to eq(very_old_chatroom)
+      expect(chatrooms[2]).to eq(chatroom)
     end
-    let(:second_chatroom) { FactoryBot.create(:chatroom) }
-    let(:third_chatroom) { FactoryBot.create(:chatroom) }
     it "creates scope which return all chatrooms a user is part of" do
-      chatroom
-      second_chatroom.update(receiver_id: chatroom.author.id)
-      third_chatroom
+      old_chatroom.update(receiver_id: chatroom.author.id)
       chatrooms = Chatroom.participating(chatroom.author)
-      expect(chatrooms.count).to eq(2)
-      expect(chatrooms).to eq([chatroom, second_chatroom])
+      expect(chatrooms).to match_array([chatroom, old_chatroom])
     end
   end
 end

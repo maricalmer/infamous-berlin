@@ -25,7 +25,6 @@ class Project < ApplicationRecord
   before_update :set_slug
 
   require "services/slug_generator"
-  require "services/tags_renderer"
   require "workflows/project_selector"
   include PgSearch::Model
 

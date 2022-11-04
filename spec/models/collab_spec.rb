@@ -1,44 +1,37 @@
 require 'rails_helper'
 
 RSpec.describe Collab do
-  let(:collab) { FactoryBot.build(:collab) }
-  let(:user) { FactoryBot.create(:user) }
+  let(:collab) { FactoryBot.build_stubbed(:collab, member: user, project: project) }
+  let(:persisted_collab) { FactoryBot.create(:collab, member: user, project: project) }
+  let(:user) { FactoryBot.build(:user) }
   let(:project) { FactoryBot.create(:project) }
   describe "validations" do
     let(:duplicate_collab) { FactoryBot.build_stubbed(:collab) }
     let(:second_user) { FactoryBot.build_stubbed(:user) }
     it "is valid with project and member" do
-      collab.project = project
-      collab.member = user
       expect(collab).to be_valid
     end
     it "is unvalid with identical project owner and member" do
-      collab.project = project
       collab.project.user = user
-      collab.member = user
       expect(collab).to_not be_valid
       expect(collab.errors.full_messages_for(:member)).to include "Member is already collaborating on this project"
     end
     it "is valid with distinct project owner and member" do
-      collab.project = project
-      collab.project.user = user
-      collab.member = second_user
+      collab.project.user = second_user
       expect(collab).to be_valid
     end
     it "cannot be created if another collab including same project and same member already exists" do
-      collab.project = project
-      collab.member = user
-      collab.save
+      persisted_collab
       duplicate_collab.project = project
       duplicate_collab.member = user
       expect(duplicate_collab).to_not be_valid
     end
   end
   describe "callbacks" do
+    before(:example) do
+      persisted_collab
+    end
     it "creates a mirror object after collab creation" do
-      collab.project = project
-      collab.member = user
-      collab.save
       mirrors = Mirror.all
       expect(mirrors.count).to eq(2)
       expect(mirrors.first.project).to eq(project)
@@ -47,10 +40,7 @@ RSpec.describe Collab do
       expect(mirrors.last.user).to eq(user)
     end
     it "deletes a mirror object after collab destroy" do
-      collab.project = project
-      collab.member = user
-      collab.save
-      collab.destroy
+      persisted_collab.destroy
       mirrors = Mirror.all
       expect(mirrors.count).to eq(1)
       expect(mirrors.last.project).to eq(project)

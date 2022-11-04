@@ -13,12 +13,10 @@ RSpec.describe MirrorRenderer do
     end
     it "loads mirrors for past projects on 'past' status" do
       mirrors = MirrorRenderer.new(user).load_mirrors_for_projects("past")
-      expect(mirrors.count).to eq(1)
       expect(mirrors.first.project).to eq(past_project)
     end
     it "loads mirrors for upcoming projects on 'upcoming' status" do
       mirrors = MirrorRenderer.new(user).load_mirrors_for_projects("upcoming")
-      expect(mirrors.count).to eq(1)
       expect(mirrors.first.project).to eq(upcoming_project)
     end
   end
@@ -28,7 +26,6 @@ RSpec.describe MirrorRenderer do
       project_attachment_key = project.attachments.first.key
       mirrors = Mirror.all
       mirror_in_db_key = MirrorRenderer.new.attachment_key_for(mirrors.first)
-      expect(mirrors.count).to eq(1)
       expect(mirror_in_db_key).to eq(project_attachment_key)
     end
   end

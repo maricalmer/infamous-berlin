@@ -3,7 +3,7 @@ class Job < ApplicationRecord
   has_many :inquiries
   validates :title, presence: true
   validates :description, presence: true
-  validates :money, presence: true
+  validates :money, presence: true, numericality: { greater_than_or_equal_to: 0, message: "value must be positive" }
 
   enum payment: { fixed_rate: "fixed_rate", hourly_rate: "hourly_rate" }
   enum status: { open: "open", close: "close" }

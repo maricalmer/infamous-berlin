@@ -58,10 +58,12 @@ RSpec.describe ChatroomContext do
   let(:first_chatroom_message) { FactoryBot.create(:message, chatroom: main_chatroom, user: message_author) }
   let(:second_chatroom_message) { FactoryBot.create(:message, chatroom: main_chatroom, user: message_author) }
   let(:other_message) { FactoryBot.create(:message, chatroom: alternative_chatroom, user: alternative_user) }
+  before(:example) do
+    first_chatroom_message
+    second_chatroom_message
+  end
   describe "set_messages" do
     it "returns the chatroom messages" do
-      first_chatroom_message
-      second_chatroom_message
       chatroom_context = ChatroomContext.new(main_chatroom)
       messages = chatroom_context.set_messages
       expect(messages.count).to eq(2)
@@ -73,8 +75,6 @@ RSpec.describe ChatroomContext do
     let(:alternative_chatroom) { FactoryBot.build(:chatroom, author: user, receiver: message_receiver) }
     let(:alternative_user) { FactoryBot.build(:user) }
     it "updates the read_by_receiver attribute to true" do
-      first_chatroom_message
-      second_chatroom_message
       chatroom_context = ChatroomContext.new(main_chatroom)
       messages = chatroom_context.set_messages
       chatroom_context.mark_messages_as_read(messages, message_receiver)
