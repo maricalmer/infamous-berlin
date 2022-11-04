@@ -29,12 +29,22 @@ import '../libraries/bootstrap_js_files.js';
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
+import { addAttribute, populateList, disableEnterSubmit } from '../components/add_array_attributes';
+import { autocompleteSearch } from '../components/autocomplete';
+import { reloadWindowOnBackBtn } from '../components/back_btn_reload';
+import { scrollOnArrows, hideArrowsOnScroll, changeImgDesktop, checkOnFilesState, switchImgWithDots, switchImgWithSwipe } from '../components/carousel';
+import { attachCropperEvents } from '../components/cropper';
+
+
+
+
+import { listenCategories } from '../components/index_category_filter';
+
+
 import { initChatroomCable } from '../channels/chatroom_channel';
 import { switchSearchTabs } from '../components/search_tabs';
 import { switchModalTabs } from '../components/modal_tabs';
-import { scrollOnArrows, hideArrowsOnScroll, changeImgDesktop, checkOnFilesState, switchImgWithDots, switchImgWithSwipe } from '../components/carousel';
 import { expandSearchBar } from '../components/search';
-import { autocompleteSearch } from '../components/autocomplete';
 // import { listenInput } from '../components/results_update';
 import { listenSearchInput } from '../components/refresh_search';
 import { initFlatpickr } from '../components/datepicker';
@@ -45,16 +55,14 @@ import { hideNavbarOnScroll } from '../components/navbar';
 import { openBar } from '../components/search_navbar';
 import { showSpinnerBtn } from '../components/spinner_btn';
 import { renderPreview } from '../components/file_preview';
-import { addAttribute, populateList, disableEnterSubmit } from '../components/add_array_attributes';
 import { setDropdown } from '../components/switch_payment_rate';
 import { initGristackEdit, setSaveBtn } from '../components/gridstack_edit';
 import { initGristackStatic } from '../components/gridstack_static';
-import { attachCropperEvents } from '../components/cropper';
+
 import { fixBtnOnScroll } from '../components/save_display_btn';
-import { reloadWindowonBackBtn } from '../components/back_btn_reload';
 import { playFileOnClick } from '../components/play_audio_file';
 import { highlight } from '../components/highlight_search_query';
-import { listenCheckboxes } from '../components/checkbox_filter';
+
 import { clickOnFilter } from '../components/filter_radio_btn_effect';
 import { firstVisitCheck } from '../components/homepage_preloader';
 import { triggerTyped } from '../components/typed';
@@ -63,6 +71,38 @@ import { initCursor } from '../components/homepage_cursor';
 
 
 document.addEventListener('turbolinks:load', () => {
+  if (document.querySelectorAll(".btn-add-attribute-js").length) {
+    addAttribute();
+    populateList();
+    disableEnterSubmit();
+  }
+  if (document.querySelectorAll(".users-index-js").length ||
+    document.querySelectorAll(".new-project-js").length ||
+    document.querySelectorAll(".project-show-js").length) {
+    autocompleteSearch();
+  };
+  if (document.querySelectorAll(".bck-btn-reload-js").length) {
+    reloadWindowOnBackBtn();
+  }
+  if (document.querySelectorAll(".arrow-up-js").length || document.querySelectorAll(".arrow-down-js").length) {
+    scrollOnArrows();
+  };
+  if (document.querySelectorAll(".thumbnails-js").length) {
+    switchImgWithDots();
+    switchImgWithSwipe();
+    hideArrowsOnScroll();
+    checkOnFilesState();
+  };
+  if (document.querySelectorAll(".slide-thumbnail").length) {
+    changeImgDesktop();
+  };
+  if (document.querySelectorAll(".checkbox-label-js").length) {
+    listenCategories();
+  }
+  if (document.querySelectorAll(".tag-cropper-js").length) {
+    attachCropperEvents();
+  }
+// ---------
   if (document.querySelectorAll(".messages-js").length) {
     initChatroomCable();
   };
@@ -72,29 +112,12 @@ document.addEventListener('turbolinks:load', () => {
   if (document.querySelectorAll(".js-modal-tab").length) {
     switchModalTabs();
   };
-  if (document.querySelectorAll(".arrow-up").length || document.querySelectorAll(".arrow-down").length) {
-    scrollOnArrows();
-  };
   if (document.querySelectorAll(".past-chevron-left").length || document.querySelectorAll(".upcoming-chevron-left").length) {
     xScrollOnArrows();
-  };
-  if (document.querySelectorAll(".thumbnails").length) {
-    switchImgWithDots();
-    switchImgWithSwipe();
-    hideArrowsOnScroll();
-    checkOnFilesState();
   };
   if (document.querySelectorAll(".dash-cards-slider").length) {
     hideArrowsOnXScroll();
     checkOnDashImgsState();
-  };
-  if (document.querySelectorAll(".slide-thumbnail").length) {
-    changeImgDesktop();
-  };
-  if (document.querySelectorAll(".users-index-js").length ||
-    document.querySelectorAll(".new-project-js").length ||
-    document.querySelectorAll(".project-show-js").length) {
-    autocompleteSearch();
   };
   if (document.querySelectorAll(".datepicker").length) {
     initFlatpickr();
@@ -121,11 +144,6 @@ document.addEventListener('turbolinks:load', () => {
   if (document.querySelectorAll(".placeholder-preview-js").length) {
     renderPreview();
   }
-  if (document.querySelectorAll(".btn-add-attribute-js").length) {
-    addAttribute();
-    populateList();
-    disableEnterSubmit();
-  }
   if (document.querySelectorAll(".dropdown-payment-js").length) {
     setDropdown();
   }
@@ -136,23 +154,14 @@ document.addEventListener('turbolinks:load', () => {
   if (document.querySelectorAll(".gridstack-static-js").length) {
     initGristackStatic()
   }
-  if (document.querySelectorAll(".tag-cropper-js").length) {
-    attachCropperEvents();
-  }
   if (document.querySelectorAll(".save-display-btn-js").length) {
     fixBtnOnScroll();
-  }
-  if (document.querySelectorAll(".bck-btn-reload-js").length) {
-    reloadWindowonBackBtn();
   }
   if (document.querySelectorAll(".play-audio-js").length) {
     playFileOnClick();
   }
   if (document.querySelectorAll(".highlight-js").length) {
     highlight();
-  }
-  if (document.querySelectorAll(".checkbox-label-js").length) {
-    listenCheckboxes();
   }
   if (document.querySelectorAll(".filter-effect-js").length) {
     clickOnFilter();

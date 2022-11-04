@@ -1,43 +1,43 @@
 import { playFileOnClick } from '../components/play_audio_file';
 
-function scrollUp() {
+const scrollUp = () => {
   const thumbnailsImg = document.querySelectorAll(".thumbnail-js");
   thumbnailsImg[1].scrollIntoView({behavior: "smooth", block: "end"});
 };
 
-function scrollDown() {
+const scrollDown = () => {
   const thumbnailsImg = document.querySelectorAll(".thumbnail-js");
   thumbnailsImg[thumbnailsImg.length - 1].scrollIntoView({behavior: "smooth", block: "end"});
 };
 
 const scrollOnArrows = () => {
-  const arrowUp = document.querySelector(".arrow-up");
-  const arrowDown = document.querySelector(".arrow-down");
+  const arrowUp = document.querySelector(".arrow-up-js");
+  const arrowDown = document.querySelector(".arrow-down-js");
   arrowUp.addEventListener("click", scrollUp);
   arrowDown.addEventListener("click", scrollDown);
 }
 
-function hideArrowsDependingOnScrollType(event) {
+const hideArrowsDependingOnScrollType = (event) => {
   if (event.target.scrollTop == 0) {
-    const arrowUp = document.querySelector(".arrow-up");
+    const arrowUp = document.querySelector(".arrow-up-js");
     arrowUp.classList.add("arrow-hidden");
   } else if (event.target.offsetHeight + event.target.scrollTop >= event.target.scrollHeight - 19) {
-    const arrowDown = document.querySelector(".arrow-down");
+    const arrowDown = document.querySelector(".arrow-down-js");
     arrowDown.classList.add("arrow-hidden");
   } else {
-    const arrowUp = document.querySelector(".arrow-up");
-    const arrowDown = document.querySelector(".arrow-down");
+    const arrowUp = document.querySelector(".arrow-up-js");
+    const arrowDown = document.querySelector(".arrow-down-js");
     arrowUp.classList.remove("arrow-hidden");
     arrowDown.classList.remove("arrow-hidden");
   };
 };
 
-function markLoadedImgs(event) {
+const markLoadedImgs = (event) => {
   event.currentTarget.myParam = 1;
   checkOnFilesState();
 }
 
-function checkOnFilesState() {
+const checkOnFilesState = () => {
   const files = document.querySelectorAll(".thumbnail-js");
   files.forEach((file) => {
     if (file.nodeName === "IMG") {
@@ -46,7 +46,6 @@ function checkOnFilesState() {
       } else {
         file.addEventListener("load", checkOnFilesState);
         file.addEventListener("error", markLoadedImgs);
-        // ^^ rspec
       };
     }
     else if (file.nodeName === "VIDEO") {
@@ -55,7 +54,6 @@ function checkOnFilesState() {
       } else {
         file.addEventListener("loadeddata", checkOnFilesState);
         file.addEventListener("error", markLoadedImgs);
-        // ^^ rspec
       };
     }
   });
@@ -69,25 +67,25 @@ function checkOnFilesState() {
 };
 
 const downArrowOnLoad = () => {
-  const thumbnails = document.querySelector(".thumbnails");
+  const thumbnails = document.querySelector(".thumbnails-js");
   if (thumbnails.scrollHeight > thumbnails.clientHeight) {
-    const arrowDown = document.querySelector(".arrow-down");
+    const arrowDown = document.querySelector(".arrow-down-js");
     arrowDown.classList.remove("arrow-hidden");
   };
   if (thumbnails.scrollTop > 0) {
-    const arrowUp = document.querySelector(".arrow-up");
+    const arrowUp = document.querySelector(".arrow-up-js");
     arrowUp.classList.remove("arrow-hidden");
   };
 };
 
 const hideArrowsOnScroll = () => {
-  const thumbnails = document.querySelector(".thumbnails");
+  const thumbnails = document.querySelector(".thumbnails-js");
   thumbnails.addEventListener("scroll", hideArrowsDependingOnScrollType);
 };
 
-function buildElement(event) {
+const buildElement = (event) => {
   const imgSlide = document.querySelector(".img-slide-js");
-  const overlay = document.querySelector(".overlay-body");
+  const overlay = document.querySelector(".overlay-body-js");
   if (event.currentTarget.nodeName === "IMG") {
     const newElement = `<picture class="img-slide-big img-slide-js cursor" data-bs-toggle="modal" data-bs-target="#modalBigScreen"><source srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 992px)"><img src=${event.currentTarget.src}></picture>`
     const img = `<img src=${event.currentTarget.src}></picture>`
@@ -118,12 +116,12 @@ const changeImgDesktop = () => {
 }
 
 let i = 0;
-function changeImgMobile(event) {
+const changeImgMobile = (event) => {
   const imgs = document.querySelectorAll(".thumbnail-js");
-  const placeholderImg = document.querySelector(".placeholder-mobile");
+  const placeholderImg = document.querySelector(".placeholder-mobile-js");
   const correspondingFile = imgs[event.currentTarget.dataset.dotId]
   if (correspondingFile.nodeName === "IMG") {
-    const imgModal = document.querySelector(".overlay-small-body").firstElementChild;
+    const imgModal = document.querySelector(".overlay-small-body-js").firstElementChild;
     imgModal.src = correspondingFile.src;
     placeholderImg.firstElementChild.outerHTML = `<img src=${correspondingFile.src}>`
     placeholderImg.setAttribute('data-bs-toggle', 'modal');
@@ -135,26 +133,27 @@ function changeImgMobile(event) {
     placeholderImg.removeAttribute('data-bs-target');
   }
   i = parseInt(event.currentTarget.dataset.dotId);
-  const dots = document.querySelectorAll(".dot");
+  const dots = document.querySelectorAll(".dot-js");
   dots.forEach((dot) => {
     dot.classList.remove("dot-active");
   });
   event.currentTarget.classList.add("dot-active");
 };
+
 const switchImgWithDots = () => {
-  const dots = document.querySelectorAll(".dot");
+  const dots = document.querySelectorAll(".dot-js");
   dots.forEach((dot) => {
     dot.addEventListener("click", changeImgMobile);
   });
 }
 
 let x0 = null;
-function unify(event) {return event.changedTouches ? event.changedTouches[0] : event};
-function lock(e) { x0 = unify(e).clientX };
-function move(e) {
-  const placeholderImg = document.querySelector(".placeholder-mobile");
+const unify = (event) => {return event.changedTouches ? event.changedTouches[0] : event};
+const lock = (e) => { x0 = unify(e).clientX };
+const move = (e) => {
+  const placeholderImg = document.querySelector(".placeholder-mobile-js");
   const imgs = document.querySelectorAll(".thumbnail-js");
-  const imgModal = document.querySelector(".overlay-small-body").firstElementChild;
+  const imgModal = document.querySelector(".overlay-small-body-js").firstElementChild;
   if(x0 || x0 === 0) {
     const dx = unify(e).clientX - x0, s = Math.sign(dx);
     if((i > 0 || s < 0) && (i < imgs.length - 1 || s > 0)) {
@@ -169,7 +168,7 @@ function move(e) {
         placeholderImg.removeAttribute('data-bs-toggle');
         placeholderImg.removeAttribute('data-bs-target');
       }
-      const dots = document.querySelectorAll(".dot");
+      const dots = document.querySelectorAll(".dot-js");
       dots.forEach((dot) => {
         dot.classList.remove("dot-active");
       });
@@ -179,11 +178,10 @@ function move(e) {
     x0 = null
   }
 };
+
 const switchImgWithSwipe = () => {
-  var carousel = document.querySelector(".carousel-container");
-  // carousel.addEventListener("mousedown", lock);
+  const carousel = document.querySelector(".carousel-container-js");
   carousel.addEventListener("touchstart", lock);
-  // carousel.addEventListener("mouseup", move);
   carousel.addEventListener("touchend", move);
 }
 

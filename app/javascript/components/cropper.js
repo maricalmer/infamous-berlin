@@ -10,12 +10,14 @@ const attachCropperEvents = () => {
   let cropHeight;
   modals.forEach((modal) => {
     modal.addEventListener("shown.bs.modal", function(event) {
-      console.log("event")
-      console.log(event.currentTarget)
       const img = event.currentTarget.firstElementChild.firstElementChild.children[1].firstElementChild.firstElementChild.children[1]
-      console.log("img")
+      const img_querySelector = event.currentTarget.querySelector(".tag-cropper-js")
       console.log(img)
+      console.log(img_querySelector)
       const imgAndTitle = event.currentTarget.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling
+      const imgAndTitle_closest = event.currentTarget.closest(".img-and-title-js")
+      console.log(imgAndTitle)
+      console.log(imgAndTitle_closest)
       const ratio = imgAndTitle.offsetWidth / (imgAndTitle.offsetHeight - 28)
       cropper = new Cropper(img, {
         dragMode: 'move',
@@ -34,10 +36,6 @@ const attachCropperEvents = () => {
           cropY = Math.round(event.detail.y)
           cropWidth = Math.round(event.detail.width)
           cropHeight = Math.round(event.detail.height)
-          console.log(`x: ${cropX}`)
-          console.log(`y: ${cropY}`)
-          console.log(`width: ${cropWidth}`)
-          console.log(`height: ${cropHeight}`)
         },
       });
       const cropBtn = event.currentTarget.firstElementChild.firstElementChild.lastElementChild.firstElementChild
@@ -52,7 +50,6 @@ const attachCropperEvents = () => {
         formCropWidth.value = cropWidth
         const imgModel = e.currentTarget.parentElement.previousElementSibling.firstElementChild.firstElementChild.children[1]
         const imgPlaceholder = e.currentTarget.parentElement.parentElement.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.firstElementChild.children[1]
-        console.log(imgPlaceholder)
         const url_extra_crop = `upload/c_crop,h_${cropHeight},w_${cropWidth},x_${cropX},y_${cropY}`
         const url_parts = imgModel.src.split("upload")
         const url_crop = `${url_parts[0]}${url_extra_crop}${url_parts[1]}`

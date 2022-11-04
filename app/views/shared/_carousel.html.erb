@@ -1,16 +1,16 @@
 <!-- Container for the image gallery -->
-<div class="carousel-container">
+<div class="carousel-container carousel-container-js">
   <!-- Thumbnail images -->
-  <div class="thumbnails carousel-mobile">
+  <div class="thumbnails carousel-mobile thumbnails-js">
     <% if @project.attachments.attached? %>
       <% if @project.attachments.first.video? %>
       <!-- if @project.attachments[0].blob.content_type == "video/mp4" -->
       <!-- ^^long term solution instaed of @project.attachments.first?? -->
-        <div class="cursor placeholder-mobile">
+        <div class="cursor placeholder-mobile placeholder-mobile-js">
           <%= cl_video_tag @project.attachments.first.key, controls: true %>
         </div>
       <% elsif @project.attachments.first.audio? %>
-        <div class="cursor placeholder-mobile">
+        <div class="cursor placeholder-mobile placeholder-mobile-js">
           <div class="slide-big-audio-player">
             <%= image_tag asset_path('logo-audio.png'), class: "slide-big-audio-poster play-audio-js" %>
             <audio controls class="slide-big-audio-control">
@@ -19,7 +19,7 @@
           </div>
         </div>
       <% else %>
-        <div class="cursor placeholder-mobile" data-bs-toggle="modal" data-bs-target="#modalSmallScreen">
+        <div class="cursor placeholder-mobile placeholder-mobile-js" data-bs-toggle="modal" data-bs-target="#modalSmallScreen">
           <%= cl_image_tag @project.attachments.first.key, quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 800, crop: "fill"}] %>
         </div>
       <% end %>
@@ -54,16 +54,16 @@
     <% i = 1 %>
     <% @project.attachments.each do |attachment| %>
       <% if attachment == @project.attachments.first %>
-        <div class="dot cursor dot-active" data-dot-id="0"></div>
+        <div class="dot cursor dot-active dot-js" data-dot-id="0"></div>
       <% else %>
-        <div class="dot cursor" data-dot-id="<%= i %>"></div>
+        <div class="dot cursor dot-js" data-dot-id="<%= i %>"></div>
         <% i += 1 %>
       <% end %>
     <% end %>
   </div>
   <div class="arrows">
-    <div class="cursor arrow-up arrow-hidden"></div>
-    <div class="cursor arrow-down arrow-hidden"></div>
+    <div class="cursor arrow-up arrow-hidden arrow-up-js"></div>
+    <div class="cursor arrow-down arrow-hidden arrow-down-js"></div>
   </div>
   <!-- The one big slide -->
   <div class="slides">
@@ -100,7 +100,7 @@
 <div class="modal fade" id="modalSmallScreen" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-fullscreen">
     <div class="modal-content overlay-small">
-      <div class="modal-body overlay-small-body">
+      <div class="modal-body overlay-small-body overlay-small-body-js">
         <% if @project.attachments.attached? %>
           <% if @project.attachments.first.video? %>
             <img src="">
@@ -118,7 +118,7 @@
 <div class="modal fade" id="modalBigScreen" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-fullscreen ">
     <div class="modal-content overlay">
-      <div class="modal-body overlay-body d-flex">
+      <div class="modal-body overlay-body d-flex overlay-body-js">
         <% if @project.attachments.attached? %>
           <% if @project.attachments.first.video? %>
             <img src="">

@@ -1,8 +1,7 @@
 import 'js-autocomplete/auto-complete.css';
 import autocomplete from 'js-autocomplete';
 
-
-function createAutocomplete(specificSet, searchInput) {
+const createAutocomplete = (specificSet, searchInput) => {
   new autocomplete({
     selector: searchInput,
     minChars: 1,
@@ -17,13 +16,15 @@ function createAutocomplete(specificSet, searchInput) {
     },
   });
 }
-function addSpecificClass(cssClass) {
+
+const addSpecificClass = (cssClass) => {
   const autocompletes = document.querySelectorAll('.autocomplete-suggestions');
   autocompletes.forEach((autocomplete) => {
     autocomplete.classList.add(cssClass);
   });
 }
-const autocompleteSearch = function() {
+
+const autocompleteSearch = () => {
   const skill_sets = document.querySelectorAll('.search-data-js');
   const formPage = document.querySelector('.new-project-js');
   const searchUserPage = document.querySelector('.users-index-js');
@@ -44,7 +45,6 @@ const autocompleteSearch = function() {
       addSpecificClass("autocomplete-suggestions-project");
     }
   });
-
 };
 
 export { autocompleteSearch };

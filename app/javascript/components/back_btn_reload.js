@@ -1,8 +1,8 @@
-const reloadWindowonBackBtn = () => {
+const reloadWindowOnBackBtn = () => {
   window.addEventListener("popstate", function() {
     console.log("reload")
     window.location.reload();
   })
 }
 
-export { reloadWindowonBackBtn }
+export { reloadWindowOnBackBtn }

@@ -1,10 +1,8 @@
-// STILL IN USE??
-
 import { highlight } from '../components/highlight_search_query';
 
-const listenCheckboxes = () => {
-  const checkboxeLabels = document.querySelectorAll(".checkbox-label-js")
-  checkboxeLabels.forEach((label) => {
+const listenCategories = () => {
+  const checkboxLabels = document.querySelectorAll(".checkbox-label-js")
+  checkboxLabels.forEach((label) => {
     label.previousElementSibling.addEventListener('change', (event) => {
       const form = document.querySelector(".search-form-js")
       const url = `${form.action}?query=${form[0].value}&${event.currentTarget.name}=${event.currentTarget.value}`
@@ -19,4 +17,4 @@ const listenCheckboxes = () => {
   })
 }
 
-export { listenCheckboxes }
+export { listenCategories }

@@ -3,7 +3,7 @@
     <%= link_to project_path(mirror.project), class:"link" do %>
       <div class="gridstack-static-big-item">
         <h4 class="grid-search-big-item-title"><%= mirror.project.title %></h4>
-        <div class="grid-search-big-item-img-wrapper">
+        <div class="grid-search-big-item-img-wrapper img-and-title-js">
           <picture>
             <source srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 1200px)">
             <% if mirror.displays_cropped_img? %>
