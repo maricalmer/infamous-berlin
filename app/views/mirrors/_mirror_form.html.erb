@@ -1,11 +1,11 @@
 <%= simple_form_for [user, mirror], html: { class: "mirror-form-js d-none"} do |f| %>
-  <%= f.input :grid_x %>
-  <%= f.input :grid_y %>
-  <%= f.input :grid_h %>
-  <%= f.input :grid_w %>
-  <%= f.input :crop_x %>
-  <%= f.input :crop_y %>
-  <%= f.input :crop_h %>
-  <%= f.input :crop_w %>
-  <%= f.submit "Update mirror", id: 'submit-button' %>
+  <%= f.input :grid_x, :input_html => { class: "mirror-grid-x-js" } %>
+  <%= f.input :grid_y, :input_html => { class: "mirror-grid-y-js" } %>
+  <%= f.input :grid_h, :input_html => { class: "mirror-grid-h-js" } %>
+  <%= f.input :grid_w, :input_html => { class: "mirror-grid-w-js" } %>
+  <%= f.input :crop_x, :input_html => { class: "mirror-crop-x-js" } %>
+  <%= f.input :crop_y, :input_html => { class: "mirror-crop-y-js" } %>
+  <%= f.input :crop_h, :input_html => { class: "mirror-crop-h-js" } %>
+  <%= f.input :crop_w, :input_html => { class: "mirror-crop-w-js" } %>
+  <%= f.submit "Update mirror", id: 'submit-button', class: "mirror-form-submit-btn" %>
 <% end %>

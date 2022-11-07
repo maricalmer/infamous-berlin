@@ -128,7 +128,13 @@
   overflow-x: scroll;
   display: flex;
   align-items: center;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
+.dash-cards-slider::-webkit-scrollbar {
+  display: none;
+}
+
 .dash-projects-checkbox, .dash-jobs-checkbox, .dash-collabs-checkbox {
   position: absolute;
   top: 6px;

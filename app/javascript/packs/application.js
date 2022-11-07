@@ -34,6 +34,14 @@ import { autocompleteSearch } from '../components/autocomplete';
 import { reloadWindowOnBackBtn } from '../components/back_btn_reload';
 import { scrollOnArrows, hideArrowsOnScroll, changeImgDesktop, checkOnFilesState, switchImgWithDots, switchImgWithSwipe } from '../components/carousel';
 import { attachCropperEvents } from '../components/cropper';
+import { initFlatpickr } from '../components/datepicker';
+import { renderDashboardDropdown } from '../components/dropdown_dashboard_menus';
+import { renderPreview } from '../components/file_preview';
+import { clickOnFilter } from '../components/filter_btn_covering_effect';
+import { initGristackEdit, setSaveBtn } from '../components/gridstack_edit';
+
+
+
 
 
 
@@ -47,23 +55,22 @@ import { switchModalTabs } from '../components/modal_tabs';
 import { expandSearchBar } from '../components/search';
 // import { listenInput } from '../components/results_update';
 import { listenSearchInput } from '../components/refresh_search';
-import { initFlatpickr } from '../components/datepicker';
+
 import { xScrollOnArrows, hideArrowsOnXScroll, checkOnDashImgsState } from '../components/slider';
 import { addNewMember } from '../components/new_member_form';
-import { renderDashboardDropdown } from '../components/dropdown_links';
 import { hideNavbarOnScroll } from '../components/navbar';
 import { openBar } from '../components/search_navbar';
 import { showSpinnerBtn } from '../components/spinner_btn';
-import { renderPreview } from '../components/file_preview';
+
 import { setDropdown } from '../components/switch_payment_rate';
-import { initGristackEdit, setSaveBtn } from '../components/gridstack_edit';
+
 import { initGristackStatic } from '../components/gridstack_static';
 
 import { fixBtnOnScroll } from '../components/save_display_btn';
 import { playFileOnClick } from '../components/play_audio_file';
 import { highlight } from '../components/highlight_search_query';
 
-import { clickOnFilter } from '../components/filter_radio_btn_effect';
+
 import { firstVisitCheck } from '../components/homepage_preloader';
 import { triggerTyped } from '../components/typed';
 import { delayHomepageSlides } from '../components/homepage_slides';
@@ -96,13 +103,29 @@ document.addEventListener('turbolinks:load', () => {
   if (document.querySelectorAll(".slide-thumbnail").length) {
     changeImgDesktop();
   };
-  if (document.querySelectorAll(".checkbox-label-js").length) {
-    listenCategories();
-  }
   if (document.querySelectorAll(".tag-cropper-js").length) {
     attachCropperEvents();
   }
+  if (document.querySelectorAll(".datepicker-js").length) {
+    initFlatpickr();
+  };
+  if (document.querySelectorAll(".dropdown-links-js").length) {
+    renderDashboardDropdown();
+  }
+  if (document.querySelectorAll(".placeholder-preview-js").length) {
+    renderPreview();
+  }
+  if (document.querySelectorAll(".filter-effect-js").length) {
+    clickOnFilter();
+  }
+  if (document.querySelectorAll(".gridstack-edit-js").length) {
+    initGristackEdit()
+    setSaveBtn();
+  }
 // ---------
+  if (document.querySelectorAll(".checkbox-label-js").length) {
+    listenCategories();
+  }
   if (document.querySelectorAll(".messages-js").length) {
     initChatroomCable();
   };
@@ -119,17 +142,12 @@ document.addEventListener('turbolinks:load', () => {
     hideArrowsOnXScroll();
     checkOnDashImgsState();
   };
-  if (document.querySelectorAll(".datepicker").length) {
-    initFlatpickr();
-  };
+
   if (document.querySelectorAll(".search-form-js").length) {
     listenSearchInput();
   };
   if (document.querySelectorAll(".btn-covering-js").length) {
     addNewMember();
-  }
-  if (document.querySelectorAll(".dropdown-links-js").length) {
-    renderDashboardDropdown();
   }
   if (document.querySelectorAll(".logo-js").length) {
     hideNavbarOnScroll();
@@ -141,15 +159,8 @@ document.addEventListener('turbolinks:load', () => {
   if (document.querySelectorAll(".form-btn-js").length) {
     showSpinnerBtn();
   }
-  if (document.querySelectorAll(".placeholder-preview-js").length) {
-    renderPreview();
-  }
   if (document.querySelectorAll(".dropdown-payment-js").length) {
     setDropdown();
-  }
-  if (document.querySelectorAll(".gridstack-edit-js").length) {
-    initGristackEdit()
-    setSaveBtn();
   }
   if (document.querySelectorAll(".gridstack-static-js").length) {
     initGristackStatic()
@@ -162,9 +173,6 @@ document.addEventListener('turbolinks:load', () => {
   }
   if (document.querySelectorAll(".highlight-js").length) {
     highlight();
-  }
-  if (document.querySelectorAll(".filter-effect-js").length) {
-    clickOnFilter();
   }
   if (document.querySelectorAll(".preloader").length) {
     firstVisitCheck();

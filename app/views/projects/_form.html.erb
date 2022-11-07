@@ -14,7 +14,7 @@
           <input type="text" name="project[location]" id="project_location" class="input-location-project-new form-control string optional" >
         </div>
       </div>
-      <%= f.input :date, as: :string, label: 'When?', input_html: { class: "datepicker" } %>
+      <%= f.input :date, as: :string, label: 'When?', input_html: { class: "datepicker datepicker-js" } %>
       <%= f.input :status, label: 'Project status:', as: :select, collection: @project.class.statuses.keys, include_blank: false %>
     </div>
     <%= f.input :category, wrapper_html: { class: "category-hidden-field" }, input_html: { class: "attributes_hidden_field_js" } %>
@@ -54,7 +54,7 @@
     <i class="fas fa-paperclip me-2 pt-1"></i>
     <a class="link">select attachment(s)</a>
   </label>
-  <%= f.input :attachments, as: :file, label: false, :input_html => { :multiple => true, accept: ".png, .jpg, .jpeg, .mp4, .mp3", class: "form-project-upload-photos-hidden" } %>
+  <%= f.input :attachments, as: :file, label: false, :input_html => { :multiple => true, accept: ".png, .jpg, .jpeg, .mp4, .mp3", class: "form-project-upload-photos-hidden project-attachments-upload-btn-js" } %>
 
   <%= f.submit "Save!", id: "btn-form-submit", class: "form-btn-js" %>
   <button class="more-btn jobs-more-btn btn-hidden form-btn-js" type="button" disabled>

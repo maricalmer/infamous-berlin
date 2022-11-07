@@ -1,6 +1,6 @@
 <div class="grid-stack-item grid-search-big-item mirror-js" gs-x="<%= mirror.grid_x %>" gs-y="<%= mirror.grid_y %>" gs-w="<%= mirror.grid_w %>" gs-h="<%= mirror.grid_h %>">
   <div class="grid-stack-item-content">
-    <div class="grid-search-big-item-wrapper">
+    <div class="grid-search-big-item-wrapper grid-search-big-item-wrapper-js">
       <div class="d-flex">
         <h4 class="grid-search-big-item-title"><%= mirror.project.title %></h4>
         <button class="btn-crop-portfolio btn-crop-portfolio-js" type="button" data-bs-toggle="modal" data-bs-target="#cropModal<%= mirror.id %>">
@@ -16,17 +16,17 @@
         <picture>
           <source srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 1200px)">
           <% if mirror.displays_cropped_img? %>
-            <%= cl_image_tag mirror.attachment_key, class: "grid-search-big-item-img grid-search-big-item-img-no-sizing", height: mirror.crop_h, width: mirror.crop_w, x: mirror.crop_x, y: mirror.crop_y, crop: "crop" %>
+            <%= cl_image_tag mirror.attachment_key, class: "grid-search-big-item-img grid-search-big-item-img-js grid-search-big-item-img-no-sizing", height: mirror.crop_h, width: mirror.crop_w, x: mirror.crop_x, y: mirror.crop_y, crop: "crop" %>
           <% elsif mirror.displays_original_img? %>
-            <%= cl_image_tag mirror.attachment_key, class: "grid-search-big-item-img" %>
+            <%= cl_image_tag mirror.attachment_key, class: "grid-search-big-item-img grid-search-big-item-img-js" %>
           <% elsif mirror.displays_cropped_video_poster? %>
-            <%= cl_video_tag mirror.attachment_key, class: "grid-search-big-item-img grid-search-big-item-img-no-sizing", poster: { transformation: [ { height: mirror.crop_h.to_i, width: mirror.crop_w.to_i, x: mirror.crop_x.to_i, y: mirror.crop_y.to_i, crop: "crop" } ] } %>
+            <%= cl_video_tag mirror.attachment_key, class: "grid-search-big-item-img grid-search-big-item-img-js grid-search-big-item-img-no-sizing", poster: { transformation: [ { height: mirror.crop_h.to_i, width: mirror.crop_w.to_i, x: mirror.crop_x.to_i, y: mirror.crop_y.to_i, crop: "crop" } ] } %>
           <% elsif mirror.displays_original_video_poster? %>
-            <%= cl_video_tag mirror.attachment_key, class: "grid-search-big-item-img" %>
+            <%= cl_video_tag mirror.attachment_key, class: "grid-search-big-item-img grid-search-big-item-img-js" %>
           <% elsif mirror.displays_cropped_audio_poster? %>
-            <%= cl_image_tag "logo-audio", class: "grid-search-big-item-img grid-search-big-item-img-no-sizing", height: mirror.crop_h, width: mirror.crop_w, x: mirror.crop_x, y: mirror.crop_y, crop: "crop" %>
+            <%= cl_image_tag "logo-audio", class: "grid-search-big-item-img grid-search-big-item-img-js grid-search-big-item-img-no-sizing", height: mirror.crop_h, width: mirror.crop_w, x: mirror.crop_x, y: mirror.crop_y, crop: "crop" %>
           <% else %>
-            <%= image_tag asset_path('logo-audio.png'), class: "grid-search-big-item-img" %>
+            <%= image_tag asset_path('logo-audio.png'), class: "grid-search-big-item-img grid-search-big-item-img-js" %>
           <% end %>
         </picture>
         <!-- ^^ needs to synchronize with a method -->

@@ -37,7 +37,7 @@
   </div>
   <div class="upload-picture-form" id="picture-anchor">
     <div class="upload-picture-left">
-      <%= f.input :photo, label: 'Update your profile picture:', as: :file, :input_html => { accept: ".png, .jpg, .jpeg" } %>
+      <%= f.input :photo, label: 'Update your profile picture:', as: :file, wrapper_html: { class: "user-avatar-upload-btn-js" }, :input_html => { accept: ".png, .jpg, .jpeg" } %>
     </div>
     <div class="upload-picture-right">
       <div class="diamond-wrapper-js diamond-wrapper-form diamond-wrapper-form-hidden">

@@ -3,7 +3,7 @@ require("flatpickr/dist/themes/dark.css");
 
 
 const initFlatpickr = () => {
-  flatpickr(".datepicker", {
+  flatpickr(".datepicker-js", {
     altInput: true
   });
 }

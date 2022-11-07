@@ -1,9 +1,9 @@
 import { hideArrowsOnXScroll, checkOnDashImgsState } from '../components/slider';
 
 const hideChevrons = () => {
-  const chevronLeft = document.querySelector(".past-chevron-left");
+  const chevronLeft = document.querySelector(".past-chevron-left-js");
   chevronLeft.classList.add("chevron-hidden")
-  const chevronRight = document.querySelector(".past-chevron-right");
+  const chevronRight = document.querySelector(".past-chevron-right-js");
   chevronRight.classList.add("chevron-hidden")
 }
 
@@ -12,30 +12,28 @@ const renderPartial = (link) => {
   fetch(url, { headers: { 'Accept': 'text/plain' } })
     .then(response => response.text())
     .then((data) => {
-      // const results = link.parentElement.parentElement.parentElement.parentElement.nextElementSibling
-      const results = document.querySelector(".js-slider")
-      console.log(results)
-      results.outerHTML = data;
-      const arrowsLeft = document.querySelector(".past-chevron-left");
+      const resultsPlaceholder = document.querySelector(".slider-js")
+      resultsPlaceholder.outerHTML = data;
+      const arrowsLeft = document.querySelector(".past-chevron-left-js");
       if (arrowsLeft) {
         checkOnDashImgsState();
         hideArrowsOnXScroll();
       };
-      const inquiries = document.querySelector(".inquiry-dash-js");
-      if (inquiries) {
+      const inquiriesSection = document.querySelector(".inquiry-dash-js");
+      if (inquiriesSection) {
         hideChevrons();
       };
     })
 }
 
-const renderDashboardDropdown = (tab) => {
+const renderDashboardDropdown = () => {
   const links = document.querySelectorAll(".dropdown-links-js");
   links.forEach((link) => {
     link.addEventListener('click', (event) => {
       renderPartial(link);
       const arrow = document.querySelector(".mobile-dropdown-arrow-js");
-      if (window.getComputedStyle(arrow).display === "block") {
-        document.getElementById("checkbox_toggle").checked = false;
+      if (getComputedStyle(arrow).display === "block") {
+        arrow.previousElementSibling.previousElementSibling.checked = false;
       }
     });
   })

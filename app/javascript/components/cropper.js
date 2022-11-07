@@ -10,14 +10,10 @@ const attachCropperEvents = () => {
   let cropHeight;
   modals.forEach((modal) => {
     modal.addEventListener("shown.bs.modal", function(event) {
-      const img = event.currentTarget.firstElementChild.firstElementChild.children[1].firstElementChild.firstElementChild.children[1]
-      const img_querySelector = event.currentTarget.querySelector(".tag-cropper-js")
-      console.log(img)
-      console.log(img_querySelector)
-      const imgAndTitle = event.currentTarget.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling
-      const imgAndTitle_closest = event.currentTarget.closest(".img-and-title-js")
-      console.log(imgAndTitle)
-      console.log(imgAndTitle_closest)
+      // const img = event.currentTarget.firstElementChild.firstElementChild.children[1].firstElementChild.firstElementChild.children[1]
+      const img = event.currentTarget.querySelector(".tag-cropper-js")
+      // const imgAndTitle = event.currentTarget.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling
+      const imgAndTitle = event.currentTarget.parentElement.querySelector(".img-and-title-js")
       const ratio = imgAndTitle.offsetWidth / (imgAndTitle.offsetHeight - 28)
       cropper = new Cropper(img, {
         dragMode: 'move',
@@ -38,18 +34,25 @@ const attachCropperEvents = () => {
           cropHeight = Math.round(event.detail.height)
         },
       });
-      const cropBtn = event.currentTarget.firstElementChild.firstElementChild.lastElementChild.firstElementChild
+      // const cropBtn = event.currentTarget.firstElementChild.firstElementChild.lastElementChild.firstElementChild
+      const cropBtn = event.currentTarget.querySelector(".crop-cropper-btn-js")
       cropBtn.addEventListener("click", function(e) {
-        const formCropX = e.currentTarget.offsetParent.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling[6]
-        const formCropY = e.currentTarget.offsetParent.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling[7]
-        const formCropHeight = e.currentTarget.offsetParent.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling[8]
-        const formCropWidth = e.currentTarget.offsetParent.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling[9]
+        // const formCropX = e.currentTarget.offsetParent.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling[6]
+        const formCropX = e.currentTarget.closest(".grid-search-big-item-wrapper-js").querySelector(".mirror-crop-x-js")
+        // const formCropY = e.currentTarget.offsetParent.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling[7]
+        const formCropY = e.currentTarget.closest(".grid-search-big-item-wrapper-js").querySelector(".mirror-crop-y-js")
+        // const formCropHeight = e.currentTarget.offsetParent.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling[8]
+        const formCropHeight = e.currentTarget.closest(".grid-search-big-item-wrapper-js").querySelector(".mirror-crop-h-js")
+        // const formCropWidth = e.currentTarget.offsetParent.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling[9]
+        const formCropWidth = e.currentTarget.closest(".grid-search-big-item-wrapper-js").querySelector(".mirror-crop-w-js")
         formCropX.value = cropX
         formCropY.value = cropY
         formCropHeight.value = cropHeight
         formCropWidth.value = cropWidth
-        const imgModel = e.currentTarget.parentElement.previousElementSibling.firstElementChild.firstElementChild.children[1]
-        const imgPlaceholder = e.currentTarget.parentElement.parentElement.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.firstElementChild.children[1]
+        // const imgModel = e.currentTarget.parentElement.previousElementSibling.firstElementChild.firstElementChild.children[1]
+        const imgModel = e.currentTarget.closest(".cropper-modal-popup-js").querySelector(".tag-cropper-js")
+        // const imgPlaceholder = e.currentTarget.parentElement.parentElement.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.firstElementChild.children[1]
+        const imgPlaceholder = e.currentTarget.closest(".grid-search-big-item-wrapper-js").querySelector(".grid-search-big-item-img-js")
         const url_extra_crop = `upload/c_crop,h_${cropHeight},w_${cropWidth},x_${cropX},y_${cropY}`
         const url_parts = imgModel.src.split("upload")
         const url_crop = `${url_parts[0]}${url_extra_crop}${url_parts[1]}`
@@ -58,7 +61,10 @@ const attachCropperEvents = () => {
         } else {
           imgPlaceholder.poster = url_crop
         }
-        const formImgString = e.currentTarget.offsetParent.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling[10]
+
+        // const formImgString = e.currentTarget.offsetParent.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling[10]
+        const formImgString = e.currentTarget.closest(".grid-search-big-item-wrapper-js").querySelector(".mirror-form-submit-btn")
+
         formImgString.value = url_crop
       })
     })

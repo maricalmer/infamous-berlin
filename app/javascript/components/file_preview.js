@@ -1,17 +1,17 @@
-const resetFilePath = () => {
-  const placeholder = document.querySelector(".placeholder-preview-js");
-  placeholder.innerHTML = "";
-  frame.classList.add("diamond-wrapper-form-hidden");
-}
+// const resetFilePath = () => {
+//   const placeholder = document.querySelector(".placeholder-preview-js");
+//   placeholder.innerHTML = "";
+//   frame.classList.add("diamond-wrapper-form-hidden");
+// }
 const updateFilesList = (index) => {
   let initialFiles = document.getElementById("project_attachments")
   const initialArray = Array.from(initialFiles.files)
   initialArray.splice(index, 1)
-  let newlist = new DataTransfer();
+  let newList = new DataTransfer();
   initialArray.forEach((file)=>{
-    newlist.items.add(file);
+    newList.items.add(file);
   })
-  initialFiles.files = newlist.files;
+  initialFiles.files = newList.files;
 }
 const setupDeleteBtn = () => {
   const btnsUploadedImg = document.querySelectorAll(".delete-signed-id-js")
@@ -43,37 +43,37 @@ const displayDeleteBtn = (img, placeholder) => {
   previewCard.appendChild(deleteWrapper)
   placeholder.append(previewCard)
 }
-const catchFilePathUserForm = (uploadBtnUser) => {
-  if (uploadBtnUser.files.length > 0) {
-    const imgUri = uploadBtnUser.files[0]
+const catchFilePathUserForm = (userAvatarUploadBtn) => {
+  if (userAvatarUploadBtn.files.length > 0) {
+    const imgUri = userAvatarUploadBtn.files[0]
     const placeholder = document.querySelector(".placeholder-preview-js");
     const frame = document.querySelector(".diamond-wrapper-js");
     placeholder.outerHTML = `<img class="placeholder-preview-js" src=${URL.createObjectURL(imgUri)}>`;
     frame.classList.remove("diamond-wrapper-form-hidden")
   }
 }
-const catchFilePathProjectForm = (uploadBtnProject) => {
+const catchFilePathProjectForm = (projectAttachmentsUploadBtn) => {
   const placeholder = document.querySelector(".placeholder-preview-js");
   const previewPhotos = document.querySelectorAll(".preview-img-js");
   previewPhotos.forEach( (photo) => { photo.outerHTML = "" });
-  for (let i = 0; i < uploadBtnProject.files.length; i++) {
-    if (uploadBtnProject.files[i].type === "video/mp4") {
+  for (let i = 0; i < projectAttachmentsUploadBtn.files.length; i++) {
+    if (projectAttachmentsUploadBtn.files[i].type === "video/mp4") {
       const file = document.createElement("video");
-      const imgUri = uploadBtnProject.files[i];
+      const imgUri = projectAttachmentsUploadBtn.files[i];
       file.classList.add("project-photo-preview");
       file.src = URL.createObjectURL(imgUri);
       file.setAttribute("index", i);
       displayDeleteBtn(file, placeholder);
-    } else if (uploadBtnProject.files[i].type === "audio/mpeg") {
+    } else if (projectAttachmentsUploadBtn.files[i].type === "audio/mpeg") {
       const file = document.createElement("img");
-      const imgUri = uploadBtnProject.files[i];
+      const imgUri = projectAttachmentsUploadBtn.files[i];
       file.classList.add("project-photo-preview");
       file.src = "/assets/logo-audio.png";
       file.setAttribute("index", i);
       displayDeleteBtn(file, placeholder);
     } else {
       const file = document.createElement("img");
-      const imgUri = uploadBtnProject.files[i];
+      const imgUri = projectAttachmentsUploadBtn.files[i];
       file.classList.add("project-photo-preview");
       file.src = URL.createObjectURL(imgUri);
       file.setAttribute("index", i);
@@ -88,20 +88,21 @@ const renderPreview = () => {
     const preview = document.querySelector(".placeholder-preview-js")
     preview.innerHTML = ""
   }
-  const uploadBtnUser = document.getElementById("user_photo")
-  const uploadBtnProject = document.getElementById("project_attachments")
-  if (uploadBtnUser) {
-    uploadBtnUser.addEventListener("change", function(){
-      catchFilePathUserForm(uploadBtnUser);
+  const userAvatarUploadBtn = document.querySelector(".user-avatar-upload-btn-js")
+  const projectAttachmentsUploadBtn = document.querySelector(".project-attachments-upload-btn-js")
+  console.log(projectAttachmentsUploadBtn)
+  if (userAvatarUploadBtn) {
+    userAvatarUploadBtn.addEventListener("change", function(){
+      catchFilePathUserForm(userAvatarUploadBtn);
     });
-    catchFilePathUserForm(uploadBtnUser);
+    catchFilePathUserForm(userAvatarUploadBtn);
   }
-  if (uploadBtnProject) {
-    uploadBtnProject.addEventListener("change", function(){
-      catchFilePathProjectForm(uploadBtnProject);
+  if (projectAttachmentsUploadBtn) {
+    projectAttachmentsUploadBtn.addEventListener("change", function(){
+      catchFilePathProjectForm(projectAttachmentsUploadBtn);
     });
-    if (uploadBtnProject.files) {
-      catchFilePathProjectForm(uploadBtnProject);
+    if (projectAttachmentsUploadBtn.files) {
+      catchFilePathProjectForm(projectAttachmentsUploadBtn);
     }
   }
 }
