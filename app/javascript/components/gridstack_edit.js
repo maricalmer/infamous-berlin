@@ -24,28 +24,27 @@ const setSaveBtn = () => {
   btn.addEventListener("click", updateMirrorForm);
 }
 
-const pushUpdate = (event) => {
+const pushUpdateToDB = (event) => {
   event.preventDefault()
   const url = event.target.action
   let mirror_form = event.target
   fetch(url, {
     method: "PATCH",
     headers: { "Accept": "text/plain" },
-    body: new FormData(event.target)
+    body: new FormData(mirror_form)
   })
     .then(response => response.text())
     .then((data) => {
-      console.log(data)
       mirror_form.outerHTML = data;
-      mirror_form = document.getElementById(mirror_form.id);
-      mirror_form.addEventListener("submit", pushUpdate);
+      // mirror_form = document.getElementById(mirror_form.id);
+      // mirror_form.addEventListener("submit", pushUpdateToDB);
     })
 }
 
 const triggerForms = () => {
   const forms = document.querySelectorAll(".mirror-form-js")
   forms.forEach((form) => {
-    form.addEventListener("submit", pushUpdate)
+    form.addEventListener("submit", pushUpdateToDB)
     form.elements["submit-button"].click()
   })
 }

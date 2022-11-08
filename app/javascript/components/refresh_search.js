@@ -12,7 +12,6 @@ const refreshIndex = () => {
     }
   })
   const url = `${searchForm.action}?query=${inputTarget.value}${params}`
-  console.log(url)
   fetch(url, { headers: { 'Accept': 'text/plain' } })
     .then(response => response.text())
     .then((data) => {

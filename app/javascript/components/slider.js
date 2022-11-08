@@ -1,23 +1,19 @@
-function xScrollLeft(event) {
+const xScrollLeft = (event) => {
   const slider = event.target.parentNode.nextElementSibling;
   slider.scrollBy({left:-200, behavior: 'smooth'});
 };
-function xScrollRight(event) {
+const xScrollRight = (event) => {
   const slider = event.target.parentNode.previousElementSibling;
   slider.scrollBy({left:200, behavior: 'smooth'});
 };
 const xScrollOnArrows = () => {
-  const arrowsLeft = document.querySelectorAll(".past-chevron-left");
-  const arrowsRight = document.querySelectorAll(".past-chevron-right");
-  arrowsLeft.forEach((arrow)=>{
-    arrow.addEventListener("click", xScrollLeft)
-  })
-  arrowsRight.forEach((arrow)=>{
-    arrow.addEventListener("click", xScrollRight)
-  })
+  const arrowLeft = document.querySelector(".past-chevron-left-js");
+  arrowLeft.addEventListener("click", xScrollLeft)
+  const arrowRight = document.querySelector(".past-chevron-right-js");
+  arrowRight.addEventListener("click", xScrollRight)
 }
 
-function hideArrowsDependingOnXScrollType(event) {
+const hideArrowsDependingOnXScrollType = (event) => {
   if (event.target.scrollLeft == 0) {
     const arrowLeft = event.target.previousElementSibling.firstElementChild;
     arrowLeft.classList.add("chevron-hidden");
@@ -33,26 +29,26 @@ function hideArrowsDependingOnXScrollType(event) {
 };
 
 const hideArrowsOnXScroll = () => {
-  const sliders = document.querySelectorAll(".js-slider");
+  const sliders = document.querySelectorAll(".slider-js");
   sliders.forEach((slider)=>{
     slider.addEventListener("scroll", hideArrowsDependingOnXScrollType)
   })
 };
 
-function markLoadedImgs(event) {
+const markLoadedImgs = (event) => {
   event.currentTarget.myParam = 1;
+  console.log("error")
   checkOnDashImgsState();
 }
 
-function checkOnDashImgsState() {
-  const imgs = document.querySelectorAll(".portfolio-part img");
+const checkOnDashImgsState = () => {
+  const imgs = document.querySelectorAll(".portfolio-cards-js img");
   imgs.forEach((img) => {
     if (img.complete) {
       img.myParam = 1;
     } else {
       img.addEventListener("load", checkOnDashImgsState);
       img.addEventListener("error", markLoadedImgs);
-      // ^^ rspec
     };
   });
   let counter = 0;
@@ -65,7 +61,7 @@ function checkOnDashImgsState() {
 };
 
 const hideLeftArrowOnLoad = () => {
-  const projectCardSliders = document.querySelectorAll(".dash-cards-slider");
+  const projectCardSliders = document.querySelectorAll(".slider-js");
   projectCardSliders.forEach((projectCards) => {
     if (projectCards.scrollWidth > projectCards.clientWidth) {
       const arrowRight = projectCards.nextElementSibling.firstElementChild;

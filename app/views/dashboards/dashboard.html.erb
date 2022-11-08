@@ -137,19 +137,19 @@
 </div>
 
 <% if @project_ids.any? %>
-  <div class="portfolio-cards">
+  <div class="portfolio-cards portfolio-cards-js">
     <div class="dash-chevron"><h5 class="past-chevron-left past-chevron-left-js chevron-hidden">&#x3c;</h5></div>
     <%= render "projects_dash" %>
     <div class="dash-chevron"><h5 class="past-chevron-right past-chevron-right-js chevron-hidden">&#x3e;</h5></div>
   </div>
 <% elsif @collab_ids.any? %>
-  <div class="portfolio-cards">
+  <div class="portfolio-cards portfolio-cards-js">
     <div class="dash-chevron"><h5 class="past-chevron-left past-chevron-left-js chevron-hidden">&#x3c;</h5></div>
     <%= render "collabs_dash" %>
     <div class="dash-chevron"><h5 class="past-chevron-right past-chevron-right-js chevron-hidden">&#x3e;</h5></div>
   </div>
 <% elsif @sent_inquiry_ids.any? %>
-  <div class="portfolio-cards">
+  <div class="portfolio-cards portfolio-cards-js">
     <div class="dash-chevron"><h5 class="past-chevron-left past-chevron-left-js chevron-hidden">&#x3c;</h5></div>
     <%= render "sent_dash" %>
     <div class="dash-chevron"><h5 class="past-chevron-right past-chevron-right-js chevron-hidden">&#x3e;</h5></div>

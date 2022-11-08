@@ -90,7 +90,6 @@ const renderPreview = () => {
   }
   const userAvatarUploadBtn = document.querySelector(".user-avatar-upload-btn-js")
   const projectAttachmentsUploadBtn = document.querySelector(".project-attachments-upload-btn-js")
-  console.log(projectAttachmentsUploadBtn)
   if (userAvatarUploadBtn) {
     userAvatarUploadBtn.addEventListener("change", function(){
       catchFilePathUserForm(userAvatarUploadBtn);

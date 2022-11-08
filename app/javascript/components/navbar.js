@@ -1,4 +1,4 @@
-function updateNavbar() {
+const updateNavbar = () => {
   const logo = document.querySelector(".logo-js");
   const burger = document.querySelector(".burger-js");
 
