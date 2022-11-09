@@ -576,46 +576,7 @@ section {
 
 
 
-.preloader.is-visible {
-  width: 100%;
-  height: 100vh;
-  background-color: #212121;
-  position: relative;
-  top: 0;
-  left: 0;
-  z-index: 11001;
-  overflow: hidden;
-  transition: height 1s cubic-bezier(.44,.45,.18,1) 4s;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.preloader.is-not-visible {
-  height: 0;
-}
-.preloader.dont-display {
-  display: none;
-}
-.preloader-hide.is-hidding {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #212121;
-  transition: width 3s cubic-bezier(.44,.45,.18,1) 1s;
-}
-.preloader-hide.is-not-hidding {
-  width: 0%;
-}
-.preloader-text {
-  cursor: default;
-  position: relative;
-  color: #d6d6d6;
-  font-size: 2rem;
-  letter-spacing: 0.1rem;
-}
+
 ul.no-bullets {
   list-style-type: none;
   padding: 0;
@@ -802,16 +763,8 @@ ul.no-bullets {
     justify-content: space-around;
     font-size: 2rem;
   }
-  .preloader-text {
-    font-size: 5rem;
-    letter-spacing: 0.1rem;
-  }
 }
 @media(min-width: 870px) {
-  .preloader-text {
-    font-size: 11rem;
-    letter-spacing: 0.3rem;
-  }
   .s1 {
     flex-direction: inherit;
     padding: 0;
@@ -896,72 +849,15 @@ ul.no-bullets {
     display: block;
   }
 }
-.cursor--small {
-  display: none;
-}
-.tap-your-screen-btn {
-  cursor: none;
-  position: fixed;
-  top: 30vh;
-  left: 50vw;
-  z-index: 5;
-  height: 400px;
-  margin-right: 4rem;
-  svg {
-    width: 100%;
-    height: 100%;
-  }
-}
+
 .hide-btn {
   display: none;
 }
 @media (hover: hover) and (pointer: fine) {
-  .cursor--small {
-    display: block;
-  }
-  .tap-your-screen-btn {
-    display: none;
-  }
-  .tap-your-screen-btn {
-    display: none;
-  }
   .forth-landing-screen-text-container {
     margin-bottom: 0;
   }
 }
-.cursor--small {
-  pointer-events: none;
-  position: fixed;
-  left: -1rem;
-  top: -1rem;
-  z-index: 11000;
-  width: 100%;
-  height: 100%;
-}
-@media(min-width: 570px) {
-  .cursor--small {
-    left: -2rem;
-    top: -2rem;
-  }
-}
-@media(min-width: 870px) {
-  .cursor--small {
-    left: -75px;
-    top: -75px;
-  }
-}
-@media(min-width: 1200px) {
-  .cursor--small {
-    left: -100px;
-    top: -100px;
-  }
-}
 .homepage {
   cursor: none;
-}
-.homepage-circle-text textPath {
-  font-size: 4rem;
-  text-transform: uppercase;
-  letter-spacing: 10px;
-  fill: #858585;
 }

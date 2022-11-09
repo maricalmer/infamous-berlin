@@ -1,11 +1,11 @@
-<nav id="slide" role='navigation'>
-  <div id="menu-toggle">
-    <input type="checkbox" id="checkbox"/>
-    <div id="screen-blur"></div>
-    <span class="nav-homepage-js"></span>
-    <span class="hamburger-middle-span nav-homepage-js"></span>
-    <span class="nav-homepage-js"></span>
-    <ul id="menu">
+<nav class="hamburger-menu" role='navigation'>
+  <div id="menu-toggle" class="hamburger-menu__toggle-sidebar">
+    <input type="checkbox" id="checkbox" class="hamburger-menu__checkbox"/>
+    <div class="hamburger-menu__screen-blur"></div>
+    <span class="hamburger-menu__burger-slice hamburger-menu__burger-slice--top"></span>
+    <span class="hamburger-menu__burger-slice hamburger-menu__burger-slice--middle"></span>
+    <span class="hamburger-menu__burger-slice hamburger-menu__burger-slice--bottom"></span>
+    <ul id="menu" class="hamburger-menu__menu-list">
       <li class="hamburger-menu-brand">
         <%= link_to "InfamousBerlin", root_path, class: "scroll-event-exit-js" %>
         <div class="underlined-title"></div>
@@ -37,6 +37,6 @@
 </nav>
 <div class="nav-brand-solo-container">
   <%= link_to root_path, class: "scroll-event-exit-js nav-brand-container" do %>
-    <div class="nav-brand-text nav-brand-solo-text nav-homepage-js">InfamousBerlin</div>
+    <div class="nav-brand-text nav-brand-solo-text">InfamousBerlin</div>
   <% end %>
 </div>

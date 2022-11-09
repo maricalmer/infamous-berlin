@@ -1,7 +1,7 @@
 let nextSection = null, section = null, sections = null, viewportSection = null
 
 const hideTapMobileBtn = () => {
-  const btn = document.querySelector(".tap-your-screen-btn-js")
+  const btn = document.querySelector(".mobile-homepage-tap-btn-js")
   if (btn) {
     btn.classList.toggle("hide-btn")
   }
@@ -42,7 +42,7 @@ const moveSections = () => {
 }
 const homepageSlides = () => {
   const homepage = document.querySelector(".homepage-slides-js");
-  const tapBtn = document.querySelector(".tap-your-screen-btn-js");
+  const tapBtn = document.querySelector(".mobile-homepage-tap-btn");
   homepage.addEventListener("click", moveSections)
   tapBtn.addEventListener("click", moveSections)
 }
