@@ -1,9 +1,9 @@
-<div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal fade login-modal" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content form-login">
-      <div class="modal-header header-form-login">
+    <div class="modal-content login-modal__content">
+      <div class="modal-header login-modal__header">
         <h5 class="modal-title" id="exampleModalLabel">Please Log in</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close login-modal__close-btn" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), remote: true) do |f| %>
@@ -11,16 +11,16 @@
             <%= f.input :email,
                         required: false,
                         autofocus: true,
-                        input_html: { autocomplete: "off", class: "input-form-login" } %>
+                        input_html: { autocomplete: "off", class: "login-modal__input-field" } %>
             <%= f.input :password,
                         required: false,
-                        input_html: { autocomplete: "off", class: "input-form-login" } %>
-            <%= f.input :remember_me, input_html: { class: "check-form-login" }, as: :boolean if devise_mapping.rememberable? %>
+                        input_html: { autocomplete: "off", class: "login-modal__input-field" } %>
+            <%= f.input :remember_me, input_html: { class: "login-modal__checkbox" }, as: :boolean if devise_mapping.rememberable? %>
           </div>
-          <div class="error-new-session text-danger"></div>
-          <%= link_to "Create an account", new_user_registration_path, class: "link-form-login" %>
-          <div class="modal-footer footer-form-login">
-            <%= f.button :submit, "Log in", class: "btn btn-message" %>
+          <div class="text-danger error-new-session-js"></div>
+          <%= link_to "Create an account", new_user_registration_path, class: "login-modal__link" %>
+          <div class="modal-footer login-modal__footer">
+            <%= f.button :submit, "Log in", class: "btn login-modal__btn" %>
           </div>
         <% end %>
       </div>

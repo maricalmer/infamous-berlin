@@ -156,45 +156,38 @@ abbr {
   background-color: #d6d6d6;
   padding: 5vh;
 }
-.form-login {
-  background-color: #858585;
-  border: 2px solid black;
-  border-radius: 0px;
-}
-.header-form-login {
-  border-bottom: 2px solid black;
-}
-.header-form-login button {
-  color: black;
-}
-.footer-form-login {
-  margin-top: 1rem;
-  border-top: 2px solid black;
-}
-.input-form-login {
-  border: 2px solid black;
-  border-radius: 0px;
-  background-color: #d6d6d6;
-}
-.input-form-login:focus {
-  border-color: #3D00BE;
-}
+// .form-login {
+//   background-color: #858585;
+//   border: 2px solid black;
+//   border-radius: 0px;
+// }
+// .header-form-login {
+//   border-bottom: 2px solid black;
+// }
+// .header-form-login button {
+//   color: black;
+// }
+// .footer-form-login {
+//   margin-top: 1rem;
+//   border-top: 2px solid black;
+// }
+
 .text-muted {
   color: #333 !important;
 }
-.check-form-login[type="checkbox"] {
-  border: 2px solid black;
-  border-radius: 0px;
-}
-.link-form-login {
-  color: black;
-  transition: box-shadow .3s, color .3s, text-decoration .3s;
-}
-.link-form-login:hover, .link-form-login:focus {
-  color: #333;
-  box-shadow: inset 0 -30px 0 #7ECA93, 0 2px 0 #7ECA93;
-  text-decoration: none;
-}
+// .check-form-login[type="checkbox"] {
+//   border: 2px solid black;
+//   border-radius: 0px;
+// }
+// .link-form-login {
+//   color: black;
+//   transition: box-shadow .3s, color .3s, text-decoration .3s;
+// }
+// .link-form-login:hover, .link-form-login:focus {
+//   color: #333;
+//   box-shadow: inset 0 -30px 0 #7ECA93, 0 2px 0 #7ECA93;
+//   text-decoration: none;
+// }
 .devise-form-container {
   // .devise-form
   background: #858585;
@@ -210,9 +203,9 @@ abbr {
     margin-bottom: 0.5rem;
   }
 }
-.link-form-login {
-  font-size: calc(1.275rem + 0.3vw);
-}
+// .link-form-login {
+//   font-size: calc(1.275rem + 0.3vw);
+// }
 
 .brand-devise-form {
   width: 230px;

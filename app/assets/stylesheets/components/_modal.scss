@@ -1,0 +1,60 @@
+.login-modal__content {
+  background-color: #858585;
+  border: 2px solid black;
+  border-radius: 0px;
+}
+.login-modal__header {
+  border-bottom: 2px solid black;
+}
+.login-modal__close-btn {
+  color: black;
+}
+.login-modal__input-field {
+  border: 2px solid black;
+  border-radius: 0px;
+  background-color: #d6d6d6;
+}
+.login-modal__input-field:focus {
+  border-color: #3D00BE;
+}
+.login-modal__checkbox[type="checkbox"] {
+  border: 2px solid black;
+  border-radius: 0px;
+}
+.login-modal__link {
+  color: black;
+  transition: box-shadow .3s, color .3s, text-decoration .3s;
+  font-size: calc(1.275rem + 0.3vw);
+}
+.login-modal__link:hover, .login-modal__link:focus {
+  color: #333;
+  box-shadow: inset 0 -30px 0 #7ECA93, 0 2px 0 #7ECA93;
+  text-decoration: none;
+}
+.login-modal__footer {
+  margin-top: 1rem;
+  border-top: 2px solid black;
+}
+.login-modal__btn, .login-modal__btn:focus {
+  font-size: 2rem;
+  border: 4px solid black;
+  box-shadow: -6px -6px black;
+  background: #7343db;
+  background-position: center;
+  transition: background 0.8s;
+  color: white;
+  border-radius: 0px;
+  width: 100%;
+  margin: 3vh auto 2vh auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-modal__btn:hover {
+  background: #8d37d3 radial-gradient(circle, transparent 1%, #5A26C9 1%) center/15000%;
+}
+.login-modal__btn:active {
+  background-color: #7D53D6;
+  background-size: 100%;
+  transition: background 0s;
+}

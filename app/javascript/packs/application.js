@@ -21,7 +21,6 @@ import { initCursor } from '../components/homepage_cursor';
 import { firstVisitCheck } from '../components/homepage_preloader';
 import { homepageSlides } from '../components/homepage_slides';
 import { listenCategories } from '../components/index_category_filter';
-import { hideNavbarOnScroll } from '../components/navbar';
 import { addNewMember } from '../components/new_member_form';
 import { playFileOnClick } from '../components/play_audio_file';
 import { listenSearchInput } from '../components/refresh_search';
@@ -97,9 +96,6 @@ document.addEventListener('turbolinks:load', () => {
   }
   if (document.querySelectorAll(".checkbox-label-js").length) {
     listenCategories();
-  }
-  if (document.querySelectorAll(".logo-js").length) {
-    hideNavbarOnScroll();
   }
   if (document.querySelectorAll(".btn-covering-js").length) {
     addNewMember();

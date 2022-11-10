@@ -5,38 +5,33 @@
     <span class="hamburger-menu__burger-slice hamburger-menu__burger-slice--top"></span>
     <span class="hamburger-menu__burger-slice hamburger-menu__burger-slice--middle"></span>
     <span class="hamburger-menu__burger-slice hamburger-menu__burger-slice--bottom"></span>
-    <ul id="menu" class="hamburger-menu__menu-list">
-      <li class="hamburger-menu-brand">
-        <%= link_to "InfamousBerlin", root_path, class: "scroll-event-exit-js" %>
-        <div class="underlined-title"></div>
+    <ul id="menu" class="hamburger-menu__navigation">
+      <li class="hamburger-menu__brand">
+        <%= link_to "InfamousBerlin", root_path, class: "hamburger-menu__link" %>
+        <div class="hamburger-menu__brand-underline"></div>
       </li>
-      <li class="hamburger-menu-lists">
-        <ul class="hamburger-menu-list hamburger-menu-list-first">
-          <li class="hamburger-menu-list-item"><%= link_to "Find talent", users_path, class: "scroll-event-exit-js" %></li>
-          <li class="hamburger-menu-list-item"><%= link_to "Find project", upcoming_projects_path, class: "scroll-event-exit-js" %></li>
-          <li class="hamburger-menu-list-item"><%= link_to "Find job", jobs_path, class: "scroll-event-exit-js" %></li>
+      <li class="hamburger-menu__sections">
+        <ul class="hamburger-menu__section hamburger-menu__section--first-section">
+          <li class="hamburger-menu__item"><%= link_to "Find talent", users_path, class: "hamburger-menu__link" %></li>
+          <li class="hamburger-menu__item"><%= link_to "Find project", upcoming_projects_path, class: "hamburger-menu__link" %></li>
+          <li class="hamburger-menu__item"><%= link_to "Find job", jobs_path, class: "hamburger-menu__link" %></li>
         </ul>
-        <ul class="hamburger-menu-list">
+        <ul class="hamburger-menu__section hamburger-menu__section--second-section">
           <% if !user_signed_in? %>
-            <li><%= link_to "Log in", new_user_session_path, data: {'bs-toggle': "modal", 'bs-target': "#modalLogin"}, class: "scroll-event-exit-js" %></li>
-            <li><%= link_to "Sign up", new_user_registration_path, class: "scroll-event-exit-js" %></li>
+            <li><%= link_to "Log in", new_user_session_path, data: {'bs-toggle': "modal", 'bs-target': "#modalLogin"}, class: "hamburger-menu__link" %></li>
+            <li><%= link_to "Sign up", new_user_registration_path, class: "hamburger-menu__link" %></li>
           <% else %>
-            <li class="hamburger-menu-list-item"><%= link_to "Dashboard", dashboard_path, class: "scroll-event-exit-js" %></li>
-            <li class="hamburger-menu-list-item hamburger-menu-list-item-messages">
-              <%= link_to "Messages", chatrooms_path, class: "scroll-event-exit-js" %>
+            <li class="hamburger-menu__item"><%= link_to "Dashboard", dashboard_path, class: "hamburger-menu__link" %></li>
+            <li class="hamburger-menu__item hamburger-menu__item--messages">
+              <%= link_to "Messages", chatrooms_path, class: "hamburger-menu__link" %>
               <% if current_user.unread_messages? %>
-                <div class="unread-messages-badge"></div>
+                <div class="hamburger-menu__messages-badge"></div>
               <% end %>
             </li>
-            <li class="hamburger-menu-list-item"><%= link_to "Log out", destroy_user_session_path, method: :delete, class: "scroll-event-exit-js" %></li>
+            <li class="hamburger-menu__item"><%= link_to "Log out", destroy_user_session_path, method: :delete, class: "hamburger-menu__link" %></li>
           <% end %>
         </ul>
       </li>
     </ul>
   </div>
 </nav>
-<div class="nav-brand-solo-container">
-  <%= link_to root_path, class: "scroll-event-exit-js nav-brand-container" do %>
-    <div class="nav-brand-text nav-brand-solo-text">InfamousBerlin</div>
-  <% end %>
-</div>
