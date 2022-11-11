@@ -3,61 +3,57 @@
 <%= render 'shared/cursor' %>
 <%= render 'shared/navbar' %>
 <div class="homepage homepage-slides-js">
-  <section class="first-layer s1 section-in-viewport-js first-section-js">
-    <div class="forth-landing-screen-brands">
-      <div class="forth-landing-screen-brand">
-        <div class="forth-landing-screen-brand-one">Infamous</div>
-        <div class="forth-landing-screen-brand-two">Berlin</div>
-      </div>
+  <section class="homepage__first-slide section-in-viewport-js">
+    <div class="homepage-brand">
+      <div class="homepage-brand__top">Infamous</div>
+      <div class="homepage-brand__bottom">Berlin</div>
     </div>
-    <div class="forth-landing-screen-text-container">
-      <div class="forth-landing-screen-text">A local platform connecting <span class="text-art">art<div class="text-underlined"></div></span> projects and creative <span class="text-talents">talents<div class="text-underlined"></div></span></div>
+    <div class="homepage-first-headline">
+      <div class="homepage-first-headline__text">A local platform connecting <span class="homepage-first-headline__highlight homepage-first-headline__highlight--yellow">art<div class="homepage-first-headline__underline"></div></span> projects and creative <span class="homepage-first-headline__highlight homepage-first-headline__highlight--purple">talents<div class="homepage-first-headline__underline"></div></span></div>
     </div>
   </section>
-  <section class="second-layer s2 second-section-js">
-    <div class="forth-landing-screen-background-img">
-      <div class="forth-landing-screen-img-text">Find creative <span class="text-work">work<div class="text-underlined"></div></span> for your talent</div>
-    </div>
+  <section class="homepage__second-slide second-section-js">
+    <div class="homepage-second-headline__text">Find creative <span class="homepage-second-headline__highlight">work<div class="homepage-second-headline__underline"></div></span> for your talent</div>
   </section>
-  <section class="third-layer s3 third-section-js">
-    <div class="parallax bg">
-      <div class="cyclop1-container limage1">
-        <img src='<%= asset_path('cyclop1-peep.png') %>' alt="find-talents" class="cyclop1-peep">
-        <img src='<%= asset_path('cyclop1-background.png') %>' alt="find-talents" class="cyclop1-background">
+  <section class="homepage__third-slide third-section-js">
+    <div class="homepage-parallax">
+      <div class="homepage-parallax__first-cyclop">
+        <img src='<%= asset_path('cyclop1-peep.png') %>' alt="find-talents" class="homepage-parallax__first-cyclop-character">
+        <img src='<%= asset_path('cyclop1-background.png') %>' alt="find-talents" class="homepage-parallax__first-cyclop-background">
       </div>
-      <div class="monster-female-container limage2">
-        <img src='<%= asset_path('monster-female-peep.png') %>' alt="find-talents" class="monster-female-peep">
-        <img src='<%= asset_path('monster-female-background.png') %>' alt="find-talents" class="monster-female-background">
+      <div class="homepage-parallax__monster-woman">
+        <img src='<%= asset_path('monster-woman-peep.png') %>' alt="find-talents" class="homepage-parallax__monster-woman-character">
+        <img src='<%= asset_path('monster-woman-background.png') %>' alt="find-talents" class="homepage-parallax__monster-woman-background">
       </div>
-      <div class="bear-container limage3">
-        <img src='<%= asset_path('bear-peep.png') %>' alt="find-talents" class="bear-peep">
-        <img src='<%= asset_path('bear-background.png') %>' alt="find-talents" class="bear-background">
+      <div class="homepage-parallax__bear">
+        <img src='<%= asset_path('bear-peep.png') %>' alt="find-talents" class="homepage-parallax__bear-character">
+        <img src='<%= asset_path('bear-background.png') %>' alt="find-talents" class="homepage-parallax__bear-background">
       </div>
-      <div class="cyclop2-container limage4">
-        <img src='<%= asset_path('cyclop2-peep.png') %>' alt="find-talents" class="cyclop2-peep">
-        <img src='<%= asset_path('cyclop2-background.png') %>' alt="find-talents" class="cyclop2-background">
+      <div class="homepage-parallax__second-cyclop">
+        <img src='<%= asset_path('cyclop2-peep.png') %>' alt="find-talents" class="homepage-parallax__second-cyclop-character">
+        <img src='<%= asset_path('cyclop2-background.png') %>' alt="find-talents" class="homepage-parallax__second-cyclop-background">
       </div>
-      <div class="landing-screen-text-three">Find <span class="text-talents2">talents<div class="text-underlined"></div></span> for your art project</div>
-      <div class="monster-male-container limage5">
-        <img src='<%= asset_path('monster-male-peep.png') %>' alt="find-talents" class="monster-male-peep">
-        <img src='<%= asset_path('monster-male-background.png') %>' alt="find-talents" class="monster-male-background">
+      <div class="homepage-third-headline__text">Find <span class="homepage-third-headline__highlight">talents<div class="homepage-third-headline__underline"></div></span> for your art project</div>
+      <div class="homepage-parallax__monster-male">
+        <img src='<%= asset_path('monster-male-peep.png') %>' alt="find-talents" class="homepage-parallax__monster-male-character">
+        <img src='<%= asset_path('monster-male-background.png') %>' alt="find-talents" class="homepage-parallax__monster-male-background">
       </div>
-      <div class="denver-container limage6">
-        <img src='<%= asset_path('denver-peep.png') %>' alt="find-talents" class="denver-peep">
-        <img src='<%= asset_path('denver-background.png') %>' alt="find-talents" class="denver-background">
+      <div class="homepage-parallax__denver">
+        <img src='<%= asset_path('denver-peep.png') %>' alt="find-talents" class="homepage-parallax__denver-character">
+        <img src='<%= asset_path('denver-background.png') %>' alt="find-talents" class="homepage-parallax__denver-background">
       </div>
-      <div class="hijab-container limage7">
-        <img src='<%= asset_path('hijab-peep.png') %>' alt="find-talents" class="hijab-peep">
-        <img src='<%= asset_path('hijab-background.png') %>' alt="find-talents" class="hijab-background">
+      <div class="homepage-parallax__hijab">
+        <img src='<%= asset_path('hijab-peep.png') %>' alt="find-talents" class="homepage-parallax__hijab-character">
+        <img src='<%= asset_path('hijab-background.png') %>' alt="find-talents" class="homepage-parallax__hijab-background">
       </div>
     </div>
-    <div class="footer-gray-container">
-      <div class="footer-top-diagonal-outside"></div>
-      <div class="footer-top-diagonal-inside"></div>
-      <div class="home-signup-btn">
-        <%= link_to new_user_registration_path do %>
-          <div class="home-signup-btn-text scroll-event-exit-js">
-            <h3>Sign up now!</h3>
+    <div class="homepage-signup-section">
+      <div class="homepage-signup-section__outside-border"></div>
+      <div class="homepage-signup-section__inside-border"></div>
+      <div class="homepage-signup-section__btn-wrapper">
+        <%= link_to new_user_registration_path, class: "homepage-signup-section__btn-link" do %>
+          <div class="homepage-signup-section__btn">
+            <h3 class="homepage-signup-section__btn-text">Sign up now!</h3>
           </div>
         <% end %>
       </div>
@@ -65,54 +61,54 @@
     </div>
   </section>
 </div>
-<div class="modal fade footer-modal" id="modalSupportUs" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="false">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content support-modal">
-      <div class="modal-header support-modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Support us</h5>
+<div class="modal fade homepage-modal" id="modalSupportUs" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="false">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content homepage-modal__content">
+      <div class="modal-header homepage-modal__header">
+        <h5 class="modal-title homepage-modal__header-text" id="exampleModalLabel">Support us</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body support-body">
-        <p class="">InfamousBerlin is a free space for artists to connect and develop their creativity. The sole purpose of the platform is to provide support to the local art scene. If you would like to help us in that project you can contact us or participate in our operating cost via PayPal or BTC:</p>
-        <div class="support-details">
-          <i class="fas fa-at"></i>
-          <p>hello@infamousberlin.com</p>
+      <div class="modal-body homepage-modal__body">
+        <p class="homepage-modal__body-text">InfamousBerlin is a free space for artists to connect and develop their creativity. The sole purpose of the platform is to provide support to the local art scene. If you would like to help us in that project you can contact us or participate in our operating cost via PayPal or BTC:</p>
+        <div class="homepage-modal__reference">
+          <i class="fas fa-at homepage-modal__reference-icon"></i>
+          <p class="homepage-modal__reference-text">hello@infamousberlin.com</p>
         </div>
-        <div class="support-details">
-          <i class="fab fa-paypal"></i>
-          <%= link_to "PayPal", "https://www.paypal.me/InfamousBerlin", target: "_blank" %>
+        <div class="homepage-modal__reference">
+          <i class="fab fa-paypal homepage-modal__reference-icon"></i>
+          <%= link_to "PayPal", "https://www.paypal.me/InfamousBerlin", target: "_blank", class:"homepage-modal__reference-link" %>
         </div>
-        <div class="support-details">
-          <i class="fab fa-bitcoin"></i>
-          <p>BTC network - 1KC7HewJRWkLF1TgDx9nowbbuwbm3EjBD</p>
+        <div class="homepage-modal__reference">
+          <i class="fab fa-bitcoin homepage-modal__reference-icon"></i>
+          <p class="homepage-modal__reference-text">BTC network - 1KC7HewJRWkLF1TgDx9nowbbuwbm3EjBD</p>
         </div>
-        <p class="support-thanks">Thanks for your help!</p>
-        <div class=support-modal-background></div>
+        <p class="homepage-modal__body-thanks">Thanks for your help!</p>
+        <div class="homepage-modal__background"></div>
       </div>
     </div>
   </div>
 </div>
-<div class="modal fade footer-modal" id="modalFeedback" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="false">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content support-modal">
-      <div class="modal-header support-modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Send any feedback</h5>
+<div class="modal fade homepage-modal" id="modalFeedback" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="false">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content homepage-modal__content">
+      <div class="modal-header homepage-modal__header">
+        <h5 class="modal-title homepage-modal__header-text" id="exampleModalLabel">Send any feedback</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body support-body">
-        <p class="">If you think about anything we will be really happy to hear your feedback. You can contact us via email or through Instagram:</p>
+      <div class="modal-body homepage-modal__body">
+        <p class="homepage-modal__body-text">If you think about anything we will be really happy to hear your feedback. You can contact us via email or through Instagram:</p>
         <br>
-        <div class="support-details">
-          <i class="fas fa-at"></i>
-          <p>hello@infamousberlin.com</p>
+        <div class="homepage-modal__reference">
+          <i class="fas fa-at homepage-modal__reference-icon"></i>
+          <p class="homepage-modal__reference-text">hello@infamousberlin.com</p>
         </div>
-        <div class="support-details">
-          <i class="fab fa-instagram"></i>
-          <%= link_to "Instagram", "https://www.instagram.com/infamousberlin", target: "_blank" %>
+        <div class="homepage-modal__reference">
+          <i class="fab fa-instagram homepage-modal__reference-icon"></i>
+          <%= link_to "Instagram", "https://www.instagram.com/infamousberlin", target: "_blank", class: "homepage-modal__reference-link" %>
         </div>
         <br>
-        <p class="support-thanks">Thanks a lot for your time!</p>
-        <div class=support-modal-background></div>
+        <p class="homepage-modal__body-thanks">Thanks a lot for your time!</p>
+        <div class="homepage-modal__background"></div>
       </div>
     </div>
   </div>

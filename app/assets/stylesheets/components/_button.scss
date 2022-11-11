@@ -17,7 +17,33 @@
   letter-spacing: 10px;
   fill: #858585;
 }
-
+.homepage-signup-section__btn-wrapper {
+  width: 200px;
+  margin: 0 auto 20vh auto;
+}
+.homepage-signup-section__btn-link {
+  text-decoration: none;
+  color: black;
+}
+.homepage-signup-section__btn {
+  color: black;
+  margin: 0;
+  background-color: #8DE969;
+  padding: 8px;
+  border: 4px black solid;
+  box-shadow: -6px -6px black;
+  height: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+}
+.homepage-signup-section__btn:hover {
+  background-color: #91DC74;
+}
+.homepage-signup-section__btn-text {
+  font-size: 2rem;
+}
 .btn-add-skill, .btn-add-category {
   border: 2px solid black;
   margin-left: 0.2vw;
@@ -394,6 +420,19 @@
   100% { transform: (translateY(0)) }
 }
 @media(min-width: 450px) {
+  .mobile-homepage-tap-btn__text {
+    height: 100px;
+    font-size: 3rem;
+  }
+  .homepage-signup-section__btn-wrapper {
+    width: 400px;
+  }
+  .homepage-signup-section__btn {
+    height: 100px;
+  }
+  .homepage-signup-section__btn-text {
+    font-size: 3rem;
+  }
   .btn-apply, .btn-edit, #btn-apply {
     width: 250px;
   }

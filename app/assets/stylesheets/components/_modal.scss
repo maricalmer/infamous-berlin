@@ -58,3 +58,64 @@
   background-size: 100%;
   transition: background 0s;
 }
+.homepage-modal {
+  height: auto;
+}
+.homepage-modal__content {
+  border: 4px solid black;
+  border-radius: 0px;
+  background-color: #d6d6d6;
+}
+.homepage-modal__header {
+  border-bottom: 2px solid black;
+  background-color: #d6d6d6;
+}
+.homepage-modal__header-text {
+  font-size: 1.5rem;
+}
+.homepage-modal__body {
+  font-size: 1.25rem;
+}
+.homepage-modal__body-text {
+  position: relative;
+  z-index: 1;
+}
+.homepage-modal__reference {
+  display: flex;
+  align-items: baseline;
+  z-index: 2;
+  position: relative;
+}
+.homepage-modal__reference-link {
+  text-decoration: none;
+  color: black;
+  position: relative;
+  z-index: 1;
+  transition: box-shadow .3s, color .3s;
+}
+.homepage-modal__reference-link:hover {
+  color: #333;
+  box-shadow: inset 0 -30px 0 #7ECA93, 0 2px 0 #7ECA93;
+}
+.homepage-modal__reference-icon {
+  width: 1rem;
+  margin-right: 1rem;
+}
+.homepage-modal__reference-text {
+  margin-bottom: 0;
+}
+.homepage-modal__body-thanks {
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+.homepage-modal__background {
+  background-image: asset-url("love-face-peep.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: -3vh;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}

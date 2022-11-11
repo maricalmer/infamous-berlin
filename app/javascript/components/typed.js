@@ -2,7 +2,7 @@ import Typed from 'typed.js';
 
 const triggerTyped = () => {
   const options = {
-    stringsElement: '.typed-strings-js',
+    stringsElement: '.footer-message-dynamic-strings-js',
     typeSpeed: 150,
     loop: true,
     loopCount: Infinity,

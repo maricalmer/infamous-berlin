@@ -8,7 +8,7 @@ const hideTapMobileBtn = () => {
 }
 const moveSections = () => {
   const isModalClosed = document.querySelectorAll(".modal.show").length === 0
-  sections = document.querySelectorAll('[class*="layer"]')
+  sections = document.getElementsByTagName('section')
   viewportSection = Array.from(sections).filter( section => section.classList.contains("section-in-viewport-js") == true )
   if (isModalClosed) {
     if (viewportSection.length === 1) {
@@ -42,7 +42,7 @@ const moveSections = () => {
 }
 const homepageSlides = () => {
   const homepage = document.querySelector(".homepage-slides-js");
-  const tapBtn = document.querySelector(".mobile-homepage-tap-btn");
+  const tapBtn = document.querySelector(".mobile-homepage-tap-btn-js");
   homepage.addEventListener("click", moveSections)
   tapBtn.addEventListener("click", moveSections)
 }
