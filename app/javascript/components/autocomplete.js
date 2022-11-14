@@ -1,7 +1,8 @@
 import 'js-autocomplete/auto-complete.css';
 import autocomplete from 'js-autocomplete';
 
-const createAutocomplete = (specificSet, searchInput) => {
+const createAutocomplete = (specificSet) => {
+  const searchInput = document.querySelector('.search-input-js');
   new autocomplete({
     selector: searchInput,
     minChars: 1,
@@ -25,24 +26,24 @@ const addSpecificClass = (cssClass) => {
 }
 
 const autocompleteSearch = () => {
-  const skill_sets = document.querySelectorAll('.search-data-js');
-  const formPage = document.querySelector('.new-project-js');
-  const searchUserPage = document.querySelector('.users-index-js');
-  const projectPage = document.querySelector('.project-show-js');
-  skill_sets.forEach((set) => {
+  const skillSets = document.querySelectorAll('.search-data-js');
+  const newProjectPage = document.querySelector('.new-project-js');
+  const userIndexPage = document.querySelector('.users-index-js');
+  const projectShowPage = document.querySelector('.project-show-js');
+  skillSets.forEach((set) => {
     const specificSet = JSON.parse(set.dataset.set);
-    if (specificSet && formPage) {
+    if (specificSet && newProjectPage) {
       const searchInput = set.firstElementChild.nextElementSibling.firstElementChild;
-      createAutocomplete(specificSet, searchInput);
-      addSpecificClass("autocomplete-suggestions-form");
-    } else if (specificSet && searchUserPage) {
+      createAutocomplete(specificSet);
+      addSpecificClass("autocomplete-suggestions--new-project");
+    } else if (specificSet && userIndexPage) {
       const searchInput = set.firstElementChild.nextElementSibling;
-      createAutocomplete(specificSet, searchInput);
-      addSpecificClass("autocomplete-suggestions-search");
-    } else if (specificSet && projectPage) {
+      createAutocomplete(specificSet);
+      addSpecificClass("autocomplete-suggestions--user-index");
+    } else if (specificSet && projectShowPage) {
       const searchInput = set.firstElementChild.firstElementChild.lastElementChild;
-      createAutocomplete(specificSet, searchInput);
-      addSpecificClass("autocomplete-suggestions-project");
+      createAutocomplete(specificSet);
+      addSpecificClass("autocomplete-suggestions--project-show");
     }
   });
 };

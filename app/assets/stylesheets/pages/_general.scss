@@ -8,3 +8,23 @@ html {
 body {
   overflow-x: hidden; /* needed because hiding the menu on the right side is not perfect for hamburger,  */
 }
+.layout-container {
+  padding: 0;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+
+  position: absolute;
+  top: 0;
+  width: 100%;
+  min-height: 100%;
+  background-color: #9b9b9b;
+}
+
+// .background-search {
+//   position: absolute;
+//   top: 0;
+//   width: 100%;
+//   min-height: 100%;
+//   background-color: #9b9b9b;
+// }

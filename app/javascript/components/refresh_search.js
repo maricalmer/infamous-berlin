@@ -15,7 +15,7 @@ const refreshIndex = () => {
   fetch(url, { headers: { 'Accept': 'text/plain' } })
     .then(response => response.text())
     .then((data) => {
-      searchResults.innerHTML = data;
+      searchResults.outerHTML = data;
       highlight()
     })
 }

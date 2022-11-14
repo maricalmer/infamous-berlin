@@ -119,3 +119,6 @@
   height: 100%;
   z-index: 0;
 }
+.login-modal, .homepage-modal {
+  z-index: 11001;
+}

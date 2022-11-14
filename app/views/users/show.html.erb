@@ -1,19 +1,20 @@
 <%= render 'shared/navbar' %>
-<div class="profile-grid">
-  <div class="img-name-profile">
-    <div class="card-user-profile">
-      <div class="card-user-profile-diamond-username">
-        <div class="diamond-wrapper-profile">
-          <h3 class="card-user-profile-username"><%= @user.username %></h3>
-          <div class="diamond-frame-big">
+<div class="user-profile-grid">
+  <div class="user-details-section user-profile-grid__avatar-details-section">
+    <div class="user-details-section__username-avatar-wrapper">
+      <!-- <div class="card-user-profile-diamond-username"> -->
+        <!-- <div class="user-details-section__username-avatar-wrapper diamond-wrapper-profile"> -->
+          <h3 class="user-details-section__username"><%= @user.username %></h3>
+          <div class="user-details-section__avatar diamond-frame-big">
+            <!-- ^^^ -->
             <% if @user.photo.attached? %>
               <%= cl_image_tag @user.photo.key, quality: "auto", transformation: [{fetch_format: "auto"}, {width: 700, crop: "fill"}] %>
             <% else %>
               <%= image_tag asset_path('logo.png') %>
             <% end %>
           </div>
-        </div>
-      </div>
+        <!-- </div> -->
+      <!-- </div> -->
     </div>
     <h3 class="card-user-profile-title"><%= @user.title %></h3>
   </div>

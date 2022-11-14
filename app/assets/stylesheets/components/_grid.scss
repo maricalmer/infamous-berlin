@@ -1,0 +1,14 @@
+@media(min-width: 992px) {
+  .user-profile-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(7, auto);
+    min-height: 100vh;
+  }
+  .user-profile-grid__avatar-details-section {
+    grid-column-start: 1;
+    grid-column-end: 8;
+    grid-row-start: 1;
+    grid-row-end: 6;
+  }
+}

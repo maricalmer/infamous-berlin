@@ -1,0 +1,41 @@
+.avatar--diamond {
+  transform: rotate(45deg);
+  position: relative;
+  width: fit-content;
+  height: fit-content;
+  padding: 1rem;
+  margin: 0 auto;
+}
+.avatar__frame--small {
+  position: relative;
+  display: block;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  border: 3px solid black;
+  background-color: #333;
+}
+.avatar__img--small {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: rotate(-45deg) scale(1.4);
+  transition: transform 1.2s;
+}
+@media(min-width: 576px) {
+  .avatar__frame--small {
+    margin-bottom: 32px;
+  }
+  .avatar__frame--small:hover {
+    filter: brightness(110%);
+  }
+  .avatar__frame--small:hover .avatar__img--small {
+    transform: rotate(-45deg) scale(1.5);
+    transition: transform 1.2s;
+  }
+}
+@media(min-width: 650px) {
+  .avatar--diamond {
+    margin: 0;
+  }
+}

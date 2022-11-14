@@ -1,0 +1,27 @@
+.search-results-message {
+  margin-top: 3rem;
+  margin-left: 2rem
+}
+.user-results-list {
+  margin: 5rem auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  padding: 0px;
+}
+.user-results-list__link {
+  text-decoration: none;
+  color: black;
+  width: fit-content;
+  height: fit-content;
+  margin: 0 auto;
+}
+.user-results-list__link:hover {
+  color: black;
+}
+@media(min-width: 1200px) {
+  .user-results-list {
+    grid-template-columns: 1fr 1fr;
+    width: fit-content;
+  }
+}

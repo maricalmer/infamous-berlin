@@ -49,14 +49,6 @@
 .search-refresh-input:focus {
   outline: none !important;
 }
-.background-search {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  min-height: 100%;
-  background-color: #9b9b9b;
-  // z-index: -3; <-- bug on login modal in user and project indexes
-}
 .user-results-list {
   margin: 5rem auto;
   display: grid;

@@ -5,7 +5,7 @@
   box-shadow: none !important;
 }
 
-.autocomplete-suggestions-form {
+.autocomplete-suggestions--new-project {
   background-color: #eaeaea !important;
   direction: rtl !important;
   overflow: auto !important;
@@ -17,7 +17,7 @@
     }
   }
 }
-.autocomplete-suggestions-form {
+.autocomplete-suggestions--new-project {
   .autocomplete-suggestion.selected {
     color: black !important;
     background-color: #eaeaea !important;
@@ -26,11 +26,11 @@
     }
   }
 }
-.autocomplete-suggestions-search {
+.autocomplete-suggestions--user-index {
   font-size: 1.5rem !important;
   letter-spacing: 1px !important;
 }
-.autocomplete-suggestions-project {
+.autocomplete-suggestions--project-show {
   direction: rtl !important;
   overflow: auto !important;
   height: fit-content !important;
@@ -48,7 +48,7 @@
     }
   }
 }
-.autocomplete-suggestions-project {
+.autocomplete-suggestions--project-show {
   .autocomplete-suggestion.selected {
     color: black !important;
     background-color: #e6dbfc !important;
@@ -66,7 +66,7 @@
 }
 
 @media(min-width: 992px) {
-  .autocomplete-suggestions-project {
+  .autocomplete-suggestions--project-show {
     top: 551px !important;
     max-height: 150px !important;
   }
