@@ -5,10 +5,41 @@
     grid-template-rows: repeat(7, auto);
     min-height: 100vh;
   }
-  .user-profile-grid__avatar-details-section {
+  .user-profile-grid__details-section {
     grid-column-start: 1;
     grid-column-end: 8;
     grid-row-start: 1;
     grid-row-end: 6;
+  }
+  .user-profile-grid__bio-skills-section {
+    grid-column-start: 1;
+    grid-column-end: 11;
+    grid-row-start: 6;
+    grid-row-end: 8;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+  .user-profile-grid__bio-section {
+    grid-column-start: 1;
+    grid-column-end: 8;
+    grid-row-start: 1;
+    grid-row-end: 3;
+  }
+  .user-profile-grid__skills-section {
+    grid-column-start: 8;
+    grid-column-end: 11;
+    grid-row-start: 1;
+    grid-row-end: 3;
+  }
+  .user-profile-grid__buttons-section {
+    grid-column-start: 8;
+    grid-column-end: 11;
+    grid-row-start: 1;
+    grid-row-end: 6;
+  }
+  .user-profile-grid__socialmedia-section {
+    grid-column-start: 1;
+    grid-column-end: 11;
   }
 }

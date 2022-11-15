@@ -1,39 +1,34 @@
 <%= render 'shared/navbar' %>
 <div class="user-profile-grid">
-  <div class="user-details-section user-profile-grid__avatar-details-section">
+  <div class="user-details-section user-profile-grid__details-section">
     <div class="user-details-section__username-avatar-wrapper">
-      <!-- <div class="card-user-profile-diamond-username"> -->
-        <!-- <div class="user-details-section__username-avatar-wrapper diamond-wrapper-profile"> -->
-          <h3 class="user-details-section__username"><%= @user.username %></h3>
-          <div class="user-details-section__avatar diamond-frame-big">
-            <!-- ^^^ -->
-            <% if @user.photo.attached? %>
-              <%= cl_image_tag @user.photo.key, quality: "auto", transformation: [{fetch_format: "auto"}, {width: 700, crop: "fill"}] %>
-            <% else %>
-              <%= image_tag asset_path('logo.png') %>
-            <% end %>
-          </div>
-        <!-- </div> -->
-      <!-- </div> -->
+      <h3 class="user-details-section__username"><%= @user.username %></h3>
+      <div class="avatar-diamond--big avatar-diamond--big__frame">
+        <% if @user.photo.attached? %>
+          <%= cl_image_tag @user.photo.key, quality: "auto", class: "avatar-diamond--big__img", transformation: [{fetch_format: "auto"}, {width: 700, crop: "fill"}] %>
+        <% else %>
+          <%= image_tag asset_path('logo.png'), class: "avatar-diamond--big__img" %>
+        <% end %>
+      </div>
     </div>
-    <h3 class="card-user-profile-title"><%= @user.title %></h3>
+    <h3 class="user-details-section__title"><%= @user.title %></h3>
   </div>
-  <div class="skills-bio">
-    <div class="bio">
+  <div class="user-bio-skills-section user-profile-grid__bio-skills-section">
+    <div class="user-bio-section user-profile-grid__bio-section">
       <h1>Bio</h1>
       <h4><%= simple_format @user.bio %></h4>
     </div>
-    <div class="skills">
+    <div class="user-skills-section user-profile-grid__skills-section">
       <h1>Skills</h1>
-      <ul class="skills-list ps-0">
+      <ul class="user-skills-section__list">
         <% @user_formatted_skills.each do |skill| %>
-          <li><h5 class="skill-box"><%= skill.downcase %></h5></li>
+          <li class="user-skills-section__list-item"><h5 class="user-skills-section__skill-box"><%= skill.downcase %></h5></li>
         <% end %>
       </ul>
     </div>
   </div>
-  <div class="profile-buttons">
-    <div class="buttons">
+  <div class="user-buttons-section user-profile-grid__buttons-section">
+    <div>
       <% if user_signed_in? %>
         <% if current_user == @user %>
           <%= link_to "Edit your profile", edit_user_path, class: "btn btn-message" %>
@@ -64,39 +59,39 @@
     </div>
   </div>
   <% if @user.contact_info? %>
-    <div class="links-socialmedia" id="bottom-page">
+    <div class="user-socialmedia-section user-profile-grid__socialmedia-section" id="bottom-page">
       <% if @user.website.present? %>
-        <div><a class="footer-socialmedia-link" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.website %>>Website</a></div>
+        <div><a class="user-socialmedia-section__link-item" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.website %>>Website</a></div>
       <% end %>
       <% if @user.facebook.present? %>
-        <div><a class="footer-socialmedia-link" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.facebook %>>Facebook</a></div>
+        <div><a class="user-socialmedia-section__link-item" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.facebook %>>Facebook</a></div>
       <% end %>
       <% if @user.instagram.present? %>
-        <div><a class="footer-socialmedia-link" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.instagram %>>Instagram</a></div>
+        <div><a class="user-socialmedia-section__link-item" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.instagram %>>Instagram</a></div>
       <% end %>
       <% if @user.soundcloud.present? %>
-        <div><a class="footer-socialmedia-link" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.soundcloud %>>Soundcloud</a></div>
+        <div><a class="user-socialmedia-section__link-item" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.soundcloud %>>Soundcloud</a></div>
       <% end %>
       <% if @user.youtube.present? %>
-        <div><a class="footer-socialmedia-link" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.youtube %>>YouTube</a></div>
+        <div><a class="user-socialmedia-section__link-item" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.youtube %>>YouTube</a></div>
       <% end %>
       <% if @user.mixcloud.present? %>
-        <div><a class="footer-socialmedia-link" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.mixcloud %>>Mixcloud</a></div>
+        <div><a class="user-socialmedia-section__link-item" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.mixcloud %>>Mixcloud</a></div>
       <% end %>
       <% if @user.linkedin.present? %>
-        <div><a class="footer-socialmedia-link" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.linkedin %>>Linkedin</a></div>
+        <div><a class="user-socialmedia-section__link-item" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.linkedin %>>Linkedin</a></div>
       <% end %>
       <% if @user.twitter.present? %>
-        <div><a class="footer-socialmedia-link" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.twitter %>>Twitter</a></div>
+        <div><a class="user-socialmedia-section__link-item" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.twitter %>>Twitter</a></div>
       <% end %>
     </div>
   <% end %>
-  <div class="arrow-bottom-page-wrapper">
+  <div>
     <a href="#bottom-page">
       <div class="arrow-bottom-page">
-        <ul>
-          <li></li>
-          <li></li>
+        <ul class="arrow-bottom-page__sticks">
+          <li class="arrow-bottom-page__stick arrow-bottom-page__stick--left"></li>
+          <li class="arrow-bottom-page__stick arrow-bottom-page__stick--right"></li>
         </ul>
       </div>
     </a>

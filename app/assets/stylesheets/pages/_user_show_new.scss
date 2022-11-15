@@ -22,18 +22,72 @@
   word-break: break-all;
   font-size: 1.5rem;
 }
-.user-details-section__frame {
-  width: 150px;
-  height: 150px;
-  overflow: hidden;
-  border: 4px solid black;
-  box-shadow: -6px 6px 0 0 black;
+.user-details-section__title {
+  margin-top: 4rem;
+  padding: 0 32px;
 }
-.user-details-section__avatar {
-  position: relative;
+.user-bio-section {
+  padding: 32px;
+  background: #cbefb6;
+  border-top: dashed 4px black;
+  border-bottom: dashed 4px black;
+}
+.user-skills-section {
+  padding: 32px;
+  background: #646668;
+  border-top: dashed 4px black;
+  border-bottom: dashed 4px black;
+}
+.user-skills-section__list {
+  flex-grow: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding-left: 0;
+}
+.user-skills-section__list-item {
+  list-style-type: none;
+  margin: 8px;
+}
+.user-skills-section__skill-box {
+  box-shadow: -6px -6px black;
+  border: 3px solid black;
+  width: auto;
+  padding: 2px;
+  background-color: #d6d6d6;
+}
+.user-buttons-section {
+  border-top: dashed 4px black;
+  border-bottom: dashed 4px black;
+  background: #cbefb6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 2rem 0;
+}
+.user-socialmedia-section {
+  padding: 32px;
+  border-top: dashed 4px black;
+  background: #333;
   display: block;
-  margin: 0 auto;
-  background-color: #333;
+  text-align: center;
+  color: white;
+}
+.user-socialmedia-section__link-item {
+  font-size: calc(1.325rem + 0.9vw);
+  font-weight: 500;
+  line-height: 1.2;
+  text-decoration: none;
+  color: #858585;
+  cursor: pointer;
+  display: inline-block;
+  padding: 0.5rem 0;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+.user-socialmedia-section__link-item:hover {
+  color: #7ECA93;
 }
 @media(min-width: 992px) {
   .user-details-section {
@@ -51,7 +105,30 @@
     font-size: 2rem;
     width: 300px;
   }
-  .user-details-section__frame {
-
+  .user-bio-skills-section {
+    border-bottom: dashed 4px black;
+    background: linear-gradient(to right, #cbefb6 0%, #cbefb6 70%, #646668 70%, #646668 100%);
+  }
+  .user-bio-section {
+    border-right: dashed 4px black;
+    border-bottom: none;
+  }
+  .user-skills-section {
+    border-left: dashed 4px black;
+    border-bottom: none;
+  }
+  .user-buttons-section {
+    border-top: none;
+    border-left: dashed 4px black;
+    padding: 0;
+  }
+  .user-socialmedia-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+  }
+  .user-socialmedia-section__link-item {
+    padding: 0;
   }
 }

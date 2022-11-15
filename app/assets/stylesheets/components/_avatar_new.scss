@@ -22,6 +22,25 @@
   transform: rotate(-45deg) scale(1.4);
   transition: transform 1.2s;
 }
+.avatar-diamond--big {
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  background-color: #333;
+}
+.avatar-diamond--big__frame {
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  border: 4px solid black;
+  box-shadow: -6px 6px 0 0 black;
+}
+.avatar-diamond--big__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: rotate(-45deg) scale(1.42);
+}
 @media(min-width: 576px) {
   .avatar__frame--small {
     margin-bottom: 32px;
@@ -37,5 +56,11 @@
 @media(min-width: 650px) {
   .avatar--diamond {
     margin: 0;
+  }
+}
+@media(min-width: 992px) {
+  .avatar-diamond--big__frame {
+    width: 350px;
+    height: 350px;
   }
 }

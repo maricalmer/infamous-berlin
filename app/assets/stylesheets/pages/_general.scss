@@ -20,7 +20,13 @@ body {
   min-height: 100%;
   background-color: #9b9b9b;
 }
-
+.link {
+  text-decoration: none;
+  color: black;
+}
+.link:hover {
+  color: black;
+}
 // .background-search {
 //   position: absolute;
 //   top: 0;

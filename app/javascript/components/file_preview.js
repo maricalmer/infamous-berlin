@@ -44,8 +44,10 @@ const displayDeleteBtn = (img, placeholder) => {
   placeholder.append(previewCard)
 }
 const catchFilePathUserForm = (userAvatarUploadBtn) => {
-  if (userAvatarUploadBtn.files.length > 0) {
-    const imgUri = userAvatarUploadBtn.files[0]
+  const fileInput = userAvatarUploadBtn.querySelector("#user_photo")
+  console.log(fileInput)
+  if (fileInput.files.length > 0) {
+    const imgUri = fileInput.files[0]
     const placeholder = document.querySelector(".placeholder-preview-js");
     const frame = document.querySelector(".diamond-wrapper-js");
     placeholder.outerHTML = `<img class="placeholder-preview-js" src=${URL.createObjectURL(imgUri)}>`;
