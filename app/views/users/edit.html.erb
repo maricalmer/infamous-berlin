@@ -1,24 +1,23 @@
 <%= render 'shared/hamburger' %>
-<div class="background-search">
-  <div class="new-project-page new-project-js">
-    <div class="wrapper-title-form">
-      <h1 class="edit-profile-form-title">
-        Edit your profile
-        <div class="underlined-title"></div>
-      </h1>
-      <div class="big-card-form">
-        <div class="new-project-form">
-          <% if current_user.bio.blank? %>
-            <div class="uncomplete-profile-note">Fill in your profile so that other users can find you!</div>
-          <% end %>
-          <%= render "form" , locals: { user: @user } %>
-        </div>
+<div class="form-page new-project-js">
+  <div class="form-page__form-and-title">
+    <h1 class="form-page__title">
+      Edit your profile
+      <div class="form-page__underline"></div>
+    </h1>
+    <div class="form-page__form">
+      <div class="form-page__content">
+        <% if current_user.bio.blank? %>
+          <div class="form-page__uncomplete-profile-note">Fill in your profile so that other users can find you!</div>
+        <% end %>
+        <%= render "form" , locals: { user: @user } %>
       </div>
     </div>
-    <div class="img-divider-wrapper">
-      <div class="diagonal-separator1"></div>
-      <div class="diagonal-separator2"></div>
-      <div class="side-img-update-profile"></div>
-    </div>
+  </div>
+  <div class="form-page__divider-and-img">
+    <div class="form-page__divider--first"></div>
+    <div class="form-page__divider--second"></div>
+    <div class="form-page__img form-page__img--update-user"></div>
   </div>
 </div>
+

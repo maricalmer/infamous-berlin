@@ -1,8 +1,3 @@
-// const resetFilePath = () => {
-//   const placeholder = document.querySelector(".placeholder-preview-js");
-//   placeholder.innerHTML = "";
-//   frame.classList.add("diamond-wrapper-form-hidden");
-// }
 const updateFilesList = (index) => {
   let initialFiles = document.getElementById("project_attachments")
   const initialArray = Array.from(initialFiles.files)
@@ -50,8 +45,8 @@ const catchFilePathUserForm = (userAvatarUploadBtn) => {
     const imgUri = fileInput.files[0]
     const placeholder = document.querySelector(".placeholder-preview-js");
     const frame = document.querySelector(".diamond-wrapper-js");
-    placeholder.outerHTML = `<img class="placeholder-preview-js" src=${URL.createObjectURL(imgUri)}>`;
-    frame.classList.remove("diamond-wrapper-form-hidden")
+    placeholder.outerHTML = `<img class="form-page__avatar-img placeholder-preview-js" src=${URL.createObjectURL(imgUri)}>`;
+    frame.classList.remove("form-page__avatar-hidden")
   }
 }
 const catchFilePathProjectForm = (projectAttachmentsUploadBtn) => {

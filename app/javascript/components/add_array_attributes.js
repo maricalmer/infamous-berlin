@@ -19,7 +19,7 @@ const pushToList = () => {
   let attribute = document.querySelector(".attribute-value-js").value
   if (attribute != "") {
     const list = document.querySelector(".attributes-list-js")
-    list.innerHTML += `<ul class="list-skill"><span>${attribute}</span><div class='btn-delete-attribute-js btn-delete-skill'>&#x2716;</div></ul>`
+    list.innerHTML += `<ul class="form-page__skills-list-item"><span>${attribute}</span><div class='btn-delete-attribute-js btn-delete-skill'>&#x2716;</div></ul>`
     if (attribute.includes(" ")) {
       attribute = attribute.trim().replaceAll(" ", "_")
     }
@@ -39,7 +39,7 @@ const populateList = () => {
       if (attribute.includes("_")) {
         attribute = attribute.replaceAll("_", " ")
       }
-      list.innerHTML += `<ul class="list-skill"><span>${attribute}</span><div class='btn-delete-attribute-js btn-delete-skill'>&#x2716;</div></ul>`
+      list.innerHTML += `<ul class="form-page__skills-list-item"><span>${attribute}</span><div class='btn-delete-attribute-js btn-delete-skill'>&#x2716;</div></ul>`
     }
   })
   triggerDeleteBtns();

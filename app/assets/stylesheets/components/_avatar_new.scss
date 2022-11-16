@@ -41,6 +41,33 @@
   object-fit: cover;
   transform: rotate(-45deg) scale(1.42);
 }
+.form-page__avatar-wrapper {
+  transform: rotate(45deg);
+  transform-origin: top left;
+  position: relative;
+  top: 30px;
+  margin-right: auto;
+  margin-left: 6rem;
+  width: fit-content;
+}
+.form-page__avatar-hidden {
+  display: none;
+}
+.form-page__avatar-frame {
+  display: block;
+  width: 125px;
+  height: 125px;
+  overflow: hidden;
+  border: 3px solid black;
+  box-shadow: -6px 6px 0 0 black;
+  background-color: #333;
+}
+.form-page__avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: rotate(-45deg) scale(1.4);
+}
 @media(min-width: 576px) {
   .avatar__frame--small {
     margin-bottom: 32px;
@@ -62,5 +89,10 @@
   .avatar-diamond--big__frame {
     width: 350px;
     height: 350px;
+  }
+  .form-page__avatar-wrapper {
+    position: absolute;
+    right: -62px;
+    top: -20px;
   }
 }

@@ -289,7 +289,7 @@ abbr {
 .project_location, .project_category, .project_date, .update-profile-form-top, .user_website, .user_soundcloud, .user_instagram, .user_youtube, .user_mixcloud, .user_linkedin, .new-job-form-description-field {
   margin-bottom: 2vh;
 }
-.project_description, .user_bio, .user_skills, .update-profile-form-social-media, .job_location {
+.project_description, .user_skills, .update-profile-form-social-media, .job_location {
   border-bottom: 4px dashed black;
   padding-bottom: 8vh;
   margin-bottom: 8vh;
@@ -528,18 +528,18 @@ abbr {
   top: 0px;
 }
 
-.update-profile-form-social-media input[type="text"]::-moz-placeholder {
-  font-size: 14px;
-}
-.update-profile-form-social-media input[type="text"]::-webkit-input-placeholder {
-  font-size: 14px;
-}
-.update-profile-form-social-media input[type="text"]:-ms-input-placeholder {
-  font-size: 14px;
-}
-.update-profile-form-social-media input[type="text"]:-moz-placeholder {
-  font-size: 14px;
-}
+// .update-profile-form-social-media input[type="text"]::-moz-placeholder {
+//   font-size: 14px;
+// }
+// .update-profile-form-social-media input[type="text"]::-webkit-input-placeholder {
+//   font-size: 14px;
+// }
+// .update-profile-form-social-media input[type="text"]:-ms-input-placeholder {
+//   font-size: 14px;
+// }
+// .update-profile-form-social-media input[type="text"]:-moz-placeholder {
+//   font-size: 14px;
+// }
 
 
 @media(min-width: 450px) {
@@ -688,14 +688,7 @@ abbr {
     padding: 48px;
     span {
       border-bottom: 4px dashed #d6d6d6;
-      // transition: box-shadow .3s, color .3s;
     }
-    // span:hover,
-    // span:focus {
-    //   color: black;
-    //   box-shadow: inset 0 -30px 0 #7ECA93, 0 2px 0 #7ECA93;
-    //   border-bottom: none;
-    // }
   }
   .new-project-page, .new-inquiry-page {
     display: flex;

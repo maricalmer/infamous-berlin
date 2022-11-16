@@ -1,0 +1,250 @@
+.form-page {
+  display: block;
+}
+.form-page__title {
+  font-size: 3rem;
+  position: absolute;
+  top: 100px;
+  right: 0;
+  width: 220px;
+  overflow-x: visible;
+  z-index: 4;
+}
+.form-page__underline {
+  height: 25px;
+  background-color: #D1BFF6;
+  position: relative;
+  top: -20px;
+  right: 14px;
+  z-index: -1;
+}
+.form-page__form {
+  background-color: #d6d6d6;
+  margin: 1vh 5vw;
+  margin-top: 230px;
+  border: solid 4px black;
+  box-shadow: -8px -8px 0 0 black;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  position: relative;
+  z-index: 0;
+}
+.form-page__label {
+  font-size: calc(1.275rem + 0.3vw);
+  margin-bottom: 0.5rem;
+}
+.form-page__input, .form-page__input:focus {
+  background-color: #d6d6d6;
+  border: 2px solid black;
+  border-radius: 0px;
+}
+.form-page__content {
+  width: 100%;
+  padding-top: 3rem;
+}
+.form-page__uncomplete-profile-note {
+  font-size: 1rem;
+  color: #C1292E;
+  text-align: right;
+  margin-bottom: 1rem;
+}
+.form-page__divider-and-img {
+  position: relative;
+  width: 35%;
+  display: none;
+  height: 100vh;
+  position: sticky;
+  top: 0px;
+}
+.form-page__username-and-email {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2vh;
+}
+.form-page__username, .form-page__email {
+  width: 45%;
+}
+.form-page__user-title {
+  margin-bottom: 2vh;
+}
+.form-page__bio-wrapper {
+  position: relative;
+}
+.form-page__bio {
+  border-bottom: 4px dashed black;
+  padding-bottom: 8vh;
+  margin-bottom: 8vh;
+}
+.form-page__bio-uncomplete-marker {
+  position: absolute;
+  color: #C1292E;
+  font-size: 1.2rem;
+  top: 0;
+  left: 28px;
+}
+.form-page__skills-hidden-field {
+  display: none;
+}
+.form-page__skills-custom {
+  border-bottom: 4px dashed black;
+  padding-bottom: 8vh;
+  margin-bottom: 8vh;
+}
+.form-page__add-skills {
+  margin-right: 5vw;
+  margin-bottom: 5vh;
+}
+.form-page__add-skills-label {
+  display: block;
+}
+.form-page__add-skills-input-and-btn {
+  display: flex;
+}
+.form-page__add-skills-input {
+  padding: 0.375rem 0.75rem;
+}
+.form-page__add-skills-input:focus {
+  outline: none !important;
+  box-shadow: none;
+}
+.form-page__skills-list-items {
+  padding-left: 0;
+}
+.form-page__skills-list-item {
+  display: flex;
+  width: fit-content;
+  margin-right: 1vw;
+  margin-bottom: 2vh;
+  padding: 0;
+}
+.form-page__social-media {
+  display: block;
+  border-bottom: 4px dashed black;
+  padding-bottom: 8vh;
+  margin-bottom: 8vh;
+}
+.form-page__social-media-item::placeholder {
+  font-size: 14px;
+}
+.form-page__upload-picture {
+  display: block;
+}
+.form-page__avatar-placeholder {
+  position: relative;
+  margin-right: 2vw;
+}
+@media(min-width: 450px) {
+  .form-page__title {
+    font-size: 4rem;
+    right: 2vw;
+    width: 290px;
+  }
+  .form-page__underline {
+    height: 33px;
+    top: -27px;
+  }
+  .form-page__content {
+    padding: 3rem;
+  }
+  .form-page__skills-custom {
+    display: flex;
+    justify-content: start;
+  }
+  .form-page__add-skills {
+    margin-bottom: 0;
+  }
+  .form-page__skills-list-items {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 0;
+  }
+}
+@media(min-width: 600px) {
+  .form-page__content {
+    padding: 1rem;
+  }
+}
+@media(min-width: 850px) {
+  .form-page__uncomplete-profile-note {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+}
+@media(min-width: 992px) {
+  .form-page {
+    display: flex;
+  }
+  .form-page__form-and-title {
+    width: 65%;
+  }
+  .form-page__title {
+    font-size: 6rem;
+    right: 22vw;
+    width: 434px;
+    top: 60px;
+  }
+  .form-page__underline {
+    height: 49px;
+    top: -39px;
+    right: 20px;
+  }
+  .form-page__divider-and-img {
+    display: block;
+  }
+  .form-page__divider--first {
+    position: sticky;
+    z-index: 2;
+  }
+  .form-page__divider--first::before {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-top: 100vh solid #9b9b9b;
+    border-right: 37vw solid transparent;
+    width: 0;
+    z-index: 2;
+  }
+  .form-page__divider--second {
+    position: sticky;
+    z-index:1;
+  }
+  .form-page__divider--second::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 4px;
+    border-top: 100vh solid black;
+    border-right: 37vw solid transparent;
+    width: 0;
+    z-index: 1;
+    outline: 2px solid black;
+  }
+  .form-page__img {
+    display: block;
+    height: 100vh;
+    border-left: 2px solid black;
+    filter: grayscale(100%);
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0px;
+  }
+  .form-page__img--update-user {
+    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), asset-url("clay.png");
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .form-page__social-media {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .form-page__social-media-item {
+    width: 30%;
+  }
+  .form-page__upload-picture {
+    display: flex;
+    justify-content: space-between;
+  }
+}
