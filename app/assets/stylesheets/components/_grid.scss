@@ -1,3 +1,23 @@
+.project-results-grid {
+  -moz-column-count: 1;
+  -webkit-column-count: 1;
+  column-count: 1 ;
+  column-gap: 30px;
+  width: 80%;
+  margin: 0 auto;
+  padding: 1rem 0 10rem 0;
+}
+@media(min-width: 515px) {
+  .project-results-grid {
+    column-count: 2;
+    width: 80%;
+  }
+}
+@media(min-width: 785px) {
+  .project-results-grid {
+    column-count: 3;
+  }
+}
 @media(min-width: 992px) {
   .user-profile-grid {
     display: grid;
@@ -41,5 +61,16 @@
   .user-profile-grid__socialmedia-section {
     grid-column-start: 1;
     grid-column-end: 11;
+  }
+}
+
+@media(min-width: 1100px) {
+  .project-results-grid {
+    column-count: 4;
+  }
+}
+@media(min-width: 1350px) {
+  .project-results-grid {
+    column-count: 5;
   }
 }

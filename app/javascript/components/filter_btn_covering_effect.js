@@ -4,8 +4,8 @@ const clickOnFilter = () => {
   const radionBtns = document.querySelector(".show-radio-btns-js")
   filterBtns.forEach((btn) => {
     btn.addEventListener("click", function() {
-      text.classList.toggle("jobs-index-hidding-span-activated")
-      radionBtns.classList.toggle("job-index-radio-buttons-shown")
+      text.classList.toggle("search-bar-and-filters__cover--folded")
+      radionBtns.classList.toggle("search-bar-and-filters__filter-options--shown")
     })
   })
 }

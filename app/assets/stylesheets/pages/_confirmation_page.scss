@@ -9,20 +9,20 @@
   height: 100vh;
   margin: 0;
 }
-.confirmation-page-container {
+.confirmation-page__container {
   max-width: 500px;
   margin: 0 auto;
 }
-.confirmation-page .confirmation-page-peep {
-  margin:  0 auto;
+.confirmation-page__peep {
+  margin: 0 auto;
 }
-.confirmation-page .confirmation-page-title {
+.confirmation-page__underlined-title {
   text-align: left;
   margin: 2rem 0 2rem 1rem;
   position: relative;
   width: fit-content;
 }
-.confirmation-page h1 {
+.confirmation-page__title {
   font-size: 5rem;
   color: black;
   line-height: 1.5em;
@@ -30,7 +30,7 @@
   position: relative;
   z-index: 1;
 }
-.confirmation-page .underlined-title-confirmation-page {
+.confirmation-page__underline {
   height: 2.5em;
   position: absolute;
   bottom: 8px;
@@ -38,8 +38,25 @@
   background-color: #cff170;
   left: -11px;
 }
-.confirmation-page p {
+.confirmation-page__text {
   font-size: 1.5rem;
   text-align: left;
   margin: 0 1rem;
+}
+.confirmation-page__homepage-link {
+  cursor: pointer;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+  color: #333;
+  transition: box-shadow .3s, color .3s;
+}
+.confirmation-page__homepage-link:hover {
+  color: black;
+}
+.confirmation-page__link-arrow {
+  transform: rotate(180deg);
+  margin-right: 4px;
+  padding-top: 4px;
 }

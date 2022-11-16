@@ -4,36 +4,36 @@
   <% else %>
     <h4 class="numbers-results"><%= projects.count %> <%= "project".pluralize(projects.count)%> matching your search for "<%= query %>"</h4>
   <% end %>
-  <div class="no-masonry-grid search-refresh-results">
+  <div class="project-results-grid">
     <% @projects.each do |project| %>
-      <div class="wrapper-no-masonry-item safari_only remove-bottom-margin-js">
-        <div class="no-masonry-item">
-          <%= link_to project_path(project.slug), class: "link" do  %>
-            <div class="wrapper-title-card-project-search">
-              <h4 class="title-card-project-search highlight-query-js">
+      <div class="project-card__wrapper project-card__wrapper--safari_only remove-bottom-margin-js">
+        <div class="project-card__item">
+          <%= link_to project_path(project.slug), class: "project-card__link" do  %>
+            <div class="project-card__title-and-ribbon">
+              <h4 class="project-card__title highlight-query-js">
                 <%= project.title %>
               </h4>
               <% if project.upcoming? %>
-                <div class="ribbon">UPCOMING</div>
+                <div class="project-card__ribbon">UPCOMING</div>
               <% end %>
             </div>
-            <div class="img-avatar-wrapper">
-              <div class="search-card-img-wrapper">
+            <div class="project-card__img-and-avatar">
+              <div class="project-card__img-wrapper">
                 <% if project.attachments.first.image? %>
-                  <%= cl_image_tag project.attachments.first.key, class: "card-img", quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 400, crop: "fill"}] %>
+                  <%= cl_image_tag project.attachments.first.key, class: "project-card__img", quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 400, crop: "fill"}] %>
                 <% elsif project.attachments.first.audio? %>
-                  <%= cl_image_tag "logo-audio", class: "card-img", transformation: [{fetch_format: "auto"}, {width: 400, crop: "fill"}] %>
+                  <%= cl_image_tag "logo-audio", class: "project-card__img", transformation: [{fetch_format: "auto"}, {width: 400, crop: "fill"}] %>
                 <% else %>
-                  <%= cl_video_tag project.attachments.first.key, class: "card-img" %>
+                  <%= cl_video_tag project.attachments.first.key, class: "project-card__img" %>
                 <% end %>
               </div>
-              <div class="avatar-card">
-                <%= cl_image_tag project.user.photo.key, quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 100, crop: "fill"}] %>
+              <div class="project-card__avatar">
+                <%= cl_image_tag project.user.photo.key, quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 100, crop: "fill"}], class: "project-card__avatar-img" %>
               </div>
             </div>
-            <div class="text-card-project-search highlight-query-js"><%= project.description %></div>
+            <div class="project-card__description highlight-query-js"><%= project.description %></div>
           <% end %>
-          <div class="no-masonry-item-box-shadow"></div>
+          <div class="project-card__shadow"></div>
         </div>
       </div>
     <% end %>

@@ -1,3 +1,27 @@
+.project-card__avatar {
+  display: block;
+  overflow: hidden;
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  border: 4px solid black;
+  position: absolute;
+  bottom: -27px;
+  left: 135px;
+  width: 50px;
+  height: 50px;
+  background-color: #333;
+  z-index: 100;
+}
+.project-card__avatar-img {
+  max-width: 100%;
+  max-height: 100%;
+  transform: rotate(-45deg) scale(1.4);
+  transition: transform 1.2s;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
 .avatar {
   width: 40px;
   border-radius: 50%;
@@ -183,29 +207,6 @@
 }
 .img-avatar-wrapper {
   position: relative;
-}
-.avatar-card {
-  display: block;
-  overflow: hidden;
-  -ms-transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
-  transform: rotate(45deg);
-  border: 4px solid black;
-  position: absolute;
-  bottom: -27px;
-  left: 130px;
-  width: 50px;
-  height: 50px;
-  background-color: #333;
-  img {
-    max-width: 100%;
-    max-height: 100%;
-    transform: rotate(-45deg) scale(1.4);
-    transition: transform 1.2s;
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-  }
 }
 .avatar-job {
   display: block;

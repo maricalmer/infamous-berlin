@@ -8,7 +8,7 @@
     <div class="form-page__form">
       <div class="form-page__content">
         <% if current_user.bio.blank? %>
-          <div class="form-page__uncomplete-profile-note">Fill in your profile so that other users can find you!</div>
+          <div class="form-page__uncomplete-profile-note">Fill in your profile to appear in searches!</div>
         <% end %>
         <%= render "form" , locals: { user: @user } %>
       </div>
