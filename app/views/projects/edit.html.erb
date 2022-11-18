@@ -1,21 +1,20 @@
 <%= render 'shared/hamburger' %>
-<div class="background-search">
-  <div class="new-project-page new-project-js">
-    <div class="wrapper-title-form">
-      <h1 class="update-project-form-title">
-        Edit your project
-        <div class="underlined-title"></div>
-      </h1>
-      <div class="big-card-form">
-        <div class="new-project-form">
-          <%= render "form" , locals: { project: @project } %>
-        </div>
+<div class="form-page project-form-js">
+  <div class="form-page__form-and-title">
+    <h1 class="form-page__title">
+      Edit your project
+      <div class="form-page__underline"></div>
+    </h1>
+    <div class="form-page__form">
+      <div class="form-page__content">
+        <%= render "form" , locals: { project: @project } %>
       </div>
     </div>
-    <div class="img-divider-wrapper">
-      <div class="diagonal-separator1"></div>
-      <div class="diagonal-separator2"></div>
-      <div class="side-img-edit-project"></div>
-    </div>
+  </div>
+  <div class="form-page__divider-and-img">
+    <div class="form-page__divider--first"></div>
+    <div class="form-page__divider--second"></div>
+    <div class="form-page__img form-page__img--edit-project"></div>
   </div>
 </div>
+

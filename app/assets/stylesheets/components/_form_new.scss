@@ -6,9 +6,9 @@
   position: absolute;
   top: 100px;
   right: 0;
-  width: 220px;
   overflow-x: visible;
   z-index: 4;
+  width: fit-content;
 }
 .form-page__underline {
   height: 25px;
@@ -192,7 +192,7 @@
   .form-page__title {
     font-size: 4rem;
     right: 2vw;
-    width: 290px;
+    width: fit-content;
   }
   .form-page__underline {
     height: 33px;
@@ -252,8 +252,8 @@
   .form-page__title {
     font-size: 6rem;
     right: 22vw;
-    width: 434px;
     top: 60px;
+    width: fit-content;
   }
   .form-page__underline {
     height: 49px;
@@ -303,6 +303,18 @@
   }
   .form-page__img--update-user {
     background: linear-gradient(to top, rgba(0,0,0,0.1),#333), asset-url("clay.png");
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .form-page__img--new-project {
+    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), asset-url("white_page.png");
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .form-page__img--edit-project {
+    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), asset-url("paper_bin.png");
     background-position: 0% 100%;
     background-repeat: no-repeat;
     background-size: cover;

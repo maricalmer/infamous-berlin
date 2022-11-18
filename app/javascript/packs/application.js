@@ -40,7 +40,7 @@ document.addEventListener('turbolinks:load', () => {
     disableEnterSubmit();
   }
   if (document.querySelectorAll(".users-index-js").length ||
-    document.querySelectorAll(".new-project-js").length ||
+    document.querySelectorAll(".project-form-js").length ||
     document.querySelectorAll(".project-show-js").length) {
     autocompleteSearch();
   };

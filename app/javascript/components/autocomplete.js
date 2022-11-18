@@ -27,7 +27,7 @@ const addSpecificClass = (cssClass) => {
 
 const autocompleteSearch = () => {
   const skillSets = document.querySelectorAll('.search-data-js');
-  const newProjectPage = document.querySelector('.new-project-js');
+  const projectFormPage = document.querySelector('.project-form-js');
   const userIndexPage = document.querySelector('.users-index-js');
   const projectShowPage = document.querySelector('.project-show-js');
   skillSets.forEach((set) => {
