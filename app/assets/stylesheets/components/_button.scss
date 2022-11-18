@@ -90,6 +90,87 @@
 .btn-delete-skill:hover {
   color: #a34646;
 }
+.carousel-and-project-details__btn-covering {
+  font-size: 2rem;
+  width: auto;
+  border: 4px solid black;
+  box-shadow: -6px -6px black;
+  background-color: #3D00BE;
+  display: inline-block;
+  width: 100%;
+  color: white;
+  height: 68px;
+  border-radius: 0;
+}
+.carousel-and-project-details__btn-covering:hover {
+  background-color: #5A26C9;
+}
+.carousel-and-project-details__btn-covering--hide {
+  display: none;
+}
+.carousel-and-project-details__new-member-btn {
+  font-size: 2rem;
+  color: black;
+  border-color: #3D00BE;
+  background-color: #3D00BE;
+  border-radius: 0px;
+  outline: 2px solid black;
+  height: 50px;
+  line-height: 0px;
+  color: white;
+}
+.carousel-and-project-details__new-member-btn:hover {
+  color: white;
+  background-color: #333;
+  border-color: black;
+}
+.carousel-and-project-details__jobs-btn, .carousel-and-project-details__jobs-btn:focus {
+  font-size: 2rem;
+  display: block;
+  border: 4px solid black;
+  box-shadow: -6px -6px black;
+  background: #333;
+  background-position: center;
+  transition: background 0.8s;
+  width: 100%;
+  color: white;
+  border-radius: 0px;
+  height: 68px;
+}
+.carousel-and-project-details__talent-eye-btn, .carousel-and-project-details__talent-eye-btn:focus {
+  font-size: 2rem;
+  margin: 0 auto 0 1rem;
+  display: block;
+  border: 4px solid black;
+  box-shadow: -6px -6px black;
+  background: #7ECA93;
+  width: 30%;
+  height: 68px;
+}
+.carousel-and-project-details__talent-eye-btn:hover, .carousel-and-project-details__talent-btn:hover {
+  background-color: #d2fe55;
+}
+.carousel-and-project-details__talent-eye-btn:active, .carousel-and-project-details__talent-btn:hover {
+  background-color: #8EC7A6;
+  background-size: 100%;
+  transition: all 0s;
+}
+.carousel-and-project-details__talent-btn, .carousel-and-project-details__talent-btn:focus {
+  font-size: 2rem;
+  display: block;
+  border: 4px solid black;
+  box-shadow: -6px -6px black;
+  background: #cff170;
+  width: 100%;
+  height: 68px;
+}
+
+
+
+
+
+
+
 .btn-apply, #btn-apply {
   font-size: 2rem;
   border-radius: 0px;
@@ -256,9 +337,6 @@
 .btn-covering:hover {
   background-color: #5A26C9;
 }
-.btn-covering-hide {
-  display: none;
-}
 .btn-projects:hover, .btn-job:hover {
   background: #524E59 radial-gradient(circle, transparent 1%, #524E59 1%) center/15000%;
 }
@@ -420,6 +498,17 @@
   .homepage-signup-section__btn-text {
     font-size: 3rem;
   }
+  .carousel-and-project-details__btn-covering {
+    padding: 0;
+  }
+  .carousel-and-project-details__talent-btn {
+    font-size: 2rem;
+    margin: 0 auto;
+    margin-top: 40px;
+    height: 68px;
+    padding: 0;
+  }
+
   .btn-apply, .btn-edit, #btn-apply {
     width: 250px;
   }

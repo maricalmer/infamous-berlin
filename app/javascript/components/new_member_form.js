@@ -1,7 +1,7 @@
 const hideBtnShowForm = (event) => {
-  event.currentTarget.classList.add("btn-covering-hide")
+  event.currentTarget.classList.add("carousel-and-project-details__btn-covering--hide")
   const form = document.querySelector(".new-member-form-js")
-  form.classList.add("new-member-form-show")
+  form.classList.add("new-member-form--show")
 }
 
 const addNewMember = () => {

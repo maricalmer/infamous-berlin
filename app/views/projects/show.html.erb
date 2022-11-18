@@ -1,55 +1,52 @@
-
-<!-- is the head turbolinks needed? -->
-<!-- https://github.com/turbolinks/turbolinks/issues/418#issuecomment-424995556 -->
 <%= render 'shared/navbar' %>
-<div class="top-block-project">
+<div class="carousel-and-project-details">
   <%= render 'shared/carousel' %>
-  <div class="side-text">
-    <div class="side-text-title">
-      <div class="project-title"><%= @project.title %></div>
-      <h3 class="project-title-owner">by <%= link_to @project.user.username, user_path(@project.user), class:"project-user" %></h3>
+  <div class="carousel-and-project-details__title-and-owner-wrapper">
+    <div class="carousel-and-project-details__title-and-owner">
+      <div class="carousel-and-project-details__title"><%= @project.title %></div>
+      <h3 class="carousel-and-project-details__owner">by <%= link_to @project.user.username, user_path(@project.user), class:"carousel-and-project-details__owner-link" %></h3>
     </div>
-    <div class="side-text-members">
+    <div class="carousel-and-project-details__members">
       <% if @members.any? %>
-        <div class="members-block">
-          <div class="project-side-details mb-4"><%= 'Member'.pluralize(@members.count) %>:</div>
-          <div class="members-block-avatars">
+        <div class="carousel-and-project-details__label-and-avatars">
+          <div class="carousel-and-project-details__label"><%= 'Member'.pluralize(@members.count) %>:</div>
+          <div class="carousel-and-project-details__avatars">
             <% @members.first(5).each do |member| %>
-              <div class="diamond-frame-member" data-bs-toggle="modal" data-bs-target="#membersList">
+              <div class="avatars-member-stack" data-bs-toggle="modal" data-bs-target="#membersList">
                 <% if member.photo.attached? %>
-                  <%= cl_image_tag member.photo.key, quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 70, crop: "fill"}] %>
+                  <%= cl_image_tag member.photo.key, class: "avatars-member-stack__img", quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 70, crop: "fill"}] %>
                 <% else %>
-                  <%= image_tag asset_path('logo.png') %>
+                  <%= image_tag asset_path('logo.png'), class: "avatars-member-stack__img" %>
                 <% end %>
               </div>
             <% end %>
             <% if @members.size > 5 %>
-              <div class="diamond-frame-member" data-bs-toggle="modal" data-bs-target="#membersList">
-                <p class="">...</p>
+              <div class="avatars-member-stack" data-bs-toggle="modal" data-bs-target="#membersList">
+                <p class="avatars-member-stack__extra-icon">...</p>
               </div>
             <% end %>
           </div>
         </div>
       <% else %>
-        <div class="members-block-placeholder"></div>
+        <div class="carousel-and-project-details__avatars-placeholder"></div>
       <% end %>
       <div>
       <% if @project.user == current_user %>
-        <div class="new-member-button-form">
-          <button class="btn btn-covering btn-covering-js">Add member</button>
+        <div class="carousel-and-project-details__new-member-btn-form">
+          <button class="carousel-and-project-details__btn-covering btn btn-covering-js">Add member</button>
           <%= simple_form_for [ @project, @collab ] do |f| %>
-            <div class="project-show-js search-data-js new-member-form new-member-form-js" data-set="<%= @autocomplete_set.to_json %>">
-              <div class="new-member-form-btn">
-                <div class="new-member-field">
-                  <label class="string optional" for="project_member">Add member's username</label>
-                  <input type="text" name="project[member]" id="project_member" class="input-member-project-new form-control string optional search-input-js" autocomplete="off">
+            <div class="new-member-form new-member-form-js project-show-js search-data-js" data-set="<%= @autocomplete_set.to_json %>">
+              <div class="new-member-form__content">
+                <div class="new-member-form__field">
+                  <label class="new-member-form__label string optional" for="project_member">Add member's username</label>
+                  <input type="text" name="project[member]" id="project_member" class="new-member-form__input form-control string optional search-input-js" autocomplete="off">
                 </div>
-                <%= f.submit "+", class: "new-member-field-plus" %>
+                <%= f.submit "+", class: "new-member-form__btn" %>
               </div>
             </div>
             <% if @collab.errors.any? %>
               <% @collab.errors.full_messages.each do |message| %>
-                <p class="error-red"><%= message %></p>
+                <p class="new-member-form__error"><%= message %></p>
               <% end %>
             <% end %>
           <% end %>
@@ -58,60 +55,57 @@
       </div>
     </div>
     <div>
-      <div class="d-flex">
+      <div class="carousel-and-project-details__jobs">
         <% if @project.user == current_user %>
-          <%= link_to new_project_job_path(@project), class:"link-btn-job m-0" do %>
-            <button class="btn-job">Add job</button>
+          <%= link_to new_project_job_path(@project), class:"carousel-and-project-details__jobs-link" do %>
+            <button class="carousel-and-project-details__jobs-btn">Add job</button>
           <% end %>
-          <!-- <div class="btn-job-placeholder"></div> -->
           <% if @jobs.any? %>
-            <button class="btn-talents-eye" data-bs-toggle="modal" data-bs-target="#jobsList">
+            <button class="carousel-and-project-details__talent-eye-btn" data-bs-toggle="modal" data-bs-target="#jobsList">
               <i class="fas fa-eye"></i>
             </button>
           <% end %>
         <% elsif @jobs.any? %>
-            <button class="btn-talents" data-bs-toggle="modal" data-bs-target="#jobsList">Looking for talents!</button>
+            <button class="carousel-and-project-details__talent-btn" data-bs-toggle="modal" data-bs-target="#jobsList">Looking for talents!</button>
         <% end %>
       </div>
     </div>
   </div>
 </div>
-<div class="description-bottom">
-  <div class="description-right-side">
-    <!-- <div class="d-flex"> -->
-      <div class="project-location">
-        <% if @project.location? %>
-          <i class="fas fa-map-marker-alt"></i>
-          <div class="description-right-details"><%= @project.location %></div>
-        <% end %>
-      </div>
-      <div class="project-date">
-        <% if @project.date? %>
-          <i class="fas fa-calendar-day"></i>
-          <div class="description-right-details"><%= @project.date.strftime("%d/%m/%Y") %></div>
-        <% end %>
-      </div>
-    <!-- </div> -->
+<div class="project-description-date-categories-location">
+  <div class="project-date-categories-location">
+    <div class="project-location">
+      <% if @project.location? %>
+        <i class="fas fa-map-marker-alt project-date-categories-location__icon"></i>
+        <div class="project-date-categories-location__details"><%= @project.location %></div>
+      <% end %>
+    </div>
+    <div class="project-date">
+      <% if @project.date? %>
+        <i class="fas fa-calendar-day project-date-categories-location__icon"></i>
+        <div class="project-date-categories-location__details"><%= @project.date.strftime("%d/%m/%Y") %></div>
+      <% end %>
+    </div>
     <div class="project-category">
       <% if @project.category? %>
-      <i class="fas fa-folder-open"></i>
+      <i class="fas fa-folder-open project-date-categories-location__icon"></i>
         <% @project_formatted_categories.each do |cat| %>
-          <div class="skill-box-project"><%= cat %></div>
+          <div class="project-category__skill-box"><%= cat %></div>
         <% end %>
       <% end %>
     </div>
   </div>
-  <div class="description-left-side">
-    <div class="description-left-side-title" id="bottom-page">Description</div>
-    <h4><%= simple_format @project.description %></h4>
+  <div class="project-description">
+    <div class="project-description__title" id="bottom-page">Description</div>
+    <h4 class="project-description__text"><%= simple_format @project.description %></h4>
   </div>
 </div>
-<div class="arrow-bottom-page-wrapper">
+<div>
   <a href="#bottom-page">
     <div class="arrow-bottom-page">
-      <ul>
-        <li></li>
-        <li></li>
+      <ul class="arrow-bottom-page__sticks">
+        <li class="arrow-bottom-page__stick arrow-bottom-page__stick--left"></li>
+        <li class="arrow-bottom-page__stick arrow-bottom-page__stick--right"></li>
       </ul>
     </div>
   </a>
@@ -119,49 +113,39 @@
 <div class="modal fade" id="membersList" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content members-modal">
-      <div class="modal-header members-modal-header">
+      <div class="modal-header members-modal__header">
         <h5 class="modal-title" id="exampleModalLabel">Group members</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-owner-line">
-        <div class="modal-owner-title">
-          <div class="modal-owner-project-owner">Project owner:</div>
-          <div class="underlined-title"></div>
+      <div class="members-modal__project-owner">
+        <div class="members-modal__title-wrapper">
+          <div class="members-modal__title">Project owner:</div>
+          <div class="members-modal__underline"></div>
         </div>
-        <div class="modal-owner-subdetails">
-          <div class="diamond-frame-member-modal">
+        <div class="members-modal__avatar-and-name">
+          <div class="member-modal-avatar__frame">
             <%= link_to user_path(@project.user) do %>
-              <% if @project.user.photo.attached? %>
-                <%= cl_image_tag @project.user.photo.key, quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 100, crop: "fill"}] %>
-              <% else %>
-                <%= image_tag asset_path('logo.png') %>
-              <% end %>
+              <%= cl_image_tag @project.user.photo.key, class: "member-modal-avatar__img", quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 100, crop: "fill"}] %>
             <% end %>
           </div>
-          <%= link_to @project.user.username, user_path(@project.user), class:"member-modal-username" %>
+          <%= link_to @project.user.username, user_path(@project.user), class:"member-modal__username" %>
         </div>
       </div>
       <div class="modal-body">
-        <div class="modal-members-title">
-          <div class="modal-members-title-wrapper">
-            <div class="modal-members">Additional <%= 'member'.pluralize(@members.count) %>:</div>
-            <div class="underlined-title"></div>
-          </div>
+        <div class="members-modal__underlined-subtitle-wrapper">
+          <div class="members-modal__subtitle">Additional <%= 'member'.pluralize(@members.count) %>:</div>
+          <div class="members-modal__sub-underline"></div>
         </div>
         <% @members.each do |member| %>
-          <div class="modal-member-line">
-            <div class="diamond-frame-member-modal">
+          <div class="members-modal__member">
+            <div class="member-modal-avatar__frame">
               <%= link_to user_path(member.slug) do %>
-                <!-- if member.photo.attached? -->
-                  <%= cl_image_tag member.photo.key, quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 100, crop: "fill"}] %>
-                <!-- else -->
-                  <!-- image_tag asset_path('logo.png') -->
-                <!-- end -->
+                  <%= cl_image_tag member.photo.key, class: "member-modal-avatar__img", quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 100, crop: "fill"}] %>
               <% end %>
             </div>
-            <%= link_to member.username, user_path(member.slug), class:"member-modal-username" %>
+            <%= link_to member.username, user_path(member.slug), class:"member-modal__username" %>
             <% if @project.user == current_user %>
-              <%= link_to collab_path(member.find_collab_within(@project.id)), class:"member-modal-delete-symbol", method: :delete do %>
+              <%= link_to collab_path(member.find_collab_within(@project.id)), class:"member-modal__delete", method: :delete do %>
                 <i class="far fa-trash-alt"></i>
               <% end %>
             <% end %>
@@ -173,20 +157,20 @@
 </div>
 <div class="modal fade" id="jobsList" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
-    <div class="modal-content members-modal">
-      <div class="modal-header members-modal-header">
+    <div class="modal-content jobs-modal">
+      <div class="modal-header jobs-modal__header">
         <h5 class="modal-title" id="exampleModalLabel">Open jobs</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body modal-job-records mt-3">
+      <div class="modal-body jobs-modal__records">
         <% @jobs.each do |job| %>
-          <%= link_to job_path(job), class: "modal-job-link" do %>
-            <div class="modal-job-record">
-              <h4 class="modal-job-title"><%= job.title.downcase %> job in <%= job.location %></h4>
-              <div class="modal-job-right-wrapper">
-                <p class="modal-job-days">(published <%= time_ago_in_words(job.created_at) %> ago)</p>
-                <div class="modal-job-arrow-wrapper">
-                  <i class="fas fa-arrow-right"></i>
+          <%= link_to job_path(job), class: "jobs-modal__link" do %>
+            <div class="jobs-modal__record">
+              <h4 class="jobs-modal__title"><%= job.title.downcase %> job in <%= job.location %></h4>
+              <div class="jobs-modal__days-and-arrow">
+                <p class="jobs-modal__days">(published <%= time_ago_in_words(job.created_at) %> ago)</p>
+                <div class="jobs-modal__arrow">
+                  <i class="fas fa-arrow-right jobs-modal__icon"></i>
                 </div>
               </div>
             </div>

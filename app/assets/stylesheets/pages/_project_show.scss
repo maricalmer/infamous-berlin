@@ -88,9 +88,6 @@
   color: #d6d6d6;
 }
 .members-block {
-  // margin-top: 2rem;
-  // margin-bottom: 2rem;
-
   display: flex;
   position: relative;
   margin-top: 3rem;
@@ -121,24 +118,7 @@
   background-color: #3D00BE;
   box-shadow: -6px -6px black;
   border: solid 4px black;
-  // height: 56px;
   color: white;
-  .btn-add-member {
-    font-size: 2rem;
-    color: black;
-    border-color: #3D00BE;
-    background-color: #3D00BE;
-    border-radius: 0px;
-    outline: 2px solid black;
-    height: 50px;
-    line-height: 0px;
-    color: white;
-  }
-  .btn-add-member:hover {
-    color: white;
-    background-color: #333;
-    border-color: black;
-  }
 }
 .new-member-form-show {
   display: block;
@@ -242,13 +222,7 @@
 .modal-member-line ~ .modal-member-line {
   border-top: 3px dashed black;
 }
-.modal-job-link {
-  text-decoration: none;
-  color: black;
-}
-.modal-job-link:hover {
-  color: black;
-}
+
 .modal-job-record {
   margin-top: 4px;
   border: 2px solid black;
@@ -262,12 +236,7 @@
     transition-property: all;
   transition-timing-function: line;
 }
-.modal-job-records a:nth-child(odd) .modal-job-record {
-  background-color: #a5a5a5;
-}
-.modal-job-records a:nth-child(even) .modal-job-record {
-  background-color: #858585;
-}
+
 .modal-job-arrow-wrapper {
   height: 55px;
   background-color: #7ECA93;
@@ -321,18 +290,6 @@
 }
 .member-modal-username:hover {
   color: #333;
-}
-.members-modal {
-  border: 4px solid black;
-  border-radius: 0px;
-  background-color: #d6d6d6;
-  .modal-body {
-    padding-top: 0.5rem;
-  }
-}
-.members-modal-header {
-  border-bottom: 2px solid black;
-  background-color: #858585;
 }
 .modal-owner-title {
   width: 102px;
@@ -466,7 +423,6 @@
   }
   .top-block-project {
     display: flex;
-    height: 92vh;
     height: 699px;
     background: linear-gradient(to right, #646668 0%, #646668 70%, #cdd1f4 70%, #cdd1f4 100%);
     border-bottom: dashed 4px black;

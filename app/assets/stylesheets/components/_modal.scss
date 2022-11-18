@@ -122,3 +122,210 @@
 .login-modal, .homepage-modal {
   z-index: 11001;
 }
+.members-modal {
+  border: 4px solid black;
+  border-radius: 0px;
+  background-color: #d6d6d6;
+}
+.members-modal__header {
+  border-bottom: 2px solid black;
+  background-color: #858585;
+}
+.members-modal__project-owner {
+  display: flex;
+  justify-content: space-between;
+  height: 100px;
+  background-color: #D1BFF6;
+  padding: 1rem;
+  padding-top: 0.5rem;
+}
+.members-modal__underline {
+  height: 10px;
+  top: -12px;
+  right: -7px;
+  background-color: #afafaf;
+  position: relative;
+  z-index: 0;
+  width: 96px;
+}
+.jobs-modal {
+  border: 4px solid black;
+  border-radius: 0px;
+  background-color: #d6d6d6;
+}
+.jobs-modal__header {
+  border-bottom: 2px solid black;
+  background-color: #858585;
+}
+.jobs-modal__records {
+  margin-top: 1rem;
+  padding-top: 0.5rem;
+}
+.jobs-modal__record {
+  margin-top: 4px;
+  border: 2px solid black;
+  height: fit-content;
+}
+.jobs-modal__record:hover {
+  box-shadow: black -1px -1px, black -2px -2px, black -3px -3px;
+  transform: translate3d(3px, 3px, 0);
+  transition-delay: 0s;
+    transition-duration: 0.4s;
+    transition-property: all;
+  transition-timing-function: line;
+}
+.jobs-modal__records a:nth-child(odd) .jobs-modal__record {
+  background-color: #a5a5a5;
+}
+.jobs-modal__records a:nth-child(even) .jobs-modal__record {
+  background-color: #858585;
+}
+.jobs-modal__link {
+  text-decoration: none;
+  color: black;
+}
+.jobs-modal__link:hover {
+  color: black;
+}
+.jobs-modal__title {
+  margin-left: 4px;
+  margin-bottom: 5px;
+}
+.jobs-modal__days-and-arrow {
+  height: 100%;
+}
+.jobs-modal__days {
+  margin-left: 8px;
+  margin-bottom: 4px;
+}
+.jobs-modal__arrow {
+  height: 55px;
+  background-color: #7ECA93;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 2px solid black;
+}
+.jobs-modal__icon {
+  font-size: 1.5rem;
+}
+.members-modal__title-wrapper {
+  width: 102px;
+}
+.members-modal__title {
+  font-size: 1.5rem;
+  z-index: 1;
+  position: relative;
+  color: black;
+  width: 100px;
+}
+.members-modal__avatar-and-name {
+  display: flex;
+  align-items: center;
+  margin-right: 0.5rem;
+  flex-grow: 1;
+  margin-left: 2rem;
+}
+.member-modal__username {
+  max-width: 79px;
+  font-size: 1.2rem;
+  margin-right: auto;
+  margin-left: 0.5rem;
+  text-decoration: none;
+  color: black;
+  word-break: break-word;
+}
+.member-modal__username:hover {
+  color: #333;
+}
+.members-modal__subtitle {
+  font-size: 1.5rem;
+  z-index: 1;
+  position: relative;
+}
+.members-modal__sub-underline {
+  height: 10px;
+  top: -12px;
+  right: -7px;
+  background-color: #afafaf;
+  position: relative;
+  z-index: 0;
+  width: 125px;
+}
+.members-modal__member {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  padding: 1rem;
+}
+.members-modal__member ~ .members-modal__member {
+  border-top: 3px dashed black;
+}
+.member-modal__delete {
+  color: #a34646;
+  vertical-align: middle;
+  display: inline-block;
+  text-decoration: none;
+}
+.member-modal__delete:hover {
+  color: #a34646;
+}
+@media(min-width: 450px) {
+  .jobs-modal__record {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 45px;
+  }
+  .jobs-modal__title {
+    margin-left: 1rem;
+  }
+  .jobs-modal__days-and-arrow {
+    display: flex;
+    align-items: center;
+  }
+  .jobs-modal__days {
+    margin-left: 4px;
+  }
+  .jobs-modal__arrow {
+    height: 100%;
+    width: 50px;
+    margin-left: 1rem;
+    border-top: none;
+  }
+  .members-modal__underline {
+    height: 18px;
+    top: -18px;
+    right: -7px;
+    width: 100%;
+  }
+  .members-modal__title-wrapper {
+    width: 140px;
+  }
+  .members-modal__title {
+    font-size: 2rem;
+    width: fit-content;
+  }
+  .member-modal__username {
+    max-width: fit-content;
+    margin-left: 0;
+    font-size: 1.5rem;
+  }
+  .members-modal__underlined-subtitle-wrapper {
+    width: fit-content;
+  }
+  .members-modal__sub-underline {
+    height: 18px;
+    top: -18px;
+    right: -7px;
+    width: 100%;
+  }
+}
+@media(min-width: 992px) {
+  .members-modal__avatar-and-name {
+    margin-right: 0;
+    flex-grow: 1;
+    margin-left: 2rem;
+  }
+}
