@@ -1,96 +1,89 @@
 <!-- Container for the image gallery -->
-<div class="carousel-container carousel-container-js">
+<div class="carousel carousel-container-js">
   <!-- Thumbnail images -->
-  <div class="thumbnails carousel-mobile thumbnails-js">
+  <div class="carousel__thumbnails thumbnails-js">
     <% if @project.attachments.attached? %>
       <% if @project.attachments.first.video? %>
       <!-- if @project.attachments[0].blob.content_type == "video/mp4" -->
       <!-- ^^long term solution instaed of @project.attachments.first?? -->
-        <div class="cursor placeholder-mobile placeholder-mobile-js">
-          <%= cl_video_tag @project.attachments.first.key, controls: true %>
+        <div class="carousel__mobile-placeholder placeholder-mobile-js">
+          <%= cl_video_tag @project.attachments.first.key, controls: true, class: "carousel__mobile-video" %>
         </div>
       <% elsif @project.attachments.first.audio? %>
-        <div class="cursor placeholder-mobile placeholder-mobile-js">
-          <div class="slide-big-audio-player">
-            <%= image_tag asset_path('logo-audio.png'), class: "slide-big-audio-poster play-audio-js" %>
-            <audio controls class="slide-big-audio-control">
+        <div class="carousel__mobile-placeholder placeholder-mobile-js">
+          <div class="carousel__mobile-audio-control-wrapper">
+            <%= image_tag asset_path('logo-audio.png'), class: "carousel__audio-poster play-audio-js" %>
+            <audio controls class="carousel__audio-control">
               <source src="http://res.cloudinary.com/dbpv82leg/video/upload/<%= @project.attachments.first.key %>.mp3">
             </audio>
           </div>
         </div>
       <% else %>
-        <div class="cursor placeholder-mobile placeholder-mobile-js" data-bs-toggle="modal" data-bs-target="#modalSmallScreen">
-          <%= cl_image_tag @project.attachments.first.key, quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 800, crop: "fill"}] %>
+        <div class="carousel__mobile-placeholder placeholder-mobile-js" data-bs-toggle="modal" data-bs-target="#modalSmallScreen">
+          <%= cl_image_tag @project.attachments.first.key, quality: "auto:low", class: "carousel__mobile-img", transformation: [{fetch_format: "auto"}, {width: 800, crop: "fill"}] %>
         </div>
       <% end %>
       <% @project_attachments.each do |attachment| %>
         <% if attachment == @project.attachments.first %>
-          <picture class="thumbnail-wrapper thumbnail-align-top thumbnail-bigger">
-            <source srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 992px)" class="cursor slide-thumbnail slide-mobile">
+          <picture class="carousel__thumbnail-wrapper carousel__thumbnail--big">
+            <source srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 992px)" class="carousel__thumbnail">
             <% if attachment.video? %>
-              <%= cl_video_tag attachment.key, class: "cursor thumbnail-js" %>
+              <%= cl_video_tag attachment.key, class: "carousel__thumbnail carousel__thumbnail--poster thumbnail-js" %>
             <% elsif @project.attachments.first.audio? %>
-              <%= cl_video_tag attachment.key, class: "cursor thumbnail-js", poster: "/assets/logo-audio.png" %>
+              <%= cl_video_tag attachment.key, class: "carousel__thumbnail carousel__thumbnail--poster thumbnail-js", poster: "/assets/logo-audio.png" %>
             <% else %>
-              <%= cl_image_tag attachment.key, class: "cursor thumbnail-js", quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 1110, crop: "fill"}] %>
+              <%= cl_image_tag attachment.key, class: "carousel__thumbnail carousel__thumbnail--poster carousel__thumbnail--img thumbnail-js", quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 1110, crop: "fill"}] %>
             <% end %>
           </picture>
         <% else %>
-          <picture class="thumbnail-wrapper">
-            <source srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 992px)" class="slide-thumbnail slide-mobile">
+          <picture class="carousel__thumbnail-wrapper">
+            <source srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 992px)">
             <% if attachment.video? %>
-              <%= cl_video_tag attachment.key, class: "cursor thumbnail-js" %>
+              <%= cl_video_tag attachment.key, class: "carousel__thumbnail carousel__thumbnail--poster thumbnail-js" %>
             <% elsif attachment.audio? %>
-              <%= cl_video_tag attachment.key, poster:"/assets/logo-audio.png", class: "cursor thumbnail-js" %>
+              <%= cl_video_tag attachment.key, poster:"/assets/logo-audio.png", class: "carousel__thumbnail carousel__thumbnail--poster thumbnail-js" %>
             <% else %>
-              <%= cl_image_tag attachment.key, class: "cursor thumbnail-js", quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 1110, crop: "fill"}] %>
+              <%= cl_image_tag attachment.key, class: "carousel__thumbnail carousel__thumbnail--poster thumbnail-js", quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 1110, crop: "fill"}] %>
             <% end %>
           </picture>
         <% end %>
       <% end %>
     <% end %>
   </div>
-  <div class="carousel-dots">
+  <div class="carousel__mobile-dots">
     <% i = 1 %>
     <% @project.attachments.each do |attachment| %>
       <% if attachment == @project.attachments.first %>
-        <div class="dot cursor dot-active dot-js" data-dot-id="0"></div>
+        <div class="carousel__mobile-dot carousel__mobile-dot--active dot-js" data-dot-id="0"></div>
       <% else %>
-        <div class="dot cursor dot-js" data-dot-id="<%= i %>"></div>
+        <div class="carousel__mobile-dot dot-js" data-dot-id="<%= i %>"></div>
         <% i += 1 %>
       <% end %>
     <% end %>
   </div>
-  <div class="arrows">
-    <div class="cursor arrow-up arrow-hidden arrow-up-js"></div>
-    <div class="cursor arrow-down arrow-hidden arrow-down-js"></div>
+  <div class="carousel__arrows arrows">
+    <div class="carousel__arrow--up carousel__arrow--hidden arrow-up-js"></div>
+    <div class="carousel__arrow--down carousel__arrow--hidden arrow-down-js"></div>
   </div>
   <!-- The one big slide -->
-  <div class="slides">
-    <div class="slide-big">
-      <% if @project.attachments.attached? %>
-        <% if @project.attachments.first.video? %>
-          <picture class="img-slide-big img-slide-js cursor">
-            <source srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 992px)">
-            <%= cl_video_tag @project.attachments.first.key, controls: true, muted: true %>
-          </picture>
-        <% elsif @project.attachments.first.audio? %>
-          <div class="slide-big-audio-player img-slide-js">
-            <%= image_tag asset_path('logo-audio.png'), class: "slide-big-audio-poster play-audio-js" %>
-            <audio controls class="slide-big-audio-control">
-              <source src="http://res.cloudinary.com/dbpv82leg/video/upload/<%= @project.attachments.first.key %>.mp3">
-            </audio>
-          </div>
-        <% else %>
-          <picture class="img-slide-big img-slide-js cursor" data-bs-toggle="modal" data-bs-target="#modalBigScreen">
-            <source srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 992px)">
-            <%= cl_image_tag @project.attachments.first.key, quality: "auto", transformation: [{fetch_format: "auto"}, {width: 1110, crop: "fill"}] %>
-          </picture>
-        <% end %>
+  <div class="carousel__main-slide">
+    <div class="carousel__main-container">
+      <% if @project.attachments.first.video? %>
+        <picture class="carousel__img-video-wrapper img-slide-js">
+          <source class="carousel__main-poster" srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 992px)">
+          <%= cl_video_tag @project.attachments.first.key, controls: true, muted: true, class: "carousel__main-video-poster" %>
+        </picture>
+      <% elsif @project.attachments.first.audio? %>
+        <div class="carousel__main-audio-control-wrapper img-slide-js">
+          <%= image_tag asset_path('logo-audio.png'), class: "carousel__main-audio-poster play-audio-js" %>
+          <audio controls class="carousel__main-audio-control">
+            <source class="carousel__main-poster" src="http://res.cloudinary.com/dbpv82leg/video/upload/<%= @project.attachments.first.key %>.mp3">
+          </audio>
+        </div>
       <% else %>
-        <picture class="img-slide-big img-slide-js">
-          <source srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 992px)">
-          <img src="/assets/logo.png" alt="">
+        <picture class="carousel__img-video-wrapper img-slide-js" data-bs-toggle="modal" data-bs-target="#modalBigScreen">
+          <source class="carousel__main-poster" srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 992px)">
+          <%= cl_image_tag @project.attachments.first.key, class: "carousel__main-img-poster", quality: "auto", transformation: [{fetch_format: "auto"}, {width: 1110, crop: "fill"}] %>
         </picture>
       <% end %>
     </div>
@@ -99,29 +92,28 @@
 <!-- The overlay small screen-->
 <div class="modal fade" id="modalSmallScreen" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-fullscreen">
-    <div class="modal-content overlay-small">
-      <div class="modal-body overlay-small-body overlay-small-body-js">
+    <div class="modal-content carousel__overlay">
+      <div class="modal-body overlay-small-body-js">
         <% if @project.attachments.attached? %>
           <% if @project.attachments.first.video? %>
-            <img src="">
+            <img class="carousel__overlay-poster" src="">
           <% else %>
             <%= cl_image_tag @project.attachments.first.key, quality: "auto", transformation: [{fetch_format: "auto"}] %>
           <% end %>
         <% end %>
-        <button type="button" class="btn-close modal-fullscreen-close-btn" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="carousel__overlay-close-btn btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
     </div>
   </div>
 </div>
 <!-- The overlay big screen-->
-
 <div class="modal fade" id="modalBigScreen" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-fullscreen ">
-    <div class="modal-content overlay">
-      <div class="modal-body overlay-body d-flex overlay-body-js">
+    <div class="modal-content carousel__overlay">
+      <div class="modal-body carousel__overlay-body overlay-body-js">
         <% if @project.attachments.attached? %>
           <% if @project.attachments.first.video? %>
-            <img src="">
+            <img class="carousel__overlay-poster" src="">
           <% else %>
             <%= cl_image_tag @project.attachments.first.key, quality: "auto", transformation: [{fetch_format: "auto"}] %>
           <% end %>

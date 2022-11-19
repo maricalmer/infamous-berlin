@@ -32,7 +32,7 @@ const autocompleteSearch = () => {
   const projectShowPage = document.querySelector('.project-show-js');
   skillSets.forEach((set) => {
     const specificSet = JSON.parse(set.dataset.set);
-    if (specificSet && newProjectPage) {
+    if (specificSet && projectFormPage) {
       const searchInput = set.firstElementChild.nextElementSibling.firstElementChild;
       createAutocomplete(specificSet);
       addSpecificClass("autocomplete-suggestions--new-project");
