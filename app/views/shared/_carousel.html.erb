@@ -1,11 +1,7 @@
-<!-- Container for the image gallery -->
 <div class="carousel carousel-container-js">
-  <!-- Thumbnail images -->
   <div class="carousel__thumbnails thumbnails-js">
     <% if @project.attachments.attached? %>
       <% if @project.attachments.first.video? %>
-      <!-- if @project.attachments[0].blob.content_type == "video/mp4" -->
-      <!-- ^^long term solution instaed of @project.attachments.first?? -->
         <div class="carousel__mobile-placeholder placeholder-mobile-js">
           <%= cl_video_tag @project.attachments.first.key, controls: true, class: "carousel__mobile-video" %>
         </div>
@@ -13,9 +9,7 @@
         <div class="carousel__mobile-placeholder placeholder-mobile-js">
           <div class="carousel__mobile-audio-control-wrapper">
             <%= image_tag asset_path('logo-audio.png'), class: "carousel__audio-poster play-audio-js" %>
-            <audio controls class="carousel__audio-control">
-              <source src="http://res.cloudinary.com/dbpv82leg/video/upload/<%= @project.attachments.first.key %>.mp3">
-            </audio>
+            <%= cl_video_tag @project.attachments.first.key, source_types: [:mp3], controls: true, poster: false, class: "carousel__audio-control" %>
           </div>
         </div>
       <% else %>
@@ -65,7 +59,6 @@
     <div class="carousel__arrow--up carousel__arrow--hidden arrow-up-js"></div>
     <div class="carousel__arrow--down carousel__arrow--hidden arrow-down-js"></div>
   </div>
-  <!-- The one big slide -->
   <div class="carousel__main-slide">
     <div class="carousel__main-container">
       <% if @project.attachments.first.video? %>
@@ -76,9 +69,7 @@
       <% elsif @project.attachments.first.audio? %>
         <div class="carousel__main-audio-control-wrapper img-slide-js">
           <%= image_tag asset_path('logo-audio.png'), class: "carousel__main-audio-poster play-audio-js" %>
-          <audio controls class="carousel__main-audio-control">
-            <source class="carousel__main-poster" src="http://res.cloudinary.com/dbpv82leg/video/upload/<%= @project.attachments.first.key %>.mp3">
-          </audio>
+          <%= cl_video_tag @project.attachments.first.key, source_types: [:mp3], controls: true, poster: false, class: "carousel__main-audio-control" %>
         </div>
       <% else %>
         <picture class="carousel__img-video-wrapper img-slide-js" data-bs-toggle="modal" data-bs-target="#modalBigScreen">
@@ -89,11 +80,10 @@
     </div>
   </div>
 </div>
-<!-- The overlay small screen-->
 <div class="modal fade" id="modalSmallScreen" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-fullscreen">
     <div class="modal-content carousel__overlay">
-      <div class="modal-body overlay-small-body-js">
+      <div class="modal-body overlay-body-small-screen-js">
         <% if @project.attachments.attached? %>
           <% if @project.attachments.first.video? %>
             <img class="carousel__overlay-poster" src="">
@@ -106,11 +96,10 @@
     </div>
   </div>
 </div>
-<!-- The overlay big screen-->
 <div class="modal fade" id="modalBigScreen" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-fullscreen ">
     <div class="modal-content carousel__overlay">
-      <div class="modal-body carousel__overlay-body overlay-body-js">
+      <div class="modal-body carousel__overlay-body overlay-body-big-screen-js">
         <% if @project.attachments.attached? %>
           <% if @project.attachments.first.video? %>
             <img class="carousel__overlay-poster" src="">
