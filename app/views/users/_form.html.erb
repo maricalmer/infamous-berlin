@@ -1,4 +1,4 @@
-<%= simple_form_for @user, remote: true, html: { class: "new-project-form-js", autocomplete: "off"} do |f| %>
+<%= simple_form_for @user, remote: true, html: { class: "form-js", autocomplete: "off"} do |f| %>
   <div class="form-page__username-and-email">
     <%= f.input :username, label: 'Username:', wrapper_html: { class: "form-page__username" }, label_html: { class: 'form-page__label' }, input_html: { class: 'form-page__input' } %>
     <%= f.input :email, label: 'Email address:', wrapper_html: { class: "form-page__email" }, label_html: { class: 'form-page__label' }, input_html: { class: 'form-page__input' } %>

@@ -1,8 +1,7 @@
 import 'js-autocomplete/auto-complete.css';
 import autocomplete from 'js-autocomplete';
 
-const createAutocomplete = (specificSet) => {
-  const searchInput = document.querySelector('.search-input-js');
+const createAutocomplete = (specificSet, searchInput) => {
   new autocomplete({
     selector: searchInput,
     minChars: 1,
@@ -27,22 +26,23 @@ const addSpecificClass = (cssClass) => {
 
 const autocompleteSearch = () => {
   const skillSets = document.querySelectorAll('.search-data-js');
-  const projectFormPage = document.querySelector('.project-form-js');
+  const projectFormPage = document.querySelector('.form-js');
   const userIndexPage = document.querySelector('.users-index-js');
   const projectShowPage = document.querySelector('.project-show-js');
   skillSets.forEach((set) => {
     const specificSet = JSON.parse(set.dataset.set);
     if (specificSet && projectFormPage) {
-      const searchInput = set.firstElementChild.nextElementSibling.firstElementChild;
-      createAutocomplete(specificSet);
+      const searchInput = set.firstElementChild.nextElementSibling;
+      createAutocomplete(specificSet, searchInput);
       addSpecificClass("autocomplete-suggestions--new-project");
     } else if (specificSet && userIndexPage) {
-      const searchInput = set.firstElementChild.nextElementSibling;
-      createAutocomplete(specificSet);
+      const searchInput = set.firstElementChild;
+      console.log(searchInput)
+      createAutocomplete(specificSet, searchInput);
       addSpecificClass("autocomplete-suggestions--user-index");
     } else if (specificSet && projectShowPage) {
       const searchInput = set.firstElementChild.firstElementChild.lastElementChild;
-      createAutocomplete(specificSet);
+      createAutocomplete(specificSet, searchInput);
       addSpecificClass("autocomplete-suggestions--project-show");
     }
   });

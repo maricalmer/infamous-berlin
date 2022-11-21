@@ -67,6 +67,14 @@
 .form-page__user-title {
   margin-bottom: 2vh;
 }
+.form-page__project-title {
+  margin-bottom: 2vh;
+}
+.form-page__input--project-title {
+  text-align: center;
+  line-height: 3rem;
+  font-size: 2rem;
+}
 .form-page__bio-wrapper {
   position: relative;
 }
@@ -82,35 +90,48 @@
   top: 0;
   left: 28px;
 }
-.form-page__skills-hidden-field {
-  display: none;
-}
-.form-page__skills-custom {
+.form-page__description {
   border-bottom: 4px dashed black;
   padding-bottom: 8vh;
   margin-bottom: 8vh;
 }
-.form-page__add-skills {
+.form-page__location-date-status-wrapper {
+  border-bottom: 4px dashed black;
+  padding-bottom: 8vh;
+  margin-bottom: 8vh;
+}
+.form-page__location, .form-page__date, .form-page__status {
+  margin-bottom: 2vh;
+}
+.form-page__category-hidden-field, .form-page__skills-hidden-field {
+  display: none;
+}
+.form-page__skills-custom, .form-page__categories-custom {
+  border-bottom: 4px dashed black;
+  padding-bottom: 8vh;
+  margin-bottom: 8vh;
+}
+.form-page__add-skills, .form-page__add-categories {
   margin-right: 5vw;
   margin-bottom: 5vh;
 }
-.form-page__add-skills-label {
+.form-page__add-skills-label, .form-page__add-categories-label {
   display: block;
 }
-.form-page__add-skills-input-and-btn {
+.form-page__add-skills-input-and-btn, .form-page__add-categories-input-and-btn {
   display: flex;
 }
-.form-page__add-skills-input {
+.form-page__add-skills-input, .form-page__add-categories-input {
   padding: 0.375rem 0.75rem;
 }
-.form-page__add-skills-input:focus {
+.form-page__add-skills-input:focus, .form-page__add-categories-input:focus {
   outline: none !important;
   box-shadow: none;
 }
-.form-page__skills-list-items {
+.form-page__skills-list-items, .form-page__categories-list-items {
   padding-left: 0;
 }
-.form-page__skills-list-item {
+.form-page__attributes-list-item {
   display: flex;
   width: fit-content;
   margin-right: 1vw;
@@ -132,6 +153,67 @@
 .form-page__avatar-placeholder {
   position: relative;
   margin-right: 2vw;
+}
+.form-page__preview-photos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  align-content: space-between;
+  margin-top: 2vh;
+  margin-bottom: 3vh;
+  gap: 3vh 0;
+  align-items: center;
+}
+.form-page__preview-photo-wrapper {
+  position: relative;
+  margin-right: 5vw;
+}
+.form-page__preview-photo {
+  filter: drop-shadow(-6px -6px black);
+  border: solid;
+  height: 15vh;
+  max-width: 100%;
+  max-height: 100%;
+  min-height: 50px;
+  background-color: #333;
+}
+.form-page__preview-delete-wrapper {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  cursor: pointer;
+  background-color: black;
+  width: 30px;
+  height: 34px;
+}
+.form-page__preview-delete-btn {
+  color: #a34646;
+  font-size: 2rem;
+  position: absolute;
+  top: -10px;
+  left: 4px;
+}
+.form-page__label-new-project-attachment {
+  color: black;
+  margin: 0;
+  padding: 8px;
+  cursor: pointer;
+  display: flex;
+  width: fit-content;
+}
+.form-page__icon-new-project-attachment {
+  margin-right: 0.5rem;
+  padding-top: 0.25rem;
+}
+.form-page__link-new-project-attachment {
+  text-decoration: none;
+  color: black;
+}
+.form-page__link-new-project-attachment:hover {
+  color: black;
+}
+.form-page__new-project-attachment--hidden {
+  display: none;
 }
 .new-member-form {
   margin-top: 2.5rem;
@@ -201,11 +283,11 @@
   .form-page__content {
     padding: 3rem;
   }
-  .form-page__skills-custom {
+  .form-page__skills-custom, .form-page__categories-custom {
     display: flex;
     justify-content: start;
   }
-  .form-page__add-skills {
+  .form-page__add-skills, .form-page__add-categories {
     margin-bottom: 0;
   }
   .form-page__skills-list-items {
@@ -330,5 +412,13 @@
   .form-page__upload-picture {
     display: flex;
     justify-content: space-between;
+  }
+  .form-page__location-date-status-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .form-page__location, .form-page__date, .form-page__status {
+    flex-grow: 1;
   }
 }

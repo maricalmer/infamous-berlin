@@ -1,4 +1,4 @@
-<%= simple_form_for [ @project, @job ], remote: true, html: { class: "new-project-form-js"} do |f| %>
+<%= simple_form_for [ @project, @job ], remote: true, html: { class: "form-js"} do |f| %>
   <div class="new-job-form-title-field">
     <%= f.input :title, label: 'Job title:', required: true, input_html: { autocomplete: "off", class: "new-job-form-title-text" } %>
   </div>

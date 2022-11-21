@@ -44,7 +44,7 @@
 .homepage-signup-section__btn-text {
   font-size: 2rem;
 }
-.form-page__add-skills-btn {
+.form-page__add-skills-btn, .form-page__add-categories-btn {
   border: 2px solid black;
   margin-left: 0.2vw;
   padding: 0.375rem 0.75rem;
@@ -164,8 +164,24 @@
   width: 100%;
   height: 68px;
 }
-
-
+.form-page__submit-btn {
+  width: 230px;
+  font-size: 2rem;
+  display: block;
+  border: solid;
+  box-shadow: -6px -6px black;
+  background: #7ECA93;
+  margin: 8rem auto 32px auto;
+  text-decoration: none;
+  color: black !important;
+  text-align: center;
+  z-index: 1;
+  position: relative;
+  border: 3px solid black;
+}
+.form-page__submit-btn:hover {
+  background-color: #8EC7A6;
+}
 
 
 

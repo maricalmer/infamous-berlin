@@ -81,9 +81,6 @@
 .upload-picture-preview-photos img:last-child {
   margin-right: 0;
 }
-.loaded-picture-preview-photos img:last-child {
-
-}
 .new-skill-label, .new-category-label {
   display: block;
 }
@@ -327,11 +324,11 @@ abbr {
   height: 1px;
   margin-left: 1rem;
 }
-#project_title {
-  line-height: 3rem;
-  font-size: 2rem;
-  text-align: center;
-}
+// #project_title {
+//   line-height: 3rem;
+//   font-size: 2rem;
+//   text-align: center;
+// }
 #project_description, #user_bio, #job_description {
   height: 35vh;
 }
