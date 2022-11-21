@@ -177,6 +177,12 @@
   min-height: 50px;
   background-color: #333;
 }
+.form-page__preview-photo--audio-poster {
+  width: 100px;
+  background-image: asset-url("logo-audio.png");
+  background-size: cover;
+  background-position: center;
+}
 .form-page__preview-delete-wrapper {
   position: absolute;
   top: 3px;

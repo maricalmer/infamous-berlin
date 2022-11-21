@@ -30,7 +30,7 @@
           <% elsif attachment.blob.content_type == "video/mp4" %>
             <%= cl_video_tag attachment.key, controls: true, muted: true, class: "form-page__preview-photo" %>
           <% else %>
-            <%= cl_video_tag attachment.key, source_types: [:mp3], controls: true, poster: true, class: "form-page__preview-photo" %>
+            <%= cl_video_tag attachment.key, source_types: [:mp3], controls: true, poster: true, class: "form-page__preview-photo form-page__preview-photo--audio-poster" %>
           <% end %>
           <div class="form-page__preview-delete-wrapper delete-signed-id-js">
             <div class="form-page__preview-delete-btn">&#x2716;</div>
