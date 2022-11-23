@@ -12,6 +12,7 @@ const attachCropperEvents = () => {
     modal.addEventListener("shown.bs.modal", function(event) {
       // const img = event.currentTarget.firstElementChild.firstElementChild.children[1].firstElementChild.firstElementChild.children[1]
       const img = event.currentTarget.querySelector(".tag-cropper-js")
+      console.log(img)
       // const imgAndTitle = event.currentTarget.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling
       const imgAndTitle = event.currentTarget.parentElement.querySelector(".img-and-title-js")
       const ratio = imgAndTitle.offsetWidth / (imgAndTitle.offsetHeight - 28)

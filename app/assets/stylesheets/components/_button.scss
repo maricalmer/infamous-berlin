@@ -182,6 +182,64 @@
 .form-page__submit-btn:hover {
   background-color: #8EC7A6;
 }
+.project-card--mirrors-grid__crop-btn, .project-card--mirrors-grid__crop-btn:focus {
+  font-size: 2rem;
+  display: block;
+  border: none;
+  background: #D1BFF6;
+  border-left: 4px solid black;
+  border-bottom: 4px solid black;
+  position: relative;
+  z-index: 1;
+}
+.project-card--mirrors-grid__crop-btn:hover {
+  background-color: #d7cbf2;
+}
+.project-card--mirrors-grid__crop-btn:active {
+  background-color: #d7cbf2;
+  background-size: 100%;
+  transition: all 0s;
+}
+.project-card--mirrors-grid__link-resize-btn {
+  text-decoration: none;
+  position: relative;
+  cursor: pointer;
+  z-index: 1;
+}
+.project-card--mirrors-grid__resize-btn, .project-card--mirrors-grid__resize-btn:focus {
+  font-size: 2rem;
+  display: block;
+  border: none;
+  background: #7ECA93;
+  border-left: 4px solid black;
+  border-bottom: 4px solid black;
+}
+.project-card--mirrors-grid__resize-btn:hover {
+  background-color: #d2fe55;
+}
+.project-card--mirrors-grid__resize-btn:active {
+  background-color: #8EC7A6;
+  background-size: 100%;
+  transition: all 0s;
+}
+.cropper-modal__btn {
+  font-size: 1.5rem;
+  line-height: 1;
+  border: 3px solid black;
+  background: #7ECA93;
+  width: 60px;
+  border-radius: 0;
+  padding: 6px 0.2rem;
+  color: black;
+  margin: 1rem 0;
+  width: 100%;
+}
+
+
+
+
+
+
 
 
 
@@ -223,30 +281,6 @@
   width: 100%;
   height: 68px;
 }
-.link-btn-resize-portfolio {
-  text-decoration: none;
-  position: relative;
-  cursor: pointer;
-  z-index: 1;
-}
-.btn-resize-portfolio, .btn-resize-portfolio:focus {
-  font-size: 2rem;
-  display: block;
-  border: none;
-  background: #7ECA93;
-  border-left: 4px solid black;
-  border-bottom: 4px solid black;
-}
-.btn-crop-portfolio, .btn-crop-portfolio:focus {
-  font-size: 2rem;
-  display: block;
-  border: none;
-  background: #D1BFF6;
-  border-left: 4px solid black;
-  border-bottom: 4px solid black;
-  position: relative;
-  z-index: 1;
-}
 .btn-talents-eye, .btn-talents-eye:focus {
  font-size: 2rem;
  margin: 0 auto 0 1rem;
@@ -268,16 +302,9 @@
 .btn-talents:hover, .btn-talents-eye:hover, .btn-resize-portfolio:hover {
   background-color: #d2fe55;
 }
-.btn-crop-portfolio:hover {
-  background-color: #d7cbf2;
-}
+
 .btn-talents:active, .btn-talents-eye:active, .btn-resize-portfolio:active {
   background-color: #8EC7A6;
-  background-size: 100%;
-  transition: all 0s;
-}
-.btn-crop-portfolio:active {
-  background-color: #d7cbf2;
   background-size: 100%;
   transition: all 0s;
 }

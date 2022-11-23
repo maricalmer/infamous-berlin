@@ -1,29 +1,27 @@
-<div class="grid-stack-item grid-search-big-item mirror-js" gs-x="<%= mirror.grid_x %>" gs-y="<%= mirror.grid_y %>" gs-w="<%= mirror.grid_w %>" gs-h="<%= mirror.grid_h %>">
-  <div class="grid-stack-item-content">
-    <%= link_to project_path(mirror.project), class:"link" do %>
-      <div class="gridstack-static-big-item">
-        <h4 class="grid-search-big-item-title"><%= mirror.project.title %></h4>
-        <div class="grid-search-big-item-img-wrapper img-and-title-js">
-          <picture>
+<div class="project-card--mirrors-grid grid-stack-item mirror-js" gs-x="<%= mirror.grid_x %>" gs-y="<%= mirror.grid_y %>" gs-w="<%= mirror.grid_w %>" gs-h="<%= mirror.grid_h %>">
+  <div class="project-card--mirrors-grid__content grid-stack-item-content">
+    <%= link_to project_path(mirror.project), class:"project-card__link" do %>
+      <div class="project-card--mirrors-static-grid__frame">
+        <h4 class="project-card--mirrors-grid__title"><%= mirror.project.title %></h4>
+        <div class="project-card--mirrors-grid__img-wrapper img-and-title-js">
+          <picture class="project-card--mirrors-grid__picture">
             <source srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 1200px)">
             <% if mirror.displays_cropped_img? %>
-              <%= cl_image_tag mirror.attachment_key, class: "grid-search-big-item-img grid-search-big-item-img-no-sizing", height: mirror.crop_h, width: mirror.crop_w, x: mirror.crop_x, y: mirror.crop_y, crop: "crop" %>
+              <%= cl_image_tag mirror.attachment_key, class: "project-card--mirrors-grid__poster", height: mirror.crop_h, width: mirror.crop_w, x: mirror.crop_x, y: mirror.crop_y, crop: "crop" %>
             <% elsif mirror.displays_original_img? %>
-              <%= cl_image_tag mirror.attachment_key, class: "grid-search-big-item-img" %>
+              <%= cl_image_tag mirror.attachment_key, class: "project-card--mirrors-grid__poster" %>
             <% elsif mirror.displays_cropped_video_poster? %>
-              <%= cl_video_tag mirror.attachment_key, class: "grid-search-big-item-img grid-search-big-item-img-no-sizing", poster: { transformation: [ { height: mirror.crop_h.to_i, width: mirror.crop_w.to_i, x: mirror.crop_x.to_i, y: mirror.crop_y.to_i, crop: "crop" } ] } %>
+              <%= cl_video_tag mirror.attachment_key, class: "project-card--mirrors-grid__poster", poster: { transformation: [ { height: mirror.crop_h.to_i, width: mirror.crop_w.to_i, x: mirror.crop_x.to_i, y: mirror.crop_y.to_i, crop: "crop" } ] } %>
             <% elsif mirror.displays_original_video_poster? %>
-              <%= cl_video_tag mirror.attachment_key, class: "grid-search-big-item-img" %>
+              <%= cl_video_tag mirror.attachment_key, class: "project-card--mirrors-grid__poster" %>
             <% elsif mirror.displays_cropped_audio_poster? %>
-              <%= cl_image_tag "logo-audio", class: "grid-search-big-item-img grid-search-big-item-img-no-sizing", height: mirror.crop_h, width: mirror.crop_w, x: mirror.crop_x, y: mirror.crop_y, crop: "crop" %>
+              <%= cl_image_tag "logo-audio", class: "project-card--mirrors-grid__poster", height: mirror.crop_h, width: mirror.crop_w, x: mirror.crop_x, y: mirror.crop_y, crop: "crop" %>
             <% else %>
-              <%= image_tag asset_path('logo-audio.png'), class: "grid-search-big-item-img" %>
+              <%= image_tag asset_path('logo-audio.png'), class: "project-card--mirrors-grid__poster" %>
             <% end %>
           </picture>
-          <!-- ^^ needs to synchronize with a method -->
         </div>
-        <div class="portfolio-card-description"><%= mirror.project.description %></div>
-        <!-- <div class="grid-search-big-item-img-panel"></div> -->
+        <div class="project-card--mirrors-grid__description"><%= mirror.project.description %></div>
       </div>
     <% end %>
   </div>

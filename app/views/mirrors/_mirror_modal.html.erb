@@ -1,26 +1,26 @@
 <div class="modal fade modal-crop-portfolio-js" id="cropModal<%= mirror.id %>" tabindex="-1" data-bs-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content cropper-modal-popup cropper-modal-popup-js">
-      <div class="modal-header cropper-modal-header">
+    <div class="modal-content cropper-modal__frame cropper-modal-popup-js">
+      <div class="modal-header cropper-modal__header">
         <h5 class="modal-title" id="exampleModalLabel">Resize the image</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body cropper-modal-body w-100">
+      <div class="modal-body cropper-modal__body">
         <div>
           <picture>
             <source srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 1200px)">
             <% if mirror.project.attachments.first.image? %>
-              <%= cl_image_tag mirror.project.attachments.first.key, class: "grid-search-big-item-img placeholder-img-gridstack tag-cropper-js mw-100" %>
+              <%= cl_image_tag mirror.project.attachments.first.key, class: "cropper-modal__poster cropper-modal__placeholder-gridstack tag-cropper-js" %>
             <% elsif mirror.project.attachments.first.audio? %>
-              <%= cl_image_tag "logo-audio", class: "grid-search-big-item-img placeholder-img-gridstack tag-cropper-js mw-100" %>
+              <%= image_tag "logo-audio", class: "cropper-modal__poster cropper-modal__placeholder-gridstack tag-cropper-js" %>
             <% else %>
-              <%= image_tag("http://res.cloudinary.com/dbpv82leg/video/upload/#{mirror.project.attachments.first.key}.jpg", class: "grid-search-big-item-img placeholder-img-gridstack tag-cropper-js mw-100") %>
+              <%= image_tag("http://res.cloudinary.com/dbpv82leg/video/upload/v1/development/#{mirror.project.attachments.first.key}.jpg", class: "cropper-modal__poster cropper-modal__placeholder-gridstack tag-cropper-js") %>
             <% end %>
           </picture>
         </div>
       </div>
-      <div class="modal-footer cropper-modal-footer">
-        <button type="button" class="btn crop-cropper-btn crop-cropper-btn-js" data-bs-dismiss="modal">Crop image</button>
+      <div class="modal-footer cropper-modal__footer">
+        <button type="button" class="btn cropper-modal__btn crop-cropper-btn-js" data-bs-dismiss="modal">Crop image</button>
       </div>
     </div>
   </div>
