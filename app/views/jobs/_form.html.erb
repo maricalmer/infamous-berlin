@@ -1,49 +1,38 @@
 <%= simple_form_for [ @project, @job ], remote: true, html: { class: "form-js"} do |f| %>
-  <div class="new-job-form-title-field">
-    <%= f.input :title, label: 'Job title:', required: true, input_html: { autocomplete: "off", class: "new-job-form-title-text" } %>
-  </div>
-  <div class="new-job-form-description-field">
-    <%= f.input :description, label: 'Describe the job:', required: true %>
-  </div>
-  <div class="search-data-js form-group string optional job_location" data-set="<%= @location_autocomplete_set.to_json %>">
-    <label class="string optional" for="job_location">Where is the job location?</label>
-    <div>
-      <!-- ^^ autocomplete.js dependency -->
-      <input type="text" name="job[location]" id="job_location" class="input-location-project-new form-control string optional" >
-    </div>
-  </div>
+  <%= f.input :title, label: 'Job title:', required: true, wrapper_html: { class: "form-page__job-title" }, label_html: { class: 'form-page__label' }, input_html: { autocomplete: "off", class: "form-page__input form-page__input--job-title" } %>
+  <%= f.input :description, label: 'Describe the job:', required: true, wrapper_html: { class: "form-page__job-description" }, label_html: { class: 'form-page__label' }, input_html: { class: "form-page__input" } %>
+  <%= f.input :location, label: 'Job location:', wrapper_html: { data: { set: @location_autocomplete_set.to_json }, class: "form-page__job-location search-data-js" }, label_html: { class: 'form-page__label' }, input_html: { class: 'form-page__input search-input-js' } %>
   <%= f.input :skills_needed, wrapper_html: { class: "skills-hidden-field" }, input_html: { class: "attributes_hidden_field_js" } %>
-  <div class="new-skill-custom">
-    <div class="new-skill-input-block">
-      <label for="fname" class="new-skill-label">Skills needed:</label>
-      <div class="d-flex">
-        <input type="text" id="fname" class="attribute-value-js input-add-skill"></input>
-        <div class="btn-add-attribute-js btn-add-skill">Add</div>
+  <div class="form-page__skills-custom">
+    <div class="form-page__add-skills">
+      <label for="fname" class="form-page__add-skills-label form-page__label">New skill:</label>
+      <div class="form-page__add-skills-input-and-btn">
+        <input type="text" id="fname" class="form-page__add-skills-input form-page__input attribute-value-js"></input>
+        <div class="form-page__add-skills-btn btn-add-attribute-js">Add</div>
       </div>
     </div>
     <div>
-      <label>Skills list:</label>
-      <ol class="attributes-list-js list-skills">
-      </ol>
+      <label class="form-page__skills-list-label form-page__label">Skills list:</label>
+      <ol class="form-page__skills-list-items attributes-list-js"></ol>
     </div>
   </div>
-  <div class="new-job-form-payment-block">
-    <div class="payment-type-dropdown">
-      <%= f.input :payment, label: 'Payment type:', as: :select, collection: [["fixed rate", "fixed_rate"], ["hourly rate", "hourly_rate"]], include_blank: false, wrapper_html: { class: "job-payment-dropdown" }, input_html: { class: "dropdown-payment-js job-dropdown-input" }, label_html: { class: "job-dropdown-label" } %>
+  <div class="form-page__job-payment-and-status">
+    <div class="form-page__payment-type-dropdown-wrapper">
+      <%= f.input :payment, label: 'Payment type:', as: :select, collection: [["fixed rate", "fixed_rate"], ["hourly rate", "hourly_rate"]], include_blank: false, wrapper_html: { class: "form-page__payment-type-dropdown" }, input_html: { class: "form-page__input form-page__payment-type-input dropdown-payment-js" }, label_html: { class: "form-page__label form-page__payment-type-label" } %>
       <i class="fas fa-angle-down"></i>
     </div>
-    <div class="new-job-form-money-field">
-      <%= f.input :money, label: 'Money:', required: true, wrapper_html: { class: "new-job-form-money-label-input" }, label_html: { class: "job-money-label" }, input_html: { class: "job-money-input", value: "100", step: "10", min: "0" } %>
-      <div class="job-payment-js job-payment-text">€ total</div>
+    <div class="form-page__job-money-wrapper">
+      <%= f.input :money, label: 'Money:', required: true, wrapper_html: { class: "form-page__job-money" }, label_html: { class: "form-page__label form-page__job-money-label" }, input_html: { class: "form-page__input form-page__job-money-input", value: "100", step: "10", min: "0" } %>
+      <div class="form-page__job-money-trailing-label job-payment-js">€ total</div>
+    </div>
+    <div class="form-page__job-status-wrapper">
+      <%= f.input :status, label: 'Status:', as: :select, collection: ["open", "close"], include_blank: false, wrapper_html: { class: "form-page__job-status" }, input_html: { class: "form-page__input form-page__job-status-input" }, label_html: { class: "form-page__label form-page__job-status-label" } %>
+      <i class="fas fa-angle-down"></i>
     </div>
   </div>
-  <div class="status-dropdown">
-    <%= f.input :status, label: 'Status:', as: :select, collection: ["open", "close"], include_blank: false, wrapper_html: { class: "job-status-dropdown" }, input_html: { class: "job-status-input" }, label_html: { class: "job-dropdown-label" } %>
-    <i class="fas fa-angle-down"></i>
-  </div>
-  <%= f.submit "Save!", id: "btn-form-submit", class: "form-btn-js" %>
-  <button class="more-btn jobs-more-btn btn-hidden form-btn-js" type="button" disabled>
-    <span class="spinner-border spinner-border" role="status" aria-hidden="true"></span>
+  <%= f.submit "Save!", class: "form-page__submit-btn form-btn-js" %>
+  <button class="form-page__loading-btn btn-hidden form-btn-js" type="button" disabled>
+    <span class="spinner-border" role="status" aria-hidden="true"></span>
     Loading...
   </button>
 <% end %>

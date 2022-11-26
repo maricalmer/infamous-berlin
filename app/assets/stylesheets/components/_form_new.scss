@@ -64,13 +64,10 @@
 .form-page__username, .form-page__email {
   width: 45%;
 }
-.form-page__user-title {
+.form-page__user-title, .form-page__project-title, .form-page__job-title {
   margin-bottom: 2vh;
 }
-.form-page__project-title {
-  margin-bottom: 2vh;
-}
-.form-page__input--project-title {
+.form-page__input--project-title, .form-page__input--job-title {
   text-align: center;
   line-height: 3rem;
   font-size: 2rem;
@@ -90,17 +87,25 @@
   top: 0;
   left: 28px;
 }
-.form-page__description {
-  border-bottom: 4px dashed black;
+.form-page__project-description {
   padding-bottom: 8vh;
   margin-bottom: 8vh;
+  border-bottom: 4px dashed black;
+}
+.form-page__job-description {
+  margin-bottom: 2vh;
+}
+.form-page__job-location {
+  padding-bottom: 8vh;
+  margin-bottom: 8vh;
+  border-bottom: 4px dashed black;
 }
 .form-page__location-date-status-wrapper {
   border-bottom: 4px dashed black;
   padding-bottom: 8vh;
   margin-bottom: 8vh;
 }
-.form-page__location, .form-page__date, .form-page__status {
+.form-page__project-location, .form-page__date, .form-page__status {
   margin-bottom: 2vh;
 }
 .form-page__category-hidden-field, .form-page__skills-hidden-field {
@@ -221,6 +226,10 @@
 .form-page__new-project-attachment--hidden {
   display: none;
 }
+
+
+
+
 .new-member-form {
   margin-top: 2.5rem;
   position: absolute;
@@ -251,7 +260,6 @@
   padding: 4px;
   outline: 2px solid black;
   width: 100%;
-  // height: 50%;
 }
 .new-member-form__input {
   padding: 0;
@@ -276,6 +284,49 @@
 .new-member-form__error {
   color: #C1292E;
 }
+.form-page__payment-type-dropdown-wrapper, .form-page__job-status-wrapper {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+  margin-bottom: 2rem;
+}
+.form-page__payment-type-dropdown, .form-page__job-status {
+  display: flex;
+  align-items: center;
+}
+.form-page__payment-type-input, .form-page__job-status-input {
+  width: fit-content;
+  margin-right: 0.3rem;
+}
+.form-page__payment-type-label, .form-page__job-money-label, .form-page__job-status-label {
+  width: 100px;
+  margin-right: 1rem;
+}
+.form-page__job-money-wrapper {
+  display: flex;
+  align-items: center;
+}
+.form-page__job-money {
+  display: flex;
+  align-items: center;
+}
+.form-page__job-money-input {
+  width: 70px;
+}
+.form-page__job-money-trailing-label {
+  margin-left: 0.3rem;
+}
+.form-page__job-money-wrapper, .form-page__job-status-wrapper {
+  margin-top: 2rem;
+}
+
+
+
+
+
+
+
+
 @media(min-width: 450px) {
   .form-page__title {
     font-size: 4rem;
@@ -318,10 +369,16 @@
     height: 60px;
     padding: 0;
   }
+  .form-page__payment-type-label, .form-page__job-money-label, .form-page__job-status-label {
+    width: fit-content;
+  }
 }
 @media(min-width: 600px) {
   .form-page__content {
     padding: 1rem;
+  }
+  .form-page__payment-type-dropdown-wrapper {
+    margin-bottom: 0;
   }
 }
 @media(min-width: 850px) {
@@ -407,6 +464,18 @@
     background-repeat: no-repeat;
     background-size: cover;
   }
+  .form-page__img--new-job {
+    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), asset-url("newspapers.png");
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .form-page__img--edit-job {
+    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), asset-url("billboard.png");
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
   .form-page__social-media {
     display: flex;
     justify-content: space-between;
@@ -424,7 +493,17 @@
     justify-content: space-between;
     gap: 10px;
   }
-  .form-page__location, .form-page__date, .form-page__status {
+  .form-page__project-location, .form-page__date, .form-page__status {
     flex-grow: 1;
+  }
+}
+@media(min-width: 1200px) {
+  .form-page__job-payment-and-status {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .form-page__payment-type-dropdown-wrapper, .form-page__job-money-wrapper, .form-page__job-status-wrapper {
+    margin: 0;
   }
 }

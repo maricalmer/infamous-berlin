@@ -4,13 +4,13 @@
   <% else %>
     <h4 class="numbers-results"><%= jobs.count %> <%= "jobs".pluralize(jobs.count) %> matched your search for "<%= query %>"</h4>
   <% end %>
-  <div class="jobs mt-5">
+  <div class="job-results-grid">
     <% jobs.each do |job| %>
-      <div class="mt-5 mb-2 mx-auto g-col-4 job-card highlight-js">
-        <div class="job-card-title">
-          <h2 class="highlight-query-js"><%= job.title.upcase %></h2><br>
+      <div class="job-card__wrapper highlight-js">
+        <div class="job-card__title">
+          <h2 class="job-card__title-text highlight-query-js"><%= job.title.upcase %></h2><br>
         </div>
-        <div class="d-flex justify-content-between">
+        <div class="job-card__money-and-updated-date-section">
           <div>
           <% if job.hourly_rate? %>
             <h5><%= job.money %>€/hour</h5>
@@ -22,13 +22,13 @@
             <h5>posted <%= time_ago_in_words(job.created_at) %> ago</h5>
           </div>
         </div>
-        <p class="job-card-description highlight-query-js"><%= job.description %></p>
-        <ul class="skills-list ps-0">
+        <p class="job-card__description highlight-query-js"><%= job.description %></p>
+        <ul class="job-card__skills">
           <% job.display_skills.each do |skill| %>
-            <li><h5 class="skill-box highlight-query-js"><%= skill.downcase %></h5></li>
+            <li class="job-card__skill"><h5 class="job-card__skill-box highlight-query-js"><%= skill.downcase %></h5></li>
           <% end %>
         </ul>
-        <%= link_to "See more", job_path(job), class: "more-btn jobs-more-btn" %>
+        <%= link_to "See more", job_path(job), class: "job-card__submit-btn" %>
       </div>
     <% end %>
   </div>

@@ -39,8 +39,7 @@ document.addEventListener('turbolinks:load', () => {
     populateList();
     disableEnterSubmit();
   }
-  if (document.querySelectorAll(".users-index-js").length ||
-    document.querySelectorAll(".project-form-js").length ||
+  if (document.querySelectorAll(".autocomplete-form-js").length ||
     document.querySelectorAll(".project-show-js").length) {
     autocompleteSearch();
   };

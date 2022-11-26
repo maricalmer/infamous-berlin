@@ -1,49 +1,47 @@
 <%= render 'shared/hamburger' %>
-<div class="background-search">
-  <div class="inquiry-big-card">
-    <div class="back-dash-link">
-      <div class="back-dash-link-arrow">&#10132;</div>
-      <%= link_to :back, class: "link" do %>
-        <h5>Return</h5>
-      <% end %>
-    </div>
-    <div class="job-show">
-      <h1 class="job-show-title"><%= @job.title.upcase %></h1>
-      <h4 class="job-show-description"><%= @job.description %></h4>
-      <div class="job-show-details">
-        <div class="job-show-details-payment">
-          <% if @job.fixed_rate? %>
-            <i class="fas fa-money-bill-wave-alt me-1"></i><h5><%= @job.money %>€</h5>
-          <% else %>
-            <i class="fas fa-money-bill-wave-alt me-1"></i><h5><%= @job.money %>€/hour</h5>
-          <% end %>
-        </div>
-        <div class="job-show-details-location">
-          <i class="fas fa-map-marker-alt me-1"></i> <h5><%= @job.location %></h5>
-        </div>
-        <div class="job-show-details-date">
-          <i class="fas fa-clock me-1"></i><h5>posted <%= time_ago_in_words(@job.created_at) %> ago</h5>
-        </div>
-      </div>
-      <ul class="skills-list job-show-skills align-items-center">
-        <h4 class="me-5"><%= "Skill".pluralize(@job.display_skills.count) %> needed:</h4>
-        <% @job.display_skills.each do |skill| %>
-          <li><h4 class="skill-box"><%= skill.downcase %></h4></li>
+<div class="job-show-card">
+  <div class="job-show-card__back-link">
+    <div class="job-show-card__back-arrow">&#10132;</div>
+    <%= link_to :back, class: "job-show-card__back-text" do %>
+      <h5>Return</h5>
+    <% end %>
+  </div>
+  <div class="job-show-card__content">
+    <h1 class="job-show-card__title"><%= @job.title.upcase %></h1>
+    <h4 class="job-show-card__description"><%= @job.description %></h4>
+    <div class="job-show-card__icons-section">
+      <div class="job-show-card__payment">
+        <% if @job.fixed_rate? %>
+          <i class="job-show-card__icon fas fa-money-bill-wave-alt"></i><h5><%= @job.money %>€</h5>
+        <% else %>
+          <i class="job-show-card__icon fas fa-money-bill-wave-alt"></i><h5><%= @job.money %>€/hour</h5>
         <% end %>
-      </ul>
-      <% if @job.active_offer?(current_user) %>
-        <%= link_to "Apply!", new_job_inquiry_path(@job), class: "btn btn-apply bck-btn-reload-js" %>
-      <% elsif !@job.active_offer?(current_user) %>
-        <button disabled class="btn btn-edit">Inactive offer</button>
-      <% else %>
-        <%= link_to "Edit your job", edit_job_path(@job), class: "btn btn-edit" %>
-      <% end %>
-      <div class="job-show-footer mt-5">
-        <h5 class="text-center mb-5">
-          part of the project <span><%= link_to @job.project.title, project_path(@job.project) %></span>
-          from <span><%= link_to @job.project.user.username, user_path(@job.project.user) %></span>
-        </h5>
       </div>
+      <div class="job-show-card__location">
+        <i class="job-show-card__icon fas fa-map-marker-alt"></i> <h5><%= @job.location %></h5>
+      </div>
+      <div class="job-show-card__date">
+        <i class="job-show-card__icon fas fa-clock"></i><h5>posted <%= time_ago_in_words(@job.created_at) %> ago</h5>
+      </div>
+    </div>
+    <ul class="job-show-card__skills">
+      <h4 class="job-show-card__skill-label"><%= "Skill".pluralize(@job.display_skills.count) %> needed:</h4>
+      <% @job.display_skills.each do |skill| %>
+        <li class="job-show-card__skill"><h4 class="job-show-card__skill-box"><%= skill.downcase %></h4></li>
+      <% end %>
+    </ul>
+    <% if @job.active_offer?(current_user) %>
+      <%= link_to "Apply!", new_job_inquiry_path(@job), class: "job-show-card__submit-btn btn bck-btn-reload-js" %>
+    <% elsif !@job.active_offer?(current_user) %>
+      <button disabled class="job-show-card__disabled-btn btn">Inactive offer</button>
+    <% else %>
+      <%= link_to "Edit your job", edit_job_path(@job), class: "job-show-card__edit-btn btn" %>
+    <% end %>
+    <div class="job-show-card__footer">
+      <h5 class="job-show-card__footer-text">
+        part of the project <span class="job-show-card__footer-highlight"><%= link_to @job.project.title, project_path(@job.project), class: "job-show-card__footer-text" %></span>
+        from <span class="job-show-card__footer-highlight"><%= link_to @job.project.user.username, user_path(@job.project.user), class: "job-show-card__footer-text" %></span>
+      </h5>
     </div>
   </div>
 </div>

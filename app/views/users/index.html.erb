@@ -1,7 +1,7 @@
 <%= render 'shared/navbar' %>
-<div class="search-bar bck-btn-reload-js users-index-js">
+<div class="search-bar bck-btn-reload-js">
   <%= simple_form_for :search, url: users_path, html: { class: "search-bar__form search-form-js" }, remote: true, method: :get do |f| %>
-    <div class="search-bar__input-wrapper search-data-js" data-set="<%= @autocomplete_set.to_json %>">
+    <div class="search-bar__input-wrapper">
       <input type="text" name="query" placeholder="Search through users..." class="search-bar__input refresh-input-js user-input-highlight-js" autocomplete="off">
       <button class="search-bar__btn" type="submit">
         <i class="fas fa-search"></i>

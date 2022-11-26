@@ -18,6 +18,11 @@
 .portfolio-page__grid-stack {
   display: none;
 }
+.job-results-grid {
+  margin: 0 auto 5rem auto;
+  display: grid;
+  grid-template-columns: 1fr;
+}
 @media(min-width: 515px) {
   .project-results-grid {
     column-count: 2;
@@ -74,6 +79,12 @@
     grid-column-end: 11;
   }
 }
+@media(min-width: 1050px) {
+  .job-results-grid {
+    max-width: 60%;
+    grid-template-columns: 1fr 1fr;
+  }
+}
 @media(min-width: 1100px) {
   .project-results-grid {
     column-count: 4;
@@ -96,5 +107,11 @@
 @media(min-width: 1350px) {
   .project-results-grid {
     column-count: 5;
+  }
+}
+@media(min-width: 1400px) {
+  .job-results-grid {
+    max-width: 75%;
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }

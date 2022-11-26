@@ -1,29 +1,24 @@
-<div class="background-search">
-  <%= render 'shared/navbar' %>
-  <div class="mt-5 users-index-js user-index">
-    <!-- ^^^ wrong JS tag naming -->
-    <%= simple_form_for :search, url: jobs_path, html: { class: "search-form-js search-form-job-index" }, remote: true,  method: :get do |f| %>
-      <div class="search-bar-search-page search-data" data-set="<%= @autocomplete_set.to_json %>">
-        <label></label>
-        <!-- ^^^ autocomplete dependency (change autocomplete.js??) -->
-        <input type="text" name="query" placeholder="Enter a skill you need for your project" class="search-input-search-page refresh-input-js user-input-highlight-js", autocomplete="off", value=<%= params[:query] %>>
-        <button type="submit">
-          <i class="fas fa-search search-btn-search-page"></i>
-        </button>
+<%= render 'shared/navbar' %>
+<div class="search-bar-and-filters">
+  <%= simple_form_for :search, url: jobs_path, html: { class: "search-bar-and-filters__form search-form-js" }, remote: true,  method: :get do |f| %>
+    <div class="search-bar-and-filters__search-bar">
+      <input type="text" name="query" placeholder="Search through jobs..." class="search-bar-and-filters__search-input refresh-input-js user-input-highlight-js", autocomplete="off", value=<%= params[:query] %>>
+      <button class="search-bar-and-filters__search-btn" type="submit">
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
+    <div class="search-bar-and-filters__filters">
+      <div class="search-bar-and-filters__filter-btn">
+        <i class="fas fa-filter search-bar-and-filters__filter-icon filter-effect-js"></i>
+        <div class="search-bar-and-filters__filter-text filter-effect-js">FILTER</div>
       </div>
-      <div class="jobs-index-filter-options">
-        <div class="jobs-index-filter">
-          <i class="fas fa-filter filter-effect-js"></i>
-          <div class="jobs-index-filter-text filter-effect-js">FILTER</div>
-        </div>
-        <div class="job-index-radio-buttons-hidden show-radio-btns-js">
-          <%= f.collection_radio_buttons :payment, [["fixed_rate", "Fixed payment"], ["hourly_rate", "Hourly payment"], ["all", "All"]], :first, :last, item_label_class: 'checkbox-label-js', checked: "all" %>
-          <div class="jobs-index-hidding-span-desactivated hide-filter-text-js"></div>
-        </div>
+      <div class="search-bar-and-filters__filter-options--hidden show-radio-btns-js">
+        <%= f.collection_radio_buttons :payment, [["fixed_rate", "Fixed payment"], ["hourly_rate", "Hourly payment"], ["all", "All"]], :first, :last, item_label_class: 'search-bar-and-filters__filter-labels checkbox-label-js', checked: "all" %>
+        <div class="search-bar-and-filters__cover search-bar-and-filters__cover--unfolded hide-filter-text-js"></div>
       </div>
-    <% end %>
-  </div>
-  <div class="render-results-js">
-    <%= render "index_job", jobs: @jobs, query: params[:query] %>
-  </div>
+    </div>
+  <% end %>
+</div>
+<div class="render-results-js">
+  <%= render "index_job", jobs: @jobs, query: params[:query] %>
 </div>

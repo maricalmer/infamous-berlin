@@ -1,8 +1,8 @@
 <%= simple_form_for @project, remote: true, html: { class: "form-js"} do |f| %>
   <%= f.input :title, label: 'Project title:', wrapper_html: { class: "form-page__project-title" }, label_html: { class: 'form-page__label' }, input_html: { class: 'form-page__input form-page__input--project-title', autocomplete: "off" } %>
-  <%= f.input :description, label: 'Describe your project:', wrapper_html: { class: "form-page__description" }, label_html: { class: 'form-page__label' }, input_html: { class: 'form-page__input' } %>
+  <%= f.input :description, label: 'Describe your project:', wrapper_html: { class: "form-page__project-description" }, label_html: { class: 'form-page__label' }, input_html: { class: 'form-page__input' } %>
   <div class="form-page__location-date-status-wrapper">
-    <%= f.input :location, label: 'Location', wrapper_html: { data: { set: @location_autocomplete_set.to_json }, class: "form-page__location search-data-js" }, label_html: { class: 'form-page__label' }, input_html: { class: 'form-page__input input-data-js' } %>
+    <%= f.input :location, label: 'Location', wrapper_html: { data: { set: @location_autocomplete_set.to_json }, class: "form-page__project-location search-data-js" }, label_html: { class: 'form-page__label' }, input_html: { class: 'form-page__input search-input-js' } %>
     <%= f.input :date, as: :string, label: 'When?', wrapper_html: { class: "form-page__date" }, label_html: { class: 'form-page__label' }, input_html: { class: "form-page__input datepicker datepicker-js" } %>
     <%= f.input :status, label: 'Project status:', as: :select, collection: @project.class.statuses.keys, include_blank: false, wrapper_html: { class: "form-page__status" }, label_html: { class: 'form-page__label' }, input_html: { class: "form-page__input" } %>
   </div>
@@ -11,7 +11,7 @@
     <div class="form-page__add-categories search-data-js" data-set="<%= @category_autocomplete_set.to_json %>">
       <label for="fname" class="form-page__add-categories-label form-page__label">Add a project category:</label>
       <div class="form-page__add-categories-input-and-btn">
-        <input type="text" id="fname" class="form-page__add-categories-input form-page__input attribute-value-js"></input>
+        <input type="text" id="fname" class="form-page__add-categories-input form-page__input search-input-js attribute-value-js"></input>
         <div class="form-page__add-categories-btn btn-add-attribute-js">Add</div>
       </div>
     </div>
