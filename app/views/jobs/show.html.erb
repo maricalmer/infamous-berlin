@@ -39,8 +39,8 @@
     <% end %>
     <div class="job-show-card__footer">
       <h5 class="job-show-card__footer-text">
-        part of the project <span class="job-show-card__footer-highlight"><%= link_to @job.project.title, project_path(@job.project), class: "job-show-card__footer-text" %></span>
-        from <span class="job-show-card__footer-highlight"><%= link_to @job.project.user.username, user_path(@job.project.user), class: "job-show-card__footer-text" %></span>
+        part of the project <span class="job-show-card__footer-highlight"><%= link_to @job.project.title, project_path(@job.project), class: "job-show-card__footer-link" %></span>
+        from <span class="job-show-card__footer-highlight"><%= link_to @job.project.user.username, user_path(@job.project.user), class: "job-show-card__footer-link" %></span>
       </h5>
     </div>
   </div>

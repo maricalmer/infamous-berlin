@@ -1,95 +1,94 @@
 <%= render 'shared/hamburger' %>
-<div class="background-search">
-  <div class="inquiry-big-card">
-    <div class="back-dash-link">
-      <div class="back-dash-link-arrow">&#10132;</div>
-      <%= link_to dashboard_path, class: "link" do %>
-        <h5>Go to your dashboard</h5>
+<div class="inquiry-show-card">
+  <div class="inquiry-show-card__back-link">
+    <div class="inquiry-show-card__back-arrow">&#10132;</div>
+    <%= link_to dashboard_path, class: "inquiry-show-card__back-text" do %>
+      <h5>Go to your dashboard</h5>
+    <% end %>
+  </div>
+  <div class="inquiry-show-card__content">
+    <div class="inquiry-show-card__pic">
+      <div class="avatar-inquiry">
+        <div class="avatar-inquiry__frame">
+          <%= link_to user_path(@inquiry.user), class: "avatar-inquiry__link" do %>
+            <%= cl_image_tag @inquiry.user.photo.key, class: "avatar-inquiry__img", quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 300, crop: "fill"}] %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="inquiry-show-card__username">
+      <%= link_to @inquiry.user.username, user_path(@inquiry.user), class: "inquiry-show-card__username-link"%>
+    </div>
+    <div class="inquiry-show-card__body">
+      <h4 class="inquiry-show-card__motivation">
+        <div class="inquiry-show-card__motivation-underlined-title">
+          <div class="inquiry-show-card__motivation-title">Motivation:</div>
+          <div class="inquiry-show-card__underline"></div>
+        </div>
+        <br>
+        <div class="inquiry-show-card__text"><%= @inquiry.motivation %></div>
+      </h4>
+      <h4 class="inquiry-show-card__experience">
+        <div class="inquiry-show-card__experience-underlined-title">
+          <div class="inquiry-show-card__experience-title">Experience:</div>
+          <div class="inquiry-show-card__underline"></div>
+        </div>
+        <br>
+        <div class="inquiry-show-card__text"><%= @inquiry.experience %></div>
+      </h4>
+      <ul class="inquiry-show-card__skills">
+        <h4 class="inquiry-show-card__skill-label">User <%= "skill".pluralize(@user_formatted_skills.count) %>:</h4>
+        <% @user_formatted_skills.each do |skill| %>
+          <li class="inquiry-show-card__skill"><h4 class="inquiry-show-card__skill-box"><%= skill.downcase %></h4></li>
+        <% end %>
+      </ul>
+      <% if @inquiry.attached_file.attached? %>
+        <%= link_to rails_blob_path(@inquiry.attached_file, disposition: "attachment"), class: "inquiry-show-card__download-btn btn" do %>
+          <div class="inquiry-show-card__download-btn-arrow">&#8682;</div><h4 class="inquiry-show-card__download-btn-text"> download attachment</h4>
+        <% end %>
       <% end %>
     </div>
-    <div class="inquiry-show">
-      <div class="pic-inquiry">
-        <div class="diamond-wrapper-inquiry">
-          <div class="diamond-frame-small-inquiry">
-            <%= link_to user_path(@inquiry.user), class: "link" do %>
-              <%= cl_image_tag @inquiry.user.photo.key, quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 300, crop: "fill"}] %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-      <div class="inquiry-show-title">
-        <%= link_to @inquiry.user.username, user_path(@inquiry.user), class: "link inquiry-show-title-link"%>
-      </div>
-      <div class="inquiry-details-body">
-        <h4 class="inquiry-show-motivation">
-          <div class="inquiry-show-motivation-title">
-            Motivation:
-            <div class="underlined-title"></div>
-          </div>
-          <br>
-          <%= @inquiry.motivation %>
-        </h4>
-        <h4 class="inquiry-show-experience">
-          <div class="inquiry-show-motivation-experience">
-            Experience:
-            <div class="underlined-title"></div>
-          </div>
-          <br>
-          <%= @inquiry.experience %>
-        </h4>
-        <ul class="inquiry-skills-list align-items-center">
-          <h4 class="inquiry-skills-label">User <%= "skill".pluralize(@user_formatted_skills.count) %>:</h4>
-          <% @user_formatted_skills.each do |skill| %>
-            <li><h4 class="skill-box"><%= skill.downcase %></h4></li>
-          <% end %>
-        </ul>
-        <% if @inquiry.attached_file.attached? %>
-          <%= link_to rails_blob_path(@inquiry.attached_file, disposition: "attachment"), class: "btn btn-download" do %>
-            <div class="download-arrow">&#8682;</div><h4> download attachment</h4>
-          <% end %>
+    <h4>Status:
+      <% if @inquiry.on_hold? %>
+        <span class="inquiry-show-card__status--hold">on hold</span>
+      <% elsif @inquiry.accepted? %>
+        <span class="inquiry-show-card__status--accepted">accepted</span>
+      <% elsif @inquiry.rejected? %>
+        <span class="inquiry-show-card__status--rejected">rejected</span>
+      <% end  %>
+    </h4>
+    <% if current_user == @inquiry.job.project.user && @inquiry.on_hold? %>
+      <div class="inquiry-show-card__btns-inquiry">
+        <%= link_to change_status_inquiry_path(@inquiry, status: "accepted"), class: "inquiry-show-card__btn-accept btn", remote: true, method: :patch do %>
+          Accept
+        <% end %>
+        <%= link_to change_status_inquiry_path(@inquiry, status: "rejected"), class: "inquiry-show-card__btn-reject btn", remote: true, method: :patch do %>
+          Reject
         <% end %>
       </div>
-      <h4>Status:
-        <% if @inquiry.on_hold? %>
-          <span class="inquiry-hold-pill">on hold</span>
-        <% elsif @inquiry.accepted? %>
-          <span class="inquiry-accepted-pill">accepted</span>
-        <% elsif @inquiry.rejected? %>
-          <span class="inquiry-rejected-pill">rejected</span>
-        <% end  %>
-      </h4>
-      <% if current_user == @inquiry.job.project.user && @inquiry.on_hold? %>
-        <div class="btns-inquiry">
-          <%= link_to change_status_inquiry_path(@inquiry, status: "accepted"), class: "btn btn-accept", remote: true, method: :patch do %>
-            Accept
-          <% end %>
-          <%= link_to change_status_inquiry_path(@inquiry, status: "rejected"), class: "btn btn-reject", remote: true, method: :patch do %>
-            Reject
-          <% end %>
-        </div>
-      <% elsif current_user == @inquiry.job.project.user %>
-        <div class="change-status-inquiry">
-          <h4 class="change-status-inquiry-label">Change status:</h4>
-          <%= link_to change_status_inquiry_path(@inquiry, status: "accepted"), class: "btn btn-update-accept", remote: true, method: :patch do %>
-            Accept
-          <% end %>
-          <%= link_to change_status_inquiry_path(@inquiry, status: "rejected"), class: "btn btn-update-reject", remote: true, method: :patch do %>
-            Reject
-          <% end %>
-        </div>
-      <% end %>
-      <div class="inquiry-show-footer">
-        <h5 class="text-center mb-5">
-          <% if @inquiry.job.present? %>
-            <p>application to the job offer <span><%= link_to @inquiry.job.title, job_path(@inquiry.job) %></span>
-            for the project <span><%= link_to @inquiry.job.project.title, project_path(@inquiry.job.project) %></span></p>
-          <% else %>
-            <p class="fst-italic">
-              || job offer has been deleted ||
-            </p>
-          <% end %>
-        </h5>
+    <% elsif current_user == @inquiry.job.project.user %>
+      <div class="inquiry-show-card__change-status">
+        <h4 class="inquiry-show-card__change-status-label">Change status:</h4>
+        <%= link_to change_status_inquiry_path(@inquiry, status: "accepted"), class: "inquiry-show-card__change-status-btn inquiry-show-card__change-status-btn--accept btn", remote: true, method: :patch do %>
+          Accept
+        <% end %>
+        <%= link_to change_status_inquiry_path(@inquiry, status: "rejected"), class: "inquiry-show-card__change-status-btn inquiry-show-card__change-status-btn--reject btn", remote: true, method: :patch do %>
+          Reject
+        <% end %>
       </div>
+    <% end %>
+    <div class="inquiry-show-card__footer">
+      <h5 class="inquiry-show-card__footer-text">
+        <% if @inquiry.job.present? %>
+          <p>application to the job offer <span class="inquiry-show-card__footer-highlight"><%= link_to @inquiry.job.title, job_path(@inquiry.job), class: "inquiry-show-card__footer-link" %></span>
+          for the project <span class="inquiry-show-card__footer-highlight"><%= link_to @inquiry.job.project.title, project_path(@inquiry.job.project), class: "inquiry-show-card__footer-link" %></span></p>
+        <% else %>
+          <p class="fst-italic">
+            || job offer has been deleted ||
+          </p>
+        <% end %>
+      </h5>
     </div>
   </div>
 </div>
+

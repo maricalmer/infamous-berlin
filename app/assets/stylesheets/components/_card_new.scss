@@ -325,7 +325,7 @@
     text-decoration: none;
   }
 }
-.job-show-card__back-link {
+.job-show-card__back-link, .inquiry-show-card__back-link {
   cursor: pointer;
   position: absolute;
   display: flex;
@@ -334,15 +334,15 @@
   color: #333;
   transition: box-shadow .3s, color .3s;
 }
-.job-show-card__back-text, .job-show-card__back-link:hover, .job-show-card__back-text:hover {
+.job-show-card__back-text, .job-show-card__back-link:hover, .job-show-card__back-text:hover, .inquiry-show-card__back-text, .inquiry-show-card__back-text:hover {
   color: black;
 }
-.job-show-card__back-arrow {
+.job-show-card__back-arrow, .inquiry-show-card__back-arrow {
   transform: rotate(180deg);
   margin-right: 4px;
   padding-top: 4px;
 }
-.job-show-card__content {
+.job-show-card__content, .inquiry-show-card__content {
   background-color: #d6d6d6;
   margin: 0 auto;
   margin-top: 5rem;
@@ -370,7 +370,7 @@
 .job-show-card__icon {
   margin-right: 0.25rem;
 }
-.job-show-card__skills, .job-card__skills {
+.job-show-card__skills, .job-card__skills, .inquiry-show-card__skills {
   flex-grow: 1;
   display: flex;
   flex-wrap: wrap;
@@ -378,44 +378,44 @@
   padding: 2rem 0;
   align-items: center;
 }
-.job-show-card__skill, .job-card__skill {
+.job-show-card__skill, .job-card__skill, .inquiry-show-card__skill {
   list-style-type: none;
   margin: 8px;
 }
-.job-show-card__skill-box, .job-card__skill-box {
+.job-show-card__skill-box, .job-card__skill-box, .inquiry-show-card__skill-box {
   box-shadow: -6px -6px black;
   border: 3px solid black;
   width: auto;
   padding: 2px;
   background-color: #d6d6d6;
 }
-.job-show-card__skill-label {
+.job-show-card__skill-label, .inquiry-show-card__skill-label {
   margin-right: 3rem;
 }
-.job-show-card__footer {
+.job-show-card__footer, .inquiry-show-card__footer {
   color: #333;
   margin-top: 3rem;
 }
-.job-show-card__footer-text {
+.job-show-card__footer-text, .inquiry-show-card__footer-text {
   text-align: center;
   margin-bottom: 3rem;
   color: black;
 }
-.job-show-card__footer-highlight {
+.job-show-card__footer-highlight, .inquiry-show-card__footer-highlight {
   border-bottom: none;
   box-shadow: inset 0 -30px 0 #D1BFF6, 0 2px 0 #D1BFF6;
   transition: box-shadow .5s, color .5s;
 }
-.job-show-card__footer-link {
+.job-show-card__footer-link, .inquiry-show-card__footer-link {
   text-decoration: none;
   color: #333;
   line-height: 2.5rem;
 }
-.job-show-card__footer-highlight:hover {
+.job-show-card__footer-highlight:hover, .inquiry-show-card__footer-highlight:hover {
   box-shadow: inset 0 -30px 0 #333, 0 2px 0 #333;
   border-bottom: none;
 }
-.job-show-card__footer-link:hover {
+.job-show-card__footer-link:hover, .inquiry-show-card__footer-link:hover {
   color: #D1BFF6;
 }
 .job-card__wrapper {
@@ -467,7 +467,86 @@
   padding: 2px;
   background-color: #d6d6d6;
 }
+.inquiry-show-card {
+  background-color: #d6d6d6;
+  margin: 1vh auto;
+  margin-top: 12vh;
+  border: solid 4px black;
+  box-shadow: -8px -8px 0 0 black;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 0;
+  width: 65%;
+  min-width: 250px;
+}
+.inquiry-show-card__pic {
+  padding: 3vh 0;
+}
+.inquiry-show-card__username {
+  text-align: center;
+}
+.inquiry-show-card__username-link {
+  text-decoration: none;
+  color: black;
+  display: inline-block;
+  font-size: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  transition: box-shadow .5s, color .5s;
+}
+.inquiry-show-card__username-link:hover {
+  color: #D1BFF6;
+  box-shadow: inset 0 -36px 0 #333, 0 2px 0 #333;
+}
+.inquiry-show-card__body {
+  border-top: 8px dashed black;
+  border-bottom: 8px dashed black;
+  margin-bottom: 4rem;
+}
+.inquiry-show-card__motivation, .inquiry-show-card__experience {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  margin-bottom: 0;
+}
+.inquiry-show-card__motivation-underlined-title, .inquiry-show-card__experience-underlined-title {
+  display: inline-block;
+  width: fit-content;
+}
+.inquiry-show-card__motivation-title, .inquiry-show-card__experience-title {
+  position: relative;
+  z-index: 1;
+}
+.inquiry-show-card__underline {
+  width: 100%;
+  background-color: #858585;
+  height: 12px;
+  position: relative;
+  top: -11px;
+  right: 6px;
+  z-index: 0;
+}
+.inquiry-show-card__text {
+  word-wrap: break-word;
+}
+.inquiry-show-card__status--hold {
+  background-color: #333;
+  padding: 2px;
+  color: #d6d6d6;
+}
+.inquiry-show-card__status--accepted {
+  background-color: #7ECA93;
+  padding: 2px;
+}
+.inquiry-show-card__status--rejected {
+  background-color: #a34646;
+  padding: 2px;
+}
+.inquiry-show-card__change-status {
+  margin-top: 12vh;
+}
+.inquiry-show-card__footer {
 
+}
 @supports (-moz-appearance:none) {
   .project-card__wrapper { padding-top: 0; }
 }
@@ -478,7 +557,7 @@
   }
 }}
 @media(min-width: 450px) {
-  .job-show-card__footer-highlight {
+  .job-show-card__footer-highlight, .inquiry-show-card__footer-highlight {
     border-bottom: 4px dashed black;
     transition: box-shadow .5s, color .5s;
     box-shadow: none;
@@ -487,8 +566,17 @@
     line-height: 1rem;
     color: #333;
   }
-  .job-show-card__footer-highlight:hover .job-show-card__footer-text {
+  .job-show-card__footer-highlight:hover, .inquiry-show-card__footer-highlight:hover {
     color: #D1BFF6;
+  }
+  .inquiry-show-card__change-status {
+    display: flex;
+    align-items: baseline;
+    justify-content: start;
+    margin-top: 6vh;
+  }
+  .inquiry-show-card__change-status-label, .inquiry-show-card__change-status-btn {
+    font-size: 2rem;
   }
 }
 
@@ -521,6 +609,13 @@
   .card-user__skill {
     margin-right: 0px;
     margin-left: 4px;
+  }
+}
+@media(min-width: 950px) {
+  .job-show-card__icons-section {
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
   }
 }
 @media(min-width: 1200px) {

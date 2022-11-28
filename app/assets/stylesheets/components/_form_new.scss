@@ -20,8 +20,7 @@
 }
 .form-page__form {
   background-color: #d6d6d6;
-  margin: 1vh 5vw;
-  margin-top: 230px;
+  margin: 230px 5vw 10vh 5vw;
   border: solid 4px black;
   box-shadow: -8px -8px 0 0 black;
   padding-left: 1rem;
@@ -226,10 +225,200 @@
 .form-page__new-project-attachment--hidden {
   display: none;
 }
-
-
-
-
+.form-page__payment-type-dropdown-wrapper, .form-page__job-status-wrapper {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+  margin-bottom: 2rem;
+}
+.form-page__payment-type-dropdown, .form-page__job-status {
+  display: flex;
+  align-items: center;
+}
+.form-page__payment-type-input, .form-page__job-status-input {
+  width: fit-content;
+  margin-right: 0.3rem;
+}
+.form-page__payment-type-label, .form-page__job-money-label, .form-page__job-status-label {
+  width: 100px;
+  margin-right: 1rem;
+}
+.form-page__job-money-wrapper {
+  display: flex;
+  align-items: center;
+}
+.form-page__job-money {
+  display: flex;
+  align-items: center;
+}
+.form-page__job-money-input {
+  width: 70px;
+}
+.form-page__job-money-trailing-label {
+  margin-left: 0.3rem;
+}
+.form-page__job-money-wrapper, .form-page__job-status-wrapper {
+  margin-top: 2rem;
+}
+.form-page__job-details-section {
+  max-width: 100%;
+}
+.form-page__job-details-title, .form-page__new-inquiry-title {
+  margin-top: 3rem;
+  font-size: 2rem;
+  display: inline-block;
+}
+.form-page__job-details-underline, .form-page__new-inquiry-underline {
+  width: 95%;
+  background-color: #858585;
+  position: relative;
+  height: 18px;
+  top: -19px;
+  right: 3px;
+  z-index: -1;
+}
+.form-page__job-details-job-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.form-page__job-quote--first {
+  margin-right: 1.5rem;
+}
+.form-page__job-quote--last {
+  margin-left: 1.5rem;
+}
+.form-page__job-quote--text {
+  word-wrap: break-word;
+  word-break: break-word;
+  text-align: center;
+}
+.form-page__job-skills {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding-left: 0;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  flex-grow: 1;
+  list-style-type: none;
+}
+.form-page__job-skills-label {
+  margin-right: 3rem;
+}
+.form-page__job-skill-box {
+  box-shadow: -6px -6px black;
+  border: 3px solid black;
+  width: auto;
+  padding: 2px;
+  background-color: #d6d6d6;
+  margin-right: 1rem;
+}
+.form-page__job-link-wrapper {
+  margin-bottom: 3rem;
+}
+.form-page__job-link {
+  text-decoration: none;
+  color: black;
+  transition: box-shadow .3s, color .3s;
+  font-size: calc(1.275rem + 0.3vw);
+}
+.form-page__job-link:hover {
+  color: black;
+  box-shadow: inset 0 -30px 0 #7ECA93, 0 2px 0 #7ECA93;
+  text-decoration: none;
+}
+.form-page__new-inquiry-section {
+  border-top: 8px dashed black;
+}
+.login-form__link {
+  color: black;
+  transition: box-shadow .3s, color .3s, text-decoration .3s;
+  font-size: calc(1.275rem + 0.3vw);
+}
+.login-form__link:hover, .login-form__link:focus {
+  color: #333;
+  box-shadow: inset 0 -30px 0 #7ECA93, 0 2px 0 #7ECA93;
+  text-decoration: none;
+}
+.devise-form__container {
+  background: #858585;
+  padding-top: 3rem;
+  padding-left: 15%;
+  padding-right: 15%;
+  height: fit-content;
+  min-height: 100vh;
+}
+.devise-form__brand {
+  width: 230px;
+  height: 80px;
+  border: 3px dashed black;
+  margin: 32px auto;
+  -webkit-tap-highlight-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 0;
+  transition: 1s;
+  box-sizing: border-box;
+}
+.devise-form__brand::before {
+  height: 80px;
+  width: 210px;
+}
+.devise-form__brand::after {
+  width: 230px;
+  height: 60px;
+}
+.devise-form__brand::before, .devise-form__brand::after {
+  position: absolute;
+  background: #858585;
+  z-index: -1;
+  transition: 1s;
+  content: '';
+}
+.devise-form__brand:hover::before {
+  width: 0px;
+  background: #858585;
+}
+.devise-form__brand:hover::after {
+  height: 0px;
+  background: #858585;
+}
+.devise-form__brand:hover {
+  border: 3px dashed #333;
+  background: #858585;
+  color: #333;
+}
+.devise-form__brand-link {
+  text-decoration: none;
+  color: black;
+}
+.devise-form__brand-link:hover {
+  color: #333;
+}
+.noselect {
+  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+}
+.devise-form__video-section {
+  display: none;
+}
+.devise-form__video {
+  display: none;
+}
+.devise-form__checkbox[type="checkbox"] {
+  border: 2px solid black;
+  border-radius: 0px;
+}
 .new-member-form {
   margin-top: 2.5rem;
   position: absolute;
@@ -284,41 +473,7 @@
 .new-member-form__error {
   color: #C1292E;
 }
-.form-page__payment-type-dropdown-wrapper, .form-page__job-status-wrapper {
-  display: flex;
-  align-items: center;
-  margin-right: 1rem;
-  margin-bottom: 2rem;
-}
-.form-page__payment-type-dropdown, .form-page__job-status {
-  display: flex;
-  align-items: center;
-}
-.form-page__payment-type-input, .form-page__job-status-input {
-  width: fit-content;
-  margin-right: 0.3rem;
-}
-.form-page__payment-type-label, .form-page__job-money-label, .form-page__job-status-label {
-  width: 100px;
-  margin-right: 1rem;
-}
-.form-page__job-money-wrapper {
-  display: flex;
-  align-items: center;
-}
-.form-page__job-money {
-  display: flex;
-  align-items: center;
-}
-.form-page__job-money-input {
-  width: 70px;
-}
-.form-page__job-money-trailing-label {
-  margin-left: 0.3rem;
-}
-.form-page__job-money-wrapper, .form-page__job-status-wrapper {
-  margin-top: 2rem;
-}
+
 
 
 
@@ -476,6 +631,23 @@
     background-repeat: no-repeat;
     background-size: cover;
   }
+  .form-page__img--new-inquiry {
+    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), asset-url("sewing_thread.png");
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .form-page__img--edit-inquiry {
+    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), asset-url("workshop.png");
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+
+
+
+
   .form-page__social-media {
     display: flex;
     justify-content: space-between;
@@ -495,6 +667,53 @@
   }
   .form-page__project-location, .form-page__date, .form-page__status {
     flex-grow: 1;
+  }
+  .devise-form {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    padding-left: 15%;
+    padding-right: 15%;
+    width: 60%;
+  }
+  .devise-form__container {
+    display: flex;
+    padding: 0;
+    height: auto;
+  }
+  .devise-form__video-section {
+    display: block;
+    width: 40%;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    border-left: 2px solid black;
+  }
+  .devise-form__video-text {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: #d6d6d6;
+    z-index: 10;
+    font-size: 2em;
+    padding: 48px;
+  }
+  .devise-form__video-text--highlight {
+    border-bottom: 4px dashed #d6d6d6;
+  }
+  .devise-form__video-gradient {
+    width: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0) 40%, #333);
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+  }
+  .devise-form__video {
+    display: block;
+    filter: grayscale(95%);
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
   }
 }
 @media(min-width: 1200px) {
