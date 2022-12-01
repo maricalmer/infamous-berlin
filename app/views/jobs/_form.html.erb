@@ -1,6 +1,6 @@
 <%= simple_form_for [ @project, @job ], remote: true, html: { class: "form-js"} do |f| %>
   <%= f.input :title, label: 'Job title:', required: true, wrapper_html: { class: "form-page__job-title" }, label_html: { class: 'form-page__label' }, input_html: { autocomplete: "off", class: "form-page__input form-page__input--job-title" } %>
-  <%= f.input :description, label: 'Describe the job:', required: true, wrapper_html: { class: "form-page__job-description" }, label_html: { class: 'form-page__label' }, input_html: { class: "form-page__input" } %>
+  <%= f.input :description, label: 'Describe the job:', required: true, wrapper_html: { class: "form-page__job-description" }, label_html: { class: 'form-page__label' }, input_html: { class: "form-page__input form-page__input--big" } %>
   <%= f.input :location, label: 'Job location:', wrapper_html: { data: { set: @location_autocomplete_set.to_json }, class: "form-page__job-location search-data-js" }, label_html: { class: 'form-page__label' }, input_html: { class: 'form-page__input search-input-js' } %>
   <%= f.input :skills_needed, wrapper_html: { class: "skills-hidden-field" }, input_html: { class: "attributes_hidden_field_js" } %>
   <div class="form-page__skills-custom">
@@ -31,7 +31,7 @@
     </div>
   </div>
   <%= f.submit "Save!", class: "form-page__submit-btn form-btn-js" %>
-  <button class="form-page__loading-btn btn-hidden form-btn-js" type="button" disabled>
+  <button class="form-page__loading-btn form-page__loading-btn--hidden form-btn-js" type="button" disabled>
     <span class="spinner-border" role="status" aria-hidden="true"></span>
     Loading...
   </button>

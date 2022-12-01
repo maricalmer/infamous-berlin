@@ -11,7 +11,7 @@
                     required: true,
                     autofocus: true,
                     value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email),
-                    input_html: { autocomplete: "email", class: 'form-page__input' },
+                    input_html: { autocomplete: "off", class: 'form-page__input form-page__input--sign-up' },
                     label_html: { class: 'form-page__label' } %>
       </div>
 

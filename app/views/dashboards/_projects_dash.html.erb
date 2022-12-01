@@ -1,38 +1,34 @@
-<div class="dash-cards-slider js-slider slider-js js-projects-results">
-  <h4 class="dash-slider-title-mobile">Projects</h4>
+<div class="dashboard__cards slider-js">
+  <h4 class="dashboard__mobile-title">Projects</h4>
   <% @projects.includes([:attachments_attachments]).each do |project| %>
-    <div class="dash-card-project">
-      <%= link_to project_path(project.slug) do  %>
-        <h4 class="title-card-project-search">
+    <div class="dashboard-slider-card">
+      <%= link_to project_path(project.slug), class: "dashboard-slider-card__link" do  %>
+        <h4 class="dashboard-slider-card__title">
           <%= project.title %>
           <% if project.upcoming? %>
-            <div class="ribbon">UPCOMING</div>
+            <div class="dashboard-slider-card__ribbon">UPCOMING</div>
           <% end %>
         </h4>
-        <div class="dash-card-img-wrapper">
-          <% if project.attachments.attached? %>
-            <% if project.attachments.first.image? %>
-              <%= cl_image_tag project.attachments.first.key, class: "dash-card-img", quality: "auto:low", height: 155, transformation: [{fetch_format: "auto"}, {width: 400, crop: "fill"}] %>
-            <% elsif project.attachments.first.audio? %>
-              <%= cl_image_tag "/assets/logo-audio.png", class: "dash-card-img" %>
-            <% else %>
-              <%= cl_video_tag project.attachments.first.key, class: "dash-card-img" %>
-            <% end %>
+        <div class="dashboard-slider-card__img-wrapper">
+          <% if project.attachments.first.image? %>
+            <%= cl_image_tag project.attachments.first.key, class: "dashboard-slider-card__img", quality: "auto:low", height: 155, transformation: [{fetch_format: "auto"}, {width: 400, crop: "fill"}] %>
+          <% elsif project.attachments.first.audio? %>
+            <%= image_tag asset_path('logo-audio.png'), class: "dashboard-slider-card__img" %>
           <% else %>
-            <%= image_tag asset_path('logo.png'), class: "dash-card-img" %>
+            <%= cl_video_tag project.attachments.first.key, class: "dashboard-slider-card__img" %>
           <% end %>
         </div>
-        <div class="dash-card-text"><%= project.description %></div>
+        <div class="dashboard-slider-card__text"><%= project.description %></div>
       <% end %>
-      <div class="dash-card-btns">
-        <div class="dash-card-edit-btn">
-          <%= link_to edit_project_path(project.slug) do %>
-            <h5>Edit</h5>
+      <div class="dashboard-slider-card__btns">
+        <div class="dashboard-slider-card__btn--edit">
+          <%= link_to edit_project_path(project.slug), class: "dashboard-slider-card__btn-link" do %>
+            <h5 class="dashboard-slider-card__btn-text">Edit</h5>
           <% end %>
         </div>
-        <div class="dash-card-delete-btn">
-          <%= link_to project_path(project), method: :delete, data: { confirm: "Are you sure?" } do %>
-            <h5>Delete</h5>
+        <div class="dashboard-slider-card__btn--delete">
+          <%= link_to project_path(project), method: :delete, data: { confirm: "Are you sure?" }, class: "dashboard-slider-card__btn-link" do %>
+            <h5 class="dashboard-slider-card__btn-text">Delete</h5>
           <% end %>
         </div>
       </div>

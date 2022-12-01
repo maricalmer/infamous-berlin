@@ -1,71 +1,136 @@
-.job-show {
+.job-show-card {
+  background-color: #d6d6d6;
+  margin: 1vh auto;
+  margin-top: 12vh;
+  border: solid 4px black;
+  box-shadow: -8px -8px 0 0 black;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 0;
+  width: 65%;
+  min-width: 250px;
+  a {
+    text-decoration: none;
+  }
+}
+.job-show-card__back-link {
+  cursor: pointer;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+  color: #333;
+  transition: box-shadow .3s, color .3s;
+}
+.job-show-card__back-text, .job-show-card__back-link:hover, .job-show-card__back-text:hover {
+  color: black;
+}
+.job-show-card__back-arrow {
+  transform: rotate(180deg);
+  margin-right: 4px;
+  padding-top: 4px;
+}
+.job-show-card__content {
   background-color: #d6d6d6;
   margin: 0 auto;
   margin-top: 5rem;
 }
-.job-show-title {
+.job-show-card__title {
   text-align: center;
   padding-top: 2rem;
   padding-bottom: 3rem;
 }
-.job-show-description {
+.job-show-card__description {
   border-top: 8px dashed black;
   border-bottom: 8px dashed black;
   padding: 2rem 0;
 }
-.job-show-details {
+.job-show-card__icons-section {
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
-.job-show-details-payment, .job-show-details-location, .job-show-details-date {
+.job-show-card__payment, .job-show-card__location, .job-show-card__date {
   display: flex;
   justify-content: start;
   align-items: baseline;
   margin-bottom: 2vh;
 }
-.job-show-skills {
+.job-show-card__icon {
+  margin-right: 0.25rem;
+}
+.job-show-card__skills, .job-card__skills {
+  flex-grow: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
   padding: 2rem 0;
+  align-items: center;
 }
-.job-show-footer {
-  color: #333
+.job-show-card__skill, .job-card__skill {
+  list-style-type: none;
+  margin: 8px;
 }
-.job-show-footer span {
+.job-show-card__skill-box, .job-card__skill-box {
+  box-shadow: -6px -6px black;
+  border: 3px solid black;
+  width: auto;
+  padding: 2px;
+  background-color: #d6d6d6;
+}
+.job-show-card__skill-label {
+  margin-right: 3rem;
+}
+.job-show-card__footer {
+  color: #333;
+  margin-top: 3rem;
+}
+.job-show-card__footer-text {
+  text-align: center;
+  margin-bottom: 3rem;
+  color: black;
+}
+.job-show-card__footer-highlight {
   border-bottom: none;
   box-shadow: inset 0 -30px 0 #D1BFF6, 0 2px 0 #D1BFF6;
   transition: box-shadow .5s, color .5s;
-  a {
-    text-decoration: none;
-    color: #333;
-    line-height: 2.5rem;
-  }
 }
-.job-show-footer span:hover {
+.job-show-card__footer-link {
+  text-decoration: none;
+  color: #333;
+  line-height: 2.5rem;
+}
+.job-show-card__footer-highlight:hover {
   box-shadow: inset 0 -30px 0 #333, 0 2px 0 #333;
   border-bottom: none;
-  a {
+}
+.job-show-card__footer-link:hover {
+  color: #D1BFF6;
+}
+.job-show-card__skill-box {
+  box-shadow: -6px -6px black;
+  border: 3px solid black;
+  width: auto;
+  padding: 2px;
+  background-color: #d6d6d6;
+}
+@media(min-width: 450px) {
+  .job-show-card__footer-highlight {
+    border-bottom: 4px dashed black;
+    transition: box-shadow .5s, color .5s;
+    box-shadow: none;
+  }
+  .job-show-card__footer-text {
+    line-height: 1rem;
+    color: #333;
+  }
+  .job-show-card__footer-highlight:hover {
     color: #D1BFF6;
   }
 }
-@media(min-width: 450px) {
-  .job-show-details {
+@media(min-width: 950px) {
+  .job-show-card__icons-section {
     display: flex;
     justify-content: space-around;
     align-items: baseline;
-  }
-  .job-show-footer span {
-      border-bottom: 4px dashed black;
-      transition: box-shadow .5s, color .5s;
-      box-shadow: none;
-      a {
-        line-height: 1rem;
-        color: #333;
-      }
-    }
-  .job-show-footer span:hover {
-    box-shadow: inset 0 -30px 0 #333, 0 2px 0 #333;
-    border-bottom: none;
-    a {
-      color: #D1BFF6;
-    }
   }
 }

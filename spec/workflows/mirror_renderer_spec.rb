@@ -62,6 +62,7 @@ RSpec.describe MirrorRenderer do
         filename: 'video_sample.mp4',
         content_type: "video/mp4"
       )
+      Project.all.count
       mirrors = Mirror.all
       video_poster_check = MirrorRenderer.new.original_video_poster?(mirrors.first)
       expect(mirrors.count).to eq(1)

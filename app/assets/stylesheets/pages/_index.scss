@@ -1,19 +1,13 @@
-// Import page-specific CSS files here.
-@import "alternative_masonry";
-@import "chatrooms";
+@import "chatroom";
 @import "confirmation_page";
 @import "dashboard";
-@import "errors";
+@import "error";
 @import "general";
 @import "home";
 @import "inquiry";
 @import "job";
-@import "jobs";
 @import "portfolio";
-@import "portfolio_new";
-@import "project_show";
-@import "project_show_new";
+@import "project";
 @import "search";
-@import "search_new";
-@import "user_show";
-@import "user_show_new";
+@import "user";
+

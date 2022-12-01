@@ -1,10 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Collab do
-  let(:collab) { FactoryBot.build_stubbed(:collab, member: user, project: project) }
-  let(:persisted_collab) { FactoryBot.create(:collab, member: user, project: project) }
-  let(:user) { FactoryBot.build(:user) }
+  let(:user) { FactoryBot.create(:user) }
   let(:project) { FactoryBot.create(:project) }
+  let(:collab) { FactoryBot.create(:collab, member: user, project: project) }
   describe "validations" do
     let(:duplicate_collab) { FactoryBot.build_stubbed(:collab) }
     let(:second_user) { FactoryBot.build_stubbed(:user) }
@@ -21,16 +20,13 @@ RSpec.describe Collab do
       expect(collab).to be_valid
     end
     it "cannot be created if another collab including same project and same member already exists" do
-      persisted_collab
+      collab
       duplicate_collab.project = project
       duplicate_collab.member = user
       expect(duplicate_collab).to_not be_valid
     end
   end
   describe "callbacks" do
-    before(:example) do
-      persisted_collab
-    end
     it "creates a mirror object after collab creation" do
       mirrors = Mirror.all
       expect(mirrors.count).to eq(2)
@@ -40,7 +36,7 @@ RSpec.describe Collab do
       expect(mirrors.last.user).to eq(user)
     end
     it "deletes a mirror object after collab destroy" do
-      persisted_collab.destroy
+      collab.destroy
       mirrors = Mirror.all
       expect(mirrors.count).to eq(1)
       expect(mirrors.last.project).to eq(project)

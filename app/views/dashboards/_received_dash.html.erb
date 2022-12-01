@@ -1,15 +1,15 @@
-<div class="js-slider slider-js inquiry-dash-js w-100 dash-received-list">
-  <h4 class="dash-slider-title-mobile">Applications</h4>
+<div class="dashboard__inquiry-list slider-js inquiry-dash-js">
+  <h4 class="dashboard__mobile-title">Applications</h4>
   <% @inquiries.each do |inquiry| %>
-    <div class="dash-received-record">
-      <h4 class="record-date"><%= inquiry.created_at.strftime("%d/%m") %></h4>
-      <h4 class="dash-received-record-title">
+    <div class="dashboard__inquiry-list-item">
+      <h4 class="dashboard__inquiry-record-date"><%= inquiry.created_at.strftime("%d/%m") %></h4>
+      <h4 class="dashboard__inquiry-record-text">
         Application from user
-        <span><%= link_to inquiry.user.username, user_path(inquiry.user.slug) %></span> to project
-        <span><%= link_to inquiry.job.project.title, project_path(inquiry.job.project.slug) %></span>
+        <%= link_to inquiry.user.username, user_path(inquiry.user.slug), class: "dashboard__inquiry-record-link" %> to project
+        <%= link_to inquiry.job.project.title, project_path(inquiry.job.project.slug), class: "dashboard__inquiry-record-link" %>
       </h4>
-      <%= link_to inquiry_path(inquiry), class:"dash-inquiries-links dash-arrow-link", id: "test-id-on-hold-inquiry" do %>
-        <i class="fas fa-arrow-right"></i>
+      <%= link_to inquiry_path(inquiry), class:"dashboard__inquiry-record-btn dashboard__inquiry-record-btn--show", id: "test-id-on-hold-inquiry" do %>
+        <i class="dashboard__inquiry-record-icon dashboard__inquiry-record-icon--show fas fa-arrow-right"></i>
       <% end %>
     </div>
   <% end %>

@@ -34,6 +34,9 @@
   font-size: 20px;
 }
 @media(min-width: 800px) {
+  .search-bar__input {
+    padding-bottom: 1rem;
+  }
   .search-bar__input::placeholder {
     font-size: 3rem;
     line-height: 2rem;

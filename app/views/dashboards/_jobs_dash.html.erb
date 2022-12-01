@@ -1,39 +1,34 @@
-<div class="dash-cards-slider js-slider slider-js js-jobs-results">
-  <h4 class="dash-slider-title-mobile">Jobs</h4>
+<div class="dashboard__cards slider-js">
+  <h4 class="dashboard__mobile-title">Jobs</h4>
   <% @jobs.each do |job| %>
-    <div class="g-col-4 job-card-dash">
-      <%= link_to job_path(job) do  %>
-        <div class="job-card-title-dash">
-          <h4><%= job.title.upcase%></h4>
+    <div class="dashboard-slider-job-card">
+      <%= link_to job_path(job), class: "dashboard-slider-card__link" do  %>
+        <div class="dashboard-slider-job-card__title-wrapper">
+          <h4 class="dashboard-slider-job-card__title"><%= job.title.upcase %></h4>
         </div>
-        <div class="job-card-body-dash">
-        <div>
-          <% if job.payment == "hourly_rate" %>
-            <h5 class="job-card-details-dash"><%= job.money %>€/hour</h5>
-          <% else %>
-            <h5 class="job-card-details-dash"><%= job.money %>€</h5>
-          <% end %>
-        </div>
-        <div>
-          <p class="job-card-details-dash"><%= job.created_at.strftime("posted on %d/%m/%Y") %></p>
-        </div>
-        <p class="job-card-description"><%= job.description %></p>
-        <ul class="skills-list-dash">
-          <% job.display_skills.each do |skill| %>
-            <li class="skill-box-dash"><p><%= skill.downcase %></p></li>
-          <% end %>
-        </ul>
+        <div class="dashboard-slider-job-card__body">
+          <div>
+            <% if job.payment == "hourly_rate" %>
+              <h5 class="dashboard-slider-job-card__money"><%= job.money %>€/hour</h5>
+            <% else %>
+              <h5 class="dashboard-slider-job-card__money"><%= job.money %>€</h5>
+            <% end %>
+          </div>
+          <div>
+            <p class="dashboard-slider-job-card__money"><%= job.created_at.strftime("posted on %d/%m/%Y") %></p>
+          </div>
+          <p class="dashboard-slider-job-card__description"><%= job.description %></p>
         </div>
       <% end %>
-      <div class="dash-card-btns">
-        <div class="dash-card-edit-btn">
-          <%= link_to edit_job_path(job) do %>
-            <h5>Edit</h5>
+      <div class="dashboard-slider-card__btns">
+        <div class="dashboard-slider-card__btn--edit">
+          <%= link_to edit_job_path(job), class: "dashboard-slider-card__btn-link" do %>
+            <h5 class="dashboard-slider-card__btn-text">Edit</h5>
           <% end %>
         </div>
-        <div class="dash-card-delete-btn">
-          <%= link_to job_path(job), method: :delete, data: { confirm: "Are you sure?" } do %>
-            <h5>Delete</h5>
+        <div class="dashboard-slider-card__btn--delete">
+          <%= link_to job_path(job), method: :delete, data: { confirm: "Are you sure?" }, class: "dashboard-slider-card__btn-link" do %>
+            <h5 class="dashboard-slider-card__btn-text">Delete</h5>
           <% end %>
         </div>
       </div>

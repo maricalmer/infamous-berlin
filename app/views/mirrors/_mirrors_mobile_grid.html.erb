@@ -13,9 +13,9 @@
         <% elsif mirror.displays_original_video_poster? %>
           <%= cl_video_tag mirror.attachment_key, class: "project-card--mirrors-grid__poster" %>
         <% elsif mirror.displays_cropped_audio_poster? %>
-          <%= image_tag asset_path('logo-audio.png'), class: "project-card--mirrors-grid__audio-poster", height: mirror.crop_h, width: mirror.crop_w, x: mirror.crop_x, y: mirror.crop_y, crop: "crop" %>
+          <%= image_tag asset_path('logo-audio.png'), class: "project-card--mirrors-grid__poster", height: mirror.crop_h, width: mirror.crop_w, x: mirror.crop_x, y: mirror.crop_y, crop: "crop" %>
         <% else %>
-          <%= image_tag asset_path('logo-audio.png'), class: "project-card--mirrors-grid__audio-poster" %>
+          <%= image_tag asset_path('logo-audio.png'), class: "project-card--mirrors-grid__poster" %>
         <% end %>
       </picture>
     </div>

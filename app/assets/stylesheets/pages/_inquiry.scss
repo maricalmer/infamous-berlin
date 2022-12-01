@@ -1,59 +1,22 @@
-.inquiry-show {
-  margin: 0 auto;
-  margin-top: 5rem;
+.inquiry-show-card {
+  background-color: #d6d6d6;
+  margin: 1vh auto;
+  margin-top: 12vh;
+  border: solid 4px black;
+  box-shadow: -8px -8px 0 0 black;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 0;
+  width: 65%;
+  min-width: 250px;
 }
-.back-dash-link {
-  cursor: pointer;
-  position: absolute;
-  display: flex;
-  align-items: center;
-  margin-top: 1rem;
-  color: #333;
-  transition: box-shadow .3s, color .3s;
-  .back-dash-link-arrow {
-    transform: rotate(180deg);
-    margin-right: 4px;
-    padding-top: 4px;
-  }
-}
-.back-dash-link:hover {
-  color: black;
-}
-.pic-inquiry {
+.inquiry-show-card__pic {
   padding: 3vh 0;
 }
-.diamond-wrapper-inquiry {
-  transform: rotate(45deg);
-  position: relative;
-  width: 162px;
-  height: 162px;
-  margin: 0 auto;
-}
-.diamond-frame-small-inquiry {
-  filter: grayscale(1);
-  position: relative;
-  display: block;
-  margin: 0 auto;
-  margin-bottom: 0px;
-  width: 150px;
-  height: 150px;
-  margin-bottom: 32px;
-  overflow: hidden;
-  border: 3px solid black;
-  box-shadow: -6px 6px 0 0 black;
-  background-color: #333;
-  img {
-    width: 100%;
-    height: 100%;
-    -o-object-fit: cover;
-    object-fit: cover;
-    transform: rotate(-45deg) scale(1.42);
-  }
-}
-.inquiry-show-title {
+.inquiry-show-card__username {
   text-align: center;
 }
-.inquiry-show-title-link {
+.inquiry-show-card__username-link {
   text-decoration: none;
   color: black;
   display: inline-block;
@@ -62,160 +25,120 @@
   margin-bottom: 2rem;
   transition: box-shadow .5s, color .5s;
 }
-.inquiry-show-title-link:hover {
+.inquiry-show-card__username-link:hover {
   color: #D1BFF6;
   box-shadow: inset 0 -36px 0 #333, 0 2px 0 #333;
 }
-.inquiry-details-body {
+.inquiry-show-card__body {
   border-top: 8px dashed black;
   border-bottom: 8px dashed black;
   margin-bottom: 4rem;
-  .underlined-gray {
-    width: 100%;
-  }
 }
-.inquiry-show-motivation {
+.inquiry-show-card__motivation, .inquiry-show-card__experience {
   padding-top: 2rem;
   padding-bottom: 2rem;
   margin-bottom: 0;
 }
-.inquiry-show-motivation-title, .inquiry-show-motivation-experience {
+.inquiry-show-card__motivation-underlined-title, .inquiry-show-card__experience-underlined-title {
   display: inline-block;
-  .underlined-title {
-    width: 100%;
-    background-color: #858585;
-    height: 12px;
-    position: relative;
-    top: -9px;
-    right: -8px;
-    z-index: -1;
-  }
+  width: fit-content;
 }
-.new-application-block {
-  border-top: 8px dashed black;
+.inquiry-show-card__motivation-title, .inquiry-show-card__experience-title {
+  position: relative;
+  z-index: 1;
 }
-.inquiry-new-job-title, .inquiry-new-application-title {
-  margin-top: 3rem;
-  font-size: 2rem;
-  display: inline-block;
-  .underlined-title {
-    width: 95%;
-    background-color: #858585;
-    position: relative;
-    height: 18px;
-    top: -19px;
-    right: 3px;
-    z-index: -1;
-  }
+.inquiry-show-card__underline {
+  width: 100%;
+  background-color: #858585;
+  height: 12px;
+  position: relative;
+  top: -11px;
+  right: 6px;
+  z-index: 0;
 }
-.job-show-link {
-  margin-bottom: 3rem;
+.inquiry-show-card__text {
+  word-wrap: break-word;
 }
-.inquiry-show-experience {
-  padding-bottom: 2rem;
-  margin-bottom: 0;
-}
-.inquiry-skills-label {
-  margin-bottom: 0;
-  margin-right: 3rem;
-}
-.inquiry-show-bio {
-  padding-top: 3rem;
-}
-.inquiry-show-details {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-}
-.inquiry-skills-list {
-  margin-bottom: 0;
-  li {
-    margin-bottom: 0;
-    .skill-box {
-      margin-bottom: 0;
-    }
-  }
-}
-.change-status-inquiry {
-  margin-top: 12vh;
-}
-.inquiry-show-footer {
-  margin-top: 4rem;
-  color: #333
-}
-.inquiry-show-footer span {
-  border-bottom: none;
-  box-shadow: inset 0 -30px 0 #D1BFF6, 0 2px 0 #D1BFF6;
-  transition: box-shadow .5s, color .5s;
-  a {
-    text-decoration: none;
-    color: #333;
-    line-height: 2.5rem;
-  }
-}
-.inquiry-show-footer span:hover {
-  box-shadow: inset 0 -30px 0 #333, 0 2px 0 #333;
-  border-bottom: none;
-  a {
-    color: #D1BFF6;
-  }
-}
-.btns-inquiry {
-  margin: 4rem auto;
-  width: 100px;
-}
-.inquiry-hold-pill {
+.inquiry-show-card__status--hold {
   background-color: #333;
   padding: 2px;
   color: #d6d6d6;
 }
-.inquiry-accepted-pill {
+.inquiry-show-card__status--accepted {
   background-color: #7ECA93;
   padding: 2px;
 }
-.inquiry-rejected-pill {
+.inquiry-show-card__status--rejected {
   background-color: #a34646;
   padding: 2px;
 }
-.inquiry-skills-list {
+.inquiry-show-card__change-status {
+  margin-top: 12vh;
+}
+.inquiry-show-card__skills {
+  flex-grow: 1;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  padding-bottom: 2rem;
-  padding-left: 0;
-  li {
-    list-style-type: none;
-    margin: 8px;
-  }
+  padding: 2rem 0;
+  align-items: center;
+}
+.inquiry-show-card__skill {
+  list-style-type: none;
+  margin: 8px;
+}
+.inquiry-show-card__skill-box {
+  box-shadow: -6px -6px black;
+  border: 3px solid black;
+  width: auto;
+  padding: 2px;
+  background-color: #d6d6d6;
+}
+.inquiry-show-card__skill-label {
+  margin-right: 3rem;
+}
+.inquiry-show-card__footer {
+  color: #333;
+  margin-top: 3rem;
+}
+.inquiry-show-card__footer-text {
+  text-align: center;
+  margin-bottom: 3rem;
+  color: black;
+}
+.inquiry-show-card__footer-highlight {
+  border-bottom: none;
+  box-shadow: inset 0 -30px 0 #D1BFF6, 0 2px 0 #D1BFF6;
+  transition: box-shadow .5s, color .5s;
+}
+.inquiry-show-card__footer-highlight:hover {
+  box-shadow: inset 0 -30px 0 #333, 0 2px 0 #333;
+  border-bottom: none;
+}
+.inquiry-show-card__footer-link {
+  text-decoration: none;
+  color: #333;
+  line-height: 2.5rem;
+}
+.inquiry-show-card__footer-link:hover {
+  color: #D1BFF6;
 }
 @media(min-width: 450px) {
-  .btns-inquiry {
-    width: fit-content;
-    display: flex;
-    justify-content: space-around;
+  .inquiry-show-card__footer-highlight {
+    border-bottom: 4px dashed black;
+    transition: box-shadow .5s, color .5s;
+    box-shadow: none;
   }
-  .change-status-inquiry {
+  .inquiry-show-card__footer-highlight:hover {
+    color: #D1BFF6;
+  }
+  .inquiry-show-card__change-status {
     display: flex;
     align-items: baseline;
     justify-content: start;
     margin-top: 6vh;
-    .change-status-inquiry-label, .btn {
-      font-size: 2rem;
-    }
   }
-  .inquiry-show-footer span {
-    border-bottom: 4px dashed black;
-    transition: box-shadow .5s, color .5s;
-    box-shadow: none;
-    a {
-      line-height: 1rem;
-      color: #333;
-    }
-  }
-  .inquiry-show-footer span:hover {
-    box-shadow: inset 0 -30px 0 #333, 0 2px 0 #333;
-    border-bottom: none;
-    a {
-      color: #D1BFF6;
-    }
+  .inquiry-show-card__change-status-label, .inquiry-show-card__change-status-btn {
+    font-size: 2rem;
   }
 }

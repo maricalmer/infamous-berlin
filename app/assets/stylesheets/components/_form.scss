@@ -1,71 +1,171 @@
-// navbar
-.form-control:focus {
-  border: 1px solid #4600DA;
-  outline: none !important;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+.form-page {
+  display: block;
 }
-
-.form-control.is-invalid {
-  border-color: #C1292E !important;
-}
-.error-red {
-  color: #C1292E;
-}
-.project-new-photo-btn {
-  color: black;
-  margin: 0;
-  padding: 8px;
-  cursor: pointer;
-  display: flex;
+.form-page__title {
+  font-size: 3rem;
+  position: absolute;
+  top: 100px;
+  right: 0;
+  overflow-x: visible;
+  z-index: 4;
   width: fit-content;
 }
-.form-plus-symbol {
-  font-size: 5rem;
-  color: black;
-  padding-top: 14px;
-  margin-right: 8px;
-  line-height: 0;
-}
-.project-photo-preview-card {
+.form-page__underline {
+  height: 25px;
+  background-color: #D1BFF6;
   position: relative;
-  margin-right: 5vw;
+  top: -20px;
+  right: 14px;
+  z-index: -1;
 }
-.project-photo-preview {
-  filter: drop-shadow(-6px -6px black);
-  border: solid;
-  height: 15vh;
-  max-width: 100%;
-  max-height: 100%;
-  // min-width: 50px;
-  min-height: 50px;
-  background-color: #333;
+.form-page__form {
+  background-color: #d6d6d6;
+  margin: 230px 5vw 10vh 5vw;
+  border: solid 4px black;
+  box-shadow: -8px -8px 0 0 black;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  position: relative;
+  z-index: 0;
 }
-.wrapper-preview-delete {
-  position: absolute;
-  top: 3px;
-  right: 3px;
-  cursor: pointer;
-  background-color: black;
-  width: 30px;
-  height: 34px;
+.form-page__label {
+  font-size: calc(1.275rem + 0.3vw);
+  margin-bottom: 0.5rem;
 }
-.project-photo-preview-delete {
-  color: #a34646;
-  font-size: 2rem;
-  position: absolute;
-  top: -10px;
-  left: 4px;
+.form-page__input, .form-page__input:focus {
+  background-color: #d6d6d6 !important;
+  border: 2px solid black;
+  border-radius: 0px;
 }
-.upload-picture-preview-photos {
+.form-page__input--big {
+  height: 35vh;
+}
+.form-page__input--sign-up:focus {
+  border: 2px solid black;
+  border-color: #3D00BE;
+}
+.form-page__content {
+  width: 100%;
+  padding-top: 3rem;
+}
+.form-page__uncomplete-profile-note {
+  font-size: 1rem;
+  color: #C1292E;
+  text-align: right;
+  margin-bottom: 1rem;
+}
+.form-page__divider-and-img {
+  position: relative;
+  width: 35%;
+  display: none;
+  height: 100vh;
+  position: sticky;
+  top: 0px;
+}
+.form-page__username-and-email {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: start;
-  align-content: space-between;
-  margin-top: 5vh;
-  margin-bottom: 3vh;
-  gap: 3vh 0;
+  justify-content: space-between;
+  margin-bottom: 2vh;
 }
-.loaded-picture-preview-photos {
+.form-page__username, .form-page__email {
+  width: 45%;
+}
+.form-page__user-title, .form-page__project-title, .form-page__job-title {
+  margin-bottom: 2vh;
+}
+.form-page__input--project-title, .form-page__input--job-title {
+  text-align: center;
+  line-height: 3rem;
+  font-size: 2rem;
+}
+.form-page__bio-wrapper {
+  position: relative;
+}
+.form-page__bio {
+  border-bottom: 4px dashed black;
+  padding-bottom: 8vh;
+  margin-bottom: 8vh;
+}
+.form-page__bio-uncomplete-marker {
+  position: absolute;
+  color: #C1292E;
+  font-size: 1.2rem;
+  top: 0;
+  left: 28px;
+}
+.form-page__project-description {
+  padding-bottom: 8vh;
+  margin-bottom: 8vh;
+  border-bottom: 4px dashed black;
+}
+.form-page__job-description {
+  margin-bottom: 2vh;
+}
+.form-page__job-location {
+  padding-bottom: 8vh;
+  margin-bottom: 8vh;
+  border-bottom: 4px dashed black;
+}
+.form-page__location-date-status-wrapper {
+  border-bottom: 4px dashed black;
+  padding-bottom: 8vh;
+  margin-bottom: 8vh;
+}
+.form-page__project-location, .form-page__date, .form-page__status {
+  margin-bottom: 2vh;
+}
+.form-page__category-hidden-field, .form-page__skills-hidden-field {
+  display: none;
+}
+.form-page__skills-custom, .form-page__categories-custom {
+  border-bottom: 4px dashed black;
+  padding-bottom: 8vh;
+  margin-bottom: 8vh;
+}
+.form-page__add-skills, .form-page__add-categories {
+  margin-right: 5vw;
+  margin-bottom: 5vh;
+}
+.form-page__add-skills-label, .form-page__add-categories-label {
+  display: block;
+}
+.form-page__add-skills-input-and-btn, .form-page__add-categories-input-and-btn {
+  display: flex;
+}
+.form-page__add-skills-input, .form-page__add-categories-input {
+  padding: 0.375rem 0.75rem;
+}
+.form-page__add-skills-input:focus, .form-page__add-categories-input:focus {
+  outline: none !important;
+  box-shadow: none;
+}
+.form-page__skills-list-items, .form-page__categories-list-items {
+  padding-left: 0;
+}
+.form-page__attributes-list-item {
+  display: flex;
+  width: fit-content;
+  margin-right: 1vw;
+  margin-bottom: 2vh;
+  padding: 0;
+}
+.form-page__social-media {
+  display: block;
+  border-bottom: 4px dashed black;
+  padding-bottom: 8vh;
+  margin-bottom: 8vh;
+}
+.form-page__social-media-item::placeholder {
+  font-size: 14px;
+}
+.form-page__upload-picture {
+  display: block;
+}
+.form-page__avatar-placeholder {
+  position: relative;
+  margin-right: 2vw;
+}
+.form-page__preview-photos {
   display: flex;
   flex-wrap: wrap;
   justify-content: start;
@@ -75,117 +175,183 @@
   gap: 3vh 0;
   align-items: center;
 }
-.form-project-upload-photos-hidden {
-  display: none;
+.form-page__preview-photo-wrapper {
+  position: relative;
+  margin-right: 5vw;
 }
-.upload-picture-preview-photos img:last-child {
-  margin-right: 0;
+.form-page__preview-photo {
+  filter: drop-shadow(-6px -6px black);
+  border: solid;
+  height: 15vh;
+  max-width: 100%;
+  max-height: 100%;
+  min-height: 50px;
+  background-color: #333;
 }
-.new-skill-label, .new-category-label {
-  display: block;
+.form-page__preview-photo--audio-poster {
+  width: 100px;
+  background-image: asset-url("logo-audio.png");
+  background-size: cover;
+  background-position: center;
 }
-.input-add-skill, .input-add-category {
-  padding: 0.375rem 0.75rem;
+.form-page__preview-delete-wrapper {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  cursor: pointer;
+  background-color: black;
+  width: 30px;
+  height: 34px;
 }
-.input-add-skill:focus, .input-add-category:focus {
-  outline: none !important;
-  box-shadow: none;
+.form-page__preview-delete-btn {
+  color: #a34646;
+  font-size: 2rem;
+  position: absolute;
+  top: -10px;
+  left: 4px;
 }
-.list-skill {
+.form-page__label-new-project-attachment {
+  color: black;
+  margin: 0;
+  padding: 8px;
+  cursor: pointer;
   display: flex;
   width: fit-content;
-  margin-right: 1vw;
-  margin-bottom: 2vh;
 }
-.new-skill-custom {
-  border-bottom: 4px dashed black;
-  padding-bottom: 8vh;
-  margin-bottom: 8vh;
+.form-page__icon-new-project-attachment {
+  margin-right: 0.5rem;
+  padding-top: 0.25rem;
 }
-.new-category-custom {
-  border-top: 4px dashed black;
-  padding-top: 8vh;
-  margin-top: 8vh;
+.form-page__link-new-project-attachment {
+  text-decoration: none;
+  color: black;
 }
-.new-skill-custom, .new-category-custom {
-  ol {
-    padding: 0;
-    margin-bottom:0;
-    ul {
-      padding: 0;
-    }
-  }
+.form-page__link-new-project-attachment:hover {
+  color: black;
 }
-.new-skill-input-block, .new-category-input-block {
-  margin-right: 5vw;
-  margin-bottom: 5vh;
-}
-.skills-hidden-field, .category-hidden-field {
+.form-page__new-project-attachment--hidden {
   display: none;
 }
-abbr {
-  display: none;
-}
-.update-profile-form-top {
+.form-page__payment-type-dropdown-wrapper, .form-page__job-status-wrapper {
   display: flex;
-  justify-content: space-between;
-  .form-group {
-    width: 45%;
-  }
+  align-items: center;
+  margin-right: 1rem;
+  margin-bottom: 2rem;
 }
-.update-profile-form-bio {
+.form-page__payment-type-dropdown, .form-page__job-status {
+  display: flex;
+  align-items: center;
+}
+.form-page__payment-type-input, .form-page__job-status-input {
+  width: fit-content;
+  margin-right: 0.3rem;
+}
+.form-page__payment-type-label, .form-page__job-money-label, .form-page__job-status-label {
+  width: 100px;
+  margin-right: 1rem;
+}
+.form-page__job-money-wrapper {
+  display: flex;
+  align-items: center;
+}
+.form-page__job-money {
+  display: flex;
+  align-items: center;
+}
+.form-page__job-money-input {
+  width: 70px;
+}
+.form-page__job-money-trailing-label {
+  margin-left: 0.3rem;
+}
+.form-page__job-money-wrapper, .form-page__job-status-wrapper {
+  margin-top: 2rem;
+}
+.form-page__job-details-section {
+  max-width: 100%;
+}
+.form-page__job-details-title, .form-page__new-inquiry-title {
+  margin-top: 3rem;
+  font-size: 2rem;
+  display: inline-block;
+}
+.form-page__job-details-underline, .form-page__new-inquiry-underline {
+  width: 95%;
+  background-color: #858585;
   position: relative;
+  height: 18px;
+  top: -19px;
+  right: 3px;
+  z-index: -1;
 }
-.update-profile-form-bio-uncomplete {
-  position: absolute;
-  color: #C1292E;
-  font-size: 1.2rem;
-  top: 0;
-  left: 28px;
+.form-page__job-details-job-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
-.update-profile-form-social-media {
-  display: block;
+.form-page__job-quote--first {
+  margin-right: 1.5rem;
 }
-.edit-user-form {
-  width: 50%;
-  margin: 5vh auto;
-  border: 4px solid black;
+.form-page__job-quote--last {
+  margin-left: 1.5rem;
+}
+.form-page__job-quote--text {
+  word-wrap: break-word;
+  word-break: break-word;
+  text-align: center;
+}
+.form-page__job-skills {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding-left: 0;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  flex-grow: 1;
+  list-style-type: none;
+}
+.form-page__job-skills-label {
+  margin-right: 3rem;
+}
+.form-page__job-skill-box {
+  box-shadow: -6px -6px black;
+  border: 3px solid black;
+  width: auto;
+  padding: 2px;
   background-color: #d6d6d6;
-  padding: 5vh;
+  margin-right: 1rem;
 }
-// .form-login {
-//   background-color: #858585;
-//   border: 2px solid black;
-//   border-radius: 0px;
-// }
-// .header-form-login {
-//   border-bottom: 2px solid black;
-// }
-// .header-form-login button {
-//   color: black;
-// }
-// .footer-form-login {
-//   margin-top: 1rem;
-//   border-top: 2px solid black;
-// }
-
-.text-muted {
-  color: #333 !important;
+.form-page__job-link-wrapper {
+  margin-bottom: 3rem;
 }
-// .check-form-login[type="checkbox"] {
-//   border: 2px solid black;
-//   border-radius: 0px;
-// }
-// .link-form-login {
-//   color: black;
-//   transition: box-shadow .3s, color .3s, text-decoration .3s;
-// }
-// .link-form-login:hover, .link-form-login:focus {
-//   color: #333;
-//   box-shadow: inset 0 -30px 0 #7ECA93, 0 2px 0 #7ECA93;
-//   text-decoration: none;
-// }
-.devise-form-container {
+.form-page__job-link {
+  text-decoration: none;
+  color: black;
+  transition: box-shadow .3s, color .3s;
+  font-size: calc(1.275rem + 0.3vw);
+}
+.form-page__job-link:hover {
+  color: black;
+  box-shadow: inset 0 -30px 0 #7ECA93, 0 2px 0 #7ECA93;
+  text-decoration: none;
+}
+.form-page__new-inquiry-section {
+  border-top: 8px dashed black;
+}
+.login-form__link {
+  color: black;
+  transition: box-shadow .3s, color .3s, text-decoration .3s;
+  font-size: calc(1.275rem + 0.3vw);
+}
+.login-form__link:hover, .login-form__link:focus {
+  color: #333;
+  box-shadow: inset 0 -30px 0 #7ECA93, 0 2px 0 #7ECA93;
+  text-decoration: none;
+}
+.devise-form__container {
   background: #858585;
   padding-top: 3rem;
   padding-left: 15%;
@@ -193,17 +359,7 @@ abbr {
   height: fit-content;
   min-height: 100vh;
 }
-.user_username, .user_email, .user_password, .user_password_confirmation {
-  label {
-    font-size: calc(1.275rem + 0.3vw);
-    margin-bottom: 0.5rem;
-  }
-}
-// .link-form-login {
-//   font-size: calc(1.275rem + 0.3vw);
-// }
-
-.brand-devise-form {
+.devise-form__brand {
   width: 230px;
   height: 80px;
   border: 3px dashed black;
@@ -216,33 +372,42 @@ abbr {
   z-index: 0;
   transition: 1s;
   box-sizing: border-box;
-  a {
-    text-decoration: none;
-    color: black;
-  }
-  a:hover {
-    color: #333;
-  }
 }
-
-.brand-devise-form::before, .brand-devise-form::after {
+.devise-form__brand::before {
+  height: 80px;
+  width: 210px;
+}
+.devise-form__brand::after {
+  width: 230px;
+  height: 60px;
+}
+.devise-form__brand::before, .devise-form__brand::after {
   position: absolute;
   background: #858585;
   z-index: -1;
   transition: 1s;
   content: '';
 }
-
-.brand-devise-form::before {
-  height: 80px;
-  width: 210px;
+.devise-form__brand:hover::before {
+  width: 0px;
+  background: #858585;
 }
-
-.brand-devise-form::after {
-  width: 230px;
-  height: 60px;
+.devise-form__brand:hover::after {
+  height: 0px;
+  background: #858585;
 }
-
+.devise-form__brand:hover {
+  border: 3px dashed #333;
+  background: #858585;
+  color: #333;
+}
+.devise-form__brand-link {
+  text-decoration: none;
+  color: black;
+}
+.devise-form__brand-link:hover {
+  color: #333;
+}
 .noselect {
   -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -251,574 +416,156 @@ abbr {
         -ms-user-select: none;
             user-select: none;
 }
-
-.brand-devise-form:hover::before {
-  width: 0px;
-  background: #858585;
-}
-
-.brand-devise-form:hover::after {
-  height: 0px;
-  background: #858585;
-}
-
-.brand-devise-form:hover {
-  border: 3px dashed #333;
-  background: #858585;
-  color: #333;
-}
-.devise-form-img-text {
+.devise-form__video-section {
   display: none;
 }
-.underlined-title {
-  height: 25px;
-  background-color: #D1BFF6;
-  position: relative;
-  top: -20px;
-  right: 14px;
-  z-index: -1;
-}
-.inquiry_experience label, .inquiry_motivation label {
-  font-size: calc(1.275rem + 0.3vw);
-  margin-bottom: 0.5rem;
-}
-.project_location, .project_category, .project_date, .update-profile-form-top, .user_website, .user_soundcloud, .user_instagram, .user_youtube, .user_mixcloud, .user_linkedin, .new-job-form-description-field {
-  margin-bottom: 2vh;
-}
-.project_description, .user_skills, .update-profile-form-social-media, .job_location {
-  border-bottom: 4px dashed black;
-  padding-bottom: 8vh;
-  margin-bottom: 8vh;
-}
-.new-project-form-title-field, .new-job-form-title-field {
-  margin-bottom: 2vh;
-  input {
-    line-height: 3rem;
-    text-align: center;
-    font-size: 2rem;
-  }
-}
-.payment-type-dropdown, .status-dropdown {
-  display: flex;
-  align-items: center;
-  margin-right: 1rem;
-}
-.status-dropdown {
-  margin-top: 2rem;
-}
-// .new-project-form-description-field {
-//   margin-bottom: 8vh;
-// }
-.form-project-details {
-  margin-bottom: 8vh;
-  padding-bottom: 8vh;
-  border-bottom: 4px dashed black;
-}
-// .project_title label, .project_description label, .project_location label, .project_date label, .project_category label, .project_member label, .project_status label, .project_photos label, .project_photos input {
-//   font-size: calc(1.275rem + 0.3vw);
-//   margin-bottom: 0.5rem;
-// }
-.bottom-dashed-line {
-  flex-grow: 2;
-  height: 1px;
-  margin-left: 1rem;
-}
-// #project_title {
-//   line-height: 3rem;
-//   font-size: 2rem;
-//   text-align: center;
-// }
-#project_description, #user_bio, #job_description {
-  height: 35vh;
-}
-// #inquiry_motivation, #inquiry_experience, #project_title, #project_description, #project_location, #project_date_1i, #project_date_2i, #project_date_3i, #project_date_4i, #project_date_5i, #project_category, #project_member, #project_status, #user_username, #user_email, #user_bio, #user_skills, #user_website, #user_instagram, #user_soundcloud, #user_youtube, #user_mixcloud, #user_linkedin, #user_twitter {
-//   background-color: #d6d6d6;
-//   border: 2px solid black;
-//   border-radius: 0px;
-// }
-.invalid-feedback {
-  color: #C1292E;
-}
-.simple_form div.input {
-    color: #C1292E;
-}
-.text-danger {
-  color: #C1292E !important;
-}
-.inquiry_attached_file {
-  margin-top: 1rem;
-  label, input {
-    margin-bottom: 0.5rem;
-    font-size: calc(1.275rem + 0.3vw);
-  }
-}
-.inquiry_attached_file label {
-  display: block;
-}
-.right-side-signup {
-  // width: 40%;
+.devise-form__video {
   display: none;
 }
-.new-project-video {
-  height: 100vh;
-  z-index:-1;
-  border-left: 2px solid black;
-}
-.new-project-page, .new-inquiry-page {
-  display: block;
-}
-.new-project-form {
-  width: 100%;
-  padding-top: 3rem;
-}
-.big-card-form {
-  background-color: #d6d6d6;
-  margin: 1vh 5vw;
-  margin-top: 230px;
-  border: solid 4px black;
-  box-shadow: -8px -8px 0 0 black;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  position: relative;
-  z-index: 0;
-  input, textarea, select, input:focus, textarea:focus, select:focus {
-    background-color: #d6d6d6;
-    border: 2px solid black;
-    border-radius: 0px;
-  }
-  label {
-    font-size: calc(1.275rem + 0.3vw);
-    margin-bottom: 0.5rem;
-  }
-}
-.upload-picture-form {
-  display: block;
-}
-.upload-picture-right{
-  position: relative;
-}
-#project_photos, #user_photo, #inquiry_attached_file {
-  border: none;
-  font-size: calc(1.275rem + 0.3vw);
-  margin-bottom: 0.5rem;
-  text-overflow: ellipsis;
-  max-width: 220px;
-}
-.new-project-title {
-  border-bottom: 4px dashed black;
-}
-.new-project-form-title {
-  font-size: 3rem;
-  position: absolute;
-  top: 100px;
-  right: 10vw;
-  width: fit-content;
-  overflow-x: visible;
-  z-index: 4;
-}
-.new-job-form-title {
-  font-size: 3rem;
-  position: absolute;
-  top: 100px;
-  right: 10vw;
-  width: 230px;
-  overflow-x: visible;
-  z-index: 4;
-}
-.edit-job-form-title {
-  font-size: 3rem;
-  position: absolute;
-  top: 100px;
-  right: 0;
-  width: 170px;
-  overflow-x: visible;
-  z-index: 4;
-}
-.new-job-form-money-field {
-  display: flex;
-  align-items: center;
-}
-.new-job-form-money-label-input {
-  display: flex;
-  align-items: center;
-}
-.job-payment-dropdown, .job-status-dropdown {
-  display: flex;
-}
-.job-payment-text {
-  margin-left: 0.3rem;
-}
-.job-dropdown-label, .job-money-label {
-  width: 100px;
-  margin-right: 1rem;
-}
-.job-dropdown-input, .job-status-input {
-  width: fit-content;
-  margin-right: 0.3rem;
-}
-.job-money-input {
-  width: 70px;
-}
-.payment-type-dropdown, .status-dropdown {
-  margin-bottom: 2rem;
-}
-.update-project-form-title {
-  font-size: 3rem;
-  position: absolute;
-  top: 100px;
-  right: 0;
-  width: 229px;
-  overflow-x: visible;
-  z-index: 4;
-}
-.edit-profile-form-title {
-  font-size: 3rem;
-  position: absolute;
-  top: 100px;
-  right: 0;
-  width: 220px;
-  overflow-x: visible;
-  z-index: 4;
-}
-.project_photos {
-  margin-top: 1rem;
-}
-.datepicker {
+.devise-form__checkbox[type="checkbox"] {
   border: 2px solid black;
-  background-color: #d6d6d6 !important;
-}
-.datepicker:focus {
-  border: 2px solid black !important;
-}
-.flatpickr-calendar {
   border-radius: 0px;
 }
-.flatpickr-day.selected {
-  background: #7ECA93;
-  border-color: #7ECA93;
-}
-.flatpickr-day.selected:hover {
-  background: #D1BFF6;
-  border-color: #D1BFF6;
-}
-.flatpickr-monthDropdown-month {
-  background-color: white !important;
-}
-.project_photos, .user_photo {
-  label {
-    display: block;
-  }
-}
-.side-img-new-project, .side-img-new-job {
+.new-member-form {
+  margin-top: 2.5rem;
+  position: absolute;
+  top: -11px;
+  left: 0;
   display: none;
+  width: 100%;
+  background-color: #3D00BE;
+  box-shadow: -6px -6px black;
+  border: solid 4px black;
+  color: white;
 }
-.video-girls, .video-singer {
-  display: none;
+.new-member-form--show {
+  display: block !important;
+  position: static !important;
 }
-.img-divider-wrapper {
-  position: relative;
-  width: 35%;
-  display: none;
-  height: 100vh;
-  position: sticky;
-  top: 0px;
+.new-member-form__content {
+  display: flex;
+  align-items: center;
+  height: 60px;
 }
-
-// .update-profile-form-social-media input[type="text"]::-moz-placeholder {
-//   font-size: 14px;
-// }
-// .update-profile-form-social-media input[type="text"]::-webkit-input-placeholder {
-//   font-size: 14px;
-// }
-// .update-profile-form-social-media input[type="text"]:-ms-input-placeholder {
-//   font-size: 14px;
-// }
-// .update-profile-form-social-media input[type="text"]:-moz-placeholder {
-//   font-size: 14px;
-// }
-
-
+.new-member-form__field {
+  border-right: 2px solid black;
+  width: 100%;
+}
+.new-member-form__label {
+  height: 30px;
+  padding: 4px;
+  outline: 2px solid black;
+  width: 100%;
+}
+.new-member-form__input {
+  padding: 0;
+  border: 0px !important;
+  border-bottom: 2px solid white !important;
+  border-radius: 0px;
+  height: 30px;
+  padding-left: 4px;
+}
+.new-member-form__btn {
+  font-size: 2rem;
+  cursor: pointer;
+  border: none;
+  background-color: #3D00BE;
+  display: inline-block;
+  width: 33%;
+  color: white;
+}
+.new-member-form__btn:hover {
+  background-color: #5A26C9;
+}
+.new-member-form__error {
+  color: #C1292E;
+}
 @media(min-width: 450px) {
-  .job-dropdown-label, .job-money-label {
+  .form-page__title {
+    font-size: 4rem;
+    right: 2vw;
     width: fit-content;
   }
-  .job-payment-dropdown, .job-status-dropdown {
-    margin-bottom: 0;
-  }
-  .new-project-form-title {
-    font-size: 4rem;
-    right: 2vw;
-  }
-  .update-project-form-title {
-    font-size: 4rem;
-    right: 2vw;
-    width: 301px;
-  }
-  .edit-profile-form-title {
-    font-size: 4rem;
-    right: 2vw;
-    width: 290px;
-  }
-  .new-job-form-title {
-    font-size: 4rem;
-    right: 9vw;
-    width: 307px;
-  }
-  .edit-job-form-title {
-    font-size: 4rem;
-    right: 2vw;
-    width: 226px;
-  }
-  .underlined-title {
+  .form-page__underline {
     height: 33px;
     top: -27px;
   }
-  .new-project-form {
+  .form-page__content {
     padding: 3rem;
   }
-  .new-skill-custom, .new-category-custom {
+  .form-page__skills-custom, .form-page__categories-custom {
     display: flex;
     justify-content: start;
   }
-  .list-skills, .list-categories {
+  .form-page__add-skills, .form-page__add-categories {
+    margin-bottom: 0;
+  }
+  .form-page__skills-list-items {
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 0;
   }
-  .new-skill-input-block, .new-category-input-block {
-    margin-bottom: 0;
+  .new-member-form__content {
+    height: 60px;
   }
-  #project_photos, #user_photo {
-    max-width: 255px;
+  .new-member-form__field {
+    height: 60px;
+  }
+  .new-member-form__label {
+    height: 30px;
+  }
+  .new-member-form__input {
+    height: 30px;
+    border-bottom: 2px solid white !important;
+  }
+  .new-member-form__btn {
+    height: 60px;
+    padding: 0;
+  }
+  .form-page__payment-type-label, .form-page__job-money-label, .form-page__job-status-label {
+    width: fit-content;
   }
 }
 @media(min-width: 600px) {
-  .new-project-form {
+  .form-page__content {
     padding: 1rem;
   }
-  .new-job-form-payment-block {
-    display: flex;
-    align-items: center;
-    label {
-      margin-bottom: 0;
-    }
-  }
-  .payment-type-dropdown, .status-dropdown {
+  .form-page__payment-type-dropdown-wrapper {
     margin-bottom: 0;
-    margin-right: 5rem;
+  }
+}
+@media(min-width: 850px) {
+  .form-page__uncomplete-profile-note {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
   }
 }
 @media(min-width: 992px) {
-  .project_date  {
-    margin-bottom: 0;
-  }
-  .upload-picture-form {
-    display: flex;
-    justify-content: space-between;
-    .upload-picture-right{
-      position: relative;
-    }
-  }
-  .update-profile-form-social-media {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    .form-group {
-      width: 30%;
-    }
-  }
-  .form-project-details {
-    // display: flex;
-    // justify-content: space-between;
-    .form-project-subdetails {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      .form-group {
-        flex-grow: 1;
-      }
-    }
-  }
-  .devise-form-container {
-    display: flex;
-    padding: 0;
-    height: auto;
-  }
-  .devise-form {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-    padding-left: 15%;
-    padding-right: 15%;
-    width: 60%;
-  }
-  .right-side-signup {
-    display: block;
-    width: 40%;
-    height: 100vh;
-    position: sticky;
-    top: 0;
-    border-left: 2px solid black;
-  }
-  .video-girls, .video-singer {
-    display: block;
-    filter: grayscale(95%);
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-  }
-  .video-gradient {
-    width: 100%;
-    background-image: linear-gradient(rgba(0, 0, 0, 0) 40%, #333);
-    height: 100%;
-    position: absolute;
-    z-index: 1;
-  }
-  .devise-form-video-text {
-    display: block;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    color: #d6d6d6;
-    z-index: 10;
-    font-size: 2em;
-    padding: 48px;
-    span {
-      border-bottom: 4px dashed #d6d6d6;
-    }
-  }
-  .new-project-page, .new-inquiry-page {
+  .form-page {
     display: flex;
   }
-  .side-img-new-project {
-    display: block;
-    height: 100vh;
-    border-left: 2px solid black;
-    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), asset-url("white_page.png");
-    background-position: 0% 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    filter: grayscale(100%);
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0px;
-  }
-  .side-img-edit-project {
-    display: block;
-    height: 100vh;
-    border-left: 2px solid black;
-    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), asset-url("paper_bin.png");
-    background-position: 0% 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    filter: grayscale(100%);
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0px;
-  }
-  .side-img-new-job {
-    display: block;
-    height: 100vh;
-    border-left: 2px solid black;
-    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), asset-url("newspapers.png");
-    background-position: 0% 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    filter: grayscale(100%);
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0px;
-  }
-  .side-img-edit-job {
-    display: block;
-    height: 100vh;
-    border-left: 2px solid black;
-    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), asset-url("billboard.png");
-    background-position: 0% 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    filter: grayscale(100%);
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0px;
-  }
-  .side-img-update-profile {
-    height: 100vh;
-    border-left: 2px solid black;
-    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), asset-url("clay.png");
-    background-position: 0% 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    filter: grayscale(100%);
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0px;
-  }
-  .side-img-new-inquiry {
-    height: 100vh;
-    border-left: 2px solid black;
-    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), asset-url("sewing_thread.png");
-    background-position: 0% 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    filter: grayscale(100%);
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0px;
-  }
-  .side-img-edit-inquiry {
-    height: 100vh;
-    border-left: 2px solid black;
-    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), asset-url("workshop.png");
-    background-position: 0% 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    filter: grayscale(100%);
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0px;
-  }
-  .wrapper-title-form {
+  .form-page__form-and-title {
     width: 65%;
   }
-  .new-project-form-title {
+  .form-page__title {
     font-size: 6rem;
     right: 22vw;
     top: 60px;
+    width: fit-content;
   }
-  .new-job-form-title {
-    font-size: 6rem;
-    right: 22vw;
-    width: 460px;
-    top: 60px;
-  }
-  .edit-job-form-title {
-    font-size: 6rem;
-    right: 22vw;
-    width: 339px;
-    top: 60px;
-  }
-  .update-project-form-title {
-    font-size: 6rem;
-    right: 22vw;
-    width: 451px;
-    top: 60px;
-  }
-  .edit-profile-form-title {
-    font-size: 6rem;
-    right: 22vw;
-    width: 434px;
-    top: 60px;
-  }
-  .underlined-title {
+  .form-page__underline {
     height: 49px;
     top: -39px;
     right: 20px;
   }
-  .diagonal-separator1 {
+  .form-page__divider-and-img {
+    display: block;
+  }
+  .form-page__divider--first {
     position: sticky;
     z-index: 2;
   }
-  .diagonal-separator1::before {
+  .form-page__divider--first::before {
     content: '';
     position: absolute;
     top: 0px;
@@ -828,14 +575,11 @@ abbr {
     width: 0;
     z-index: 2;
   }
-  .img-divider-wrapper {
-    display: block;
-  }
-  .diagonal-separator2 {
+  .form-page__divider--second {
     position: sticky;
     z-index:1;
   }
-  .diagonal-separator2::before {
+  .form-page__divider--second::before {
     content: '';
     position: absolute;
     top: 0;
@@ -845,5 +589,133 @@ abbr {
     width: 0;
     z-index: 1;
     outline: 2px solid black;
+  }
+  .form-page__img {
+    display: block;
+    height: 100vh;
+    border-left: 2px solid black;
+    filter: grayscale(100%);
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0px;
+  }
+  .form-page__img--update-user {
+    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), asset-url("clay.png");
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .form-page__img--new-project {
+    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), asset-url("white_page.png");
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .form-page__img--edit-project {
+    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), asset-url("paper_bin.png");
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .form-page__img--new-job {
+    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), asset-url("newspapers.png");
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .form-page__img--edit-job {
+    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), asset-url("billboard.png");
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .form-page__img--new-inquiry {
+    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), asset-url("sewing_thread.png");
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .form-page__img--edit-inquiry {
+    background: linear-gradient(to top, rgba(0,0,0,0.1),#333), asset-url("workshop.png");
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .form-page__social-media {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .form-page__social-media-item {
+    width: 30%;
+  }
+  .form-page__upload-picture {
+    display: flex;
+    justify-content: space-between;
+  }
+  .form-page__location-date-status-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .form-page__project-location, .form-page__date, .form-page__status {
+    flex-grow: 1;
+  }
+  .devise-form {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    padding-left: 15%;
+    padding-right: 15%;
+    width: 60%;
+  }
+  .devise-form__container {
+    display: flex;
+    padding: 0;
+    height: auto;
+  }
+  .devise-form__video-section {
+    display: block;
+    width: 40%;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    border-left: 2px solid black;
+  }
+  .devise-form__video-text {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: #d6d6d6;
+    z-index: 10;
+    font-size: 2em;
+    padding: 48px;
+  }
+  .devise-form__video-text--highlight {
+    border-bottom: 4px dashed #d6d6d6;
+  }
+  .devise-form__video-gradient {
+    width: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0) 40%, #333);
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+  }
+  .devise-form__video {
+    display: block;
+    filter: grayscale(95%);
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+}
+@media(min-width: 1200px) {
+  .form-page__job-payment-and-status {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .form-page__payment-type-dropdown-wrapper, .form-page__job-money-wrapper, .form-page__job-status-wrapper {
+    margin: 0;
   }
 }

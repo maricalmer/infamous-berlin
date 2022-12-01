@@ -34,7 +34,7 @@
       <% if @project.user == current_user %>
         <div class="carousel-and-project-details__new-member-btn-form">
           <button class="carousel-and-project-details__btn-covering btn btn-covering-js">Add member</button>
-          <%= simple_form_for [ @project, @collab ] do |f| %>
+          <%= simple_form_for [ @project, @collab ], remote: true do |f| %>
             <div class="new-member-form new-member-form-js project-show-js search-data-js" data-set="<%= @autocomplete_set.to_json %>">
               <div class="new-member-form__content">
                 <div class="new-member-form__field">
@@ -145,7 +145,7 @@
             </div>
             <%= link_to member.username, user_path(member.slug), class:"member-modal__username" %>
             <% if @project.user == current_user %>
-              <%= link_to collab_path(member.find_collab_within(@project.id)), class:"member-modal__delete", method: :delete do %>
+              <%= link_to collab_path(member.find_collab_within(@project.id)), class:"member-modal__delete", method: :delete, remote: true do %>
                 <i class="far fa-trash-alt"></i>
               <% end %>
             <% end %>

@@ -5,7 +5,7 @@
   </div>
   <%= f.input :title, label: 'Title:', placeholder: "tell the world what you do...", wrapper_html: { class: "form-page__user-title" }, label_html: { class: 'form-page__label' }, input_html: { class: 'form-page__input' } %>
   <div class="form-page__bio-wrapper">
-    <%= f.input :bio, label: 'Bio:', placeholder: "tell the world about yourself...", wrapper_html: { class: "form-page__bio" }, label_html: { class: 'form-page__label' }, input_html: { class: 'form-page__input' } %>
+    <%= f.input :bio, label: 'Bio:', placeholder: "tell the world about yourself...", wrapper_html: { class: "form-page__bio" }, label_html: { class: 'form-page__label' }, input_html: { class: 'form-page__input form-page__input--big' } %>
     <% if current_user.bio.blank? %>
       <p class="form-page__bio-uncomplete-marker">****</p>
     <% end %>
@@ -45,7 +45,7 @@
     </div>
   </div>
   <%= f.submit "Update!", class: "form-page__submit-btn form-btn-js" %>
-  <button class="form-page__loading-btn btn-hidden form-btn-js" type="button" disabled>
+  <button class="form-page__loading-btn form-page__loading-btn--hidden form-btn-js" type="button" disabled>
     <span class="spinner-border" role="status" aria-hidden="true"></span>
     Loading...
   </button>

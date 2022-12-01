@@ -16,15 +16,15 @@ const xScrollOnArrows = () => {
 const hideArrowsDependingOnXScrollType = (event) => {
   if (event.target.scrollLeft == 0) {
     const arrowLeft = event.target.previousElementSibling.firstElementChild;
-    arrowLeft.classList.add("chevron-hidden");
+    arrowLeft.classList.add("dashboard__chevron--hidden");
   } else if (event.target.offsetWidth + event.target.scrollLeft >= event.target.scrollWidth) {
     const arrowRight = event.target.nextElementSibling.firstElementChild;
-    arrowRight.classList.add("chevron-hidden");
+    arrowRight.classList.add("dashboard__chevron--hidden");
   } else {
     const arrowLeft = event.target.previousElementSibling.firstElementChild;
     const arrowRight = event.target.nextElementSibling.firstElementChild;
-    arrowLeft.classList.remove("chevron-hidden");
-    arrowRight.classList.remove("chevron-hidden");
+    arrowLeft.classList.remove("dashboard__chevron--hidden");
+    arrowRight.classList.remove("dashboard__chevron--hidden");
   };
 };
 
@@ -65,15 +65,15 @@ const hideLeftArrowOnLoad = () => {
   projectCardSliders.forEach((projectCards) => {
     if (projectCards.scrollWidth > projectCards.clientWidth) {
       const arrowRight = projectCards.nextElementSibling.firstElementChild;
-      arrowRight.classList.remove("chevron-hidden");
+      arrowRight.classList.remove("dashboard__chevron--hidden");
     } else if (projectCards.scrollLeft > 0) {
       const arrowLeft = projectCards.previousElementSibling.firstElementChild;
-      arrowLeft.classList.remove("chevron-hidden");
+      arrowLeft.classList.remove("dashboard__chevron--hidden");
     } else {
       const arrowRight = projectCards.nextElementSibling.firstElementChild;
       const arrowLeft = projectCards.previousElementSibling.firstElementChild;
-      arrowRight.classList.add("chevron-hidden");
-      arrowLeft.classList.add("chevron-hidden");
+      arrowRight.classList.add("dashboard__chevron--hidden");
+      arrowLeft.classList.add("dashboard__chevron--hidden");
     };
   });
 };

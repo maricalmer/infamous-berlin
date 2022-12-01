@@ -9,11 +9,11 @@
         <%= f.input :email,
                     required: false,
                     autofocus: true,
-                    input_html: { autocomplete: "off", class: "form-page__input" },
+                    input_html: { autocomplete: "off", class: "form-page__input form-page__input--sign-up" },
                      wrapper_html: { class: 'form-page__label' } %>
         <%= f.input :password,
                     required: false,
-                    input_html: { autocomplete: "off", class: "form-page__input" },
+                    input_html: { autocomplete: "off", class: "form-page__input form-page__input--sign-up" },
                      wrapper_html: { class: 'form-page__label' } %>
         <%= f.input :remember_me, input_html: { class: "devise-form__checkbox" }, as: :boolean if devise_mapping.rememberable? %>
       </div>

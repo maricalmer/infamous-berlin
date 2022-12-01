@@ -2,7 +2,7 @@
   <% if query.blank? %>
     <h4 class="placeholder-numbers-results"></h4>
   <% else %>
-    <h4 class="numbers-results"><%= projects.count %> <%= "project".pluralize(projects.count)%> matching your search for "<%= query %>"</h4>
+    <h4 class="numbers-results"><%= projects.count %> <%= "project".pluralize(projects.count)%> matching your search for "<%= query %>" </h4>
   <% end %>
   <div class="project-results-grid">
     <% @projects.each do |project| %>
@@ -22,7 +22,7 @@
                 <% if project.attachments.first.image? %>
                   <%= cl_image_tag project.attachments.first.key, class: "project-card__img", quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 400, crop: "fill"}] %>
                 <% elsif project.attachments.first.audio? %>
-                  <%= cl_image_tag "logo-audio", class: "project-card__img", transformation: [{fetch_format: "auto"}, {width: 400, crop: "fill"}] %>
+                  <%= image_tag asset_path('logo-audio.png'), class: "project-card__img", transformation: [{fetch_format: "auto"}, {width: 400, crop: "fill"}] %>
                 <% else %>
                   <%= cl_video_tag project.attachments.first.key, class: "project-card__img" %>
                 <% end %>

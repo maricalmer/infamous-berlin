@@ -1,6 +1,6 @@
 <%= simple_form_for @project, remote: true, html: { class: "form-js"} do |f| %>
   <%= f.input :title, label: 'Project title:', wrapper_html: { class: "form-page__project-title" }, label_html: { class: 'form-page__label' }, input_html: { class: 'form-page__input form-page__input--project-title', autocomplete: "off" } %>
-  <%= f.input :description, label: 'Describe your project:', wrapper_html: { class: "form-page__project-description" }, label_html: { class: 'form-page__label' }, input_html: { class: 'form-page__input' } %>
+  <%= f.input :description, label: 'Describe your project:', wrapper_html: { class: "form-page__project-description" }, label_html: { class: 'form-page__label' }, input_html: { class: 'form-page__input form-page__input--big' } %>
   <div class="form-page__location-date-status-wrapper">
     <%= f.input :location, label: 'Location', wrapper_html: { data: { set: @location_autocomplete_set.to_json }, class: "form-page__project-location search-data-js" }, label_html: { class: 'form-page__label' }, input_html: { class: 'form-page__input search-input-js' } %>
     <%= f.input :date, as: :string, label: 'When?', wrapper_html: { class: "form-page__date" }, label_html: { class: 'form-page__label' }, input_html: { class: "form-page__input datepicker datepicker-js" } %>
@@ -47,7 +47,7 @@
   <%= f.input :attachments, as: :file, label: false, :input_html => { :multiple => true, accept: ".png, .jpg, .jpeg, .mp4, .mp3", class: "form-page__new-project-attachment--hidden project-attachments-upload-btn-js" } %>
 
   <%= f.submit "Save!", class: "form-page__submit-btn form-btn-js" %>
-  <button class="form-page__loading-btn btn-hidden form-btn-js" type="button" disabled>
+  <button class="form-page__loading-btn form-page__loading-btn--hidden form-btn-js" type="button" disabled>
     <span class="spinner-border" role="status" aria-hidden="true"></span>
     Loading...
   </button>

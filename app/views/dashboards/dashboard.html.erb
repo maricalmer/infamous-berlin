@@ -1,169 +1,169 @@
 <%= render 'shared/hamburger' %>
-<div class="background-dash">
-  <h1 class="dashboard-title">
+<div class="dashboard__container">
+  <h1 class="dashboard__underlined-title">
     Dashboard
-    <div class="underlined-title"></div>
+    <div class="dashboard__underline"></div>
   </h1>
-  <div class="big-card">
-    <div class="pic-links-dash">
-      <div class="pic-dash">
-        <div class="diamond-wrapper">
-          <h3 class="card-user-search-username"><%= current_user.username %></h3>
-          <div class="diamond-frame-small">
+  <div class="dashboard__content">
+    <div class="dashboard__avatar_and_username">
+      <div class="avatar-dashboard">
+        <div class="avatar-dashboard__wrapper">
+          <h3 class="avatar-dashboard__username"><%= current_user.username %></h3>
+          <div class="avatar-dashboard__frame">
             <% if !current_user.default_profile_pic? %>
-              <%= link_to user_path(current_user.slug), class: "link" do %>
-                <%= cl_image_tag current_user.photo.key, quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 300, crop: "fill"}] %>
+              <%= link_to user_path(current_user.slug), class: "avatar-dashboard__img-link" do %>
+                <%= cl_image_tag current_user.photo.key, quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 300, crop: "fill"}], class: "avatar-dashboard__img" %>
               <% end %>
             <% else %>
-              <%= link_to edit_user_path(current_user.slug, anchor: "picture-anchor"), class: "link" do %>
-                <div class="diamond-frame-small-img-reminder-text">Upload a picture!</div>
-                <div class="diamond-frame-small-img-reminder"></div>
-                <%= cl_image_tag current_user.photo.key, quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 300, crop: "fill"}] %>
+              <%= link_to edit_user_path(current_user.slug, anchor: "picture-anchor"), class: "avatar-dashboard__img-link" do %>
+                <div class="avatar-dashboard__img-reminder-text">Upload a picture!</div>
+                <div class="avatar-dashboard__img-reminder"></div>
+                <%= cl_image_tag current_user.photo.key, quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 300, crop: "fill"}], class: "avatar-dashboard__img" %>
               <% end %>
             <% end %>
           </div>
-          <h5 class="card-user-search-body-title"><%= current_user.title %></h5>
+          <h5 class="avatar-dashboard__user-title"><%= current_user.title %></h5>
         </div>
       <div>
     </div>
   </div>
-  <div class="line-separator"></div>
-  <div class="profile-links-dash">
-    <%= link_to user_path(current_user.slug), class: "d-inline-block" do %>
-      <h3 class="profile-link-dash">
+  <div class="dashboard__line-separator"></div>
+  <div class="dashboard__upper-links">
+    <%= link_to user_path(current_user.slug), class: "dashboard__upper-link" do %>
+      <h3 class="dashboard__upper-link-text">
         Visit your profile
-        <div class="underlined-link-dash underlined-green"></div>
+        <div class="dashboard__upper-link-underline dashboard__upper-link-underline--green"></div>
       </h3>
     <% end %>
     <br>
-    <%= link_to edit_user_path(current_user.slug), class: "d-inline-block" do %>
-      <h3 class="profile-link-dash edit-link-dash">
+    <%= link_to edit_user_path(current_user.slug), class: "dashboard__upper-link" do %>
+      <h3 class="dashboard__upper-link-text dashboard__upper-link-text--edit">
         Edit your profile
-        <div class="underlined-link-dash underlined-gray"></div>
+        <div class="dashboard__upper-link-underline dashboard__upper-link-underline--gray"></div>
         <% if current_user.bio.blank? %>
-          <div class="uncomplete-profile-badge"></div>
+          <div class="dashboard__upper-link-uncomplete-badge"></div>
         <% end %>
       </h3>
     <% end %>
     <br>
     <% if policy(Project).create? %>
-      <%= link_to new_project_path, class: "d-inline-block" do %>
-        <h3 class="profile-link-dash">
+      <%= link_to new_project_path, class: "dashboard__upper-link" do %>
+        <h3 class="dashboard__upper-link-text">
           Add a new project
-          <div class="underlined-link-dash underlined-green"></div>
+          <div class="dashboard__upper-link-underline dashboard__upper-link-underline--green"></div>
         </h3>
       <% end %>
     <% end %>
   </div>
 </div>
-<div class="line-separator"></div>
-<div class="dash-top-menu">
+<div class="dashboard__line-separator"></div>
+<div class="dashboard__menus-wrapper">
   <input type="checkbox" id="checkbox_toggle">
-  <label class="dash-menu-dropdown-mobile-arrow" for="checkbox_toggle"></label>
-  <div class="dash-menu-dropdown-mobile-more mobile-dropdown-arrow-js"></div>
-  <ul class="dash-dropdowns">
+  <label class="dashboard__mobile-menu-arrow" for="checkbox_toggle"></label>
+  <div class="dashboard__mobile-menu-more mobile-dropdown-arrow-js"></div>
+  <ul class="dashboard__menus">
     <% if @project_ids.any? %>
-      <li class="dash-dropdown">
-        <div class="dash-dropdown-menu" >Projects</div>
-        <div class="dash-dropdown-links">
+      <li class="dashboard__menu">
+        <div class="dashboard__menu-title" >Projects</div>
+        <div class="dashboard__menu-links">
           <% if @upcoming_project.present? %>
-            <%= link_to "Upcoming", upcoming_projects_dash_path, class: "dropdown-links-js", remote: true %>
+            <%= link_to "Upcoming", upcoming_projects_dash_path, class: "dashboard__menu-link dropdown-links-js", remote: true %>
           <% end %>
           <% if @past_project.present? %>
-            <%= link_to "Past", past_projects_dash_path, class: "dropdown-links-js", remote: true %>
+            <%= link_to "Past", past_projects_dash_path, class: "dashboard__menu-link dropdown-links-js", remote: true %>
           <% end %>
         </div>
       </li>
     <% end %>
     <% if @job_ids.any? %>
-      <li class="dash-dropdown dash-dropdown-jobs">
-        <div class="dash-dropdown-menu" >Jobs</div>
-        <div class="dash-dropdown-links">
+      <li class="dashboard__menu dashboard__menu--jobs">
+        <div class="dashboard__menu-title" >Jobs</div>
+        <div class="dashboard__menu-links">
           <% if @open_jobs.present? %>
-            <%= link_to "Open", open_jobs_dash_path, class: "dropdown-links-js", remote: true %>
+            <%= link_to "Open", open_jobs_dash_path, class: "dashboard__menu-link dropdown-links-js", remote: true %>
           <% end %>
           <% if @close_jobs.present? %>
-            <%= link_to "Close", close_jobs_dash_path, class: "dropdown-links-js", remote: true %>
+            <%= link_to "Close", close_jobs_dash_path, class: "dashboard__menu-link dropdown-links-js", remote: true %>
           <% end %>
         </div>
       </li>
     <% end %>
     <% if @received_inquiry_ids.any? %>
-      <li class="dash-dropdown">
-        <div class="dash-dropdown-menu" id="test-id-inquiries-menu" >Applications received</div>
-        <div class="dash-dropdown-links">
+      <li class="dashboard__menu">
+        <div class="dashboard__menu-title" id="test-id-inquiries-menu" >Applications received</div>
+        <div class="dashboard__menu-links">
           <% if @hold_received_applications.present? %>
-            <%= link_to "On hold", hold_received_dash_path, class: "dropdown-links-js", id:"test-id-on-hold-inquiries-menu", remote: true %>
+            <%= link_to "On hold", hold_received_dash_path, class: "dashboard__menu-link dropdown-links-js", id:"test-id-on-hold-inquiries-menu", remote: true %>
           <% end %>
           <% if @accepted_received_applications.present? %>
-            <%= link_to "Accepted", accepted_received_dash_path, class: "dropdown-links-js", remote: true %>
+            <%= link_to "Accepted", accepted_received_dash_path, class: "dashboard__menu-link dropdown-links-js", remote: true %>
           <% end %>
           <% if @rejected_received_applications.present? %>
-            <%= link_to "Rejected", rejected_received_dash_path, class: "dropdown-links-js", remote: true %>
+            <%= link_to "Rejected", rejected_received_dash_path, class: "dashboard__menu-link dropdown-links-js", remote: true %>
           <% end %>
         </div>
       </li>
     <% end %>
     <% if @collab_ids.any? %>
-      <li class="dash-dropdown">
-        <div class="dash-dropdown-menu" >Collabs</div>
-        <div class="dash-dropdown-links">
+      <li class="dashboard__menu">
+        <div class="dashboard__menu-title" >Collabs</div>
+        <div class="dashboard__menu-links">
           <% if @upcoming_project_collabs.present? %>
-            <%= link_to "Upcoming", upcoming_collabs_dash_path, class: "dropdown-links-js", remote: true %>
+            <%= link_to "Upcoming", upcoming_collabs_dash_path, class: "dashboard__menu-link dropdown-links-js", remote: true %>
           <% end %>
           <% if @past_project_collabs.present? %>
-            <%= link_to "Past", past_collabs_dash_path, class: "dropdown-links-js", remote: true %>
+            <%= link_to "Past", past_collabs_dash_path, class: "dashboard__menu-link dropdown-links-js", remote: true %>
           <% end %>
         </div>
       </li>
     <% end %>
     <% if @sent_inquiry_ids.any? %>
-      <li class="dash-dropdown">
-        <div class="dash-dropdown-menu" >Applications sent</div>
-        <div class="dash-dropdown-links">
+      <li class="dashboard__menu">
+        <div class="dashboard__menu-title" >Applications sent</div>
+        <div class="dashboard__menu-links">
           <% if @hold_sent_applications.present? %>
-            <%= link_to "On hold", hold_sent_dash_path, class: "dropdown-links-js", remote: true %>
+            <%= link_to "On hold", hold_sent_dash_path, class: "dashboard__menu-link dropdown-links-js", remote: true %>
           <% end %>
           <% if @accepted_sent_applications.present? %>
-            <%= link_to "Accepted", accepted_sent_dash_path, class: "dropdown-links-js", remote: true %>
+            <%= link_to "Accepted", accepted_sent_dash_path, class: "dashboard__menu-link dropdown-links-js", remote: true %>
           <% end %>
           <% if @rejected_sent_applications.present? %>
-            <%= link_to "Rejected", rejected_sent_dash_path, class: "dropdown-links-js", remote: true %>
+            <%= link_to "Rejected", rejected_sent_dash_path, class: "dashboard__menu-link dropdown-links-js", remote: true %>
           <% end %>
         </div>
       </li>
     <% end %>
   </ul>
 </div>
-
 <% if @project_ids.any? %>
-  <div class="portfolio-cards portfolio-cards-js">
-    <div class="dash-chevron"><h5 class="past-chevron-left past-chevron-left-js chevron-hidden">&#x3c;</h5></div>
+  <div class="dashboard__slider portfolio-cards-js">
+    <div class="dashboard__chevron-wrapper"><h5 class="dashboard__chevron dashboard__chevron--left dashboard__chevron--hidden past-chevron-left-js">&#x3c;</h5></div>
     <%= render "projects_dash" %>
-    <div class="dash-chevron"><h5 class="past-chevron-right past-chevron-right-js chevron-hidden">&#x3e;</h5></div>
+    <div class="dashboard__chevron-wrapper"><h5 class="dashboard__chevron dashboard__chevron--right dashboard__chevron--hidden past-chevron-right-js">&#x3e;</h5></div>
   </div>
 <% elsif @collab_ids.any? %>
-  <div class="portfolio-cards portfolio-cards-js">
-    <div class="dash-chevron"><h5 class="past-chevron-left past-chevron-left-js chevron-hidden">&#x3c;</h5></div>
+  <div class="dashboard__slider portfolio-cards-js">
+    <div class="dashboard__chevron-wrapper dash-chevron"><h5 class="dashboard__chevron dashboard__chevron--left dashboard__chevron--hidden past-chevron-left-js">&#x3c;</h5></div>
     <%= render "collabs_dash" %>
-    <div class="dash-chevron"><h5 class="past-chevron-right past-chevron-right-js chevron-hidden">&#x3e;</h5></div>
+    <div class="dashboard__chevron-wrapper dash-chevron"><h5 class="dashboard__chevron dashboard__chevron--right dashboard__chevron--hidden past-chevron-right-js">&#x3e;</h5></div>
   </div>
 <% elsif @sent_inquiry_ids.any? %>
-  <div class="portfolio-cards portfolio-cards-js">
-    <div class="dash-chevron"><h5 class="past-chevron-left past-chevron-left-js chevron-hidden">&#x3c;</h5></div>
+  <div class="dashboard__slider portfolio-cards-js">
+    <div class="dashboard__chevron-wrapper dash-chevron"><h5 class="dashboard__chevron dashboard__chevron--left dashboard__chevron--hidden past-chevron-left-js">&#x3c;</h5></div>
     <%= render "sent_dash" %>
-    <div class="dash-chevron"><h5 class="past-chevron-right past-chevron-right-js chevron-hidden">&#x3e;</h5></div>
+    <div class="dashboard__chevron-wrapper dash-chevron"><h5 class="dashboard__chevron dashboard__chevron--right dashboard__chevron--hidden past-chevron-right-js">&#x3e;</h5></div>
   </div>
 <% else %>
-  <div class="d-flex align-items-baseline ms-5">
-    <h5 class="dash-no-project text-center">No project nor collab in your portfolio yet...</h5><i class="far fa-sad-cry ms-1"></i>
+  <div class="dashboard__no-activity-placeholder">
+    <h5 class="dashboard__no-activity-text">No project nor collab in your portfolio yet...</h5>
+    <i class="dashboard__no-activity-icon far fa-sad-cry"></i>
   </div>
 <% end %>
-<div class="profile-links-dash dash-bottom-btns w-auto">
-  <%= link_to user_path(current_user), method: :delete, data: { confirm: "Are you sure?" }, class: "d-inline-block" do %>
-    <h3 class="profile-link-dash link">
+<div class="dashboard__bottom-link-wrapper">
+  <%= link_to user_path(current_user), method: :delete, data: { confirm: "Are you sure?" }, class: "dashboard__bottom-link" do %>
+    <h3 class="dashboard__bottom-link-text">
       Delete your profile
-      <div class="underlined-link-dash underlined-red"></div>
+      <div class="dashboard__bottom-link-underline"></div>
     </h3>
   <% end %>
 </div>

@@ -6,14 +6,14 @@ html {
   scrollbar-width: none;
 }
 body {
-  overflow-x: hidden; /* needed because hiding the menu on the right side is not perfect for hamburger,  */
+  overflow-x: hidden;
+  background-color: #9b9b9b;
 }
 .layout-container {
   padding: 0;
   width: 100%;
   margin-right: auto;
   margin-left: auto;
-
   position: absolute;
   top: 0;
   width: 100%;
@@ -27,10 +27,3 @@ body {
 .link:hover {
   color: black;
 }
-// .background-search {
-//   position: absolute;
-//   top: 0;
-//   width: 100%;
-//   min-height: 100%;
-//   background-color: #9b9b9b;
-// }
