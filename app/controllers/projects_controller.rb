@@ -57,7 +57,10 @@ class ProjectsController < ApplicationController
     authorize @projects
     respond_to do |format|
       format.html
-      format.text { render partial: 'search-results.html', locals: { projects: @projects, query: params[:query] } }
+      format.text do
+        render partial: 'search-results.html',
+               locals: { projects: @projects, query: params[:query], status: params[:search][:status] }
+      end
     end
   end
 

@@ -15,12 +15,15 @@
   background-color: #d6d6d6;
 }
 .login-modal__input-field:focus {
-  border: 2px solid black;
+  border: 3px solid black;
   border-color: #3D00BE;
 }
 .login-modal__checkbox[type="checkbox"] {
   border: 2px solid black;
   border-radius: 0px;
+}
+.login-modal__error-message {
+  color: #C1292E;
 }
 .login-modal__link {
   color: black;

@@ -2,7 +2,7 @@
   <% if query.blank? %>
     <h4 class="placeholder-numbers-results"></h4>
   <% else %>
-    <h4 class="numbers-results"><%= projects.count %> <%= "project".pluralize(projects.count)%> matching your search for "<%= query %>" </h4>
+    <h4 class="numbers-results"><%= projects.count %> <%= "project".pluralize(projects.count)%> matching your search for "<%= query %>" in <%= status %> projects</h4>
   <% end %>
   <div class="project-results-grid">
     <% @projects.each do |project| %>

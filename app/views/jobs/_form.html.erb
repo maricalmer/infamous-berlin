@@ -2,7 +2,7 @@
   <%= f.input :title, label: 'Job title:', required: true, wrapper_html: { class: "form-page__job-title" }, label_html: { class: 'form-page__label' }, input_html: { autocomplete: "off", class: "form-page__input form-page__input--job-title" } %>
   <%= f.input :description, label: 'Describe the job:', required: true, wrapper_html: { class: "form-page__job-description" }, label_html: { class: 'form-page__label' }, input_html: { class: "form-page__input form-page__input--big" } %>
   <%= f.input :location, label: 'Job location:', wrapper_html: { data: { set: @location_autocomplete_set.to_json }, class: "form-page__job-location search-data-js" }, label_html: { class: 'form-page__label' }, input_html: { class: 'form-page__input search-input-js' } %>
-  <%= f.input :skills_needed, wrapper_html: { class: "skills-hidden-field" }, input_html: { class: "attributes_hidden_field_js" } %>
+  <%= f.input :skills_needed, wrapper_html: { class: "form-page__skills-hidden-field" }, input_html: { class: "attributes_hidden_field_js" } %>
   <div class="form-page__skills-custom">
     <div class="form-page__add-skills">
       <label for="fname" class="form-page__add-skills-label form-page__label">New skill:</label>

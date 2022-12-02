@@ -42,6 +42,7 @@
         <div class="dashboard__upper-link-underline dashboard__upper-link-underline--gray"></div>
         <% if current_user.bio.blank? %>
           <div class="dashboard__upper-link-uncomplete-badge"></div>
+          <div class="dashboard__upper-link-uncomplete-message">Fill up your profile to get better exposure through searches!</div>
         <% end %>
       </h3>
     <% end %>

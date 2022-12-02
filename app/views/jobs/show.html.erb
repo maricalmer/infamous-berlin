@@ -30,12 +30,14 @@
         <li class="job-show-card__skill"><h4 class="job-show-card__skill-box"><%= skill.downcase %></h4></li>
       <% end %>
     </ul>
-    <% if @job.active_offer?(current_user) %>
-      <%= link_to "Apply!", new_job_inquiry_path(@job), class: "job-show-card__submit-btn btn bck-btn-reload-js" %>
-    <% elsif !@job.active_offer?(current_user) %>
-      <button disabled class="job-show-card__disabled-btn btn">Inactive offer</button>
-    <% else %>
+    <% if @job.project.user == current_user %>
       <%= link_to "Edit your job", edit_job_path(@job), class: "job-show-card__edit-btn btn" %>
+    <% elsif @job.close? %>
+      <button disabled class="job-show-card__disabled-btn btn">Inactive offer</button>
+    <% elsif @job.applied?(current_user) %>
+      <button disabled class="job-show-card__disabled-btn btn">Application sent</button>
+    <% else %>
+      <%= link_to "Apply!", new_job_inquiry_path(@job), class: "job-show-card__submit-btn btn bck-btn-reload-js" %>
     <% end %>
     <div class="job-show-card__footer">
       <h5 class="job-show-card__footer-text">

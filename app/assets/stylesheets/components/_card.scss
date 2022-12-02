@@ -478,10 +478,11 @@
 .job-card__money-and-updated-date-section {
   display: flex;
   justify-content: space-between;
-  padding-top: 1rem;
+  padding-top: 2rem;
 }
 .job-card__description {
   margin: 16px;
+  padding-top: 1rem;
   height: 100px;
   display: -webkit-box;
   -webkit-line-clamp: 4;

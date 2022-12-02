@@ -35,7 +35,7 @@
     <%= f.input :linkedin, label: 'Linkedin:', placeholder: "linkedin.com/in/your-linkedin-account", wrapper_html: { class: "form-page__social-media-item" }, label_html: { class: 'form-page__label' }, input_html: { class: 'form-page__input' } %>
   </div>
   <div class="form-page__upload-picture">
-    <%= f.input :photo, label: 'Update your profile picture:', as: :file, wrapper_html: { class: "user-avatar-upload-btn-js" }, :input_html => { accept: ".png, .jpg, .jpeg", class: "user-photo-js" }, label_html: { class: 'form-page__label' } %>
+    <%= f.input :photo, label: 'Update your profile picture:', as: :file, wrapper_html: { class: "user-avatar-upload-btn-js" }, :input_html => { accept: ".png, .jpg, .jpeg", class: "form-page__upload-picture-btn user-photo-js" }, label_html: { class: 'form-page__label' } %>
     <div class="form-page__avatar-placeholder">
       <div class="form-page__avatar-wrapper form-page__avatar-hidden diamond-wrapper-js">
         <div class="form-page__avatar-frame">

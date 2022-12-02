@@ -17,7 +17,7 @@
                         input_html: { autocomplete: "off", class: "login-modal__input-field" } %>
             <%= f.input :remember_me, input_html: { class: "login-modal__checkbox" }, as: :boolean if devise_mapping.rememberable? %>
           </div>
-          <div class="text-danger error-new-session-js"></div>
+          <div class="login-modal__error-message error-new-session-js"></div>
           <%= link_to "Create an account", new_user_registration_path, class: "login-modal__link" %>
           <div class="modal-footer login-modal__footer">
             <%= f.button :submit, "Log in", class: "btn login-modal__btn" %>
