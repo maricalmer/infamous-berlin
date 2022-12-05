@@ -39,11 +39,7 @@ class CollabsController < ApplicationController
   end
 
   def set_collab
-    @collab = Collab.find(params[:id])
+    @collab = Collab.where(project_id: params[:id], user_id: current_user.id).take
     authorize @collab
   end
-
-  # def collab_params
-  #   params.require(:collabs).permit(???)
-  # end
 end

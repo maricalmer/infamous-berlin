@@ -1,7 +1,7 @@
 class JobPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.order('created_at DESC')
+      scope.open.order('created_at DESC')
     end
   end
 

@@ -26,7 +26,7 @@
           <div class="inquiry-show-card__underline"></div>
         </div>
         <br>
-        <div class="inquiry-show-card__text"><%= @inquiry.motivation %></div>
+        <div class="inquiry-show-card__text"><%= simple_format @inquiry.motivation %></div>
       </h4>
       <h4 class="inquiry-show-card__experience">
         <div class="inquiry-show-card__experience-underlined-title">
@@ -34,7 +34,7 @@
           <div class="inquiry-show-card__underline"></div>
         </div>
         <br>
-        <div class="inquiry-show-card__text"><%= @inquiry.experience %></div>
+        <div class="inquiry-show-card__text"><%= simple_format @inquiry.experience %></div>
       </h4>
       <ul class="inquiry-show-card__skills">
         <h4 class="inquiry-show-card__skill-label">User <%= "skill".pluralize(@user_formatted_skills.count) %>:</h4>

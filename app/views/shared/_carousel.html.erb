@@ -64,17 +64,17 @@
       <% if @project.attachments.first.video? %>
         <picture class="carousel__img-video-wrapper img-slide-js">
           <source class="carousel__main-poster" srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 992px)">
-          <%= cl_video_tag @project.attachments.first.key, controls: true, muted: true, class: "carousel__main-video-poster" %>
+          <%= cl_video_tag @project.attachments.first.key, controls: true, muted: true, class: "carousel__main-video-poster", alt: "#{@project.title}" %>
         </picture>
       <% elsif @project.attachments.first.audio? %>
         <div class="carousel__main-audio-control-wrapper img-slide-js">
-          <%= image_tag asset_path('logo-audio.png'), class: "carousel__main-audio-poster play-audio-js" %>
+          <%= image_tag asset_path('logo-audio.png'), class: "carousel__main-audio-poster play-audio-js", alt: "#{@project.title}" %>
           <%= cl_video_tag @project.attachments.first.key, source_types: [:mp3], controls: true, poster: false, class: "carousel__main-audio-control" %>
         </div>
       <% else %>
         <picture class="carousel__img-video-wrapper img-slide-js" data-bs-toggle="modal" data-bs-target="#modalBigScreen">
           <source class="carousel__main-poster" srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 992px)">
-          <%= cl_image_tag @project.attachments.first.key, class: "carousel__main-img-poster", quality: "auto", transformation: [{fetch_format: "auto"}, {width: 1110, crop: "fill"}] %>
+          <%= cl_image_tag @project.attachments.first.key, class: "carousel__main-img-poster", quality: "auto", transformation: [{fetch_format: "auto"}, {width: 1110, crop: "fill"}], alt: "#{@project.title}" %>
         </picture>
       <% end %>
     </div>

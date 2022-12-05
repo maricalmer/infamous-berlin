@@ -8,7 +8,7 @@
   </div>
   <div class="job-show-card__content">
     <h1 class="job-show-card__title"><%= @job.title.upcase %></h1>
-    <h4 class="job-show-card__description"><%= @job.description %></h4>
+    <h4 class="job-show-card__description"><%= simple_format @job.description %></h4>
     <div class="job-show-card__icons-section">
       <div class="job-show-card__payment">
         <% if @job.fixed_rate? %>

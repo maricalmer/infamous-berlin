@@ -355,18 +355,22 @@
   left: 73px;
   top: 6px;
   font-size: 0.95rem;
+  z-index: 1;
 }
 .dashboard-slider-card__img-wrapper {
   height: 155px;
   border-top: 4px solid black;
+  overflow: hidden;
 }
 .dashboard-slider-card__img {
-  border-bottom-right-radius: 1px;
-  border-bottom-left-radius: 1px;
-  // ^^ why??
   height: 100%;
   object-fit: cover;
   width: 100%;
+}
+.dashboard-slider-card:hover .dashboard-slider-card__img {
+  transform: scale(1.1);
+  filter: brightness(110%);
+  transition: transform 1.5s, filter 0.3s ease-in;
 }
 .dashboard-slider-card__text {
   border-top: solid 4px black;
@@ -463,6 +467,7 @@
   border: solid 4px black;
   box-shadow: -8px -8px 0 0 black;
   margin: 3rem auto 0.5rem auto;
+  height: 600px;
 }
 .job-card__title {
   border-bottom: solid 4px black;
@@ -483,9 +488,9 @@
 .job-card__description {
   margin: 16px;
   padding-top: 1rem;
-  height: 100px;
+  height: 185px;
   display: -webkit-box;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 7;
   -webkit-box-orient: vertical;
   overflow: hidden;
   overflow-wrap: break-word;
