@@ -62,6 +62,8 @@
 }
 .dashboard__upper-link-text--edit {
   position: relative;
+}
+.dashboard__upper-link-uncomplete-placeholder {
   margin-bottom: 2rem;
 }
 .dashboard__upper-link-underline {
@@ -413,7 +415,7 @@
   }
 }
 @media(min-width: 675px) {
-  .dashboard__upper-link-text--edit {
+  .dashboard__upper-link-uncomplete-placeholder {
     margin-bottom: 1rem;
   }
   .dashboard__upper-link-uncomplete-message {
@@ -570,7 +572,7 @@
     justify-content: center;
     align-items: center;
   }
-  .dashboard__upper-link-text--edit {
+  .dashboard__upper-link-uncomplete-placeholder {
     margin-bottom: 2rem;
   }
   .dashboard__upper-link-uncomplete-message {
@@ -578,7 +580,7 @@
   }
 }
 @media(min-width: 975px) {
-  .dashboard__upper-link-text--edit {
+  .dashboard__upper-link-uncomplete-placeholder {
     margin-bottom: 1rem;
   }
   .dashboard__upper-link-uncomplete-message {

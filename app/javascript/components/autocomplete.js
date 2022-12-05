@@ -1,6 +1,14 @@
 import 'js-autocomplete/auto-complete.css';
 import autocomplete from 'js-autocomplete';
 
+
+
+import DOMPurify from 'dompurify';
+
+
+
+
+
 const createAutocomplete = (specificSet, searchInput) => {
   new autocomplete({
     selector: searchInput,
@@ -9,9 +17,15 @@ const createAutocomplete = (specificSet, searchInput) => {
         term = term.toLowerCase();
         const choices = specificSet;
         const matches = [];
+        let username = "";
         for (let i = 0; i < choices.length; i++)
             if (~choices[i].toLowerCase().indexOf(term))
+
+              // matches.push(DOMPurify.sanitize(choices[i]));
               matches.push(choices[i]);
+
+
+
               suggest(matches.slice(0, specificSet.length));
     },
   });
@@ -32,7 +46,6 @@ const autocompleteSearch = () => {
     const specificSet = JSON.parse(set.dataset.set);
     if (specificSet && projectFormPage) {
       const searchInput = set.querySelector('.search-input-js');
-      console.log(searchInput)
       createAutocomplete(specificSet, searchInput);
       addSpecificClass("autocomplete-suggestions--new-project");
     } else if (specificSet && projectShowPage) {
