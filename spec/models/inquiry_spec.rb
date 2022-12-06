@@ -7,9 +7,11 @@ RSpec.describe Inquiry do
     let(:empty_string_motivation_inquiry) { FactoryBot.build_stubbed(:inquiry, motivation: "") }
     let(:nil_motivation_inquiry) { FactoryBot.build_stubbed(:inquiry, motivation: nil) }
     let(:short_motivation_inquiry) { FactoryBot.build_stubbed(:inquiry, motivation: "123") }
+    let(:special_character_motivation_inquiry) { FactoryBot.build_stubbed(:inquiry, motivation: "<") }
     let(:empty_string_experience_inquiry) { FactoryBot.build_stubbed(:inquiry, experience: "") }
     let(:nil_experience_inquiry) { FactoryBot.build_stubbed(:inquiry, experience: nil) }
     let(:short_experience_inquiry) { FactoryBot.build_stubbed(:inquiry, experience: "123") }
+    let(:special_character_experience_inquiry) { FactoryBot.build_stubbed(:inquiry, experience: ">") }
     it "must be valid when it has content" do
       expect(inquiry).to be_valid
     end
@@ -22,6 +24,9 @@ RSpec.describe Inquiry do
     it "must include motivation text of 10 characters min" do
       expect(short_motivation_inquiry).to_not be_valid
     end
+    it "must be invalid when it has special characters in motivation" do
+      expect(special_character_motivation_inquiry).to_not be_valid
+    end
     it "must be invalid when it has nil experience" do
       expect(nil_experience_inquiry).to_not be_valid
     end
@@ -30,6 +35,9 @@ RSpec.describe Inquiry do
     end
     it "must include experience text of 10 characters min" do
       expect(short_experience_inquiry).to_not be_valid
+    end
+    it "must be invalid when it has special characters in experience" do
+      expect(special_character_experience_inquiry).to_not be_valid
     end
     it "must restrict users to apply several times to the same job" do
       expect(second_inquiry).to_not be_valid

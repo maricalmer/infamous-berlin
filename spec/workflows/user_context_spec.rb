@@ -66,34 +66,23 @@ RSpec.describe UserContext do
     end
   end
 
-  describe "completed_profiles" do
+  describe "list_user_index" do
     let(:user) { FactoryBot.create(:user) }
     let(:user_with_bio) { FactoryBot.create(:user, bio: "bio") }
-    it "returns no result if user has no written bio or did not upload profile picture" do
+    it "returns 1 result if user has no written bio" do
       user_context = UserContext.new(user)
-      expect(user_context.completed_profiles.size).to eq(0)
+      expect(user_context.list_profiles.size).to eq(1)
     end
-    it "returns no result if user has written bio only" do
+    it "returns 1 result if user has written bio only" do
       user_context = UserContext.new(user_with_bio)
-      expect(user_context.completed_profiles.size).to eq(0)
+      expect(user_context.list_profiles.size).to eq(1)
     end
-    it "returns no result if user has an uploaded profile picture only" do
-      user.photo.attach(
-        io: File.open(Rails.root.join("spec", "fixtures", "files", "img_sample.jpeg")),
-        filename: 'img_sample.jpeg',
-        content_type: "image/jpeg"
-      )
+    it "returns 2 results if 1 user has written bio only and 1 user has no written bio, 1st is with bio " do
       user_context = UserContext.new(user)
-      expect(user_context.completed_profiles.size).to eq(0)
-    end
-    it "returns no result if user has an uploaded profile picture only" do
-      user_with_bio.photo.attach(
-        io: File.open(Rails.root.join("spec", "fixtures", "files", "img_sample.jpeg")),
-        filename: 'img_sample.jpeg',
-        content_type: "image/jpeg"
-      )
-      user_context = UserContext.new(user_with_bio)
-      expect(user_context.completed_profiles.size).to eq(1)
+      user_with_bio
+      expect(user_context.list_profiles.size).to eq(2)
+      expect(user_context.list_profiles.first).to eq(user_with_bio)
+      expect(user_context.list_profiles.last).to eq(user)
     end
   end
 

@@ -36,8 +36,6 @@ const pushUpdateToDB = (event) => {
     .then(response => response.text())
     .then((data) => {
       mirror_form.outerHTML = data;
-      // mirror_form = document.getElementById(mirror_form.id);
-      // mirror_form.addEventListener("submit", pushUpdateToDB);
     })
 }
 

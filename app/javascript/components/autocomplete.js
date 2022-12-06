@@ -1,14 +1,6 @@
 import 'js-autocomplete/auto-complete.css';
 import autocomplete from 'js-autocomplete';
 
-
-
-import DOMPurify from 'dompurify';
-
-
-
-
-
 const createAutocomplete = (specificSet, searchInput) => {
   new autocomplete({
     selector: searchInput,
@@ -17,15 +9,9 @@ const createAutocomplete = (specificSet, searchInput) => {
         term = term.toLowerCase();
         const choices = specificSet;
         const matches = [];
-        let username = "";
         for (let i = 0; i < choices.length; i++)
             if (~choices[i].toLowerCase().indexOf(term))
-
-              // matches.push(DOMPurify.sanitize(choices[i]));
               matches.push(choices[i]);
-
-
-
               suggest(matches.slice(0, specificSet.length));
     },
   });

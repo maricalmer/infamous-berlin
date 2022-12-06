@@ -7,9 +7,13 @@ class Project < ApplicationRecord
   has_many_attached :attachments
   enum status: { past: "past", upcoming: "upcoming" }
 
-  validates :title, uniqueness: true, presence: true, case_sensitive: false
-  validates :description, presence: true
-  validates :slug, :title, uniqueness: true, case_sensitive: false
+  validates :title, uniqueness: true,
+                    presence: true,
+                    case_sensitive: false,
+                    format: { without: /(<|>|&)/, message: "cannot include special characters" },
+                    length: { maximum: 100, message: "is too long" }
+  validates :description, presence: true, format: { without: /(<|>|&)/, message: "cannot include <, >, and &" }
+  validates :slug, uniqueness: true, case_sensitive: false
   validates :attachments,
             content_type: {
               in: ['image/png', 'image/jpg', 'image/jpeg', 'video/mp4', 'audio/mpeg'],

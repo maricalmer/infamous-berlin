@@ -13,7 +13,12 @@ class User < ApplicationRecord
   has_one_attached :photo
 
   validates :slug, uniqueness: true, case_sensitive: false
-  validates :username, uniqueness: true, case_sensitive: false, presence: true
+  validates :username, uniqueness: true,
+                       case_sensitive: false,
+                       presence: true,
+                       format: { without: /(<|>|&)/, message: "cannot include special characters" },
+                       length: { maximum: 100, message: "is too long" }
+  validates :bio, format: { without: /(<|>|&)/, message: "cannot include <, >, and &" }
   validates :password, presence: true, length: { minimum: 6, maximum: 128 }, unless: proc { |a| a.password.nil? }
   validates :email, presence: true, format: { with: /\A[^@\s]+@[^@\s]+\z/ }
   validates :photo, size: { less_than: 5.megabytes, message: '5MB max' }
@@ -51,8 +56,8 @@ class User < ApplicationRecord
     UserContext.new(self).default_profile_pic?
   end
 
-  def self.list_completed_profiles_only
-    UserContext.new(nil).completed_profiles
+  def self.list_user_index
+    UserContext.new(nil).list_profiles
   end
 
   def to_param

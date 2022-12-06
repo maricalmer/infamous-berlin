@@ -4,8 +4,11 @@ RSpec.describe Job do
   let(:job) { FactoryBot.create(:job) }
   let(:nil_title_job) { FactoryBot.build_stubbed(:job, title: nil) }
   let(:empty_string_title_job) { FactoryBot.build_stubbed(:job, title: "") }
+  let(:special_character_title_job) { FactoryBot.build_stubbed(:job, title: ">") }
+  let(:too_long_title_job) { FactoryBot.build_stubbed(:job, title: 'a' * 101) }
   let(:nil_description_job) { FactoryBot.build_stubbed(:job, description: nil) }
   let(:empty_string_description_job) { FactoryBot.build_stubbed(:job, description: "") }
+  let(:special_character_description_job) { FactoryBot.build_stubbed(:job, description: "<") }
   let(:nil_money_job) { FactoryBot.build_stubbed(:job, money: nil) }
   let(:negative_money_job) { FactoryBot.build_stubbed(:job, money: -10) }
   describe "validations" do
@@ -18,11 +21,20 @@ RSpec.describe Job do
     it "must be invalid when it has an empty string title" do
       expect(empty_string_title_job).to_not be_valid
     end
+    it "must be invalid when it has a special character in title" do
+      expect(special_character_title_job).to_not be_valid
+    end
+    it "must be invalid when it has over 100 characters title" do
+      expect(too_long_title_job).to_not be_valid
+    end
     it "must be invalid when it has nil description" do
       expect(nil_description_job).to_not be_valid
     end
     it "must be invalid when it has an empty string description" do
       expect(empty_string_description_job).to_not be_valid
+    end
+    it "must be invalid when it has a special character in description" do
+      expect(special_character_description_job).to_not be_valid
     end
     it "must be invalid when money is nil" do
       expect(nil_money_job).to_not be_valid
@@ -57,26 +69,6 @@ RSpec.describe Job do
     it "returns a job for fixed_rate" do
       jobs = Job.filter_jobs_on("fixed_rate")
       expect(jobs).to eq([third_job])
-    end
-  end
-  describe "active_offer?(current_user)" do
-    let(:stubbed_project) { FactoryBot.build_stubbed(:project) }
-    let(:stubbed_user) { FactoryBot.build_stubbed(:user) }
-    before(:example) do
-      stubbed_user
-      job
-    end
-    it "tells that current_user can apply to the offer when offer status is open" do
-      expect(job.active_offer?(stubbed_user)).to be_truthy
-    end
-    it "tells that current_user cannot apply to the offer when offer status is close" do
-      job.status = "close"
-      expect(job.active_offer?(stubbed_user)).to be_falsy
-    end
-    it "tells that current_user cannot apply to the offer when he owns the offer" do
-      stubbed_project.user = stubbed_user
-      job.project = stubbed_project
-      expect(job.active_offer?(stubbed_user)).to be_falsy
     end
   end
 end

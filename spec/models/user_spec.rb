@@ -11,6 +11,9 @@ RSpec.describe User do
     let(:user_short_password) { FactoryBot.build_stubbed(:user, password: "123") }
     let(:user_nil_username) { FactoryBot.build_stubbed(:user, username: nil) }
     let(:user_empty_string_username) { FactoryBot.build_stubbed(:user, username: "") }
+    let(:user_too_long_username) { FactoryBot.build_stubbed(:user, username: 'a' * 101) }
+    let(:user_special_character_username) { FactoryBot.build_stubbed(:user, username: "<") }
+    let(:user_special_character_bio) { FactoryBot.build_stubbed(:user, bio: "<") }
     it "is valid with username, email and password" do
       expect(user).to be_valid
     end
@@ -37,6 +40,15 @@ RSpec.describe User do
     end
     it "is not valid with an empty string username" do
       expect(user_empty_string_username).to_not be_valid
+    end
+    it "is not valid with a username over 100 characters" do
+      expect(user_too_long_username).to_not be_valid
+    end
+    it "is not valid with a special character in username" do
+      expect(user_special_character_username).to_not be_valid
+    end
+    it "is not valid with a special character in bio" do
+      expect(user_special_character_bio).to_not be_valid
     end
     it "is not valid without a unique username" do
       second_user = User.new(email: "second_user_email@email.com",

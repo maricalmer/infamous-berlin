@@ -34,11 +34,8 @@ class UserContext
     )
   end
 
-  def completed_profiles
-    User.joins(:photo_blob)
-        .where.not(active_storage_blobs: { filename: "default-profile-peep.png" })
-        .where.not(bio: ["", nil])
-        .includes([photo_attachment: :blob])
+  def list_profiles
+    list_completed_profiles + list_uncompleted_profiles
   end
 
   def display_portfolio
@@ -54,6 +51,14 @@ class UserContext
   end
 
   private
+
+  def list_completed_profiles
+    User.where.not(bio: ["", nil])
+  end
+
+  def list_uncompleted_profiles
+    User.where(bio: ["", nil])
+  end
 
   def user_chatrooms
     Chatroom.where(author_id: @user.id).or(Chatroom.where(receiver_id: @user.id))

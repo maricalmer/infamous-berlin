@@ -1,4 +1,3 @@
-// import 'gridstack/dist/gridstack.min.css';
 import { GridStack } from 'gridstack';
 
 const initGristackStatic = () => {

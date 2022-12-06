@@ -2,8 +2,12 @@ class Inquiry < ApplicationRecord
   belongs_to :user
   belongs_to :job
 
-  validates :motivation, presence: true, length: { minimum: 10, too_short: "%{count} characters minimum" }
-  validates :experience, presence: true, length: { minimum: 10, too_short: "%{count} characters minimum" }
+  validates :motivation, presence: true,
+                         length: { minimum: 10, too_short: "%{count} characters minimum" },
+                         format: { without: /(<|>|&)/, message: "cannot include <, >, and &" }
+  validates :experience, presence: true,
+                         length: { minimum: 10, too_short: "%{count} characters minimum" },
+                         format: { without: /(<|>|&)/, message: "cannot include <, >, and &" }
   validates :user, uniqueness: { scope: :job, message: "you have already applied to this offer" }
 
   enum status: { on_hold: "on_hold", accepted: "accepted", rejected: "rejected" }

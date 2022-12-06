@@ -1,8 +1,10 @@
 class Job < ApplicationRecord
   belongs_to :project
   has_many :inquiries
-  validates :title, presence: true
-  validates :description, presence: true
+  validates :title, presence: true,
+                    format: { without: /(<|>|&)/, message: "cannot include special characters" },
+                    length: { maximum: 100, message: "is too long" }
+  validates :description, presence: true, format: { without: /(<|>|&)/, message: "cannot include <, >, and &" }
   validates :money, presence: true, numericality: { greater_than_or_equal_to: 0, message: "value must be positive" }
 
   enum payment: { fixed_rate: "fixed_rate", hourly_rate: "hourly_rate" }
@@ -30,9 +32,5 @@ class Job < ApplicationRecord
 
   def self.filter_jobs_on(payment_type)
     Job.where(payment: payment_type)
-  end
-
-  def active_offer?(current_user)
-    project.user != current_user && open?
   end
 end

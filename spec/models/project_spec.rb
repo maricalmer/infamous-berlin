@@ -5,8 +5,11 @@ RSpec.describe Project do
     let(:project) { FactoryBot.create(:project) }
     let(:project_nil_title) { FactoryBot.build_stubbed(:project, title: nil) }
     let(:project_empty_string_title) { FactoryBot.build_stubbed(:project, title: "") }
+    let(:project_special_character_title) { FactoryBot.build_stubbed(:project, title: ">") }
+    let(:project_too_long_title) { FactoryBot.build_stubbed(:project, title: 'a' * 101) }
     let(:project_nil_description) { FactoryBot.build_stubbed(:project, description: nil) }
     let(:project_empty_string_description) { FactoryBot.build_stubbed(:project, description: "") }
+    let(:project_special_character_description) { FactoryBot.build_stubbed(:project, description: "&") }
     let(:project_no_attachment) { FactoryBot.build_stubbed(:project, attachments: nil) }
     it "is valid with title and description" do
       expect(project).to be_valid
@@ -17,11 +20,20 @@ RSpec.describe Project do
     it "is not valid with an empty string title" do
       expect(project_empty_string_title).to_not be_valid
     end
+    it "is not valid with a special character in title" do
+      expect(project_special_character_title).to_not be_valid
+    end
+    it "is not valid with a title over 100 characters" do
+      expect(project_too_long_title).to_not be_valid
+    end
     it "is not valid with nil description" do
       expect(project_nil_description).to_not be_valid
     end
     it "is not valid with an empty string description" do
       expect(project_empty_string_description).to_not be_valid
+    end
+    it "is not valid with a special character in description" do
+      expect(project_special_character_description).to_not be_valid
     end
     it "is not valid without attachments" do
       expect(project_no_attachment).to_not be_valid
