@@ -39,6 +39,7 @@ gem 'simple_form'
 gem 'pg_search', '~> 2.3', '>= 2.3.5'
 
 gem "rails_admin"
+gem 'globalid', '~> 1.0'
 
 group :development, :test do
   gem 'pry-byebug'
