@@ -40,6 +40,8 @@ gem 'pg_search', '~> 2.3', '>= 2.3.5'
 
 gem "rails_admin"
 gem 'globalid', '~> 1.0'
+gem 'psych', '< 4'
+gem 'net-smtp', require: false
 
 group :development, :test do
   gem 'pry-byebug'
