@@ -10,7 +10,6 @@ class Job < ApplicationRecord
   enum payment: { fixed_rate: "fixed_rate", hourly_rate: "hourly_rate" }
   enum status: { open: "open", close: "close" }
 
-  # require "services/tags_renderer"
   include PgSearch::Model
 
   pg_search_scope :search_by_title_description_skills, against: {

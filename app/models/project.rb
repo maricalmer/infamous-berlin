@@ -28,8 +28,6 @@ class Project < ApplicationRecord
   after_create_commit :create_mirror
   before_update :set_slug
 
-  # require "services/slug_generator"
-  # require "workflows/project_selector"
   include PgSearch::Model
 
   pg_search_scope :search_by_title_description_location_category, against: {

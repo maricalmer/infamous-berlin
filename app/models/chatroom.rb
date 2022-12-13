@@ -10,8 +10,6 @@ class Chatroom < ApplicationRecord
     where("(chatrooms.author_id = ? OR chatrooms.receiver_id = ?)", user.id, user.id)
   }
 
-  # require "workflows/chatroom_context"
-
   def with(current_user)
     Workflows::ChatroomContext.new(self).find_other_participant(current_user)
   end

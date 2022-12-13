@@ -4,7 +4,6 @@ class DashboardsController < ApplicationController
   before_action :set_different_job_types_instances,
                 only: %i[dashboard hold_received_dash accepted_received_dash rejected_received_dash]
 
-  # require "workflows/dashboard_renderer"
 
   def dashboard
     set_different_collab_types_instances

@@ -2,9 +2,6 @@ class ProjectsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[show upcoming_projects]
   before_action :set_project, only: %i[show edit update apply unapply destroy]
 
-  require "services/autocomplete_generator"
-  require "services/tags_renderer"
-
   def show
     @members = @project.members
     @jobs = @project.jobs

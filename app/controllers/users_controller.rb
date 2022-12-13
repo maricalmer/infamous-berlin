@@ -2,10 +2,6 @@ class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[show index after_registration_path]
   before_action :set_user, only: %i[show edit update destroy]
 
-  # require "workflows/user_context"
-  # require "services/tags_renderer"
-  # require "services/autocomplete_generator"
-
   def show
     @portfolio = Workflows::UserContext.new(@user).display_portfolio
     @user_formatted_skills = Services::TagsRenderer.new(@user.skills).format_tags

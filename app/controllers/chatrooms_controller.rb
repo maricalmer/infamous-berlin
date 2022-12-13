@@ -4,8 +4,6 @@ class ChatroomsController < ApplicationController
   before_action :mark_messages_as_read, only: [:show]
   before_action :check_participating!, only: [:show]
 
-  # require "workflows/chatroom_context"
-
   def show
     @message = Message.new
     @chatrooms = Chatroom.participating(current_user).order('updated_at DESC')
@@ -24,7 +22,7 @@ class ChatroomsController < ApplicationController
   private
 
   def set_messages
-    @messages = ChatroomContext.new(@chatroom).set_messages
+    @messages = Workflows::ChatroomContext.new(@chatroom).set_messages
   end
 
   def mark_messages_as_read

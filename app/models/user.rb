@@ -29,8 +29,6 @@ class User < ApplicationRecord
   after_commit :add_default_img, on: [:create]
 
   include PgSearch::Model
-  # require "workflows/user_context"
-  # require "services/slug_generator"
 
   pg_search_scope :search_by_username_bio_skills_title, against: {
     username: "A",

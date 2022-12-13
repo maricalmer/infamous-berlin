@@ -2,8 +2,6 @@ class JobsController < ApplicationController
   before_action :set_job, only: %i[show edit update destroy]
   before_action :set_project, only: %i[new create]
 
-  # require "services/autocomplete_generator"
-
   def index
     @jobs = policy_scope(Job)
     if params[:search].present? && params[:search][:payment] != "all"

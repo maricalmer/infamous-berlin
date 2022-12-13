@@ -2,8 +2,6 @@ class MirrorsController < ApplicationController
   before_action :set_user, only: %i[update ongoing_projects past_projects]
   before_action :set_variant, only: %i[ongoing_projects past_projects]
 
-  # require "workflows/mirror_renderer"
-
   def update
     @mirror = Mirror.find(params[:id])
     authorize @mirror
