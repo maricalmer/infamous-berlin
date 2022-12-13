@@ -42,6 +42,7 @@ gem "rails_admin"
 gem 'globalid', '~> 1.0'
 gem 'psych', '< 4'
 gem 'net-smtp', require: false
+gem 'net-pop', '~> 0.1.2'
 gem 'matrix', '~> 0.4.2'
 gem 'rexml', '~> 3.2', '>= 3.2.5'
 
