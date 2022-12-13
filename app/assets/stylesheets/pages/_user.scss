@@ -64,7 +64,10 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 2rem 0;
+  padding: 2rem 3rem;
+}
+.user-profile__projects-btn-container {
+  width: 100%;
 }
 .user-socialmedia-section {
   padding: 32px;
@@ -120,7 +123,7 @@
   .user-buttons-section {
     border-top: none;
     border-left: dashed 4px black;
-    padding: 0;
+    padding: 0 3rem;
   }
   .user-socialmedia-section {
     display: flex;

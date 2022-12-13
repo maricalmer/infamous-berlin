@@ -28,38 +28,37 @@
     </div>
   </div>
   <div class="user-buttons-section user-profile-grid__buttons-section">
-    <div>
-      <% if user_signed_in? %>
-        <% if current_user == @user %>
-          <%= link_to "Edit your profile", edit_user_path, class: "btn user-profile__edit-btn" %>
-        <% else %>
-          <button type="button" class="btn user-profile__message-btn" data-bs-toggle="modal" data-bs-target="#modalMessageNew">
-            Message <%= @user.username %>
-          </button>
-          <div id="modalMessage">
-            <%= render "messages/new", chatroom: @chatroom, message: @message %>
-          </div>
-        <% end %>
+    <% if user_signed_in? %>
+      <% if current_user == @user %>
+        <%= link_to "Edit your profile", edit_user_path, class: "btn user-profile__edit-btn" %>
       <% else %>
-        <button type="button" class="btn user-profile__message-btn" data-bs-toggle="modal" data-bs-target="#modalLogin">
+        <button type="button" class="btn user-profile__message-btn" data-bs-toggle="modal" data-bs-target="#modalMessageNew">
           Message <%= @user.username %>
         </button>
-        <%= render 'shared/login_form' %>
+        <div id="modalMessage">
+          <%= render "messages/new", chatroom: @chatroom, message: @message %>
+        </div>
       <% end %>
-      <% if @portfolio.any? %>
-        <%= link_to user_portfolio_path(@user), class: "link" do %>
-          <button class="btn user-profile__projects-btn">Portfolio</button>
-        <% end %>
+    <% else %>
+      <button type="button" class="btn user-profile__message-btn" data-bs-toggle="modal" data-bs-target="#modalLogin">
+        Message <%= @user.username %>
+      </button>
+      <%= render 'shared/login_form' %>
+    <% end %>
+    <% if @portfolio.any? %>
+      <%= link_to user_portfolio_path(@user), class: "user-profile__projects-btn-container link" do %>
+        <button class="btn user-profile__projects-btn">Portfolio</button>
       <% end %>
-      <% if @ongoing_projects.any? %>
-        <%= link_to user_ongoing_projects_path(@user), class: "link" do %>
-          <button class="btn user-profile__projects-btn">Ongoing projects</button>
-        <% end %>
+    <% end %>
+    <% if @ongoing_projects.any? %>
+      <%= link_to user_ongoing_projects_path(@user), class: "user-profile__projects-btn-container link" do %>
+        <button class="btn user-profile__projects-btn">Ongoing projects</button>
       <% end %>
-    </div>
+    <% end %>
   </div>
+  <div id="bottom-page"></div>
   <% if @user.contact_info? %>
-    <div class="user-socialmedia-section user-profile-grid__socialmedia-section" id="bottom-page">
+    <div class="user-socialmedia-section user-profile-grid__socialmedia-section">
       <% if @user.website.present? %>
         <div><a class="user-socialmedia-section__link-item" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.website %>>Website</a></div>
       <% end %>
