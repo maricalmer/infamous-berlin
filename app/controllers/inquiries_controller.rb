@@ -2,10 +2,10 @@ class InquiriesController < ApplicationController
   before_action :set_inquiry, only: %i[show edit update destroy change_status]
   before_action :set_job, only: %i[new create]
 
-  require "services/tags_renderer"
+  # require "services/tags_renderer"
 
   def show
-    @user_formatted_skills = TagsRenderer.new(@inquiry.user.skills).format_tags
+    @user_formatted_skills = Services::TagsRenderer.new(@inquiry.user.skills).format_tags
     @statuses = Inquiry.statuses.keys
   end
 

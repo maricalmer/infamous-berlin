@@ -29,8 +29,8 @@ class User < ApplicationRecord
   after_commit :add_default_img, on: [:create]
 
   include PgSearch::Model
-  require "workflows/user_context"
-  require "services/slug_generator"
+  # require "workflows/user_context"
+  # require "services/slug_generator"
 
   pg_search_scope :search_by_username_bio_skills_title, against: {
     username: "A",
@@ -45,19 +45,19 @@ class User < ApplicationRecord
   }
 
   def contact_info?
-    UserContext.new(self).contact_info?
+    Workflows::UserContext.new(self).contact_info?
   end
 
   def unread_messages?
-    UserContext.new(self).unread_messages?
+    Workflows::UserContext.new(self).unread_messages?
   end
 
   def default_profile_pic?
-    UserContext.new(self).default_profile_pic?
+    Workflows::UserContext.new(self).default_profile_pic?
   end
 
   def self.list_user_index
-    UserContext.new(nil).list_profiles
+    Workflows::UserContext.new(nil).list_profiles
   end
 
   def to_param
@@ -65,17 +65,17 @@ class User < ApplicationRecord
   end
 
   def find_collab_within(project_id)
-    UserContext.new(self).find_collab_within(project_id)
+    Workflows::UserContext.new(self).find_collab_within(project_id)
   end
 
   private
 
   def set_slug
-    SlugGenerator.new(string: username, client: self).assign_slug
+    Services::SlugGenerator.new(string: username, client: self).assign_slug
   end
 
   def renew_slug
-    SlugGenerator.new(string: username, client: self).update_slug
+    Services::SlugGenerator.new(string: username, client: self).update_slug
   end
 
   def send_confirmation_email
@@ -83,6 +83,6 @@ class User < ApplicationRecord
   end
 
   def add_default_img
-    UserContext.new(self).add_default_img
+    Workflows::UserContext.new(self).add_default_img
   end
 end

@@ -4,7 +4,7 @@ class ChatroomsController < ApplicationController
   before_action :mark_messages_as_read, only: [:show]
   before_action :check_participating!, only: [:show]
 
-  require "workflows/chatroom_context"
+  # require "workflows/chatroom_context"
 
   def show
     @message = Message.new
@@ -28,7 +28,7 @@ class ChatroomsController < ApplicationController
   end
 
   def mark_messages_as_read
-    ChatroomContext.new.mark_messages_as_read(@messages, current_user)
+    Workflows::ChatroomContext.new.mark_messages_as_read(@messages, current_user)
   end
 
   def check_participating!

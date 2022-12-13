@@ -28,8 +28,8 @@ class Project < ApplicationRecord
   after_create_commit :create_mirror
   before_update :set_slug
 
-  require "services/slug_generator"
-  require "workflows/project_selector"
+  # require "services/slug_generator"
+  # require "workflows/project_selector"
   include PgSearch::Model
 
   pg_search_scope :search_by_title_description_location_category, against: {
@@ -46,17 +46,17 @@ class Project < ApplicationRecord
   end
 
   def self.list_projects_based_on(params)
-    ProjectSelector.new.custom_index(params)
+    Workflows::ProjectSelector.new.custom_index(params)
   end
 
   private
 
   def set_slug
-    SlugGenerator.new(string: title, client: self).assign_slug
+    Services::SlugGenerator.new(string: title, client: self).assign_slug
   end
 
   def renew_slug
-    SlugGenerator.new(string: title, client: self).update_slug
+    Services::SlugGenerator.new(string: title, client: self).update_slug
   end
 
   def create_mirror

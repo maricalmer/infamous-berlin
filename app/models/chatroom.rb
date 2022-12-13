@@ -10,19 +10,19 @@ class Chatroom < ApplicationRecord
     where("(chatrooms.author_id = ? OR chatrooms.receiver_id = ?)", user.id, user.id)
   }
 
-  require "workflows/chatroom_context"
+  # require "workflows/chatroom_context"
 
   def with(current_user)
-    ChatroomContext.new(self).find_other_participant(current_user)
+    Workflows::ChatroomContext.new(self).find_other_participant(current_user)
   end
 
   def participates?(user)
-    ChatroomContext.new(self).participates?(user)
+    Workflows::ChatroomContext.new(self).participates?(user)
   end
 
   private
 
   def author_receiver_pair_must_be_unique
-    ChatroomContext.new(self).author_receiver_pair_must_be_unique
+    Workflows::ChatroomContext.new(self).author_receiver_pair_must_be_unique
   end
 end

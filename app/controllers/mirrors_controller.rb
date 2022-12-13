@@ -2,7 +2,7 @@ class MirrorsController < ApplicationController
   before_action :set_user, only: %i[update ongoing_projects past_projects]
   before_action :set_variant, only: %i[ongoing_projects past_projects]
 
-  require "workflows/mirror_renderer"
+  # require "workflows/mirror_renderer"
 
   def update
     @mirror = Mirror.find(params[:id])
@@ -15,7 +15,7 @@ class MirrorsController < ApplicationController
   end
 
   def ongoing_projects
-    @mirrors = MirrorRenderer.new(@user).load_mirrors_for_projects("upcoming")
+    @mirrors = Workflows::MirrorRenderer.new(@user).load_mirrors_for_projects("upcoming")
     authorize @mirrors
     if request.variant == [:mobile]
       render variants: :mobile
@@ -25,7 +25,7 @@ class MirrorsController < ApplicationController
   end
 
   def past_projects
-    @mirrors = MirrorRenderer.new(@user).load_mirrors_for_projects("past")
+    @mirrors = Workflows::MirrorRenderer.new(@user).load_mirrors_for_projects("past")
     authorize @mirrors
     if request.variant == [:mobile]
       render variants: :mobile

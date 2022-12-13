@@ -1,4 +1,4 @@
-class UserContext
+class Workflows::UserContext
   attr_reader :user
 
   def initialize(user)

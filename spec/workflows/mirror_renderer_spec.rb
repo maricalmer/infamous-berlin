@@ -1,8 +1,6 @@
 require 'rails_helper'
 
-require "workflows/mirror_renderer"
-
-RSpec.describe MirrorRenderer do
+RSpec.describe Workflows::MirrorRenderer do
   describe "load_mirrors_for_projects(status)" do
     let(:user) { FactoryBot.create(:user) }
     let(:upcoming_project) { FactoryBot.create(:project, status: "upcoming", user: user) }
@@ -12,11 +10,11 @@ RSpec.describe MirrorRenderer do
       past_project
     end
     it "loads mirrors for past projects on 'past' status" do
-      mirrors = MirrorRenderer.new(user).load_mirrors_for_projects("past")
+      mirrors = Workflows::MirrorRenderer.new(user).load_mirrors_for_projects("past")
       expect(mirrors.first.project).to eq(past_project)
     end
     it "loads mirrors for upcoming projects on 'upcoming' status" do
-      mirrors = MirrorRenderer.new(user).load_mirrors_for_projects("upcoming")
+      mirrors = Workflows::MirrorRenderer.new(user).load_mirrors_for_projects("upcoming")
       expect(mirrors.first.project).to eq(upcoming_project)
     end
   end
@@ -25,7 +23,7 @@ RSpec.describe MirrorRenderer do
     it "returns the right key" do
       project_attachment_key = project.attachments.first.key
       mirrors = Mirror.all
-      mirror_in_db_key = MirrorRenderer.new.attachment_key_for(mirrors.first)
+      mirror_in_db_key = Workflows::MirrorRenderer.new.attachment_key_for(mirrors.first)
       expect(mirror_in_db_key).to eq(project_attachment_key)
     end
   end
@@ -35,7 +33,7 @@ RSpec.describe MirrorRenderer do
     it "it validates that the first attachment is an img" do
       img_attachment_project
       mirrors = Mirror.all
-      img_check = MirrorRenderer.new.original_img?(mirrors.first)
+      img_check = Workflows::MirrorRenderer.new.original_img?(mirrors.first)
       expect(mirrors.count).to eq(1)
       expect(img_check).to be_truthy
     end
@@ -47,7 +45,7 @@ RSpec.describe MirrorRenderer do
         content_type: "audio/mpeg"
       )
       mirrors = Mirror.all
-      img_check = MirrorRenderer.new.original_img?(mirrors.first)
+      img_check = Workflows::MirrorRenderer.new.original_img?(mirrors.first)
       expect(mirrors.count).to eq(1)
       expect(img_check).to be_falsy
     end
@@ -64,14 +62,14 @@ RSpec.describe MirrorRenderer do
       )
       Project.all.count
       mirrors = Mirror.all
-      video_poster_check = MirrorRenderer.new.original_video_poster?(mirrors.first)
+      video_poster_check = Workflows::MirrorRenderer.new.original_video_poster?(mirrors.first)
       expect(mirrors.count).to eq(1)
       expect(video_poster_check).to be_truthy
     end
     it "it validates that the first attachment is not a video poster" do
       img_attachment_project
       mirrors = Mirror.all
-      video_poster_check = MirrorRenderer.new.original_video_poster?(mirrors.first)
+      video_poster_check = Workflows::MirrorRenderer.new.original_video_poster?(mirrors.first)
       expect(mirrors.count).to eq(1)
       expect(video_poster_check).to be_falsy
     end
@@ -87,14 +85,14 @@ RSpec.describe MirrorRenderer do
         content_type: "audio/mpeg"
       )
       mirrors = Mirror.all
-      audio_poster_check = MirrorRenderer.new.original_audio_poster?(mirrors.first)
+      audio_poster_check = Workflows::MirrorRenderer.new.original_audio_poster?(mirrors.first)
       expect(mirrors.count).to eq(1)
       expect(audio_poster_check).to be_truthy
     end
     it "it validates that the first attachment is not an audio poster" do
       img_attachment_project
       mirrors = Mirror.all
-      audio_poster_check = MirrorRenderer.new.original_video_poster?(mirrors.first)
+      audio_poster_check = Workflows::MirrorRenderer.new.original_video_poster?(mirrors.first)
       expect(mirrors.count).to eq(1)
       expect(audio_poster_check).to be_falsy
     end
@@ -107,13 +105,13 @@ RSpec.describe MirrorRenderer do
     it "it validates that a mirror cover got cropped" do
       mirrors = Mirror.all
       mirrors.first.update(crop_x: 300, crop_y: 20, crop_h: 1200, crop_w: 650)
-      img_crop_check = MirrorRenderer.new.cropped?(mirrors.first)
+      img_crop_check = Workflows::MirrorRenderer.new.cropped?(mirrors.first)
       expect(mirrors.count).to eq(1)
       expect(img_crop_check).to be_truthy
     end
     it "it validates that a mirror cover did not get cropped" do
       mirrors = Mirror.all
-      img_crop_check = MirrorRenderer.new.cropped?(mirrors.first)
+      img_crop_check = Workflows::MirrorRenderer.new.cropped?(mirrors.first)
       expect(mirrors.count).to eq(1)
       expect(img_crop_check).to be_falsy
     end

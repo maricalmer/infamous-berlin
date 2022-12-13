@@ -2,14 +2,14 @@ class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[show index after_registration_path]
   before_action :set_user, only: %i[show edit update destroy]
 
-  require "workflows/user_context"
-  require "services/tags_renderer"
-  require "services/autocomplete_generator"
+  # require "workflows/user_context"
+  # require "services/tags_renderer"
+  # require "services/autocomplete_generator"
 
   def show
-    @portfolio = UserContext.new(@user).display_portfolio
-    @user_formatted_skills = TagsRenderer.new(@user.skills).format_tags
-    @ongoing_projects = UserContext.new(@user).display_ongoing_projects
+    @portfolio = Workflows::UserContext.new(@user).display_portfolio
+    @user_formatted_skills = Services::TagsRenderer.new(@user.skills).format_tags
+    @ongoing_projects = Workflows::UserContext.new(@user).display_ongoing_projects
     @message = Message.new
   end
 
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
 
   def index
     @users = policy_scope(User)
-    @autocomplete_set = AutocompleteGenerator.new.skill_set
+    @autocomplete_set = Services::AutocompleteGenerator.new.skill_set
     @users = User.search_by_username_bio_skills_title(params[:query]) if params[:query].present?
     respond_to do |format|
       format.html

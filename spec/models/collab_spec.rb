@@ -28,6 +28,9 @@ RSpec.describe Collab do
   end
   describe "callbacks" do
     it "creates a mirror object after collab creation" do
+      user
+      project
+      collab
       mirrors = Mirror.all
       expect(mirrors.count).to eq(2)
       expect(mirrors.first.project).to eq(project)

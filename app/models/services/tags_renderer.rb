@@ -1,4 +1,4 @@
-class TagsRenderer
+class Services::TagsRenderer
   def initialize(set)
     @set = set
   end

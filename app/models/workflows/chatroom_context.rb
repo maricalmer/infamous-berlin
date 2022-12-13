@@ -1,4 +1,4 @@
-class ChatroomContext
+class Workflows::ChatroomContext
   attr_reader :chatroom
 
   def initialize(chatroom = nil)

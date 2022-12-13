@@ -10,7 +10,7 @@ class Job < ApplicationRecord
   enum payment: { fixed_rate: "fixed_rate", hourly_rate: "hourly_rate" }
   enum status: { open: "open", close: "close" }
 
-  require "services/tags_renderer"
+  # require "services/tags_renderer"
   include PgSearch::Model
 
   pg_search_scope :search_by_title_description_skills, against: {
@@ -27,7 +27,7 @@ class Job < ApplicationRecord
   end
 
   def display_skills
-    TagsRenderer.new(skills_needed).format_tags
+    Services::TagsRenderer.new(skills_needed).format_tags
   end
 
   def self.filter_jobs_on(payment_type)

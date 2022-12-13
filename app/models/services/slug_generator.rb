@@ -1,4 +1,4 @@
-class SlugGenerator
+class Services::SlugGenerator
   def initialize(attributes = {})
     @string = attributes[:string]
     @client = attributes[:client]

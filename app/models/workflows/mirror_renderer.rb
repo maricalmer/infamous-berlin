@@ -1,4 +1,4 @@
-class MirrorRenderer
+class Workflows::MirrorRenderer
   attr_reader :user
 
   def initialize(user = nil)

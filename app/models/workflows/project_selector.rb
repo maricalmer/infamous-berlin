@@ -1,4 +1,4 @@
-class ProjectSelector
+class Workflows::ProjectSelector
   def custom_index(params)
     if params[:search].present? && params[:search][:status] == "past"
       @projects = Project.where(status: "past").includes(user: { photo_attachment: :blob })

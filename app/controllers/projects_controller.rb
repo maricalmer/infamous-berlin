@@ -9,16 +9,16 @@ class ProjectsController < ApplicationController
     @members = @project.members
     @jobs = @project.jobs
     @collab = Collab.new
-    @project_formatted_categories = TagsRenderer.new(@project.category).format_tags
-    @autocomplete_set = AutocompleteGenerator.new.usernames
+    @project_formatted_categories = Services::TagsRenderer.new(@project.category).format_tags
+    @autocomplete_set = Services::AutocompleteGenerator.new.usernames
     @project_attachments = @project.attachments.includes([:blob])
   end
 
   def new
     @project = Project.new
     authorize @project
-    @location_autocomplete_set = AutocompleteGenerator.new.location_set
-    @category_autocomplete_set = AutocompleteGenerator.new.category_set
+    @location_autocomplete_set = Services::AutocompleteGenerator.new.location_set
+    @category_autocomplete_set = Services::AutocompleteGenerator.new.category_set
   end
 
   def create
@@ -33,8 +33,8 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    @location_autocomplete_set = AutocompleteGenerator.new.location_set
-    @category_autocomplete_set = AutocompleteGenerator.new.category_set
+    @location_autocomplete_set = Services::AutocompleteGenerator.new.location_set
+    @category_autocomplete_set = Services::AutocompleteGenerator.new.category_set
   end
 
   def update

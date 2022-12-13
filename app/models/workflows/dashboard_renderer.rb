@@ -1,4 +1,4 @@
-class DashboardRenderer
+class Workflows::DashboardRenderer
   def projects_for(user, status)
     Project.public_send(status).where(user: user).order(created_at: :desc)
   end
