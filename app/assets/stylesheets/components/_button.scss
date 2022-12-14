@@ -385,6 +385,8 @@
   justify-content: center;
   align-items: center;
   padding: 0.5rem 1rem;
+  max-width: 230px;
+  white-space: normal;
 }
 .devise-form__btn:hover {
   background: #8d37d3 radial-gradient(circle, transparent 1%, #5A26C9 1%) center/15000%;
@@ -560,6 +562,9 @@
   .chatroom__new-message-btn {
     margin: 0 0 0 1rem;
     width: 150px;
+  }
+  .devise-form__btn {
+    max-width: 280px;
   }
 }
 @media (hover: hover) and (pointer: fine) {
