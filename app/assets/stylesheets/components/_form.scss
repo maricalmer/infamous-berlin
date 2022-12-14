@@ -42,6 +42,7 @@
   background-color: #d6d6d6 !important;
   border: 2px solid black;
   border-radius: 0px;
+  font-size: 2rem;
 }
 .form-page__input--big {
   height: 35vh;
@@ -537,6 +538,9 @@
   }
 }
 @media(min-width: 600px) {
+  .form-page__input {
+    font-size: 1rem;
+  }
   .form-page__content {
     padding: 1rem;
   }
