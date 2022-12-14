@@ -88,7 +88,8 @@ const buildMainPosterDesktop = (event) => {
   const overlay = document.querySelector(".overlay-body-big-screen-js");
   if (event.currentTarget.src.includes("logo-audio")) {
     const link = event.currentTarget.nextElementSibling.firstElementChild.src.replace(".webm", "")
-    const newElement = `<div class="carousel__main-audio-control-wrapper img-slide-js"><img class="carousel__main-audio-poster play-audio-js" src="/assets/logo-audio.png"><video class="carousel__main-audio-control" controls="controls" src="${link}.mp3"></video></div>`
+    const poster = event.currentTarget.src
+    const newElement = `<div class="carousel__main-audio-control-wrapper img-slide-js"><img class="carousel__main-audio-poster play-audio-js" src="${poster}"><video class="carousel__main-audio-control" controls="controls" src="${link}.mp3"></video></div>`
     imgSlide.outerHTML = newElement
     playFileOnClick()
   } else if (event.currentTarget.nodeName === "IMG") {
