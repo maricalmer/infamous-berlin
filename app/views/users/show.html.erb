@@ -32,7 +32,7 @@
       <% if current_user == @user %>
         <%= link_to "Edit your profile", edit_user_path, class: "btn user-profile__edit-btn" %>
       <% else %>
-        <button type="button" class="btn user-profile__message-btn" data-bs-toggle="modal" data-bs-target="#modalMessageNew">
+        <button class="btn user-profile__message-btn" data-bs-toggle="modal" data-bs-target="#modalMessageNew">
           Message <%= @user.username %>
         </button>
         <div id="modalMessage">

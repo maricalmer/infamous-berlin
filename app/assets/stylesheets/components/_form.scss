@@ -67,6 +67,7 @@
   height: 100vh;
   position: sticky;
   top: 0px;
+  overflow: hidden;
 }
 .form-page__username-and-email {
   display: flex;
@@ -591,7 +592,7 @@
   .form-page__divider--second::before {
     content: '';
     position: absolute;
-    top: 0;
+    top: 4px;
     left: 4px;
     border-top: 100vh solid black;
     border-right: 37vw solid transparent;

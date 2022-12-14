@@ -65,11 +65,8 @@
   position: relative;
   border: 3px solid black;
 }
-.form-page__submit-btn {
+.form-page__submit-btn, .form-page__loading-btn {
   margin: 8rem auto 32px auto;
-}
-.form-page__loading-btn {
-  margin: 6rem auto 32px auto;
 }
 .form-page__loading-btn:hover, .form-page__submit-btn:hover {
   background-color: #8EC7A6;
@@ -430,6 +427,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 .user-profile__message-btn:hover, .user-profile__edit-btn:hover {
   color: black;
@@ -451,6 +449,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 .job-show-card__edit-btn, .job-show-card__edit-btn:focus {
   width: fit-content;
