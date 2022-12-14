@@ -15,6 +15,9 @@
   justify-content: center;
   align-items: center;
 }
+.carousel__thumbnail--video {
+  display: none;
+}
 .carousel__mobile-placeholder {
   display: flex;
   justify-content: center;
@@ -47,6 +50,7 @@
   position: absolute;
   bottom: 0;
   left: 0;
+  height: 55px;
 }
 .carousel__mobile-img {
   max-height: 45vh;
@@ -126,6 +130,7 @@
   position: absolute;
   bottom: 0;
   left: 0;
+  height: 55px;
 }
 .carousel__overlay {
   background-color: #999999;

@@ -86,16 +86,16 @@ const downArrowOnLoad = () => {
 const buildMainPosterDesktop = (event) => {
   const imgSlide = document.querySelector(".img-slide-js");
   const overlay = document.querySelector(".overlay-body-big-screen-js");
-  if (event.currentTarget.nodeName === "IMG") {
+  if (event.currentTarget.src.includes("logo-audio")) {
+    const link = event.currentTarget.nextElementSibling.firstElementChild.src.replace(".webm", "")
+    const newElement = `<div class="carousel__main-audio-control-wrapper img-slide-js"><img class="carousel__main-audio-poster play-audio-js" src="/assets/logo-audio.png"><video class="carousel__main-audio-control" controls="controls" src="${link}.mp3"></video></div>`
+    imgSlide.outerHTML = newElement
+    playFileOnClick()
+  } else if (event.currentTarget.nodeName === "IMG") {
     const newElement = `<picture class="carousel__img-video-wrapper img-slide-js" data-bs-toggle="modal" data-bs-target="#modalBigScreen"><source srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 992px)"><img class="carousel__main-img-poster" src=${event.currentTarget.src}></picture>`
     const img = `<img src="${event.currentTarget.src}">`
     imgSlide.outerHTML = newElement
     overlay.firstElementChild.outerHTML = img
-  } else if (event.currentTarget.poster.includes("logo-audio")) {
-    const link = event.currentTarget.firstElementChild.src.replace(".webm", "")
-    const newElement = `<div class="carousel__main-audio-control-wrapper img-slide-js"><img class="carousel__main-audio-poster play-audio-js" src="/assets/logo-audio.png"><video class="carousel__main-audio-control" controls="controls" src="${link}.mp3"></video></div>`
-    imgSlide.outerHTML = newElement
-    playFileOnClick()
   } else if (event.currentTarget.nodeName === "VIDEO") {
     const link = event.currentTarget.poster.replace(".jpg", "")
     const newElement = `<picture class="carousel__img-video-wrapper img-slide-js"><source class="carousel__main-poster" srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 992px)"><video class="carousel__main-video-poster" controls="controls" muted="muted" poster=${link.concat('.jpg')}><source src=${link.concat('.webm')} type="video/webm"><source src=${link.concat('.mp4')} type="video/mp4"><source src=${link.concat('.ogv')} type="video/ogg"></video></picture>`
@@ -118,18 +118,18 @@ const changeImgMobile = (event) => {
   const imgs = document.querySelectorAll(".thumbnail-js");
   const placeholderImg = document.querySelector(".placeholder-mobile-js");
   const correspondingFile = imgs[event.currentTarget.dataset.dotId]
-  console.log(placeholderImg.firstElementChild)
-  if (correspondingFile.nodeName === "IMG") {
+  if (correspondingFile.src.includes("logo-audio")) {
+    const link = correspondingFile.nextElementSibling.firstElementChild.src.replace(".webm", "")
+    placeholderImg.firstElementChild.outerHTML = `<div class="carousel__mobile-audio-control-wrapper"><img class="carousel__audio-poster play-audio-js" src="/assets/logo-audio.png"><video controls="controls" class="carousel__audio-control" src="${link}.mp3"></video></div>`
+    placeholderImg.removeAttribute('data-bs-toggle');
+    placeholderImg.removeAttribute('data-bs-target');
+    playFileOnClick()
+  } else if (correspondingFile.nodeName === "IMG") {
     const imgModal = document.querySelector(".overlay-body-small-screen-js").firstElementChild;
     imgModal.src = correspondingFile.src;
     placeholderImg.firstElementChild.outerHTML = `<img class="carousel__mobile-img" src=${correspondingFile.src}>`
     placeholderImg.setAttribute('data-bs-toggle', 'modal');
     placeholderImg.setAttribute('data-bs-target', '#modalSmallScreen');
-  } else if (correspondingFile.poster.includes("logo-audio")) {
-    const link = correspondingFile.firstElementChild.src.replace(".webm", "")
-    placeholderImg.firstElementChild.outerHTML = `<div class="carousel__mobile-audio-control-wrapper"><img class="carousel__audio-poster play-audio-js" src="/assets/logo-audio.png"><video controls="controls" class="carousel__audio-control" src="${link}.mp3"></video></div>`
-    placeholderImg.removeAttribute('data-bs-toggle');
-    placeholderImg.removeAttribute('data-bs-target');
   } else if (correspondingFile.nodeName === "VIDEO") {
     const link = correspondingFile.poster.replace(".jpg", "")
     placeholderImg.firstElementChild.outerHTML = `<video class="carousel__mobile-video" controls="controls" poster=${link.concat('.jpg')}><source src=${link.concat('.webm')} type=\"video/webm\"><source src=${link.concat('.mp4')} type=\"video/mp4\"><source src=${link.concat('.ogv')} type=\"video/ogg\"></video>`

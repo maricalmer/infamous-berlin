@@ -24,7 +24,8 @@
             <% if attachment.video? %>
               <%= cl_video_tag attachment.key, class: "carousel__thumbnail carousel__thumbnail--poster thumbnail-js" %>
             <% elsif @project.attachments.first.audio? %>
-              <%= cl_video_tag attachment.key, class: "carousel__thumbnail carousel__thumbnail--poster thumbnail-js", poster: "/assets/logo-audio.png" %>
+              <%= image_tag asset_path('logo-audio.png'), class: "carousel__thumbnail carousel__thumbnail--poster carousel__thumbnail--img thumbnail-js" %>
+              <%= cl_video_tag attachment.key, class: "carousel__thumbnail--video", poster: false %>
             <% else %>
               <%= cl_image_tag attachment.key, class: "carousel__thumbnail carousel__thumbnail--poster carousel__thumbnail--img thumbnail-js", quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 1110, crop: "fill"}] %>
             <% end %>
@@ -35,7 +36,8 @@
             <% if attachment.video? %>
               <%= cl_video_tag attachment.key, class: "carousel__thumbnail carousel__thumbnail--poster thumbnail-js" %>
             <% elsif attachment.audio? %>
-              <%= cl_video_tag attachment.key, poster:"/assets/logo-audio.png", class: "carousel__thumbnail carousel__thumbnail--poster thumbnail-js" %>
+              <%= image_tag asset_path('logo-audio.png'), class: "carousel__thumbnail carousel__thumbnail--poster thumbnail-js" %>
+              <%= cl_video_tag attachment.key, poster: false, class: "carousel__thumbnail--video" %>
             <% else %>
               <%= cl_image_tag attachment.key, class: "carousel__thumbnail carousel__thumbnail--poster thumbnail-js", quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 1110, crop: "fill"}] %>
             <% end %>
