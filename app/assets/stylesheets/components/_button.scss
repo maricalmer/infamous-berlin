@@ -51,6 +51,10 @@
   background-color: #333;
   color: #d6d6d6;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .form-page__loading-btn, .form-page__submit-btn {
   width: 230px;

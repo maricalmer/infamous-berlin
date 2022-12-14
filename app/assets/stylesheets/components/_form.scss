@@ -42,7 +42,7 @@
   background-color: #d6d6d6 !important;
   border: 2px solid black;
   border-radius: 0px;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 .form-page__input--big {
   height: 35vh;
@@ -163,8 +163,8 @@
   padding-bottom: 8vh;
   margin-bottom: 8vh;
 }
-.form-page__social-media-item::placeholder {
-  font-size: 14px;
+.form-page__input::placeholder {
+  font-size: 1rem;
 }
 .form-page__upload-picture {
   display: block;
