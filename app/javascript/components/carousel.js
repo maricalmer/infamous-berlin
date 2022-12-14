@@ -121,7 +121,8 @@ const changeImgMobile = (event) => {
   const correspondingFile = imgs[event.currentTarget.dataset.dotId]
   if (correspondingFile.src.includes("logo-audio")) {
     const link = correspondingFile.nextElementSibling.firstElementChild.src.replace(".webm", "")
-    placeholderImg.firstElementChild.outerHTML = `<div class="carousel__mobile-audio-control-wrapper"><img class="carousel__audio-poster play-audio-js" src="/assets/logo-audio.png"><video controls="controls" class="carousel__audio-control" src="${link}.mp3"></video></div>`
+    const poster = correspondingFile.src
+    placeholderImg.firstElementChild.outerHTML = `<div class="carousel__mobile-audio-control-wrapper"><img class="carousel__audio-poster play-audio-js" src="${poster}"><video controls="controls" class="carousel__audio-control" src="${link}.mp3"></video></div>`
     placeholderImg.removeAttribute('data-bs-toggle');
     placeholderImg.removeAttribute('data-bs-target');
     playFileOnClick()
