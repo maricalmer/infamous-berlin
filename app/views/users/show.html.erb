@@ -60,28 +60,28 @@
   <% if @user.contact_info? %>
     <div class="user-socialmedia-section user-profile-grid__socialmedia-section">
       <% if @user.website.present? %>
-        <div><a class="user-socialmedia-section__link-item" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.website %>>Website</a></div>
+        <div><a class="user-socialmedia-section__link-item" target="_blank" rel="noopener noreferrer" href=<%= @user.website %>>Website</a></div>
       <% end %>
       <% if @user.facebook.present? %>
-        <div><a class="user-socialmedia-section__link-item" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.facebook %>>Facebook</a></div>
+        <div><a class="user-socialmedia-section__link-item" target="_blank" rel="noopener noreferrer" href=<%= @user.facebook %>>Facebook</a></div>
       <% end %>
       <% if @user.instagram.present? %>
-        <div><a class="user-socialmedia-section__link-item" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.instagram %>>Instagram</a></div>
+        <div><a class="user-socialmedia-section__link-item" target="_blank" rel="noopener noreferrer" href=<%= @user.instagram %>>Instagram</a></div>
       <% end %>
       <% if @user.soundcloud.present? %>
-        <div><a class="user-socialmedia-section__link-item" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.soundcloud %>>Soundcloud</a></div>
+        <div><a class="user-socialmedia-section__link-item" target="_blank" rel="noopener noreferrer" href=<%= @user.soundcloud %>>Soundcloud</a></div>
       <% end %>
       <% if @user.youtube.present? %>
-        <div><a class="user-socialmedia-section__link-item" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.youtube %>>YouTube</a></div>
+        <div><a class="user-socialmedia-section__link-item" target="_blank" rel="noopener noreferrer" href=<%= @user.youtube %>>YouTube</a></div>
       <% end %>
       <% if @user.mixcloud.present? %>
-        <div><a class="user-socialmedia-section__link-item" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.mixcloud %>>Mixcloud</a></div>
+        <div><a class="user-socialmedia-section__link-item" target="_blank" rel="noopener noreferrer" href=<%= @user.mixcloud %>>Mixcloud</a></div>
       <% end %>
       <% if @user.linkedin.present? %>
-        <div><a class="user-socialmedia-section__link-item" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.linkedin %>>Linkedin</a></div>
+        <div><a class="user-socialmedia-section__link-item" target="_blank" rel="noopener noreferrer" href=<%= @user.linkedin %>>Linkedin</a></div>
       <% end %>
       <% if @user.twitter.present? %>
-        <div><a class="user-socialmedia-section__link-item" target="_blank" rel="noopener noreferrer" href=<%= "https://" + @user.twitter %>>Twitter</a></div>
+        <div><a class="user-socialmedia-section__link-item" target="_blank" rel="noopener noreferrer" href=<%= @user.twitter %>>Twitter</a></div>
       <% end %>
     </div>
   <% end %>
