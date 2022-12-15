@@ -510,20 +510,6 @@
     padding-top: 0;
   }
 }
-// _::-webkit-full-page-media, _:future, :root .selector {
-//   margin-bottom: 0px;
-//   display: -webkit-inline-box;
-// }
-// _::-webkit-full-page-media, _:future, :root .selector {
-//    property:value;
-// }
-// @media not all and (min-resolution:.001dpcm)
-// { @supports (-webkit-appearance:none) {
-//   .project-card__wrapper--safari_only {
-//     margin-bottom: 0px;
-//     display: -webkit-inline-box;
-//   }
-// }}
 @media(min-width: 576px) {
   .project-card--mirrors-grid {
     width: 215px;
