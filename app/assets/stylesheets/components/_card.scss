@@ -85,7 +85,7 @@
   -ms-column-break-inside: avoid;
   column-break-inside: avoid;
   page-break-inside: avoid;
-  display: inline-block;
+  display: -webkit-inline-box;
 }
 .project-card__wrapper:hover {
   -webkit-transform: scale(1.05);
