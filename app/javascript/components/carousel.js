@@ -118,23 +118,24 @@ let i = 0;
 const changeImgMobile = (event) => {
   const imgs = document.querySelectorAll(".thumbnail-js");
   const placeholderImg = document.querySelector(".placeholder-mobile-js");
+  console.log(placeholderImg)
   const correspondingFile = imgs[event.currentTarget.dataset.dotId]
   if (correspondingFile.src.includes("logo-audio")) {
     const link = correspondingFile.nextElementSibling.firstElementChild.src.replace(".webm", "")
     const poster = correspondingFile.src
-    placeholderImg.firstElementChild.outerHTML = `<div class="carousel__mobile-audio-control-wrapper"><img class="carousel__audio-poster play-audio-js" src="${poster}"><video controls="controls" class="carousel__audio-control" src="${link}.mp3"></video></div>`
+    placeholderImg.innerHTML = `<div class="carousel__mobile-audio-control-wrapper"><img class="carousel__audio-poster play-audio-js" src="${poster}"><video controls="controls" class="carousel__audio-control" src="${link}.mp3"></video></div>`
     placeholderImg.removeAttribute('data-bs-toggle');
     placeholderImg.removeAttribute('data-bs-target');
     playFileOnClick()
   } else if (correspondingFile.nodeName === "IMG") {
     const imgModal = document.querySelector(".overlay-body-small-screen-js").firstElementChild;
     imgModal.src = correspondingFile.src;
-    placeholderImg.firstElementChild.outerHTML = `<img class="carousel__mobile-img" src=${correspondingFile.src}>`
+    placeholderImg.innerHTML = `<img class="carousel__mobile-img" src=${correspondingFile.src}>`
     placeholderImg.setAttribute('data-bs-toggle', 'modal');
     placeholderImg.setAttribute('data-bs-target', '#modalSmallScreen');
   } else if (correspondingFile.nodeName === "VIDEO") {
     const link = correspondingFile.poster.replace(".jpg", "")
-    placeholderImg.firstElementChild.outerHTML = `<video class="carousel__mobile-video" controls="controls" poster=${link.concat('.jpg')}><source src=${link.concat('.webm')} type=\"video/webm\"><source src=${link.concat('.mp4')} type=\"video/mp4\"><source src=${link.concat('.ogv')} type=\"video/ogg\"></video>`
+    placeholderImg.innerHTML = `<video class="carousel__mobile-video" controls="controls" poster=${link.concat('.jpg')}><source src=${link.concat('.webm')} type=\"video/webm\"><source src=${link.concat('.mp4')} type=\"video/mp4\"><source src=${link.concat('.ogv')} type=\"video/ogg\"></video>`
     placeholderImg.removeAttribute('data-bs-toggle');
     placeholderImg.removeAttribute('data-bs-target');
   }
@@ -170,19 +171,21 @@ const move = (e) => {
   if(x0 || x0 === 0) {
     const dx = unify(e).clientX - x0, s = Math.sign(dx);
     if((i > 0 || s < 0) && (i < imgs.length - 1 || s > 0)) {
-      if (imgs[i-s].nodeName === "IMG") {
-        imgModal.src = imgs[i-s].src ;
-        placeholderImg.firstElementChild.outerHTML = `<img class="carousel__mobile-img src=${imgs[i-s].src}>`
-        placeholderImg.setAttribute('data-bs-toggle', 'modal');
-        placeholderImg.setAttribute('data-bs-target', '#modalSmallScreen');
-      } else if (imgs[i-s].poster.includes("logo-audio")) {
+      if (imgs[i-s].src.includes("logo-audio")) {
         const link = imgs[i-s].firstElementChild.src.replace(".webm", "")
-        placeholderImg.firstElementChild.outerHTML = `<div class="carousel__mobile-audio-control-wrapper"><img class="carousel__audio-poster play-audio-js" src="/assets/logo-audio.png"><video controls="controls" class="carousel__audio-control" src="${link}.mp3"></video></div>`
+        const poster = imgs[i-s].src
+        placeholderImg.innerHTML =`<div class="carousel__mobile-audio-control-wrapper"><img class="carousel__audio-poster play-audio-js" src="${poster}"><video controls="controls" class="carousel__audio-control" src="${link}.mp3"></video></div>`
         placeholderImg.removeAttribute('data-bs-toggle');
         placeholderImg.removeAttribute('data-bs-target');
+        playFileOnClick()
+      } else if (imgs[i-s].nodeName === "IMG") {
+        imgModal.src = imgs[i-s].src ;
+        placeholderImg.innerHTML = `<img class="carousel__mobile-img src=${imgs[i-s].src}>`
+        placeholderImg.setAttribute('data-bs-toggle', 'modal');
+        placeholderImg.setAttribute('data-bs-target', '#modalSmallScreen');
       } else if (imgs[i-s].nodeName === "VIDEO") {
         const link = imgs[i-s].poster.replace(".jpg", "")
-        placeholderImg.firstElementChild.outerHTML = `<video class="carousel__mobile-video" controls="controls" poster=${link.concat('.jpg')}><source src=${link.concat('.webm')} type=\"video/webm\"><source src=${link.concat('.mp4')} type=\"video/mp4\"><source src=${link.concat('.ogv')} type=\"video/ogg\"></video>`
+        placeholderImg.innerHTML = `<video class="carousel__mobile-video" controls="controls" poster=${link.concat('.jpg')}><source src=${link.concat('.webm')} type=\"video/webm\"><source src=${link.concat('.mp4')} type=\"video/mp4\"><source src=${link.concat('.ogv')} type=\"video/ogg\"></video>`
         placeholderImg.removeAttribute('data-bs-toggle');
         placeholderImg.removeAttribute('data-bs-target');
       }
