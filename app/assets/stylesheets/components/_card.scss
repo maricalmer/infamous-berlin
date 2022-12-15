@@ -85,7 +85,6 @@
   -ms-column-break-inside: avoid;
   column-break-inside: avoid;
   page-break-inside: avoid;
-  display: -webkit-inline-box;
 }
 .project-card__wrapper:hover {
   -webkit-transform: scale(1.05);
@@ -512,6 +511,7 @@
 { @supports (-webkit-appearance:none) {
   .project-card__wrapper--safari_only {
     margin-bottom: 0px;
+    display: -webkit-inline-box;
   }
 }}
 @media(min-width: 576px) {
