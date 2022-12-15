@@ -502,15 +502,21 @@
   list-style-type: none;
   margin: 8px;
 }
+.project-card__wrapper--safari_only {
+  display: -webkit-inline-box;
+}
 @supports (-moz-appearance:none) {
   .project-card__wrapper {
     padding-top: 0;
   }
 }
-_::-webkit-full-page-media, _:future, :root .selector {
-  margin-bottom: 0px;
-  display: -webkit-inline-box;
-}
+// _::-webkit-full-page-media, _:future, :root .selector {
+//   margin-bottom: 0px;
+//   display: -webkit-inline-box;
+// }
+// _::-webkit-full-page-media, _:future, :root .selector {
+//    property:value;
+// }
 // @media not all and (min-resolution:.001dpcm)
 // { @supports (-webkit-appearance:none) {
 //   .project-card__wrapper--safari_only {

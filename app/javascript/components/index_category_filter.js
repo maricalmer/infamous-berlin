@@ -1,4 +1,5 @@
 import { highlight } from '../components/highlight_search_query';
+import { alignSafariGridItems } from '../components/align_grid_items_on_safari';
 
 const listenCategories = () => {
   const checkboxLabels = document.querySelectorAll(".checkbox-label-js")
@@ -13,6 +14,7 @@ const listenCategories = () => {
           const results = document.querySelector(".render-results-js");
           results.innerHTML = data;
           highlight();
+          alignSafariGridItems();
         })
     })
   })

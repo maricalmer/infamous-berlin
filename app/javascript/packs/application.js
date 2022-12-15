@@ -6,6 +6,7 @@ require("channels")
 import '../libraries/bootstrap_js_files.js';
 import { initChatroomCable } from '../channels/chatroom_channel';
 import { addAttribute, populateList, disableEnterSubmit } from '../components/add_array_attributes';
+import { alignSafariGridItems } from '../components/align_grid_items_on_safari';
 import { autocompleteSearch } from '../components/autocomplete';
 import { reloadWindowOnBackBtn } from '../components/back_btn_reload';
 import { scrollOnArrows, hideArrowsOnScroll, changeImgDesktop, checkOnFilesState, switchImgWithDots, switchImgWithSwipe } from '../components/carousel';
@@ -38,6 +39,9 @@ document.addEventListener('turbolinks:load', () => {
     addAttribute();
     populateList();
     disableEnterSubmit();
+  }
+  if (document.querySelectorAll(".align-items-on-safari-js").length) {
+    alignSafariGridItems();
   }
   if (document.querySelectorAll(".autocomplete-form-js").length ||
     document.querySelectorAll(".project-show-js").length) {

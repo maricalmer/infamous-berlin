@@ -1,4 +1,5 @@
 import { highlight } from '../components/highlight_search_query';
+import { alignSafariGridItems } from '../components/align_grid_items_on_safari';
 
 const refreshIndex = () => {
   const inputTarget = document.querySelector(".refresh-input-js")
@@ -16,7 +17,8 @@ const refreshIndex = () => {
     .then(response => response.text())
     .then((data) => {
       searchResults.outerHTML = data;
-      highlight()
+      highlight();
+      alignSafariGridItems();
     })
 }
 

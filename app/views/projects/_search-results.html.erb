@@ -6,7 +6,7 @@
   <% end %>
   <div class="project-results-grid">
     <% @projects.each do |project| %>
-      <div class="project-card__wrapper project-card__wrapper--safari_only remove-bottom-margin-js">
+      <div class="project-card__wrapper align-items-on-safari-js">
         <div class="project-card__item">
           <%= link_to project_path(project.slug), class: "project-card__link" do  %>
             <div class="project-card__title-and-ribbon">
