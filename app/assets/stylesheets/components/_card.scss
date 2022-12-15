@@ -502,12 +502,14 @@
   list-style-type: none;
   margin: 8px;
 }
-.project-card__wrapper--safari_only {
-  display: -webkit-inline-box;
-}
 @supports (-moz-appearance:none) {
   .project-card__wrapper {
     padding-top: 0;
+  }
+}
+@media(min-width: 500px) {
+  .project-card__wrapper--safari_only {
+    display: -webkit-inline-box;
   }
 }
 @media(min-width: 576px) {
