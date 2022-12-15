@@ -418,7 +418,23 @@
 .arrow-bottom-page__sticks {
   list-style: none;
 }
-.user-profile__message-btn, .user-profile__message-btn:focus, .user-profile__edit-btn, .user-profile__edit-btn:focus {
+.user-profile__message-btn, .user-profile__message-btn:focus {
+  font-size: 1.5rem;
+  border: 4px solid black;
+  box-shadow: -6px -6px black;
+  background: #7343db;
+  background-position: center;
+  transition: background 0.8s;
+  color: white;
+  border-radius: 0px;
+  width: 100%;
+  margin: 3vh auto 2vh auto;
+  height: 68px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.user-profile__edit-btn, .user-profile__edit-btn:focus {
   font-size: 1.5rem;
   border: 4px solid black;
   box-shadow: -6px -6px black;
