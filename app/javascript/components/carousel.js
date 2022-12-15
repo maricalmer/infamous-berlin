@@ -172,7 +172,7 @@ const move = (e) => {
     const dx = unify(e).clientX - x0, s = Math.sign(dx);
     if((i > 0 || s < 0) && (i < imgs.length - 1 || s > 0)) {
       if (imgs[i-s].src.includes("logo-audio")) {
-        const link = imgs[i-s].firstElementChild.src.replace(".webm", "")
+        const link = imgs[i-s].nextElementSibling.firstChild.src.replace(".webm", "")
         const poster = imgs[i-s].src
         placeholderImg.innerHTML =`<div class="carousel__mobile-audio-control-wrapper"><img class="carousel__audio-poster play-audio-js" src="${poster}"><video controls="controls" class="carousel__audio-control" src="${link}.mp3"></video></div>`
         placeholderImg.removeAttribute('data-bs-toggle');
