@@ -18,7 +18,8 @@
             <%= f.input :remember_me, input_html: { class: "login-modal__checkbox" }, as: :boolean if devise_mapping.rememberable? %>
           </div>
           <div class="login-modal__error-message error-new-session-js"></div>
-          <%= link_to "Create an account", new_user_registration_path, class: "login-modal__link" %>
+          <%= link_to "Create an account", new_user_registration_path, class: "login-modal__link" %><br>
+          <%= link_to "Forgot your password?", new_password_path(resource_name), class: "login-form__link" %>
           <div class="modal-footer login-modal__footer">
             <%= f.button :submit, "Log in", class: "btn login-modal__btn" %>
           </div>
