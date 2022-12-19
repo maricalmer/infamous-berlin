@@ -1,103 +1,105 @@
 <%= render 'shared/navbar' %>
-<div class="carousel-and-project-details">
-  <%= render 'shared/carousel' %>
-  <div class="carousel-and-project-details__title-and-owner-wrapper">
-    <div class="carousel-and-project-details__title-and-owner">
-      <div class="carousel-and-project-details__title"><%= @project.title %></div>
-      <h3 class="carousel-and-project-details__owner">by <%= link_to @project.user.username, user_path(@project.user), class:"carousel-and-project-details__owner-link" %></h3>
-    </div>
-    <div class="carousel-and-project-details__members">
-      <% if @members.any? %>
-        <div class="carousel-and-project-details__label-and-avatars">
-          <div class="carousel-and-project-details__label"><%= 'Member'.pluralize(@members.count) %>:</div>
-          <div class="carousel-and-project-details__avatars">
-            <% @members.first(5).each do |member| %>
-              <div class="avatars-member-stack" data-bs-toggle="modal" data-bs-target="#membersList">
-                <% if member.photo.attached? %>
-                  <%= cl_image_tag member.photo.key, class: "avatars-member-stack__img", quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 70, crop: "fill"}] %>
-                <% else %>
-                  <%= image_tag asset_path('logo.png'), class: "avatars-member-stack__img" %>
-                <% end %>
-              </div>
-            <% end %>
-            <% if @members.size > 5 %>
-              <div class="avatars-member-stack" data-bs-toggle="modal" data-bs-target="#membersList">
-                <p class="avatars-member-stack__extra-icon">...</p>
-              </div>
-            <% end %>
-          </div>
-        </div>
-      <% else %>
-        <div class="carousel-and-project-details__avatars-placeholder"></div>
-      <% end %>
-      <div>
-      <% if @project.user == current_user %>
-        <div class="carousel-and-project-details__new-member-btn-form">
-          <button class="carousel-and-project-details__btn-covering btn btn-covering-js">Add member</button>
-          <%= simple_form_for [ @project, @collab ], remote: true do |f| %>
-            <div class="new-member-form new-member-form-js project-show-js search-data-js" data-set="<%= @autocomplete_set.to_json %>">
-              <div class="new-member-form__content">
-                <div class="new-member-form__field">
-                  <label class="new-member-form__label string optional" for="project_member">Add member's username</label>
-                  <input type="text" name="project[member]" id="project_member" class="new-member-form__input form-control string optional" autocomplete="off">
+<div class="carousel-and-project-details__wrapper">
+  <div class="carousel-and-project-details">
+    <%= render 'shared/carousel' %>
+    <div class="carousel-and-project-details__title-and-owner-wrapper">
+      <div class="carousel-and-project-details__title-and-owner">
+        <div class="carousel-and-project-details__title"><%= @project.title %></div>
+        <h3 class="carousel-and-project-details__owner">by <%= link_to @project.user.username, user_path(@project.user), class:"carousel-and-project-details__owner-link" %></h3>
+      </div>
+      <div class="carousel-and-project-details__members">
+        <% if @members.any? %>
+          <div class="carousel-and-project-details__label-and-avatars">
+            <div class="carousel-and-project-details__label"><%= 'Member'.pluralize(@members.count) %>:</div>
+            <div class="carousel-and-project-details__avatars">
+              <% @members.first(5).each do |member| %>
+                <div class="avatars-member-stack" data-bs-toggle="modal" data-bs-target="#membersList">
+                  <% if member.photo.attached? %>
+                    <%= cl_image_tag member.photo.key, class: "avatars-member-stack__img", quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 70, crop: "fill"}] %>
+                  <% else %>
+                    <%= image_tag asset_path('logo.png'), class: "avatars-member-stack__img" %>
+                  <% end %>
                 </div>
-                <%= f.submit "+", class: "new-member-form__btn" %>
-              </div>
+              <% end %>
+              <% if @members.size > 5 %>
+                <div class="avatars-member-stack" data-bs-toggle="modal" data-bs-target="#membersList">
+                  <p class="avatars-member-stack__extra-icon">...</p>
+                </div>
+              <% end %>
             </div>
-            <% if @collab.errors.any? %>
-              <% @collab.errors.full_messages.each do |message| %>
-                <p class="new-member-form__error"><%= message %></p>
+          </div>
+        <% else %>
+          <div class="carousel-and-project-details__avatars-placeholder"></div>
+        <% end %>
+        <div>
+        <% if @project.user == current_user %>
+          <div class="carousel-and-project-details__new-member-btn-form">
+            <button class="carousel-and-project-details__btn-covering btn btn-covering-js">Add member</button>
+            <%= simple_form_for [ @project, @collab ], remote: true do |f| %>
+              <div class="new-member-form new-member-form-js project-show-js search-data-js" data-set="<%= @autocomplete_set.to_json %>">
+                <div class="new-member-form__content">
+                  <div class="new-member-form__field">
+                    <label class="new-member-form__label string optional" for="project_member">Add member's username</label>
+                    <input type="text" name="project[member]" id="project_member" class="new-member-form__input form-control string optional" autocomplete="off">
+                  </div>
+                  <%= f.submit "+", class: "new-member-form__btn" %>
+                </div>
+              </div>
+              <% if @collab.errors.any? %>
+                <% @collab.errors.full_messages.each do |message| %>
+                  <p class="new-member-form__error"><%= message %></p>
+                <% end %>
               <% end %>
             <% end %>
+          </div>
+        <% end %>
+        </div>
+      </div>
+      <div>
+        <div class="carousel-and-project-details__jobs">
+          <% if @project.user == current_user %>
+            <%= link_to new_project_job_path(@project), class:"carousel-and-project-details__jobs-link" do %>
+              <button class="carousel-and-project-details__jobs-btn">Add job</button>
+            <% end %>
+            <% if @jobs.any? %>
+              <button class="carousel-and-project-details__talent-eye-btn" data-bs-toggle="modal" data-bs-target="#jobsList">
+                <i class="fas fa-eye"></i>
+              </button>
+            <% end %>
+          <% elsif @jobs.any? %>
+              <button class="carousel-and-project-details__talent-btn" data-bs-toggle="modal" data-bs-target="#jobsList">Looking for talents!</button>
           <% end %>
         </div>
-      <% end %>
-      </div>
-    </div>
-    <div>
-      <div class="carousel-and-project-details__jobs">
-        <% if @project.user == current_user %>
-          <%= link_to new_project_job_path(@project), class:"carousel-and-project-details__jobs-link" do %>
-            <button class="carousel-and-project-details__jobs-btn">Add job</button>
-          <% end %>
-          <% if @jobs.any? %>
-            <button class="carousel-and-project-details__talent-eye-btn" data-bs-toggle="modal" data-bs-target="#jobsList">
-              <i class="fas fa-eye"></i>
-            </button>
-          <% end %>
-        <% elsif @jobs.any? %>
-            <button class="carousel-and-project-details__talent-btn" data-bs-toggle="modal" data-bs-target="#jobsList">Looking for talents!</button>
-        <% end %>
       </div>
     </div>
   </div>
-</div>
-<div class="project-description-date-categories-location">
-  <div class="project-date-categories-location">
-    <div class="project-location">
-      <% if @project.location? %>
-        <i class="fas fa-map-marker-alt project-date-categories-location__icon"></i>
-        <div class="project-date-categories-location__details"><%= @project.location %></div>
-      <% end %>
-    </div>
-    <div class="project-date">
-      <% if @project.date? %>
-        <i class="fas fa-calendar-day project-date-categories-location__icon"></i>
-        <div class="project-date-categories-location__details"><%= @project.date.strftime("%d/%m/%Y") %></div>
-      <% end %>
-    </div>
-    <div class="project-category">
-      <% if @project.category? %>
-      <i class="fas fa-folder-open project-date-categories-location__icon"></i>
-        <% @project_formatted_categories.each do |cat| %>
-          <div class="project-category__skill-box"><%= cat %></div>
+  <div class="project-description-date-categories-location">
+    <div class="project-date-categories-location">
+      <div class="project-location">
+        <% if @project.location? %>
+          <i class="fas fa-map-marker-alt project-date-categories-location__icon"></i>
+          <div class="project-date-categories-location__details"><%= @project.location %></div>
         <% end %>
-      <% end %>
+      </div>
+      <div class="project-date">
+        <% if @project.date? %>
+          <i class="fas fa-calendar-day project-date-categories-location__icon"></i>
+          <div class="project-date-categories-location__details"><%= @project.date.strftime("%d/%m/%Y") %></div>
+        <% end %>
+      </div>
+      <div class="project-category">
+        <% if @project.category? %>
+        <i class="fas fa-folder-open project-date-categories-location__icon"></i>
+          <% @project_formatted_categories.each do |cat| %>
+            <div class="project-category__skill-box"><%= cat %></div>
+          <% end %>
+        <% end %>
+      </div>
     </div>
-  </div>
-  <div class="project-description">
-    <div class="project-description__title" id="bottom-page">Description</div>
-    <h4 class="project-description__text"><%= simple_format @project.description %></h4>
+    <div class="project-description">
+      <div class="project-description__title" id="bottom-page">Description</div>
+      <h4 class="project-description__text"><%= simple_format @project.description %></h4>
+    </div>
   </div>
 </div>
 <div>

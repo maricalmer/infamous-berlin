@@ -2,6 +2,10 @@
   height: auto;
   overflow: hidden;
 }
+.carousel-and-project-details__wrapper {
+  display: flex;
+  flex-direction: column;
+}
 .carousel-and-project-details__title-and-owner-wrapper {
   width: 100%;
   padding: 32px;
@@ -72,6 +76,7 @@
   background-color: #333;
   border-top: dashed 4px black;
   height: 100%;
+  flex-grow: 1;
 }
 .project-date-categories-location {
   padding: 32px;
@@ -122,9 +127,13 @@
   }
 }
 @media(min-width: 992px) {
+  .carousel-and-project-details__wrapper {
+    height: 100vh;
+  }
   .carousel-and-project-details {
     display: flex;
-    height: 699px;
+    // min-height: 699px;
+    min-height: 85vh;
     background: linear-gradient(to right, #646668 0%, #646668 70%, #cdd1f4 70%, #cdd1f4 100%);
     border-bottom: dashed 4px black;
   }
@@ -139,7 +148,8 @@
     padding-top: 64px;
     padding-right: 3em;
     padding-left: 3em;
-    height: 699px;
+    min-height: 85vh;
+    // height: 699px;
   }
   .carousel-and-project-details__title-and-owner {
     flex-grow: 1;
