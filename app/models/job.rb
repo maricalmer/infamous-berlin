@@ -1,6 +1,6 @@
 class Job < ApplicationRecord
   belongs_to :project
-  has_many :inquiries
+  has_many :inquiries, dependent: :destroy
   validates :title, presence: true,
                     format: { without: /(<|>|&)/, message: "cannot include special characters" },
                     length: { maximum: 100, message: "is too long" }
