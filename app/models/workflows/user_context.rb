@@ -35,7 +35,7 @@ class Workflows::UserContext
   end
 
   def list_profiles
-    list_completed_profiles + list_uncompleted_profiles
+    list_legit_completed_profiles + list_fake_completed_profiles + list_uncompleted_profiles
   end
 
   def display_portfolio
@@ -52,8 +52,12 @@ class Workflows::UserContext
 
   private
 
-  def list_completed_profiles
-    User.where.not(bio: ["", nil])
+  def list_legit_completed_profiles
+    User.where.not(bio: ["", nil]).where.not("email LIKE ?", "%" + "yopmail" + "%")
+  end
+
+  def list_fake_completed_profiles
+    User.where("email LIKE ?", "%" + "yopmail" + "%")
   end
 
   def list_uncompleted_profiles

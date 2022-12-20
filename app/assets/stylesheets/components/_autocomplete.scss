@@ -67,7 +67,12 @@
 
 @media(min-width: 992px) {
   .autocomplete-suggestions--project-show {
-    top: 511px !important;
+    top: 460px !important;
     max-height: 150px !important;
+  }
+}
+@media(min-width: 1200px) {
+  .autocomplete-suggestions--project-show {
+    top: 568px !important;
   }
 }
