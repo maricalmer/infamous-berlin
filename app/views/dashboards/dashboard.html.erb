@@ -162,7 +162,7 @@
   </div>
 <% end %>
 <div class="dashboard__bottom-link-wrapper">
-  <%= link_to root_path, method: :delete, data: { confirm: "Are you sure?" }, class: "dashboard__bottom-link" do %>
+  <%= link_to user_path(current_user), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "dashboard__bottom-link" do %>
     <h3 class="dashboard__bottom-link-text">
       Delete your profile
       <div class="dashboard__bottom-link-underline"></div>
