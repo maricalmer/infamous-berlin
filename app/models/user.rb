@@ -23,14 +23,14 @@ class User < ApplicationRecord
   validates :email, presence: true, format: { with: /\A[^@\s]+@[^@\s]+\z/ }
   validates :photo, size: { less_than: 5.megabytes, message: '5MB max' }
 
-  validates :website, format: { with: /\A(ht|f)tp(s?)\:\/\/[0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*(:(0-9)*)*(\/?)([a-zA-Z0-9\-\.\?\,\'\/\\\+&amp;%\$#_]*)?\z/, message: "- please enter a valid url (https://example.com)" }
-  validates :facebook, format: { with: /\A(ht|f)tp(s?)\:\/\/(www\.)?facebook\.com[0-9a-zA-Z]*(:(0-9)*)*(\/?)([a-zA-Z0-9\-\.\?\,\'\/\\\+&amp;%\$#_]*)?\z/, message: "- please enter a valid url (https://facebook.com/example)" }
-  validates :instagram, format: { with: /\A(ht|f)tp(s?)\:\/\/(www\.)?instagram\.com[0-9a-zA-Z]*(:(0-9)*)*(\/?)([a-zA-Z0-9\-\.\?\,\'\/\\\+&amp;%\$#_]*)?\z/, message: "- please enter a valid url (https://instagram.com/example)" }
-  validates :soundcloud, format: { with: /\A(ht|f)tp(s?)\:\/\/(www\.)?soundcloud\.com[0-9a-zA-Z]*(:(0-9)*)*(\/?)([a-zA-Z0-9\-\.\?\,\'\/\\\+&amp;%\$#_]*)?\z/, message: "- please enter a valid url (https://soundcloud.com/example)" }
-  validates :youtube, format: { with: /\A(ht|f)tp(s?)\:\/\/(www\.)?youtube\.com[0-9a-zA-Z]*(:(0-9)*)*(\/?)([a-zA-Z0-9\-\.\?\,\'\/\\\+&amp;%\$#_]*)?\z/, message: "- please enter a valid url (https://youtube.com/example)" }
-  validates :mixcloud, format: { with: /\A(ht|f)tp(s?)\:\/\/(www\.)?mixcloud\.com[0-9a-zA-Z]*(:(0-9)*)*(\/?)([a-zA-Z0-9\-\.\?\,\'\/\\\+&amp;%\$#_]*)?\z/, message: "- please enter a valid url (https://mixcloud.com/example)" }
-  validates :twitter, format: { with: /\A(ht|f)tp(s?)\:\/\/(www\.)?twitter\.com[0-9a-zA-Z]*(:(0-9)*)*(\/?)([a-zA-Z0-9\-\.\?\,\'\/\\\+&amp;%\$#_]*)?\z/, message: "- please enter a valid url (https://twitter.com/example)" }
-  validates :linkedin, format: { with: /\A(ht|f)tp(s?)\:\/\/([a-zA-Z]*\.)?linkedin\.com[0-9a-zA-Z]*(:(0-9)*)*(\/?)([a-zA-Z0-9\-\.\?\,\'\/\\\+&amp;%\$#_]*)?\z/, message: "- please enter a valid url (https://linkedin.com/in/example)" }
+  validates :website, format: { with: /(^$)|(\A(ht|f)tp(s?)\:\/\/[0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*(:(0-9)*)*(\/?)([a-zA-Z0-9\-\.\?\,\'\/\\\+&amp;%\$#_]*)?\z)/, message: "- please enter a valid url (https://example.com)" }
+  validates :facebook, format: { with: /(^$)|(\A(ht|f)tp(s?)\:\/\/(www\.)?facebook\.com[0-9a-zA-Z]*(:(0-9)*)*(\/?)([a-zA-Z0-9\-\.\?\,\'\/\\\+&amp;%\$#_]*)?\z)/, message: "- please enter a valid url (https://facebook.com/example)" }
+  validates :instagram, format: { with: /(^$)|(\A(ht|f)tp(s?)\:\/\/(www\.)?instagram\.com[0-9a-zA-Z]*(:(0-9)*)*(\/?)([a-zA-Z0-9\-\.\?\,\'\/\\\+&amp;%\$#_]*)?\z)/, message: "- please enter a valid url (https://instagram.com/example)" }
+  validates :soundcloud, format: { with: /(^$)|(\A(ht|f)tp(s?)\:\/\/(www\.)?soundcloud\.com[0-9a-zA-Z]*(:(0-9)*)*(\/?)([a-zA-Z0-9\-\.\?\,\'\/\\\+&amp;%\$#_]*)?\z)/, message: "- please enter a valid url (https://soundcloud.com/example)" }
+  validates :youtube, format: { with: /(^$)|(\A(ht|f)tp(s?)\:\/\/(www\.)?youtube\.com[0-9a-zA-Z]*(:(0-9)*)*(\/?)([a-zA-Z0-9\-\.\?\,\'\/\\\+&amp;%\$#_]*)?\z)/, message: "- please enter a valid url (https://youtube.com/example)" }
+  validates :mixcloud, format: { with: /(^$)|(\A(ht|f)tp(s?)\:\/\/(www\.)?mixcloud\.com[0-9a-zA-Z]*(:(0-9)*)*(\/?)([a-zA-Z0-9\-\.\?\,\'\/\\\+&amp;%\$#_]*)?\z)/, message: "- please enter a valid url (https://mixcloud.com/example)" }
+  validates :twitter, format: { with: /(^$)|(\A(ht|f)tp(s?)\:\/\/(www\.)?twitter\.com[0-9a-zA-Z]*(:(0-9)*)*(\/?)([a-zA-Z0-9\-\.\?\,\'\/\\\+&amp;%\$#_]*)?\z)/, message: "- please enter a valid url (https://twitter.com/example)" }
+  validates :linkedin, format: { with: /(^$)|(\A(ht|f)tp(s?)\:\/\/([a-zA-Z]*\.)?linkedin\.com[0-9a-zA-Z]*(:(0-9)*)*(\/?)([a-zA-Z0-9\-\.\?\,\'\/\\\+&amp;%\$#_]*)?\z)/, message: "- please enter a valid url (https://linkedin.com/in/example)" }
 
   after_create :renew_slug
   before_update :set_slug

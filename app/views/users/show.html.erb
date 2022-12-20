@@ -43,7 +43,6 @@
       <button type="button" class="btn user-profile__message-btn" data-bs-toggle="modal" data-bs-target="#modalLogin">
         Message <%= @user.username %>
       </button>
-      <%= render 'shared/login_form' %>
     <% end %>
     <% if @portfolio.any? %>
       <%= link_to user_portfolio_path(@user), class: "user-profile__projects-btn-container link" do %>
@@ -59,29 +58,45 @@
   <div id="bottom-page"></div>
   <% if @user.contact_info? %>
     <div class="user-socialmedia-section user-profile-grid__socialmedia-section">
-      <% if @user.website.present? %>
+      <% if @user.website.present? && user_signed_in? %>
         <div><a class="user-socialmedia-section__link-item" target="_blank" rel="noopener noreferrer" href=<%= @user.website %>>Website</a></div>
+      <% elsif @user.website.present? %>
+        <div class="user-socialmedia-section__link-item" data-bs-toggle="modal" data-bs-target="#modalLogin">Website</div>
       <% end %>
-      <% if @user.facebook.present? %>
+      <% if @user.facebook.present? && user_signed_in? %>
         <div><a class="user-socialmedia-section__link-item" target="_blank" rel="noopener noreferrer" href=<%= @user.facebook %>>Facebook</a></div>
+      <% elsif @user.facebook.present? %>
+        <div class="user-socialmedia-section__link-item" data-bs-toggle="modal" data-bs-target="#modalLogin">Facebook</div>
       <% end %>
-      <% if @user.instagram.present? %>
+      <% if @user.instagram.present? && user_signed_in? %>
         <div><a class="user-socialmedia-section__link-item" target="_blank" rel="noopener noreferrer" href=<%= @user.instagram %>>Instagram</a></div>
+      <% elsif @user.instagram.present? %>
+        <div class="user-socialmedia-section__link-item" data-bs-toggle="modal" data-bs-target="#modalLogin">Instagram</div>
       <% end %>
-      <% if @user.soundcloud.present? %>
+      <% if @user.soundcloud.present? && user_signed_in? %>
         <div><a class="user-socialmedia-section__link-item" target="_blank" rel="noopener noreferrer" href=<%= @user.soundcloud %>>Soundcloud</a></div>
+      <% elsif @user.soundcloud.present? %>
+        <div class="user-socialmedia-section__link-item" data-bs-toggle="modal" data-bs-target="#modalLogin">Soundcloud</div>
       <% end %>
-      <% if @user.youtube.present? %>
+      <% if @user.youtube.present? && user_signed_in? %>
         <div><a class="user-socialmedia-section__link-item" target="_blank" rel="noopener noreferrer" href=<%= @user.youtube %>>YouTube</a></div>
+      <% elsif @user.youtube.present? %>
+        <div class="user-socialmedia-section__link-item" data-bs-toggle="modal" data-bs-target="#modalLogin">YouTube</div>
       <% end %>
-      <% if @user.mixcloud.present? %>
+      <% if @user.mixcloud.present? && user_signed_in? %>
         <div><a class="user-socialmedia-section__link-item" target="_blank" rel="noopener noreferrer" href=<%= @user.mixcloud %>>Mixcloud</a></div>
+      <% elsif @user.mixcloud.present? %>
+        <div class="user-socialmedia-section__link-item" data-bs-toggle="modal" data-bs-target="#modalLogin">Mixcloud</div>
       <% end %>
-      <% if @user.linkedin.present? %>
+      <% if @user.linkedin.present? && user_signed_in? %>
         <div><a class="user-socialmedia-section__link-item" target="_blank" rel="noopener noreferrer" href=<%= @user.linkedin %>>Linkedin</a></div>
+      <% elsif @user.linkedin.present? %>
+        <div class="user-socialmedia-section__link-item" data-bs-toggle="modal" data-bs-target="#modalLogin">Linkedin</div>
       <% end %>
-      <% if @user.twitter.present? %>
+      <% if @user.twitter.present? && user_signed_in? %>
         <div><a class="user-socialmedia-section__link-item" target="_blank" rel="noopener noreferrer" href=<%= @user.twitter %>>Twitter</a></div>
+      <% elsif @user.twitter.present? %>
+        <div class="user-socialmedia-section__link-item" data-bs-toggle="modal" data-bs-target="#modalLogin">Twitter</div>
       <% end %>
     </div>
   <% end %>
@@ -96,5 +111,6 @@
     </a>
   </div>
 </div>
-
-
+<% if !user_signed_in? %>
+  <%= render 'shared/login_form' %>
+<% end %>
