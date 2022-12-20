@@ -542,7 +542,10 @@
 }
 @media(min-width: 600px) {
   .form-page__input, .form-page__input:focus {
-    font-size: 1.3rem;
+    font-size: 1.7rem;
+  }
+  .form-page__input--project-title, .form-page__input--job-title {
+    font-size: 2.1rem;
   }
   .form-page__content {
     padding: 1rem;
