@@ -23,11 +23,12 @@ class CollabsController < ApplicationController
   end
 
   def destroy
-    @collab.destroy
     if @collab.user_id == current_user.id
+      @collab.destroy
       redirect_to dashboard_path, notice: 'Collaboration deleted'
     else
       @project = Project.find(@collab.project_id)
+      @collab.destroy
       redirect_to project_path(@project.slug), notice: 'Members list updated'
     end
   end
@@ -39,7 +40,7 @@ class CollabsController < ApplicationController
   end
 
   def set_collab
-    @collab = Collab.where(project_id: params[:id], user_id: current_user.id).take
+    @collab = Collab.find(params[:id])
     authorize @collab
   end
 end

@@ -2,7 +2,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :rememberable, :validatable, :confirmable, :recoverable
 
-  has_many :projects
+  has_many :projects, dependent: :destroy
   has_many :collabs
   has_many :member_projects, class_name: 'Project', through: :collabs, source: :project
   has_many :mirrors, dependent: :destroy
