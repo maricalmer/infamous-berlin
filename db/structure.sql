@@ -207,6 +207,7 @@ CREATE TABLE public.events (
     genre character varying,
     attendees integer,
     description text,
+    media text,
     slug character varying,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL
@@ -1049,6 +1050,6 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20220212110751'),
 ('20220412221901'),
 ('20220917144447'),
-('20221221140256');
+('20221221160448');
 
 

@@ -16,7 +16,7 @@ RailsAdmin.config do |config|
     end
   end
 
-  config.included_models = [ "User", "Project", "Job", "Inquiry" ]
+  config.included_models = [ "User", "Project", "Job", "Inquiry", "Event" ]
 
   config.model 'User' do
     edit do
@@ -39,6 +39,15 @@ RailsAdmin.config do |config|
   config.model 'Inquiry' do
     edit do
       include_fields :experience, :motivation, :status
+    end
+  end
+
+  config.model 'Event' do
+    create do
+      include_fields :title, :venue, :address, :organizer, :date, :genre, :description, :media, :photo
+    end
+    edit do
+      include_fields :title, :venue, :address, :organizer, :date, :genre, :attendees, :description, :media, :photo
     end
   end
   ## == CancanCan ==

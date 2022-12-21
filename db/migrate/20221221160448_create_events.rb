@@ -9,6 +9,7 @@ class CreateEvents < ActiveRecord::Migration[6.0]
       t.string :genre
       t.integer :attendees
       t.text :description
+      t.text :media
       t.string :slug
 
       t.timestamps

@@ -1,13 +1,12 @@
 class Event < ApplicationRecord
   has_one_attached :photo
 
+  validates :photo, size: { less_than: 5.megabytes, message: '5MB max' }
   validates :title, presence: true,
                     case_sensitive: false,
-                    format: { without: /(<|>|&)/, message: "cannot include special characters" },
                     length: { maximum: 100, message: "is too long" }
-  validates :description, presence: true, format: { without: /(<|>|&)/, message: "cannot include <, >, and &" }
+  validates :description, presence: true
   validates :slug, uniqueness: true, case_sensitive: false
-  validates :photo, size: { less_than: 5.megabytes, message: '5MB max' }
 
   after_create :renew_slug
   before_update :set_slug
@@ -25,4 +24,5 @@ class Event < ApplicationRecord
   def renew_slug
     Services::SlugGenerator.new(string: title, client: self).update_slug
   end
+
 end

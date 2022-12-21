@@ -1,0 +1,8 @@
+<h1><%= @event.title %></h1>
+<div class="user-details-section__username-avatar-wrapper">
+  <div class="avatar-diamond--big avatar-diamond--big__frame">
+    <%= cl_image_tag @event.photo.key, quality: "auto", alt: "event's picture", class: "avatar-diamond--big__img", transformation: [{fetch_format: "auto"}, {width: 700, crop: "fill"}] %>
+  </div>
+</div>
+<div><%= @event.description %></div>
+<div><%= @event.media.html_safe %></div>
