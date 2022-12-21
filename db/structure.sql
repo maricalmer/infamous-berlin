@@ -194,6 +194,45 @@ ALTER SEQUENCE public.collabs_id_seq OWNED BY public.collabs.id;
 
 
 --
+-- Name: events; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.events (
+    id bigint NOT NULL,
+    title character varying,
+    venue character varying,
+    address character varying,
+    date timestamp without time zone,
+    organizer character varying,
+    genre character varying,
+    attendees integer,
+    description text,
+    slug character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: events_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.events_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: events_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.events_id_seq OWNED BY public.events.id;
+
+
+--
 -- Name: inquiries; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -425,6 +464,13 @@ ALTER TABLE ONLY public.collabs ALTER COLUMN id SET DEFAULT nextval('public.coll
 
 
 --
+-- Name: events id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.events ALTER COLUMN id SET DEFAULT nextval('public.events_id_seq'::regclass);
+
+
+--
 -- Name: messages id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -490,6 +536,14 @@ ALTER TABLE ONLY public.chatrooms
 
 ALTER TABLE ONLY public.collabs
     ADD CONSTRAINT collabs_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: events events_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.events
+    ADD CONSTRAINT events_pkey PRIMARY KEY (id);
 
 
 --
@@ -994,6 +1048,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20220212110741'),
 ('20220212110751'),
 ('20220412221901'),
-('20220917144447');
+('20220917144447'),
+('20221221140256');
 
 
