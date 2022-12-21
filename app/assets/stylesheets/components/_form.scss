@@ -544,7 +544,7 @@
   .form-page__input, .form-page__input:focus {
     font-size: 1.7rem;
   }
-  .form-page__input--project-title, .form-page__input--job-title {
+  .form-page__input--project-title, .form-page__input--project-title:focus, .form-page__input--job-title, .form-page__input--job-title:focus {
     font-size: 2.1rem;
   }
   .form-page__content {
@@ -673,11 +673,6 @@
     display: flex;
     justify-content: space-between;
   }
-  .form-page__location-date-status-wrapper {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-  }
   .form-page__project-location, .form-page__date, .form-page__status {
     flex-grow: 1;
   }
@@ -727,6 +722,13 @@
     height: 100%;
     width: 100%;
     object-fit: cover;
+  }
+}
+@media(min-width: 1070px) {
+  .form-page__location-date-status-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
   }
 }
 @media(min-width: 1200px) {

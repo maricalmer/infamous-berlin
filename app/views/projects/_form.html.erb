@@ -2,7 +2,7 @@
   <%= f.input :title, label: 'Project title:', wrapper_html: { class: "form-page__project-title" }, label_html: { class: 'form-page__label' }, input_html: { class: 'form-page__input form-page__input--project-title', autocomplete: "off" } %>
   <%= f.input :description, label: 'Describe your project:', wrapper_html: { class: "form-page__project-description" }, label_html: { class: 'form-page__label' }, input_html: { class: 'form-page__input form-page__input--big' } %>
   <div class="form-page__location-date-status-wrapper">
-    <%= f.input :location, label: 'Location', wrapper_html: { data: { set: @location_autocomplete_set.to_json }, class: "form-page__project-location search-data-js" }, label_html: { class: 'form-page__label' }, input_html: { class: 'form-page__input search-input-js' } %>
+    <%= f.input :location, label: 'Location:', wrapper_html: { data: { set: @location_autocomplete_set.to_json }, class: "form-page__project-location search-data-js" }, label_html: { class: 'form-page__label' }, input_html: { class: 'form-page__input search-input-js' } %>
     <%= f.input :date, as: :string, label: 'When?', wrapper_html: { class: "form-page__date" }, label_html: { class: 'form-page__label' }, input_html: { class: "form-page__input datepicker datepicker-js" } %>
     <%= f.input :status, label: 'Project status:', as: :select, collection: @project.class.statuses.keys, include_blank: false, wrapper_html: { class: "form-page__status" }, label_html: { class: 'form-page__label' }, input_html: { class: "form-page__input" } %>
   </div>
