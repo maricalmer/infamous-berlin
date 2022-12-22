@@ -51,10 +51,10 @@
 .event-poster-and-description {
   display: flex;
   flex-direction: column-reverse;
+  border-bottom: dashed 4px black;
 }
 .event-poster-and-description__poster {
   border-top: dashed 4px black;
-  border-bottom: dashed 4px black;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -113,6 +113,7 @@
   .event-poster-and-description {
     display: flex;
     flex-direction: initial;
+    background: linear-gradient(to right, #9b9b9b 0%, #9b9b9b 60%, #B1DDE1 60%, #B1DDE1 100%);
   }
   .event-poster-and-description__poster {
     border-right: dashed 4px black;
@@ -120,23 +121,7 @@
   }
   .event-poster-and-description__description {
     border-left: dashed 4px black;
-    border-bottom: dashed 4px black;
-    width: 40%;
-  }
-  .event-medias {
-    border-top: none;
-  }
-  .event-medias__top-border--wrapper {
-    display: flex;
-  }
-  .event-medias__top-border--left {
-    border-top: dashed 4px black;
-    border-right: dashed 4px #333;
-    width: 60%;
-  }
-  .event-medias__top-border--right {
-    border-top: dashed 4px black;
-    border-left: dashed 4px #333;
+    border-bottom: none;
     width: 40%;
   }
 }
