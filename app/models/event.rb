@@ -24,5 +24,4 @@ class Event < ApplicationRecord
   def renew_slug
     Services::SlugGenerator.new(string: title, client: self).update_slug
   end
-
 end
