@@ -482,6 +482,33 @@
   color: black;
   background: #524E59 radial-gradient(circle, transparent 1%, #524E59 1%) center/15000%;
 }
+.event-title-and-details__attendees-btn, .event-title-and-details__attendees-btn:focus {
+  font-size: 1.5rem;
+  border: 4px solid black;
+  box-shadow: -6px -6px black;
+  background: #DDD92A;
+  background-position: center;
+  transition: background 0.8s;
+  border-radius: 0px;
+  height: 68px;
+  width: 100%;
+  padding: 0.5rem;
+  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem auto;
+}
+.event-title-and-details__attendees-btn:hover {
+  color: black;
+  background: #F9F40D radial-gradient(circle, transparent 1%, #F9F40D 1%) center/15000%;
+}
+.event-title-and-details__attendees-btn-text {
+  font-size: 1.6rem;
+}
+.event-title-and-details__attendees-btn-icon {
+  margin-right: 0.5rem;
+}
 @media(min-width: 450px) {
   .mobile-homepage-tap-btn__text {
     height: 100px;
@@ -578,8 +605,15 @@
     font-size: 2rem;
     width: 250px;
   }
+  .event-title-and-details__attendees-btn {
+    margin: 0;
+    width: 120px;
+  }
 }
 @media(min-width: 470px) {
+  .event-title-and-details__attendees-btn {
+    width: 170px;
+  }
   .chatroom__new-message-btn {
     margin: 0 0 0 1rem;
     width: 150px;
@@ -591,5 +625,10 @@
 @media (hover: hover) and (pointer: fine) {
   .mobile-homepage-tap-btn {
     display: none;
+  }
+}
+@media(min-width: 992px) {
+  .event-title-and-details__attendees-btn {
+    width: 120px;
   }
 }
