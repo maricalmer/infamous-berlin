@@ -11,7 +11,7 @@
   height: 40vh;
 }
 .event-title-and-details__title-text {
-  font-size: 3.5rem;
+  font-size: 4rem;
   margin-bottom: 0;
 }
 .event-title-and-details__details {
@@ -59,11 +59,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
+  padding: 5rem;
 }
 .event-poster-and-description__poster--img {
   max-width: 90%;
   max-height: 90%;
+  filter: grayscale(70%);
 }
 .event-poster-and-description__description {
   background-color: #B1DDE1;
@@ -75,15 +76,29 @@
 .event-medias {
   background-color: #333;
   border-top: dashed 4px black;
+  min-height: 50px;
 }
 .event-medias__links {
-  padding: 1.5rem 3rem 1.5rem 1.5rem;
+  padding: 3rem;
 }
-
+.event-medias__links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  iframe {
+    width: 250px;
+    height: 250px;
+    border: 3px solid black;
+    filter: grayscale(70%);
+    -webkit-filter: grayscale(70%);
+  }
+}
 @media(min-width: 450px) {
   .event-title-and-details__details {
     display: flex;
-    padding: 1.5rem 3rem 1.5rem 1.5rem;
+    padding: 3rem 3rem 1.5rem 1.5rem;
   }
   .event-title-and-details__attendees-wrapper {
     flex-direction: column;
@@ -118,10 +133,16 @@
   .event-poster-and-description__poster {
     border-right: dashed 4px black;
     width: 60%;
+    padding: 2rem;
+  }
+  .event-poster-and-description__poster--img {
+    max-width: 100%;
+    max-height: 100%;
   }
   .event-poster-and-description__description {
     border-left: dashed 4px black;
     border-bottom: none;
     width: 40%;
+    padding: 2rem;
   }
 }

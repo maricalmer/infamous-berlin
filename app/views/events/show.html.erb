@@ -24,10 +24,17 @@
       </div>
       <div class="event-title-and-details__details--right">
         <div class="event-title-and-details__attendees-wrapper">
-          <button class="event-title-and-details__attendees-btn attendees-btn-js" data-bs-toggle="modal" data-bs-target="#modalLogin">
-            <i class="fas fa-user-plus event-title-and-details__attendees-btn-icon"></i>
-            <div class="event-title-and-details__attendees-btn-text">Attend</div>
-          </button>
+          <% if !user_signed_in? %>
+            <button class="event-title-and-details__attendees-btn" data-bs-toggle="modal" data-bs-target="#modalLogin">
+              <i class="fas fa-user-plus event-title-and-details__attendees-icon event-title-and-details__attendees-plus-icon"></i>
+              <!-- <div class="event-title-and-details__attendees-btn-text">Attend</div> -->
+            </button>
+          <% else %>
+            <button class="event-title-and-details__attendees-btn attendees-btn-js">
+              <i class="fas fa-user-plus event-title-and-details__attendees-icon event-title-and-details__attendees-plus-icon"></i>
+              <!-- <div class="event-title-and-details__attendees-btn-text">Attend</div> -->
+            </button>
+          <% end %>
           <div>
             <div class="event-title-and-details__details-title event-title-and-details__details-title--attendees">Attendees</div>
             <div class="event-title-and-details__detail-item event-title-and-details__detail-item--attendees-amount"><%= @event.attendees %></div>
@@ -44,13 +51,14 @@
       <div><%= simple_format @event.description %></div>
     </div>
   </div>
-  <div class="event-medias">
-    <div class="event-medias__links">
-      <%= raw @event.media %>
-    </div>
+  <div class="event-medias ">
+    <% if @event.media? %>
+      <div class="event-medias__links soundcloud-link-js">
+        <%= raw @event.media %>
+      </div>
+    <% end %>
   </div>
 </div>
-
 <% if !user_signed_in? %>
   <%= render 'shared/login_form' %>
 <% end %>

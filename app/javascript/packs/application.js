@@ -8,7 +8,13 @@ import { initChatroomCable } from '../channels/chatroom_channel';
 import { addAttribute, populateList, disableEnterSubmit } from '../components/add_array_attributes';
 import { alignSafariGridItems } from '../components/align_grid_items_on_safari';
 
+
+
 import { triggerAttendBtn } from '../components/attendees_btn';
+
+import { deleteSoundcloudLinks } from '../components/delete_soundcloud_link';
+
+
 
 import { autocompleteSearch } from '../components/autocomplete';
 import { reloadWindowOnBackBtn } from '../components/back_btn_reload';
@@ -48,9 +54,16 @@ document.addEventListener('turbolinks:load', () => {
   }
 
 
+
+
   if (document.querySelectorAll(".attendees-btn-js").length) {
     triggerAttendBtn();
   }
+  if (document.querySelectorAll(".soundcloud-link-js").length) {
+    deleteSoundcloudLinks();
+  }
+
+
 
 
   if (document.querySelectorAll(".autocomplete-form-js").length ||
