@@ -615,14 +615,14 @@
     font-size: 2rem;
     width: 250px;
   }
-  .event-title-and-details__attendees-btn {
+  .event-title-and-details__attendees-btn, .event-title-and-details__attendees-btn:focus {
     margin: 0;
     margin-left: 1rem;
     width: 120px;
   }
 }
 @media(min-width: 470px) {
-  .event-title-and-details__attendees-btn {
+  .event-title-and-details__attendees-btn, .event-title-and-details__attendees-btn:focus {
     width: 170px;
   }
   .chatroom__new-message-btn {
@@ -639,7 +639,7 @@
   }
 }
 @media(min-width: 992px) {
-  .event-title-and-details__attendees-btn {
+  .event-title-and-details__attendees-btn, .event-title-and-details__attendees-btn:focus {
     width: 120px;
   }
 }
