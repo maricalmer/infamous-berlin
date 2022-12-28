@@ -15,6 +15,22 @@ class Event < ApplicationRecord
     slug
   end
 
+  def attend(user_id)
+    return if attendees.include?(user_id)
+
+    attendees.push(user_id)
+  end
+
+  def unattend(user_id)
+    return if !attendees.include?(user_id)
+
+    attendees.delete(user_id)
+  end
+
+  def split_genre_items
+    genre.gsub(/,/, ' ').strip.split(' ')
+  end
+
   private
 
   def set_slug

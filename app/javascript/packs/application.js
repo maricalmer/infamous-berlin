@@ -7,20 +7,12 @@ import '../libraries/bootstrap_js_files.js';
 import { initChatroomCable } from '../channels/chatroom_channel';
 import { addAttribute, populateList, disableEnterSubmit } from '../components/add_array_attributes';
 import { alignSafariGridItems } from '../components/align_grid_items_on_safari';
-
-
-
-import { triggerAttendBtn } from '../components/attendees_btn';
-
-import { deleteSoundcloudLinks } from '../components/delete_soundcloud_link';
-
-
-
 import { autocompleteSearch } from '../components/autocomplete';
 import { reloadWindowOnBackBtn } from '../components/back_btn_reload';
 import { scrollOnArrows, hideArrowsOnScroll, changeImgDesktop, checkOnFilesState, switchImgWithDots, switchImgWithSwipe } from '../components/carousel';
 import { attachCropperEvents } from '../components/cropper';
 import { initFlatpickr } from '../components/datepicker';
+import { deleteSoundcloudLinks } from '../components/delete_soundcloud_link';
 import { renderDashboardDropdown } from '../components/dropdown_dashboard_menus';
 import { renderPreview } from '../components/file_preview';
 import { clickOnFilter } from '../components/filter_btn_covering_effect';
@@ -52,20 +44,6 @@ document.addEventListener('turbolinks:load', () => {
   if (document.querySelectorAll(".align-items-on-safari-js").length) {
     alignSafariGridItems();
   }
-
-
-
-
-  if (document.querySelectorAll(".attendees-btn-js").length) {
-    triggerAttendBtn();
-  }
-  if (document.querySelectorAll(".soundcloud-link-js").length) {
-    deleteSoundcloudLinks();
-  }
-
-
-
-
   if (document.querySelectorAll(".autocomplete-form-js").length ||
     document.querySelectorAll(".project-show-js").length) {
     autocompleteSearch();
@@ -92,6 +70,9 @@ document.addEventListener('turbolinks:load', () => {
   if (document.querySelectorAll(".datepicker-js").length) {
     initFlatpickr();
   };
+  if (document.querySelectorAll(".soundcloud-link-js").length) {
+    deleteSoundcloudLinks();
+  }
   if (document.querySelectorAll(".dropdown-links-js").length) {
     renderDashboardDropdown();
   }

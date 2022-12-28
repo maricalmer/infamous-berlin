@@ -1,0 +1,20 @@
+function increaseCounter(counter) {
+  counter.innerHTML = `${parseInt(counter.innerHTML) + 1}`;
+}
+
+function decreaseCounter(counter) {
+  counter.innerHTML = `${parseInt(counter.innerHTML) - 1}`;
+}
+
+function renderAttendBtn(btnHTML) {
+  const btn = document.querySelector(".attendees-btn-js");
+  const counter = document.querySelector(".attendees-amount-js");
+  btn.outerHTML = btnHTML;
+  if (btn.innerText.includes("Attend")) {
+    increaseCounter(counter);
+  } else {
+    decreaseCounter(counter);
+  }
+}
+
+renderAttendBtn('<%= j render "attend_btn" %>');

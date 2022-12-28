@@ -9,4 +9,12 @@ class EventPolicy < ApplicationPolicy
   def show?
     true
   end
+
+  def attend?
+    true
+  end
+
+  def unattend?
+    true
+  end
 end

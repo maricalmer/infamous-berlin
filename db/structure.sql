@@ -205,7 +205,7 @@ CREATE TABLE public.events (
     date timestamp without time zone,
     organizer character varying,
     genre character varying,
-    attendees integer,
+    attendees integer[] DEFAULT '{}'::integer[],
     description text,
     media text,
     slug character varying,

@@ -1,12 +1,31 @@
 class EventsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[show index]
-  before_action :set_event, only: %i[show]
+  before_action :set_event, only: %i[show attend unattend]
 
   def show
   end
 
   def index
     @events = policy_scope(Event)
+
+  end
+
+  def attend
+    @event.attend(current_user.id)
+    @event.save
+    respond_to do |format|
+      format.html { redirect_to event_path }
+      format.js
+    end
+  end
+
+  def unattend
+    @event.unattend(current_user.id)
+    @event.save
+    respond_to do |format|
+      format.html { redirect_to event_path }
+      format.js { render action: :attend }
+    end
   end
 
   private

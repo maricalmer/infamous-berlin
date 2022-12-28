@@ -34,6 +34,19 @@
 .event-title-and-details__detail-item {
   font-size: 1.7rem;
 }
+.event-title-and-details__genres {
+  display: flex;
+  padding: 1rem 0;
+}
+.event-title-and-details__genres-item {
+  box-shadow: -6px -6px black;
+  border: 3px solid black;
+  width: auto;
+  padding: 2px;
+  background-color: #d6d6d6;
+  font-size: 1rem;
+  margin-right: 0.7rem;
+}
 .event-title-and-details__attendees-wrapper {
   height: 100%;
   display: flex;
@@ -47,6 +60,7 @@
 .event-title-and-details__location {
   display: flex;
   align-items: baseline;
+  flex-wrap: wrap;
 }
 .event-poster-and-description {
   display: flex;
@@ -61,10 +75,35 @@
   align-items: center;
   padding: 5rem;
 }
-.event-poster-and-description__poster--img {
+.event-poster-and-description__img {
   max-width: 90%;
   max-height: 90%;
   filter: grayscale(70%);
+  cursor: pointer;
+}
+.event-poster__overlay {
+  background-color: #999999;
+}
+.event-poster__overlay img {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter:
+    drop-shadow(0 -4px 0 black)
+    drop-shadow(0 4px 0 black)
+    drop-shadow(-4px 0 0 black)
+    drop-shadow(4px 0 0 black)
+    drop-shadow(-8px -8px 0 black);
+}
+.event-poster__overlay-body {
+  display: flex;
+}
+.event-poster__overlay-close-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
 }
 .event-poster-and-description__description {
   background-color: #B1DDE1;
@@ -134,10 +173,13 @@
     border-right: dashed 4px black;
     width: 60%;
     padding: 2rem;
+    justify-content: flex-start;
   }
-  .event-poster-and-description__poster--img {
+  .event-poster-and-description__img {
     max-width: 100%;
     max-height: 100%;
+    position: sticky;
+    top: 30px;
   }
   .event-poster-and-description__description {
     border-left: dashed 4px black;

@@ -9,7 +9,6 @@ RSpec.describe Event do
     let(:event_nil_description) { FactoryBot.build_stubbed(:event, description: nil) }
     let(:event_empty_string_description) { FactoryBot.build_stubbed(:event, description: "") }
     it "is valid with title, description and date" do
-      p event
       expect(event).to be_valid
     end
     it "is not valid with nil title" do
@@ -34,6 +33,32 @@ RSpec.describe Event do
       second_event.slug = event.slug
       expect(second_event).to_not be_valid
       expect(second_event.errors.full_messages_for(:slug)).to include "Slug has already been taken"
+    end
+    it "defaults to 0 attendee" do
+      expect(event.attendees.count).to eq(0)
+    end
+  end
+  describe "callbacks" do
+    let(:event) { FactoryBot.create(:event) }
+    let(:user) { FactoryBot.create(:user) }
+    it "adds 1 attendee when attend method is called and user is not attending already" do
+      event.attend(user.id)
+      expect(event.attendees.count).to eq(1)
+    end
+    it "doesnt add 1 attendee when attend method is called but user is already attending" do
+      event.attend(user.id)
+      event.attend(user.id)
+      expect(event.attendees.count).to eq(1)
+    end
+    it "removes 1 attendee when unattend method is called" do
+      event.attend(user.id)
+      expect(event.attendees.count).to eq(1)
+      event.unattend(user.id)
+      expect(event.attendees.count).to eq(0)
+    end
+    it "doesnt remove 1 attendee when unattend method is called but user is not attending" do
+      event.unattend(user.id)
+      expect(event.attendees.count).to eq(0)
     end
   end
 end

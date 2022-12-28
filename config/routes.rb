@@ -29,7 +29,13 @@ Rails.application.routes.draw do
   end
   resources :chatrooms, only: [:show, :index]
   resources :messages, only: [:create]
-  resources :events, param: :slug, only: [:show, :index]
+  resources :events, param: :slug, only: [:show, :index] do
+    member do
+      post :attend
+      post :unattend
+    end
+  end
+
 
   get '/dashboard', to: 'dashboards#dashboard'
   get '/upcoming_projects_dash', to: 'dashboards#upcoming_projects_dash'

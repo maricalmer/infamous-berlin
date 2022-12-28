@@ -1,0 +1,16 @@
+<% if !user_signed_in? %>
+  <button class="attend-btn" data-bs-toggle="modal" data-bs-target="#modalLogin">
+    <i class="fas fa-user-plus"></i>
+    <div class="attend-btn__text">Attend</div>
+  </button>
+<% elsif !@event.attendees.include?(current_user.id) %>
+  <%= link_to attend_event_path(@event), class: "attend-btn__link attend-btn attendees-btn-js", method: :post, remote: true do %>
+    <i class="fas fa-user-plus"></i>
+    <div class="attend-btn__text">Attend</div>
+  <% end %>
+<% else %>
+  <%= link_to unattend_event_path(@event), class: "attend-btn__link attend-btn attendees-btn-js", method: :post, remote: true do %>
+    <i class="fas fa-user-minus"></i>
+    <div class="attend-btn__text">Unattend</div>
+  <% end %>
+<% end %>

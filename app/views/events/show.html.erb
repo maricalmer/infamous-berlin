@@ -21,31 +21,29 @@
           <div class="event-title-and-details__details-title">Date</div>
           <div class="event-title-and-details__detail-item"><%= @event.date.strftime("starting on %a, %d %b %Y - %I%P") %></div>
         </div>
+        <div>
+          <div class="event-title-and-details__details-title">Genres</div>
+          <div class="event-title-and-details__detail-item event-title-and-details__genres">
+            <% @event.split_genre_items.each do |genre| %>
+              <div class="event-title-and-details__genres-item"><%= genre %></div>
+            <% end%>
+          </div>
+        </div>
       </div>
       <div class="event-title-and-details__details--right">
         <div class="event-title-and-details__attendees-wrapper">
-          <% if !user_signed_in? %>
-            <button class="event-title-and-details__attendees-btn" data-bs-toggle="modal" data-bs-target="#modalLogin">
-              <i class="fas fa-user-plus event-title-and-details__attendees-icon event-title-and-details__attendees-plus-icon"></i>
-              <!-- <div class="event-title-and-details__attendees-btn-text">Attend</div> -->
-            </button>
-          <% else %>
-            <button class="event-title-and-details__attendees-btn attendees-btn-js">
-              <i class="fas fa-user-plus event-title-and-details__attendees-icon event-title-and-details__attendees-plus-icon"></i>
-              <!-- <div class="event-title-and-details__attendees-btn-text">Attend</div> -->
-            </button>
-          <% end %>
+          <%= render 'attend_btn' %>
           <div>
             <div class="event-title-and-details__details-title event-title-and-details__details-title--attendees">Attendees</div>
-            <div class="event-title-and-details__detail-item event-title-and-details__detail-item--attendees-amount"><%= @event.attendees %></div>
+            <div class="event-title-and-details__detail-item event-title-and-details__detail-item--attendees-amount attendees-amount-js"><%= @event.attendees.count %></div>
           </div>
         </div>
       </div>
     </div>
   </div>
   <div class="event-poster-and-description">
-    <div class="event-poster-and-description__poster">
-      <%= cl_image_tag @event.photo.key, quality: "auto", alt: "event's picture", class: "event-poster-and-description__poster--img", transformation: [{fetch_format: "auto"}, {width: 700, crop: "fill"}] %>
+    <div class="event-poster-and-description__poster" data-bs-toggle="modal" data-bs-target="#eventModalBigScreen">
+      <%= cl_image_tag @event.photo.key, quality: "auto", alt: "event's picture", class: "event-poster-and-description__img", transformation: [{fetch_format: "auto"}, {width: 700, crop: "fill"}] %>
     </div>
     <div class="event-poster-and-description__description">
       <div><%= simple_format @event.description %></div>
@@ -57,6 +55,16 @@
         <%= raw @event.media %>
       </div>
     <% end %>
+  </div>
+</div>
+<div class="modal fade" id="eventModalBigScreen" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content event-poster__overlay">
+      <div class="modal-body event-poster__overlay-body">
+        <%= cl_image_tag @event.photo.key, quality: "auto", transformation: [{fetch_format: "auto"}] %>
+        <button type="button" class="btn-close event-poster__overlay-close-btn" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+    </div>
   </div>
 </div>
 <% if !user_signed_in? %>

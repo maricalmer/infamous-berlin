@@ -16,7 +16,7 @@
     "jquery-ui": "^1.13.1",
     "js-autocomplete": "^1.0.4",
     "popper.js": "^1.16.1",
-    "rails_admin": "3.0.0",
+    "rails_admin": "3.1.1",
     "turbolinks": "^5.2.0",
     "typed.js": "^2.0.12"
   },
@@ -26,5 +26,8 @@
   },
   "engines": {
     "node": "14.x"
+  },
+  "resolutions": {
+    "rails_admin/@fortawesome/fontawesome-free": "^5.15.0"
   }
 }

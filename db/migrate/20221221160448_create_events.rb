@@ -7,7 +7,7 @@ class CreateEvents < ActiveRecord::Migration[6.0]
       t.datetime :date
       t.string :organizer
       t.string :genre
-      t.integer :attendees
+      t.integer :attendees, array: true, default: []
       t.text :description
       t.text :media
       t.string :slug
