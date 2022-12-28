@@ -204,10 +204,12 @@ CREATE TABLE public.events (
     address character varying,
     date timestamp without time zone,
     organizer character varying,
+    organizer_type character varying DEFAULT 'random'::character varying,
     genre character varying,
     attendees integer[] DEFAULT '{}'::integer[],
     description text,
     media text,
+    recommended boolean DEFAULT false,
     slug character varying,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL

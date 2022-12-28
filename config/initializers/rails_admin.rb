@@ -44,10 +44,10 @@ RailsAdmin.config do |config|
 
   config.model 'Event' do
     create do
-      include_fields :title, :venue, :address, :organizer, :date, :genre, :description, :media, :photo
+      include_fields :title, :venue, :address, :organizer, :organizer_type, :date, :genre, :recommended, :description, :media, :photo
     end
     edit do
-      include_fields :title, :venue, :address, :organizer, :date, :genre, :description, :media, :photo
+      include_fields :title, :venue, :address, :organizer, :organizer_type, :date, :genre, :recommended, :description, :media, :photo
     end
   end
   ## == CancanCan ==

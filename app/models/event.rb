@@ -5,6 +5,7 @@ class Event < ApplicationRecord
   validates :title, presence: true,
                     case_sensitive: false,
                     length: { maximum: 100, message: "is too long" }
+  validates :organizer_type, inclusion: { in: %w(infamous friends random), message: "%{value} is not a valid type, please choose: infamous, friends or random" }
   validates :description, presence: true
   validates :slug, uniqueness: true, case_sensitive: false
 

@@ -7,7 +7,7 @@ class EventsController < ApplicationController
 
   def index
     @events = policy_scope(Event)
-
+    @popular_events = Event.where(popular: true)
   end
 
   def attend
