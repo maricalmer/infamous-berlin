@@ -155,7 +155,6 @@
   padding: 1rem;
   width: 100%;
   background-color: #d6d6d6;
-  border-top: 2px solid black;
 }
 .index-event-card__event-title {
   overflow: hidden;
@@ -263,5 +262,6 @@
   .index-event-card__event-details {
     padding: 0 0 0 1rem;
     width: 500px;
+    border-top: 2px solid black;
   }
 }
