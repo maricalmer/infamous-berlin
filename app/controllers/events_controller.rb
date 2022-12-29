@@ -8,7 +8,7 @@ class EventsController < ApplicationController
   def index
     @events = policy_scope(Event)
     @calendar = Event.create_calendar
-    @recommended_events = Event.where("recommended = ? AND date > ?", true, 15.hours.ago)
+    @recommended_events = Event.where("recommended = ? AND date > ?", true, 5.hours.ago)
   end
 
   def attend
