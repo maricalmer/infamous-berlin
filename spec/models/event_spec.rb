@@ -60,6 +60,11 @@ RSpec.describe Event do
       event.unattend(user.id)
       expect(event.attendees.count).to eq(0)
     end
+    it "removes all autoplay options on embeded links" do
+      event.media = "https://soundcloud.com/track&auto_play=true&auto_play=true"
+      event.save
+      expect(event.media).to eq("https://soundcloud.com/track&auto_play=false&auto_play=false")
+    end
   end
 end
 

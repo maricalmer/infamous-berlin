@@ -9,8 +9,10 @@ class Event < ApplicationRecord
   validates :description, presence: true
   validates :slug, uniqueness: true, case_sensitive: false
 
+  before_save :remove_iframes_autoplay
   after_create :renew_slug
   before_update :set_slug
+
 
   def to_param
     slug
@@ -32,6 +34,17 @@ class Event < ApplicationRecord
     genre.gsub(/,/, ' ').strip.split(' ')
   end
 
+  def self.create_calendar
+    days = []
+    (0...14).each { |d| days << d.day.from_now.to_date }
+    calendar = {}
+    days.each do |d|
+      events_on_day = Event.where("date BETWEEN ? AND ?", d.at_beginning_of_day, d.at_end_of_day )
+      calendar[d] = events_on_day if events_on_day.present?
+    end
+    return calendar
+  end
+
   private
 
   def set_slug
@@ -40,5 +53,9 @@ class Event < ApplicationRecord
 
   def renew_slug
     Services::SlugGenerator.new(string: title, client: self).update_slug
+  end
+
+  def remove_iframes_autoplay
+    self.media = media.gsub(/&auto_play=true/, "&auto_play=false") if media
   end
 end

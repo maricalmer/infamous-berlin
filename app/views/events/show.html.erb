@@ -22,12 +22,14 @@
           <div class="event-title-and-details__detail-item"><%= @event.date.strftime("starting on %a, %d %b %Y - %I%P") %></div>
         </div>
         <div>
-          <div class="event-title-and-details__details-title">Genres</div>
-          <div class="event-title-and-details__detail-item event-title-and-details__genres">
-            <% @event.split_genre_items.each do |genre| %>
-              <div class="event-title-and-details__genres-item"><%= genre %></div>
-            <% end%>
-          </div>
+          <% if @event.genre? %>
+            <div class="event-title-and-details__details-title">Genres</div>
+            <div class="event-title-and-details__detail-item event-title-and-details__genres">
+              <% @event.split_genre_items.each do |genre| %>
+                <div class="event-title-and-details__genres-item"><%= genre %></div>
+              <% end%>
+            </div>
+          <% end%>
         </div>
       </div>
       <div class="event-title-and-details__details--right">

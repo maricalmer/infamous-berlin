@@ -18,6 +18,7 @@ module InfamousBerlin
     config.load_defaults 6.0
     config.exceptions_app = self.routes
     config.active_record.schema_format = :sql
+    config.time_zone = "Berlin"
     # config.autoloader = :classic
     # config.autoload_paths += %W(#{config.root}/lib)
     # Settings in config/environments/* take precedence over those specified here.
