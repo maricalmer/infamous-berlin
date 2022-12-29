@@ -138,22 +138,22 @@
   </ul>
 </div>
 <% if @project_ids.any? %>
-  <div class="dashboard__slider portfolio-cards-js">
-    <div class="dashboard__chevron-wrapper"><h5 class="dashboard__chevron dashboard__chevron--left dashboard__chevron--hidden past-chevron-left-js">&#x3c;</h5></div>
+  <div class="dashboard__slider check-img-state-js">
+    <div class="dashboard__chevron-wrapper"><h5 class="dashboard__chevron dashboard__chevron--left chevron--hidden past-chevron-left-js">&#x3c;</h5></div>
     <%= render "projects_dash" %>
-    <div class="dashboard__chevron-wrapper"><h5 class="dashboard__chevron dashboard__chevron--right dashboard__chevron--hidden past-chevron-right-js">&#x3e;</h5></div>
+    <div class="dashboard__chevron-wrapper"><h5 class="dashboard__chevron dashboard__chevron--right chevron--hidden past-chevron-right-js">&#x3e;</h5></div>
   </div>
 <% elsif @collab_ids.any? %>
-  <div class="dashboard__slider portfolio-cards-js">
-    <div class="dashboard__chevron-wrapper dash-chevron"><h5 class="dashboard__chevron dashboard__chevron--left dashboard__chevron--hidden past-chevron-left-js">&#x3c;</h5></div>
+  <div class="dashboard__slider check-img-state-js">
+    <div class="dashboard__chevron-wrapper dash-chevron"><h5 class="dashboard__chevron dashboard__chevron--left chevron--hidden past-chevron-left-js">&#x3c;</h5></div>
     <%= render "collabs_dash" %>
-    <div class="dashboard__chevron-wrapper dash-chevron"><h5 class="dashboard__chevron dashboard__chevron--right dashboard__chevron--hidden past-chevron-right-js">&#x3e;</h5></div>
+    <div class="dashboard__chevron-wrapper dash-chevron"><h5 class="dashboard__chevron dashboard__chevron--right chevron--hidden past-chevron-right-js">&#x3e;</h5></div>
   </div>
 <% elsif @sent_inquiry_ids.any? %>
-  <div class="dashboard__slider portfolio-cards-js">
-    <div class="dashboard__chevron-wrapper dash-chevron"><h5 class="dashboard__chevron dashboard__chevron--left dashboard__chevron--hidden past-chevron-left-js">&#x3c;</h5></div>
+  <div class="dashboard__slider check-img-state-js">
+    <div class="dashboard__chevron-wrapper dash-chevron"><h5 class="dashboard__chevron dashboard__chevron--left chevron--hidden past-chevron-left-js">&#x3c;</h5></div>
     <%= render "sent_dash" %>
-    <div class="dashboard__chevron-wrapper dash-chevron"><h5 class="dashboard__chevron dashboard__chevron--right dashboard__chevron--hidden past-chevron-right-js">&#x3e;</h5></div>
+    <div class="dashboard__chevron-wrapper dash-chevron"><h5 class="dashboard__chevron dashboard__chevron--right chevron--hidden past-chevron-right-js">&#x3e;</h5></div>
   </div>
 <% else %>
   <div class="dashboard__no-activity-placeholder">
