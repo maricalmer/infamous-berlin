@@ -5,15 +5,21 @@
   position: relative;
   background-color: #B1DDE1;
 }
-.event-index__text {
+.event-index__title-text {
   position: absolute;
   right: 0;
-  bottom:0;
-  font-size: 3rem;
   margin-right: 5rem;
   margin-bottom: 3rem;
   width: fit-content;
   line-height: 1;
+}
+.event-index__title-text--main {
+  font-size: 4rem;
+  bottom: 45px;
+}
+.event-index__title-text--sub {
+  font-size: 1.5rem;
+  bottom: 0;
 }
 .recommended-events-section {
   background-color: #646668;
@@ -202,9 +208,17 @@
     background-color: #cbefb6;
   }
 }
+@media(min-width: 355px) {
+  .event-index__title-text--sub {
+    font-size: 2.5rem;
+  }
+}
 @media(min-width: 450px) {
-  .event-index__text {
-    font-size: 5rem;
+  .event-index__title-text--main {
+    font-size: 6rem;
+  }
+  .event-index__title-text--sub {
+    font-size: 3rem;
   }
   .recommended-events-section__title {
     font-size: 4rem;
