@@ -18,6 +18,9 @@ class CollabsController < ApplicationController
     else
       @members = @project.members
       @jobs = @project.jobs
+      @project_attachments = @project.attachments.includes([:blob])
+      @autocomplete_set = Services::AutocompleteGenerator.new.usernames
+      @project_formatted_categories = Services::TagsRenderer.new(@project.category).format_tags
       render "projects/show"
     end
   end
