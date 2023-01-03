@@ -13,7 +13,7 @@ RSpec.describe Collab do
     it "is unvalid with identical project owner and member" do
       collab.project.user = user
       expect(collab).to_not be_valid
-      expect(collab.errors.full_messages_for(:member)).to include "Member is already collaborating on this project"
+      expect(collab.errors.full_messages_for(:member)).to include "Member and Project Owner cannot be the same user"
     end
     it "is valid with distinct project owner and member" do
       collab.project.user = second_user
