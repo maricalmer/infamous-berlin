@@ -121,6 +121,7 @@
   padding: 3rem;
   border-top: 4px dashed black;
   border-bottom: 4px dashed black;
+  background-color: #9b9b9b;
 }
 // .event-index__card-section:last-of-type {
 //   border-bottom: none;
@@ -155,6 +156,7 @@
   padding: 1rem;
   width: 100%;
   background-color: #d6d6d6;
+  border-top: 2px solid black;
 }
 .index-event-card__event-title {
   overflow: hidden;
@@ -191,17 +193,11 @@
   top: 100px;
 }
 .event-index__day-section:nth-child(odd) {
-  .event-index__card-section {
-    background-color: #bfbfbf;
-  }
   .event-index__date-section {
     background-color: #cdd1f4;
   }
 }
 .event-index__day-section:nth-child(even) {
-  .event-index__card-section {
-    background-color: #9b9b9b;
-  }
   .event-index__date-section {
     background-color: #cbefb6;
   }
@@ -224,7 +220,7 @@
     background: linear-gradient(to right, #9b9b9b 0%, #9b9b9b 60%, #cdd1f4 60%, #cdd1f4 100%);
   }
   .event-index__day-section:nth-child(odd) {
-   background: linear-gradient(to right, #bfbfbf 0%, #bfbfbf 60%, #cdd1f4 60%, #cdd1f4 100%);
+   background: linear-gradient(to right, #9b9b9b 0%, #9b9b9b 60%, #cdd1f4 60%, #cdd1f4 100%);
   }
   .event-index__day-section:nth-child(even) {
    background: linear-gradient(to right, #9b9b9b 0%, #9b9b9b 60%, #cbefb6 60%, #cbefb6 100%);
@@ -262,6 +258,5 @@
   .index-event-card__event-details {
     padding: 0 0 0 1rem;
     width: 500px;
-    border-top: 2px solid black;
   }
 }
