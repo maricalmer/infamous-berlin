@@ -1,0 +1,15 @@
+<div class="stamp stamp--small">
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500">
+    <defs>
+      <path d="M50,250c0-110.5,89.5-200,200-200s200,89.5,200,200s-89.5,200-200,200S50,360.5,50,250" id="textcircle">
+      </path>
+    </defs>
+    <text dy="20" textLength="1220">
+      <% if event.infamous? %>
+        <textPath class="stamp__text stamp__text--infamous" xlink:href="#textcircle">infamous event • infamous event •</textPath>
+      <% else %>
+        <textPath class="stamp__text stamp__text--supported" xlink:href="#textcircle">supported event • supported event •</textPath>
+      <% end %>
+    </text>
+  </svg>
+</div>

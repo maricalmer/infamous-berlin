@@ -45,6 +45,18 @@ class Event < ApplicationRecord
     return calendar
   end
 
+  def infamous?
+    organizer_type == "infamous"
+  end
+
+  def friends?
+    organizer_type == "friends"
+  end
+
+  def random?
+    organizer_type == "random"
+  end
+
   private
 
   def set_slug

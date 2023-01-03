@@ -1,4 +1,4 @@
-<%= render 'shared/hamburger' %>
+<%= render 'shared/navbar' %>
 <div class="event-index__title">
   <div class="event-index__title-text event-index__title-text--main">Events</div>
   <div class="event-index__title-text event-index__title-text--sub">// for the next 2 weeks</div>
@@ -52,6 +52,9 @@
                   </div>
                 <% end %>
               </div>
+              <% if !event.random? %>
+                <%= render 'small_stamp', event: event %>
+              <% end %>
             </div>
           <% end %>
         <% end %>

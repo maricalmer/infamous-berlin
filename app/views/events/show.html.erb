@@ -3,6 +3,9 @@
   <div class="event-title-and-details">
     <div class="event-title-and-details__title">
       <h1 class="event-title-and-details__title-text"><%= @event.title %></h1>
+      <% if !@event.random? %>
+        <%= render 'big_stamp', event: @event %>
+      <% end %>
     </div>
     <div class="event-title-and-details__details">
       <div class="event-title-and-details__details--left">

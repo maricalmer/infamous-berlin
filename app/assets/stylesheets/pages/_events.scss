@@ -124,10 +124,11 @@
 }
 .event-index__card-section {
   width: 100%;
-  padding: 3rem;
+  padding: 3rem 0;
   border-top: 4px dashed black;
   border-bottom: 4px dashed black;
   background-color: #9b9b9b;
+  margin: 0 auto;
 }
 // .event-index__card-section:last-of-type {
 //   border-bottom: none;
@@ -158,13 +159,35 @@
   object-fit: cover;
   filter: grayscale(50%);
 }
+.index-event-card__event-img-wrapper {
+  position: relative;
+}
+.index-event-card__event-img-filter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  z-index: 1;
+  opacity: 60%;
+}
+.index-event-card__event-img--filtered {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 .index-event-card__event-details {
   padding: 1rem;
   width: 100%;
   background-color: #d6d6d6;
   border-top: 2px solid black;
+  position: relative;
+  overflow: hidden;
 }
 .index-event-card__event-title {
+  position: relative;
+  z-index: 2;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -194,7 +217,7 @@
   font-size: 5rem;
   line-height: 1;
   text-align: right;
-  margin-right: 1rem;
+  margin-right: 5rem;
   position: sticky;
   top: 100px;
 }
@@ -207,6 +230,39 @@
   .event-index__date-section {
     background-color: #cbefb6;
   }
+}
+.stamp {
+  position: absolute;
+  z-index: 1;
+  height: 150px;
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+.stamp--small {
+  top: -1px;
+  right: -3px;
+  height: 150px;
+  transform: rotate(51deg);
+}
+.stamp--big {
+  top: -17px;
+  left: -92px;
+  height: 300px;
+  transform: rotate(86deg);
+}
+.stamp__text {
+  text-transform: uppercase;
+  letter-spacing: 10px;
+  font-size: 6rem;
+}
+
+.stamp__text--supported, .stamp__text--general {
+  fill: #9b9b9b;
+}
+.stamp__text--infamous {
+  fill: #b3a6db;
 }
 @media(min-width: 355px) {
   .event-index__title-text--sub {
@@ -260,6 +316,11 @@
   }
 }
 @media(min-width: 1200px) {
+  .small-stamp {
+    top: -1px;
+    right: -8px;
+    transform: rotate(6deg);
+  }
   .index-event-card {
     margin: 0 0 1.5rem 0;
     display: flex;
@@ -273,5 +334,9 @@
     padding: 0 0 0 1rem;
     width: 500px;
     border-top: none;
+  }
+  .stamp--small {
+    right: -2px;
+    transform: rotate(35deg);
   }
 }

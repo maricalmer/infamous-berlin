@@ -8,11 +8,14 @@
   justify-content: center;
   padding: 2rem 1rem;
   text-align: center;
-  height: 40vh;
+  min-height: 40vh;
+  position: relative;
 }
 .event-title-and-details__title-text {
   font-size: 4rem;
   margin-bottom: 0;
+  z-index: 2;
+  line-height: 0.8;
 }
 .event-title-and-details__details {
   border-top: dashed 4px black;
