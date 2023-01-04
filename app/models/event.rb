@@ -19,42 +19,31 @@ class Event < ApplicationRecord
   end
 
   def attend(user_id)
-    return if attendees.include?(user_id)
-
-    attendees.push(user_id)
+    Workflows::EventContext.new(self).add_to_attendees(user_id)
   end
 
   def unattend(user_id)
-    return if !attendees.include?(user_id)
-
-    attendees.delete(user_id)
+    Workflows::EventContext.new(self).remove_from_attendees(user_id)
   end
 
   def split_genre_items
-    genre.gsub(/,/, ' ').strip.split(' ')
+    Workflows::EventContext.new(self).format_genre_attribute
   end
 
   def self.create_calendar
-    days = []
-    (0...14).each { |d| days << d.day.from_now.to_date }
-    calendar = {}
-    days.each do |d|
-      events_on_day = Event.where("date BETWEEN ? AND ?", d.at_beginning_of_day, d.at_end_of_day ).order('coalesce(array_length(attendees, 1), 0)').reverse
-      calendar[d] = events_on_day if events_on_day.present?
-    end
-    return calendar
+    Workflows::EventContext.new(nil).new_calendar
   end
 
   def infamous?
-    organizer_type == "infamous"
+    Workflows::EventContext.new(self).is_organizer_infamous?
   end
 
   def friends?
-    organizer_type == "friends"
+    Workflows::EventContext.new(self).is_organizer_friends?
   end
 
   def random?
-    organizer_type == "random"
+    Workflows::EventContext.new(self).is_organizer_random?
   end
 
   private
@@ -68,6 +57,6 @@ class Event < ApplicationRecord
   end
 
   def remove_iframes_autoplay
-    self.media = media.gsub(/&auto_play=true/, "&auto_play=false") if media
+    Workflows::EventContext.new(self).format_media_attribute
   end
 end
