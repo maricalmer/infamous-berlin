@@ -55,7 +55,7 @@
   display: flex;
   flex-direction: column-reverse;
   justify-content: space-around;
-  align-items: start;
+  align-items: flex-start;
 }
 .event-title-and-details__detail-item--venue {
   margin-right: 0.5rem;
@@ -144,7 +144,7 @@
   }
   .event-title-and-details__attendees-wrapper {
     flex-direction: column;
-    align-items: end;
+    align-items: flex-end;
   }
   .event-title-and-details__details-title--attendees {
     text-align: right;
