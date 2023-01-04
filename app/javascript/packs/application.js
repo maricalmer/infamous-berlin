@@ -44,8 +44,7 @@ document.addEventListener('turbolinks:load', () => {
   if (document.querySelectorAll(".align-items-on-safari-js").length) {
     alignSafariGridItems();
   }
-  if (document.querySelectorAll(".autocomplete-form-js").length ||
-    document.querySelectorAll(".project-show-js").length) {
+  if (document.querySelectorAll(".autocomplete-form-js").length) {
     autocompleteSearch();
   };
   if (document.querySelectorAll(".bck-btn-reload-js").length) {

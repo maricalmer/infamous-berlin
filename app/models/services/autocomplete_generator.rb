@@ -6,10 +6,6 @@ class Services::AutocompleteGenerator
      "video animation", "video design", "photography", "model"]
   end
 
-  def usernames
-    User.all.pluck(:username).sort
-  end
-
   def location_set
     ["Kreuzberg", "Mitte", "Wedding", "P.Berg",
      "Neukölln", "Friedrichshain", "Remote"]

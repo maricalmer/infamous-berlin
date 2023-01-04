@@ -36,7 +36,7 @@
           <div class="carousel-and-project-details__new-member-btn-form">
             <button class="carousel-and-project-details__btn-covering btn btn-covering-js">Add member</button>
             <%= simple_form_for [ @project, @collab ], remote: true do |f| %>
-              <div class="new-member-form new-member-form-js project-show-js search-data-js" data-set="<%= @autocomplete_set.to_json %>">
+              <div class="new-member-form new-member-form-js">
                 <div class="new-member-form__content">
                   <div class="new-member-form__field">
                     <label class="new-member-form__label string optional" for="project_member">Add member's username</label>

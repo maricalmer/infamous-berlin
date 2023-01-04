@@ -27,17 +27,12 @@ const addSpecificClass = (cssClass) => {
 const autocompleteSearch = () => {
   const skillSets = document.querySelectorAll('.search-data-js');
   const projectFormPage = document.querySelector('.form-js');
-  const projectShowPage = document.querySelector('.project-show-js');
   skillSets.forEach((set) => {
     const specificSet = JSON.parse(set.dataset.set);
     if (specificSet && projectFormPage) {
       const searchInput = set.querySelector('.search-input-js');
       createAutocomplete(specificSet, searchInput);
       addSpecificClass("autocomplete-suggestions--new-project");
-    } else if (specificSet && projectShowPage) {
-      const searchInput = set.firstElementChild.firstElementChild.lastElementChild;
-      createAutocomplete(specificSet, searchInput);
-      addSpecificClass("autocomplete-suggestions--project-show");
     }
   });
 };

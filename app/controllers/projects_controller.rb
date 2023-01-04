@@ -7,7 +7,6 @@ class ProjectsController < ApplicationController
     @jobs = @project.jobs
     @collab = Collab.new
     @project_formatted_categories = Services::TagsRenderer.new(@project.category).format_tags
-    @autocomplete_set = Services::AutocompleteGenerator.new.usernames
     @project_attachments = @project.attachments.includes([:blob])
   end
 
