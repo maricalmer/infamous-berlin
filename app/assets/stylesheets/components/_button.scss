@@ -145,17 +145,15 @@
 .carousel-and-project-details__talent-eye-btn, .carousel-and-project-details__talent-eye-btn:focus {
   font-size: 2rem;
   margin: 0 auto 0 1rem;
-  display: block;
+  display: flex;
+  justify-content: center;
   border: 4px solid black;
   box-shadow: -6px -6px black;
   background: #7ECA93;
   width: 30%;
   height: 68px;
   color: black;
-  i {
-    text-align: center;
-    margin: 0;
-  }
+
 }
 .carousel-and-project-details__talent-eye-btn:hover, .carousel-and-project-details__talent-btn:hover {
   background-color: #d2fe55;
