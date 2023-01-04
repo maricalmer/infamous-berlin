@@ -53,7 +53,7 @@ class Workflows::UserContext
   private
 
   def list_legit_completed_profiles
-    User.where.not(bio: ["", nil]).where.not("email LIKE ?", "%" + "yopmail" + "%")
+    User.where.not(bio: ["", nil]).where.not("email LIKE ?", "%" + "yopmail" + "%").includes(photo_attachment: :blob)
   end
 
   def list_fake_completed_profiles
@@ -61,7 +61,7 @@ class Workflows::UserContext
   end
 
   def list_uncompleted_profiles
-    User.where(bio: ["", nil])
+    User.where(bio: ["", nil]).includes(photo_attachment: :blob)
   end
 
   def user_chatrooms
