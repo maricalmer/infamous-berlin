@@ -140,7 +140,8 @@
   width: 100%;
   color: white;
   border-radius: 0px;
-  height: 68px;
+  min-height: 68px;
+  height: fit-content;
 }
 .carousel-and-project-details__talent-eye-btn, .carousel-and-project-details__talent-eye-btn:focus {
   font-size: 2rem;
