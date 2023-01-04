@@ -653,6 +653,10 @@
   .event-title-and-details__attendees-minus-icon::after {
     margin-left: 0.3rem;
   }
+  .mobile-homepage-tap-btn__text {
+    height: 100px;
+    font-size: 5rem;
+  }
 }
 @media (hover: hover) and (pointer: fine) {
   .mobile-homepage-tap-btn {
