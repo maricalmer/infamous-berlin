@@ -1,3 +1,6 @@
+.event-page-grid {
+  height: 100vh;
+}
 .event-title-and-details__title {
   border-bottom: dashed 4px black;
   background-color: #B1DDE1;
@@ -119,6 +122,7 @@
   background-color: #333;
   border-top: dashed 4px black;
   min-height: 50px;
+  height: 100%;
 }
 .event-medias__links {
   padding: 3rem;
