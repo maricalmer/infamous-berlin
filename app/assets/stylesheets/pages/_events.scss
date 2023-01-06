@@ -243,10 +243,10 @@
   }
 }
 .stamp--small {
-  top: -10px;
+  top: -3px;
   right: -3px;
-  height: 150px;
-  width: 150px;
+  height: 100px;
+  width: 100px;
   transform: rotate(51deg);
 }
 .stamp--big {
@@ -263,8 +263,12 @@
 .stamp__text--supported, .stamp__text--general {
   fill: #9b9b9b;
 }
+.stamp__text--supported {
+  word-spacing: 2px;
+}
 .stamp__text--infamous {
   fill: #b3a6db;
+  word-spacing: 12px;
 }
 @media(min-width: 355px) {
   .event-index__title-text--sub {
@@ -318,11 +322,6 @@
   }
 }
 @media(min-width: 1200px) {
-  .small-stamp {
-    top: -1px;
-    right: -8px;
-    transform: rotate(6deg);
-  }
   .index-event-card {
     margin: 0 0 1.5rem 1.5rem;
     display: flex;
@@ -339,7 +338,8 @@
     border-left: 2px solid black;
   }
   .stamp--small {
-    right: -2px;
-    transform: rotate(35deg);
+    top: -3px;
+    right: -4px;
+    transform: rotate(68deg);
   }
 }
