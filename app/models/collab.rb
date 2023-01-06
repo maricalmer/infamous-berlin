@@ -6,6 +6,7 @@ class Collab < ApplicationRecord
   validates :member, uniqueness: { scope: :project, message: "member is already part of the project" }
 
   after_create_commit :create_mirror
+  before_destroy :delete_mirror
 
   private
 
@@ -17,5 +18,9 @@ class Collab < ApplicationRecord
 
   def create_mirror
     Mirror.create(user: member, project: project)
+  end
+
+  def delete_mirror
+    Mirror.find_by(user: member, project: project).destroy
   end
 end
