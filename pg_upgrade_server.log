@@ -1,0 +1,39 @@
+
+-----------------------------------------------------------------
+  pg_upgrade run on Mon Jan  9 13:54:27 2023
+-----------------------------------------------------------------
+
+
+-----------------------------------------------------------------
+  pg_upgrade run on Mon Jan  9 13:59:48 2023
+-----------------------------------------------------------------
+
+
+-----------------------------------------------------------------
+  pg_upgrade run on Mon Jan  9 14:00:03 2023
+-----------------------------------------------------------------
+
+command: "/usr/local/Cellar/postgresql/14.6/bin/pg_ctl" -w -l "pg_upgrade_server.log" -D "/usr/local/var/postgres" -o "-p 50432 -c autovacuum=off -c autovacuum_freeze_max_age=2000000000  -c listen_addresses='' -c unix_socket_permissions=0700" start >> "pg_upgrade_server.log" 2>&1
+pg_ctl: another server might be running; trying to start server anyway
+waiting for server to start....2023-01-09 14:00:04.229 CET [20621] FATAL:  lock file "postmaster.pid" already exists
+2023-01-09 14:00:04.229 CET [20621] HINT:  Is another postmaster (PID 467) running in data directory "/usr/local/var/postgres"?
+ stopped waiting
+pg_ctl: could not start server
+Examine the log output.
+
+
+
+-----------------------------------------------------------------
+  pg_upgrade run on Mon Jan  9 14:01:29 2023
+-----------------------------------------------------------------
+
+
+-----------------------------------------------------------------
+  pg_upgrade run on Mon Jan  9 14:02:02 2023
+-----------------------------------------------------------------
+
+
+-----------------------------------------------------------------
+  pg_upgrade run on Mon Jan  9 14:07:04 2023
+-----------------------------------------------------------------
+

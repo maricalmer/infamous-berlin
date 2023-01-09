@@ -1,0 +1,46 @@
+Running in verbose mode
+
+-----------------------------------------------------------------
+  pg_upgrade run on Mon Jan  9 13:54:27 2023
+-----------------------------------------------------------------
+
+check for "/usr/local/Cellar/postgresql/15.1/bin" failed: No such file or directory
+
+Running in verbose mode
+
+-----------------------------------------------------------------
+  pg_upgrade run on Mon Jan  9 13:59:48 2023
+-----------------------------------------------------------------
+
+You must identify the directory where the old cluster binaries reside.
+Please use the -b command-line option or the PGBINOLD environment variable.
+Running in verbose mode
+
+-----------------------------------------------------------------
+  pg_upgrade run on Mon Jan  9 14:00:03 2023
+-----------------------------------------------------------------
+
+"/usr/local/Cellar/postgresql/14.6/bin/pg_ctl" -w -l "pg_upgrade_server.log" -D "/usr/local/var/postgres" -o "-p 50432 -c autovacuum=off -c autovacuum_freeze_max_age=2000000000  -c listen_addresses='' -c unix_socket_permissions=0700" start >> "pg_upgrade_server.log" 2>&1
+There seems to be a postmaster servicing the old cluster.
+Please shutdown that postmaster and try again.
+
+-----------------------------------------------------------------
+  pg_upgrade run on Mon Jan  9 14:01:29 2023
+-----------------------------------------------------------------
+
+You must identify the directory where the old cluster binaries reside.
+Please use the -b command-line option or the PGBINOLD environment variable.
+Running in verbose mode
+
+-----------------------------------------------------------------
+  pg_upgrade run on Mon Jan  9 14:02:02 2023
+-----------------------------------------------------------------
+
+check for "/usr/local/Cellar/postgresql/15.1/bin/postgres" failed: not a regular file
+Running in verbose mode
+
+-----------------------------------------------------------------
+  pg_upgrade run on Mon Jan  9 14:07:04 2023
+-----------------------------------------------------------------
+
+check for "/usr/local/Cellar/postgresql/15.1/bin/postgres" failed: not a regular file
