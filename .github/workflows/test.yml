@@ -52,6 +52,10 @@ jobs:
           cp config/database.github.yml config/database.yml
           bundle exec rails db:create db:migrate
       - name: Run model tests
-        run: bundle exec rails test
+        run: bundle exec rails spec:models
+      - name: Run service tests
+        run: bundle exec rails spec:services
+      - name: Run workflow tests
+        run: bundle exec rails spec:workflows
       - name: Run system tests
-        run: bundle exec rails test:system
+        run: bundle exec rails spec:system
