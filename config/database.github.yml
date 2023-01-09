@@ -1,4 +1,5 @@
 test:
+  image: postgres:15
   adapter: postgresql
   encoding: unicode
   host: localhost
