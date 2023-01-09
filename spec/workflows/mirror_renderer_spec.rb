@@ -11,10 +11,12 @@ RSpec.describe Workflows::MirrorRenderer do
     end
     it "loads mirrors for past projects on 'past' status" do
       mirrors = Workflows::MirrorRenderer.new(user).load_mirrors_for_projects("past")
+      mirrors
       expect(mirrors.first.project).to eq(past_project)
     end
     it "loads mirrors for upcoming projects on 'upcoming' status" do
       mirrors = Workflows::MirrorRenderer.new(user).load_mirrors_for_projects("upcoming")
+      mirrors
       expect(mirrors.first.project).to eq(upcoming_project)
     end
   end
