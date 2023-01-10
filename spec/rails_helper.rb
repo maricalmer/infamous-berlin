@@ -32,19 +32,30 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 
 Capybara.default_max_wait_time = 5
-Capybara.register_driver :selenium do |app|
-  options = ::Selenium::WebDriver::Chrome::Options.new
+# Capybara.register_driver :selenium do |app|
+#   options = ::Selenium::WebDriver::Chrome::Options.new
 
-  options.add_argument('--headless')
-  options.add_argument('--no-sandbox')
-  options.add_argument('--disable-gpu')
-  options.add_argument('--disable-dev-shm-usage')
-  options.add_argument('--window-size=1366,720')
+#   options.add_argument('--headless')
+#   options.add_argument('--no-sandbox')
+#   options.add_argument('--disable-gpu')
+#   options.add_argument('--disable-dev-shm-usage')
+#   options.add_argument('--window-size=1366,720')
 
-  Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
+#   Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
+# end
+
+# Capybara.javascript_driver = :selenium
+Capybara.register_driver :selenium_chrome_headless_docker_friendly do |app|
+  Capybara::Selenium::Driver.load_selenium
+  browser_options = ::Selenium::WebDriver::Chrome::Options.new
+  browser_options.args << '--headless'
+  browser_options.args << '--disable-gpu'
+  # Sandbox cannot be used inside unprivileged Docker container
+  browser_options.args << '--no-sandbox'
+  Capybara::Selenium::Driver.new(app, browser: :chrome, options: browser_options)
 end
 
-Capybara.javascript_driver = :selenium
+Capybara.javascript_driver = :selenium_chrome_headless_docker_friendly
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
