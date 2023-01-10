@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'support/headless'
 
 RSpec.describe "send several messages to other user:" do
   let(:user) { FactoryBot.create(:user) }
