@@ -116,7 +116,7 @@
 }
 .dashboard__mobile-menu-more {
   font-size: calc(1.3rem + 0.6vw);
-  text-align: end;
+  text-align: flex-end;
 }
 .dashboard__mobile-menu-arrow {
   width: 20px;
@@ -414,7 +414,7 @@
     width: fit-content;
   }
   .dashboard__bottom-link-wrapper {
-    text-align: end;
+    text-align: flex-end;
   }
 }
 @media(min-width: 675px) {
@@ -519,7 +519,7 @@
     margin-top: 8px;
   }
   .dashboard__inquiry-record-date {
-    justify-content: start;
+    justify-content: flex-start;
     line-height: 1rem;
   }
   .dashboard__inquiry-list-item:nth-child(odd) {

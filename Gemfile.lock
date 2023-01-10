@@ -361,7 +361,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   bullet
   byebug
-  capybara (~> 3.38)
+  capybara
   capybara-screenshot
   cloudinary (~> 1.22)
   devise
@@ -391,7 +391,7 @@ DEPENDENCIES
   rexml (~> 3.2, >= 3.2.5)
   rspec-rails (~> 5.1, >= 5.1.2)
   sass-rails (>= 6)
-  selenium-webdriver (~> 4.7, >= 4.7.1)
+  selenium-webdriver
   simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
