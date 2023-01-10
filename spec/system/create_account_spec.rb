@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'support/headless'
 
 RSpec.describe "creating an account:" do
   it "can sign up" do

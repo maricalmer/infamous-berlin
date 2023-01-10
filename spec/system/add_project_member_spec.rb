@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'support/headless'
 
 RSpec.describe "adding a new project member:" do
   let(:user) { FactoryBot.create(:user) }

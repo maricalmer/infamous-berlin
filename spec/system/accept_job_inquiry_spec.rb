@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'support/headless'
 
 RSpec.describe "accept a job inquiry:" do
   let(:user) { FactoryBot.create(:user) }

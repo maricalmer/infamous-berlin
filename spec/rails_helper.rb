@@ -43,19 +43,26 @@ Capybara.default_max_wait_time = 5
 
 #   Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
 # end
-
 # Capybara.javascript_driver = :selenium
-# Capybara.register_driver :selenium_chrome_headless_docker_friendly do |app|
-#   Capybara::Selenium::Driver.load_selenium
-#   browser_options = ::Selenium::WebDriver::Chrome::Options.new
-#   browser_options.args << '--headless'
-#   browser_options.args << '--disable-gpu'
-#   # Sandbox cannot be used inside unprivileged Docker container
-#   browser_options.args << '--no-sandbox'
-#   Capybara::Selenium::Driver.new(app, browser: :chrome, options: browser_options)
-# end
 
-# Capybara.javascript_driver = :selenium_chrome_headless_docker_friendly
+
+Capybara.register_driver :selenium_chrome_headless_docker_friendly do |app|
+  Capybara::Selenium::Driver.load_selenium
+  browser_options = ::Selenium::WebDriver::Chrome::Options.new
+  browser_options.args << '--headless'
+  browser_options.args << '--window-size=1366,720'
+  # browser_options.args << '--disable-gpu'
+  # Sandbox cannot be used inside unprivileged Docker container
+  # browser_options.args << '--no-sandbox'
+  Capybara::Selenium::Driver.new(app, browser: :chrome, options: browser_options)
+end
+Capybara.javascript_driver = :selenium_chrome_headless_docker_friendly
+
+RSpec.configure do |config|
+  config.before(:each, type: :system) do
+    driven_by :selenium_chrome_headless_docker_friendly
+  end
+end
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
