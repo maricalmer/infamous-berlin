@@ -14,7 +14,7 @@
         </div>
       <% else %>
         <div class="carousel__mobile-placeholder placeholder-mobile-js" data-bs-toggle="modal" data-bs-target="#modalSmallScreen">
-          <%= cl_image_tag @project.attachments.first.key, cloud_name: cloudname, quality: "auto:low", class: "carousel__mobile-img", transformation: [{fetch_format: "auto"}, {width: 800, crop: "fill"}] %>
+          <%= cl_image_tag @project.attachments.first.key, quality: "auto:low", class: "carousel__mobile-img", transformation: [{fetch_format: "auto"}, {width: 800, crop: "fill"}] %>
         </div>
       <% end %>
       <% @project_attachments.each do |attachment| %>
