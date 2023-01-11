@@ -1,2 +1,2 @@
 infamousberlin.com - open source project
-capybara
+second with cloudinary config
