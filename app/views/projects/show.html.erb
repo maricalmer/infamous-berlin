@@ -127,7 +127,7 @@
         <div class="members-modal__avatar-and-name">
           <div class="member-modal-avatar__frame">
             <%= link_to user_path(@project.user) do %>
-              <%= cl_image_tag @project.user.photo.key, class: "member-modal-avatar__img", quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 100, crop: "fill"}] %>
+              <%= cl_image_tag @project.user.photo.key, cloud_name: "dbpv82leg", class: "member-modal-avatar__img", quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 100, crop: "fill"}] %>
             <% end %>
           </div>
           <%= link_to @project.user.username, user_path(@project.user), class:"member-modal__username" %>
