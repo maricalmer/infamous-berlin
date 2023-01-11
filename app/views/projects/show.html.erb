@@ -15,7 +15,7 @@
               <% @members.first(5).each do |member| %>
                 <div class="avatars-member-stack" data-bs-toggle="modal" data-bs-target="#membersList">
                   <% if member.photo.attached? %>
-                    <%= cl_image_tag member.photo.key, class: "avatars-member-stack__img", quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 70, crop: "fill"}] %>
+                    <%= cl_image_tag member.photo.key, cloud_name: "dbpv82leg", class: "avatars-member-stack__img", quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 70, crop: "fill"}] %>
                   <% else %>
                     <%= image_tag asset_path('logo.png'), class: "avatars-member-stack__img" %>
                   <% end %>
