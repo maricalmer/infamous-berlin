@@ -18,7 +18,7 @@
               <%= link_to edit_user_path(current_user.slug, anchor: "picture-anchor"), class: "avatar-dashboard__img-link" do %>
                 <div class="avatar-dashboard__img-reminder-text">Upload a picture!</div>
                 <div class="avatar-dashboard__img-reminder"></div>
-                <%= cl_image_tag current_user.photo.key, cloud_name: "dbpv82leg", quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 300, crop: "fill"}], class: "avatar-dashboard__img" %>
+                <%= cl_image_tag current_user.photo.key, cloud_name: cloud_name, quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 300, crop: "fill"}], class: "avatar-dashboard__img" %>
               <% end %>
             <% end %>
           </div>

@@ -7,7 +7,6 @@ class UsersController < ApplicationController
     @user_formatted_skills = Services::TagsRenderer.new(@user.skills).format_tags
     @ongoing_projects = Workflows::UserContext.new(@user).display_ongoing_projects
     @message = Message.new
-    @cloud_name = ENV["CLOUDINARY_CLOUD_NAME"]
   end
 
   def edit

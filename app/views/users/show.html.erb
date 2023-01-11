@@ -5,7 +5,6 @@
       <h3 class="user-details-section__username"><%= @user.username %></h3>
       <div class="avatar-diamond--big avatar-diamond--big__frame">
         <% if @user.photo.attached? %>
-          <%= ENV["CLOUDINARY_CLOUD_NAME"] %>
           <%= cl_image_tag @user.photo.key, cloud_name: cloud_name, quality: "auto", alt: "user's profile picture", class: "avatar-diamond--big__img", transformation: [{fetch_format: "auto"}, {width: 700, crop: "fill"}] %>
         <% else %>
           <%= image_tag asset_path('logo.png'), class: "avatar-diamond--big__img", alt: "user's profile picture" %>
