@@ -142,7 +142,7 @@
           <div class="members-modal__member">
             <div class="member-modal-avatar__frame">
               <%= link_to user_path(member.slug) do %>
-                <%= cl_image_tag member.photo.key, class: "member-modal-avatar__img", quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 100, crop: "fill"}] %>
+                <%= cl_image_tag member.photo.key, cloud_name: "dbpv82leg", class: "member-modal-avatar__img", quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 100, crop: "fill"}] %>
               <% end %>
             </div>
             <%= link_to member.username, user_path(member.slug), class:"member-modal__username" %>
