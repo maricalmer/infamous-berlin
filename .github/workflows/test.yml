@@ -58,4 +58,6 @@ jobs:
       - name: Run workflow tests
         run: bundle exec rails spec:workflows
       - name: Run system tests
+        with:
+          cloud_name: ${{ENV["CLOUDINARY_CLOUD_NAME"]}}
         run: bundle exec rails spec:system
