@@ -76,7 +76,7 @@
       <% else %>
         <picture class="carousel__img-video-wrapper img-slide-js" data-bs-toggle="modal" data-bs-target="#modalBigScreen">
           <source class="carousel__main-poster" srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 992px)">
-          <%= cl_image_tag @project.attachments.first.key, class: "carousel__main-img-poster", quality: "auto", transformation: [{fetch_format: "auto"}, {width: 1110, crop: "fill"}], alt: "#{@project.title}" %>
+          <%= cl_image_tag @project.attachments.first.key, cloud_name: "dbpv82leg", class: "carousel__main-img-poster", quality: "auto", transformation: [{fetch_format: "auto"}, {width: 1110, crop: "fill"}], alt: "#{@project.title}" %>
         </picture>
       <% end %>
     </div>
