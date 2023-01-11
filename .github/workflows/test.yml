@@ -58,6 +58,4 @@ jobs:
       - name: Run workflow tests
         run: bundle exec rails spec:workflows
       - name: Run system tests
-        with:
-          cloud_name: "dbpv82leg"
         run: bundle exec rails spec:system
