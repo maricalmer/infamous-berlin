@@ -363,7 +363,7 @@ DEPENDENCIES
   byebug
   capybara
   capybara-screenshot
-  cloudinary (~> 1.22)
+  cloudinary
   devise
   dotenv-rails
   factory_bot_rails
