@@ -27,7 +27,7 @@
               <%= image_tag asset_path('logo-audio.png'), class: "carousel__thumbnail carousel__thumbnail--poster carousel__thumbnail--img thumbnail-js" %>
               <%= cl_video_tag attachment.key, class: "carousel__thumbnail--video", poster: false %>
             <% else %>
-              <%= cl_image_tag attachment.key, class: "carousel__thumbnail carousel__thumbnail--poster carousel__thumbnail--img thumbnail-js", quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 1110, crop: "fill"}] %>
+              <%= cl_image_tag attachment.key, cloud_name: "dbpv82leg", class: "carousel__thumbnail carousel__thumbnail--poster carousel__thumbnail--img thumbnail-js", quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 1110, crop: "fill"}] %>
             <% end %>
           </picture>
         <% else %>

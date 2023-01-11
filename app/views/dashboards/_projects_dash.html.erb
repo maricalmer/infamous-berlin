@@ -11,7 +11,7 @@
         </h4>
         <div class="dashboard-slider-card__img-wrapper">
           <% if project.attachments.first.image? %>
-            <%= cl_image_tag project.attachments.first.key, class: "dashboard-slider-card__img", quality: "auto:low", height: 155, transformation: [{fetch_format: "auto"}, {width: 400, crop: "fill"}] %>
+            <%= cl_image_tag project.attachments.first.key, cloud_name: "dbpv82leg", class: "dashboard-slider-card__img", quality: "auto:low", height: 155, transformation: [{fetch_format: "auto"}, {width: 400, crop: "fill"}] %>
           <% elsif project.attachments.first.audio? %>
             <%= image_tag asset_path('logo-audio.png'), class: "dashboard-slider-card__img" %>
           <% else %>
