@@ -556,6 +556,11 @@
     left: 98px;
   }
 }
+@media(min-width: 1050px) {
+  .job-card__wrapper {
+    width: auto;
+  }
+}
 @media(min-width: 1200px) {
   .project-card--mirrors-grid {
     width: 200px;
