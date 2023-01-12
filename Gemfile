@@ -48,6 +48,7 @@ gem 'matrix', '~> 0.4.2'
 gem 'rexml', '~> 3.2', '>= 3.2.5'
 
 gem 'active_analytics'
+gem 'crawler_detect'
 
 group :development, :test do
   gem 'pry-byebug'
