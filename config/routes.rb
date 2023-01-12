@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  mount ActiveAnalytics::Engine, at: "analytics"
 
   devise_for :users, controllers: {
     sessions: 'users/sessions',
@@ -8,6 +7,11 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     passwords: 'users/passwords'
   }
+
+  authenticate :user, -> (u) { u.admin? } do
+    mount ActiveAnalytics::Engine, at: "analytics"
+  end
+
   root to: 'pages#home'
   resources :users, param: :slug do
     resources :mirrors, only: [:update]
