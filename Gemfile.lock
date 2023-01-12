@@ -37,8 +37,6 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
-    active_analytics (0.2.1)
-      rails (>= 5.2.0)
     active_storage_validations (0.9.6)
       activejob (>= 5.2.0)
       activemodel (>= 5.2.0)
@@ -99,8 +97,6 @@ GEM
     coderay (1.1.3)
     concurrent-ruby (1.1.9)
     crass (1.0.6)
-    crawler_detect (1.2.2)
-      qonfig (~> 0.24)
     date (3.3.1)
     devise (4.8.0)
       bcrypt (~> 3.0)
@@ -209,7 +205,6 @@ GEM
       nio4r (~> 2.0)
     pundit (2.2.0)
       activesupport (>= 3.0.0)
-    qonfig (0.28.0)
     racc (1.5.2)
     rack (2.2.3)
     rack-mini-profiler (2.3.3)
@@ -361,7 +356,6 @@ PLATFORMS
   x86_64-darwin-20
 
 DEPENDENCIES
-  active_analytics
   active_storage_validations (~> 0.9.6)
   autoprefixer-rails (= 10.2.5)
   bootsnap (>= 1.4.2)
@@ -370,7 +364,6 @@ DEPENDENCIES
   capybara
   capybara-screenshot
   cloudinary
-  crawler_detect
   devise
   dotenv-rails
   factory_bot_rails
