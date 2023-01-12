@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :record_page_view
   helper_method :resource_name, :resource, :devise_mapping, :resource_class
 
   include Pundit::Authorization
@@ -27,12 +26,6 @@ class ApplicationController < ActionController::Base
   end
 
   protected
-
-  def record_page_view
-    unless request.is_crawler?
-      ActiveAnalytics.record_request(request)
-    end
-  end
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:username])

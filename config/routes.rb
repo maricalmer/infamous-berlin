@@ -1,10 +1,6 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-  authenticate :user, -> (u) { u.admin? } do
-    mount ActiveAnalytics::Engine, at: "analytics"
-  end
-
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     confirmations: 'users/confirmations',

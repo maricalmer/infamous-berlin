@@ -2,9 +2,6 @@ require_relative 'boot'
 
 require 'rails/all'
 
-require "active_job/railtie"
-require "action_mailer/railtie"
-
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
@@ -22,7 +19,6 @@ module InfamousBerlin
     config.exceptions_app = self.routes
     config.active_record.schema_format = :sql
     config.time_zone = "Berlin"
-    config.middleware.use Rack::CrawlerDetect
     # config.autoloader = :classic
     # config.autoload_paths += %W(#{config.root}/lib)
     # Settings in config/environments/* take precedence over those specified here.
