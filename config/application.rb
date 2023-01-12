@@ -22,6 +22,7 @@ module InfamousBerlin
     config.exceptions_app = self.routes
     config.active_record.schema_format = :sql
     config.time_zone = "Berlin"
+    config.middleware.use Rack::CrawlerDetect
     # config.autoloader = :classic
     # config.autoload_paths += %W(#{config.root}/lib)
     # Settings in config/environments/* take precedence over those specified here.

@@ -29,7 +29,9 @@ class ApplicationController < ActionController::Base
   protected
 
   def record_page_view
-    ActiveAnalytics.record_request(request)
+    unless request.is_crawler?
+      ActiveAnalytics.record_request(request)
+    end
   end
 
   def configure_permitted_parameters
