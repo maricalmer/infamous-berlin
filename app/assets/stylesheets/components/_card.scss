@@ -1,5 +1,5 @@
 .card-user {
-  width: 250px;
+  width: 80%;
   position: relative;
   box-shadow: -6px -6px black;
   border: 3px solid black;
@@ -74,7 +74,7 @@
 }
 .project-card__wrapper {
   position: relative;
-  width: 200px;
+  width: 100%;
   height: fit-content;
   margin: 0 auto 30px auto;
   padding-top: 1rem;
@@ -94,7 +94,7 @@
 }
 .project-card__item {
   margin: 0 auto !important;
-  width: 200px;
+  width: 100%;
   height: fit-content;
   position: relative;
   background-color: #333;
@@ -144,8 +144,8 @@
   border-bottom: 3px solid black;
   border-top: 3px solid black;
   cursor: pointer;
-  left: 96px;
-  top: 4px;
+  right: -53px;
+  top: 3px;
   font-size: 0.95rem;
 }
 .project-card__img-and-avatar {
@@ -462,7 +462,7 @@
 .job-card__wrapper {
   display: flex;
   flex-direction: column;
-  width: 300px;
+  width: 80%;
   background-color: #d6d6d6;
   padding: 1rem;
   border: solid 4px black;
