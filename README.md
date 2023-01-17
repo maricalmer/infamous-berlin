@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://res.cloudinary.com/dbpv82leg/image/upload/c_fill,g_auto,w_400/v1673965776/logo.png" />
+  <img src="https://res.cloudinary.com/dbpv82leg/image/upload/c_fill,g_auto,w_300/v1673965776/logo.png" />
 </div>
 
 <div align="center"> facilitates project collaborations in Berlin’s art scene </div>
