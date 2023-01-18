@@ -7,9 +7,12 @@
 ## Description
 
 The core function of infamousberlin.com is to connect local artists and help them collaborate on art projects.
-<div>
-  <img align="right" src="https://res.cloudinary.com/dbpv82leg/image/upload/c_scale,w_400/v1674051027/project-show.gif" />A registered user can upload projects
-</div>
-<div>
-  <img align="right" src="https://res.cloudinary.com/dbpv82leg/image/upload/c_scale,w_400/v1674048907/gridstack-feature.gif" />as well as customize a portfolio display
-</div>
+<img align="right" src="https://res.cloudinary.com/dbpv82leg/image/upload/c_scale,w_500/v1674052464/gridstack-feature.gif" />A registered user can:
+- upload projects
+- rearrange portfolio display (see demo)
+- crop project thumbnails
+- add project members
+- add job offers
+- apply to job offers
+- message other users
+- discover suggested art events
