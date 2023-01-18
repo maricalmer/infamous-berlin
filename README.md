@@ -2,7 +2,7 @@
   <img src="https://res.cloudinary.com/dbpv82leg/image/upload/c_fill,g_auto,w_300/v1673965776/logo.png" />
 </div>
 
-### InfamousBerlin, a web app facilitating project collaborations in Berlin’s art scene
+### [InfamousBerlin.com](https://infamousberlin.com), a web app facilitating project collaborations in Berlin’s art scene
 
 ## Description
 
@@ -26,12 +26,10 @@ InfamousBerlin is developed with Ruby and supported by the Rails framework. It f
 ![ruby](https://img.shields.io/badge/Ruby-3.1.3-F32C24?style=for-the-badge&logo=ruby) ![Rails](https://img.shields.io/badge/Rails-6.0.3-C52F24?style=for-the-badge&logo=rubyonrails) ![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow?style=for-the-badge&logo=javascript) ![SCSS](https://img.shields.io/badge/SCSS-3.5-BF4080?style=for-the-badge&logo=sass) ![HTML](https://img.shields.io/badge/HTML-5-E34F26?style=for-the-badge&logo=html5) ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-14.6-4764BE?style=for-the-badge&logo=postgresql) ![Bootstrap](https://img.shields.io/badge/Bootstrap-5-7852B2?style=for-the-badge&logo=bootstrap) ![FontAwesome](https://img.shields.io/badge/FontAwesome-5-528CD7?style=for-the-badge&logo=fontawesome)
 
 
-Ruby (3.1), Rails (6), Javascript (ES6), SCSS (libsass 3.5), Html5, PostgreSQL (14.6), Bootstrap (5), FontAwesome (5)
-
-
 ## JS Packages (non exhaustive)
 
 [![js-autocomplete](https://img.shields.io/badge/js--autocomplete-1.0.4-yellow.svg)](https://yarnpkg.com/package/js-autocomplete) [![cropperjs](https://img.shields.io/badge/cropperjs-1.5.12-yellow.svg)](https://yarnpkg.com/package/cropperjs) [![flatpickr](https://img.shields.io/badge/flatpickr-4.6.9-yellow.svg)](https://yarnpkg.com/package/flatpickr) [![gridstack](https://img.shields.io/badge/gridstack-5.0.0-yellow)](https://yarnpkg.com/package/gridstack) [![typed.js](https://img.shields.io/badge/typed.js-2.0.12-yellow.svg)](https://yarnpkg.com/package/typed.js)
+
 
 ## Ruby gems (non exhaustive)
 
@@ -70,3 +68,7 @@ Start the server
 ```bash
   rails s
 ```
+
+## ... or visit the page!
+
+[InfamousBerlin.com](https://infamousberlin.com)
