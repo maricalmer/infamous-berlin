@@ -6,11 +6,8 @@
 
 ## Description
 
-The core function of infamousberlin.com is to connect local artists and help them collaborate on art projects. A registered user can customize a portfolio display by uploading projects:
+The core function of infamousberlin.com is to connect local artists and help them collaborate on art projects.
 
-<div align="center">
-  <img src="https://res.cloudinary.com/dbpv82leg/image/upload/c_scale,w_700/v1674048907/gridstack-feature.gif" />
-</div>
-
-|<img src="https://res.cloudinary.com/dbpv82leg/image/upload/c_scale,w_300/v1674048907/gridstack-feature.gif" />
-| The core function of infamousberlin.com is to connect local artists and help them collaborate on art projects. A registered user can customize a portfolio display by uploading projects: |
+A registered user can customize a portfolio display by uploading projects:
+<img align="left" src="https://res.cloudinary.com/dbpv82leg/image/upload/c_scale,w_600/v1674051027/project-show.gif" />
+<img align="right" src="https://res.cloudinary.com/dbpv82leg/image/upload/c_scale,w_600/v1674048907/gridstack-feature.gif" />
