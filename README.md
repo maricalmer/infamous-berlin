@@ -15,7 +15,6 @@ The core function of infamousberlin.com is to connect local artists and help the
 - apply to job offers
 - chat with other users
 - discover suggested art events
-- cross platform
 - ... etc
 
 
@@ -70,7 +69,7 @@ Start the server
   rails s
 ```
 
-## ... or visit the page!
+## Visit the page!
 
 [InfamousBerlin.com](https://infamousberlin.com)
 
