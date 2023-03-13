@@ -20,7 +20,7 @@ The core function of infamousberlin.com is to connect local artists and help the
 
 ## Web App
 
-InfamousBerlin is developed with Ruby and supported by the Rails framework. It follows the MVC pattern, uses Active Record as an interface for a PostgreSQL database. Authentication is operated through Devise. Assets are bundled with Webpack. Application is run on Heroku.
+InfamousBerlin is developed with Ruby and supported by the Rails framework. It follows the MVC pattern and the TDD practice, uses Active Record as an interface for a PostgreSQL database. Authentication is operated through Devise. Tests are written with RSpec. Assets are bundled with Webpack. Application is run on Heroku. Continuous Integration tests are run on Github Actions.
 
 
 ![ruby](https://img.shields.io/badge/Ruby-3.1.3-F32C24?style=for-the-badge&logo=ruby&logoColor=white) ![Rails](https://img.shields.io/badge/Rails-6.0.3-C52F24?style=for-the-badge&logo=rubyonrails&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow?style=for-the-badge&logo=javascript&logoColor=white) ![SCSS](https://img.shields.io/badge/SCSS-3.5-BF4080?style=for-the-badge&logo=sass&logoColor=white) ![HTML](https://img.shields.io/badge/HTML-5-E34F26?style=for-the-badge&logo=html5&logoColor=white) ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-14.6-4764BE?style=for-the-badge&logo=postgresql&logoColor=white) ![Bootstrap](https://img.shields.io/badge/Bootstrap-5-7852B2?style=for-the-badge&logo=bootstrap&logoColor=white) ![FontAwesome](https://img.shields.io/badge/FontAwesome-5-528CD7?style=for-the-badge&logo=fontawesome&logoColor=white)
