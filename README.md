@@ -41,13 +41,14 @@ InfamousBerlin is developed with Ruby and supported by the Rails framework. It f
 Clone the project
 
 ```bash
-  git clone https://github.com/maricalmer/infamous-berlin.git
+  git clone https://github.com/maricalmer/infamous-berlin.git my-project
 ```
 
-Go to the project directory
+Go to the project directory and remove git logs
 
 ```bash
   cd my-project
+  rm -rf .git
 ```
 
 Install dependencies
