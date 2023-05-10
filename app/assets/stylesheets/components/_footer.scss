@@ -57,6 +57,28 @@
 .footer__brand:hover {
   letter-spacing: 2px;
 }
+.footer__maricalmer--wrapper {
+  width: 100%;
+  height: 0px;
+}
+.footer__maricalmer {
+  text-align: left;
+  width: fit-content;
+  transform: rotate(-90deg);
+  transform-origin: top left;
+  color: #646668;
+  margin-top: -40px;
+}
+.footer__maricalmer--link {
+  text-decoration: none;
+  color: #646668;
+  box-shadow: inset 0 -14px 0 #7ECA93, 0 0 #7ECA93;
+  transition: box-shadow .3s, color .3s;
+}
+.footer__maricalmer--link:hover {
+  color: #333;
+  box-shadow: inset 0 -14px 0 #6acc84, 0 0 #6acc84;
+}
 @media(min-width: 450px) {
   .footer-message {
     font-size: 2rem;
@@ -69,5 +91,14 @@
     display: flex;
     justify-content: space-around;
     font-size: 2rem;
+  }
+  .footer__maricalmer {
+    font-size: 1.5rem;
+  }
+  .footer__maricalmer--link {
+    box-shadow: inset 0 -22px 0 #7ECA93, 0 0 #7ECA93;
+  }
+  .footer__maricalmer--link:hover {
+    box-shadow: inset 0 -22px 0 #6acc84, 0 0 #6acc84;
   }
 }
