@@ -38,7 +38,7 @@ jobs:
         with:
           node-version: "14.14.0"
       - name: Set up Chrome
-        command: |
+        run: |
             wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
             sudo apt install ./google-chrome-stable_current_amd64.deb
       - name: Get Yarn cache directory path
