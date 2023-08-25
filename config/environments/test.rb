@@ -46,5 +46,5 @@ Rails.application.configure do
 
   # Raises error for missing translations.
   # config.action_view.raise_on_missing_translations = true
-  Webdrivers::Chromedriver.required_version = "114.0.5735.90"
+  Webdrivers::Chromedriver.required_version = "116.0.5845.110"
 end
