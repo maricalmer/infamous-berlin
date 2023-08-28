@@ -93,6 +93,9 @@ GEM
     capybara-screenshot (1.0.26)
       capybara (>= 1.0, < 4)
       launchy
+    capybara-selenium (0.0.6)
+      capybara
+      selenium-webdriver
     cloudinary (1.22.0)
       aws_cf_signer
       rest-client (>= 2.0.0)
@@ -369,6 +372,7 @@ DEPENDENCIES
   byebug
   capybara
   capybara-screenshot
+  capybara-selenium
   cloudinary
   crawler_detect
   devise
