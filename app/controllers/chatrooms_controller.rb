@@ -1,6 +1,6 @@
 class ChatroomsController < ApplicationController
   before_action :find_chatroom, only: [:show]
-  before_action :fetch_chatroom_messages, only: [:show]
+  before_action :find_chatroom_messages, only: [:show]
   before_action :mark_messages_as_read, only: [:show]
   before_action :check_participating!, only: [:show]
 
@@ -15,13 +15,13 @@ class ChatroomsController < ApplicationController
     return if @chatrooms.empty?
 
     @chatroom = @chatrooms.first
-    fetch_chatroom_messages
+    find_chatroom_messages
     mark_messages_as_read
   end
 
   private
 
-  def fetch_chatroom_messages
+  def find_chatroom_messages
     @messages = Workflows::ChatroomContext.new(@chatroom).set_messages
   end
 
