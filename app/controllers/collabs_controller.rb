@@ -11,11 +11,11 @@ class CollabsController < ApplicationController
     @collab = Collab.new
     authorize @collab
     @collab.project = @project
-    @user = User.find_by(username: params[:project][:member])
-    @collab.member = @user
+    @collab.member = User.find_by(username: params[:project][:member])
     if @collab.save
       redirect_to project_path(@project)
     else
+      # finalize build of project shown
       @members = @project.members
       @jobs = @project.jobs
       @project_attachments = @project.attachments.includes([:blob])
@@ -25,10 +25,10 @@ class CollabsController < ApplicationController
   end
 
   def destroy
-    if @collab.user_id == current_user.id
+    if @collab.user_id == current_user.id # -> collab destroyed by project member owner from his dashboard
       @collab.destroy
       redirect_to dashboard_path, notice: 'Collaboration deleted'
-    else
+    else # -> collab destroyed by project owner from project page
       @project = Project.find(@collab.project_id)
       @collab.destroy
       redirect_to project_path(@project.slug), notice: 'Members list updated'
