@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
-  before_action :set_job, only: %i[show edit update destroy]
-  before_action :set_project, only: %i[new create]
+  before_action :find_job, only: %i[show edit update destroy]
+  before_action :find_project, only: %i[new create]
 
   def index
     @jobs = policy_scope(Job)
@@ -55,12 +55,12 @@ class JobsController < ApplicationController
 
   private
 
-  def set_job
+  def find_job
     @job = Job.find(params[:id])
     authorize @job
   end
 
-  def set_project
+  def find_project
     @project = Project.find_by(slug: params[:project_slug])
   end
 

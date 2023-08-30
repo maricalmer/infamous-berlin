@@ -1,6 +1,6 @@
 class InquiriesController < ApplicationController
-  before_action :set_inquiry, only: %i[show edit update destroy change_status]
-  before_action :set_job, only: %i[new create]
+  before_action :find_inquiry, only: %i[show edit update destroy change_status]
+  before_action :find_job, only: %i[new create]
 
   def show
     @user_formatted_skills = Services::TagsRenderer.new(@inquiry.user.skills).format_tags
@@ -46,12 +46,12 @@ class InquiriesController < ApplicationController
 
   private
 
-  def set_inquiry
+  def find_inquiry
     @inquiry = Inquiry.find(params[:id])
     authorize @inquiry
   end
 
-  def set_job
+  def find_job
     @job = Job.find(params[:job_id])
   end
 
