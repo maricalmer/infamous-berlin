@@ -8,6 +8,7 @@ jobs:
     env:
       RAILS_ENV: test
       NODE_ENV: test
+      CLOUDINARY_CLOUD_NAME: ${{ secrets.CLOUDINARY_CLOUD_NAME }}
     runs-on: ubuntu-latest # runner
     services:
       # Label used to access the service container
