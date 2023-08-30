@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[show upcoming_projects]
-  before_action :set_project, only: %i[show edit update destroy]
+  before_action :find_project, only: %i[show edit update destroy]
 
   def show
     @members = @project.members
@@ -62,15 +62,7 @@ class ProjectsController < ApplicationController
 
   private
 
-  def create_chatroom
-    @chatroom = Chatroom.new
-    @chatroom.user_id = current_user.id
-    @chatroom.project_id = @project.id
-    @chatroom.save
-    return @chatroom
-  end
-
-  def set_project
+  def find_project
     @project = Project.find_by!(slug: params[:slug])
     authorize @project
   end
