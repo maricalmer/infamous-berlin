@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[show index]
-  before_action :set_event, only: %i[show attend unattend]
+  before_action :find_event, only: %i[show attend unattend]
 
   def show
   end
@@ -31,7 +31,7 @@ class EventsController < ApplicationController
 
   private
 
-  def set_event
+  def find_event
     @event = Event.find_by!(slug: params[:slug])
     authorize @event
   end
