@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[show index after_registration_path]
-  before_action :set_user, only: %i[show edit update destroy]
+  before_action :find_user, only: %i[show edit update destroy]
 
   def show
     @portfolio = Workflows::UserContext.new(@user).display_portfolio
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
 
   private
 
-  def set_user
+  def find_user
     @user = User.find_by!(slug: params[:slug])
     authorize @user
   end
