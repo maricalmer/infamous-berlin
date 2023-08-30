@@ -1,6 +1,6 @@
 class MirrorsController < ApplicationController
-  before_action :set_user, only: %i[update ongoing_projects past_projects]
-  before_action :set_variant, only: %i[ongoing_projects past_projects]
+  before_action :find_user, only: %i[update ongoing_projects past_projects]
+  before_action :find_variant, only: %i[ongoing_projects past_projects]
 
   def update
     @mirror = Mirror.find(params[:id])
@@ -34,12 +34,12 @@ class MirrorsController < ApplicationController
 
   private
 
-  def set_variant
+  def find_variant
     agent = request.user_agent
     agent =~ /Mobile/ ? request.variant = :mobile : request.variant = :desktop
   end
 
-  def set_user
+  def find_user
     @user = User.find_by(slug: params[:user_slug])
   end
 
