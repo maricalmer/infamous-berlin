@@ -11,7 +11,7 @@
       <div class="avatar-inquiry">
         <div class="avatar-inquiry__frame">
           <%= link_to user_path(@inquiry.user), class: "avatar-inquiry__link" do %>
-            <%= cl_image_tag @inquiry.user.photo.key, cloud_name: cloud_name, class: "avatar-inquiry__img", quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 300, crop: "fill"}] %>
+            <%= cl_image_tag @inquiry.user.photo.key, cloud_name: ENV['CLOUDINARY_CLOUD_NAME'], class: "avatar-inquiry__img", quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 300, crop: "fill"}] %>
           <% end %>
         </div>
       </div>

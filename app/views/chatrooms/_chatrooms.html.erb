@@ -23,7 +23,7 @@
         <% else %>
           <%= link_to user_path(@chatroom.with(current_user)), class: "chatroom__header-link" do %>
           <div class="avatar-chatroom">
-            <%= cl_image_tag @chatroom.with(current_user).photo.key, cloud_name: cloud_name, class: "avatar-chatroom__img", quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 100, crop: "fill"}] %>
+            <%= cl_image_tag @chatroom.with(current_user).photo.key, cloud_name: ENV['CLOUDINARY_CLOUD_NAME'], class: "avatar-chatroom__img", quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 100, crop: "fill"}] %>
           </div>
         <% end %>
         <h1 class="chatroom__header-username">
