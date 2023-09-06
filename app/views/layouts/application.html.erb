@@ -12,7 +12,7 @@
     <meta property="og:url" content="https://www.infamousberlin.com/">
     <meta property="og:title" content="InfamousBerlin">
     <meta property="og:description" content="Collaboration platform for Berlin’s art scene. Check it out!">
-    <meta property="og:image" content="https://res.cloudinary.com/dbpv82leg/image/upload/v1683641260/social-media-post.jpg">
+    <meta property="og:image" content="https://res.cloudinary.com/<%= ENV['CLOUDINARY_CLOUD_NAME'] %>/image/upload/v1683641260/social-media-post.jpg">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
