@@ -54,8 +54,9 @@ Rails.application.configure do
   config.log_tags = [ :request_id ]
 
   # Use a different cache store in production.
-  config.cache_store = :mem_cache_store, {
-    expires_in: 60.days
+  # config.cache_store = :mem_cache_store
+  config.public_file_server.headers = {
+    'Cache-Control' => "public, max-age=#{365.days.to_i}"
   }
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
