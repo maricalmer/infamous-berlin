@@ -1,19 +1,6 @@
-// Import Google fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700');
-
-// To use a font file (.woff) uncomment following lines
 @font-face {
   font-family: "AlternateGotNo2D";
   font-display: swap;
-  // src: font-url('FontFile.eot');
   src:
-       // font-url('FontFile.woff') format('woff'),
        font-url('AlternateGotNo2D.ttf') format('truetype')
-       // font-url('FontFile.eot?#iefix') format('embedded-opentype')
 }
-
-$my-font: "AlternateGotNo2D";
-
-// Define fonts for body and headers
-$body-font: "AlternateGotNo2D";
-$headers-font: "AlternateGotNo2D";
