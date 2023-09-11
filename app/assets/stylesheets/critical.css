@@ -1,7 +1,7 @@
 @font-face {
   font-family: "AlternateGotNo2D";
   font-display: swap;
-  src: url(/assets/AlternateGotNo2D.ttf) format("truetype");
+  src: url(/assets/stylesheets/config/AlternateGotNo2D.ttf) format("truetype");
 }
 
 :root {
