@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
-  before_action :record_page_view
+  # before_action :record_page_view
   before_action :configure_permitted_parameters, if: :devise_controller?
   helper_method :resource_name, :resource, :devise_mapping, :resource_class
 
