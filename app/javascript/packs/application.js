@@ -94,9 +94,9 @@ document.addEventListener('turbolinks:load', () => {
   if (document.querySelectorAll(".homepage-cursor-js").length) {
     initCursor();
   }
-  // if (document.querySelectorAll(".preloader-js").length) {
-  //   firstVisitCheck();
-  // }
+  if (document.querySelectorAll(".preloader-js").length) {
+    firstVisitCheck();
+  }
   if (document.querySelectorAll(".homepage-slides-js").length) {
     homepageSlides();
   }

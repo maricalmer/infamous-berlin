@@ -64,12 +64,6 @@
   box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  :root {
-    scroll-behavior: smooth;
-  }
-}
-
 body {
   margin: 0;
   font-family: var(--bs-body-font-family);
@@ -206,8 +200,6 @@ fieldset {
   border-radius: 2px;
 }
 
-@media (prefers-reduced-motion: reduce) {}
-
 .form-control::-webkit-date-and-time-value {
   height: 1.5em;
 }
@@ -235,8 +227,6 @@ fieldset {
   border-inline-end-width: 1px;
   border-radius: 0;
 }
-
-@media (prefers-reduced-motion: reduce) {}
 
 .form-check {
   display: block;
@@ -286,12 +276,6 @@ fieldset {
   border-radius: 2px;
 }
 
-@media (prefers-reduced-motion: reduce) {}
-
-
-
-@media (prefers-reduced-motion: reduce) {}
-
 .fade:not(.show) {
   opacity: 0;
 }
@@ -324,19 +308,18 @@ fieldset {
 .modal-dialog {
   position: relative;
   width: auto;
-  margin: 0.5rem;
+  max-width: 500px;
+  margin: 1.75rem auto;
 }
 
 .modal.fade .modal-dialog {
   transform: translate(0, -50px);
 }
 
-@media (prefers-reduced-motion: reduce) {}
-
 .modal-dialog-centered {
   display: flex;
   align-items: center;
-  min-height: calc(100% - 1rem);
+  min-height: calc(100% - 3.5rem);
 }
 
 .modal-content {
@@ -394,17 +377,6 @@ fieldset {
   margin: 0.25rem;
 }
 
-@media (min-width: 576px) {
-  .modal-dialog {
-    max-width: 500px;
-    margin: 1.75rem auto;
-  }
-
-  .modal-dialog-centered {
-    min-height: calc(100% - 3.5rem);
-  }
-}
-
 .mobile-homepage-tap-btn {
   position: fixed;
   top: 30vh;
@@ -420,30 +392,18 @@ fieldset {
 }
 
 .mobile-homepage-tap-btn__text {
-  font-size: 4rem;
+  height: 100px;
+  font-size: 3rem;
   text-transform: uppercase;
   letter-spacing: 10px;
   fill: #858585;
 }
 
-@media (min-width: 450px) {
-  .mobile-homepage-tap-btn__text {
-    height: 100px;
-    font-size: 3rem;
-  }
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .mobile-homepage-tap-btn {
-    display: none;
-  }
-}
-
 .homepage-cursor {
   display: none;
   position: fixed;
-  left: 0rem;
-  top: 0rem;
+  left: -2rem;
+  top: -2rem;
   z-index: 11000;
   width: 100%;
   height: 100%;
@@ -456,26 +416,6 @@ fieldset {
   fill: #858585;
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .homepage-cursor {
-    display: block;
-  }
-}
-
-@media (min-width: 250px) {
-  .homepage-cursor {
-    left: -1rem;
-    top: -1rem;
-  }
-}
-
-@media (min-width: 390px) {
-  .homepage-cursor {
-    left: -2rem;
-    top: -2rem;
-  }
-}
-
 .form-page__label {
   font-size: calc(1.275rem + 0.3vw);
   margin-bottom: 0.5rem;
@@ -485,7 +425,7 @@ fieldset {
   background-color: #d6d6d6 !important;
   border: 2px solid black;
   border-radius: 0px;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
 }
 
 .form-page__input::-moz-placeholder {
@@ -494,12 +434,6 @@ fieldset {
 
 .form-page__input:-ms-input-placeholder {
   font-size: 1rem;
-}
-
-@media (min-width: 600px) {
-  .form-page__input {
-    font-size: 1.7rem;
-  }
 }
 
 .preloader {
@@ -526,7 +460,7 @@ fieldset {
 
 .preloader__text {
   color: #d6d6d6;
-  font-size: 3rem;
+  font-size: 5rem;
   letter-spacing: 0.1rem;
   margin-bottom: 0;
 }
@@ -541,12 +475,6 @@ fieldset {
 
 .preloader__text-cover--is-hidding {
   width: 100%;
-}
-
-@media (min-width: 450px) {
-  .preloader__text {
-    font-size: 5rem;
-  }
 }
 
 .login-modal__content {
@@ -789,19 +717,12 @@ body {
 }
 
 .homepage-brand {
-  font-size: 30vw;
   align-self: flex-end;
   padding-bottom: 3vh;
   padding-left: 0.5vh;
-  margin-top: 7vh;
   width: 100%;
-}
-
-@media(min-width: 870px) {
-  .homepage-brand {
-    font-size: 18vw;
-    margin-top: 0;
-  }
+  font-size: 18vw;
+  margin-top: 0;
 }
 
 .homepage-brand__top,
@@ -814,7 +735,7 @@ body {
   font-size: 10vw;
   line-height: 0.9;
   margin-top: 10px;
-  margin-right: 3rem;
+  margin-right: 0;
   margin-bottom: 3rem;
   text-align: right;
   display: flex;
@@ -904,14 +825,20 @@ body {
   scrollbar-width: none;
 }
 
-@media (min-width: 380px) {
+@media (hover: hover) and (pointer: fine) {
+  .mobile-homepage-tap-btn {
+    display: none;
+  }
+  .homepage-cursor {
+    display: block;
+  }
   .homepage-first-headline {
-    margin-right: 0;
+    margin-bottom: 0;
   }
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .homepage-first-headline {
-    margin-bottom: 0;
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    scroll-behavior: smooth;
   }
 }
