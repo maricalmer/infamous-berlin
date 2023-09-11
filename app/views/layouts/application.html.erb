@@ -14,7 +14,7 @@
     <meta property="og:description" content="Collaboration platform for Berlin’s art scene. Check it out!">
     <meta property="og:image" content="https://res.cloudinary.com/<%= ENV['CLOUDINARY_CLOUD_NAME'] %>/image/upload/v1683641260/social-media-post.jpg">
     <%= stylesheet_link_tag 'critical', media: 'screen', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+    <%= javascript_pack_tag 'critical', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
   <body>
@@ -24,5 +24,6 @@
     </div>
     <%= stylesheet_link_tag 'application', media: 'screen', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'screen', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </body>
 </html>
