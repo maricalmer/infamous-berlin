@@ -797,6 +797,13 @@ body {
   width: 100%;
 }
 
+@media(min-width: 870px) {
+  .homepage-brand {
+    font-size: 18vw;
+    margin-top: 0;
+  }
+}
+
 .homepage-brand__top,
 .homepage-brand__bottom {
   line-height: 0.7;
