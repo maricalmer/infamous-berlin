@@ -22,8 +22,24 @@
         <%= cl_image_tag "cyclop1-background", class: "homepage-parallax__first-cyclop-background", quality: "auto", fetch_format: "auto", transformation: [{dpr: "auto"}] %>
       </div>
       <div class="homepage-parallax__monster-woman">
-        <%= cl_image_tag "monster-woman-peep", class: "homepage-parallax__monster-woman-character", quality: "auto", fetch_format: "auto", transformation: [{dpr: "auto"}] %>
-        <%= cl_image_tag "monster-woman-background", class: "homepage-parallax__monster-woman-background", quality: "auto", fetch_format: "auto", transformation: [{dpr: "auto"}] %>
+        <img
+          class="homepage-parallax__monster-woman-character"
+          sizes="(min-width: 870px) 236px, 119px"
+          srcset="<%= cl_image_path "monster-woman-peep", quality: "auto", fetch_format: "auto", width: 119, crop: "fill", transformation: [{dpr: "auto"}] %> 119w,
+                  <%= cl_image_path "monster-woman-peep", quality: "auto", fetch_format: "auto", width: 238, crop: "fill", transformation: [{dpr: "auto"}] %> 238w,
+                  <%= cl_image_path "monster-woman-peep", quality: "auto", fetch_format: "auto", width: 236, crop: "fill", transformation: [{dpr: "auto"}] %> 236w,
+                  <%= cl_image_path "monster-woman-peep", quality: "auto", fetch_format: "auto", width: 472, crop: "fill", transformation: [{dpr: "auto"}] %> 472w"
+          src="<%= cl_image_path "monster-woman-peep", quality: "auto", fetch_format: "auto", width: 238, crop: "fill", transformation: [{dpr: "auto"}] %>"
+          alt="monster girl character" />
+        <img
+          class="homepage-parallax__monster-woman-background"
+          sizes="(min-width: 870px) 236px, 119px"
+          srcset="<%= cl_image_path "monster-woman-background", quality: "auto", fetch_format: "auto", width: 119, crop: "fill", transformation: [{dpr: "auto"}] %> 119w,
+                  <%= cl_image_path "monster-woman-background", quality: "auto", fetch_format: "auto", width: 238, crop: "fill", transformation: [{dpr: "auto"}] %> 238w,
+                  <%= cl_image_path "monster-woman-background", quality: "auto", fetch_format: "auto", width: 236, crop: "fill", transformation: [{dpr: "auto"}] %> 236w,
+                  <%= cl_image_path "monster-woman-background", quality: "auto", fetch_format: "auto", width: 472, crop: "fill", transformation: [{dpr: "auto"}] %> 472w"
+          src="<%= cl_image_path "monster-woman-background", quality: "auto", fetch_format: "auto", width: 238, crop: "fill", transformation: [{dpr: "auto"}] %>"
+          alt="monster girl background" />
       </div>
       <div class="homepage-parallax__bear">
         <%= cl_image_tag "bear-peep", class: "homepage-parallax__bear-character", quality: "auto", fetch_format: "auto", transformation: [{dpr: "auto"}] %>
@@ -35,12 +51,44 @@
       </div>
       <div class="homepage-third-headline__text">Find <span class="homepage-third-headline__highlight">talents<div class="homepage-third-headline__underline"></div></span> for your art project</div>
       <div class="homepage-parallax__monster-male">
-        <%= cl_image_tag "monster-male-peep", class: "homepage-parallax__monster-male-character", quality: "auto", fetch_format: "auto", transformation: [{dpr: "auto"}] %>
-        <%= cl_image_tag "monster-male-background", class: "homepage-parallax__monster-male-background", quality: "auto", fetch_format: "auto", transformation: [{dpr: "auto"}] %>
+        <img
+          class="homepage-parallax__monster-male-character"
+          sizes="(min-width: 870px) 301px, 154px"
+          srcset="<%= cl_image_path "monster-male-peep", quality: "auto", fetch_format: "auto", width: 154, crop: "fill", transformation: [{dpr: "auto"}] %> 154w,
+                  <%= cl_image_path "monster-male-peep", quality: "auto", fetch_format: "auto", width: 308, crop: "fill", transformation: [{dpr: "auto"}] %> 308w,
+                  <%= cl_image_path "monster-male-peep", quality: "auto", fetch_format: "auto", width: 301, crop: "fill", transformation: [{dpr: "auto"}] %> 301w,
+                  <%= cl_image_path "monster-male-peep", quality: "auto", fetch_format: "auto", width: 602, crop: "fill", transformation: [{dpr: "auto"}] %> 602w"
+          src="<%= cl_image_path "monster-male-peep", quality: "auto", fetch_format: "auto", width: 301, crop: "fill", transformation: [{dpr: "auto"}] %>"
+          alt="monster male character" />
+        <img
+          class="homepage-parallax__monster-male-background"
+          sizes="(min-width: 870px) 301px, 154px"
+          srcset="<%= cl_image_path "monster-male-background", quality: "auto", fetch_format: "auto", width: 154, crop: "fill", transformation: [{dpr: "auto"}] %> 154w,
+                  <%= cl_image_path "monster-male-background", quality: "auto", fetch_format: "auto", width: 308, crop: "fill", transformation: [{dpr: "auto"}] %> 308w,
+                  <%= cl_image_path "monster-male-background", quality: "auto", fetch_format: "auto", width: 301, crop: "fill", transformation: [{dpr: "auto"}] %> 301w,
+                  <%= cl_image_path "monster-male-background", quality: "auto", fetch_format: "auto", width: 602, crop: "fill", transformation: [{dpr: "auto"}] %> 602w"
+          src="<%= cl_image_path "monster-male-background", quality: "auto", fetch_format: "auto", width: 301, crop: "fill", transformation: [{dpr: "auto"}] %>"
+          alt="monster male background" />
       </div>
       <div class="homepage-parallax__denver">
-        <%= cl_image_tag "denver-peep", class: "homepage-parallax__denver-character", quality: "auto", fetch_format: "auto", transformation: [{dpr: "auto"}] %>
-        <%= cl_image_tag "denver-background", class: "homepage-parallax__denver-background", quality: "auto", fetch_format: "auto", transformation: [{dpr: "auto"}] %>
+        <img
+          class="homepage-parallax__denver-character"
+          sizes="(min-width: 870px) 478px, 145px"
+          srcset="<%= cl_image_path "denver-peep", quality: "auto", fetch_format: "auto", width: 145, crop: "fill", transformation: [{dpr: "auto"}] %> 145w,
+                  <%= cl_image_path "denver-peep", quality: "auto", fetch_format: "auto", width: 290, crop: "fill", transformation: [{dpr: "auto"}] %> 290w,
+                  <%= cl_image_path "denver-peep", quality: "auto", fetch_format: "auto", width: 478, crop: "fill", transformation: [{dpr: "auto"}] %> 478w,
+                  <%= cl_image_path "denver-peep", quality: "auto", fetch_format: "auto", width: 956, crop: "fill", transformation: [{dpr: "auto"}] %> 956w"
+          src="<%= cl_image_path "denver-peep", quality: "auto", fetch_format: "auto", width: 290, crop: "fill", transformation: [{dpr: "auto"}] %>"
+          alt="monster male character" />
+        <img
+          class="homepage-parallax__denver-background"
+          sizes="(min-width: 870px) 478px, 145px"
+          srcset="<%= cl_image_path "denver-background", quality: "auto", fetch_format: "auto", width: 145, crop: "fill", transformation: [{dpr: "auto"}] %> 145w,
+                  <%= cl_image_path "denver-background", quality: "auto", fetch_format: "auto", width: 290, crop: "fill", transformation: [{dpr: "auto"}] %> 290w,
+                  <%= cl_image_path "denver-background", quality: "auto", fetch_format: "auto", width: 478, crop: "fill", transformation: [{dpr: "auto"}] %> 478w,
+                  <%= cl_image_path "denver-background", quality: "auto", fetch_format: "auto", width: 956, crop: "fill", transformation: [{dpr: "auto"}] %> 956w"
+          src="<%= cl_image_path "denver-background", quality: "auto", fetch_format: "auto", width: 290, crop: "fill", transformation: [{dpr: "auto"}] %>"
+          alt="monster male background" />
       </div>
       <div class="homepage-parallax__hijab">
         <%= cl_image_tag "hijab-peep", class: "homepage-parallax__hijab-character", quality: "auto", fetch_format: "auto", transformation: [{dpr: "auto"}] %>
