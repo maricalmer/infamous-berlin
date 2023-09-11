@@ -1,3 +1,6 @@
+require("@rails/ujs").start()
+require("turbolinks").start()
+
 import { initCursor } from '../components/homepage_cursor';
 import { firstVisitCheck } from '../components/homepage_preloader';
 import { homepageSlides } from '../components/homepage_slides';
