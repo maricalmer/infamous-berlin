@@ -1,5 +1,7 @@
 require("@rails/activestorage").start()
 require("channels")
+require("@rails/ujs").start()
+require("turbolinks").start()
 
 import '../libraries/bootstrap_js_files.js';
 import { initChatroomCable } from '../channels/chatroom_channel';
@@ -17,9 +19,9 @@ import { clickOnFilter } from '../components/filter_btn_covering_effect';
 import { initGristackEdit, setSaveBtn } from '../components/gridstack_edit';
 import { initGristackStatic } from '../components/gridstack_static';
 import { highlight } from '../components/highlight_search_query';
-// import { initCursor } from '../components/homepage_cursor';
-// import { firstVisitCheck } from '../components/homepage_preloader';
-// import { homepageSlides } from '../components/homepage_slides';
+import { initCursor } from '../components/homepage_cursor';
+import { firstVisitCheck } from '../components/homepage_preloader';
+import { homepageSlides } from '../components/homepage_slides';
 import { listenCategories } from '../components/index_category_filter';
 import { addNewMember } from '../components/new_member_form';
 import { playFileOnClick } from '../components/play_audio_file';
@@ -89,15 +91,15 @@ document.addEventListener('turbolinks:load', () => {
   if (document.querySelectorAll(".highlight-js").length) {
     highlight();
   }
-  // if (document.querySelectorAll(".homepage-cursor-js").length) {
-  //   initCursor();
-  // }
-  // if (document.querySelectorAll(".preloader-js").length) {
-  //   firstVisitCheck();
-  // }
-  // if (document.querySelectorAll(".homepage-slides-js").length) {
-  //   homepageSlides();
-  // }
+  if (document.querySelectorAll(".homepage-cursor-js").length) {
+    initCursor();
+  }
+  if (document.querySelectorAll(".preloader-js").length) {
+    firstVisitCheck();
+  }
+  if (document.querySelectorAll(".homepage-slides-js").length) {
+    homepageSlides();
+  }
   if (document.querySelectorAll(".checkbox-label-js").length) {
     listenCategories();
   }
