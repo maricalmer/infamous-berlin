@@ -23,7 +23,6 @@
   "version": "0.1.0",
   "devDependencies": {
     "@babel/plugin-transform-numeric-separator": "^7.22.11",
-    "@fullhuman/postcss-purgecss": "^5.0.0",
     "webpack-dev-server": "^3.11.2"
   },
   "engines": {
