@@ -268,8 +268,7 @@ button,
 .modal-dialog {
   position: relative;
   width: auto;
-  max-width: 500px;
-  margin: 1.75rem auto;
+  margin: 0.5rem;
 }
 
 .modal.fade .modal-dialog {
@@ -279,7 +278,7 @@ button,
 .modal-dialog-centered {
   display: flex;
   align-items: center;
-  min-height: calc(100% - 3.5rem);
+  min-height: calc(100% - 1rem);
 }
 
 .modal-content {
@@ -352,8 +351,7 @@ button,
 }
 
 .mobile-homepage-tap-btn__text {
-  height: 100px;
-  font-size: 3rem;
+  font-size: 4rem;
   text-transform: uppercase;
   letter-spacing: 10px;
   fill: #858585;
@@ -362,8 +360,8 @@ button,
 .homepage-cursor {
   display: none;
   position: fixed;
-  left: -2rem;
-  top: -2rem;
+  left: 0rem;
+  top: 0rem;
   z-index: 11000;
   width: 100%;
   height: 100%;
@@ -385,7 +383,7 @@ button,
   background-color: #d6d6d6 !important;
   border: 2px solid black;
   border-radius: 0px;
-  font-size: 1.7rem;
+  font-size: 1.5rem;
 }
 
 .form-page__input::-moz-placeholder {
@@ -420,7 +418,7 @@ button,
 
 .preloader__text {
   color: #d6d6d6;
-  font-size: 5rem;
+  font-size: 3rem;
   letter-spacing: 0.1rem;
   margin-bottom: 0;
 }
@@ -677,12 +675,12 @@ body {
 }
 
 .homepage-brand {
+  font-size: 30vw;
   align-self: flex-end;
   padding-bottom: 3vh;
   padding-left: 0.5vh;
+  margin-top: 7vh;
   width: 100%;
-  font-size: 18vw;
-  margin-top: 0;
 }
 
 .homepage-brand__top,
@@ -695,7 +693,7 @@ body {
   font-size: 10vw;
   line-height: 0.9;
   margin-top: 10px;
-  margin-right: 0;
+  margin-right: 3rem;
   margin-bottom: 3rem;
   text-align: right;
   display: flex;
@@ -800,5 +798,52 @@ body {
 @media (prefers-reduced-motion: no-preference) {
   :root {
     scroll-behavior: smooth;
+  }
+}
+
+@media (min-width: 250px) {
+  .homepage-cursor {
+    left: -1rem;
+    top: -1rem;
+  }
+}
+
+@media (min-width: 390px) {
+  .homepage-cursor {
+    left: -2rem;
+    top: -2rem;
+  }
+}
+
+@media (min-width: 450px) {
+  .mobile-homepage-tap-btn__text {
+    height: 100px;
+    font-size: 3rem;
+  }
+  .preloader__text {
+    font-size: 5rem;
+  }
+}
+
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 500px;
+    margin: 1.75rem auto;
+  }
+  .modal-dialog-centered {
+    min-height: calc(100% - 3.5rem);
+  }
+}
+
+@media (min-width: 600px) {
+  .form-page__input {
+    font-size: 1.7rem;
+  }
+}
+
+@media(min-width: 870px) {
+  .homepage-brand {
+    font-size: 18vw;
+    margin-top: 0;
   }
 }
