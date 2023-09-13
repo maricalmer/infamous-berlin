@@ -11,9 +11,9 @@
         </h4>
         <div class="dashboard-slider-card__img-wrapper">
           <% if collab.attachments.first.image? %>
-            <%= cl_image_tag collab.attachments.first.key, class: "dashboard-slider-card__img", quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 400, crop: "fill"}] %>
+            <%= cl_image_tag collab.attachments.first.key, class: "dashboard-slider-card__img", quality: "auto:low", alt: "project picture", transformation: [{fetch_format: "auto"}, {width: 400, crop: "fill"}] %>
           <% elsif collab.attachments.first.audio? %>
-            <%= image_tag asset_path('logo-audio.png'), class: "dashboard-slider-card__img" %>
+            <%= image_tag asset_path('logo-audio.png'), class: "dashboard-slider-card__img", alt: "play audio button" %>
           <% else %>
             <%= cl_video_tag collab.attachments.first.key, class: "dashboard-slider-card__img" %>
           <% end %>

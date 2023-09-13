@@ -20,15 +20,15 @@
             <div class="project-card__img-and-avatar">
               <div class="project-card__img-wrapper">
                 <% if project.attachments.first.image? %>
-                  <%= cl_image_tag project.attachments.first.key, class: "project-card__img", quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 400, crop: "fill"}] %>
+                  <%= cl_image_tag project.attachments.first.key, class: "project-card__img", quality: "auto:low", alt: "project picture", transformation: [{fetch_format: "auto"}, {width: 400, crop: "fill"}] %>
                 <% elsif project.attachments.first.audio? %>
-                  <%= image_tag asset_path('logo-audio.png'), class: "project-card__img", transformation: [{fetch_format: "auto"}, {width: 400, crop: "fill"}] %>
+                  <%= image_tag asset_path('logo-audio.png'), class: "project-card__img", alt: "play audio button", transformation: [{fetch_format: "auto"}, {width: 400, crop: "fill"}] %>
                 <% else %>
                   <%= cl_video_tag project.attachments.first.key, class: "project-card__img" %>
                 <% end %>
               </div>
               <div class="project-card__avatar">
-                <%= cl_image_tag project.user.photo.key, quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 100, crop: "fill"}], class: "project-card__avatar-img" %>
+                <%= cl_image_tag project.user.photo.key, quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 100, crop: "fill"}], class: "project-card__avatar-img", alt: "user profile picture" %>
               </div>
             </div>
             <div class="project-card__description highlight-query-js"><%= project.description %></div>

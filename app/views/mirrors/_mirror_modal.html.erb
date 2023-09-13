@@ -10,9 +10,9 @@
           <picture>
             <source srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(max-width: 1200px)">
             <% if mirror.project.attachments.first.image? %>
-              <%= cl_image_tag mirror.project.attachments.first.key, class: "cropper-modal__poster cropper-modal__placeholder-gridstack tag-cropper-js" %>
+              <%= cl_image_tag mirror.project.attachments.first.key, class: "cropper-modal__poster cropper-modal__placeholder-gridstack tag-cropper-js", alt: "project picture" %>
             <% elsif mirror.project.attachments.first.audio? %>
-              <%= image_tag "logo-audio", class: "cropper-modal__poster cropper-modal__placeholder-gridstack tag-cropper-js" %>
+              <%= image_tag "logo-audio", class: "cropper-modal__poster cropper-modal__placeholder-gridstack tag-cropper-js", alt: "play audio button" %>
             <% else %>
               <%= image_tag("http://res.cloudinary.com/dbpv82leg/video/upload/v1/development/#{mirror.project.attachments.first.key}.jpg", class: "cropper-modal__poster cropper-modal__placeholder-gridstack tag-cropper-js") %>
             <% end %>

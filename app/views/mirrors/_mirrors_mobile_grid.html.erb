@@ -5,17 +5,17 @@
       <picture>
         <source srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" media="(min-width: 1200px)">
         <% if mirror.displays_cropped_img? %>
-          <%= cl_image_tag mirror.attachment_key, class: "project-card--mirrors-grid__poster", height: mirror.crop_h, width: mirror.crop_w, x: mirror.crop_x, y: mirror.crop_y, crop: "crop" %>
+          <%= cl_image_tag mirror.attachment_key, class: "project-card--mirrors-grid__poster", height: mirror.crop_h, width: mirror.crop_w, x: mirror.crop_x, y: mirror.crop_y, crop: "crop", alt: "project picture" %>
         <% elsif mirror.displays_original_img? %>
-          <%= cl_image_tag mirror.attachment_key, class: "project-card--mirrors-grid__poster" %>
+          <%= cl_image_tag mirror.attachment_key, class: "project-card--mirrors-grid__poster", alt: "project picture" %>
         <% elsif mirror.displays_cropped_video_poster? %>
           <%= cl_video_tag mirror.attachment_key, class: "project-card--mirrors-grid__poster", poster: { transformation: [ { height: mirror.crop_h.to_i, width: mirror.crop_w.to_i, x: mirror.crop_x.to_i, y: mirror.crop_y.to_i, crop: "crop" } ] } %>
         <% elsif mirror.displays_original_video_poster? %>
           <%= cl_video_tag mirror.attachment_key, class: "project-card--mirrors-grid__poster" %>
         <% elsif mirror.displays_cropped_audio_poster? %>
-          <%= image_tag asset_path('logo-audio.png'), class: "project-card--mirrors-grid__poster", height: mirror.crop_h, width: mirror.crop_w, x: mirror.crop_x, y: mirror.crop_y, crop: "crop" %>
+          <%= image_tag asset_path('logo-audio.png'), class: "project-card--mirrors-grid__poster", height: mirror.crop_h, width: mirror.crop_w, x: mirror.crop_x, y: mirror.crop_y, crop: "crop", alt: "play audio button" %>
         <% else %>
-          <%= image_tag asset_path('logo-audio.png'), class: "project-card--mirrors-grid__poster" %>
+          <%= image_tag asset_path('logo-audio.png'), class: "project-card--mirrors-grid__poster", alt: "play audio button" %>
         <% end %>
       </picture>
     </div>

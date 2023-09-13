@@ -8,13 +8,13 @@
       <% elsif @project.attachments.first.audio? %>
         <div class="carousel__mobile-placeholder placeholder-mobile-js">
           <div class="carousel__mobile-audio-control-wrapper">
-            <%= image_tag asset_path('logo-audio.png'), class: "carousel__audio-poster play-audio-js" %>
+            <%= image_tag asset_path('logo-audio.png'), class: "carousel__audio-poster play-audio-js", alt: "play audio button" %>
             <%= cl_video_tag @project.attachments.first.key, source_types: [:mp3], controls: true, poster: false, class: "carousel__audio-control" %>
           </div>
         </div>
       <% else %>
         <div class="carousel__mobile-placeholder placeholder-mobile-js" data-bs-toggle="modal" data-bs-target="#modalSmallScreen">
-          <%= cl_image_tag @project.attachments.first.key, cloud_name: ENV['CLOUDINARY_CLOUD_NAME'], quality: "auto:low", class: "carousel__mobile-img", transformation: [{fetch_format: "auto"}, {width: 800, crop: "fill"}] %>
+          <%= cl_image_tag @project.attachments.first.key, cloud_name: ENV['CLOUDINARY_CLOUD_NAME'], quality: "auto:low", class: "carousel__mobile-img", alt: "project picture", transformation: [{fetch_format: "auto"}, {width: 800, crop: "fill"}] %>
         </div>
       <% end %>
       <% @project_attachments.each do |attachment| %>
@@ -24,10 +24,10 @@
             <% if attachment.video? %>
               <%= cl_video_tag attachment.key, class: "carousel__thumbnail carousel__thumbnail--poster thumbnail-js" %>
             <% elsif @project.attachments.first.audio? %>
-              <%= image_tag asset_path('logo-audio.png'), class: "carousel__thumbnail carousel__thumbnail--poster carousel__thumbnail--img thumbnail-js" %>
+              <%= image_tag asset_path('logo-audio.png'), class: "carousel__thumbnail carousel__thumbnail--poster carousel__thumbnail--img thumbnail-js", alt: "play audio button" %>
               <%= cl_video_tag attachment.key, class: "carousel__thumbnail--video", poster: false %>
             <% else %>
-              <%= cl_image_tag attachment.key, cloud_name: ENV['CLOUDINARY_CLOUD_NAME'], class: "carousel__thumbnail carousel__thumbnail--poster carousel__thumbnail--img thumbnail-js", quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 1110, crop: "fill"}] %>
+              <%= cl_image_tag attachment.key, cloud_name: ENV['CLOUDINARY_CLOUD_NAME'], class: "carousel__thumbnail carousel__thumbnail--poster carousel__thumbnail--img thumbnail-js", quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 1110, crop: "fill"}], alt: "project picture" %>
             <% end %>
           </picture>
         <% else %>
@@ -36,10 +36,10 @@
             <% if attachment.video? %>
               <%= cl_video_tag attachment.key, class: "carousel__thumbnail carousel__thumbnail--poster thumbnail-js" %>
             <% elsif attachment.audio? %>
-              <%= image_tag asset_path('logo-audio.png'), class: "carousel__thumbnail carousel__thumbnail--poster thumbnail-js" %>
+              <%= image_tag asset_path('logo-audio.png'), class: "carousel__thumbnail carousel__thumbnail--poster thumbnail-js", alt: "play audio button" %>
               <%= cl_video_tag attachment.key, poster: false, class: "carousel__thumbnail--video" %>
             <% else %>
-              <%= cl_image_tag attachment.key, class: "carousel__thumbnail carousel__thumbnail--poster thumbnail-js", quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 1110, crop: "fill"}] %>
+              <%= cl_image_tag attachment.key, class: "carousel__thumbnail carousel__thumbnail--poster thumbnail-js", quality: "auto:low", transformation: [{fetch_format: "auto"}, {width: 1110, crop: "fill"}], alt: "project picture" %>
             <% end %>
           </picture>
         <% end %>
@@ -90,7 +90,7 @@
           <% if @project.attachments.first.video? %>
             <img class="carousel__overlay-poster" src="">
           <% else %>
-            <%= cl_image_tag @project.attachments.first.key, cloud_name: ENV['CLOUDINARY_CLOUD_NAME'], quality: "auto", transformation: [{fetch_format: "auto"}] %>
+            <%= cl_image_tag @project.attachments.first.key, cloud_name: ENV['CLOUDINARY_CLOUD_NAME'], quality: "auto", transformation: [{fetch_format: "auto"}], alt: "project picture" %>
           <% end %>
         <% end %>
         <button type="button" class="carousel__overlay-close-btn btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -106,7 +106,7 @@
           <% if @project.attachments.first.video? %>
             <img class="carousel__overlay-poster" src="">
           <% else %>
-            <%= cl_image_tag @project.attachments.first.key, cloud_name: ENV['CLOUDINARY_CLOUD_NAME'], quality: "auto", transformation: [{fetch_format: "auto"}] %>
+            <%= cl_image_tag @project.attachments.first.key, cloud_name: ENV['CLOUDINARY_CLOUD_NAME'], quality: "auto", transformation: [{fetch_format: "auto"}], alt: "project picture" %>
           <% end %>
         <% end %>
         <button type="button" class="btn-close carousel__overlay-close-btn" data-bs-dismiss="modal" aria-label="Close"></button>
