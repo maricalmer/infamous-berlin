@@ -1,5 +1,4 @@
 import Cropper from 'cropperjs';
-require("cropperjs/dist/cropper.css");
 
 const attachCropperEvents = () => {
   const modals = document.querySelectorAll(".modal-crop-portfolio-js")
