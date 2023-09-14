@@ -36,6 +36,7 @@ class UsersController < ApplicationController
     redirect_to root_path, notice: 'Account deleted', status: :see_other
   end
 
+  # email confirmation pending for account creation
   def after_registration_path
     authorize User
   end

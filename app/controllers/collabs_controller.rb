@@ -25,10 +25,12 @@ class CollabsController < ApplicationController
   end
 
   def destroy
-    if @collab.user_id == current_user.id # -> collab destroyed by project member owner from his dashboard
+    # collab destroyed by project member owner from his dashboard
+    if @collab.user_id == current_user.id
       @collab.destroy
       redirect_to dashboard_path, notice: 'Collaboration deleted'
-    else # -> collab destroyed by project owner from project page
+    # collab destroyed by project owner from project page
+    else
       @project = Project.find(@collab.project_id)
       @collab.destroy
       redirect_to project_path(@project.slug), notice: 'Members list updated'

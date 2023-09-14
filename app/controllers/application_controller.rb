@@ -29,6 +29,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def record_page_view
+    # filter out bots from analytics
     unless request.is_crawler?
       ActiveAnalytics.record_request(request)
     end

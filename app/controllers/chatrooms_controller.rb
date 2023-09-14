@@ -10,12 +10,14 @@ class ChatroomsController < ApplicationController
   end
 
   def index
+    # index all chatrooms by updated_at descending order
     @chatrooms = policy_scope(Chatroom)
     @message = Message.new
     return if @chatrooms.empty?
-
+    # last updated chatroom should be displayed by default
     @chatroom = @chatrooms.first
     find_chatroom_messages
+    # all unread messages should change status to 'read' in last updated chatroom
     mark_messages_as_read
   end
 

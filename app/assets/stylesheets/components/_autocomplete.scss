@@ -1,10 +1,10 @@
+// !important used to overwrite default styling
 .autocomplete-suggestions {
   border-right: none !important;
   border-bottom: none !important;
   border-left: none !important;
   box-shadow: none !important;
 }
-
 .autocomplete-suggestions--new-project {
   background-color: #eaeaea !important;
   direction: rtl !important;
@@ -54,7 +54,6 @@
     background-color: #e6dbfc !important;
   }
 }
-
 .autocomplete-suggestion {
   line-height: 15px !important;
   padding-top: 4px !important;
@@ -64,7 +63,6 @@
     color: #D1BFF6 !important;
   }
 }
-
 @media(min-width: 992px) {
   .autocomplete-suggestions--project-show {
     top: 460px !important;

@@ -132,7 +132,6 @@
   }
   .carousel-and-project-details {
     display: flex;
-    // min-height: 699px;
     min-height: 85vh;
     background: linear-gradient(to right, #646668 0%, #646668 70%, #cdd1f4 70%, #cdd1f4 100%);
     border-bottom: dashed 4px black;
@@ -149,7 +148,6 @@
     padding-right: 3em;
     padding-left: 3em;
     min-height: 85vh;
-    // height: 699px;
   }
   .carousel-and-project-details__title-and-owner {
     flex-grow: 1;

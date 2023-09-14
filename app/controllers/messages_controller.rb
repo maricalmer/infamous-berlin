@@ -9,7 +9,8 @@ class MessagesController < ApplicationController
     @message.user = current_user
     @message.anchor_id = @chatroom.messages.count + 1
     if @message.save
-      ChatroomChannel.broadcast_to(@chatroom, render_to_string(partial: "message", locals: { message: @message })) # broadcast data via Action Cable channels
+      # broadcast new message to channel subscriber via Action Cable
+      ChatroomChannel.broadcast_to(@chatroom, render_to_string(partial: "message", locals: { message: @message }))
       if @chatroom.messages.size < 2
         redirect_to user_path(@user)
       else

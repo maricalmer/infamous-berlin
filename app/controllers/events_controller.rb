@@ -6,9 +6,11 @@ class EventsController < ApplicationController
   end
 
   def index
+    # list all events
     @events = policy_scope(Event)
+    # create calendar of events covering the next 30 days
     @calendar = Event.create_calendar
-    @recommended_events = Event.where("recommended = ? AND date > ?", true, 5.hours.ago).includes(photo_attachment: :blob)
+    @recommended_events = Event.where("recommended = ? AND date > ?", true, 1.hours.ago).includes(photo_attachment: :blob)
   end
 
   def attend

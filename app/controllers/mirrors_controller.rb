@@ -35,6 +35,7 @@ class MirrorsController < ApplicationController
   private
 
   def find_variant
+    # serve different portfolio versions: desktop vs. mobile
     agent = request.user_agent
     agent =~ /Mobile/ ? request.variant = :mobile : request.variant = :desktop
   end

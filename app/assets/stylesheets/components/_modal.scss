@@ -174,8 +174,8 @@
   box-shadow: black -1px -1px, black -2px -2px, black -3px -3px;
   transform: translate3d(3px, 3px, 0);
   transition-delay: 0s;
-    transition-duration: 0.4s;
-    transition-property: all;
+  transition-duration: 0.4s;
+  transition-property: all;
   transition-timing-function: line;
 }
 .jobs-modal__records a:nth-child(odd) .jobs-modal__record {
