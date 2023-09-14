@@ -23,11 +23,12 @@
       <noscript><%= stylesheet_link_tag 'application' %></noscript>
       <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload', 'rel': 'preload', 'as': 'style', 'onload': "this.onload=null;this.rel='stylesheet'" %>
       <noscript><%= stylesheet_pack_tag 'application' %></noscript>
+      <%= javascript_pack_tag 'critical', 'data-turbolinks-track': 'reload', defer: true %>
     <% else %>
       <%= stylesheet_link_tag 'application', 'data-turbolinks-track': 'reload' %>
       <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
     <% end %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
   <body>
     <%= render 'shared/flashes' %>
