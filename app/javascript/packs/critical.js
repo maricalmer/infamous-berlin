@@ -2,7 +2,7 @@ import "stylesheets/critical.scss";
 
 require("turbolinks").start()
 
-import '../libraries/bootstrap_js_files.js';
+import '../libraries/critical_bootstrap_js_files.js';
 import { initCursor } from '../components/homepage_cursor';
 import { firstVisitCheck } from '../components/homepage_preloader';
 import { homepageSlides } from '../components/homepage_slides';
