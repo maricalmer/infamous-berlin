@@ -23,12 +23,9 @@
       <noscript><%= stylesheet_link_tag 'application' %></noscript>
       <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload', 'rel': 'preload', 'as': 'style', 'onload': "this.onload=null;this.rel='stylesheet'" %>
       <noscript><%= stylesheet_pack_tag 'application' %></noscript>
-      <%= stylesheet_pack_tag 'rails_admin', 'data-turbolinks-track': 'reload', 'rel': 'preload', 'as': 'style', 'onload': "this.onload=null;this.rel='stylesheet'" %>
-      <noscript><%= stylesheet_pack_tag 'rails_admin' %></noscript>
     <% else %>
       <%= stylesheet_link_tag 'application', 'data-turbolinks-track': 'reload' %>
       <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-      <%= stylesheet_pack_tag 'rails_admin', 'data-turbolinks-track': 'reload' %>
     <% end %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
