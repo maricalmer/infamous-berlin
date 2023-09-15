@@ -1,3 +1,4 @@
+// add category or skill attribute(s) in create / update form for users, jobs or projects
 const removeAttribute = () => {
   event.currentTarget.parentElement.remove()
   const attributes_input_field = document.querySelector(".attributes_hidden_field_js")

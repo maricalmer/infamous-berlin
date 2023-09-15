@@ -1,3 +1,4 @@
+// filtered search
 import { highlight } from '../components/highlight_search_query';
 import { alignSafariGridItems } from '../components/align_grid_items_on_safari';
 

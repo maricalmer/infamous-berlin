@@ -1,3 +1,4 @@
+// fix position project cards in index for safari browser
 const alignSafariGridItems = () => {
   let isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
   if (isSafari) {

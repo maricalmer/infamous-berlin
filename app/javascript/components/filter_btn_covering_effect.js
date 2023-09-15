@@ -1,3 +1,4 @@
+// animation on filter selection for job and project search
 const clickOnFilter = () => {
   const filterBtns = document.querySelectorAll(".filter-effect-js")
   const text = document.querySelector(".hide-filter-text-js")

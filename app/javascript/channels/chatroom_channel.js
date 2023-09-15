@@ -1,3 +1,4 @@
+// subscribe clients to chatroom channel - Action Cable
 import consumer from "./consumer";
 
 const initChatroomCable = () => {

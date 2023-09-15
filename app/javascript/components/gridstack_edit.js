@@ -1,3 +1,5 @@
+// customize portfolio display
+
 import 'gridstack/dist/gridstack.min.css';
 import { GridStack } from 'gridstack';
 import 'gridstack/dist/h5/gridstack-dd-native';

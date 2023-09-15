@@ -1,3 +1,4 @@
+// format embedded soundclound link for events
 const deleteSoundcloudLinks = () => {
   const iframes = document.querySelectorAll("iframe");
   iframes.forEach((iframe) => {
