@@ -38,7 +38,7 @@ gem "font-awesome-sass", "~> 5.6.1"
 gem 'simple_form'
 gem 'pg_search', '~> 2.3', '>= 2.3.5'
 
-gem "rails_admin"
+gem "rails_admin", "3.0"
 gem 'globalid', '~> 1.0'
 gem 'psych', '< 4'
 gem 'net-smtp', require: false
