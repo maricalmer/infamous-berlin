@@ -27,6 +27,9 @@
       <%= stylesheet_link_tag 'application', 'data-turbolinks-track': 'reload' %>
       <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <% end %>
+    <% if current_page?(rails_admin) %>
+      <%= puts 'RAILS ADMIN!!!!!!!!!!!' %>
+    <% end %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
   <body>
