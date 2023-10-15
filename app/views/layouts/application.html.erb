@@ -14,6 +14,7 @@
     <meta property="og:description" content="Collaboration platform for Berlin’s art scene. Check it out!">
     <meta property="og:image" content="https://res.cloudinary.com/<%= ENV['CLOUDINARY_CLOUD_NAME'] %>/image/upload/v1683641260/social-media-post.jpg">
     <% if current_page?(root_path) %>
+      <%= puts '----> ROOT PATHHHHH '%>
       <!-- Inline the critical CSS -->
       <style>
         <%= File.read(File.join(Rails.root, 'public', Webpacker.manifest.lookup('critical.css'))).html_safe %>
