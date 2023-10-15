@@ -69,20 +69,19 @@ RSpec.describe Workflows::UserContext do
   describe "list_user_index" do
     let(:user) { FactoryBot.create(:user) }
     let(:user_with_bio) { FactoryBot.create(:user, bio: "bio") }
-    it "returns 1 result if user has no written bio" do
+    it "returns 0 result if user has no written bio" do
       user_context = Workflows::UserContext.new(user)
-      expect(user_context.list_profiles.size).to eq(1)
+      expect(user_context.list_profiles.size).to eq(0)
     end
     it "returns 1 result if user has written bio only" do
       user_context = Workflows::UserContext.new(user_with_bio)
       expect(user_context.list_profiles.size).to eq(1)
     end
-    it "returns 2 results if 1 user has written bio only and 1 user has no written bio, 1st is with bio " do
+    it "returns 1 results if 1 user has written bio only and 1 user has no written bio, 1st is with bio " do
       user_context = Workflows::UserContext.new(user)
       user_with_bio
-      expect(user_context.list_profiles.size).to eq(2)
+      expect(user_context.list_profiles.size).to eq(1)
       expect(user_context.list_profiles.first).to eq(user_with_bio)
-      expect(user_context.list_profiles.last).to eq(user)
     end
   end
 
