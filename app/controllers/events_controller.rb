@@ -13,23 +13,6 @@ class EventsController < ApplicationController
     @recommended_events = Event.where("recommended = ? AND date > ?", true, 1.hours.ago).includes(photo_attachment: :blob)
   end
 
-  def new
-    @event = Event.new
-    authorize @event
-  end
-
-  def create
-    @event = Event.new(event_params)
-    authorize @event
-  end
-
-  def edit
-  end
-
-  def update
-    @event.update(event_params)
-  end
-
   def attend
     @event.attend(current_user.id)
     @event.save
