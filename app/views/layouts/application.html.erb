@@ -13,9 +13,21 @@
     <meta property="og:title" content="InfamousBerlin">
     <meta property="og:description" content="Collaboration platform for Berlin’s art scene. Check it out!">
     <meta property="og:image" content="https://res.cloudinary.com/<%= ENV['CLOUDINARY_CLOUD_NAME'] %>/image/upload/v1683641260/social-media-post.jpg">
-
-    <%= stylesheet_link_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <% if current_page?(root_path) %>
+      <%= puts '----> ROOT PATHHHHH '%>
+      <!-- Inline the critical CSS -->
+      <style>
+        <%= File.read(File.join(Rails.root, 'public', Webpacker.manifest.lookup('critical.css'))).html_safe %>
+      </style>
+      <!-- Lazy load the rest with loadCSS -->
+      <%= stylesheet_link_tag 'application', 'data-turbolinks-track': 'reload', 'rel': 'preload', 'as': 'style', 'onload': "this.onload=null;this.rel='stylesheet'" %>
+      <noscript><%= stylesheet_link_tag 'application' %></noscript>
+      <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload', 'rel': 'preload', 'as': 'style', 'onload': "this.onload=null;this.rel='stylesheet'" %>
+      <noscript><%= stylesheet_pack_tag 'application' %></noscript>
+    <% else %>
+      <%= stylesheet_link_tag 'application', 'data-turbolinks-track': 'reload' %>
+      <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <% end %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
   <body>
