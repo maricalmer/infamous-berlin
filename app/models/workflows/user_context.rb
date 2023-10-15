@@ -35,7 +35,7 @@ class Workflows::UserContext
   end
 
   def list_profiles
-    list_legit_completed_profiles + list_fake_completed_profiles + list_uncompleted_profiles
+    list_legit_completed_profiles + list_fake_completed_profiles
   end
 
   def display_portfolio
@@ -60,6 +60,7 @@ class Workflows::UserContext
     User.where("email LIKE ?", "%" + "yopmail" + "%")
   end
 
+  # uncompleted profiles removed from list_profiles to protect from mass account creation attack
   def list_uncompleted_profiles
     User.where(bio: ["", nil]).includes(photo_attachment: :blob)
   end
