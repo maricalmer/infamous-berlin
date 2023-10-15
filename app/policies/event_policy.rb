@@ -9,6 +9,14 @@ class EventPolicy < ApplicationPolicy
     true
   end
 
+  def create?
+    true
+  end
+
+  def update?
+    true
+  end
+
   def attend?
     true
   end
