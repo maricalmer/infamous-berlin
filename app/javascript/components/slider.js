@@ -77,4 +77,11 @@ const hideLeftArrowOnLoad = () => {
   });
 };
 
-export { xScrollOnArrows, hideArrowsOnXScroll, checkOnDashImgsState };
+const horizontalScrollOnWheel = () => {
+  const projectCardSliders = document.querySelectorAll(".slider-js");
+  projectCardSliders.addEventListener("wheel", (event) => {
+    event.currentTarget.scrollLeft += event.deltaY;
+  })
+}
+
+export { xScrollOnArrows, hideArrowsOnXScroll, checkOnDashImgsState, horizontalScrollOnWheel };

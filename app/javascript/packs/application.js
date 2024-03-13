@@ -27,7 +27,7 @@ import { addNewMember } from '../components/new_member_form';
 import { playFileOnClick } from '../components/play_audio_file';
 import { listenSearchInput } from '../components/refresh_search';
 import { fixBtnOnScroll } from '../components/save_display_btn';
-import { xScrollOnArrows, hideArrowsOnXScroll, checkOnDashImgsState } from '../components/slider';
+import { xScrollOnArrows, hideArrowsOnXScroll, checkOnDashImgsState, horizontalScrollOnWheel } from '../components/slider';
 import { showSpinnerBtn } from '../components/spinner_btn';
 import { setDropdown } from '../components/switch_payment_rate';
 import { triggerTyped } from '../components/typed';
@@ -121,6 +121,7 @@ document.addEventListener('turbolinks:load', () => {
   if (document.querySelectorAll(".slider-js").length) {
     hideArrowsOnXScroll();
     checkOnDashImgsState();
+    horizontalScrollOnWheel();
   };
   if (document.querySelectorAll(".form-btn-js").length) {
     showSpinnerBtn();
