@@ -78,7 +78,7 @@ const hideLeftArrowOnLoad = () => {
 };
 
 const horizontalScrollOnWheel = () => {
-  const projectCardSliders = document.querySelectorAll(".slider-js");
+  const projectCardSliders = document.querySelector(".slider-js");
   projectCardSliders.addEventListener("wheel", (event) => {
     event.currentTarget.scrollLeft += event.deltaY;
   })
