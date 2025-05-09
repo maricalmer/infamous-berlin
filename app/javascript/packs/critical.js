@@ -1,1 +1,1 @@
-import "stylesheets/critical.scss";
+import "../stylesheets/critical.scss";

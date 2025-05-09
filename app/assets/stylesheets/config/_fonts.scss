@@ -1,10 +1,26 @@
+// @font-face {
+//   font-family: "AlternateGotNo2D";
+//   font-display: swap;
+//   src:
+//        font-url('AlternateGotNo2D.ttf') format('truetype')
+// }
+
 @font-face {
   font-family: "AlternateGotNo2D";
   font-display: swap;
-  src:
-       font-url('AlternateGotNo2D.ttf') format('truetype')
+  src: font-url('AlternateGotNo2D.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
 $my-font: "AlternateGotNo2D";
 $body-font: "AlternateGotNo2D";
 $headers-font: "AlternateGotNo2D";
+  
+* {
+  font-family: "AlternateGotNo2D", sans-serif !important;
+}
+  
+i, [class*="icon-"], .fa, .material-icons {
+  font-family: inherit !important;
+}
