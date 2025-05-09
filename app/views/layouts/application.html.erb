@@ -17,7 +17,7 @@
       <%= puts '----> ROOT PATHHHHH '%>
       <!-- Inline the critical CSS -->
       <style>
-        <%= Rails.application.assets.find_asset('critical.css').to_s.html_safe %>
+        <%= File.read(File.join(Rails.root, 'public', Webpacker.manifest.lookup('critical.css'))).html_safe %>
       </style>
       <!-- Lazy load the rest with loadCSS -->
       <%= stylesheet_link_tag 'application', 'data-turbolinks-track': 'reload', 'rel': 'preload', 'as': 'style', 'onload': "this.onload=null;this.rel='stylesheet'" %>
