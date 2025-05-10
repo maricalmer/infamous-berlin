@@ -47,16 +47,6 @@ Capybara.register_driver :selenium_chrome_headless do |app|
   )
 end
 
-# Register remote Selenium driver (for CI, Docker, etc.)
-Capybara.register_driver :selenium_remote do |app|
-  Capybara::Selenium::Driver.new(
-    app,
-    browser: :remote,
-    url: ENV.fetch('SELENIUM_REMOTE_URL', 'http://localhost:4444/wd/hub'),
-    options: Selenium::WebDriver::Chrome::Options.new
-  )
-end
-
 # Configure host for CI environments
 if ENV['CI']
   Capybara.server_host = '0.0.0.0'
@@ -71,7 +61,7 @@ RSpec.configure do |config|
 
   # Use correct driver for system tests
   config.before(:each, type: :system) do
-    driver = ENV['CI'] ? :selenium_remote : :selenium_chrome_headless
+    driver = :selenium_chrome_headless
     driven_by driver
   end
 
