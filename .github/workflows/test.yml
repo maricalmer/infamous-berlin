@@ -61,11 +61,11 @@ jobs:
       # Set up the database
       - name: Database setup
         run: |
-          cp config/database.github.yml config/database.yml  # Make sure you have a config/database.github.yml for CI
+          cp config/database.github.yml config/database.yml
           bundle exec rails db:create
           bundle exec rails db:migrate
 
       # Run RSpec tests
       - name: Run tests
         run: |
-          bundle exec rspec --tag ~skip  # Optionally, add --tag ~skip to avoid
+          RAILS_ENV=test bundle exec rspec --format documentation --tag ~skip
