@@ -10,7 +10,6 @@ jobs:
       CLOUDINARY_CLOUD_NAME: ${{ secrets.CLOUDINARY_CLOUD_NAME }}
       DATABASE_URL: postgres://postgres:postgres@localhost:5432/test
       SELENIUM_REMOTE_URL: http://localhost:4444/wd/hub
-      TEST_ENV_NUMBER: 1
     runs-on: ubuntu-latest
     
     services:
@@ -26,16 +25,6 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-          
-      redis:
-        image: redis:6
-        ports:
-          - 6379:6379
-          
-      selenium-chrome:
-        image: selenium/standalone-chrome:107.0
-        ports:
-          - 4444:4444
 
     steps:
       - uses: actions/checkout@v4
@@ -43,7 +32,7 @@ jobs:
       - name: Wait for PostgreSQL
         run: |
           for i in {1..10}; do
-            nc -z localhost 5432 && break
+            pg_isready -h localhost -p 5432 -U postgres && break
             sleep 2
           done
           
@@ -62,13 +51,14 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y libpq-dev postgresql-client
+          sudo apt-get install -y postgresql-client
           yarn install --frozen-lockfile
           
       - name: Database setup
         run: |
           cp config/database.github.yml config/database.yml
-          bundle exec rails db:create db:schema:load
+          bundle exec rails db:create
+          bundle exec rails db:migrate
           
       - name: Run tests
-        run: bundle exec rspec
+        run: RAILS_ENV=test bundle exec rspec
