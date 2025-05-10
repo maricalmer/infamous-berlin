@@ -15,7 +15,7 @@
     "flatpickr": "^4.6.9",
     "gridstack": "^5.0.0",
     "jquery": "^3.6.0",
-    "jquery-ui": "^1.13.1",
+    "jquery-ui": "1.12.1",
     "js-autocomplete": "^1.0.4",
     "popper.js": "^1.16.1",
     "purgecss-from-html": "^1.1.0",
