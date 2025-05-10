@@ -75,15 +75,26 @@ jobs:
 
       - name: Run tests
         run: |
+          mkdir -p tmp/test-results
           bundle exec rspec --format documentation \
             --format RspecJunitFormatter \
-            --out tmp/rspec.xml \
+            --out tmp/test-results/rspec.xml \
             --tag ~js:false \
             spec/models spec/services spec/workflows spec/system
 
       - name: Upload test results
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
-          name: rspec-results
-          path: tmp/rspec.xml
+          name: test-results
+          path: |
+            tmp/test-results/rspec.xml
+            tmp/screenshots/*.png
+            tmp/capybara/*.html
+
+      - name: Debug on failure
+        if: failure()
+        run: |
+          echo "Tests failed - check artifacts for screenshots and HTML dumps"
+          ls -la tmp/screenshots || true
+          ls -la tmp/capybara || true
