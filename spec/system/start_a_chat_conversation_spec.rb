@@ -1,9 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe "send several messages to other user:" do
-  before do
-    host! "http://#{Capybara.server_host}:#{Capybara.server_port}"
-  end
   let(:user) { FactoryBot.create(:user) }
   let(:other_user) { FactoryBot.create(:user) }
   it "logs in, get to the project page and add member" do

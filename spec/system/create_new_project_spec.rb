@@ -1,9 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe "create a new project:" do
-  before do
-    host! "http://#{Capybara.server_host}:#{Capybara.server_port}"
-  end
   let(:user) { FactoryBot.create(:user) }
   it "logs in, get to the project page and add member" do
     user.confirm
