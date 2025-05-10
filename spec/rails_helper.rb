@@ -39,6 +39,7 @@ Capybara.register_driver :selenium_chrome_headless do |app|
   options.add_argument('--disable-site-isolation-trials')
   options.add_argument('--disable-gpu') if Gem.win_platform?
   options.add_argument('--window-size=1400,1400')
+  options.add_argument("--user-data-dir=/tmp/chrome-user-data-#{SecureRandom.hex(4)}")
 
   Capybara::Selenium::Driver.new(
     app,
