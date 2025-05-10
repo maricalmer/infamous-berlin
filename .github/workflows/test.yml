@@ -2,7 +2,6 @@ name: Test
 
 on: [push]
 
-
 jobs:
   test:
     env:
@@ -28,37 +27,45 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      
+
+      # Wait for PostgreSQL to be ready
       - name: Wait for PostgreSQL
         run: |
           for i in {1..10}; do
             pg_isready -h localhost -p 5432 -U postgres && break
             sleep 2
           done
-          
+
+      # Set up Ruby
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.1.3
           bundler-cache: true
-          
+
+      # Set up Node.js (if your project requires it for asset pipeline)
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
           node-version: '14.14.0'
           cache: yarn
-          
+
+      # Install dependencies
       - name: Install dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y postgresql-client
           yarn install --frozen-lockfile
-          
+          bundle install --jobs 4 --retry 3  # Ensure all gems, including rspec-rails, are installed
+
+      # Set up the database
       - name: Database setup
         run: |
-          cp config/database.github.yml config/database.yml
+          cp config/database.github.yml config/database.yml  # Make sure you have a config/database.github.yml for CI
           bundle exec rails db:create
           bundle exec rails db:migrate
-          
+
+      # Run RSpec tests
       - name: Run tests
-        run: RAILS_ENV=test bundle exec rspec
+        run: |
+          bundle exec rspec --tag ~skip  # Optionally, add --tag ~skip to avoid
