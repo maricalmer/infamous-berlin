@@ -11,7 +11,6 @@ RSpec.describe "accept a job inquiry:" do
   end
 
   after(:each) do
-    # Ensure proper cleanup
     Capybara.current_session.driver.quit if Capybara.current_session.driver.respond_to?(:quit)
   end
 

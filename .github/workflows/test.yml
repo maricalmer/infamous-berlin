@@ -9,7 +9,6 @@ jobs:
       NODE_ENV: test
       CLOUDINARY_CLOUD_NAME: ${{ secrets.CLOUDINARY_CLOUD_NAME }}
       DATABASE_URL: postgres://postgres:postgres@localhost:5432/test
-      SELENIUM_REMOTE_URL: http://localhost:4444/wd/hub
     runs-on: ubuntu-latest
     
     services:
