@@ -39,7 +39,6 @@ Capybara.register_driver :selenium_chrome_headless do |app|
   options.add_argument('--disable-site-isolation-trials')
   options.add_argument('--disable-gpu') if Gem.win_platform?
   options.add_argument('--window-size=1400,1400')
-  options.add_argument("--user-data-dir=#{Dir.mktmpdir("chrome-user-data")}")
 
   Capybara::Selenium::Driver.new(
     app,
@@ -62,22 +61,6 @@ RSpec.configure do |config|
   # FactoryBot
   config.include FactoryBot::Syntax::Methods
 
-  # Use correct driver for system tests
-  config.before(:each, type: :system) do
-    driver = :selenium_chrome_headless
-    driven_by driver
-  end
-
-  # Take screenshot and HTML on failure
-  config.after(:each, type: :system) do |example|
-    next unless example.exception
-
-    timestamp = Time.now.strftime('%Y-%m-%d-%H%M%S')
-    filename = "#{example.full_description.parameterize.underscore}_#{timestamp}"
-    save_screenshot("tmp/screenshots/#{filename}.png")
-    save_page("tmp/screenshots/#{filename}.html")
-  end
-
   # Clean up Warden after each test
   config.after(:each) do
     Warden.test_reset!
@@ -91,8 +74,4 @@ RSpec.configure do |config|
 
   # Infer test type from file location
   config.infer_spec_type_from_file_location!
-
-  # Include Devise and Warden helpers for system tests
-  config.include Devise::Test::IntegrationHelpers, type: :system
-  config.include Warden::Test::Helpers, type: :system
 end
