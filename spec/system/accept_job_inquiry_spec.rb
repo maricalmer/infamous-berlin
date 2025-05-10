@@ -1,10 +1,9 @@
 require 'rails_helper'
 
-before do
-  host! "http://#{Capybara.server_host}:#{Capybara.server_port}"
-end
-
 RSpec.describe "accept a job inquiry:" do
+  before do
+    host! "http://#{Capybara.server_host}:#{Capybara.server_port}"
+  end
   let(:user) { FactoryBot.create(:user) }
   let(:project) { FactoryBot.create(:project, user: user) }
   let(:job) { FactoryBot.create(:job, project: project) }
