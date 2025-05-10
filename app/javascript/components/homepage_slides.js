@@ -40,6 +40,7 @@ const moveSections = () => {
     }
   }
 }
+
 const homepageSlides = () => {
   const homepage = document.querySelector(".homepage-slides-js");
   const tapBtn = document.querySelector(".mobile-homepage-tap-btn-js");

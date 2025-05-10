@@ -127,9 +127,10 @@ GEM
       railties (>= 5.0.0)
     faker (2.23.0)
       i18n (>= 1.8.11, < 2)
-    ffi (1.15.5)
-    font-awesome-sass (5.6.1)
-      sassc (>= 1.11)
+    ffi (1.17.2-x86_64-darwin)
+    ffi (1.17.2-x86_64-linux-gnu)
+    font-awesome-sass (6.4.2)
+      sassc (~> 2.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
     http-accept (1.7.0)
@@ -377,7 +378,7 @@ DEPENDENCIES
   dotenv-rails
   factory_bot_rails
   faker (~> 2.18)
-  font-awesome-sass (~> 5.6.1)
+  font-awesome-sass (~> 6.1)
   globalid (~> 1.0)
   jbuilder (~> 2.7)
   letter_opener
@@ -414,4 +415,4 @@ RUBY VERSION
    ruby 3.1.3p185
 
 BUNDLED WITH
-   2.3.26
+   2.5.23
