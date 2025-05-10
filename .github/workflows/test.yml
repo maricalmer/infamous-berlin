@@ -8,15 +8,17 @@ jobs:
       RAILS_ENV: test
       NODE_ENV: test
       CLOUDINARY_CLOUD_NAME: ${{ secrets.CLOUDINARY_CLOUD_NAME }}
-      DATABASE_URL: postgres://postgres:postgres@postgres:5432/test
-      SELENIUM_REMOTE_URL: http://selenium-chrome:4444/wd/hub
+      DATABASE_URL: postgres://postgres:postgres@localhost:5432/test
+      SELENIUM_REMOTE_URL: http://localhost:4444/wd/hub
       TEST_ENV_NUMBER: 1
     runs-on: ubuntu-latest
+    
     services:
       postgres:
         image: postgres:14
         env:
           POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: test
         ports:
           - 5432:5432
         options: >-
@@ -24,77 +26,49 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+          
       redis:
         image: redis:6
         ports:
           - 6379:6379
+          
       selenium-chrome:
         image: selenium/standalone-chrome:107.0
         ports:
           - 4444:4444
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
+      - uses: actions/checkout@v4
+      
+      - name: Wait for PostgreSQL
+        run: |
+          for i in {1..10}; do
+            nc -z localhost 5432 && break
+            sleep 2
+          done
+          
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.1.3
           bundler-cache: true
-          cache-version: 1
-
+          
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
           node-version: '14.14.0'
           cache: yarn
-
-      - name: Install system dependencies
+          
+      - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y libpq-dev
-
-      - name: Yarn install
-        run: yarn install --frozen-lockfile
-
-      - name: Cache Ruby gems
-        uses: actions/cache@v3
-        with:
-          path: |
-            vendor/bundle
-            ~/.local/share/gem
-          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-gems-
-
-      - name: Prepare DB
+          sudo apt-get install -y libpq-dev postgresql-client
+          yarn install --frozen-lockfile
+          
+      - name: Database setup
         run: |
           cp config/database.github.yml config/database.yml
           bundle exec rails db:create db:schema:load
-
+          
       - name: Run tests
-        run: |
-          mkdir -p tmp/test-results
-          bundle exec rspec --format documentation \
-            --format RspecJunitFormatter \
-            --out tmp/test-results/rspec.xml \
-            --tag ~js:false \
-            spec/models spec/services spec/workflows spec/system
-
-      - name: Upload test results
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: test-results
-          path: |
-            tmp/test-results/rspec.xml
-            tmp/screenshots/*.png
-            tmp/capybara/*.html
-
-      - name: Debug on failure
-        if: failure()
-        run: |
-          echo "Tests failed - check artifacts for screenshots and HTML dumps"
-          ls -la tmp/screenshots || true
-          ls -la tmp/capybara || true
+        run: bundle exec rspec
