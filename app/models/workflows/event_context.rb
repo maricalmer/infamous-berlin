@@ -30,7 +30,7 @@ class Workflows::EventContext
     (0...30).each { |d| days << d.day.from_now.to_date }
     calendar = {}
     days.each do |d|
-      events_on_day = Event.where("date BETWEEN ? AND ?", d.at_beginning_of_day, d.at_end_of_day ).order('coalesce(array_length(attendees, 1), 0)').reverse
+      events_on_day = Event.where("date BETWEEN ? AND ?", d.at_beginning_of_day, d.at_end_of_day ).order(Arel.sql('coalesce(array_length(attendees, 1), 0)')).reverse
       calendar[d] = events_on_day if events_on_day.present?
     end
     return calendar
