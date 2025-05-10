@@ -2,17 +2,22 @@
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
-# Prevent database truncation if the environment is production
+
+# Prevent accidental production database access
 abort("The Rails environment is running in production mode!") if Rails.env.production?
+if Rails.configuration.database_configuration[Rails.env]["database"] =~ /production/
+  abort("Connected to a production database in #{Rails.env} mode!")
+end
+
 require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/rspec'
 require 'selenium-webdriver'
 
-# Add additional requires below this line. Rails is not loaded until this point!
-Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+# Load support files
+Dir[Rails.root.join('spec/support/**/*.rb')].sort.each { |f| require f }
 
-# Checks for pending migrations and applies them before tests are run.
+# Maintain test schema
 begin
   ActiveRecord::Migration.maintain_test_schema!
 rescue ActiveRecord::PendingMigrationError => e
@@ -20,18 +25,19 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 
-# Capybara Configuration
+# Capybara configuration
 Capybara.server = :puma, { Silent: true }
 Capybara.default_max_wait_time = 10
-Capybara.default_normalize_ws = true
 Capybara.save_path = 'tmp/screenshots'
 
-# Register drivers
+# Register headless Chrome driver
 Capybara.register_driver :selenium_chrome_headless do |app|
   options = Selenium::WebDriver::Chrome::Options.new
   options.add_argument('--headless')
   options.add_argument('--no-sandbox')
   options.add_argument('--disable-dev-shm-usage')
+  options.add_argument('--disable-site-isolation-trials')
+  options.add_argument('--disable-gpu') if Gem.win_platform?
   options.add_argument('--window-size=1400,1400')
 
   Capybara::Selenium::Driver.new(
@@ -41,6 +47,7 @@ Capybara.register_driver :selenium_chrome_headless do |app|
   )
 end
 
+# Register remote Selenium driver (for CI, Docker, etc.)
 Capybara.register_driver :selenium_remote do |app|
   Capybara::Selenium::Driver.new(
     app,
@@ -50,47 +57,49 @@ Capybara.register_driver :selenium_remote do |app|
   )
 end
 
-# Configure host for CI environment
+# Configure host for CI environments
 if ENV['CI']
   Capybara.server_host = '0.0.0.0'
   Capybara.server_port = 4000
-  Capybara.app_host = "http://#{`hostname`.strip&.downcase || 'localhost'}:#{Capybara.server_port}"
+  hostname = `hostname`.strip.downcase.presence || 'localhost'
+  Capybara.app_host = "http://#{hostname}:#{Capybara.server_port}"
 end
 
 RSpec.configure do |config|
-  # FactoryBot & Database Cleaner
+  # FactoryBot
   config.include FactoryBot::Syntax::Methods
 
-  # Use the right driver for system tests
+  # Use correct driver for system tests
   config.before(:each, type: :system) do
-    if ENV['CI']
-      driven_by :selenium_remote
-      Capybara.current_driver = :selenium_remote
-    else
-      driven_by :selenium_chrome_headless
-    end
+    driver = ENV['CI'] ? :selenium_remote : :selenium_chrome_headless
+    driven_by driver
   end
 
-  # Screenshots on failure
+  # Take screenshot and HTML on failure
   config.after(:each, type: :system) do |example|
-    if example.exception
-      save_screenshot("#{example.full_description.parameterize.underscore}.png")
-      save_page
-    end
+    next unless example.exception
+
+    timestamp = Time.now.strftime('%Y-%m-%d-%H%M%S')
+    filename = "#{example.full_description.parameterize.underscore}_#{timestamp}"
+    save_screenshot("tmp/screenshots/#{filename}.png")
+    save_page("tmp/screenshots/#{filename}.html")
   end
 
-  # Database cleaner
+  # Clean up Warden after each test
+  config.after(:each) do
+    Warden.test_reset!
+  end
+
+  # Database transactional fixtures
   config.use_transactional_fixtures = true
 
-  # Filter lines from Rails gems in backtraces.
+  # Filter Rails backtrace lines
   config.filter_rails_from_backtrace!
-  # arbitrary gems may also be filtered via:
-  # config.filter_gems_from_backtrace("gem name")
 
-  # Infer spec type from location
+  # Infer test type from file location
   config.infer_spec_type_from_file_location!
 
-  # Include helpers
+  # Include Devise and Warden helpers for system tests
   config.include Devise::Test::IntegrationHelpers, type: :system
-  config.include Warden::Test::Helpers
+  config.include Warden::Test::Helpers, type: :system
 end
