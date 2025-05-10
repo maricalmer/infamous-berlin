@@ -61,11 +61,6 @@ RSpec.configure do |config|
   # FactoryBot
   config.include FactoryBot::Syntax::Methods
 
-  # Clean up Warden after each test
-  config.after(:each) do
-    Warden.test_reset!
-  end
-
   # Database transactional fixtures
   config.use_transactional_fixtures = true
 
