@@ -1,5 +1,9 @@
 require 'rails_helper'
 
+before do
+  host! "http://#{Capybara.server_host}:#{Capybara.server_port}"
+end
+
 RSpec.describe "creating an account:" do
   it "can sign up" do
     visit(root_path)

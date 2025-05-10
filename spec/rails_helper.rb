@@ -5,25 +5,14 @@ require_relative '../config/environment'
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
-# Add additional requires below this line. Rails is not loaded until this point!
+require 'capybara/rails'
+require 'capybara/rspec'
+require 'selenium-webdriver'
 
-# Requires supporting ruby files with custom matchers and macros, etc, in
-# spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
-# run as spec files by default. This means that files in spec/support that end
-# in _spec.rb will both be required and run as specs, causing the specs to be
-# run twice. It is recommended that you do not name files matching this glob to
-# end with _spec.rb. You can configure this pattern with the --pattern
-# option on the command line or in ~/.rspec, .rspec or `.rspec-local`.
-#
-# The following line is provided for convenience purposes. It has the downside
-# of increasing the boot-up time by auto-requiring all files in the support
-# directory. Alternatively, in the individual `*_spec.rb` files, manually
-# require only the support files necessary.
-#
-# Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
+# Add additional requires below this line. Rails is not loaded until this point!
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 # Checks for pending migrations and applies them before tests are run.
-# If you are not using ActiveRecord, you can remove these lines.
 begin
   ActiveRecord::Migration.maintain_test_schema!
 rescue ActiveRecord::PendingMigrationError => e
@@ -31,52 +20,77 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 
-Capybara.default_max_wait_time = 5
+# Capybara Configuration
+Capybara.server = :puma, { Silent: true }
+Capybara.default_max_wait_time = 10
+Capybara.default_normalize_ws = true
+Capybara.save_path = 'tmp/screenshots'
 
+# Register drivers
 Capybara.register_driver :selenium_chrome_headless do |app|
-  Capybara::Selenium::Driver.load_selenium
-  browser_options = ::Selenium::WebDriver::Chrome::Options.new
-  browser_options.args << '--headless'
-  browser_options.args << '--window-size=1366,720'
-  Capybara::Selenium::Driver.new(app, browser: :chrome, options: browser_options)
+  options = Selenium::WebDriver::Chrome::Options.new
+  options.add_argument('--headless')
+  options.add_argument('--no-sandbox')
+  options.add_argument('--disable-dev-shm-usage')
+  options.add_argument('--window-size=1400,1400')
+
+  Capybara::Selenium::Driver.new(
+    app,
+    browser: :chrome,
+    options: options
+  )
 end
-Capybara.javascript_driver = :selenium_chrome_headless
+
+Capybara.register_driver :selenium_remote do |app|
+  Capybara::Selenium::Driver.new(
+    app,
+    browser: :remote,
+    url: ENV.fetch('SELENIUM_REMOTE_URL', 'http://localhost:4444/wd/hub'),
+    options: Selenium::WebDriver::Chrome::Options.new
+  )
+end
+
+# Configure host for CI environment
+if ENV['CI']
+  Capybara.server_host = '0.0.0.0'
+  Capybara.server_port = 4000
+  Capybara.app_host = "http://#{`hostname`.strip&.downcase || 'localhost'}:#{Capybara.server_port}"
+end
 
 RSpec.configure do |config|
+  # FactoryBot & Database Cleaner
+  config.include FactoryBot::Syntax::Methods
+
+  # Use the right driver for system tests
   config.before(:each, type: :system) do
-    driven_by :selenium_chrome_headless
+    if ENV['CI']
+      driven_by :selenium_remote
+      Capybara.current_driver = :selenium_remote
+    else
+      driven_by :selenium_chrome_headless
+    end
   end
-end
 
-RSpec.configure do |config|
-  # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  # Screenshots on failure
+  config.after(:each, type: :system) do |example|
+    if example.exception
+      save_screenshot("#{example.full_description.parameterize.underscore}.png")
+      save_page
+    end
+  end
 
-  # If you're not using ActiveRecord, or you'd prefer not to run each of your
-  # examples within a transaction, remove the following line or assign false
-  # instead of true.
+  # Database cleaner
   config.use_transactional_fixtures = true
-
-  # You can uncomment this line to turn off ActiveRecord support entirely.
-  # config.use_active_record = false
-
-  # RSpec Rails can automatically mix in different behaviours to your tests
-  # based on their file location, for example enabling you to call `get` and
-  # `post` in specs under `spec/controllers`.
-  #
-  # You can disable this behaviour by removing the line below, and instead
-  # explicitly tag your specs with their type, e.g.:
-  #
-  #     RSpec.describe UsersController, type: :controller do
-  #       # ...
-  #     end
-  #
-  # The different available types are documented in the features, such as in
-  # https://relishapp.com/rspec/rspec-rails/docs
-  config.infer_spec_type_from_file_location!
 
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  # Infer spec type from location
+  config.infer_spec_type_from_file_location!
+
+  # Include helpers
+  config.include Devise::Test::IntegrationHelpers, type: :system
+  config.include Warden::Test::Helpers
 end

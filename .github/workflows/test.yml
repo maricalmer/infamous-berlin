@@ -8,6 +8,9 @@ jobs:
       RAILS_ENV: test
       NODE_ENV: test
       CLOUDINARY_CLOUD_NAME: ${{ secrets.CLOUDINARY_CLOUD_NAME }}
+      DATABASE_URL: postgres://postgres:postgres@postgres:5432/test
+      SELENIUM_REMOTE_URL: http://selenium-chrome:4444/wd/hub
+      TEST_ENV_NUMBER: 1
     runs-on: ubuntu-latest
     services:
       postgres:
@@ -21,6 +24,15 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+      redis:
+        image: redis:6
+        ports:
+          - 6379:6379
+      selenium-chrome:
+        image: selenium/standalone-chrome:107.0
+        ports:
+          - 4444:4444
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -28,6 +40,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
+          ruby-version: 3.1.3
           bundler-cache: true
           cache-version: 1
 
@@ -37,10 +50,15 @@ jobs:
           node-version: '14.14.0'
           cache: yarn
 
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libpq-dev
+
       - name: Yarn install
         run: yarn install --frozen-lockfile
 
-      - name: Cache Ruby gems (explicit)
+      - name: Cache Ruby gems
         uses: actions/cache@v3
         with:
           path: |
@@ -53,11 +71,19 @@ jobs:
       - name: Prepare DB
         run: |
           cp config/database.github.yml config/database.yml
-          bundle exec rails db:create db:migrate
+          bundle exec rails db:create db:schema:load
 
       - name: Run tests
         run: |
-          bundle exec rails spec:models
-          bundle exec rails spec:services
-          bundle exec rails spec:workflows
-          bundle exec rails spec:system
+          bundle exec rspec --format documentation \
+            --format RspecJunitFormatter \
+            --out tmp/rspec.xml \
+            --tag ~js:false \
+            spec/models spec/services spec/workflows spec/system
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: rspec-results
+          path: tmp/rspec.xml
