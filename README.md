@@ -2,11 +2,13 @@
   <img src="https://res.cloudinary.com/dbpv82leg/image/upload/c_fill,g_auto,w_300/v1673965776/logo.png" />
 </div>
 
-### [InfamousBerlin.com](https://infamousberlin.herokuapp.com/), a web app facilitating project collaborations in Berlin’s art scene
+[After four vibrant years of events, dialogue, and unwavering support for Berlin’s art scene, the InfamousBerlin project came to a close in early 2025, leaving behind a resonant echo in the city’s cultural landscape]
+
+### [InfamousBerlin](https://infamousberlin-177699a46304.herokuapp.com/), a web app facilitating project collaborations in Berlin’s art scene
 
 ## Description
 
-The core function of infamousberlin.com is to connect local artists and help them collaborate on art projects. A registered user can:
+The core function of InfamousBerlin is to connect local artists and help them collaborate on art projects. A registered user can:
 
 - upload projects <img align="right" src="https://res.cloudinary.com/dbpv82leg/image/upload/c_scale,w_400/v1674052464/gridstack-feature.gif" />
 - rearrange portfolio display (see demo ---> )
@@ -66,9 +68,9 @@ Start the server
   rails s
 ```
 
-## Visit the page!
+## Visit the demo website!
 
-[InfamousBerlin.com](https://infamousberlin.herokuapp.com/)
+[InfamousBerlin](https://infamousberlin-177699a46304.herokuapp.com/)
 
 ## License
 
