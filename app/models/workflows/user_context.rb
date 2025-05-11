@@ -60,7 +60,6 @@ class Workflows::UserContext
     User.where("email LIKE ?", "%" + "yopmail" + "%")
   end
 
-  # uncompleted profiles removed from list_profiles to protect from mass account creation attack
   def list_uncompleted_profiles
     User.where(bio: ["", nil]).includes(photo_attachment: :blob)
   end
