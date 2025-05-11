@@ -4,7 +4,7 @@
 
 
 
-[[  After four vibrant years of events, dialogue, and unwavering support for Berlin’s art scene, the InfamousBerlin project came to a close in early 2025, leaving behind a resonant echo in the city’s cultural landscape  ]]
+_[[  After four vibrant years of events, dialogue, and unwavering support for Berlin’s art scene, the InfamousBerlin project came to a close in early 2025, leaving behind a resonant echo in the city’s cultural landscape  ]]_
 
 ### [InfamousBerlin](https://infamousberlin-177699a46304.herokuapp.com/), a web app facilitating project collaborations in Berlin’s art scene
 
