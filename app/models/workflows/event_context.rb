@@ -25,14 +25,21 @@ class Workflows::EventContext
     @event.media = @event.media.gsub(/&auto_play=true/, "&auto_play=false") if @event.media
   end
 
+  # def new_calendar
+  #   days = []
+  #   (0...30).each { |d| days << d.day.from_now.to_date }
+  #   calendar = {}
+  #   days.each do |d|
+  #     events_on_day = Event.where("date BETWEEN ? AND ?", d.at_beginning_of_day, d.at_end_of_day ).order(Arel.sql('coalesce(array_length(attendees, 1), 0)')).reverse
+  #     calendar[d] = events_on_day if events_on_day.present?
+  #   end
+  #   return calendar
+  # end
+  
   def new_calendar
-    days = []
-    (0...30).each { |d| days << d.day.from_now.to_date }
-    calendar = {}
-    days.each do |d|
-      events_on_day = Event.where("date BETWEEN ? AND ?", d.at_beginning_of_day, d.at_end_of_day ).order(Arel.sql('coalesce(array_length(attendees, 1), 0)')).reverse
-      calendar[d] = events_on_day if events_on_day.present?
-    end
+    events = Event.order(:date)
+    calendar = events.group_by { |event| event.date.to_date }
+    
     return calendar
   end
 
